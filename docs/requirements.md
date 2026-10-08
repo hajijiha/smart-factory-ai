@@ -5,7 +5,7 @@
 | Ubuntu22.04/Python≤3.11/Torch≥2/CPU | Dockerfile 두 개 | hardware.json: Ubuntu22.04.5, Python3.10.12, Torch2.5.1+cpu |
 | Compose 단일 실행 | compose.yaml, 실제 모델 포함 | 공개 clone·빈 데이터/ONNX·새 DB에서 실제 8서비스 기동 통과(deployment.json) |
 | Public/Conventional Commits | hajijiha/smart-factory-ai | Public main에 source·모델·실측 결과 제공 |
-| 구조·1인 역할·모듈 문서 | README/docs | 아키텍처 diagram과 담당·이론·학습·실험 상세 설명 |
+| 구조·개발 범위·모듈 문서 | README/docs | 아키텍처와 모듈 구성·이론·학습·실험 설명 |
 | 실제 Gazebo3D/ROS2 | C++ plugin, SDF, 카메라/관절 취득 | 6,000 actual camera JPEG와 joint provenance |
 | Fault0–10·진동/불량 연동 | bridge/signal | p=.02+.085level, 실제 반복 운전+위험 정지 |
 | 정상5,000/고장≥1,000 | generate_sensor | 정상5,000+고장2,000 생성·전체 분리 확인 |
