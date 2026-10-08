@@ -1,0 +1,91 @@
+name: smart-factory-ai
+services:
+  broker:
+    image: eclipse-mosquitto:2.0.20
+    volumes:
+      - ./docker/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - mqtt-data:/mosquitto/data
+    healthcheck:
+      test: [CMD-SHELL, 'mosquitto_pub -h localhost -t health -m ok']
+      interval: 5s
+      retries: 20
+  database:
+    image: timescale/timescaledb:2.17.2-pg16
+    environment:
+      POSTGRES_USER: factory
+      POSTGRES_PASSWORD: factory_local_demo
+      POSTGRES_DB: factory
+    volumes:
+      - database-data:/var/lib/postgresql/data
+      - ./docker/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql:ro
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U factory -d factory']
+      interval: 5s
+      retries: 20
+  simulator:
+    build:
+      context: .
+      dockerfile: simulator/Dockerfile
+    environment:
+      MQTT_HOST: broker
+      DISPLAY: ':99'
+      LIBGL_ALWAYS_SOFTWARE: '1'
+      GAZEBO_MODEL_DATABASE_URI: ''
+    volumes:
+      - ./data:/app/data
+      - ./artifacts:/app/artifacts
+      - ./docs/results:/app/docs/results
+    depends_on:
+      broker: {condition: service_healthy}
+    shm_size: 512mb
+  pdm:
+    build: {context: ., dockerfile: docker/Dockerfile}
+    image: smart-factory-runtime:local
+    command: [python3, -m, factory.pdm.service]
+    environment: &runtime-env
+      MQTT_HOST: broker
+      DATABASE_URL: postgresql://factory:factory_local_demo@database:5432/factory
+    volumes: &runtime-volumes
+      - ./data:/app/data
+      - ./artifacts:/app/artifacts
+      - ./docs/results:/app/docs/results
+    depends_on:
+      broker: {condition: service_healthy}
+  vision:
+    image: smart-factory-runtime:local
+    build: {context: ., dockerfile: docker/Dockerfile}
+    command: [python3, -m, factory.vision.service]
+    environment: *runtime-env
+    volumes: *runtime-volumes
+    depends_on:
+      broker: {condition: service_healthy}
+  storage:
+    image: smart-factory-runtime:local
+    build: {context: ., dockerfile: docker/Dockerfile}
+    command: [python3, -m, factory.storage]
+    environment: *runtime-env
+    volumes: *runtime-volumes
+    depends_on:
+      broker: {condition: service_healthy}
+      database: {condition: service_healthy}
+  controller:
+    image: smart-factory-runtime:local
+    build: {context: ., dockerfile: docker/Dockerfile}
+    command: [python3, -m, factory.controller]
+    environment: *runtime-env
+    volumes: *runtime-volumes
+    depends_on:
+      broker: {condition: service_healthy}
+  dashboard:
+    image: smart-factory-runtime:local
+    build: {context: ., dockerfile: docker/Dockerfile}
+    command: [uvicorn, factory.dashboard:app, --host, 0.0.0.0, --port, '8080']
+    environment: *runtime-env
+    volumes: *runtime-volumes
+    ports: ['127.0.0.1:${DASHBOARD_PORT:-8080}:8080']
+    depends_on:
+      database: {condition: service_healthy}
+      broker: {condition: service_healthy}
+volumes:
+  database-data:
+  mqtt-data:

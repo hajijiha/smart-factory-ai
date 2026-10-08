@@ -1,0 +1,38 @@
+paths:
+  data: /app/data
+  artifacts: /app/artifacts
+  reports: /app/docs/results
+mqtt:
+  host: broker
+  port: 1883
+  prefix: factory
+sensor:
+  sampling_hz: 2048
+  window_samples: 2048
+  rotation_hz: 25.0
+  bearing_balls: 8
+  ball_diameter_mm: 7.94
+  pitch_diameter_mm: 39.0
+  contact_angle_deg: 0
+simulator:
+  initial_fault_level: 0
+  publication_interval_s: 1.0
+  camera_size: 320
+  camera_fov: 0.75
+  seed: 20261008
+vision:
+  image_size: 256
+  confidence: 0.25
+  iou: 0.45
+  threads: 4
+  classes: [scratch, dent, contamination]
+training:
+  sensor_normal: 5000
+  sensor_fault: 2000
+  vision_normal: 3000
+  vision_per_defect: 1000
+  epochs: 35
+  batch: 32
+dashboard:
+  refresh_ms: 2000
+  correlation_window: 120

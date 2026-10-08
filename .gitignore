@@ -1,0 +1,16 @@
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+data/
+runs/
+logs/
+build/
+*.egg-info/
+.vscode/*.log
+artifacts/*.onnx
+artifacts/*.pt
+!artifacts/pdm.pt
+!artifacts/vision.pt
+scripts/sync_source.py
