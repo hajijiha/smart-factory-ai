@@ -52,6 +52,13 @@ docker compose up --build
 `vision.pt`가 포함되어 있어 추가 학습 없이 실행한다. ONNX 그래프는 최초
 실행에 CPU에서 export하며 이때 처음 검사 결과까지 잠시 기다린다.
 
+공개 main의 구현 커밋 `0c949db`을 별도 폴더에 clone하고,
+새 브로커·DB 볼륨 및 빈 데이터 폴더에서 한 명령 기동을 검증했다.
+ONNX 자동 생성, 8개 서비스, 센서·검사 저장과 실제 JPEG 응답을 확인했다.
+기존 Docker 의존성 캐시를 재사용한 조건에서 첫 검사 결과까지 74.408초였다.
+네트워크 다운로드부터 시작하는 새 컴퓨터의 빌드 시간은 별도 측정하지 않았다.
+원본은 [deployment.json](docs/results/deployment.json)에 있다.
+
 다른 컴퓨터에서 시작할 때:
 
 ```bash
@@ -96,20 +103,23 @@ docker compose down
 
 ## 데이터 생성·학습 재현
 
-학습용 데이터는 레포에 원본 전체를 넣지 않고 생성 코드·seed·manifest와
-실험 결과를 제공한다. 모델 파인튜닝 입력은 외부 데이터셋이 아닌 Gazebo 출력이다.
+학습용 데이터 원본과 manifest/provenance 전체는 공개 레포에 넣지 않는다.
+생성 코드·seed·수량 및 무결성 실측 결과를 제공하며, 재생성하면
+`data/`에 영상·레이블·manifest/provenance를 기록한다. 모델 파인튜닝 입력은 외부 데이터셋이 아닌 Gazebo 출력이다.
 
 ```bash
 # 시뮬레이터 데이터 생성부터 학습·평가·실행까지
 bash scripts/reproduce.sh
 
-# 개별 단계
+# 개별 단계: 실행 중인 취득·분석 서비스를 먼저 정지한다.
+docker compose stop simulator pdm vision storage controller dashboard
 docker compose build
 docker compose up -d broker database
 docker compose run --rm -e GENERATE_DATA=1 simulator
 docker compose run --rm pdm python3 -m factory.pdm.train
 docker compose run --rm vision python3 -m factory.vision.train
 docker compose run --rm pdm python3 -m pytest tests -q
+docker compose up -d
 python3 scripts/verify_runtime.py
 ```
 

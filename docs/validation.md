@@ -190,3 +190,13 @@ Validation mAP를 제출용 test mAP로 쓰지 않는다.
 errors=0, skipped=0을 확인했다. 원본은 `results/tests.xml`이다.
 이 최종 실행은 위의 독립 전담 27개 검증에 새로운 실제 실패 회귀를 포함한다.
 [pandas 2.2.3 ISO8601 파싱](https://pandas.pydata.org/pandas-docs/version/2.2/reference/api/pandas.to_datetime.html)을 사용했다.
+
+## 공개 저장소 최초 기동
+
+구현 커밋 `0c949db3a40e1c0e78213a2daa3b44c63fe5ce5e`을 공개 GitHub에서 새 폴더에 내려받았다. `DASHBOARD_PORT=8081 docker compose -p smart-factory-clean-check up -d --build` 한 명령으로 실행했으며 새 네트워크·MQTT·DB 볼륨을 사용했다. 기존 개발 데이터와 export된 ONNX는 복사하지 않았다.
+
+8개 서비스가 실행되고 DB/MQTT 상태가 정상이며, 최근 5초 이내 센서·라인 상태, 실제 검사 5건, 센서 12건, JPEG 응답을 확인했다. 첫 기동이 자동으로 ONNX를 export했다. 기존 Docker 의존성 캐시를 재사용해 74.408초가 걸렸다. 따라서 전체 의존성을 처음 다운로드하는 시간 측정으로 해석하지 않는다. 검증용 컨테이너만 종료하고 DB 볼륨과 원래 8080 실행은 유지했다. 원본: [deployment.json](results/deployment.json).
+
+## 최종 문서 교차 검토
+
+독립 검증 에이전트가 README·요구사항·검증 문서와 실제 JSON, JUnit 28개, 두 모델 SHA256, 이미지 링크를 교차 확인했다. 수치와 원본이 일치했고, 문서에서 발견한 세 항목을 수정했다: 개별 재현 절차에서 실시간 취득을 먼저 정지하고 통합 검증 전에 전체 서비스를 기동한다; 공개 Git에 없는 manifest/provenance는 로컬 데이터 생성 시 기록된다고 설명한다; HI는 소수 둘째 자리로 반올림한 후 상태 경계를 판정한다고 소스 순서에 맞춘다. 구현 변경은 없었다.

@@ -360,5 +360,15 @@
     "skipped": 0,
     "seconds": 5.105
   },
-  "iso8601_regression": "Optional fractional seconds and UTC Z/+00:00 strings accepted; 5-second bucket axis preserved"
+  "iso8601_regression": "Optional fractional seconds and UTC Z/+00:00 strings accepted; 5-second bucket axis preserved",
+  "final_documentation_review": {
+    "reviewer": "independent validation agent",
+    "scope": "README, requirements, validation, measured JSON, model SHA256 and linked evidence",
+    "result": "Metrics, 28 JUnit tests, model hashes and runtime evidence consistent",
+    "findings_resolved": [
+      "Individual reproduction steps now stop live acquisition and start all services before verify_runtime",
+      "Raw data manifest/provenance are generated locally, not claimed as published in Git",
+      "PdM documentation matches code: round HI to two decimals before status boundaries"
+    ]
+  }
 }

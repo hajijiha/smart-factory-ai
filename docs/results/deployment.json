@@ -1,0 +1,82 @@
+{
+  "repository": "https://github.com/hajijiha/smart-factory-ai",
+  "started_at": "2026-10-08T13:28:35.107763+00:00",
+  "command": "DASHBOARD_PORT=8081 docker compose -p smart-factory-clean-check up -d --build",
+  "isolation": "Separate Compose network, named database/broker volumes and port 8081",
+  "docker_layer_cache": "Existing local Docker build/dependency cache reused; source, data, ONNX and DB state fresh",
+  "source_commit": "0c949db3a40e1c0e78213a2daa3b44c63fe5ce5e",
+  "before": {
+    "data_directory_absent": true,
+    "onnx_absent": true
+  },
+  "first_pipeline_ready_seconds": 74.408,
+  "health": {
+    "database": "ok",
+    "mqtt": true,
+    "timestamp": "2026-10-08T13:29:49.476Z"
+  },
+  "counts": {
+    "sensors": 12,
+    "inspections": 5,
+    "defects": 0
+  },
+  "health_index": 95.0,
+  "line": {
+    "running": true,
+    "motor_rpm": 954.9296585513721,
+    "timestamp": "2026-10-08T13:29:48.518Z",
+    "fault_level": 0,
+    "roller_velocity": 4.000000000000001,
+    "defect_probability": 0.02
+  },
+  "onnx_created_on_first_start": true,
+  "actual_image_served": {
+    "path": "inspections/bf9ad7d1-b8fc-4b89-898a-7c04d48cf21d.jpg",
+    "bytes": 7551,
+    "sha256": "165f6cb3da888125e0f872697a18ee6ce9cef486aa317ef1c733ee9f18323220"
+  },
+  "services": [
+    {
+      "service": "broker",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "controller",
+      "state": "running",
+      "health": ""
+    },
+    {
+      "service": "dashboard",
+      "state": "running",
+      "health": ""
+    },
+    {
+      "service": "database",
+      "state": "running",
+      "health": "healthy"
+    },
+    {
+      "service": "pdm",
+      "state": "running",
+      "health": ""
+    },
+    {
+      "service": "simulator",
+      "state": "running",
+      "health": ""
+    },
+    {
+      "service": "storage",
+      "state": "running",
+      "health": ""
+    },
+    {
+      "service": "vision",
+      "state": "running",
+      "health": ""
+    }
+  ],
+  "passed": true,
+  "finished_at": "2026-10-08T13:29:49.830307+00:00"
+}

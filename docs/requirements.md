@@ -3,7 +3,7 @@
 | 요구사항 | 구현 | 실측 근거 |
 |---|---|---|
 | Ubuntu22.04/Python≤3.11/Torch≥2/CPU | Dockerfile 두 개 | hardware.json: Ubuntu22.04.5, Python3.10.12, Torch2.5.1+cpu |
-| Compose 단일 실행 | compose.yaml, 실제 모델 포함 | 별도 공개 clone 검증은 deployment.json에 기록 |
+| Compose 단일 실행 | compose.yaml, 실제 모델 포함 | 공개 clone·빈 데이터/ONNX·새 DB에서 실제 8서비스 기동 통과(deployment.json) |
 | Public/Conventional Commits | hajijiha/smart-factory-ai | Public main에 source·모델·실측 결과 제공 |
 | 구조·1인 역할·모듈 문서 | README/docs | 아키텍처 diagram과 담당·이론·학습·실험 상세 설명 |
 | 실제 Gazebo3D/ROS2 | C++ plugin, SDF, 카메라/관절 취득 | 6,000 actual camera JPEG와 joint provenance |

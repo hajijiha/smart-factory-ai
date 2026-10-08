@@ -8,7 +8,7 @@
 - integration.json / storage.json: 실제 물리 정지·복구와 이미지 BYTEA/event HI.
 - correlation-observations.json / correlation.json: 실제 관측, 집계, 0–30초 시차.
 - sample/gradcam 이미지, 과학 그래프와 dashboard 스크린샷: 실제 생성·실행 증거.
-- deployment.json: 공개 저장소의 별도 clone 최초 기동 검증(완료 후 생성).
+- deployment.json: 공개 구현 커밋의 별도 clone 최초 기동 통과; 캐시 사용 조건 포함.
 
 목표 수치·참고 예시를 실측값으로 대체하지 않았다. 런타임 건수와 대시보드
 상관은 시간이 흐르며 변하고, 문서 실험은 저장된 고정 관측 구간을 사용한다.
