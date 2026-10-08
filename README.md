@@ -4,8 +4,10 @@ Gazebo의 3D 검사 영상과 모터 관측값을 이용해 **설비 상태 → 
 관제·라인 정지**를 연결하는 1인 프로젝트다. 모든 서비스는 CPU에서 실행하며,
 모듈 간 결과와 제어 명령은 MQTT로 주고받는다.
 
-현재 구현·검증 진행 중이다. 학습 가중치와 실측 결과가 없는 상태는 제출 완료가
-아니다. 성능값은 `docs/results/`에 실제 실험 결과가 생성된 뒤 기록한다.
+Gazebo 데이터 생성, 실제 파인튜닝과 독립 테스트를 수행했다. 관리도 F1은
+0.9950, AE F1은 0.9885, YOLO 테스트 mAP@0.5는 0.9691다.
+CPU ONNX는 전처리와 NMS를 포함한 테스트 100장 평균 66.26 FPS다.
+실측 원본과 하드웨어는 `docs/results/`, 체크포인트 해시는 `artifacts/model-card.json`에 있다.
 
 ## 시스템 구조
 
@@ -46,12 +48,24 @@ code .
 docker compose up --build
 ```
 
-브라우저에서 **http://localhost:8080**에 접속한다. 현재 단계에는 모델 학습이
-먼저 필요하다. 최종 제출에는 학습된 작은 체크포인트를 포함하고 ONNX 그래프는
-첫 실행 시 생성해, 전체 시스템 실행을 위 한 명령으로 제공한다.
+브라우저에서 **http://localhost:8080**에 접속한다. 학습된 `pdm.pt`와
+`vision.pt`가 포함되어 있어 추가 학습 없이 실행한다. ONNX 그래프는 최초
+실행에 CPU에서 export하며 이때 처음 검사 결과까지 잠시 기다린다.
 
-Docker Compose V2에서는 `docker compose up`, 구형 V1에서는
-`docker-compose up`을 사용한다. `compose.yaml`은 동일하다.
+다른 컴퓨터에서 시작할 때:
+
+```bash
+git clone https://github.com/hajijiha/smart-factory-ai.git
+cd smart-factory-ai
+docker compose up --build
+```
+
+기본 명령 `docker compose up`도 필요한 이미지를 자동 빌드한다. 최초 빌드에는
+Ubuntu/ROS/Gazebo와 CPU PyTorch 의존성을 다운로드할 네트워크가 필요하다.
+실행 중 검사는 약 1초 간격으로 발행하며, 20 FPS 기준은 별도 CPU detector
+벤치마크다. 전체 DB·렌더링·Grad-CAM을 포함한 생산라인 처리율과 구분한다.
+
+Docker Compose V2의 `docker compose` 명령을 사용한다.
 최초 이미지를 빌드·다운로드할 때는 인터넷과 디스크 여유가 필요하다.
 Gazebo는 Xvfb/Mesa로 headless CPU 렌더링하므로 NVIDIA GPU가 필요 없다.
 
@@ -100,7 +114,7 @@ python3 scripts/verify_runtime.py
 ```
 
 센서는 정상 5,000 + 고장 2,000개, 영상은 정상 3,000 + 결함별 1,000장,
-총 6,000장을 목표로 생성한다. 생성 시나리오별 70/15/15 분리이며 테스트
+총 6,000장을 실제 생성했다. 생성 시나리오별 70/15/15 분리이며 테스트
 장면은 별도 seed·카메라/조명/노이즈 조건을 사용한다.
 재현 실험은 CPU 렌더링·학습으로 인해 시간이 걸린다. 이미 완료한 데이터는
 완료 marker로 재사용한다. 학습 전 `data/vision/COMPLETE`를 확인한다.
@@ -136,10 +150,11 @@ tests/              물리 주파수·FFT·통계 처리 검증
 - [YOLO·Grad-CAM·CPU 평가](docs/vision.md)
 - [통합 관제·DB·상관·인터락](docs/integration.md)
 - [요구사항 검증표](docs/requirements.md)
+- [독립 검증·회귀·발견 결함](docs/validation.md)
 
 필수 평가 기준은 PdM F1 ≥ 0.80 / CPU ≤100 ms, Vision mAP50 ≥ 0.80 /
 전처리 포함 100장 평균 ≥20 FPS다. 실제 실행 전에는 이를 달성했다고 표시하지 않는다.
-ONNX 경량 배포와 PyTorch 대비 실측 비교를 선택 과제로 구현한다.
+ONNX 경량 배포와 PyTorch 대비 실측 비교를 선택 과제로 구현했다.
 RUL LSTM은 구현 대상에 포함하지 않으며 PHM의 수명 예측 단계와 한계를 설명한다.
 
 ## 1인 역할과 작업 요약
@@ -154,3 +169,47 @@ Commits를 사용한다. 실험 결과는 seed·데이터 수량·분리 방식�
 
 라이선스는 AGPL-3.0이며 Ultralytics 의존성의 AGPL 조건을 따른다.
 모델 구조·학습 방식 참고: [Ultralytics YOLOv8](https://docs.ultralytics.com/models/yolov8/).
+
+## 실측 성능
+
+| 측정 | 결과 | 조건 |
+|---|---:|---|
+| 통계 관리도 F1 | 0.9950 | 독립 센서 test 1,050개 |
+| 정상 학습 AE F1 | 0.9885 | 정상 train 3,500개만 fit |
+| PdM 평균 | 0.941 ms | FFT·9특징·두 모델·HI, 100창 × 5회 |
+| YOLO test mAP50 | 0.9691 | 독립 영상 test 900장 |
+| YOLO test mAP50–95 | 0.9116 | validation 선택 후 test 평가 |
+| ONNX 평균 | 66.26 FPS / 15.092 ms | 전처리·NMS 포함, CPU, 100장 |
+| PyTorch 평균 | 25.45 FPS / 39.300 ms | 같은 100장·같은 conf/IoU |
+
+하드웨어: Intel(R) Core(TM) Ultra 5 225H, 14 logical CPU,
+컨테이너 가시 메모리 7.45 GiB.
+Ubuntu 22.04 / Python 3.10.12 / PyTorch 2.5.1+cpu / GPU 사용 없음.
+Grad-CAM·JPEG 디코딩·네트워크·DB 저장 시간은 detector FPS에 포함하지 않았다.
+
+![실제 대시보드](docs/results/dashboard-normal.png)
+![실제 위험 정지](docs/results/dashboard-danger.png)
+![실제 Gazebo 진동과 FFT](docs/results/vibration_fft.png)
+![정상 영상의 실제 backbone Grad-CAM](docs/results/gradcam_normal.jpg)
+![스크래치 영상의 실제 backbone Grad-CAM](docs/results/gradcam_scratch.jpg)
+
+## 검증 재실행
+
+검증 전담의 독립 회귀 27개와 실측 ISO 날짜 회귀 1개를 포함한
+최종 전체 검사 **28개가 통과**했다. JUnit 원본은 `docs/results/tests.xml`이다.
+
+```bash
+# 생성 데이터 없이 실행하면 데이터 의존 검사 2개만 skip된다.
+docker compose run --rm --no-deps pdm python3 -m pytest tests -q
+# 전체 서비스 실행 후 실제 위험 정지와 복구 / DB 이미지 검증
+python3 scripts/verify_runtime.py
+python3 scripts/verify_storage.py
+# 정상·중간 고장 레벨 반복 실험; 끝나면 레벨 0으로 복구한다.
+python3 -m scripts.measure_correlation --hold-seconds 30 --repeats 3
+docker compose run --rm --no-deps pdm python3 scripts/analyze_correlation.py
+```
+
+`verify_runtime`은 시연을 위해 실제 레벨 10을 적용하고 정상으로 복구한다.
+데이터를 다시 학습하려면 `scripts/reproduce.sh`를 사용한다. 중복 Gazebo
+토픽을 방지하기 위해 현재 실행 중인 분석·시뮬레이터 서비스를 잠시 정지하며,
+저장된 데이터나 DB 볼륨을 삭제하지 않는다.

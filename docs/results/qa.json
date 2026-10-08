@@ -1,0 +1,364 @@
+{
+  "review_date": "2026-10-08",
+  "scope": "Independent Smart Factory AI source, data, Grad-CAM and offline regression review; live broker and database were not mutated by the reviewer.",
+  "overall_project_completion": "Final performance and complete integrated delivery are assessed separately; this report is not a completion claim.",
+  "isolated_tests": {
+    "passed": 27,
+    "failed": 0,
+    "elapsed_seconds": 7.09,
+    "third_party_deprecation_warnings": 14,
+    "command": "docker run --rm --network none --cpus=2 -v /home/gkwlgns02/smart-factory-ai:/app:ro -w /app smart-factory-runtime:local python3 -m pytest tests -q -p no:cacheprovider",
+    "data_tests": "Two dataset checks skip explicitly when generated data is absent; after generation the complete 27-test suite runs.",
+    "added_files": [
+      "tests/test_review_controller.py",
+      "tests/test_review_analytics.py",
+      "tests/test_review_dataset.py",
+      "tests/test_review_vision.py",
+      "tests/test_review_world.py"
+    ]
+  },
+  "dataset_review": {
+    "vision_images_checked": 6000,
+    "unique_image_paths": 6000,
+    "unique_image_sha256": 6000,
+    "unique_scene_ids": 6000,
+    "sensor_windows_checked": 7000,
+    "sensor_features_finite": true,
+    "sensor_provenance_order_matches_features": true,
+    "per_class_70_15_15_split_verified": true,
+    "heldout_camera_ranges_expanded": true,
+    "visual_label_samples": [
+      "normal",
+      "scratch",
+      "dent",
+      "contamination"
+    ],
+    "visual_label_result": "The normal sample has no bounding box; each defect sample's generated box encloses the visible 3D defect. This is a four-sample visual check, not a full manual annotation audit."
+  },
+  "gradcam_same_checkpoint_comparison": {
+    "checkpoint": "data/training/vision/weights/best.pt at review time, before final model selection",
+    "method": "One real forward/backward pass per held-out sample, simultaneously retaining raw final backbone Conv2d and its post-BN/SiLU Conv-block output.",
+    "grid_pixels": 64,
+    "samples": [
+      {
+        "class": "normal",
+        "target_score": 0.0008004644769243896,
+        "raw_conv_positive_pixels": 64,
+        "conv_block_positive_pixels": 56
+      },
+      {
+        "class": "scratch",
+        "target_score": 0.9597954154014587,
+        "raw_conv_positive_pixels": 0,
+        "conv_block_positive_pixels": 35,
+        "raw_conv_signed_cam_max": -0.0003985028015449643,
+        "conv_block_signed_cam_max": 0.00015925268235150725,
+        "raw_conv_gradient_absolute_sum": 0.26312005519866943,
+        "conv_block_gradient_absolute_sum": 0.43760862946510315
+      },
+      {
+        "class": "dent",
+        "target_score": 0.9785561561584473,
+        "raw_conv_positive_pixels": 60,
+        "conv_block_positive_pixels": 59
+      },
+      {
+        "class": "contamination",
+        "target_score": 0.8409644961357117,
+        "raw_conv_positive_pixels": 35,
+        "conv_block_positive_pixels": 30
+      }
+    ],
+    "conclusion": "Raw pre-BN Conv2d generated an entirely zero ReLU heatmap for scratch despite nonzero gradients. The final backbone Conv block output produced nonzero actual Grad-CAM for all four samples. Final-model maps and their metadata are assessed in vision.json."
+  },
+  "findings": [
+    {
+      "id": "QA-01",
+      "issue": "The missing CONFIG import crashed first-start ONNX export.",
+      "status": "fixed and first-start regression passed"
+    },
+    {
+      "id": "QA-02",
+      "issue": "Future health timestamps and stale line/fault observations authorized unsafe reset.",
+      "status": "fixed and malformed/future/stale/latch regressions passed"
+    },
+    {
+      "id": "QA-03",
+      "issue": "Scratch Grad-CAM became entirely zero at the raw pre-BN convolution.",
+      "status": "Post-BN/SiLU source fix independently rendered four interim samples; final vision.json also records four nonzero actual-gradient maps. Nonzero maps do not establish precise defect localization."
+    },
+    {
+      "id": "QA-04",
+      "issue": "A single pending ROS scene slot could overwrite a conveyor-stop command.",
+      "status": "FIFO and repeated running-state source fixes reviewed; real physical interlock results are recorded separately in integration.json by the main implementation."
+    },
+    {
+      "id": "QA-05",
+      "issue": "PdM benchmark feature extraction defaulted to 25 Hz while generated signals used observed approximately 15.915 Hz rotation.",
+      "status": "Benchmark now uses observed 15.915494309 Hz; five final runtime measurements averaged 0.941082664 ms and reported raw-array mean was independently verified."
+    },
+    {
+      "id": "QA-06",
+      "issue": "Direct world.py execution put simulator/signal.py on the top-level import path, shadowing standard-library signal after CONFIG imports were added.",
+      "status": "Module invocation fixed; an actual offline subprocess using python3 -m simulator.world successfully generated and parsed the SDF."
+    }
+  ],
+  "modified_source_gradcam_check": {
+    "checkpoint": "Current interim best.pt loaded once; training had updated it since the earlier paired layer comparison",
+    "all_four_informative": true,
+    "samples": [
+      {
+        "class": "normal",
+        "target_score": 0.00016345098265446723,
+        "gradient_absolute_sum": 0.0048066601157188416,
+        "maximum_activation": 0.9865561723709106
+      },
+      {
+        "class": "scratch",
+        "target_score": 0.9272488355636597,
+        "gradient_absolute_sum": 0.5209593176841736,
+        "maximum_activation": 0.9925913214683533
+      },
+      {
+        "class": "dent",
+        "target_score": 0.8890941739082336,
+        "gradient_absolute_sum": 0.5956370234489441,
+        "maximum_activation": 0.9981390833854675
+      },
+      {
+        "class": "contamination",
+        "target_score": 0.9096565246582031,
+        "gradient_absolute_sum": 0.48071086406707764,
+        "maximum_activation": 0.998561441898346
+      }
+    ]
+  },
+  "limits": [
+    "Offline mock tests do not replace physical conveyor and live image/database integration checks; final one-command clone startup is assessed separately.",
+    "Final held-out mAP comes from vision.json; the independent ONNX/PT parity check did not consult labels, retrain or tune thresholds.",
+    "Latency is a model-processing benchmark including preprocessing and NMS, excluding JPEG decoding, persistence and Grad-CAM; this parity run made no new latency claims.",
+    "Dataset hash checks prevent exact image reuse but cannot establish real-world generalization.",
+    "Four rendered label samples and four Grad-CAM samples are explanatory checks, not independent accuracy benchmarks.",
+    "Nonzero Grad-CAM is not proof of precise defect localization. Background/product-edge emphasis can indicate coarse 8x8 representation or shortcut use.",
+    "Initial interim checkpoints were not archived by the reviewer; final parity identifies the distributed checkpoint and ONNX graph by SHA-256."
+  ],
+  "final_vision_parity": {
+    "images": 100,
+    "selection_seed": 42,
+    "split": "test",
+    "threads": 4,
+    "confidence_threshold": 0.25,
+    "nms_iou_threshold": 0.45,
+    "matched_detections": 51,
+    "no_detection_agreement_images": 49,
+    "count_mismatches": [],
+    "class_mismatches": [],
+    "numeric_mismatches": [],
+    "min_matched_box_iou": 0.9999971913552955,
+    "max_absolute_box_delta_pixels": 4.1961669921875e-05,
+    "max_absolute_confidence_delta": 7.748603820800781e-07,
+    "vision_pt_sha256": "de2b27a91410cd0ee12167a43b9651a9ef06198e6c86d80fdd2e9d84dffcde57",
+    "vision_onnx_sha256": "e8bc6f517174105955e7b095059e77be7ff1ff222631a5b19d8ca3a03a56d665",
+    "selected_images": [
+      "-1_00385.jpg",
+      "2_00078.jpg",
+      "0_00139.jpg",
+      "-1_00398.jpg",
+      "-1_00374.jpg",
+      "1_00061.jpg",
+      "-1_00132.jpg",
+      "-1_00282.jpg",
+      "-1_00138.jpg",
+      "0_00134.jpg",
+      "-1_00150.jpg",
+      "-1_00425.jpg",
+      "-1_00348.jpg",
+      "1_00081.jpg",
+      "-1_00321.jpg",
+      "0_00113.jpg",
+      "1_00140.jpg",
+      "-1_00162.jpg",
+      "1_00141.jpg",
+      "2_00085.jpg",
+      "-1_00189.jpg",
+      "2_00044.jpg",
+      "2_00007.jpg",
+      "-1_00104.jpg",
+      "-1_00141.jpg",
+      "1_00087.jpg",
+      "2_00120.jpg",
+      "2_00121.jpg",
+      "1_00046.jpg",
+      "-1_00125.jpg",
+      "-1_00214.jpg",
+      "0_00012.jpg",
+      "2_00135.jpg",
+      "-1_00426.jpg",
+      "0_00002.jpg",
+      "-1_00258.jpg",
+      "2_00035.jpg",
+      "1_00041.jpg",
+      "0_00081.jpg",
+      "1_00082.jpg",
+      "2_00082.jpg",
+      "2_00001.jpg",
+      "0_00018.jpg",
+      "-1_00346.jpg",
+      "-1_00368.jpg",
+      "-1_00416.jpg",
+      "0_00107.jpg",
+      "-1_00057.jpg",
+      "1_00019.jpg",
+      "-1_00199.jpg",
+      "0_00075.jpg",
+      "2_00053.jpg",
+      "0_00137.jpg",
+      "-1_00316.jpg",
+      "-1_00377.jpg",
+      "-1_00404.jpg",
+      "2_00013.jpg",
+      "-1_00419.jpg",
+      "0_00148.jpg",
+      "2_00108.jpg",
+      "-1_00332.jpg",
+      "-1_00304.jpg",
+      "1_00020.jpg",
+      "-1_00066.jpg",
+      "0_00122.jpg",
+      "1_00012.jpg",
+      "1_00093.jpg",
+      "-1_00069.jpg",
+      "-1_00232.jpg",
+      "-1_00086.jpg",
+      "2_00071.jpg",
+      "1_00038.jpg",
+      "-1_00037.jpg",
+      "1_00092.jpg",
+      "0_00140.jpg",
+      "-1_00387.jpg",
+      "1_00118.jpg",
+      "-1_00165.jpg",
+      "-1_00310.jpg",
+      "-1_00053.jpg",
+      "-1_00076.jpg",
+      "-1_00410.jpg",
+      "2_00042.jpg",
+      "-1_00352.jpg",
+      "-1_00277.jpg",
+      "1_00117.jpg",
+      "0_00080.jpg",
+      "0_00125.jpg",
+      "-1_00408.jpg",
+      "1_00044.jpg",
+      "-1_00355.jpg",
+      "-1_00299.jpg",
+      "2_00111.jpg",
+      "-1_00113.jpg",
+      "1_00000.jpg",
+      "-1_00289.jpg",
+      "-1_00071.jpg",
+      "0_00046.jpg",
+      "-1_00369.jpg",
+      "1_00136.jpg"
+    ],
+    "limits": "Prediction equivalence check only; labels were not consulted, no retraining or threshold tuning; no new latency claims while live services run.",
+    "passed": true,
+    "reproduction_script": "scripts/verify_vision_parity.py"
+  },
+  "final_threshold_check": {
+    "test_mAP50": 0.9690521223549661,
+    "minimum_class_mAP50": 0.9458247549019608,
+    "mAP50_requirement_passed": true,
+    "detector_confidence_threshold": 0.25,
+    "nms_iou_threshold": 0.45,
+    "onnx": {
+      "images": 100,
+      "raw_mean_ms": 15.09183165999275,
+      "raw_fps": 66.26100943405835,
+      "reported_mean_matches": true,
+      "fps20_requirement_passed": true
+    },
+    "pytorch": {
+      "images": 100,
+      "raw_mean_ms": 39.299604349944275,
+      "raw_fps": 25.445548792183146,
+      "reported_mean_matches": true,
+      "fps20_requirement_passed": true
+    },
+    "pdm": {
+      "chart_f1": 0.9950248756218906,
+      "ae_f1": 0.9884678747940692,
+      "five_runs": 5,
+      "raw_mean_ms": 0.9410826639941661,
+      "reported_mean_matches": true,
+      "both_f1_requirement_passed": true,
+      "latency100ms_requirement_passed": true,
+      "observed_benchmark_rotation_hz": 15.915494309189533
+    },
+    "final_gradcam": [
+      {
+        "type": "normal",
+        "target_layer": "model.9.cv2 (last backbone Conv2d + BatchNorm + SiLU)",
+        "target_score": 0.00017334881704300642,
+        "requested_class": null,
+        "maximum_activation": 0.9875606298446655,
+        "raw_positive_maximum": 4.755517238663742e-06,
+        "gradient_absolute_sum": 0.009735251776874065,
+        "informative": true
+      },
+      {
+        "type": "scratch",
+        "target_layer": "model.9.cv2 (last backbone Conv2d + BatchNorm + SiLU)",
+        "target_score": 0.8221228718757629,
+        "requested_class": 0,
+        "maximum_activation": 0.9936656355857849,
+        "raw_positive_maximum": 0.0010647060116752982,
+        "gradient_absolute_sum": 3.1588077545166016,
+        "informative": true
+      },
+      {
+        "type": "dent",
+        "target_layer": "model.9.cv2 (last backbone Conv2d + BatchNorm + SiLU)",
+        "target_score": 0.8711944818496704,
+        "requested_class": 1,
+        "maximum_activation": 0.9919350147247314,
+        "raw_positive_maximum": 0.00042913813376799226,
+        "gradient_absolute_sum": 0.9088298678398132,
+        "informative": true
+      },
+      {
+        "type": "contamination",
+        "target_layer": "model.9.cv2 (last backbone Conv2d + BatchNorm + SiLU)",
+        "target_score": 0.873829185962677,
+        "requested_class": 2,
+        "maximum_activation": 0.9987630844116211,
+        "raw_positive_maximum": 0.00042992556700482965,
+        "gradient_absolute_sum": 0.8709642887115479,
+        "informative": true
+      }
+    ],
+    "final_gradcam_all_nonzero": true,
+    "runtime": {
+      "python": "3.10.12",
+      "torch": "2.5.1+cpu",
+      "opencv": "4.10.0",
+      "ultralytics": "8.3.40",
+      "onnxruntime": "1.20.1",
+      "gpu_used": false
+    },
+    "verification_method": "Raw latency arrays recomputed; required thresholds inspected; final PT/ONNX prediction equivalence actually executed. Accuracy evaluation was performed separately by the main implementation, without test-based model selection."
+  },
+  "additional_source_review": {
+    "camera_configuration": "Gazebo SDF camera FOV and width/height use CONFIG; changed FOV 1.05 and size 480 are confirmed in actual generated SDF XML.",
+    "reproduction": "The reproduction script stops live simulator/business services before launching a dataset-generation Gazebo, avoiding duplicate ROS2 publishers.",
+    "module_startup": "start.sh uses python3 -m simulator.world so simulator/signal.py cannot shadow standard-library signal through the direct script directory; actual offline subprocess succeeded and wrote valid SDF."
+  },
+  "final_full_suite_after_integration_fixes": {
+    "tests": 28,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "seconds": 5.105
+  },
+  "iso8601_regression": "Optional fractional seconds and UTC Z/+00:00 strings accepted; 5-second bucket axis preserved"
+}

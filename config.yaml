@@ -31,7 +31,7 @@ training:
   sensor_fault: 2000
   vision_normal: 3000
   vision_per_defect: 1000
-  epochs: 35
+  epochs: 10
   batch: 32
 dashboard:
   refresh_ms: 2000

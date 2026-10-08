@@ -1,0 +1,6 @@
+{
+  "vision_images": 6000,
+  "sensor_windows": 7000,
+  "source": "Gazebo Classic 11 + ROS2 Humble camera and ODE joint observations",
+  "completed_at": "2026-10-08T12:00:01.105Z"
+}

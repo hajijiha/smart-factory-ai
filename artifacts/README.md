@@ -1,9 +1,8 @@
-# 모델 산출물
+# 실제 학습 모델
 
-`pdm.pt`: 정상 창으로 학습한 AE 가중치, 정상 특징 통계, 검증 임계값·HI 교정.
-`vision.pt`: Gazebo 영상으로 파인튜닝한 YOLOv8n best validation checkpoint.
-`vision.onnx`: 실행 시 vision.pt에서 생성하는 ONNX FP32 그래프.
+`pdm.pt`: 정상 train 3,500창으로 학습한 AE, 정상 특징 통계와 validation 교정.
+`vision.pt`: 실제 Gazebo 영상 train 4,200장으로 파인튜닝한 YOLOv8n validation-best checkpoint.
+`vision.onnx`: 첫 실행에 vision.pt에서 CPU export하는 ONNX FP32 그래프(미포함).
 
-학습이 완료되기 전에는 checkpoint를 임의 값으로 만들지 않는다.
-데이터 생성·학습·평가 명령은 루트 README와 scripts/reproduce.sh에 있다.
-최종 가중치의 SHA256 및 학습 조건은 실제 생성 후 모델 카드에 기록한다.
+SHA-256·실제 크기·데이터·학습 예산·하드웨어는 model-card.json을 참고한다.
+원본 checkpoint는 synthetic 실험 범위의 성능을 보이며 실제 공장 일반화 검증은 없다.

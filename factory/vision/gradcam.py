@@ -9,14 +9,14 @@ from factory.common import CONFIG
 class GradCAM:
     """Visualize the gradient of a raw pre-NMS class score, not a handcrafted heatmap."""
     def __init__(self, path):
-        """Hook model.9.cv2.conv, the last backbone Conv2d before the YOLOv8 neck."""
+        """Hook the final backbone Conv block after its BatchNorm and SiLU."""
         self.model = YOLO(str(path)).model.cpu().eval()
         for parameter in self.model.parameters():
             parameter.requires_grad_(True)
         for module in self.model.modules():
             if hasattr(module, 'inplace'):
                 module.inplace = False
-        self.layer = self.model.model[9].cv2.conv
+        self.layer = self.model.model[9].cv2
         self.activation = None
         self.gradient = None
         self.layer.register_forward_hook(self.on_forward)
@@ -40,9 +40,14 @@ class GradCAM:
         target.backward()
         weights = self.gradient.mean(dim=(2,3),keepdim=True)
         cam = torch.relu((weights*self.activation).sum(dim=1))[0].numpy()
-        cam = cam/(cam.max()+1e-9)
+        maximum = float(cam.max())
+        informative = maximum > 1e-9
+        cam = cam/(maximum+1e-9)
         cam = cv2.resize(cam,(image.shape[1],image.shape[0]))
         colored = cv2.applyColorMap((cam*255).astype(np.uint8),cv2.COLORMAP_JET)
-        overlay = cv2.addWeighted(image,.6,colored,.4,0)
-        return overlay, {'target_layer':'model.9.cv2.conv', 'target_score':float(target.detach()),
-                         'requested_class':class_id, 'maximum_activation':float(cam.max())}
+        overlay = cv2.addWeighted(image,.6,colored,.4,0) if informative else image.copy()
+        return overlay, {'target_layer':'model.9.cv2 (last backbone Conv2d + BatchNorm + SiLU)',
+                         'target_score':float(target.detach()),'requested_class':class_id,
+                         'maximum_activation':float(cam.max()),'raw_positive_maximum':maximum,
+                         'gradient_absolute_sum':float(self.gradient.abs().sum()),
+                         'informative':informative}

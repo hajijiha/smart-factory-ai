@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "vision_images": 6000,
+  "unique_image_hashes": 6000,
+  "sensor_windows": 7000,
+  "sensor_normal": 5000,
+  "sensor_fault": 2000,
+  "vision_counts": {
+    "test/-1": 450,
+    "test/0": 150,
+    "test/1": 150,
+    "test/2": 150,
+    "train/-1": 2100,
+    "train/0": 700,
+    "train/1": 700,
+    "train/2": 700,
+    "val/-1": 450,
+    "val/0": 150,
+    "val/1": 150,
+    "val/2": 150
+  },
+  "motor_rpm_range": [
+    954.9296585513712,
+    954.9296585513728
+  ],
+  "domain_ranges": {
+    "light": [
+      0.43011860646812344,
+      1.0688690167781956
+    ],
+    "yaw": [
+      -0.47830052808886303,
+      0.47988094201892617
+    ]
+  }
+}

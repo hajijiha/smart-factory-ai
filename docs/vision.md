@@ -8,10 +8,14 @@ Gazebo의 실제 카메라로 정상 3,000장과 스크래치/찍힘/이물질 �
 분리하며 테스트 seed 303의 장면은 훈련/검증에 사용하지 않는다.
 
 YOLOv8n COCO 사전학습 가중치에서 시작하여 detector를 실제 학습한다.
-입력 256×256, CPU, batch 32, 기본 35 epoch, 초기 backbone 10개 모듈
-freeze, validation patience 10으로 설정한다. freeze는 사전학습 특징을
+입력 256×256, CPU, batch 32, 초기 backbone 10개 모듈 freeze로 설정한다.
+이번 학습은 원래 35 epoch LR schedule로 시작했으나 CPU 예산을 10개 완료
+epoch로 제한했다. 10번째 완료 후 체크포인트 저장을 확인하고 학습 컨테이너를
+정지했다. 최종 test는 그 이후에 처음 측정했다. 현재 재현 기본값은 10 epoch이며
+원래 35 epoch LR schedule과 정확히 동일한 가중치를 보장하지 않는다.
+학습 원본과 선택 과정은 `results/training.json` 및 `results/vision-training.csv`에 남긴다. freeze는 사전학습 특징을
 재사용해 CPU 학습량을 줄이며 neck/head가 새 결함 클래스에 맞게 갱신된다.
-훈련의 best.pt는 **validation mAP**로 선택한다. test mAP로 체크포인트를
+훈련의 best.pt는 **validation fitness(0.1×mAP50 + 0.9×mAP50–95)**로 선택했다. 선택된 완료 epoch는 10이다. test mAP로 체크포인트를
 고르지 않는다. Ultralytics의 훈련 증강은 제한된 회전·위치·밝기 변화와 낮은
 mosaic 확률을 사용한다. 생성 단계의 실제 조명/카메라 랜덤화와 구분된다.
 
@@ -36,7 +40,9 @@ UI에서는 정상 확신도를 표시하지 않는다.
 ## Grad-CAM의 실제 계산
 
 target layer는 YOLOv8 backbone의 마지막 SPPF Conv2d인
-**`model.9.cv2.conv`**다. neck/head의 마지막 Conv를 잘못 선택하지 않는다.
+**`model.9.cv2` Conv block의 BN/SiLU 이후 출력**이다. 내부 마지막 Conv2d는
+`model.9.cv2.conv`이며 raw Conv 출력과 block 출력의 실제 비교는
+[독립 검증](validation.md)에 기록했다. neck/head의 마지막 Conv를 잘못 선택하지 않는다.
 검출에 해당하는 클래스의 가장 높은 **NMS 이전 score**로 역전파한다.
 공간 평균 gradient를 activation 채널별 가중치로 적용하고 ReLU를 거쳐
 정규화·업샘플링한다. 최종 영상에 heatmap을 overlay해 저장한다.
@@ -57,10 +63,10 @@ target layer는 YOLOv8 backbone의 마지막 SPPF Conv2d인
 
 | 항목 | 실측 |
 |---|---|
-| 독립 테스트 mAP@0.5 | 측정 대기 |
-| scratch / dent / contamination AP50 | 측정 대기 |
-| ONNX, 전처리+NMS 포함 100장 평균 FPS | 측정 대기 |
-| PyTorch, 같은 100장 평균 FPS | 측정 대기 |
+| 독립 테스트 mAP@0.5 | 0.969052 |
+| scratch / dent / contamination AP50 | 0.966465 / 0.945825 / 0.994867 |
+| ONNX, 전처리+NMS 포함 100장 평균 FPS | 66.261 |
+| PyTorch, 같은 100장 평균 FPS | 25.446 |
 | 입력·반복 | 256×256 / batch 1 / 10장 warmup + 100장 |
 
 평가 대상 100장은 test에서 seed 42로 비복원 추출한다. 영상은 먼저 디코딩해
@@ -78,3 +84,36 @@ INT8 양자화·pruning을 수행하지 않은 상태에서는 수행했다고 �
 참고: [YOLOv8](https://docs.ultralytics.com/models/yolov8/),
 [ONNX export](https://docs.ultralytics.com/modes/export/),
 [Grad-CAM 논문](https://arxiv.org/abs/1610.02391).
+
+## 최종 모델의 실제 Grad-CAM 비교
+
+| 이미지 | 역전파 target score | gradient 절댓값 합 | 양수 활성 존재 |
+|---|---:|---:|---|
+| normal | 0.000173 | 0.009735 | True |
+| scratch | 0.822123 | 3.158808 | True |
+| dent | 0.871194 | 0.908830 | True |
+| contamination | 0.873829 | 0.870964 | True |
+
+각 heatmap은 실제 gradient에서 생성했으며 정상 영상의 매우 낮은 결함 score와
+불량 영상의 높은 score를 구분한다. 색은 이미지마다 정규화하므로 정상의 밝은
+색을 높은 불량 확신도로 읽으면 안 된다. SPPF 8×8의 낮은 공간 해상도와
+배경·제품 테두리의 활성 때문에 정확한 결함 분할 마스크로 사용할 수 없다.
+
+![정상 원본](results/sample_normal.jpg) ![정상 CAM](results/gradcam_normal.jpg)
+![스크래치 원본](results/sample_scratch.jpg) ![스크래치 CAM](results/gradcam_scratch.jpg)
+![찍힘 원본](results/sample_dent.jpg) ![찍힘 CAM](results/gradcam_dent.jpg)
+![이물질 원본](results/sample_contamination.jpg) ![이물질 CAM](results/gradcam_contamination.jpg)
+![완료 epoch의 validation 학습 이력](results/vision-training.png)
+
+실제 최종 네 영상의 해석:
+
+| 영상 | 관찰 | 해석 |
+|---|---|---|
+| 정상 | 결함 target score 0.000173, 정규화된 색이 존재 | 낮은 score에서의 상대 activation이며 정상 확률이나 불량 확신도가 아님 |
+| 스크래치 | 제품 왼쪽 모서리·하단 배경의 활성도 강함 | 검출 박스가 맞아도 마지막 backbone CAM이 홈 위치만 강조하지 않음 |
+| 찍힘 | 원형 결함뿐 아니라 제품 위쪽·주변 배경에도 활성 | 제품 경계와 문맥 특징의 영향, 정확한 픽셀 근거로 해석하지 않음 |
+| 이물질 | 오염 덩어리보다 제품 오른쪽 배경 활성도 강함 | 단순 합성 장면의 문맥 의존 가능성; 실물 배경 교체 검증 필요 |
+
+이는 CAM의 제약과 배경 shortcut 가능성을 보여주는 실제 결과다. mAP가 높다는
+이유로 모든 CAM이 결함 위치를 잘 설명한다고 쓰지 않았다. 다른 배경·재질을
+독립 실물 검증에 추가하고 위치 기반 설명과 실제 분할 평가를 별도로 수행해야 한다.

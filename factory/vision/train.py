@@ -49,12 +49,13 @@ def evaluate():
     images = [cv2.imread(str(path)) for path in chosen]
     for image in images[:10]:
         detector.infer(image)
-        model.predict(image,imgsz=CONFIG['vision']['image_size'],verbose=False,device='cpu')
+        model.predict(image,imgsz=CONFIG['vision']['image_size'],conf=CONFIG['vision']['confidence'],iou=CONFIG['vision']['iou'],verbose=False,device='cpu')
+    torch.set_num_threads(CONFIG['vision']['threads'])
     onnx_times, torch_times = [],[]
     for image in images:
         start = time.perf_counter(); detector.infer(image)
         onnx_times.append((time.perf_counter()-start)*1000)
-        start = time.perf_counter(); model.predict(image,imgsz=CONFIG['vision']['image_size'],verbose=False,device='cpu')
+        start = time.perf_counter(); model.predict(image,imgsz=CONFIG['vision']['image_size'],conf=CONFIG['vision']['confidence'],iou=CONFIG['vision']['iou'],verbose=False,device='cpu')
         torch_times.append((time.perf_counter()-start)*1000)
     output = Path(CONFIG['paths']['reports'])
     output.mkdir(parents=True,exist_ok=True)

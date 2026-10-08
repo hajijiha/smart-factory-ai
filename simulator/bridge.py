@@ -13,6 +13,7 @@ import cv2
 import numpy as np
 import rclpy
 from rclpy.node import Node
+from rclpy.executors import ExternalShutdownException
 from rclpy.qos import qos_profile_sensor_data
 from sensor_msgs.msg import Image, JointState
 from std_msgs.msg import String
@@ -46,6 +47,7 @@ class Acquisition(Node):
         self.image_time = -1
         self.joint = None
         self.ack = None
+        self.running = True
         self.condition = threading.Condition()
         self.publisher = self.create_publisher(String, '/factory/scene', 10)
         self.create_subscription(Image, '/factory/inspection/image_raw', self.on_image, qos_profile_sensor_data)
@@ -73,12 +75,13 @@ class Acquisition(Node):
             self.condition.notify_all()
     def capture(self, scene):
         """Wait for an acknowledged scene and a newer rendered camera frame."""
-        command = String(data=json.dumps(scene))
         deadline = time.monotonic()+30
         with self.condition:
             sent_at = 0
             while time.monotonic() < deadline:
                 if time.monotonic()-sent_at >= 1 and (not self.ack or self.ack.get('scene_id') != scene['scene_id']):
+                    # Repeat the current desired roller state alongside every scene.
+                    command = String(data=json.dumps({**scene,'running':self.running}))
                     self.publisher.publish(command)
                     sent_at = time.monotonic()
                 if self.ack and self.ack.get('scene_id') == scene['scene_id'] and self.image is not None and self.joint:
@@ -88,7 +91,8 @@ class Acquisition(Node):
         raise TimeoutError(f'Gazebo frame timeout: scene={scene["scene_id"]}, image_time={self.image_time}, ack={self.ack}; inspect /tmp/gazebo.log')
     def conveyor(self, running):
         """Command the physical conveyor roller, retaining the diagnostic motor on its test stand."""
-        self.publisher.publish(String(data=json.dumps({'running':bool(running)})))
+        self.running = bool(running)
+        self.publisher.publish(String(data=json.dumps({'running':self.running})))
 
 
 def generate(node):
@@ -149,28 +153,29 @@ def live(node):
     while True:
         event_id = str(uuid.uuid4())
         timestamp = utc_now()
-        probability = .02+.085*state['level']
+        level = state['level']
+        probability = .02+.085*level
         class_id = int(rng.integers(0,3)) if rng.random() < probability else -1
         scene = random_scene(rng,class_id,'test',event_id)
         image,joint,sim_time = node.capture(scene)
         (DATA/'live').mkdir(parents=True,exist_ok=True)
         cv2.imwrite(str(DATA/'live/latest.jpg'),image)
-        wave = vibration(state['level'],joint['velocity'][0],joint['position'][0],rng)
+        wave = vibration(level,joint['velocity'][0],joint['position'][0],rng)
         rms = float(np.sqrt(np.mean(wave*wave)))
         sensor = {'event_id':event_id,'timestamp':timestamp,'sensor_id':'motor_01',
                   'vibration_x':rms,'vibration_y':.8*rms,'vibration_z':.65*rms,
-                  'temperature':35+2*state['level']+float(rng.normal(0,.3)),
-                  'fault_level':state['level'],'rpm':abs(joint['velocity'][0])*60/(2*np.pi),
-                  'sampling_hz':2048,'waveform':wave.tolist(),'joint_observation':joint,'sim_time':sim_time}
+                  'temperature':35+2*level+float(rng.normal(0,.3)),
+                  'fault_level':level,'rpm':abs(joint['velocity'][0])*60/(2*np.pi),
+                  'sampling_hz':CONFIG['sensor']['sampling_hz'],'waveform':wave.tolist(),'joint_observation':joint,'sim_time':sim_time}
         publish(client,'factory/sensor',sensor)
         if state['running']:
             _, encoded = cv2.imencode('.jpg',image)
             publish(client,'factory/image',{'event_id':event_id,'timestamp':timestamp,'image_base64':base64.b64encode(encoded).decode(),
                     'sim_time':sim_time,'ground_truth_class':class_id,'defect_probability':probability})
-        publish(client,'factory/line',{'timestamp':timestamp,'fault_level':state['level'],'running':state['running'],
+        publish(client,'factory/line',{'timestamp':timestamp,'fault_level':level,'running':state['running'],
                 'roller_velocity':joint['velocity'][1],'motor_rpm':sensor['rpm'],'defect_probability':probability},retain=True)
         logging.info('Fault_Level=%d vibration=%.3f defect_probability=%.3f conveyor=%s roller=%.4f',
-                     state['level'],rms,probability,state['running'],joint['velocity'][1])
+                     level,rms,probability,state['running'],joint['velocity'][1])
         time.sleep(CONFIG['simulator']['publication_interval_s'])
 
 
@@ -178,11 +183,25 @@ def main():
     """Start the ROS2 acquisition loop and select live or dataset-generation mode."""
     rclpy.init()
     node = Acquisition()
-    threading.Thread(target=rclpy.spin,args=(node,),daemon=True).start()
-    if os.environ.get('GENERATE_DATA') == '1':
-        generate(node)
-    else:
-        live(node)
+    def spin_node():
+        """Exit the ROS2 spin thread cleanly when the acquisition process shuts down."""
+        try:
+            rclpy.spin(node)
+        except ExternalShutdownException:
+            pass
+    thread=threading.Thread(target=spin_node,daemon=True)
+    thread.start()
+    try:
+        if os.environ.get('GENERATE_DATA') == '1':
+            generate(node)
+        else:
+            live(node)
+    except KeyboardInterrupt:
+        pass
+    finally:
+        rclpy.try_shutdown()
+        thread.join(timeout=5)
+        node.destroy_node()
 
 
 if __name__ == '__main__':

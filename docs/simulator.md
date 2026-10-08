@@ -12,7 +12,7 @@ sensor_msgs/Image 출력만 사용한다. 수집 이후 약한 Gaussian 노이�
 외부 데이터셋은 다운받아 학습하지 않는다. YOLOv8 COCO **사전학습 가중치**는
 전이학습 초기화이며, 이 프로젝트의 파인튜닝 입력은 직접 생성한 영상뿐이다.
 
-| 구분 | 생성 계획 | 분리 |
+| 구분 | 생성 완료 | 분리 |
 |---|---:|---|
 | 정상 진동 창 | 5,000 | 3,500 / 750 / 750 |
 | 고장 진동 창 | 2,000 | 1,400 / 300 / 300 |
@@ -21,7 +21,7 @@ sensor_msgs/Image 출력만 사용한다. 수집 이후 약한 Gaussian 노이�
 | 찍힘 영상 | 1,000 | 700 / 150 / 150 |
 | 이물질 영상 | 1,000 | 700 / 150 / 150 |
 
-위 수량은 설정 목표다. 실제 완료 수량은 `docs/results/dataset.json`과
+위 수량을 실제 생성하고 전체 이미지 SHA 및 분리 수량을 독립 검사했다. 완료 수량은 `docs/results/dataset.json`과
 `data/vision/manifest.jsonl`, `data/vision/COMPLETE`로 확인한다.
 각 이미지 manifest에는 장면·조명·제품 및 결함 좌표, 실제 joint 관측값,
 카메라 sim_time, UTC, SHA256을 보존한다.
@@ -56,3 +56,7 @@ Gazebo 버전으로 이관하고 카메라·관절 플러그인을 다시 검증
 
 참고: [Gazebo 카메라](https://classic.gazebosim.org/tutorials?tut=camera_save),
 [ROS2 Gazebo 카메라 플러그인 소스](https://github.com/ros-simulation/gazebo_ros_pkgs/blob/ros2/gazebo_plugins/src/gazebo_ros_camera.cpp).
+
+모터 실제 관측 범위는 약 954.93 RPM으로 고정이었다. 설정 목표 RPM과 관측을
+구분하며 다양한 RPM 강건성을 주장하지 않는다. FOV와 영상 크기는 config.yaml이
+실제 SDF 카메라와 라벨 투영에 함께 적용된다.

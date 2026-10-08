@@ -1,0 +1,60 @@
+{
+  "metrics": {
+    "chart": {
+      "precision": 0.9900990099009901,
+      "recall": 1.0,
+      "f1": 0.9950248756218906
+    },
+    "ae": {
+      "precision": 0.9771986970684039,
+      "recall": 1.0,
+      "f1": 0.9884678747940692
+    }
+  },
+  "cpu_ms_5_runs": [
+    0.8603578899965214,
+    0.8722835200023837,
+    0.9583517699866206,
+    0.9642384299877449,
+    1.0501817099975597
+  ],
+  "mean_cpu_ms": 0.9410826639941661,
+  "counts": {
+    "train": 4900,
+    "val": 1050,
+    "test": 1050
+  },
+  "normal_only_training_windows": 3500,
+  "epochs": 180,
+  "seed": 20261008,
+  "thresholds": {
+    "chart": 4.325098251726732,
+    "ae": 0.43597400985420703
+  },
+  "calibration": {
+    "chart": [
+      0.5276475962016719,
+      83.90972149919321,
+      148.50374198227075,
+      197.4296747631156,
+      265.8494060535012
+    ],
+    "ae": [
+      0.0014461348833819132,
+      464.6785670288311,
+      1324.4630374843862,
+      2998.8949228721913,
+      5032.294559690598
+    ]
+  },
+  "final_training_loss": 0.0011720103211700916,
+  "python": "3.10.12",
+  "torch": "2.5.1+cpu",
+  "split_method": "scenario holdout, distinct seeds/noise settings, fixed observed Gazebo RPM; 70/15/15 per class",
+  "benchmark_rotation_hz": 15.915494309189533,
+  "benchmark_runs": 5,
+  "benchmark_windows_per_run": 100,
+  "warmup_windows": 10,
+  "includes": "Hann FFT, nine features, chart + AE, anomaly score and HI",
+  "cpu_threads": 4
+}

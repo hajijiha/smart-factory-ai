@@ -1,6 +1,7 @@
 """Generate a real Gazebo SDF conveyor, rotating joints, 3D defects and ROS2 camera."""
 import sys
 from pathlib import Path
+from factory.common import CONFIG
 
 
 def visual(name, shape, dimensions, color, pose='0 0 0 0 0 0'):
@@ -40,7 +41,7 @@ def build():
       <light name="sun" type="directional"><pose>0 0 4 0 0 0</pose><diffuse>.8 .8 .8 1</diffuse><specular>.1 .1 .1 1</specular><direction>-.3 .2 -1</direction></light>
       {models}<model name="camera"><static>true</static><pose>0 0 2.8 0 1.57079632679 0</pose>
       <link name="camera_link"><sensor name="inspection" type="camera"><always_on>true</always_on><update_rate>30</update_rate>
-      <camera><horizontal_fov>.75</horizontal_fov><image><width>320</width><height>320</height><format>R8G8B8</format></image><clip><near>.02</near><far>30</far></clip></camera>
+      <camera><horizontal_fov>{CONFIG['simulator']['camera_fov']}</horizontal_fov><image><width>{CONFIG['simulator']['camera_size']}</width><height>{CONFIG['simulator']['camera_size']}</height><format>R8G8B8</format></image><clip><near>.02</near><far>30</far></clip></camera>
       <plugin name="ros_camera" filename="libgazebo_ros_camera.so"><ros><namespace>/factory</namespace><remapping>image_raw:=image</remapping><remapping>camera_info:=camera_info</remapping></ros><camera_name>inspection</camera_name><frame_name>camera_link</frame_name></plugin>
       </sensor></link></model><plugin name="factory_world" filename="libfactory_world.so"/>
       </world></sdf>'''

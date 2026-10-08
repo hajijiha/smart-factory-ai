@@ -45,7 +45,9 @@ def generate_sensor(node):
                 time.sleep(.01)
     path.parent.mkdir(parents=True,exist_ok=True)
     temporary=path.with_name('dataset.pending.npz')
-    np.savez_compressed(temporary,features=features,levels=levels,splits=splits,benchmark_wave=benchmark,**examples)
+    np.savez_compressed(temporary,features=features,levels=levels,splits=splits,
+                        benchmark_wave=benchmark,
+                        benchmark_rotation_hz=abs(joint['velocity'][0])/(2*np.pi),**examples)
     temporary.replace(path)
     (path.parent/'provenance.jsonl').write_text('\n'.join(json.dumps(row) for row in provenance)+'\n')
     logging.info('Sensor dataset completed: %d records',len(levels))

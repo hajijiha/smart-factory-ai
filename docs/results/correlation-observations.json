@@ -1,0 +1,3953 @@
+{
+  "started_at": "2026-10-08T13:02:47.661508+00:00",
+  "hold_seconds": 30,
+  "repeats": 3,
+  "steps": [
+    {
+      "cycle": 0,
+      "level": 0,
+      "started_at": 1791464568.0642335,
+      "ended_at": 1791464599.370302
+    },
+    {
+      "cycle": 0,
+      "level": 2,
+      "started_at": 1791464601.538686,
+      "ended_at": 1791464632.802628
+    },
+    {
+      "cycle": 0,
+      "level": 1,
+      "started_at": 1791464634.9783497,
+      "ended_at": 1791464666.3208795
+    },
+    {
+      "cycle": 0,
+      "level": 3,
+      "started_at": 1791464668.4873462,
+      "ended_at": 1791464699.7825437
+    },
+    {
+      "cycle": 1,
+      "level": 3,
+      "started_at": 1791464699.8655505,
+      "ended_at": 1791464731.115169
+    },
+    {
+      "cycle": 1,
+      "level": 1,
+      "started_at": 1791464733.347557,
+      "ended_at": 1791464764.6220436
+    },
+    {
+      "cycle": 1,
+      "level": 2,
+      "started_at": 1791464766.7891924,
+      "ended_at": 1791464798.0959277
+    },
+    {
+      "cycle": 1,
+      "level": 0,
+      "started_at": 1791464800.2681234,
+      "ended_at": 1791464831.612136
+    },
+    {
+      "cycle": 2,
+      "level": 0,
+      "started_at": 1791464831.7137356,
+      "ended_at": 1791464863.09896
+    },
+    {
+      "cycle": 2,
+      "level": 2,
+      "started_at": 1791464865.3067644,
+      "ended_at": 1791464896.633232
+    },
+    {
+      "cycle": 2,
+      "level": 1,
+      "started_at": 1791464898.8157783,
+      "ended_at": 1791464930.1207302
+    },
+    {
+      "cycle": 2,
+      "level": 3,
+      "started_at": 1791464932.3516607,
+      "ended_at": 1791464963.7460387
+    }
+  ],
+  "rows": [
+    {
+      "timestamp": "2026-10-08T13:02:47.828000+00:00",
+      "event_id": "e57d5d5b-2d19-4312-a32e-73aea219fb2b",
+      "vibration_x": 0.04780804729434702,
+      "temperature": 35.30358454448536,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:02:48.846000+00:00",
+      "event_id": "a69ea7a1-9dbe-48dc-ad7d-a94166768f8c",
+      "vibration_x": 0.047688486201490986,
+      "temperature": 34.742487753722955,
+      "fault_level": 0,
+      "health_index": 94.91,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:02:49.862000+00:00",
+      "event_id": "12b89ac3-ce50-444c-b425-a6cf2942545d",
+      "vibration_x": 0.04741244439204997,
+      "temperature": 35.12051050735365,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:02:50.877000+00:00",
+      "event_id": "519a8552-0112-47b8-af70-e1b6dde29511",
+      "vibration_x": 0.047558051201575316,
+      "temperature": 35.07245594228063,
+      "fault_level": 0,
+      "health_index": 94.99,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:02:51.893000+00:00",
+      "event_id": "da4d8aa5-70ad-4b67-9902-b56523e2cce8",
+      "vibration_x": 0.047083916662125455,
+      "temperature": 35.10123945498682,
+      "fault_level": 0,
+      "health_index": 94.96,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:02:52.914000+00:00",
+      "event_id": "1a557079-725f-4500-be18-a4899ab5180f",
+      "vibration_x": 0.04802291465466442,
+      "temperature": 35.248687787747166,
+      "fault_level": 0,
+      "health_index": 94.89,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:02:53.934000+00:00",
+      "event_id": "6f4334c5-5ee0-4022-b238-082f70b42016",
+      "vibration_x": 0.04740529647439592,
+      "temperature": 34.974756034504175,
+      "fault_level": 0,
+      "health_index": 94.9,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:02:54.950000+00:00",
+      "event_id": "a3191785-70f2-4e64-bcc2-3c912fde26c5",
+      "vibration_x": 0.047067213096070815,
+      "temperature": 34.869815229203915,
+      "fault_level": 0,
+      "health_index": 94.83,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:02:55.967000+00:00",
+      "event_id": "e5156b12-8c6f-4ea8-8991-a42b7f4055a3",
+      "vibration_x": 0.0473357339517542,
+      "temperature": 35.05630039849889,
+      "fault_level": 0,
+      "health_index": 94.95,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:02:56.982000+00:00",
+      "event_id": "5d516620-f581-44a2-a5b7-e13b2bed2d2c",
+      "vibration_x": 0.04721047238708333,
+      "temperature": 34.83097137104826,
+      "fault_level": 0,
+      "health_index": 94.95,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:02:57.999000+00:00",
+      "event_id": "449b87c4-68b4-4fb5-8e02-52c211e47284",
+      "vibration_x": 0.04718876857089477,
+      "temperature": 34.77657724802157,
+      "fault_level": 0,
+      "health_index": 94.98,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:02:59.019000+00:00",
+      "event_id": "9954d7a2-fabe-48ff-bd31-52eacb910111",
+      "vibration_x": 0.047452080316856105,
+      "temperature": 34.82857314052041,
+      "fault_level": 0,
+      "health_index": 94.84,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:00.035000+00:00",
+      "event_id": "18906bbb-875d-440d-b933-fec72bdf367e",
+      "vibration_x": 0.047532535823723646,
+      "temperature": 35.36409122492836,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:01.058000+00:00",
+      "event_id": "60afecc1-313e-4dfb-882b-ad9ce743738a",
+      "vibration_x": 0.047337275161738745,
+      "temperature": 35.07973789531469,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:02.079000+00:00",
+      "event_id": "3239f056-ad70-4aa6-a9c7-ac426394df46",
+      "vibration_x": 0.04766642809943179,
+      "temperature": 35.27746548434192,
+      "fault_level": 0,
+      "health_index": 94.99,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:03.100000+00:00",
+      "event_id": "964b1136-7c6c-4146-b820-11f5132a3629",
+      "vibration_x": 0.04706375245598558,
+      "temperature": 35.08475590206726,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:04.120000+00:00",
+      "event_id": "a05c01a9-2119-4df8-bc19-bc16eafa392a",
+      "vibration_x": 0.04755893120605969,
+      "temperature": 35.33636250048115,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:05.137000+00:00",
+      "event_id": "953140ae-28df-4bf6-8748-de081b98c163",
+      "vibration_x": 0.0470649304092956,
+      "temperature": 34.85830431621065,
+      "fault_level": 0,
+      "health_index": 94.89,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:06.159000+00:00",
+      "event_id": "7fdb8bc4-cb10-49a1-808f-5c07709ca3fb",
+      "vibration_x": 0.047087412903893976,
+      "temperature": 34.85723028068213,
+      "fault_level": 0,
+      "health_index": 94.93,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:07.176000+00:00",
+      "event_id": "cefa3e6f-8584-4b72-b00d-5da6305362c7",
+      "vibration_x": 0.04754365807021809,
+      "temperature": 34.70643182364746,
+      "fault_level": 0,
+      "health_index": 94.95,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:08.194000+00:00",
+      "event_id": "ee2ec076-4225-44f6-8d48-f6aa6fcfba6c",
+      "vibration_x": 0.047925793311424505,
+      "temperature": 34.94748213120921,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:09.213000+00:00",
+      "event_id": "834284f3-c66c-472b-b084-b4004826512d",
+      "vibration_x": 0.047426150451611596,
+      "temperature": 34.989465680259656,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:10.234000+00:00",
+      "event_id": "b5204246-b9c9-4037-a07b-3c43f7db097d",
+      "vibration_x": 0.047884788420981955,
+      "temperature": 34.9500507233734,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:11.214000+00:00",
+      "event_id": "34bc06c7-2b40-4cfc-bdac-fc9a47c19c12",
+      "vibration_x": 0.0473533528927106,
+      "temperature": 34.30192810520244,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:12.229000+00:00",
+      "event_id": "d1231cb0-3aa6-409f-b72f-e4077369b271",
+      "vibration_x": 0.0478173929772684,
+      "temperature": 34.90656211946015,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:13.248000+00:00",
+      "event_id": "aef3c610-2e06-4178-97f5-5ffaaf842bcc",
+      "vibration_x": 0.047669025042379694,
+      "temperature": 35.24649797933552,
+      "fault_level": 0,
+      "health_index": 94.98,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:14.268000+00:00",
+      "event_id": "169b5779-e3af-4e69-a5d4-9569b210c624",
+      "vibration_x": 0.04728965191258749,
+      "temperature": 34.75208662052378,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:15.285000+00:00",
+      "event_id": "88647d28-9672-4ca6-8697-7194d260ec97",
+      "vibration_x": 0.047214338759425566,
+      "temperature": 35.022276227351405,
+      "fault_level": 0,
+      "health_index": 94.91,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:16.301000+00:00",
+      "event_id": "935cf446-7a0d-45b8-8bbc-4078993d3dac",
+      "vibration_x": 0.04775165381926259,
+      "temperature": 34.48762987260497,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:17.316000+00:00",
+      "event_id": "e4f7d6af-3efd-43dc-b4bd-8a4e2448e095",
+      "vibration_x": 0.04713458666954984,
+      "temperature": 34.779321976890245,
+      "fault_level": 0,
+      "health_index": 94.85,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:18.333000+00:00",
+      "event_id": "a6aaf8a4-eb66-47b2-bb17-1abac3098f5d",
+      "vibration_x": 0.04697716024367998,
+      "temperature": 35.601551954198754,
+      "fault_level": 0,
+      "health_index": 94.97,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:19.357000+00:00",
+      "event_id": "73a86307-74fb-411e-bb26-a39ad464612e",
+      "vibration_x": 0.0476923282563653,
+      "temperature": 34.55999870906265,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:20.375000+00:00",
+      "event_id": "0a09d3eb-9339-40fa-8361-c479e9ce37f2",
+      "vibration_x": 0.14914397340914937,
+      "temperature": 38.85303879620892,
+      "fault_level": 2,
+      "health_index": 85.63,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:21.394000+00:00",
+      "event_id": "4020b1e9-8af0-4eeb-a8d0-d0c418ada1fa",
+      "vibration_x": 0.149685404052804,
+      "temperature": 39.39078901773701,
+      "fault_level": 2,
+      "health_index": 78.42,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:22.418000+00:00",
+      "event_id": "91ca7861-a766-4248-ba47-fb60ca87d201",
+      "vibration_x": 0.15044044177526866,
+      "temperature": 39.242092265783015,
+      "fault_level": 2,
+      "health_index": 84.05,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:23.435000+00:00",
+      "event_id": "989f343d-9e9f-48af-ac08-81f14293457f",
+      "vibration_x": 0.14867942991295321,
+      "temperature": 38.784158065638486,
+      "fault_level": 2,
+      "health_index": 83.04,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:24.455000+00:00",
+      "event_id": "e1048faf-8026-439c-8b04-e43155e87b32",
+      "vibration_x": 0.1474575537691201,
+      "temperature": 39.69556591602199,
+      "fault_level": 2,
+      "health_index": 84.66,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:25.475000+00:00",
+      "event_id": "b340dfdf-eccd-42f3-85fa-a9bcdeee1afd",
+      "vibration_x": 0.15035034310556955,
+      "temperature": 38.82086719057874,
+      "fault_level": 2,
+      "health_index": 79.44,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:03:26.491000+00:00",
+      "event_id": "48e7228f-cde7-4c28-8508-b49a9a0e4181",
+      "vibration_x": 0.14742504371988607,
+      "temperature": 39.11245439795161,
+      "fault_level": 2,
+      "health_index": 84.14,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:27.505000+00:00",
+      "event_id": "4b7859ac-8ec8-4482-a893-a38bf3a91d48",
+      "vibration_x": 0.14733960107483912,
+      "temperature": 38.62232154806543,
+      "fault_level": 2,
+      "health_index": 81.3,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:28.522000+00:00",
+      "event_id": "84ad7d0f-7dcf-4de2-a51c-1efe7d2d08c3",
+      "vibration_x": 0.14956575397191801,
+      "temperature": 39.26677829129613,
+      "fault_level": 2,
+      "health_index": 85.72,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:29.539000+00:00",
+      "event_id": "de244cab-80d5-4a0f-ab9e-4a5252ea6933",
+      "vibration_x": 0.15024847237560662,
+      "temperature": 39.6493827910827,
+      "fault_level": 2,
+      "health_index": 79.6,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:30.557000+00:00",
+      "event_id": "19c13724-93a1-4f5a-9092-eff89c0fd7b3",
+      "vibration_x": 0.14932786950887805,
+      "temperature": 39.01289475398511,
+      "fault_level": 2,
+      "health_index": 84.09,
+      "status": "normal",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:03:31.576000+00:00",
+      "event_id": "55b64256-8327-4f6f-af45-2c88b467126c",
+      "vibration_x": 0.14905086805598433,
+      "temperature": 38.81377472508358,
+      "fault_level": 2,
+      "health_index": 83.6,
+      "status": "normal",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:03:32.595000+00:00",
+      "event_id": "3849bbc7-9f96-4a0e-b85b-4d210f1ab81a",
+      "vibration_x": 0.14953569190135452,
+      "temperature": 39.7984920511222,
+      "fault_level": 2,
+      "health_index": 80.76,
+      "status": "normal",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:03:33.611000+00:00",
+      "event_id": "f812c32a-2336-4aaa-aa1c-e1603f57dc87",
+      "vibration_x": 0.15025916479493498,
+      "temperature": 39.46940084998478,
+      "fault_level": 2,
+      "health_index": 82.46,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:34.628000+00:00",
+      "event_id": "8542cc71-f6ac-4ce8-b929-d07d434ceb9b",
+      "vibration_x": 0.15079076096004349,
+      "temperature": 38.70553351257135,
+      "fault_level": 2,
+      "health_index": 83.96,
+      "status": "normal",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:03:35.643000+00:00",
+      "event_id": "a6edfab4-e8b7-410a-b704-ca2ee8ddce6d",
+      "vibration_x": 0.15018786629971598,
+      "temperature": 39.21281558071191,
+      "fault_level": 2,
+      "health_index": 84.6,
+      "status": "normal",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:03:36.667000+00:00",
+      "event_id": "285b0307-b984-4a6b-91ee-380567e983d6",
+      "vibration_x": 0.14962110795000647,
+      "temperature": 38.399849482764736,
+      "fault_level": 2,
+      "health_index": 81.72,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:37.686000+00:00",
+      "event_id": "89973196-8364-4012-8d4f-556e11e1fb8f",
+      "vibration_x": 0.14848928854031693,
+      "temperature": 39.09805800815382,
+      "fault_level": 2,
+      "health_index": 82.67,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:38.702000+00:00",
+      "event_id": "9b5197ff-36b6-4afe-b43c-accd7079b86c",
+      "vibration_x": 0.14888167838049088,
+      "temperature": 38.960937335762495,
+      "fault_level": 2,
+      "health_index": 79.95,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:39.721000+00:00",
+      "event_id": "dd8e4015-9f33-40a9-b321-838c0e765586",
+      "vibration_x": 0.1510722560817401,
+      "temperature": 39.05513575874211,
+      "fault_level": 2,
+      "health_index": 80.85,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:40.727000+00:00",
+      "event_id": "12e3c212-502b-4527-9895-064d880161d5",
+      "vibration_x": 0.1492466500340837,
+      "temperature": 38.51502453663434,
+      "fault_level": 2,
+      "health_index": 77.3,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:41.745000+00:00",
+      "event_id": "31e39672-3981-4471-bf68-94b78538c39d",
+      "vibration_x": 0.15092088300520404,
+      "temperature": 38.99440783516047,
+      "fault_level": 2,
+      "health_index": 79.73,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:42.764000+00:00",
+      "event_id": "d89a8b16-a9cb-406a-a5b6-8a11dc368b8d",
+      "vibration_x": 0.1482216381705519,
+      "temperature": 39.15437748323035,
+      "fault_level": 2,
+      "health_index": 81.75,
+      "status": "normal",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:03:43.781000+00:00",
+      "event_id": "e766f670-1405-4e1f-97d5-c97069ffa7dd",
+      "vibration_x": 0.14927727624778855,
+      "temperature": 39.20424246004741,
+      "fault_level": 2,
+      "health_index": 76.72,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:03:44.799000+00:00",
+      "event_id": "7e50b91d-15c7-4f04-94b9-1803fedac98f",
+      "vibration_x": 0.14850792998652737,
+      "temperature": 39.191188498517356,
+      "fault_level": 2,
+      "health_index": 80.28,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:45.818000+00:00",
+      "event_id": "1fa4fd43-0080-4869-851d-96b04ed531ca",
+      "vibration_x": 0.1479936418242775,
+      "temperature": 38.585324830482755,
+      "fault_level": 2,
+      "health_index": 75.77,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:46.838000+00:00",
+      "event_id": "fe1f4293-5d1d-48d4-94f4-4a6dba8d68b7",
+      "vibration_x": 0.1473321099135239,
+      "temperature": 39.10513855415479,
+      "fault_level": 2,
+      "health_index": 79.34,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:47.854000+00:00",
+      "event_id": "2c3cf536-12c6-49ca-9356-0e95546f24d5",
+      "vibration_x": 0.15013155856894278,
+      "temperature": 38.6187037153469,
+      "fault_level": 2,
+      "health_index": 80.58,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:48.869000+00:00",
+      "event_id": "0a9853bd-a18e-4fda-87c7-c7a5ca1e6c9d",
+      "vibration_x": 0.15123141395285306,
+      "temperature": 39.28929277523906,
+      "fault_level": 2,
+      "health_index": 82.58,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:49.883000+00:00",
+      "event_id": "96b14f4f-7866-4d2d-a0a3-21657fad820f",
+      "vibration_x": 0.14995882834030738,
+      "temperature": 39.230596735566344,
+      "fault_level": 2,
+      "health_index": 77.57,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:50.903000+00:00",
+      "event_id": "01ab3899-b55a-4916-a50d-d978381dfe57",
+      "vibration_x": 0.15047761058561165,
+      "temperature": 38.90201073683146,
+      "fault_level": 2,
+      "health_index": 83.61,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:51.919000+00:00",
+      "event_id": "4d933ec5-2107-46d8-a9ea-61e02eaa8c50",
+      "vibration_x": 0.1520657835178242,
+      "temperature": 39.04624428662389,
+      "fault_level": 2,
+      "health_index": 80.98,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:52.939000+00:00",
+      "event_id": "e9801b99-bd3b-47a9-9021-43e85425369f",
+      "vibration_x": 0.0963582567436453,
+      "temperature": 37.09412617958938,
+      "fault_level": 1,
+      "health_index": 90.69,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:53.963000+00:00",
+      "event_id": "c85ef5db-2eaf-412f-b825-da8a6825bd74",
+      "vibration_x": 0.09533223659782518,
+      "temperature": 36.6345204107422,
+      "fault_level": 1,
+      "health_index": 91.15,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:54.983000+00:00",
+      "event_id": "b9087ed0-32e3-482c-810c-a81dc6180e69",
+      "vibration_x": 0.09619749965148788,
+      "temperature": 37.25730573514337,
+      "fault_level": 1,
+      "health_index": 91.26,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:55.999000+00:00",
+      "event_id": "95dbbfea-1d80-4c2e-a97b-72f41d819104",
+      "vibration_x": 0.09617577108617074,
+      "temperature": 36.81593409333019,
+      "fault_level": 1,
+      "health_index": 89.74,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:57.016000+00:00",
+      "event_id": "230d4c7d-405b-4be2-9708-c58c143af8f1",
+      "vibration_x": 0.09737216739361747,
+      "temperature": 36.91676518653319,
+      "fault_level": 1,
+      "health_index": 90.44,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:03:58.034000+00:00",
+      "event_id": "c0909a37-b0c5-4817-8c77-2c4c16f06678",
+      "vibration_x": 0.09626318410773256,
+      "temperature": 36.78633398828786,
+      "fault_level": 1,
+      "health_index": 89.31,
+      "status": "normal",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:03:59.051000+00:00",
+      "event_id": "62769387-5f2f-4b13-ae38-d562302e69a4",
+      "vibration_x": 0.0972350399238399,
+      "temperature": 36.986488499599325,
+      "fault_level": 1,
+      "health_index": 90.49,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:00.069000+00:00",
+      "event_id": "a1d6ceab-ddb2-4a2e-8dd6-9efc8c6a71c7",
+      "vibration_x": 0.09640076726065472,
+      "temperature": 37.124139183984866,
+      "fault_level": 1,
+      "health_index": 88.4,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:01.086000+00:00",
+      "event_id": "d5796960-8fb7-41d7-bf1d-f249f514aaa4",
+      "vibration_x": 0.09651834961465165,
+      "temperature": 36.93609102225457,
+      "fault_level": 1,
+      "health_index": 87.1,
+      "status": "normal",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:04:02.104000+00:00",
+      "event_id": "b231dfe2-1cda-44e2-b107-ddff7d137c51",
+      "vibration_x": 0.0957759867639848,
+      "temperature": 36.692551138577244,
+      "fault_level": 1,
+      "health_index": 90.17,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:03.134000+00:00",
+      "event_id": "c258b068-3404-428c-b39d-86b45d7fd1c2",
+      "vibration_x": 0.09664813752218751,
+      "temperature": 37.17511736567958,
+      "fault_level": 1,
+      "health_index": 91.63,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:04.150000+00:00",
+      "event_id": "8c81b540-1eda-4feb-997d-72eeebbc805d",
+      "vibration_x": 0.09536191917010403,
+      "temperature": 36.13197149500608,
+      "fault_level": 1,
+      "health_index": 91.31,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:05.168000+00:00",
+      "event_id": "60510094-d847-4688-aa99-cc1aad31c0b9",
+      "vibration_x": 0.0969932363297829,
+      "temperature": 36.70180314857282,
+      "fault_level": 1,
+      "health_index": 90.2,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:06.186000+00:00",
+      "event_id": "4ae55926-484a-427c-8e6b-bd4d803e2111",
+      "vibration_x": 0.09576603554281438,
+      "temperature": 37.17096710181806,
+      "fault_level": 1,
+      "health_index": 90.89,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:07.203000+00:00",
+      "event_id": "a5f6f1ee-5036-40e6-ad1f-da7e5fee998e",
+      "vibration_x": 0.09617112540182525,
+      "temperature": 36.92003188033838,
+      "fault_level": 1,
+      "health_index": 90.16,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:08.223000+00:00",
+      "event_id": "22ebe28b-c711-448c-a682-509cc2c45176",
+      "vibration_x": 0.09698587990004302,
+      "temperature": 36.810411096749,
+      "fault_level": 1,
+      "health_index": 89.96,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:09.244000+00:00",
+      "event_id": "5cb21d23-b8b6-4431-a1b1-784425843286",
+      "vibration_x": 0.09625514119419527,
+      "temperature": 36.772151994418806,
+      "fault_level": 1,
+      "health_index": 91.2,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:10.225000+00:00",
+      "event_id": "86201bdb-c1bc-4f43-b070-18741003265f",
+      "vibration_x": 0.09608987211120558,
+      "temperature": 36.53657145989689,
+      "fault_level": 1,
+      "health_index": 91.82,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:11.282000+00:00",
+      "event_id": "a3d64b59-b1b0-445e-8dca-855a5b326621",
+      "vibration_x": 0.09621399662379264,
+      "temperature": 37.08006953535923,
+      "fault_level": 1,
+      "health_index": 91.25,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:12.303000+00:00",
+      "event_id": "c4c5f15f-9365-49c0-8490-8deb9c5418be",
+      "vibration_x": 0.09557310808689222,
+      "temperature": 36.65506331986702,
+      "fault_level": 1,
+      "health_index": 89.6,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:13.325000+00:00",
+      "event_id": "240e8081-3459-4422-8286-be547b713379",
+      "vibration_x": 0.095944293140071,
+      "temperature": 36.87266504020367,
+      "fault_level": 1,
+      "health_index": 90.66,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:14.342000+00:00",
+      "event_id": "ade3f136-5480-489b-96ab-acd28908ea34",
+      "vibration_x": 0.09584996336010183,
+      "temperature": 37.13895707949638,
+      "fault_level": 1,
+      "health_index": 90.96,
+      "status": "normal",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:04:15.358000+00:00",
+      "event_id": "6cb74224-e1ed-4ff7-90f2-02ef8862ee70",
+      "vibration_x": 0.09734392848786026,
+      "temperature": 37.44275121623743,
+      "fault_level": 1,
+      "health_index": 88.67,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:16.372000+00:00",
+      "event_id": "2dba74be-2ee2-49b9-a8e7-50b906ea87c4",
+      "vibration_x": 0.09701678983877741,
+      "temperature": 37.64297423952175,
+      "fault_level": 1,
+      "health_index": 90.39,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:17.390000+00:00",
+      "event_id": "53bdc94e-d9a1-4ec4-9101-1e4455c46118",
+      "vibration_x": 0.096272034460923,
+      "temperature": 36.795431046472125,
+      "fault_level": 1,
+      "health_index": 90.47,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:18.408000+00:00",
+      "event_id": "de8fa0a4-5a95-4908-ae53-815ba1361411",
+      "vibration_x": 0.09614252480632285,
+      "temperature": 37.17958393062795,
+      "fault_level": 1,
+      "health_index": 90.64,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:19.426000+00:00",
+      "event_id": "3b33839b-76c5-47d3-b03b-9a18642e427e",
+      "vibration_x": 0.09756856937104279,
+      "temperature": 37.18064518229178,
+      "fault_level": 1,
+      "health_index": 90.04,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:20.445000+00:00",
+      "event_id": "6aaf4a55-31ff-440f-81dd-58441a03cec7",
+      "vibration_x": 0.09641726938074167,
+      "temperature": 37.36177326305981,
+      "fault_level": 1,
+      "health_index": 89.65,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:21.462000+00:00",
+      "event_id": "dbe57bdb-1ce4-4016-aaab-07449a084b76",
+      "vibration_x": 0.09686023912350399,
+      "temperature": 37.110708826768416,
+      "fault_level": 1,
+      "health_index": 87.23,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:22.485000+00:00",
+      "event_id": "67cb3c27-b349-4d74-866f-2a647830935d",
+      "vibration_x": 0.09702412335597575,
+      "temperature": 37.22955149749621,
+      "fault_level": 1,
+      "health_index": 89.51,
+      "status": "normal",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:04:23.500000+00:00",
+      "event_id": "3d89e6a8-a20f-4681-80e7-d7e3e5c26347",
+      "vibration_x": 0.09595401252672674,
+      "temperature": 36.75975063207184,
+      "fault_level": 1,
+      "health_index": 85.51,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:24.518000+00:00",
+      "event_id": "e9e577cd-be67-4f38-8d19-7bceb715fb0c",
+      "vibration_x": 0.09559557839868059,
+      "temperature": 37.42618041715338,
+      "fault_level": 1,
+      "health_index": 88.24,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:25.536000+00:00",
+      "event_id": "4994eab5-8c8e-4d24-91e2-9c22b1d0bb9f",
+      "vibration_x": 0.09595068218047628,
+      "temperature": 36.69572670843993,
+      "fault_level": 1,
+      "health_index": 87.92,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:26.557000+00:00",
+      "event_id": "c2fb364f-26b0-4260-85df-8cfc308bdfa6",
+      "vibration_x": 0.20483725131062494,
+      "temperature": 40.7071942269675,
+      "fault_level": 3,
+      "health_index": 72.04,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:27.575000+00:00",
+      "event_id": "ea3d0b20-746c-4ae1-b2d6-3f99d35078c2",
+      "vibration_x": 0.2010024367790939,
+      "temperature": 41.49937087320505,
+      "fault_level": 3,
+      "health_index": 68.69,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:28.597000+00:00",
+      "event_id": "a7230c0d-1c79-45e5-8d58-1ee6af2f4620",
+      "vibration_x": 0.20466645599960528,
+      "temperature": 41.132280581772974,
+      "fault_level": 3,
+      "health_index": 69.7,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:04:29.617000+00:00",
+      "event_id": "ad7c1e96-c846-4424-9c7f-d12d6cb1a49e",
+      "vibration_x": 0.20458766563063208,
+      "temperature": 41.00138203785221,
+      "fault_level": 3,
+      "health_index": 65.66,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:30.636000+00:00",
+      "event_id": "385c91b8-028b-42b9-9ec1-f2e3023b3595",
+      "vibration_x": 0.20482308119847525,
+      "temperature": 40.90173756128819,
+      "fault_level": 3,
+      "health_index": 69.13,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:31.655000+00:00",
+      "event_id": "1002a461-673e-4a14-9f8b-586df8545125",
+      "vibration_x": 0.2055972832184182,
+      "temperature": 41.34991931973699,
+      "fault_level": 3,
+      "health_index": 75.76,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:32.676000+00:00",
+      "event_id": "d3530015-b42b-4871-89b8-70bbb06f8249",
+      "vibration_x": 0.2008512267229534,
+      "temperature": 41.20328875978649,
+      "fault_level": 3,
+      "health_index": 69.53,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:33.696000+00:00",
+      "event_id": "ed7eb2eb-1e85-4fda-bf16-d231c3349e9b",
+      "vibration_x": 0.20569133398783243,
+      "temperature": 41.04213318885037,
+      "fault_level": 3,
+      "health_index": 71.94,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:34.719000+00:00",
+      "event_id": "4b79ef6c-76d2-47f3-9ebc-649ebfc10c95",
+      "vibration_x": 0.20309349778930064,
+      "temperature": 41.070478206681244,
+      "fault_level": 3,
+      "health_index": 69.25,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:35.734000+00:00",
+      "event_id": "0fed4b62-5c9b-423e-942f-97cb5df089e2",
+      "vibration_x": 0.20597783284785512,
+      "temperature": 40.713426289014926,
+      "fault_level": 3,
+      "health_index": 72.44,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:36.751000+00:00",
+      "event_id": "019299fb-910e-4076-9ef4-81274e7a9fd7",
+      "vibration_x": 0.20432054004020797,
+      "temperature": 41.369322611616084,
+      "fault_level": 3,
+      "health_index": 71.31,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:37.771000+00:00",
+      "event_id": "4421df75-704e-4c05-bddb-c304b3ae1774",
+      "vibration_x": 0.20337424160142875,
+      "temperature": 41.224481559551414,
+      "fault_level": 3,
+      "health_index": 76.27,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:38.787000+00:00",
+      "event_id": "0d31db18-aae1-40f3-b4b3-22d995232c80",
+      "vibration_x": 0.20262807073647615,
+      "temperature": 41.33522678923102,
+      "fault_level": 3,
+      "health_index": 54.23,
+      "status": "warning",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:39.812000+00:00",
+      "event_id": "717d1e5e-3b56-4c63-885c-310f17a3f7b5",
+      "vibration_x": 0.2082161563134463,
+      "temperature": 40.57384690441968,
+      "fault_level": 3,
+      "health_index": 72.99,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:40.812000+00:00",
+      "event_id": "4fb22113-8dff-486e-859c-445d37820288",
+      "vibration_x": 0.2038067380066119,
+      "temperature": 40.87698066004678,
+      "fault_level": 3,
+      "health_index": 73.84,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:41.829000+00:00",
+      "event_id": "3b0084ab-01ea-4082-90e0-3872c03e4833",
+      "vibration_x": 0.20488067424680909,
+      "temperature": 41.3767572227093,
+      "fault_level": 3,
+      "health_index": 69.05,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:42.847000+00:00",
+      "event_id": "0a922555-0fae-4d3f-879d-dfae08356cbc",
+      "vibration_x": 0.20441100487669306,
+      "temperature": 41.190145644132976,
+      "fault_level": 3,
+      "health_index": 67.7,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:04:43.869000+00:00",
+      "event_id": "741fcf2f-157f-4d30-91d5-f77420884bcc",
+      "vibration_x": 0.20526666460861162,
+      "temperature": 41.177526776696865,
+      "fault_level": 3,
+      "health_index": 69.8,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:04:44.885000+00:00",
+      "event_id": "832bf8c3-e48d-4b81-9705-1ca9cb39c155",
+      "vibration_x": 0.20369233650484195,
+      "temperature": 41.17453136996432,
+      "fault_level": 3,
+      "health_index": 78.7,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:45.903000+00:00",
+      "event_id": "c11be59b-7d4a-4c4a-adfc-1d6b85ca43b6",
+      "vibration_x": 0.20583309909971453,
+      "temperature": 41.053212705655945,
+      "fault_level": 3,
+      "health_index": 59.47,
+      "status": "warning",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:04:46.920000+00:00",
+      "event_id": "9d532d35-1a3b-46b2-9d4c-63b017d43a8f",
+      "vibration_x": 0.20472785793986523,
+      "temperature": 40.99899909397108,
+      "fault_level": 3,
+      "health_index": 73.72,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:04:47.942000+00:00",
+      "event_id": "2e9c1bc0-e8f1-49da-9881-e21f1899a77c",
+      "vibration_x": 0.20468164613426426,
+      "temperature": 40.83543018558296,
+      "fault_level": 3,
+      "health_index": 66.94,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:04:48.968000+00:00",
+      "event_id": "5a2f8b3b-d015-487d-90fc-6b5b1664cbb9",
+      "vibration_x": 0.20650350449872137,
+      "temperature": 40.692510556718446,
+      "fault_level": 3,
+      "health_index": 64.73,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:49.992000+00:00",
+      "event_id": "39b8408a-9f84-4698-9aca-d24826dfa1aa",
+      "vibration_x": 0.2057970382227356,
+      "temperature": 41.2803486907959,
+      "fault_level": 3,
+      "health_index": 77.02,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:51.007000+00:00",
+      "event_id": "3c17a826-51ce-4dc2-b907-e9a178a08730",
+      "vibration_x": 0.20434676494470322,
+      "temperature": 40.954690450352615,
+      "fault_level": 3,
+      "health_index": 78.14,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:52.022000+00:00",
+      "event_id": "725ae1f2-2aeb-4acb-9d30-3825c697521a",
+      "vibration_x": 0.2050459280279759,
+      "temperature": 40.68769222951708,
+      "fault_level": 3,
+      "health_index": 74.3,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:53.049000+00:00",
+      "event_id": "0c05dfab-4512-489a-8309-3652ce4a92f9",
+      "vibration_x": 0.20330655182500043,
+      "temperature": 40.85881866830639,
+      "fault_level": 3,
+      "health_index": 76.13,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:54.068000+00:00",
+      "event_id": "28094308-c298-4185-ad26-b32280893c10",
+      "vibration_x": 0.20261515209134218,
+      "temperature": 40.87113009164533,
+      "fault_level": 3,
+      "health_index": 72.54,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:55.086000+00:00",
+      "event_id": "6bba4856-6cb7-44da-8aae-2cb9cda14976",
+      "vibration_x": 0.2041728466485069,
+      "temperature": 41.01987990844612,
+      "fault_level": 3,
+      "health_index": 71.79,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:56.103000+00:00",
+      "event_id": "9b0efe13-9628-4639-8c64-df45f2226959",
+      "vibration_x": 0.20344600132815643,
+      "temperature": 41.66707681286693,
+      "fault_level": 3,
+      "health_index": 74.41,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:57.121000+00:00",
+      "event_id": "93bf41ea-f0ad-46d9-934b-804da61e6810",
+      "vibration_x": 0.20425601358372175,
+      "temperature": 40.602047842239024,
+      "fault_level": 3,
+      "health_index": 75.24,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:58.140000+00:00",
+      "event_id": "e39f0f9f-1632-4e2d-8535-d238fdd9d7f5",
+      "vibration_x": 0.20492067737571462,
+      "temperature": 41.01894762049537,
+      "fault_level": 3,
+      "health_index": 76.0,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:04:59.156000+00:00",
+      "event_id": "a27a8f29-596b-4d45-bcc5-f36d621d9dde",
+      "vibration_x": 0.20656247666847463,
+      "temperature": 41.01148949849347,
+      "fault_level": 3,
+      "health_index": 70.22,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:05:00.174000+00:00",
+      "event_id": "e2ee830c-66b3-413e-b0ad-487f736dc3cc",
+      "vibration_x": 0.2050092806824408,
+      "temperature": 41.44387469450174,
+      "fault_level": 3,
+      "health_index": 70.04,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:01.191000+00:00",
+      "event_id": "b719ceb8-a8cc-472f-bfac-9fc4ac66a7cb",
+      "vibration_x": 0.2046393719029932,
+      "temperature": 40.703537685703004,
+      "fault_level": 3,
+      "health_index": 72.05,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:02.215000+00:00",
+      "event_id": "1659c5b0-ac72-4c1b-9ef2-47e436ebd642",
+      "vibration_x": 0.20395314295875872,
+      "temperature": 41.254944540804054,
+      "fault_level": 3,
+      "health_index": 73.94,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:03.238000+00:00",
+      "event_id": "3aa14290-0974-4f30-95af-fb798b880d3c",
+      "vibration_x": 0.20620061964155909,
+      "temperature": 41.17193169835588,
+      "fault_level": 3,
+      "health_index": 71.36,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:04.256000+00:00",
+      "event_id": "0fb61f88-b953-4f8b-8e83-0aafed25dbed",
+      "vibration_x": 0.2016570651484375,
+      "temperature": 41.55416881496388,
+      "fault_level": 3,
+      "health_index": 76.55,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:05:05.274000+00:00",
+      "event_id": "a85231d2-39fe-4c74-8060-85626ffb044f",
+      "vibration_x": 0.2059320604175035,
+      "temperature": 41.55682728298984,
+      "fault_level": 3,
+      "health_index": 75.58,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:05:06.293000+00:00",
+      "event_id": "a1ce60ec-824b-453c-9269-139e9499450c",
+      "vibration_x": 0.20286769408189076,
+      "temperature": 41.12642555509037,
+      "fault_level": 3,
+      "health_index": 70.59,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:07.317000+00:00",
+      "event_id": "76434d80-5222-4a66-b43d-9769c82599b1",
+      "vibration_x": 0.20436154957469005,
+      "temperature": 41.103184282565955,
+      "fault_level": 3,
+      "health_index": 66.54,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:08.336000+00:00",
+      "event_id": "cc2a21bf-7401-4fec-8926-d58ce1223e59",
+      "vibration_x": 0.20577387953731957,
+      "temperature": 41.45269831575435,
+      "fault_level": 3,
+      "health_index": 69.53,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:09.351000+00:00",
+      "event_id": "ee53b1eb-146b-4f7c-acb2-ac9e7e0094f0",
+      "vibration_x": 0.20294809583653134,
+      "temperature": 40.83364035235248,
+      "fault_level": 3,
+      "health_index": 70.42,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:05:10.336000+00:00",
+      "event_id": "a7f4385c-d756-4f9c-9159-920b7050301b",
+      "vibration_x": 0.20532251516459732,
+      "temperature": 40.768102262668585,
+      "fault_level": 3,
+      "health_index": 67.46,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:11.350000+00:00",
+      "event_id": "38fbef88-91b3-43a2-85ee-cb5d70d888a6",
+      "vibration_x": 0.2058863591991871,
+      "temperature": 41.36809782892334,
+      "fault_level": 3,
+      "health_index": 67.68,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:12.372000+00:00",
+      "event_id": "1560d2e9-1d5e-4ce6-b184-f555e51967ec",
+      "vibration_x": 0.2063976010477651,
+      "temperature": 41.004159982870526,
+      "fault_level": 3,
+      "health_index": 70.2,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:05:13.396000+00:00",
+      "event_id": "7061b02d-10f3-4e2c-9d2c-33fc38afef5f",
+      "vibration_x": 0.20653882594596804,
+      "temperature": 41.374899084407275,
+      "fault_level": 3,
+      "health_index": 74.22,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:05:14.416000+00:00",
+      "event_id": "0fafb934-1c7b-4840-a9d5-a71629ea9f69",
+      "vibration_x": 0.20451019885047964,
+      "temperature": 40.75165913098029,
+      "fault_level": 3,
+      "health_index": 77.62,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:15.437000+00:00",
+      "event_id": "35916bc4-7e43-4059-8a64-c6a6c02d6449",
+      "vibration_x": 0.20714282036281256,
+      "temperature": 41.25324088553517,
+      "fault_level": 3,
+      "health_index": 62.35,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:16.453000+00:00",
+      "event_id": "37d9eefb-d985-4e7f-b456-d4e0a4b92b34",
+      "vibration_x": 0.203547925845664,
+      "temperature": 40.802617542248285,
+      "fault_level": 3,
+      "health_index": 61.07,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:17.473000+00:00",
+      "event_id": "b4598ac7-1a6a-4af6-aac3-3c6f31a0b9d3",
+      "vibration_x": 0.20420918496089055,
+      "temperature": 40.99130054086607,
+      "fault_level": 3,
+      "health_index": 72.71,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:18.489000+00:00",
+      "event_id": "9d53cb5b-c84e-4ff4-b738-0e8df25c5b94",
+      "vibration_x": 0.20360676862740687,
+      "temperature": 40.68468893150979,
+      "fault_level": 3,
+      "health_index": 67.28,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:05:19.509000+00:00",
+      "event_id": "3a55abed-5bb4-4bd5-8e79-d1b188283ce1",
+      "vibration_x": 0.2053936537009628,
+      "temperature": 41.016746337500905,
+      "fault_level": 3,
+      "health_index": 65.94,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:20.530000+00:00",
+      "event_id": "297b2e9e-23f0-4c9e-8a44-9a88b2e0e1d3",
+      "vibration_x": 0.20634401209853587,
+      "temperature": 40.812890409330976,
+      "fault_level": 3,
+      "health_index": 73.75,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:05:21.549000+00:00",
+      "event_id": "0f0092d2-ebdc-4d35-b327-3c25355dfa7e",
+      "vibration_x": 0.20191252610063057,
+      "temperature": 40.947869303058795,
+      "fault_level": 3,
+      "health_index": 75.9,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:22.565000+00:00",
+      "event_id": "82c0663c-1bda-4b61-ae6b-bd31541208d1",
+      "vibration_x": 0.20640852129469436,
+      "temperature": 41.163013826024105,
+      "fault_level": 3,
+      "health_index": 73.43,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:05:23.586000+00:00",
+      "event_id": "f6d00463-69fd-4642-9c41-0e8f3af40a73",
+      "vibration_x": 0.2039663852504079,
+      "temperature": 41.04367886866924,
+      "fault_level": 3,
+      "health_index": 73.54,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:24.602000+00:00",
+      "event_id": "4b7373e2-ee08-4b7a-9cbc-5b797e3ae3bd",
+      "vibration_x": 0.20184026691158363,
+      "temperature": 40.857862377147285,
+      "fault_level": 3,
+      "health_index": 74.1,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:25.621000+00:00",
+      "event_id": "bd54a3d4-f3b0-4bfe-b6f9-4922ea674cc9",
+      "vibration_x": 0.20345272119424188,
+      "temperature": 41.45755036165907,
+      "fault_level": 3,
+      "health_index": 70.39,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:26.638000+00:00",
+      "event_id": "f8655568-c52b-4dab-a363-da1370fccaaf",
+      "vibration_x": 0.20592007696027645,
+      "temperature": 40.70351486608338,
+      "fault_level": 3,
+      "health_index": 66.97,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:05:27.657000+00:00",
+      "event_id": "55fb195c-ce8c-4fe3-a402-7463770cc04f",
+      "vibration_x": 0.20514947695334157,
+      "temperature": 40.75269577153096,
+      "fault_level": 3,
+      "health_index": 57.92,
+      "status": "warning",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:28.682000+00:00",
+      "event_id": "d644fb89-c855-4b33-9b60-e3d8576abf20",
+      "vibration_x": 0.20300925444898565,
+      "temperature": 41.40296479196692,
+      "fault_level": 3,
+      "health_index": 70.31,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:29.703000+00:00",
+      "event_id": "130944d2-fa85-449a-aad8-cd8aad4559e1",
+      "vibration_x": 0.20513313181327633,
+      "temperature": 41.000306913652665,
+      "fault_level": 3,
+      "health_index": 69.16,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:05:30.720000+00:00",
+      "event_id": "7a105b56-19f1-4f2b-bf95-573a29f10a75",
+      "vibration_x": 0.20598079738754577,
+      "temperature": 40.63737408537017,
+      "fault_level": 3,
+      "health_index": 69.03,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:05:31.738000+00:00",
+      "event_id": "3dd17aa6-6db4-46fa-bfbc-7ea2886d4bc5",
+      "vibration_x": 0.0962781667958222,
+      "temperature": 36.74720466828894,
+      "fault_level": 1,
+      "health_index": 89.7,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:32.759000+00:00",
+      "event_id": "ee79a4a9-e061-4861-8c9e-5304ceff5889",
+      "vibration_x": 0.09568472611278027,
+      "temperature": 37.196181731506734,
+      "fault_level": 1,
+      "health_index": 89.54,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:33.774000+00:00",
+      "event_id": "4f868f2b-0930-448e-9226-3d9d69953e8c",
+      "vibration_x": 0.0963698361904216,
+      "temperature": 36.66775280052911,
+      "fault_level": 1,
+      "health_index": 86.14,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:34.793000+00:00",
+      "event_id": "6f10e9a8-ef7e-45d9-b026-adad43da3396",
+      "vibration_x": 0.09748081203590661,
+      "temperature": 37.77637894213288,
+      "fault_level": 1,
+      "health_index": 88.57,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:35.810000+00:00",
+      "event_id": "b4a601af-d347-4008-917c-324f988a4055",
+      "vibration_x": 0.09642034980746628,
+      "temperature": 36.92046471754354,
+      "fault_level": 1,
+      "health_index": 88.87,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:36.828000+00:00",
+      "event_id": "e9fc7089-65fb-418e-b4d4-938258f5cb91",
+      "vibration_x": 0.09520458579589672,
+      "temperature": 37.17244619897009,
+      "fault_level": 1,
+      "health_index": 90.75,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:37.854000+00:00",
+      "event_id": "1c904ec3-471c-49fc-a8ef-3014c4ca537a",
+      "vibration_x": 0.09650274722236588,
+      "temperature": 36.92321000493845,
+      "fault_level": 1,
+      "health_index": 89.44,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:38.869000+00:00",
+      "event_id": "70a3629c-d20e-4c58-8822-799316ee3601",
+      "vibration_x": 0.09659241282839812,
+      "temperature": 36.96999953381928,
+      "fault_level": 1,
+      "health_index": 89.49,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:39.888000+00:00",
+      "event_id": "c3382197-7902-4983-a5a0-e19070483dc1",
+      "vibration_x": 0.09733947842477222,
+      "temperature": 36.691360668420074,
+      "fault_level": 1,
+      "health_index": 89.76,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:40.867000+00:00",
+      "event_id": "f483c37c-3fee-4ffb-990c-d43d887d4183",
+      "vibration_x": 0.09791641794755447,
+      "temperature": 37.1461193972201,
+      "fault_level": 1,
+      "health_index": 89.02,
+      "status": "normal",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:05:41.885000+00:00",
+      "event_id": "0a74fb45-bffe-44ca-a7f8-639d251026aa",
+      "vibration_x": 0.09684537038929576,
+      "temperature": 36.61511961168652,
+      "fault_level": 1,
+      "health_index": 90.71,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:42.907000+00:00",
+      "event_id": "e274c717-d5e6-45de-bb6a-7566e86a8764",
+      "vibration_x": 0.09758340882019488,
+      "temperature": 37.19901167956555,
+      "fault_level": 1,
+      "health_index": 87.26,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:43.924000+00:00",
+      "event_id": "96b1d210-3e57-4cec-892b-ab3eec5a3ea1",
+      "vibration_x": 0.09658329879882126,
+      "temperature": 37.07099623033616,
+      "fault_level": 1,
+      "health_index": 89.14,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:44.939000+00:00",
+      "event_id": "c35a154b-0315-4b5e-b2c6-19f96edd9f70",
+      "vibration_x": 0.09700807163355502,
+      "temperature": 36.991307986305735,
+      "fault_level": 1,
+      "health_index": 90.05,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:45.959000+00:00",
+      "event_id": "26ef1c3e-cf77-4838-85b0-b03a42dcb3ec",
+      "vibration_x": 0.09639534299480838,
+      "temperature": 36.929435030933384,
+      "fault_level": 1,
+      "health_index": 91.14,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:46.981000+00:00",
+      "event_id": "4b4f256d-7ddf-427c-8993-06b25fef46ff",
+      "vibration_x": 0.09648216426906775,
+      "temperature": 37.10231204494236,
+      "fault_level": 1,
+      "health_index": 90.14,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:48+00:00",
+      "event_id": "bad0b94e-d667-4b23-8535-6b47e961450c",
+      "vibration_x": 0.09628566203347694,
+      "temperature": 36.99763738468522,
+      "fault_level": 1,
+      "health_index": 90.84,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:49.014000+00:00",
+      "event_id": "832af132-ff8e-4dc9-9b0f-2503c7e75420",
+      "vibration_x": 0.09684137078397492,
+      "temperature": 36.89683716662282,
+      "fault_level": 1,
+      "health_index": 88.66,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:50.035000+00:00",
+      "event_id": "a5d49254-cfd6-4b62-9bcf-732247019bdf",
+      "vibration_x": 0.09726049407752585,
+      "temperature": 36.98266665357437,
+      "fault_level": 1,
+      "health_index": 87.1,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:51.053000+00:00",
+      "event_id": "8207b0ef-8649-4424-8873-8ffb84ebbe42",
+      "vibration_x": 0.09723390609492455,
+      "temperature": 37.18736871345184,
+      "fault_level": 1,
+      "health_index": 90.31,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:52.072000+00:00",
+      "event_id": "041d4555-f1b8-4bec-9d25-36133ed6ac65",
+      "vibration_x": 0.09586174590378714,
+      "temperature": 36.767971256759324,
+      "fault_level": 1,
+      "health_index": 91.02,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:53.093000+00:00",
+      "event_id": "37a1f583-515b-4ed3-a2d6-feca817dc182",
+      "vibration_x": 0.0971464069338933,
+      "temperature": 37.31687378019984,
+      "fault_level": 1,
+      "health_index": 84.61,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:54.116000+00:00",
+      "event_id": "f90daa82-40bd-4929-a006-176d61a9e46d",
+      "vibration_x": 0.09660844924432496,
+      "temperature": 36.80971095185407,
+      "fault_level": 1,
+      "health_index": 91.52,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:55.133000+00:00",
+      "event_id": "5593a661-8aff-4970-9d03-b0e9c36d938b",
+      "vibration_x": 0.09732269658243257,
+      "temperature": 36.92270870387244,
+      "fault_level": 1,
+      "health_index": 89.89,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:56.150000+00:00",
+      "event_id": "5e4634b5-61b8-40d2-98a5-7b1f48a41b9e",
+      "vibration_x": 0.0963880399381939,
+      "temperature": 37.040602722138956,
+      "fault_level": 1,
+      "health_index": 90.56,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:57.170000+00:00",
+      "event_id": "d96ad062-627a-42be-b897-1560fd0c9223",
+      "vibration_x": 0.09599003605212388,
+      "temperature": 37.294647003817744,
+      "fault_level": 1,
+      "health_index": 91.85,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:58.190000+00:00",
+      "event_id": "73aeeea7-5ce3-4ce2-a0ae-9fe910737d4b",
+      "vibration_x": 0.09634119862784048,
+      "temperature": 37.338872286658706,
+      "fault_level": 1,
+      "health_index": 91.18,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:05:59.206000+00:00",
+      "event_id": "fe602d30-a21c-4a6b-a07f-e2e88fa9fe0f",
+      "vibration_x": 0.09579758379531358,
+      "temperature": 36.884113876457995,
+      "fault_level": 1,
+      "health_index": 89.52,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:00.225000+00:00",
+      "event_id": "6153ea8f-ee22-41ab-8072-9f7542eb6c46",
+      "vibration_x": 0.09654605352910405,
+      "temperature": 37.22349085165166,
+      "fault_level": 1,
+      "health_index": 84.44,
+      "status": "normal",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:06:01.248000+00:00",
+      "event_id": "67099319-8002-4827-9589-50e4765e6b71",
+      "vibration_x": 0.09750176771827383,
+      "temperature": 37.1898082549216,
+      "fault_level": 1,
+      "health_index": 88.33,
+      "status": "normal",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:06:02.266000+00:00",
+      "event_id": "c559299f-5cdd-41b0-9ec1-1234bbf3a86c",
+      "vibration_x": 0.09620774997896639,
+      "temperature": 36.80640286454042,
+      "fault_level": 1,
+      "health_index": 89.74,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:03.289000+00:00",
+      "event_id": "cd204311-dbfa-4712-a8fd-9d6a6260311a",
+      "vibration_x": 0.09577314910541976,
+      "temperature": 37.60544184578372,
+      "fault_level": 1,
+      "health_index": 87.25,
+      "status": "normal",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:06:04.314000+00:00",
+      "event_id": "ddc7bb13-ea7c-44c4-9d5b-43e2a0197e00",
+      "vibration_x": 0.09631487871627531,
+      "temperature": 37.094316078348115,
+      "fault_level": 1,
+      "health_index": 89.22,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:05.333000+00:00",
+      "event_id": "3cd78259-c560-4741-8b14-b6e841aa3c9c",
+      "vibration_x": 0.149714130344347,
+      "temperature": 39.27517715106316,
+      "fault_level": 2,
+      "health_index": 71.23,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:06.351000+00:00",
+      "event_id": "89b982c9-99ec-4ccc-825d-23ee4fcb7324",
+      "vibration_x": 0.15038357937991273,
+      "temperature": 38.91337514793368,
+      "fault_level": 2,
+      "health_index": 78.31,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:07.371000+00:00",
+      "event_id": "72f6fef0-0f25-499a-93d7-0de7f262a142",
+      "vibration_x": 0.1493811415084926,
+      "temperature": 38.615948271524466,
+      "fault_level": 2,
+      "health_index": 79.53,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:08.393000+00:00",
+      "event_id": "d050123a-0f74-49ef-9ad2-f4c565459b27",
+      "vibration_x": 0.15004934109765453,
+      "temperature": 39.002079862776874,
+      "fault_level": 2,
+      "health_index": 76.42,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:09.411000+00:00",
+      "event_id": "0558629e-3e1e-4b89-91ef-5a6c299657fd",
+      "vibration_x": 0.1493791893696131,
+      "temperature": 39.12590154018514,
+      "fault_level": 2,
+      "health_index": 74.8,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:10.415000+00:00",
+      "event_id": "dc93bb7c-0d29-45f1-8044-0d0ac9a2d077",
+      "vibration_x": 0.15008759500213875,
+      "temperature": 39.15647122524588,
+      "fault_level": 2,
+      "health_index": 78.57,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:11.435000+00:00",
+      "event_id": "4720eb6b-cd8b-486d-8f35-9e1794bb0576",
+      "vibration_x": 0.1483615238852897,
+      "temperature": 39.258479947402286,
+      "fault_level": 2,
+      "health_index": 79.15,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:12.454000+00:00",
+      "event_id": "8624725a-33d0-4774-8bfd-4e1333f39214",
+      "vibration_x": 0.14779119271532062,
+      "temperature": 38.67658488398297,
+      "fault_level": 2,
+      "health_index": 78.26,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:13.472000+00:00",
+      "event_id": "9d1a9cf6-084a-48d7-9113-5bc0e0802cd6",
+      "vibration_x": 0.14987400353681826,
+      "temperature": 39.272624783996896,
+      "fault_level": 2,
+      "health_index": 78.77,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:06:14.494000+00:00",
+      "event_id": "84e8194d-5d4f-4969-8f5c-f9763225e5b8",
+      "vibration_x": 0.1493450192912124,
+      "temperature": 39.403532371561724,
+      "fault_level": 2,
+      "health_index": 76.48,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:15.512000+00:00",
+      "event_id": "55e93a04-1174-4fa0-8be0-0c68a27a09e7",
+      "vibration_x": 0.1496903009762206,
+      "temperature": 39.20295853802003,
+      "fault_level": 2,
+      "health_index": 80.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:16.536000+00:00",
+      "event_id": "d75529cf-4d10-4be1-a322-2376037bf79d",
+      "vibration_x": 0.150315543528235,
+      "temperature": 39.02583421332109,
+      "fault_level": 2,
+      "health_index": 77.07,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:17.553000+00:00",
+      "event_id": "c16712b9-a050-41b3-bcb3-cbee587cd686",
+      "vibration_x": 0.14909366059826995,
+      "temperature": 38.24896822304619,
+      "fault_level": 2,
+      "health_index": 74.72,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:18.570000+00:00",
+      "event_id": "d4ea397a-8f82-43d7-a6b7-d5edba715685",
+      "vibration_x": 0.14637724432107693,
+      "temperature": 38.69086895841381,
+      "fault_level": 2,
+      "health_index": 86.69,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:19.587000+00:00",
+      "event_id": "8a1f7506-1f51-4690-ab38-dd65d410df37",
+      "vibration_x": 0.15046967014876877,
+      "temperature": 39.06532115902233,
+      "fault_level": 2,
+      "health_index": 78.45,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:20.603000+00:00",
+      "event_id": "8b8f086b-c841-4f75-bcb2-4ea37f68a816",
+      "vibration_x": 0.14996274753130506,
+      "temperature": 38.94107154794432,
+      "fault_level": 2,
+      "health_index": 82.15,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:21.628000+00:00",
+      "event_id": "a5f7208d-e0ed-4a90-ae78-b375267699a9",
+      "vibration_x": 0.14892855879661251,
+      "temperature": 38.96363036411941,
+      "fault_level": 2,
+      "health_index": 78.01,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:22.648000+00:00",
+      "event_id": "563344c9-f396-4417-9742-092ad9a9737d",
+      "vibration_x": 0.14773908427584126,
+      "temperature": 38.98533186926369,
+      "fault_level": 2,
+      "health_index": 79.95,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:06:23.668000+00:00",
+      "event_id": "e958d455-df6d-4d77-81fc-dadc5b98985e",
+      "vibration_x": 0.15047845447160388,
+      "temperature": 39.31416669874961,
+      "fault_level": 2,
+      "health_index": 78.09,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:06:24.690000+00:00",
+      "event_id": "74dbffa7-d2dd-4e8b-95bb-26b98b8152b3",
+      "vibration_x": 0.149038843570151,
+      "temperature": 38.68569201383375,
+      "fault_level": 2,
+      "health_index": 84.84,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:25.708000+00:00",
+      "event_id": "65f78237-68f9-409d-b1d9-3b2c451a4692",
+      "vibration_x": 0.14963314535916636,
+      "temperature": 38.79487446828482,
+      "fault_level": 2,
+      "health_index": 78.94,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:26.725000+00:00",
+      "event_id": "ce374378-607f-48d7-ac84-9a257213f1d0",
+      "vibration_x": 0.14827332775985136,
+      "temperature": 38.91834466641693,
+      "fault_level": 2,
+      "health_index": 86.57,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:27.742000+00:00",
+      "event_id": "8492b617-c162-4470-81ec-eb3302c58e40",
+      "vibration_x": 0.15204706673845572,
+      "temperature": 38.695733633606245,
+      "fault_level": 2,
+      "health_index": 82.7,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:28.758000+00:00",
+      "event_id": "8518ff38-41b4-427c-ae53-faf45879f885",
+      "vibration_x": 0.14927663048799467,
+      "temperature": 39.2035796138826,
+      "fault_level": 2,
+      "health_index": 82.5,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:29.776000+00:00",
+      "event_id": "92640d06-1771-4db2-83bf-ea6666bfa4b5",
+      "vibration_x": 0.1491453160934438,
+      "temperature": 39.75418209833655,
+      "fault_level": 2,
+      "health_index": 84.67,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:30.795000+00:00",
+      "event_id": "a59a4108-012b-493d-8b17-d38a5cc2b818",
+      "vibration_x": 0.1498800933652645,
+      "temperature": 38.723645688677244,
+      "fault_level": 2,
+      "health_index": 84.75,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:31.814000+00:00",
+      "event_id": "b7443a22-8f60-470b-b289-a5db3580ddc0",
+      "vibration_x": 0.15009126805474762,
+      "temperature": 39.203648364534665,
+      "fault_level": 2,
+      "health_index": 79.64,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:32.830000+00:00",
+      "event_id": "79abd00f-0bfe-4728-9006-500a5c8bfa8e",
+      "vibration_x": 0.1494451583034959,
+      "temperature": 38.48337426786737,
+      "fault_level": 2,
+      "health_index": 85.8,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:33.853000+00:00",
+      "event_id": "1bd42cd8-a8dd-457e-b19b-5de61a142235",
+      "vibration_x": 0.14852632304989435,
+      "temperature": 38.989998862123095,
+      "fault_level": 2,
+      "health_index": 82.5,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:34.873000+00:00",
+      "event_id": "2dd8edf4-beff-4468-8531-dae5e3919235",
+      "vibration_x": 0.14959945156604113,
+      "temperature": 38.70713337753417,
+      "fault_level": 2,
+      "health_index": 70.64,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:35.892000+00:00",
+      "event_id": "f86e5e67-00aa-4464-aecb-0b85f82d0a4b",
+      "vibration_x": 0.14985684278511138,
+      "temperature": 39.153224545923564,
+      "fault_level": 2,
+      "health_index": 78.19,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:36.913000+00:00",
+      "event_id": "c20ebccc-d26b-4425-98b3-3f11a8032963",
+      "vibration_x": 0.14937037128186614,
+      "temperature": 39.21469527692186,
+      "fault_level": 2,
+      "health_index": 74.16,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:37.930000+00:00",
+      "event_id": "79c0047e-1baf-4f35-8c79-79eab3b6d215",
+      "vibration_x": 0.1483248902781462,
+      "temperature": 38.81788147619898,
+      "fault_level": 2,
+      "health_index": 76.84,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:38.949000+00:00",
+      "event_id": "a3e5b477-aade-4949-852d-bd4e9c434900",
+      "vibration_x": 0.04695608455177051,
+      "temperature": 34.285476039641736,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:39.966000+00:00",
+      "event_id": "ad5acadf-a4d3-4f65-86bd-9cbaad711f1e",
+      "vibration_x": 0.047395754840030654,
+      "temperature": 34.69228624129849,
+      "fault_level": 0,
+      "health_index": 94.98,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:40.954000+00:00",
+      "event_id": "ebf10d19-2bb3-4320-a5d9-9beaf404a2b1",
+      "vibration_x": 0.04726026833144407,
+      "temperature": 35.010662275588366,
+      "fault_level": 0,
+      "health_index": 94.9,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:41.971000+00:00",
+      "event_id": "0a2fd387-858d-4ed8-bb9b-9364d8f1a70b",
+      "vibration_x": 0.047372315529842675,
+      "temperature": 35.41176841331899,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:42.999000+00:00",
+      "event_id": "68f64297-6eb8-4d60-a37d-bcf533e1d393",
+      "vibration_x": 0.047375040548409825,
+      "temperature": 35.06114317079024,
+      "fault_level": 0,
+      "health_index": 94.96,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:44.018000+00:00",
+      "event_id": "6a9bbb3c-dfb4-4796-965e-f6bffa0ccb1c",
+      "vibration_x": 0.04718731288536131,
+      "temperature": 34.748310866424944,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:45.037000+00:00",
+      "event_id": "d5493a37-5128-49d0-af88-8e0d75464c15",
+      "vibration_x": 0.04756158545261522,
+      "temperature": 34.555273177130516,
+      "fault_level": 0,
+      "health_index": 94.98,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:46.051000+00:00",
+      "event_id": "f064df37-8dfe-4aee-9f9c-d2916bbd177a",
+      "vibration_x": 0.04700984967854865,
+      "temperature": 34.71618516704311,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:47.071000+00:00",
+      "event_id": "9c50b4db-a8aa-437b-a4cc-a92ca0f74d76",
+      "vibration_x": 0.04763771269692546,
+      "temperature": 35.117265333007694,
+      "fault_level": 0,
+      "health_index": 94.96,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:48.089000+00:00",
+      "event_id": "f06d82d6-0c66-44b4-82eb-8e800edb1441",
+      "vibration_x": 0.047259937280386514,
+      "temperature": 34.86071373478784,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:49.105000+00:00",
+      "event_id": "5d2f8847-936f-4f68-804b-4cc818b0b561",
+      "vibration_x": 0.04714927946067738,
+      "temperature": 34.79808759098833,
+      "fault_level": 0,
+      "health_index": 94.88,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:50.119000+00:00",
+      "event_id": "9a8e52aa-1684-4066-a413-3255ffd42099",
+      "vibration_x": 0.04735285766956561,
+      "temperature": 35.00644677516294,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:51.132000+00:00",
+      "event_id": "fd314b21-baa3-4bbb-b70f-2d56b934ea87",
+      "vibration_x": 0.04717702129612847,
+      "temperature": 34.92567849942525,
+      "fault_level": 0,
+      "health_index": 94.95,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:52.161000+00:00",
+      "event_id": "67958a5d-63e8-457c-9698-5a5827dafc4d",
+      "vibration_x": 0.04714242762542094,
+      "temperature": 35.18104395152592,
+      "fault_level": 0,
+      "health_index": 94.97,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:53.183000+00:00",
+      "event_id": "efc440a4-1025-488c-87b5-3179f8d1ae3e",
+      "vibration_x": 0.04803064788568163,
+      "temperature": 34.86765067101825,
+      "fault_level": 0,
+      "health_index": 94.97,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:54.204000+00:00",
+      "event_id": "693a3803-0c10-4313-a4ae-ee3621a11d59",
+      "vibration_x": 0.047645326963622794,
+      "temperature": 35.17565040926757,
+      "fault_level": 0,
+      "health_index": 94.82,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:55.221000+00:00",
+      "event_id": "f532d8bc-e095-49da-b595-8201bb4aaa1e",
+      "vibration_x": 0.04782093002990955,
+      "temperature": 34.71055852050752,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:56.238000+00:00",
+      "event_id": "682e33dd-2904-4255-8f46-ede1e0513c8a",
+      "vibration_x": 0.04724973506506829,
+      "temperature": 35.00808439024937,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:57.256000+00:00",
+      "event_id": "552a9331-c12a-41fd-ae14-804ac4b0ccd8",
+      "vibration_x": 0.04701164703373482,
+      "temperature": 35.076134464424065,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:58.274000+00:00",
+      "event_id": "04d2dfab-a0d2-4def-9291-ebbb382080c3",
+      "vibration_x": 0.04734795989713227,
+      "temperature": 35.18098480961633,
+      "fault_level": 0,
+      "health_index": 94.98,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:06:59.291000+00:00",
+      "event_id": "2da360e4-f6c6-434e-93c5-0df5eb62fcfc",
+      "vibration_x": 0.047678800102432604,
+      "temperature": 35.04127477257978,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:00.311000+00:00",
+      "event_id": "972923f3-de77-4cb9-bb06-7a06013a6e61",
+      "vibration_x": 0.047662202053466066,
+      "temperature": 35.294721012303235,
+      "fault_level": 0,
+      "health_index": 94.88,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:01.328000+00:00",
+      "event_id": "3ccc2c91-e612-4c2e-b4ee-6d270eccffc4",
+      "vibration_x": 0.04756126834152553,
+      "temperature": 34.72479753331008,
+      "fault_level": 0,
+      "health_index": 94.94,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:02.344000+00:00",
+      "event_id": "7ee80547-a9aa-4603-b560-e2d2f4894f8c",
+      "vibration_x": 0.047466710641634914,
+      "temperature": 35.223449394210256,
+      "fault_level": 0,
+      "health_index": 94.98,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:03.362000+00:00",
+      "event_id": "f81c2062-2be4-4c73-a566-b7c64b55c46d",
+      "vibration_x": 0.0473836723158479,
+      "temperature": 35.098097400443095,
+      "fault_level": 0,
+      "health_index": 94.92,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:04.391000+00:00",
+      "event_id": "3082ed79-56be-437c-95d1-13d600334c32",
+      "vibration_x": 0.04679462302643804,
+      "temperature": 35.36229158436788,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:05.407000+00:00",
+      "event_id": "757e50d3-fb70-40f0-8fdc-a21028502e78",
+      "vibration_x": 0.047453735347924526,
+      "temperature": 34.897604532607886,
+      "fault_level": 0,
+      "health_index": 94.86,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:06.422000+00:00",
+      "event_id": "f3550148-984e-4731-9ce0-661404c5ecda",
+      "vibration_x": 0.04719333080953509,
+      "temperature": 35.31037100563087,
+      "fault_level": 0,
+      "health_index": 94.88,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:07.442000+00:00",
+      "event_id": "c8ef2c7a-99db-4797-abf5-8419bc394051",
+      "vibration_x": 0.04707327670296448,
+      "temperature": 35.14195673761681,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:08.458000+00:00",
+      "event_id": "8f516470-40cd-4dce-9562-614832918b58",
+      "vibration_x": 0.04749611823075481,
+      "temperature": 34.89909248639054,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:09.479000+00:00",
+      "event_id": "c9b9c698-35fc-4806-bfcd-1978ed8aee28",
+      "vibration_x": 0.04735626622804513,
+      "temperature": 34.73642986127776,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:10.463000+00:00",
+      "event_id": "3be93af2-a980-479f-9e58-1f28fa1282d9",
+      "vibration_x": 0.04737082316930052,
+      "temperature": 34.53421111616434,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:11.479000+00:00",
+      "event_id": "6efbcf24-eca2-4544-a17a-a08e925bd5e3",
+      "vibration_x": 0.04711827539226553,
+      "temperature": 35.37048138137143,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:12.500000+00:00",
+      "event_id": "9d1476b8-03a0-470b-bc94-f0fac9520790",
+      "vibration_x": 0.047623482611381704,
+      "temperature": 34.786402338707745,
+      "fault_level": 0,
+      "health_index": 94.92,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:13.517000+00:00",
+      "event_id": "83901fc8-3e3a-4d87-8da8-79921863c6e6",
+      "vibration_x": 0.04677049847448838,
+      "temperature": 34.78829513995887,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:14.532000+00:00",
+      "event_id": "c33db9eb-1d81-49f1-9791-e5525726a8be",
+      "vibration_x": 0.047171627735802156,
+      "temperature": 34.66863011566213,
+      "fault_level": 0,
+      "health_index": 94.97,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:15.550000+00:00",
+      "event_id": "92d9959e-6987-45b8-8f32-7560d38fbd33",
+      "vibration_x": 0.04757749656601781,
+      "temperature": 35.3589301696282,
+      "fault_level": 0,
+      "health_index": 94.93,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:16.567000+00:00",
+      "event_id": "79c1997b-ef65-45de-895a-2647d2787d44",
+      "vibration_x": 0.047547652016488286,
+      "temperature": 35.39571518829252,
+      "fault_level": 0,
+      "health_index": 94.97,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:17.583000+00:00",
+      "event_id": "8de665e8-a8b3-4371-9ef9-74cd20eed855",
+      "vibration_x": 0.04718049604834778,
+      "temperature": 34.83455387676397,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:18.602000+00:00",
+      "event_id": "a30e5db6-e6c3-417a-ade2-da2783a5af2e",
+      "vibration_x": 0.047456345367148704,
+      "temperature": 35.0442575459839,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:19.626000+00:00",
+      "event_id": "d33fd4b4-6a81-4f47-9e66-ec138afe46a5",
+      "vibration_x": 0.04688187354174883,
+      "temperature": 34.701572543208165,
+      "fault_level": 0,
+      "health_index": 94.9,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:20.649000+00:00",
+      "event_id": "ba2c3b86-e69b-491d-a378-9227b31d6eaa",
+      "vibration_x": 0.04717849493802127,
+      "temperature": 35.307340786574834,
+      "fault_level": 0,
+      "health_index": 94.87,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:21.667000+00:00",
+      "event_id": "cc4cc679-bbaf-42b7-91ef-2eb115f91613",
+      "vibration_x": 0.047746583183500856,
+      "temperature": 35.00440048229328,
+      "fault_level": 0,
+      "health_index": 94.95,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:22.684000+00:00",
+      "event_id": "3bbba4b8-f6b6-4085-8db7-68e3706e3af5",
+      "vibration_x": 0.04777841809092767,
+      "temperature": 35.1710982068121,
+      "fault_level": 0,
+      "health_index": 94.86,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:23.703000+00:00",
+      "event_id": "75be8307-655c-482c-a4c4-971ac87dcbe1",
+      "vibration_x": 0.047478008158384384,
+      "temperature": 34.324696325230946,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:24.722000+00:00",
+      "event_id": "7843c095-06a5-4f04-bff0-bb2db8af2002",
+      "vibration_x": 0.04757604900541073,
+      "temperature": 34.918375843414175,
+      "fault_level": 0,
+      "health_index": 94.94,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:25.739000+00:00",
+      "event_id": "4e9aa801-a6cb-487f-b71e-3bee61ab4451",
+      "vibration_x": 0.047417891533873935,
+      "temperature": 34.71475609349532,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:26.756000+00:00",
+      "event_id": "c73a95b9-d9cc-4a0a-8b33-89076714a699",
+      "vibration_x": 0.04745266630845461,
+      "temperature": 35.1433029812745,
+      "fault_level": 0,
+      "health_index": 94.99,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:27.775000+00:00",
+      "event_id": "af6bdffa-c3ac-40c8-b411-8ced41086ec6",
+      "vibration_x": 0.04698035990759319,
+      "temperature": 34.84318684977338,
+      "fault_level": 0,
+      "health_index": 94.96,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:28.795000+00:00",
+      "event_id": "a3e9e417-b2e7-45c3-a68f-2e275fb33cfb",
+      "vibration_x": 0.04771159874025419,
+      "temperature": 35.01045187547646,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:29.812000+00:00",
+      "event_id": "d81f2c15-0072-43e9-b39a-cbca61b66aee",
+      "vibration_x": 0.047774039078979105,
+      "temperature": 34.90424607514313,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:30.831000+00:00",
+      "event_id": "4a3ff422-cc3a-4629-964b-201fdb78e9c0",
+      "vibration_x": 0.04728885300129033,
+      "temperature": 34.540191925356694,
+      "fault_level": 0,
+      "health_index": 94.98,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:31.850000+00:00",
+      "event_id": "ca740d25-32ce-40c8-a5ec-edcc57666585",
+      "vibration_x": 0.04729606653137506,
+      "temperature": 35.12256637770635,
+      "fault_level": 0,
+      "health_index": 94.79,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:32.869000+00:00",
+      "event_id": "fa695ff3-7d0d-4082-94cc-6d16287fade3",
+      "vibration_x": 0.047725713643884116,
+      "temperature": 35.087288423130865,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:33.889000+00:00",
+      "event_id": "1c0075cd-ed95-4468-8e8b-e1980ce83a7f",
+      "vibration_x": 0.04731305050236451,
+      "temperature": 34.893530943746875,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:34.907000+00:00",
+      "event_id": "40194033-5488-4982-9748-56192f11c922",
+      "vibration_x": 0.04758210806387062,
+      "temperature": 35.11896038731382,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:35.926000+00:00",
+      "event_id": "9256d9b7-3501-4e52-bef9-a0c64383b47d",
+      "vibration_x": 0.04711583968489225,
+      "temperature": 34.82105064136424,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:36.947000+00:00",
+      "event_id": "7df270ab-072a-45bc-9286-9eda793c9512",
+      "vibration_x": 0.047668275090938544,
+      "temperature": 35.176155451736484,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:37.966000+00:00",
+      "event_id": "4e73b1a7-024e-43f1-a1b3-4fc61e026638",
+      "vibration_x": 0.04733392026489061,
+      "temperature": 35.040998799302265,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:38.983000+00:00",
+      "event_id": "a855a3b1-b529-4adb-9ce4-334499116b86",
+      "vibration_x": 0.04693422493765094,
+      "temperature": 35.26609124563323,
+      "fault_level": 0,
+      "health_index": 94.92,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:40.008000+00:00",
+      "event_id": "33c0dc50-9283-4dd4-a731-59cb64e0d038",
+      "vibration_x": 0.04696280893130674,
+      "temperature": 35.0963475359452,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:40.999000+00:00",
+      "event_id": "86c7ac17-eeac-4193-b1fb-05eb67d1ebab",
+      "vibration_x": 0.04712646369815975,
+      "temperature": 35.250955019578605,
+      "fault_level": 0,
+      "health_index": 94.98,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:42.017000+00:00",
+      "event_id": "9ac1c816-afec-4921-9cb1-ed62783d4e01",
+      "vibration_x": 0.04713718506047221,
+      "temperature": 35.284466956836326,
+      "fault_level": 0,
+      "health_index": 94.96,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:43.044000+00:00",
+      "event_id": "6cff7f9c-4349-46c0-b5c9-b51b330083b1",
+      "vibration_x": 0.04776600442427164,
+      "temperature": 34.72595511581036,
+      "fault_level": 0,
+      "health_index": 95.0,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:44.058000+00:00",
+      "event_id": "da013495-aeef-40f7-a223-e8c54bea222a",
+      "vibration_x": 0.14975054123336126,
+      "temperature": 39.17770251191236,
+      "fault_level": 2,
+      "health_index": 84.86,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:45.073000+00:00",
+      "event_id": "9c3ec4b4-6dbd-4264-ae38-47b3bc9fea53",
+      "vibration_x": 0.14797937830524502,
+      "temperature": 38.86412991999026,
+      "fault_level": 2,
+      "health_index": 82.87,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:46.088000+00:00",
+      "event_id": "3a84819f-9973-49ff-a99c-79b7a6588b3d",
+      "vibration_x": 0.15031631072723092,
+      "temperature": 38.95724196918163,
+      "fault_level": 2,
+      "health_index": 75.17,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:47.105000+00:00",
+      "event_id": "dc525653-6ece-4080-8c9d-fd63b2762037",
+      "vibration_x": 0.14913369507860327,
+      "temperature": 38.809190889606164,
+      "fault_level": 2,
+      "health_index": 81.46,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:48.123000+00:00",
+      "event_id": "444531ea-4cd7-43ff-8e9c-76fc1c6791cf",
+      "vibration_x": 0.14967447703471065,
+      "temperature": 38.64335249354587,
+      "fault_level": 2,
+      "health_index": 80.92,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:49.139000+00:00",
+      "event_id": "564bd4e8-a6ea-4393-9132-28479217f504",
+      "vibration_x": 0.14866099208316902,
+      "temperature": 38.70637850100878,
+      "fault_level": 2,
+      "health_index": 74.75,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:50.156000+00:00",
+      "event_id": "2c381578-36dd-44dd-8baa-16eb5f219270",
+      "vibration_x": 0.14983685339858369,
+      "temperature": 39.16212142431428,
+      "fault_level": 2,
+      "health_index": 79.65,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:51.174000+00:00",
+      "event_id": "4b66709d-b8c9-45ad-b104-43964ef487d7",
+      "vibration_x": 0.15123441798843104,
+      "temperature": 39.12737666625937,
+      "fault_level": 2,
+      "health_index": 79.1,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:52.195000+00:00",
+      "event_id": "3586fdda-1318-4d66-a2a4-537bd47e2e58",
+      "vibration_x": 0.15025478692877914,
+      "temperature": 38.87773988064631,
+      "fault_level": 2,
+      "health_index": 79.05,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:53.223000+00:00",
+      "event_id": "91d24ad6-d481-4c2e-9b9c-4c529cf80fde",
+      "vibration_x": 0.14943705783948588,
+      "temperature": 39.007627359277826,
+      "fault_level": 2,
+      "health_index": 71.65,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:54.250000+00:00",
+      "event_id": "33ea2d25-9920-4f63-aaa8-4a909f303849",
+      "vibration_x": 0.15003489180134497,
+      "temperature": 39.53088831056718,
+      "fault_level": 2,
+      "health_index": 72.74,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:55.268000+00:00",
+      "event_id": "2b7e5133-ebec-4e10-92e7-b2df835ca583",
+      "vibration_x": 0.1498595374582985,
+      "temperature": 38.99787428387001,
+      "fault_level": 2,
+      "health_index": 78.0,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:56.286000+00:00",
+      "event_id": "028c6c24-ea1c-40c7-89e7-4b14bfdc9bd1",
+      "vibration_x": 0.14820718144215098,
+      "temperature": 39.43918218616747,
+      "fault_level": 2,
+      "health_index": 79.79,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:07:57.304000+00:00",
+      "event_id": "1b750c48-ce1c-4d12-a6ae-70801131d087",
+      "vibration_x": 0.15007460259972152,
+      "temperature": 39.190277205804115,
+      "fault_level": 2,
+      "health_index": 81.01,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:07:58.319000+00:00",
+      "event_id": "75ffeca0-7792-48ce-b5c0-df7f17dd981f",
+      "vibration_x": 0.14972815473574153,
+      "temperature": 38.987510364838315,
+      "fault_level": 2,
+      "health_index": 81.55,
+      "status": "normal",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:07:59.333000+00:00",
+      "event_id": "881012fc-89de-4893-874e-a6ffe8b5aa9c",
+      "vibration_x": 0.14907017800362124,
+      "temperature": 38.3088296243084,
+      "fault_level": 2,
+      "health_index": 82.76,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:00.347000+00:00",
+      "event_id": "09124876-633c-4122-afa8-d261eb1c2add",
+      "vibration_x": 0.14966256156207783,
+      "temperature": 39.485513478153884,
+      "fault_level": 2,
+      "health_index": 82.6,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:01.368000+00:00",
+      "event_id": "05f359e4-1f18-487f-bbd5-378109d2250e",
+      "vibration_x": 0.15067043282528544,
+      "temperature": 38.505784644145336,
+      "fault_level": 2,
+      "health_index": 81.71,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:02.388000+00:00",
+      "event_id": "ec000609-21ab-4da8-858f-aba5d23f52a0",
+      "vibration_x": 0.1493508083155201,
+      "temperature": 39.16329451972717,
+      "fault_level": 2,
+      "health_index": 77.17,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:03.408000+00:00",
+      "event_id": "7faa8ac7-6420-47a6-8a25-708a136be800",
+      "vibration_x": 0.15042043200144495,
+      "temperature": 38.453080405246816,
+      "fault_level": 2,
+      "health_index": 78.78,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:08:04.428000+00:00",
+      "event_id": "1736513f-d505-4359-a858-7a814e2da5ef",
+      "vibration_x": 0.1490798164880449,
+      "temperature": 39.17404791974398,
+      "fault_level": 2,
+      "health_index": 80.01,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:05.447000+00:00",
+      "event_id": "96240eb0-b831-4180-9c6c-4a821fac7a2f",
+      "vibration_x": 0.14857170687410673,
+      "temperature": 39.29265796191581,
+      "fault_level": 2,
+      "health_index": 75.79,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:08:06.468000+00:00",
+      "event_id": "05494676-795a-4fd8-990e-41b8654d323b",
+      "vibration_x": 0.15077175909000598,
+      "temperature": 39.222731774476834,
+      "fault_level": 2,
+      "health_index": 78.51,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:07.483000+00:00",
+      "event_id": "9f4ba859-fc3b-4df9-9a81-febb8fd22fd9",
+      "vibration_x": 0.14790168320682992,
+      "temperature": 38.99297931989073,
+      "fault_level": 2,
+      "health_index": 79.79,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:08.507000+00:00",
+      "event_id": "b9bd08ff-7497-49d6-9d70-285a9282d1ce",
+      "vibration_x": 0.14842448282667292,
+      "temperature": 39.30572067933438,
+      "fault_level": 2,
+      "health_index": 84.79,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:09.527000+00:00",
+      "event_id": "66a64c14-f219-495d-a072-c080fece51f6",
+      "vibration_x": 0.14989463388991398,
+      "temperature": 38.5975597661608,
+      "fault_level": 2,
+      "health_index": 83.75,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:10.517000+00:00",
+      "event_id": "7061c47e-ca8b-4ee9-913f-b09f91af31de",
+      "vibration_x": 0.1495446406782824,
+      "temperature": 38.90680361235837,
+      "fault_level": 2,
+      "health_index": 85.45,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:11.536000+00:00",
+      "event_id": "9a5d2d83-f546-4885-969b-92aa1642d073",
+      "vibration_x": 0.1487704422019228,
+      "temperature": 38.662854458695676,
+      "fault_level": 2,
+      "health_index": 71.96,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:12.556000+00:00",
+      "event_id": "eb336a28-9eb4-4ee0-8568-82959e6c6717",
+      "vibration_x": 0.1508050087715288,
+      "temperature": 38.79573017488859,
+      "fault_level": 2,
+      "health_index": 80.51,
+      "status": "normal",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:08:13.573000+00:00",
+      "event_id": "51beaa23-b80f-403d-bbbf-091920a96eb9",
+      "vibration_x": 0.14790498415934952,
+      "temperature": 39.12587196272512,
+      "fault_level": 2,
+      "health_index": 78.03,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:14.591000+00:00",
+      "event_id": "e322c08c-5e96-4705-9e1b-b8f04edbcb6d",
+      "vibration_x": 0.149959966173573,
+      "temperature": 38.8429814798579,
+      "fault_level": 2,
+      "health_index": 81.26,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:15.609000+00:00",
+      "event_id": "ce4c0ebe-a529-4c82-b24d-2374ca907ff8",
+      "vibration_x": 0.1511497500634235,
+      "temperature": 39.41725744032102,
+      "fault_level": 2,
+      "health_index": 86.7,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:16.626000+00:00",
+      "event_id": "8b6d2f34-13f7-4f98-95d2-885a044a807e",
+      "vibration_x": 0.1493050643010278,
+      "temperature": 39.21550033462796,
+      "fault_level": 2,
+      "health_index": 79.24,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:17.644000+00:00",
+      "event_id": "c95da47b-1dc0-4679-a49c-756c186614a1",
+      "vibration_x": 0.09653751775711078,
+      "temperature": 36.8973122890665,
+      "fault_level": 1,
+      "health_index": 90.83,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:18.662000+00:00",
+      "event_id": "cac75a6e-daa1-4937-a72f-902bdcf3572d",
+      "vibration_x": 0.09602823420856456,
+      "temperature": 37.07762518047046,
+      "fault_level": 1,
+      "health_index": 91.33,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:19.680000+00:00",
+      "event_id": "aa8c2d89-8e06-493f-b44a-d8b31da0a863",
+      "vibration_x": 0.09705445102002161,
+      "temperature": 36.882348294499835,
+      "fault_level": 1,
+      "health_index": 90.32,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:20.701000+00:00",
+      "event_id": "c4dcd4db-5f55-493e-b003-ebde752eb37e",
+      "vibration_x": 0.09629864956279496,
+      "temperature": 37.14768904945249,
+      "fault_level": 1,
+      "health_index": 90.32,
+      "status": "normal",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:08:21.721000+00:00",
+      "event_id": "9a11eedc-8453-43dd-ae21-949fe47763df",
+      "vibration_x": 0.0968745308474862,
+      "temperature": 37.46194761340732,
+      "fault_level": 1,
+      "health_index": 90.71,
+      "status": "normal",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:08:22.739000+00:00",
+      "event_id": "305d59d2-89f9-49bb-89e5-d5b7c10f4c7f",
+      "vibration_x": 0.0960676577617191,
+      "temperature": 37.330606619748615,
+      "fault_level": 1,
+      "health_index": 88.57,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:23.752000+00:00",
+      "event_id": "cdc36cdc-3a46-4fd8-a68e-3700dc95bc90",
+      "vibration_x": 0.0964647027650972,
+      "temperature": 36.63852700652877,
+      "fault_level": 1,
+      "health_index": 90.92,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:24.769000+00:00",
+      "event_id": "7d862f11-77fe-4304-8f24-30392291beb6",
+      "vibration_x": 0.09630584343426662,
+      "temperature": 37.46831948883902,
+      "fault_level": 1,
+      "health_index": 91.01,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:25.788000+00:00",
+      "event_id": "bfe2f6d1-7820-4bed-971d-aa8966ce0d17",
+      "vibration_x": 0.09718368604847137,
+      "temperature": 37.367630276579305,
+      "fault_level": 1,
+      "health_index": 91.59,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:26.801000+00:00",
+      "event_id": "8a797e2d-0dff-476c-b3c0-7a214bda86be",
+      "vibration_x": 0.09738713553211935,
+      "temperature": 37.22178519030584,
+      "fault_level": 1,
+      "health_index": 90.39,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:27.816000+00:00",
+      "event_id": "478bea17-6d1a-4896-886f-91f7ac95787c",
+      "vibration_x": 0.09725749132806977,
+      "temperature": 37.17233701627906,
+      "fault_level": 1,
+      "health_index": 91.42,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:28.832000+00:00",
+      "event_id": "f0feee52-9172-4f4e-89ee-6263a98a904a",
+      "vibration_x": 0.09568787786528725,
+      "temperature": 37.20694859778528,
+      "fault_level": 1,
+      "health_index": 88.8,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:29.849000+00:00",
+      "event_id": "ddf7fd0c-16d4-4e88-a035-ac20d89f26ca",
+      "vibration_x": 0.09562968718867833,
+      "temperature": 36.37672401560402,
+      "fault_level": 1,
+      "health_index": 87.68,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:30.868000+00:00",
+      "event_id": "e76479fb-a7d9-4c05-9a7d-feeda44ff8b2",
+      "vibration_x": 0.09718842642014867,
+      "temperature": 37.39502989545147,
+      "fault_level": 1,
+      "health_index": 87.7,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:31.889000+00:00",
+      "event_id": "e5ab99e2-59ab-47a0-974b-a53247ed7ca7",
+      "vibration_x": 0.09723780005407548,
+      "temperature": 36.69633849715089,
+      "fault_level": 1,
+      "health_index": 87.52,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:32.906000+00:00",
+      "event_id": "e82d415a-c8a2-4676-9bc9-5c1f60c8ef62",
+      "vibration_x": 0.09649995450502796,
+      "temperature": 37.3189677665072,
+      "fault_level": 1,
+      "health_index": 86.03,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:33.926000+00:00",
+      "event_id": "a78ea156-59a8-4e5f-8f5b-50039b1bc26f",
+      "vibration_x": 0.09604055722506073,
+      "temperature": 36.48823493084264,
+      "fault_level": 1,
+      "health_index": 88.07,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:34.944000+00:00",
+      "event_id": "613c317c-43d3-48ca-816b-e72bb0933f9a",
+      "vibration_x": 0.09673637320434172,
+      "temperature": 37.26804632683831,
+      "fault_level": 1,
+      "health_index": 88.71,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:35.961000+00:00",
+      "event_id": "6ecae6ab-5df8-4ced-8ba5-fd370c447b02",
+      "vibration_x": 0.09597249991890681,
+      "temperature": 37.041656570346426,
+      "fault_level": 1,
+      "health_index": 88.86,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:36.978000+00:00",
+      "event_id": "1bd62f38-5450-425d-bc5a-58aa1ad8c139",
+      "vibration_x": 0.095186819526287,
+      "temperature": 37.0992137956327,
+      "fault_level": 1,
+      "health_index": 88.64,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:37.995000+00:00",
+      "event_id": "8e96fd66-8616-43db-a2a8-c06997e440ac",
+      "vibration_x": 0.095744446747941,
+      "temperature": 36.79475976814339,
+      "fault_level": 1,
+      "health_index": 88.47,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:39.014000+00:00",
+      "event_id": "2abd306d-d6c7-4122-ab34-2dcc4735b801",
+      "vibration_x": 0.09607294659105153,
+      "temperature": 36.44055252303714,
+      "fault_level": 1,
+      "health_index": 90.05,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:40.033000+00:00",
+      "event_id": "6c42a352-9480-460e-9832-4b4e3ff69bea",
+      "vibration_x": 0.09738657352657724,
+      "temperature": 36.33578803391563,
+      "fault_level": 1,
+      "health_index": 90.04,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:41.053000+00:00",
+      "event_id": "ce4f75f2-7f4d-4991-8b1b-947cdb2992e8",
+      "vibration_x": 0.09650544574038343,
+      "temperature": 36.80683598317635,
+      "fault_level": 1,
+      "health_index": 91.0,
+      "status": "normal",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:08:42.070000+00:00",
+      "event_id": "99a61c21-bbab-49e7-8905-e8cf9ab36f71",
+      "vibration_x": 0.09700373534803378,
+      "temperature": 36.74143286844204,
+      "fault_level": 1,
+      "health_index": 88.15,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:43.085000+00:00",
+      "event_id": "e004b168-4606-4731-88ef-90dce9855c6f",
+      "vibration_x": 0.09757931470201649,
+      "temperature": 37.35841444411637,
+      "fault_level": 1,
+      "health_index": 88.98,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:44.101000+00:00",
+      "event_id": "afcc674d-2761-4d5d-98f1-9443f270cebf",
+      "vibration_x": 0.09607719574712041,
+      "temperature": 37.477202580604356,
+      "fault_level": 1,
+      "health_index": 89.2,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:45.123000+00:00",
+      "event_id": "df326ffc-97fc-4bc7-bc9c-3c33d3b28303",
+      "vibration_x": 0.09730634951144816,
+      "temperature": 36.35229355451774,
+      "fault_level": 1,
+      "health_index": 90.28,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:46.136000+00:00",
+      "event_id": "03333dca-a31f-4967-b0cd-005af369a5c0",
+      "vibration_x": 0.0961656678638373,
+      "temperature": 36.63744634071515,
+      "fault_level": 1,
+      "health_index": 89.78,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:47.156000+00:00",
+      "event_id": "248f8f7a-4aa7-4016-8f02-4267eb4d722a",
+      "vibration_x": 0.09714996265344118,
+      "temperature": 37.048583475491675,
+      "fault_level": 1,
+      "health_index": 89.15,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:48.174000+00:00",
+      "event_id": "b7c64f26-0cb2-41f1-971d-b72a797212ff",
+      "vibration_x": 0.09587517173325522,
+      "temperature": 36.592546141606746,
+      "fault_level": 1,
+      "health_index": 89.86,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:49.193000+00:00",
+      "event_id": "2bd183f0-487a-452c-9e03-041c054ad6eb",
+      "vibration_x": 0.09602701676201454,
+      "temperature": 37.11077813005091,
+      "fault_level": 1,
+      "health_index": 89.42,
+      "status": "normal",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:50.212000+00:00",
+      "event_id": "4b190fb8-1506-48bd-8c87-ce9ef96e50c8",
+      "vibration_x": 0.20344424731609945,
+      "temperature": 40.92061961113202,
+      "fault_level": 3,
+      "health_index": 54.63,
+      "status": "warning",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:51.229000+00:00",
+      "event_id": "a65cd761-1e0c-4b04-8a86-e2830c8d5b82",
+      "vibration_x": 0.2015883922581891,
+      "temperature": 41.35634913519966,
+      "fault_level": 3,
+      "health_index": 77.17,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:52.260000+00:00",
+      "event_id": "d91adc55-10c3-406e-a5e7-7ac73121a9c6",
+      "vibration_x": 0.20339677881517013,
+      "temperature": 41.77797018281362,
+      "fault_level": 3,
+      "health_index": 74.64,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:53.281000+00:00",
+      "event_id": "9ff9867c-dcbd-4f62-9e41-0da4ab315d3e",
+      "vibration_x": 0.20394927935193236,
+      "temperature": 40.82407461501418,
+      "fault_level": 3,
+      "health_index": 71.49,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:08:54.305000+00:00",
+      "event_id": "0c91efe8-3f07-4a35-977e-ad67cd773f51",
+      "vibration_x": 0.2052121527937539,
+      "temperature": 40.527591505037265,
+      "fault_level": 3,
+      "health_index": 71.34,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:55.318000+00:00",
+      "event_id": "0ec53683-6ccb-4c2b-8382-7ca69ff4199b",
+      "vibration_x": 0.20275126726671347,
+      "temperature": 41.040910490182306,
+      "fault_level": 3,
+      "health_index": 71.59,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:08:56.332000+00:00",
+      "event_id": "8643e900-d9c9-4c84-8796-0435fdf7b6c3",
+      "vibration_x": 0.2044909540939504,
+      "temperature": 40.63506717652629,
+      "fault_level": 3,
+      "health_index": 75.97,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:08:57.351000+00:00",
+      "event_id": "ee6c36fb-c858-4755-8312-d3beda0d98b1",
+      "vibration_x": 0.20494860545838506,
+      "temperature": 40.61624574464211,
+      "fault_level": 3,
+      "health_index": 77.87,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:58.373000+00:00",
+      "event_id": "40e45fe1-985c-4faf-927f-cd1cc852515b",
+      "vibration_x": 0.20637331216268526,
+      "temperature": 41.170969367992626,
+      "fault_level": 3,
+      "health_index": 72.32,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:08:59.394000+00:00",
+      "event_id": "d6ae9e6f-bc24-4cdc-988c-be1b802bfd55",
+      "vibration_x": 0.20497263208794483,
+      "temperature": 40.854942436864775,
+      "fault_level": 3,
+      "health_index": 78.04,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:09:00.413000+00:00",
+      "event_id": "d5f6a749-5bd6-4ed4-8963-b7ded4a2418b",
+      "vibration_x": 0.2043404793960164,
+      "temperature": 40.61125246555149,
+      "fault_level": 3,
+      "health_index": 73.79,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:09:01.429000+00:00",
+      "event_id": "f5d328fd-ee02-4300-b7d3-6cc54469e76a",
+      "vibration_x": 0.20606389178397524,
+      "temperature": 40.93811577373052,
+      "fault_level": 3,
+      "health_index": 77.49,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:09:02.449000+00:00",
+      "event_id": "2f9dc97b-a109-4124-99bb-59e62741212b",
+      "vibration_x": 0.20487612865787436,
+      "temperature": 41.373584211716405,
+      "fault_level": 3,
+      "health_index": 73.93,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:09:03.469000+00:00",
+      "event_id": "80d7f30e-1086-483f-bd13-940b586a5bab",
+      "vibration_x": 0.20508169514432006,
+      "temperature": 41.23409475331669,
+      "fault_level": 3,
+      "health_index": 73.22,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:09:04.489000+00:00",
+      "event_id": "a27406f0-de91-4974-aa52-efcc41e57871",
+      "vibration_x": 0.20422900367064603,
+      "temperature": 41.242958244265274,
+      "fault_level": 3,
+      "health_index": 72.45,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:09:05.505000+00:00",
+      "event_id": "fdd6cdc4-cc40-48f4-a2d5-8986549e31b5",
+      "vibration_x": 0.2070846655942862,
+      "temperature": 40.95875111479782,
+      "fault_level": 3,
+      "health_index": 70.02,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:09:06.521000+00:00",
+      "event_id": "811e4b93-62ba-4dd0-95ff-ad12fbd1a8eb",
+      "vibration_x": 0.20520038912868196,
+      "temperature": 40.70018634877028,
+      "fault_level": 3,
+      "health_index": 78.74,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:09:07.536000+00:00",
+      "event_id": "38812807-61e8-4f01-9cb8-4774e9990c14",
+      "vibration_x": 0.20721601547190724,
+      "temperature": 40.92839312566858,
+      "fault_level": 3,
+      "health_index": 73.85,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:09:08.553000+00:00",
+      "event_id": "b1ccd47c-6a49-4672-a314-d935916c6f82",
+      "vibration_x": 0.20200463259632875,
+      "temperature": 41.22585759833047,
+      "fault_level": 3,
+      "health_index": 73.34,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:09:09.574000+00:00",
+      "event_id": "ab4d7825-5150-44c1-affe-036e3647881d",
+      "vibration_x": 0.20284251964284028,
+      "temperature": 40.82560007139711,
+      "fault_level": 3,
+      "health_index": 74.19,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:09:10.562000+00:00",
+      "event_id": "cc8bceca-a351-48c2-bebd-ef686c92c4fd",
+      "vibration_x": 0.2039321570818622,
+      "temperature": 40.85223205772475,
+      "fault_level": 3,
+      "health_index": 68.45,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:09:11.576000+00:00",
+      "event_id": "882d6e6d-3688-409a-8fb6-67d99d453223",
+      "vibration_x": 0.20550990435474145,
+      "temperature": 41.069196194289084,
+      "fault_level": 3,
+      "health_index": 75.3,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:09:12.598000+00:00",
+      "event_id": "5fef3a66-2d8a-4b80-a0be-913247103c9c",
+      "vibration_x": 0.20515314612877517,
+      "temperature": 41.299629735391065,
+      "fault_level": 3,
+      "health_index": 68.4,
+      "status": "caution",
+      "defective": 1
+    },
+    {
+      "timestamp": "2026-10-08T13:09:13.612000+00:00",
+      "event_id": "57fc61ba-3f96-4ea2-b3f5-1f588bbafeac",
+      "vibration_x": 0.20543711611483365,
+      "temperature": 41.08444779914431,
+      "fault_level": 3,
+      "health_index": 73.51,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:09:14.632000+00:00",
+      "event_id": "826ef769-2b3e-464c-a60b-dbd2bea7d213",
+      "vibration_x": 0.20227079925070698,
+      "temperature": 41.8585988848591,
+      "fault_level": 3,
+      "health_index": 71.83,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:09:15.652000+00:00",
+      "event_id": "b6e69210-f7bd-4181-bc24-eba4edd6311c",
+      "vibration_x": 0.20467236781764092,
+      "temperature": 41.203912283447394,
+      "fault_level": 3,
+      "health_index": 67.12,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:09:16.670000+00:00",
+      "event_id": "f82a5919-3cfb-422e-9399-4eaec5410760",
+      "vibration_x": 0.2049560190750123,
+      "temperature": 40.891668306387274,
+      "fault_level": 3,
+      "health_index": 67.7,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:09:17.686000+00:00",
+      "event_id": "40869df4-e715-4e54-91e7-477748c7e86b",
+      "vibration_x": 0.20399144886124274,
+      "temperature": 41.10548290250197,
+      "fault_level": 3,
+      "health_index": 68.46,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:09:18.706000+00:00",
+      "event_id": "3394761d-90da-41b2-ae25-32b46b7befc6",
+      "vibration_x": 0.20338282798351978,
+      "temperature": 40.985901835406544,
+      "fault_level": 3,
+      "health_index": 68.53,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:09:19.718000+00:00",
+      "event_id": "1a21ed40-ac52-4d81-9910-1326f37ed987",
+      "vibration_x": 0.2045347217348767,
+      "temperature": 40.97866804336983,
+      "fault_level": 3,
+      "health_index": 64.29,
+      "status": "caution",
+      "defective": 0
+    },
+    {
+      "timestamp": "2026-10-08T13:09:20.739000+00:00",
+      "event_id": "0821c7d2-1745-4cc3-8778-d40bc6148fb5",
+      "vibration_x": 0.2059601421271545,
+      "temperature": 40.69833902873195,
+      "fault_level": 3,
+      "health_index": 79.1,
+      "status": "caution",
+      "defective": 1
+    }
+  ],
+  "method": "5-second inspected-event buckets; Pearson, Spearman, positive vibration-leading lag 0\u201330 seconds",
+  "limitations": "Seeded simulator common fault input; serially dependent observations; not evidence of real-factory causality"
+}

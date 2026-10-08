@@ -8,6 +8,7 @@
 #include <sensor_msgs/msg/joint_state.hpp>
 #include <nlohmann/json.hpp>
 #include <mutex>
+#include <deque>
 
 namespace gazebo {
 class FactoryWorld : public WorldPlugin {
@@ -23,7 +24,7 @@ class FactoryWorld : public WorldPlugin {
     joints_ = ros_->create_publisher<sensor_msgs::msg::JointState>("/factory/motor_state", 10);
     command_ = ros_->create_subscription<std_msgs::msg::String>("/factory/scene", 10,
       [this](std_msgs::msg::String::SharedPtr message) {
-        std::lock_guard<std::mutex> lock(mutex_); pending_ = message->data;
+        std::lock_guard<std::mutex> lock(mutex_); pending_.push_back(message->data);
       });
     update_ = event::Events::ConnectWorldUpdateBegin(std::bind(&FactoryWorld::Update, this));
   }
@@ -44,9 +45,9 @@ class FactoryWorld : public WorldPlugin {
     joint->SetParam("fmax", 0, 100.0); joint->SetParam("vel", 0, 157.079632679);
     auto roller = world_->ModelByName("roller")->GetJoint("shaft_joint");
     roller->SetParam("fmax", 0, 100.0); roller->SetParam("vel", 0, running_ ? 4.0 : 0.0);
-    std::string command;
-    { std::lock_guard<std::mutex> lock(mutex_); command.swap(pending_); }
-    if (!command.empty()) {
+    std::deque<std::string> commands;
+    { std::lock_guard<std::mutex> lock(mutex_); commands.swap(pending_); }
+    for (const auto &command : commands) {
       try {
         auto j = nlohmann::json::parse(command);
         running_ = j.value("running", running_);
@@ -93,7 +94,7 @@ class FactoryWorld : public WorldPlugin {
   rclcpp::Publisher<sensor_msgs::msg::JointState>::SharedPtr joints_;
   rclcpp::Subscription<std_msgs::msg::String>::SharedPtr command_;
   event::ConnectionPtr update_; common::Time last_; std::mutex mutex_;
-  std::string pending_; bool running_ = true;
+  std::deque<std::string> pending_; bool running_ = true;
 };
 GZ_REGISTER_WORLD_PLUGIN(FactoryWorld)
 }

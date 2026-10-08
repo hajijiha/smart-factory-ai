@@ -1,0 +1,64 @@
+{
+  "sensor_hypertable": true,
+  "sensor_rows": 3366,
+  "quality_rows": 961,
+  "defect_rows": 88,
+  "defect_types": [
+    "contamination",
+    "dent",
+    "scratch"
+  ],
+  "images_missing": 0,
+  "settled_hi_missing": 0,
+  "hi_mismatch": 0,
+  "gradcam_rows": 88,
+  "schema": {
+    "quality_inspections": [
+      "id",
+      "event_id",
+      "timestamp",
+      "image_path",
+      "defect_type",
+      "confidence",
+      "bbox",
+      "health_index_at_time",
+      "gradcam_path",
+      "image_bytes",
+      "data"
+    ],
+    "sensor_readings": [
+      "timestamp",
+      "sensor_id",
+      "event_id",
+      "vibration_x",
+      "vibration_y",
+      "vibration_z",
+      "temperature",
+      "fault_level",
+      "rpm",
+      "data"
+    ]
+  },
+  "image_hash_checks": [
+    {
+      "id": "ad96984e-c7ce-4f92-bf99-8cbb91ffb049-0",
+      "sha256": "b9d1c963ac770a8d48f779a0d0d1927c83c5b985814b9056e96792756b8ca960",
+      "bytes": 8708,
+      "matches_disk": true
+    },
+    {
+      "id": "1bfc7165-8540-439f-bccb-ca3616487994-0",
+      "sha256": "90f5030ae085dee685c9713fa0c4551d09ef0cf3a1e8cb194cb36ab75cdce340",
+      "bytes": 7908,
+      "matches_disk": true
+    },
+    {
+      "id": "184bb047-a5a2-47ca-9308-0f9d96bdc2ea-0",
+      "sha256": "9eb3cde5788bcd540fd530d674f4b3b6e4770ef75174969ce6d21c81db4ec429",
+      "bytes": 8075,
+      "matches_disk": true
+    }
+  ],
+  "passed": true,
+  "measured_at": 1791465284.2486866
+}

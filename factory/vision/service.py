@@ -6,14 +6,17 @@ import queue
 import time
 import cv2
 import numpy as np
+import torch
 from ultralytics import YOLO
-from factory.common import ARTIFACTS, DATA, connect, publish
+from factory.common import ARTIFACTS, DATA, CONFIG, connect, publish
 from factory.vision.inference import VisionDetector
 from factory.vision.gradcam import GradCAM
 
 
 def main():
     """Inspect simulator image messages, save evidence and publish quality events."""
+    torch.set_num_threads(CONFIG['vision']['threads'])
+    cv2.setNumThreads(1)
     while not (ARTIFACTS/'vision.pt').exists():
         logging.info('Waiting for trained vision artifacts')
         time.sleep(5)
