@@ -1,202 +1,141 @@
-# 독립 검증 기록
+# 검증 보고서
 
-Smart Factory AI 구현과 별도로 요구사항·소스·생성 데이터·실제 역전파를 검토했다.
-기존 To Do List 프로젝트는 이 검증 범위에 포함하지 않았다. 아래 수치는 실제
-검사 결과이며, 최종 모델 성능과 전체 시스템의 완료 여부는 해당 결과 파일에서
-확인해야 한다. 기계가 읽을 수 있는 동일 범위의 기록은 `results/qa.json`이다.
+검증 범위는 회귀 테스트, 데이터 무결성, 모델 평가·변환, DB 저장과 물리 인터락이다.
+측정 원본은 `results/qa.json`, JUnit 결과는 `results/tests.xml`에 있다.
 
-## 격리 회귀 검사
+## 회귀 테스트
 
-2026년 10월 8일 CPU 전용 런타임 이미지에서 **27개 테스트가 모두 통과**했다.
-최종 실행 시간은 7.09초였다. Matplotlib/Pyparsing의 deprecated API 경고 14건은
-의존 패키지에서 발생했고 테스트 실패는 없었다.
-
-네트워크가 없는 일회성 컨테이너에 프로젝트를 읽기 전용으로 마운트했다.
-실행 중인 MQTT 브로커·DB·학습 작업에 테스트 메시지를 발행하거나 상태를
-변경하지 않았다. 임시 first-start export 검사만 컨테이너의 임시 폴더를 썼다.
+2026-10-08 CPU 런타임에서 **28 passed / 0 failed / 0 skipped**를 기록했다.
+최종 실행 시간은 5.105초다. 테스트는 네트워크가 없는 컨테이너에서 소스를
+읽기 전용으로 마운트해 실행했으며, 실행 중인 MQTT·DB 상태를 변경하지 않았다.
 
 ```bash
-cd ~/smart-factory-ai
+docker compose build
 docker run --rm --network none --cpus=2 \
   -v "$PWD:/app:ro" -w /app \
   smart-factory-runtime:local \
   python3 -m pytest tests -q -p no:cacheprovider
 ```
 
-| 검증 | 확인한 실패 조건 또는 근거 |
+| 영역 | 검사 |
 |---|---|
-| FFT·베어링 주파수 | 알려진 사인파의 RMS·주파수·진폭, BPFO/BPFI 순서, Nyquist |
-| 상태 점수 | 오류 증가에 따른 정상/위험, Score·HI 범위 |
-| 인터록 | 위험 반복 메시지에서 정지 유지, 정상 회복만으로 자동 재시작하지 않음 |
-| 재시작 안전성 | 오래된 HI, 낮은 HI, 고장 레벨, 미래 HI/라인 시각, 오래된 라인 관측 거절 |
-| 시각 오류 | 없는 메시지·없는 timestamp·잘못된 날짜·시간대 없는 날짜에서 fail closed |
-| 실제 시차 | 미검사 5초 구간을 제거해 시간축을 압축하지 않음 |
-| 최초 Vision 실행 | `vision.pt`만 있는 상태에서 설정된 크기·CPU로 ONNX export를 수행 |
-| ONNX 처리 | BGR→RGB, [0,1] 정규화, 좌표 복원, 동일 클래스 중복 억제·다른 클래스 유지 |
-| 데이터 | 모든 JPEG 해시·경로·scene 중복 및 센서 특징/라벨/분할/출처 순서 검사 |
-| SDF·모듈 실행 | 변경된 YAML FOV/size의 실제 XML 반영, 배포된 `-m simulator.world` 명령으로 임시 SDF 생성 |
+| FFT | 사인파 RMS·주파수·진폭, 베어링 주파수, Nyquist |
+| 진단 | Score·HI 범위와 정상/위험 상태 |
+| 인터락 | 위험 반복 메시지, 정지 래치, 수동 재시작 |
+| 재시작 조건 | HI와 라인 관측의 0~5초 freshness, 레벨 0, HI≥80 |
+| 시각 처리 | 미래·오래된·잘못된·시간대 없는 시각 거절, ISO8601 소수초 유무 |
+| 상관 | 미검사 구간을 유지한 5초 시차 |
+| Vision | 최초 ONNX export, 전처리, 좌표 복원, 클래스별 NMS |
+| 데이터 | JPEG 해시·경로·scene 중복, 센서 라벨·분할·출처 정합 |
+| Gazebo | YAML FOV·영상 크기의 SDF 반영, module 명령 실행 |
 
-추가 검사는 `tests/test_review_controller.py`, `test_review_analytics.py`,
-`test_review_dataset.py`, `test_review_vision.py`, `test_review_world.py`에 있다. 생성 데이터가 없는
-새 클론에서는 데이터 의존 검사 2개가 이유를 표시하며 skip된다. 데이터를
-생성한 뒤 같은 명령을 실행하면 모든 데이터 검사가 포함된다.
+관련 검사는 `tests/test_review_*.py`, `test_interlock.py`, `test_iso_timestamps.py`에 있다.
+생성 데이터가 없는 clone에서는 데이터 의존 검사 2개가 skip된다.
+Matplotlib/Pyparsing 의존성의 deprecated API 경고 14건이 발생했다.
 
-## 발견한 결함과 수정 확인
+## 수정한 결함과 재발 방지
 
-1. **처음 실행 시 ONNX export 실패**: `vision.service`의 `CONFIG` import가
-   빠져 있었다. 기존 ONNX 파일이 있는 환경에서는 숨어 있다가 weights-only
-   배포에서 `NameError`가 발생했다. import 수정 후 최초 실행 회귀가 통과했다.
-2. **미래 시각과 오래된 라인 상태로 재시작 허용**: 기존 검사는 HI의 age가
-   5초 이하인지만 확인했고 음수 age와 라인 시각을 검사하지 않았다. 미래 HI
-   60초, 오래된 fault-level 관측 60초 두 케이스를 실제 실패로 재현했다.
-   HI와 라인 모두 `0 <= age <= 5` 및 올바른 timezone을 요구하도록 고친 뒤
-   해당 회귀와 시각 오류 검사가 통과했다.
-3. **스크래치 Grad-CAM 전체 0**: raw Conv2d의 actual gradient가 존재해도
-   ReLU 결과는 모두 0이었다. 마지막 backbone Conv block의 BN/SiLU 이후
-   출력에서 비교한 실제 근거는 다음 표와 같다.
-4. **컨베이어 명령 손실 가능성**: ROS 콜백이 한 개 문자열 슬롯을 덮어썼으므로
-   scene 명령이 정지 명령을 대체할 수 있었다. C++ FIFO와 scene의 running
-   상태 반복 전달로 수정했다. 물리 관절의 실제 정지·재시작 결과는
-   `results/integration.json`에서 별도로 확인한다.
-5. **PdM benchmark의 회전 주파수 불일치**: 학습 특징은 Gazebo에서 관측한
-   약 954.93 RPM을 사용했지만 benchmark는 기본값 25 Hz를 사용했다. 실제
-   benchmark 관측을 사용하도록 구현을 수정했으며 최종 재측정은 `results/pdm.json`이다.
-6. **world 파일 실행 중 표준 라이브러리 이름 충돌**: camera CONFIG 연결 후
-   기존 `python3 /app/simulator/world.py` 실행은 `/app/simulator`를 import 경로
-   앞에 놓아 이 폴더의 `signal.py`가 Python 표준 `signal`을 가렸다. 시작 스크립트를
-   `python3 -m simulator.world /tmp/factory.world`로 고쳤다. 테스트는 실제 subprocess에서
-   동일 module invocation을 실행해 정상 종료와 생성된 SDF XML을 확인했다.
+| 결함 | 원인 | 수정·검증 |
+|---|---|---|
+| 최초 ONNX export 실패 | `vision.service`의 CONFIG import 누락 | import 추가, PT만 존재하는 최초 실행 회귀 |
+| 미래·오래된 관측으로 재시작 | HI의 음수 age와 라인 시각 미검사 | HI·라인 모두 `0≤age≤5`, timezone 검사 |
+| 스크래치 CAM 전체 0 | raw Conv 출력의 가중 activation이 음수 | 최종 Conv block의 BN/SiLU 이후 출력 사용 |
+| 정지 명령 손실 | ROS 콜백의 단일 슬롯 덮어쓰기 | C++ FIFO, scene에 현재 running 상태 전달 |
+| PdM benchmark 회전수 불일치 | 관측 RPM 대신 기본 25 Hz 사용 | 관측 15.915494 Hz로 FFT 포함 재측정 |
+| world 생성의 import 충돌 | 경로 실행 시 로컬 signal.py가 표준 signal을 가림 | `python3 -m simulator.world`, subprocess 회귀 |
+| ISO 시각 파싱 실패 | PostgreSQL JSON의 선택적 `.000` 소수초 | `format='ISO8601'`, 혼합 Z/+00:00 회귀 |
 
-## Grad-CAM 계층의 실제 비교
+ISO 처리 API: [pandas 2.2.3](https://pandas.pydata.org/pandas-docs/version/2.2/reference/api/pandas.to_datetime.html).
 
-검토 시점 `data/training/vision/weights/best.pt`의 동일한 forward/backward에서
-두 계층을 동시에 측정했다. 네 샘플 모두 독립 test 폴더의 첫 이미지이다.
-최종 모델의 mAP 선택이나 성능 기준 판정에 이 검토 샘플을 사용하지 않았다.
+## 데이터 무결성
 
-| test 샘플 | target score | raw `model.9.cv2.conv` 양수 CAM 셀 | post-BN/SiLU `model.9.cv2` 양수 CAM 셀 |
-|---|---:|---:|---:|
-| 정상 | 0.000800 | 64 / 64 | 56 / 64 |
-| 스크래치 | 0.959795 | 0 / 64 | 35 / 64 |
-| 찍힘 | 0.978556 | 60 / 64 | 59 / 64 |
-| 이물질 | 0.840964 | 35 / 64 | 30 / 64 |
+센서 특징은 7,000×9이며 모든 값이 finite다. `provenance.jsonl`과 NPZ의
+level·split 순서가 일치한다. 정상/고장은 train 3,500/1,400, validation 750/300,
+test 750/300이다. AE는 정상 train만 학습하며 threshold는 validation에서 선택한다.
 
-스크래치 raw Conv2d gradient 절댓값 합은 0.263120이었다. 그러나 가중 activation의
-최댓값도 -0.000398503이라 ReLU 후 값이 모두 0이었다. 같은 모델의 Conv block
-출력에서는 gradient 합 0.437609, 가중 activation 최대 0.000159253이었고 실제
-공간적 양수 근거가 존재했다. 이에 최종 구현은 **SPPF 마지막 backbone Conv
-block 출력(BN/SiLU 이후)**을 사용하며, 계층 이름과 nonzero/gradient 메타데이터를
-정직하게 기록한다. 최종 checkpoint의 생성 이미지는 `results/vision.json`과 함께
-평가한다.
+영상 6,000장의 JPEG 바이트로 SHA-256을 재계산했다. 경로·해시·scene ID에 중복이 없다.
+정상 train/validation/test는 2,100/450/450, 각 결함은 700/150/150이다.
+별도 seed와 카메라·조명 조건으로 test 장면을 생성했다.
+정상·결함별 표본 4장의 박스를 수동 확인했으며, 전체 영상의 수동 정답 검사는 아니다.
+ground-truth 클래스와 fault_level은 운영 detector의 예측 입력에 사용하지 않는다.
 
-수정된 실제 `GradCAM.render()`도 현재 interim checkpoint 하나를 다시 로드해
-정상·3종 결함 모두 실행했다. 네 종류 모두 `informative=true`, nonzero gradient와
-양수 CAM이 나왔다. 학습 중 best.pt가 갱신되어 위의 초기 비교와 target score가
-달라졌으며 각 시점의 수치는 qa.json에 구분했다. 검토자는 interim checkpoint를
-따로 보관하지 않았으므로 제출용 재현 결과는 최종 모델 해시와 함께 확인해야 한다.
+## 모델 평가와 변환
 
-정상 이미지 target은 별도의 '정상 클래스'가 아니라 가장 큰 불량 score이다.
-정상 score가 매우 작아도 정규화된 색은 진하게 보일 수 있으므로 색의 강도만으로
-불량 확신도를 비교하면 안 된다. zero CAM은 새로운 색으로 근거처럼 만들지 않고
-메타데이터에 비정보적 결과임을 남긴다.
+최종 `vision.pt` SHA-256:
+`de2b27a91410cd0ee12167a43b9651a9ef06198e6c86d80fdd2e9d84dffcde57`
 
-## 데이터 분할과 라벨 확인
+평가에 사용한 ONNX SHA-256:
+`e8bc6f517174105955e7b095059e77be7ff1ff222631a5b19d8ca3a03a56d665`
 
-센서 특징은 7,000×9이며 모든 값이 finite였다. `provenance.jsonl`의 level/split
-순서가 NPZ의 level/split과 정확히 일치했다. 정상/고장 수는 train 3,500/1,400,
-val 750/300, test 750/300이다. 정상 전용 AE 학습과 validation threshold 선택,
-독립 test 측정을 소스에서도 확인했다.
-
-영상 6,000장의 모든 SHA-256을 실제 JPEG 바이트에서 다시 계산했다. 이미지 경로,
-해시, scene ID가 모두 중복 없이 6,000개였다. 정상은 train/val/test 2,100/450/450,
-3종 결함 각각은 700/150/150이었다. test 카메라 범위는 train보다 넓고 별도 seed와
-장면으로 생성했다. 이미지 메시지의 ground-truth 클래스는 runtime detector 입력
-판정에 사용하지 않는다.
-
-정상·스크래치·찍힘·이물질의 실제 Gazebo test 이미지 4장에 라벨 좌표를 표시해
-독립적으로 시각 확인했다. 정상 라벨은 비어 있고 나머지 박스는 실제 보이는 결함을
-둘러쌌다. 3D primitive 크기·위치와 projection 코드를 비교한 결과도 일치했다.
-이것은 4장의 수동 확인이며 전체 6,000장의 수동 정답 검사라는 뜻은 아니다.
-
-## 최종 모델의 독립 확인
-
-최종 `vision.pt`의 SHA-256은
-`de2b27a91410cd0ee12167a43b9651a9ef06198e6c86d80fdd2e9d84dffcde57`이다.
-변환된 ONNX의 SHA-256은
-`e8bc6f517174105955e7b095059e77be7ff1ff222631a5b19d8ca3a03a56d665`이다.
-
-최종 보고서의 원시 지연시간 배열을 독립적으로 다시 계산했다. 두 엔진 모두
-동일한 confidence 0.25·NMS IoU 0.45를 사용했다.
-
-| 항목 | 실제 최종 결과 | 조건 |
+| 항목 | 결과 | 조건 |
 |---|---:|---|
-| 독립 test YOLO mAP50 | 0.969052 | ≥0.80 통과 |
-| 가장 낮은 클래스 AP50(찍힘) | 0.945825 | 클래스별 결과 확인 |
-| ONNX 100장 평균 | 15.091832 ms / 66.261009 FPS | ≥20 FPS 통과 |
-| PyTorch 100장 평균 | 39.299604 ms / 25.445549 FPS | ≥20 FPS 통과 |
-| 관리도 / AE test F1 | 0.995025 / 0.988468 | 둘 다 ≥0.80 통과 |
-| PdM 5회 평균 | 0.941083 ms | ≤100 ms 통과 |
+| YOLO test mAP50 | 0.969052 | test 900장 |
+| 가장 낮은 클래스 AP50(찍힘) | 0.945825 | 클래스별 평가 |
+| ONNX | 15.091832 ms / 66.261009 FPS | 전처리·NMS 포함 100장 |
+| PyTorch | 39.299604 ms / 25.445549 FPS | 동일한 100장 |
+| 관리도 / AE F1 | 0.995025 / 0.988468 | test 1,050창 |
+| PdM 평균 | 0.941083 ms | FFT·특징·두 모델·HI, 5회 |
 
-원시 배열의 길이와 평균은 보고서의 100장/5회·평균·FPS와 일치했다.
-PdM은 관측 회전 주파수 15.915494309 Hz를 실제 FFT 특징 추출에 사용했다.
-Ubuntu 22.04.5, Python 3.10.12, PyTorch 2.5.1+cpu, OpenCV 4.10.0,
-ONNX Runtime 1.20.1의 CPU 환경도 최종 하드웨어 보고서에서 확인했다.
-위 mAP/F1은 주 구현의 독립 test 평가이며, 이 검토에서는 test를 활용한
-재학습·모델 선택·threshold 조정을 하지 않았다.
+원시 지연 배열의 평균과 FPS를 다시 계산해 보고서 수치와 대조했다.
+환경은 Ubuntu 22.04.5, Python 3.10.12, PyTorch 2.5.1+cpu, OpenCV 4.10.0,
+ONNX Runtime 1.20.1이다. detector FPS에는 JPEG 디코딩·DB·네트워크·CAM을 포함하지 않는다.
 
-동일한 seed 42로 정한 test 이미지 100장에서 **실제 최종 ONNX와 PyTorch의
-NMS 후 검출 결과를 다시 비교**했다. 51개 검출의 클래스·수량이 일치했고,
-49장은 두 엔진 모두 검출이 없었다. 수량·클래스·수치 허용범위 불일치는 0건이다.
-일치 박스의 최소 IoU는 0.9999971914, 최대 좌표 차이는 0.0000419617 pixel,
-최대 confidence 차이는 0.00000077486이었다. 이 비교는 ground-truth 라벨을
-읽지 않으며, 판정 결과의 동등성을 확인하는 추가 검사이다. 새 정확도나
-실행 중인 전체 시스템의 FPS를 측정하는 실험은 아니다.
-
-재현용 스크립트는 `scripts/verify_vision_parity.py`이며, 데이터·PT·ONNX가
-준비된 후 아래와 같이 실행한다. 원본·변환 모델·DB·MQTT 상태를 변경하지 않는다.
-확인에 쓴 100개 파일 이름은 `qa.json`에 포함했다.
+seed 42의 동일 test 이미지 100장을 confidence 0.25 / NMS IoU 0.45로 비교했다.
+검출 51개의 클래스·수량이 일치했고, 49장은 두 엔진 모두 검출이 없었다.
+허용범위 밖 불일치는 0건이다. 최소 박스 IoU는 0.9999971914,
+최대 좌표 차이는 0.0000419617 px, 최대 confidence 차이는 0.00000077486이다.
+이 비교는 라벨을 사용하지 않는 엔진 동등성 검사다.
 
 ```bash
 docker compose run --rm --no-deps vision python3 scripts/verify_vision_parity.py
 ```
 
-최종 Grad-CAM 네 종류도 `vision.json`에서 실제 nonzero gradient와 positive
-activation을 확인했다. 하지만 8×8 backbone map은 정밀한 결함 분할 결과가
-아니다. 제품 모서리나 배경에 강한 반응이 보일 수 있으며, nonzero라는 사실은
-정확한 결함 위치나 올바른 인과적 판단을 보장하지 않는다. 배경의 shortcut
-활용 가능성은 실제 생성 이미지와 함께 해석해야 한다.
+## Grad-CAM 계층 비교
 
-추가 소스 검토에서 발견한 카메라 설정 불일치는 SDF의 FOV·영상 크기를 CONFIG에
-연결해 해소했다. 재현 스크립트도 데이터 생성 전에 실행 중인 simulator/business
-서비스를 멈춰 동일 ROS2 topic에 중복 Gazebo가 발행하지 않도록 바뀌었다.
+학습 중 체크포인트의 동일한 forward/backward에서 raw Conv와 Conv block 출력을 비교했다.
+비교 표본은 각 test 클래스의 첫 이미지이며 checkpoint 선택에 사용하지 않았다.
 
-## 최종 검증과 이 보고서의 한계
+| 표본 | target score | raw model.9.cv2.conv 양수 셀 | post-BN/SiLU model.9.cv2 양수 셀 |
+|---|---:|---:|---:|
+| 정상 | 0.000800 | 64/64 | 56/64 |
+| 스크래치 | 0.959795 | 0/64 | 35/64 |
+| 찍힘 | 0.978556 | 60/64 | 59/64 |
+| 이물질 | 0.840964 | 35/64 | 30/64 |
 
-오프라인 회귀는 실제 관절 정지·MQTT 전달·DB JPEG BYTEA·실시간 품질 영상·브라우저
-동작을 대신하지 않는다. 해당 항목은 통합 실측과 DB 조회가 필요하고, 새 클론에서
-Compose 한 명령 실행 검증도 별도로 수행한다. 위 최종 성능은 학습 종료 후
-최종 이미지에서 측정한 값이며 JPEG decoding·DB·Grad-CAM 비용은 포함하지 않는다.
-Validation mAP를 제출용 test mAP로 쓰지 않는다.
+스크래치 raw Conv의 gradient 합은 0.263120이지만 가중 activation의 최댓값이
+-0.000398503이라 ReLU 후 0이었다. Conv block 출력에서는 gradient 합 0.437609,
+activation 최대 0.000159253을 기록했다. 최종 구현은 `model.9.cv2`의 BN/SiLU 이후 출력을 사용한다.
+이 중간 checkpoint는 별도 배포하지 않는다. 최종 모델의 CAM 수치와 영상은
+`results/vision.json`과 [Vision 문서](vision.md)에 있다.
 
-실제 시뮬레이터에서 생성했더라도 결함 형태와 센서 고장식은 단순하다. 서로 다른
-해시와 시나리오는 exact-image 누수를 방지하며 실제 공장 일반화나 인과관계를
-입증하지 않는다. Pearson/Spearman·시차 해석에도 이 한계를 함께 적용한다.
+최종 정상·3종 결함 표본은 모두 nonzero gradient와 양수 activation을 보였다.
+정상 영상의 target은 가장 큰 결함 score이며 정상 클래스 확률이 아니다.
+이미지마다 정규화한 색의 강도를 확신도처럼 비교할 수 없다.
+8×8 map과 제품 경계·배경의 반응은 정밀한 분할이나 인과적 설명을 보장하지 않는다.
 
-## 통합 후 추가 회귀
+## 통합·저장·최초 기동
 
-실제 PostgreSQL JSON export에서 일부 UTC 시각의 소수초 `.000`이 생략되어
-일반적인 첫 문자열 format 추론이 실패했다. `format='ISO8601'`로 명시하고
-`tests/test_iso_timestamps.py`에 소수초 유무와 Z/+00:00 혼합 사례를 추가했다.
-주 에이전트가 최종 전체 28개를 격리 실행하여 failures=0,
-errors=0, skipped=0을 확인했다. 원본은 `results/tests.xml`이다.
-이 최종 실행은 위의 독립 전담 27개 검증에 새로운 실제 실패 회귀를 포함한다.
-[pandas 2.2.3 ISO8601 파싱](https://pandas.pydata.org/pandas-docs/version/2.2/reference/api/pandas.to_datetime.html)을 사용했다.
+| 검증 | 결과 원본 |
+|---|---|
+| 정상 이력 증가, 위험 정지, unsafe reset 거절, 정상 회복·수동 재시작 | `results/integration.json` |
+| 센서 hypertable, JPEG BYTEA·디스크 일치, 동일 event의 HI·CAM | `results/storage.json` |
+| 반복 운전의 Pearson·Spearman·0~30초 시차 | `results/correlation.json` |
+| 공개 clone의 단일 Compose 기동 | `results/deployment.json` |
 
-## 공개 저장소 최초 기동
+구현 커밋 `0c949db3a40e1c0e78213a2daa3b44c63fe5ce5e`를 새 폴더에 clone하고
+별도 네트워크·MQTT·DB 볼륨과 포트 8081로 실행했다.
 
-구현 커밋 `0c949db3a40e1c0e78213a2daa3b44c63fe5ce5e`을 공개 GitHub에서 새 폴더에 내려받았다. `DASHBOARD_PORT=8081 docker compose -p smart-factory-clean-check up -d --build` 한 명령으로 실행했으며 새 네트워크·MQTT·DB 볼륨을 사용했다. 기존 개발 데이터와 export된 ONNX는 복사하지 않았다.
+```bash
+DASHBOARD_PORT=8081 docker compose -p smart-factory-clean-check up -d --build
+```
 
-8개 서비스가 실행되고 DB/MQTT 상태가 정상이며, 최근 5초 이내 센서·라인 상태, 실제 검사 5건, 센서 12건, JPEG 응답을 확인했다. 첫 기동이 자동으로 ONNX를 export했다. 기존 Docker 의존성 캐시를 재사용해 74.408초가 걸렸다. 따라서 전체 의존성을 처음 다운로드하는 시간 측정으로 해석하지 않는다. 검증용 컨테이너만 종료하고 DB 볼륨과 원래 8080 실행은 유지했다. 원본: [deployment.json](results/deployment.json).
+데이터·ONNX가 없는 상태에서 자동 export, 8개 서비스, 최근 센서·라인 상태,
+검사 5건·센서 12건과 JPEG 응답을 확인했다. Docker 의존성 캐시를 재사용한 조건에서
+첫 검사 결과까지 74.408초였다. 최초 네트워크 다운로드 시간은 이 측정에 포함되지 않는다.
 
-## 최종 문서 교차 검토
+## 해석 범위
 
-독립 검증 에이전트가 README·요구사항·검증 문서와 실제 JSON, JUnit 28개, 두 모델 SHA256, 이미지 링크를 교차 확인했다. 수치와 원본이 일치했고, 문서에서 발견한 세 항목을 수정했다: 개별 재현 절차에서 실시간 취득을 먼저 정지하고 통합 검증 전에 전체 서비스를 기동한다; 공개 Git에 없는 manifest/provenance는 로컬 데이터 생성 시 기록된다고 설명한다; HI는 소수 둘째 자리로 반올림한 후 상태 경계를 판정한다고 소스 순서에 맞춘다. 구현 변경은 없었다.
+단순한 결함 형상과 합성 센서 고장식에 대한 검증이다. 데이터 중복이 없더라도
+실제 공장 일반화와 인과관계가 입증되는 것은 아니다.
+상관·시차는 공통 고장 레벨, 집계 구간과 유한 표본의 영향을 받는다.
+검출 성능, 설명 영상과 물리 인터락은 각각의 검증 결과로 평가한다.

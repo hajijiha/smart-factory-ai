@@ -34,8 +34,7 @@ sensor_msgs/Image 출력만 사용한다. 수집 이후 약한 Gaussian 노이�
 
 가상 센서의 기준은 Gazebo ODE가 계산한 진단 모터 관절의 각속도·위상이다.
 이 물리 기준에 회전 1X의 불균형, 2X/3X 고조파, BPFO/BPFI 주기 충격과
-350 Hz 공진, 확률적 노이즈를 수학적으로 합성한다. 베어링 접촉의 실제 마모
-역학을 계산했다고 주장하지 않는다. 하나의 관절 관측으로 1초 진동 창을
+350 Hz 공진, 확률적 노이즈를 수학적으로 합성한다. 베어링 접촉과 마모 역학은 모델링하지 않는다. 하나의 관절 관측으로 1초 진동 창을
 외삽하며 관측값과 합성 설정을 provenance에 남긴다.
 
 `severity=Fault_Level/10`.
@@ -50,13 +49,13 @@ sensor_msgs/Image 출력만 사용한다. 수집 이후 약한 Gaussian 노이�
 가상 제품은 검사 위치에 배치하는 정적 모델이므로 실제 마찰로 제품을 운반하는
 전 과정은 모델링하지 않는다. 인터락 검증 대상은 실제 롤러 관절 속도다.
 
-Gazebo Classic은 유지보수가 종료된 버전이지만 과제의 ROS2 Humble 호환
-조건과 Ubuntu 22.04 CPU 재현을 위해 선택했다. 장기 운용에는 지원되는
+Gazebo Classic은 ROS2 Humble 연동과 Ubuntu 22.04 CPU 실행을 기준으로 선택했다.
+현재 유지보수가 종료된 버전이다. 장기 운용에는 지원되는
 Gazebo 버전으로 이관하고 카메라·관절 플러그인을 다시 검증해야 한다.
 
 참고: [Gazebo 카메라](https://classic.gazebosim.org/tutorials?tut=camera_save),
 [ROS2 Gazebo 카메라 플러그인 소스](https://github.com/ros-simulation/gazebo_ros_pkgs/blob/ros2/gazebo_plugins/src/gazebo_ros_camera.cpp).
 
 모터 실제 관측 범위는 약 954.93 RPM으로 고정이었다. 설정 목표 RPM과 관측을
-구분하며 다양한 RPM 강건성을 주장하지 않는다. FOV와 영상 크기는 config.yaml이
+구분한다. 다양한 RPM에 대한 강건성은 미검증이다. FOV와 영상 크기는 config.yaml이
 실제 SDF 카메라와 라벨 투영에 함께 적용된다.

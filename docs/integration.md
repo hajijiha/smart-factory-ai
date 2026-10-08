@@ -26,7 +26,7 @@ Canvas로 그래프를 그리므로 외부 CDN이나 유료 Vision 서비스가 
 ROS2 scene command → Gazebo physics thread로 전달한다.
 controller가 실제 위험 진단을 받으면 `running=false`를 retained로 발행한다.
 Gazebo 롤러 관절 속도 목표가 4 rad/s에서 0으로 바뀌며 실측 관절 속도를
-line 이벤트로 다시 보여준다. UI의 문자열만 정지로 바꾸는 구현이 아니다.
+line 이벤트로 대시보드에 전달한다.
 수동 재시작은 HI와 라인 관측 모두 현재부터 0–5초 이내여야 하며 HI≥80, 적용 고장 레벨 0을 조건으로 한다. 미래·잘못된·시간대 없는 시각은 거절한다. 위험 상태의 reset은
 알람으로 거절한다. 복구해도 자동으로 재시작하지 않는다.
 
@@ -49,7 +49,7 @@ Pearson은 선형 관계, Spearman은 순위에 기반한 단조 관계를 측�
 환경 요인·공정 부하·제품 종류가 달라지는 실제 데이터에는 교란변수와
 공통 원인, 모델 오검출, 시간 누락이 영향을 준다.
 
-## 실제 통합 검증
+## 통합 검증
 
 `python3 scripts/verify_runtime.py`는 UI API에 실제 명령을 보내고 다음을 확인한다.
 
@@ -59,9 +59,8 @@ Pearson은 선형 관계, Spearman은 순위에 기반한 단조 관계를 측�
 4. 레벨 0 회복 후 수동 reset으로 실제 롤러 속도 >0.5를 확인.
 
 실행 결과는 `docs/results/integration.json`에 저장한다.
-컨테이너/모델/DB 준비 전에는 성공을 기록하지 않는다.
 
-## 실제 최종 결과
+## 검증 결과
 
 `results/integration.json`: 정상 검사/센서 건수 증가 → 레벨10 위험 → 실제 롤러
 -3.081e-33 rad/s → 위험 reset 거절 → 레벨0 회복과
@@ -96,16 +95,15 @@ Pearson r=0.527927, Spearman rho=0.564187였다.
 5초라는 결론을 내릴 수 없다. 5초 집계, 순차적 레벨 유지, 유한 표본의 이항
 불량 변동과 serial dependence가 최대값 위치에 영향을 준다.
 레벨6을 포함한 사전 운전은 HI 37.08로 인터락이 작동하여 중단하고 정상으로
-복구했다. 인터락을 해제해 실험을 강행하지 않았고 최종 반복 실험은 0–3 범위다.
+복구했다. 최종 반복 실험은 인터락이 동작하지 않는 0–3 범위에서 수행했다.
 고장 레벨이 같아도 파형·위상·노이즈에 따라 HI와 상태가 달라진다.
 
-![실제 관측 상관·시차](results/correlation.png)
-![실제 정상 관제](results/dashboard-normal.png)
-![실제 주의 단계](results/dashboard-caution.png)
-![실제 위험 정지](results/dashboard-danger.png)
-![실제 수동 복구](results/dashboard-recovery.png)
+![관측 상관과 시차](results/correlation.png)
+![정상 관제](results/dashboard-normal.png)
+![주의 단계](results/dashboard-caution.png)
+![위험 정지](results/dashboard-danger.png)
+![수동 복구](results/dashboard-recovery.png)
 
-브라우저에서는 실제 서버 응답으로 갱신·검사 이미지·같은 event의 CAM·알람을
-확인했다. CAM이 없는 정상 이력에 이전 불량 CAM을 계속 붙이는 문제를 고쳐
-원본과 근거가 다른 검사에 속하지 않도록 했다. 과거 연결 오류 안내는 새 응답
-이후 해제하고 센서가 5초 이상 멈추면 갱신 지연을 안내한다.
+대시보드는 검사 이미지와 CAM을 같은 `event_id`로 연결한다. 해당 검사의 CAM이
+없으면 이전 검사의 CAM을 표시하지 않는다. 연결 오류 안내는 정상 응답 후
+해제되며, 센서 갱신이 5초 이상 지연되면 지연 상태를 표시한다.

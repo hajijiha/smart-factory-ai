@@ -1,13 +1,13 @@
 # Smart Factory AI
 
-Gazebo의 3D 검사 영상과 모터 관측값을 이용해 **설비 상태 → 제품 불량 →
-관제·라인 정지**를 연결하는 1인 프로젝트다. 모든 서비스는 CPU에서 실행하며,
+Gazebo의 3D 검사 영상과 모터 관측값으로 **설비 상태 → 제품 불량 →
+관제·라인 정지**를 연결하는 스마트 팩토리 시뮬레이션 시스템이다. 모든 서비스는 CPU에서 실행하며,
 모듈 간 결과와 제어 명령은 MQTT로 주고받는다.
 
-Gazebo 데이터 생성, 실제 파인튜닝과 독립 테스트를 수행했다. 관리도 F1은
+Gazebo에서 생성한 데이터로 모델을 학습하고 별도 테스트 세트로 평가했다. 관리도 F1은
 0.9950, AE F1은 0.9885, YOLO 테스트 mAP@0.5는 0.9691다.
 CPU ONNX는 전처리와 NMS를 포함한 테스트 100장 평균 66.26 FPS다.
-실측 원본과 하드웨어는 `docs/results/`, 체크포인트 해시는 `artifacts/model-card.json`에 있다.
+평가 결과와 하드웨어 정보는 `docs/results/`, 체크포인트 해시는 `artifacts/model-card.json`에 있다.
 
 ## 시스템 구조
 
@@ -38,28 +38,19 @@ TimescaleDB는 PostgreSQL 확장이므로 한 DB 서버에서 센서는 hypertab
 
 ## 실행
 
-개발 폴더는 WSL Ubuntu의 `~/smart-factory-ai`다. VS Code에서 WSL 폴더를
-열고 터미널을 사용한다. 호스트는 Ubuntu 24.04지만 **실행 컨테이너는 과제
-기준 Ubuntu 22.04 / Python 3.10**이며 호스트 Python은 사용하지 않는다.
+Docker와 Docker Compose V2가 필요하다. Windows에서는 Docker Desktop의
+WSL 통합을 사용한다. 실행 컨테이너는 **Ubuntu 22.04 / Python 3.10**이며
+GPU 없이 동작한다. 프로젝트 루트에서 다음 명령을 실행한다.
 
 ```bash
-cd ~/smart-factory-ai
-code .
 docker compose up --build
 ```
 
-브라우저에서 **http://localhost:8080**에 접속한다. 학습된 `pdm.pt`와
+대시보드 주소는 **http://localhost:8080**이다. 학습된 `pdm.pt`와
 `vision.pt`가 포함되어 있어 추가 학습 없이 실행한다. ONNX 그래프는 최초
-실행에 CPU에서 export하며 이때 처음 검사 결과까지 잠시 기다린다.
+실행 시 CPU에서 자동 export하므로 첫 검사 결과가 나타나기까지 초기화 시간이 필요하다.
 
-공개 main의 구현 커밋 `0c949db`을 별도 폴더에 clone하고,
-새 브로커·DB 볼륨 및 빈 데이터 폴더에서 한 명령 기동을 검증했다.
-ONNX 자동 생성, 8개 서비스, 센서·검사 저장과 실제 JPEG 응답을 확인했다.
-기존 Docker 의존성 캐시를 재사용한 조건에서 첫 검사 결과까지 74.408초였다.
-네트워크 다운로드부터 시작하는 새 컴퓨터의 빌드 시간은 별도 측정하지 않았다.
-원본은 [deployment.json](docs/results/deployment.json)에 있다.
-
-다른 컴퓨터에서 시작할 때:
+소스 받기:
 
 ```bash
 git clone https://github.com/hajijiha/smart-factory-ai.git
@@ -160,22 +151,21 @@ tests/              물리 주파수·FFT·통계 처리 검증
 - [YOLO·Grad-CAM·CPU 평가](docs/vision.md)
 - [통합 관제·DB·상관·인터락](docs/integration.md)
 - [요구사항 검증표](docs/requirements.md)
-- [독립 검증·회귀·발견 결함](docs/validation.md)
+- [테스트·통합 검증 보고서](docs/validation.md)
 
-필수 평가 기준은 PdM F1 ≥ 0.80 / CPU ≤100 ms, Vision mAP50 ≥ 0.80 /
-전처리 포함 100장 평균 ≥20 FPS다. 실제 실행 전에는 이를 달성했다고 표시하지 않는다.
+평가 기준은 PdM F1 ≥ 0.80 / CPU ≤100 ms, Vision mAP50 ≥ 0.80 /
+전처리 포함 100장 평균 ≥20 FPS다.
 ONNX 경량 배포와 PyTorch 대비 실측 비교를 선택 과제로 구현했다.
 RUL LSTM은 구현 대상에 포함하지 않으며 PHM의 수명 예측 단계와 한계를 설명한다.
 
-## 1인 역할과 작업 요약
+## 개발 범위
 
 | 담당 | 수행 범위 |
 |---|---|
 | hajijiha | 요구사항 분석·일정, 3D 시뮬레이터·합성 데이터, MQTT·DB, PdM·Vision, 관제 UI·안전 제어, 실험·테스트·문서·배포 |
 
-버전 관리는 `feat:`, `fix:`, `docs:`, `test:`, `chore:` 형식의 Conventional
-Commits를 사용한다. 실험 결과는 seed·데이터 수량·분리 방식·하드웨어·실측
-원본을 함께 남긴다. 이 프로젝트의 합성 환경 결과를 실제 공장 성능으로 일반화하지 않는다.
+실험 결과에는 seed, 데이터 수량·분리 방식, 하드웨어와 측정 원본을 기록한다.
+성능 수치는 합성 환경 기준이며 실제 공장 데이터의 성능을 나타내지는 않는다.
 
 라이선스는 AGPL-3.0이며 Ultralytics 의존성의 AGPL 조건을 따른다.
 모델 구조·학습 방식 참고: [Ultralytics YOLOv8](https://docs.ultralytics.com/models/yolov8/).
@@ -197,16 +187,23 @@ Commits를 사용한다. 실험 결과는 seed·데이터 수량·분리 방식�
 Ubuntu 22.04 / Python 3.10.12 / PyTorch 2.5.1+cpu / GPU 사용 없음.
 Grad-CAM·JPEG 디코딩·네트워크·DB 저장 시간은 detector FPS에 포함하지 않았다.
 
-![실제 대시보드](docs/results/dashboard-normal.png)
-![실제 위험 정지](docs/results/dashboard-danger.png)
-![실제 Gazebo 진동과 FFT](docs/results/vibration_fft.png)
-![정상 영상의 실제 backbone Grad-CAM](docs/results/gradcam_normal.jpg)
-![스크래치 영상의 실제 backbone Grad-CAM](docs/results/gradcam_scratch.jpg)
+![대시보드](docs/results/dashboard-normal.png)
+![위험 인터락 정지](docs/results/dashboard-danger.png)
+![Gazebo 진동과 FFT](docs/results/vibration_fft.png)
+![정상 영상의 backbone Grad-CAM](docs/results/gradcam_normal.jpg)
+![스크래치 영상의 backbone Grad-CAM](docs/results/gradcam_scratch.jpg)
 
 ## 검증 재실행
 
-검증 전담의 독립 회귀 27개와 실측 ISO 날짜 회귀 1개를 포함한
-최종 전체 검사 **28개가 통과**했다. JUnit 원본은 `docs/results/tests.xml`이다.
+안전 제어, 데이터 분할, 추론, 시간 처리 등 **테스트 28개가 통과**했다.
+검사 범위는 [검증 보고서](docs/validation.md), JUnit 결과는 `docs/results/tests.xml`에 있다.
+
+공개 main의 구현 커밋 `0c949db`을 별도 폴더에 clone하고,
+새 브로커·DB 볼륨 및 빈 데이터 폴더에서 한 명령 기동을 검증했다.
+ONNX 자동 생성, 8개 서비스, 센서·검사 저장과 실제 JPEG 응답을 확인했다.
+기존 Docker 의존성 캐시를 재사용한 조건에서 첫 검사 결과까지 74.408초였다.
+네트워크 다운로드부터 시작하는 새 컴퓨터의 빌드 시간은 별도 측정하지 않았다.
+원본은 [deployment.json](docs/results/deployment.json)에 있다.
 
 ```bash
 # 생성 데이터 없이 실행하면 데이터 의존 검사 2개만 skip된다.
