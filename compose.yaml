@@ -35,6 +35,14 @@ services:
       - ./data:/app/data
       - ./artifacts:/app/artifacts
       - ./docs/results:/app/docs/results
+      - ./factory:/app/factory:ro
+      - ./config.yaml:/app/config.yaml:ro
+      - ./simulator/bridge.py:/app/simulator/bridge.py:ro
+      - ./simulator/geometry.py:/app/simulator/geometry.py:ro
+      - ./simulator/signal.py:/app/simulator/signal.py:ro
+      - ./simulator/world.py:/app/simulator/world.py:ro
+      - ./simulator/start.sh:/app/simulator/start.sh:ro
+      - ./simulator/sensor_dataset.py:/app/simulator/sensor_dataset.py:ro
     depends_on:
       broker: {condition: service_healthy}
     shm_size: 512mb
@@ -49,6 +57,11 @@ services:
       - ./data:/app/data
       - ./artifacts:/app/artifacts
       - ./docs/results:/app/docs/results
+      - ./factory:/app/factory:ro
+      - ./simulator:/app/simulator:ro
+      - ./tests:/app/tests:ro
+      - ./scripts:/app/scripts:ro
+      - ./config.yaml:/app/config.yaml:ro
     depends_on:
       broker: {condition: service_healthy}
   vision:

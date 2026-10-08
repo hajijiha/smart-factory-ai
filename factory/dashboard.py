@@ -1,0 +1,85 @@
+"""Local FastAPI dashboard reading PostgreSQL and sending controls exclusively by MQTT."""
+import json
+import os
+from pathlib import Path
+import psycopg
+from psycopg.rows import dict_row
+from fastapi import FastAPI, HTTPException
+from fastapi.responses import HTMLResponse, FileResponse
+from pydantic import BaseModel, Field
+from factory.common import CONFIG, DATA, connect, publish, utc_now
+from factory.analytics import associations
+
+app = FastAPI(title='Smart Factory AI')
+client = connect('dashboard')
+
+
+class FaultCommand(BaseModel):
+    """Validate operator fault injection in the simulator's supported range."""
+    fault_level: int = Field(ge=0,le=10)
+
+
+@app.get('/',response_class=HTMLResponse)
+def home():
+    """Return the self-contained dashboard UI."""
+    return (Path(__file__).parent/'static/index.html').read_text()
+
+
+@app.get('/api/health')
+def health():
+    """Verify that database and MQTT transport are reachable."""
+    with psycopg.connect(os.environ['DATABASE_URL']) as db:
+        db.execute('SELECT 1')
+    return {'database':'ok','mqtt':client.is_connected(),'timestamp':utc_now()}
+
+
+@app.get('/api/snapshot')
+def snapshot():
+    """Retrieve recent event-joined sensor, health, quality and alarm data."""
+    with psycopg.connect(os.environ['DATABASE_URL'],row_factory=dict_row) as db:
+        rows = db.execute('''SELECT s.timestamp,s.event_id,s.vibration_x,s.temperature,s.fault_level,
+                    h.health_index,h.status,q.defective
+            FROM (SELECT * FROM sensor_readings ORDER BY timestamp DESC LIMIT 600) s
+            LEFT JOIN health_readings h ON h.event_id=s.event_id
+            LEFT JOIN (SELECT event_id,bool_or(defect_type<>'normal')::int AS defective FROM quality_inspections GROUP BY event_id) q ON q.event_id=s.event_id
+            ORDER BY s.timestamp''').fetchall()
+        latest = db.execute('SELECT data FROM health_readings ORDER BY timestamp DESC LIMIT 1').fetchone()
+        inspections = db.execute('SELECT id,timestamp,image_path,defect_type,confidence,bbox,health_index_at_time,gradcam_path FROM quality_inspections ORDER BY timestamp DESC LIMIT 12').fetchall()
+        alarms = db.execute('SELECT * FROM alarms ORDER BY timestamp DESC LIMIT 15').fetchall()
+        line = db.execute('SELECT data FROM line_status WHERE id=1').fetchone()
+        counts = db.execute('''SELECT (SELECT count(*) FROM sensor_readings) AS sensors,
+                        (SELECT count(DISTINCT event_id) FROM quality_inspections) AS inspections,
+                        (SELECT count(DISTINCT event_id) FROM quality_inspections WHERE defect_type<>'normal') AS defects''').fetchone()
+    return {'timestamp':utc_now(),'rows':rows,'latest_health':latest['data'] if latest else None,
+            'inspections':inspections,'alarms':alarms,'line':line['data'] if line else None,
+            'counts':counts,'correlation':associations(rows)}
+
+
+@app.post('/api/fault')
+def fault(command: FaultCommand):
+    """Publish a fault command asynchronously; simulator acknowledges via line events."""
+    publish(client,'factory/command/fault',{'timestamp':utc_now(),**command.model_dump()},retain=True)
+    return {'accepted':True,**command.model_dump()}
+
+
+@app.post('/api/reset')
+def reset():
+    """Ask the independent safety controller to validate and reset the interlock."""
+    publish(client,'factory/command/reset',{'timestamp':utc_now()})
+    return {'accepted':True,'note':'Controller requires HI >= 80'}
+
+
+@app.get('/images/{path:path}')
+def image(path: str):
+    """Serve captured image evidence with strict path traversal protection."""
+    file = (DATA/path).resolve()
+    if not file.is_relative_to(DATA.resolve()) or not file.is_file() or file.suffix.lower() not in ['.jpg','.png']:
+        raise HTTPException(404,'Image not found')
+    return FileResponse(file)
+
+
+@app.get('/api/results')
+def results():
+    """Expose actual experiment reports when present; absent metrics stay absent."""
+    directory = Path(CONFIG['paths']['reports'])
+    return {file.stem:json.loads(file.read_text()) for file in directory.glob('*.json')}
