@@ -1,0 +1,57 @@
+{
+  "protocol_id": "synthetic-bias-challenge-v1",
+  "scope": "Independent synthetic challenge, not real-factory validation",
+  "registration": "Criteria and seeds fixed before improved-model evaluation. A challenge used to change a model becomes development data; a new final seed/protocol is then required.",
+  "seeds": {"development": 731024, "final": 862047},
+  "sensor": {
+    "supported_rotation_hz": [8.0, 11.5, 15.0],
+    "supported_noise_std": [0.008, 0.025, 0.05],
+    "out_of_domain_rotation_hz": [5.0, 18.0],
+    "out_of_domain_noise_std": [0.10],
+    "levels": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    "samples_per_cell": 30,
+    "fault_types": ["imbalance", "looseness", "outer_race", "inner_race", "mixed"],
+    "supported_f1_min": 0.80,
+    "supported_normal_fpr_max": 0.05,
+    "normal_noise_only_fpr_max": 0.05,
+    "level_3_to_10_recall_min": 0.80
+  },
+  "vision": {
+    "images_per_class": 40,
+    "transforms": ["identity", "grayscale", "darken", "brighten", "blur", "jpeg"],
+    "match_iou": 0.5,
+    "supported_recall_drop_warn": 0.15,
+    "normal_fpr_gap_warn": 0.10,
+    "erased_defect_fpr_warn": 0.10
+  },
+  "audit": {
+    "nuisance_smd_warn": 0.20,
+    "nuisance_ks_warn": 0.15,
+    "sensor_nuisance_auc_warn": 0.60,
+    "vision_nuisance_balanced_accuracy_warn": 0.35,
+    "minimum_cell_count": 30,
+    "cross_validation_folds": 5
+  },
+  "render_gate": {
+    "classes": [0, 1, 2],
+    "scales": [0.68, 0.93, 1.18],
+    "minimum_bbox_iou": 0.70,
+    "maximum_outside_roi_fraction": 0.10,
+    "rounding_tolerance_pixels": 2,
+    "changed_pixel_channel_threshold": 20,
+    "minimum_changed_pixels": 5,
+    "purpose": "Paired actual Gazebo rendering and label geometry preflight; no model predictions or scores"
+  },
+  "pre_evaluation_amendment": {
+    "reason": "Actual Gazebo motor-settling probe reached a 100 rad/s limit when commanding higher RPM; rejected before any dataset samples, new training or challenge evaluation.",
+    "previous_supported_rotation_hz": [18.0, 25.0, 32.0],
+    "previous_out_of_domain_rotation_hz": [10.0, 38.0],
+    "new_supported_range_hz": [8.0, 15.0],
+    "scope": "Hardware/simulator feasibility correction before evaluation; thresholds, seed and sample-selection rule unchanged. Collection requires observed RPM settling, never commanded-RPM substitution."
+  },
+  "status_definitions": {
+    "FAIL": "Corrupt/inconsistent data, split-group reuse, a changed frozen artifact, or incomplete versioned provenance.",
+    "WARN": "Observed shortcut dependence, domain coverage gap, or performance below a predeclared synthetic QA criterion; not proof of bias absence/presence in every domain.",
+    "UNVALIDATED": "No independent real-factory data and labels are available. Synthetic checks cannot clear this status."
+  }
+}

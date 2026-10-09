@@ -43,6 +43,12 @@ services:
       - ./simulator/world.py:/app/simulator/world.py:ro
       - ./simulator/start.sh:/app/simulator/start.sh:ro
       - ./simulator/sensor_dataset.py:/app/simulator/sensor_dataset.py:ro
+      - ./simulator/scenarios.py:/app/simulator/scenarios.py:ro
+      - ./simulator/dataset_protocol.py:/app/simulator/dataset_protocol.py:ro
+      - ./simulator/vision_dataset.py:/app/simulator/vision_dataset.py:ro
+      - ./simulator/plugin/world.cpp:/app/simulator/plugin/world.cpp:ro
+      - ./simulator/preflight.py:/app/simulator/preflight.py:ro
+      - ./simulator/render_validation.py:/app/simulator/render_validation.py:ro
     depends_on:
       broker: {condition: service_healthy}
     shm_size: 512mb

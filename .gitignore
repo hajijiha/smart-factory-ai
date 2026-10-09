@@ -16,3 +16,4 @@ artifacts/*.pt
 scripts/sync_source.py
 scripts/update_docs.py
 .verification/
+artifacts/*/

@@ -1,0 +1,26 @@
+# Isolated candidate experiment; does not replace the baseline live simulator.
+services:
+  simulator:
+    environment:
+      DATA_GENERATOR_VERSION: v2
+      DATA_DIR: /app/data/bias-v2-r2
+      ARTIFACT_DIR: /app/artifacts/bias-v2-r2
+      REPORT_DIR: /app/docs/results/bias-v2
+      FACTORY_CONFIG: /app/config.bias.yaml
+      GENERATE_DATA: '1'
+      GENERATE_MODALITY: all
+      ROS_DOMAIN_ID: '89'
+    volumes:
+      - ./config.bias.yaml:/app/config.bias.yaml:ro
+  pdm:
+    environment: &experiment-env
+      DATA_DIR: /app/data/bias-v2-r2
+      ARTIFACT_DIR: /app/artifacts/bias-v2-r2
+      REPORT_DIR: /app/docs/results/bias-v2
+      FACTORY_CONFIG: /app/config.bias.yaml
+    volumes:
+      - ./config.bias.yaml:/app/config.bias.yaml:ro
+  vision:
+    environment: *experiment-env
+    volumes:
+      - ./config.bias.yaml:/app/config.bias.yaml:ro

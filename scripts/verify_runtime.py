@@ -50,7 +50,7 @@ def ready(base, timeout=90):
     raise TimeoutError('Dashboard/MQTT or fresh simulator/PdM observations not ready')
 
 
-def verify(base):
+def verify(base, output=None):
     """Observe normal, danger stop, normal recovery and explicit safe restart."""
     report = {'started_at':time.time(),'health':ready(base)}
     request(base,'/api/fault',{'fault_level':0})
@@ -77,7 +77,7 @@ def verify(base):
     recovered = wait(base,lambda s:s['line'] and s['line']['running'] and abs(s['line']['roller_velocity'])>.5)
     report['recovery'] = {'line':recovered['line'],'counts':recovered['counts']}
     report['passed'] = True
-    output = Path(__file__).resolve().parents[1]/'docs/results/integration.json'
+    output = Path(output) if output else Path(__file__).resolve().parents[1]/'docs/results/integration.json'
     output.parent.mkdir(parents=True,exist_ok=True)
     output.write_text(json.dumps(report,indent=2))
     print(f'Integration verified: {output}')
@@ -86,4 +86,6 @@ def verify(base):
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
     parser.add_argument('--url',default='http://localhost:8080')
-    verify(parser.parse_args().url)
+    parser.add_argument('--output',type=Path,help='Separate result path for an isolated regression run')
+    args=parser.parse_args()
+    verify(args.url,args.output)
