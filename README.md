@@ -1,72 +1,14 @@
 # Smart Factory AI
 
-Gazebo의 3D 검사 영상과 모터 관측값으로 **설비 상태 → 제품 불량 →
-관제·라인 정지**를 연결하는 스마트 팩토리 시뮬레이션 시스템이다. 모든 서비스는 CPU에서 실행하며,
-모듈 간 결과와 제어 명령은 MQTT로 주고받는다.
+Gazebo의 모터 센서와 3D 검사 영상을 분석하는 스마트 팩토리 시뮬레이션이다. 설비 진단, 제품 불량 검출, 검사 이력과 컨베이어 정지를 MQTT로 연결한다. 모든 서비스는 CPU에서 실행한다.
 
-공정 관제 화면에서 진단 모터·컨베이어·검사 카메라의 상태를 한눈에 확인한다.
-설비를 선택하면 센서 추세, 실제 롤러 속도, 검출 박스와 검사 이력을 볼 수 있다.
-명령 접수와 적용 관측을 구분하고, 오래된 데이터와 연결 오류를 별도로 표시한다.
-[공정 관제 구조와 상태 처리](docs/process-control.md)에 화면과 제어 조건을 정리했다.
+관제 화면에서 설비 상태, 센서 추세, 롤러 속도, 검출 결과와 검사 이력을 확인할 수 있다. 제어 명령의 접수·적용 상태와 오래된 데이터도 구분해서 표시한다.
 
-![공정 관제 — 정상 운전](docs/results/process-control/normal.jpg)
-
-기존 생성 규칙(v1)에서 별도 seed로 나눈 합성 테스트 세트의 관리도 F1은
-0.9950, AE F1은 0.9885, YOLO 테스트 mAP@0.5는 0.9691다.
-CPU ONNX는 전처리와 NMS를 포함한 테스트 100장 평균 66.26 FPS다.
-평가 결과와 하드웨어 정보는 `docs/results/`, 체크포인트 해시는 `artifacts/model-card.json`에 있다.
-
-같은 생성 규칙에서 얻은 높은 점수는 실제 공장 성능을 보장하지 않는다.
-운전 조건·약한 고장·결함 형태를 확장한 v2 생성기와 고정 모델의 독립 도전 검사는
-[합성 데이터 편향 검증](docs/bias-validation.md)에 정리했다. 기본 실행 모델과 후보 실험 모델은 별도로 관리한다.
-
-추가 검증에서는 센서 7,000개·영상 1,800장을 새로 취득하고 결함 원본 PNG 900쌍을 전수 대조했다.
-동일한 최종 합성 신호에서 후보 AE의 정상 오경보율은 100%에서 4.81%로 감소했지만,
-특정 조건과 범위 밖에서는 실패가 남았다. 기존·후보 모델 모두 조건별 판정은 **WARN**이며,
-실제 공장·저대비 결함은 **UNVALIDATED**다. [최종 비교와 한계](docs/bias-validation.md#고정-모델-최종-비교)에 수량·조건·원시 결과를 기록했다.
-
-## 시스템 구조
-
-```mermaid
-flowchart LR
-    subgraph sim[Ubuntu 22.04 / ROS2 Humble / Gazebo]
-      G[3D 제품·결함 / ODE 모터·롤러] -->|Image / JointState| B[ROS2 취득 노드]
-      B -->|Scene JSON| G
-    end
-    B -->|sensor / image| M[MQTT Mosquitto]
-    M -->|sensor| P[FFT · 관리도 · Autoencoder]
-    M -->|image| V[YOLOv8n ONNX · Grad-CAM]
-    P -->|health / alarm| M
-    V -->|quality / gradcam| M
-    M --> S[저장 서비스]
-    S --> T[(TimescaleDB 센서 hypertable)]
-    S --> Q[(PostgreSQL 검사·영상·알람)]
-    T --> D[FastAPI 로컬 대시보드]
-    Q --> D
-    D -->|fault / reset| M
-    M --> C[위험 인터락]
-    C -->|conveyor command| M
-    M -->|command| B
-```
-
-TimescaleDB는 PostgreSQL 확장이므로 한 DB 서버에서 센서는 hypertable에,
-품질은 일반 관계형 테이블에 저장한다. 논리 스키마와 저장 방식은 구분된다.
+![정상 운전 화면](docs/results/process-control/normal.jpg)
 
 ## 실행
 
-Docker와 Docker Compose V2가 필요하다. Windows에서는 Docker Desktop의
-WSL 통합을 사용한다. 실행 컨테이너는 **Ubuntu 22.04 / Python 3.10**이며
-GPU 없이 동작한다. 프로젝트 루트에서 다음 명령을 실행한다.
-
-```bash
-docker compose up --build
-```
-
-대시보드 주소는 **http://localhost:8080**이다. 학습된 `pdm.pt`와
-`vision.pt`가 포함되어 있어 추가 학습 없이 실행한다. ONNX 그래프는 최초
-실행 시 CPU에서 자동 export하므로 첫 검사 결과가 나타나기까지 초기화 시간이 필요하다.
-
-소스 받기:
+Docker와 Docker Compose V2가 필요하다. Windows에서는 Docker Desktop의 WSL 통합을 사용한다. 컨테이너 환경은 Ubuntu 22.04 / Python 3.10이며, Gazebo는 Xvfb/Mesa로 CPU 렌더링한다.
 
 ```bash
 git clone https://github.com/hajijiha/smart-factory-ai.git
@@ -74,172 +16,117 @@ cd smart-factory-ai
 docker compose up --build
 ```
 
-기본 명령 `docker compose up`도 필요한 이미지를 자동 빌드한다. 최초 빌드에는
-Ubuntu/ROS/Gazebo와 CPU PyTorch 의존성을 다운로드할 네트워크가 필요하다.
-실행 중 검사는 약 1초 간격으로 발행하며, 20 FPS 기준은 별도 CPU detector
-벤치마크다. 전체 DB·렌더링·Grad-CAM을 포함한 생산라인 처리율과 구분한다.
-
-Docker Compose V2의 `docker compose` 명령을 사용한다.
-최초 이미지를 빌드·다운로드할 때는 인터넷과 디스크 여유가 필요하다.
-Gazebo는 Xvfb/Mesa로 headless CPU 렌더링하므로 NVIDIA GPU가 필요 없다.
+대시보드는 **http://localhost:8080**에서 열린다. 학습된 `pdm.pt`, `vision.pt`를 포함하며, ONNX 그래프는 최초 실행 시 자동으로 생성한다. 처음 빌드할 때 의존성 다운로드를 위한 인터넷 연결과 초기화 시간이 필요하다.
 
 ```bash
-# 백그라운드 실행 / 상태 / 최근 로그
 docker compose up -d
 docker compose ps
 docker compose logs --tail=30 simulator pdm vision
-
-# 종료: 검사 이력과 데이터 볼륨은 유지
 docker compose down
 ```
 
-## 사용 순서
+`docker compose down`으로 종료해도 검사 이력과 데이터 볼륨은 유지된다. 설정은 `config.yaml`, 접속 정보는 `.env.example`에서 확인한다. DB의 기본 비밀번호는 로컬 데모용이며 외부 접속 포트는 노출하지 않는다.
 
-1. 처음에는 Fault Level 0으로 정상 센서 상태와 검사 결과가 나타나는지 확인한다.
-2. 고장 슬라이더를 3–6으로 올리고 **레벨 적용**을 누른다. 진동, FFT,
-   Health Index, 불량률이 변화하며 경고 단계에서는 알람이 기록된다.
-3. 레벨 10을 적용하면 위험 진단 후 인터락이 작동한다. 컨베이어가 정지하고
-   화면의 실제 Gazebo 롤러 속도가 0에 가까워지는지 확인한다.
-4. 레벨을 0으로 낮추고 HI가 정상으로 돌아온 다음 **안전 재시작**을 누른다.
-   위험 상태에서의 재시작 요청은 거절된다.
-5. 불량 검사 이력에서 원본 영상과 백본 Grad-CAM을 확인한다. 상관관계는
-   충분한 검사 표본과 서로 다른 고장 레벨이 모여야 계산된다.
+## 사용
 
-정지한 컨베이어에서는 제품 검사 이벤트를 발행하지 않는다. 별도 시험대의
-진단 모터는 회복 상태를 확인하기 위해 회전한다.
+1. Fault Level 0에서 정상 센서 상태와 검사 결과를 확인한다.
+2. 고장 레벨을 3–6으로 올리고 **레벨 적용**을 누른다. 진동, FFT, Health Index와 불량률이 바뀌며 경고 시 알람이 기록된다.
+3. 레벨 10에서는 위험 인터락이 컨베이어를 정지시킨다. Gazebo 롤러 속도가 0에 가까워지는지 확인한다.
+4. 레벨을 0으로 낮추고 HI가 정상으로 돌아오면 **안전 재시작**을 누른다. 위험 상태에서는 재시작 요청이 거절된다.
+5. 검사 이력에서 원본 영상과 Grad-CAM을 확인한다. 상관관계 계산에는 서로 다른 고장 레벨의 검사 표본이 필요하다.
 
-## 데이터 생성·학습 재현
+컨베이어 정지 중에는 제품 검사를 발행하지 않는다. 별도 시험대의 진단 모터는 회복 상태 확인을 위해 계속 회전한다.
 
-학습용 데이터 원본과 manifest/provenance 전체는 공개 레포에 넣지 않는다.
-생성 코드·seed·수량 및 무결성 실측 결과를 제공하며, 재생성하면
-`data/`에 영상·레이블·manifest/provenance를 기록한다. 모델 파인튜닝 입력은 외부 데이터셋이 아닌 Gazebo 출력이다.
+## 시스템 구성
 
-```bash
-# 시뮬레이터 데이터 생성부터 학습·평가·실행까지
-bash scripts/reproduce.sh
-
-# 개별 단계: 실행 중인 취득·분석 서비스를 먼저 정지한다.
-docker compose stop simulator pdm vision storage controller dashboard
-docker compose build
-docker compose up -d broker database
-docker compose run --rm -e GENERATE_DATA=1 simulator
-docker compose run --rm pdm python3 -m factory.pdm.train
-docker compose run --rm vision python3 -m factory.vision.train
-docker compose run --rm pdm python3 -m pytest tests -q
-docker compose up -d
-python3 scripts/verify_runtime.py
+```mermaid
+flowchart LR
+    G[Gazebo / ROS2] -->|sensor / image| M[MQTT]
+    M --> P[FFT · 관리도 · Autoencoder]
+    M --> V[YOLOv8n ONNX · Grad-CAM]
+    P -->|health / alarm| M
+    V -->|quality / gradcam| M
+    M --> S[저장 서비스]
+    S --> DB[(PostgreSQL / TimescaleDB)]
+    DB --> D[FastAPI 대시보드]
+    D -->|fault / reset| M
+    M --> C[위험 인터락]
+    C -->|conveyor command| M
+    M -->|command| G
 ```
 
-센서는 정상 5,000 + 고장 2,000개, 영상은 정상 3,000 + 결함별 1,000장,
-총 6,000장을 실제 생성했다. 생성 시나리오별 70/15/15 분리이며 테스트
-장면은 별도 seed·카메라/조명/노이즈 조건을 사용한다.
-재현 실험은 CPU 렌더링·학습으로 인해 시간이 걸린다. 이미 완료한 데이터는
-완료 marker로 재사용한다. 학습 전 `data/vision/COMPLETE`를 확인한다.
+한 PostgreSQL 서버에서 센서는 TimescaleDB hypertable에, 검사·영상·알람은 관계형 테이블에 저장한다.
 
-## 코드 구성
+| 경로 | 역할 |
+|---|---|
+| `simulator/` | Gazebo 장면, C++ 플러그인, ROS2 취득과 센서 합성 |
+| `factory/pdm/` | FFT 특징, 관리도, Autoencoder 학습·추론 |
+| `factory/vision/` | YOLO 학습, ONNX 검출, Grad-CAM |
+| `factory/storage.py` | 이벤트 저장과 도착 순서 처리 |
+| `factory/controller.py` | 위험 정지와 안전 재시작 |
+| `factory/dashboard.py`, `factory/process.py`, `factory/static/` | 관제 API와 화면 |
+| `factory/analytics.py` | Pearson/Spearman 상관과 시차 분석 |
+| `docker/`, `artifacts/`, `scripts/`, `tests/` | 실행 환경, 모델, 재현·검증 도구 |
 
-```text
-simulator/          Gazebo SDF 장면, C++ WorldPlugin, ROS2 취득, 센서 고장 합성
-factory/pdm/        FFT 특징, 관리도, AE 모델·학습·MQTT 추론
-factory/vision/     YOLO 파인튜닝, ONNX 검출, 실제 역전파 Grad-CAM
-factory/storage.py  이벤트 ID 기반 DB 저장과 도착 순서 조정
-factory/controller.py  위험 래치·안전 재시작
-factory/dashboard.py   읽기 API와 MQTT 조작 명령
-factory/process.py     관측 시각·설비 상태·공정 관제 응답
-factory/analytics.py   5초 구간 Pearson/Spearman·시차 분석
-factory/static/     외부 CDN 없이 실행되는 관제 UI
-docker/             CPU 실행 이미지, DB 초기 스키마, 브로커 설정
-artifacts/          학습 체크포인트와 모델 정보
-docs/               모듈 설명·통신 스키마·평가 보고서
-scripts/            재현 실행·실제 인터락 통합 검증
-tests/              물리 주파수·FFT·통계 처리 검증
-```
+## 실험 결과와 한계
 
-경로·센서·학습·추론 설정은 `config.yaml`, 접속 설정은 환경변수와
-`.env.example`에 분리한다. 코드의 함수·클래스에는 역할을 docstring으로
-설명한다. DB 비밀번호는 로컬 데모용 기본값이며 외부 접속 포트는 노출하지 않는다.
-
-## 문서와 평가
-
-- [개발 계획](docs/plan.md)
-- [시뮬레이터·데이터 생성](docs/simulator.md)
-- [토픽·메시지·시간 동기화](docs/communication.md)
-- [예지보전 이론·학습·평가](docs/predictive-maintenance.md)
-- [YOLO·Grad-CAM·CPU 평가](docs/vision.md)
-- [통합 관제·DB·상관·인터락](docs/integration.md)
-- [공정 관제 화면·설비 상태·안전 조작](docs/process-control.md)
-- [요구사항 검증표](docs/requirements.md)
-- [테스트·통합 검증 보고서](docs/validation.md)
-
-평가 기준은 PdM F1 ≥ 0.80 / CPU ≤100 ms, Vision mAP50 ≥ 0.80 /
-전처리 포함 100장 평균 ≥20 FPS다.
-ONNX 경량 배포와 PyTorch 대비 실측 비교를 선택 과제로 구현했다.
-RUL LSTM은 구현 대상에 포함하지 않으며 PHM의 수명 예측 단계와 한계를 설명한다.
-
-## 개발 범위
-
-요구사항 분석부터 구현·실험·배포까지 진행한 개인 프로젝트다.
-3D 시뮬레이터와 합성 데이터 생성, MQTT·DB 연동, PdM·Vision 모델,
-관제 UI와 안전 제어를 구현하고 테스트·실험 결과를 문서화했다.
-
-실험 결과에는 seed, 데이터 수량·분리 방식, 하드웨어와 측정 원본을 기록한다.
-성능 수치는 합성 환경 기준이며 실제 공장 데이터의 성능을 나타내지는 않는다.
-
-라이선스는 AGPL-3.0이며 Ultralytics 의존성의 AGPL 조건을 따른다.
-모델 구조·학습 방식 참고: [Ultralytics YOLOv8](https://docs.ultralytics.com/models/yolov8/).
-
-## 실측 성능
+기존 생성 규칙(v1)의 합성 데이터에서 측정한 결과다.
 
 | 측정 | 결과 | 조건 |
 |---|---:|---|
-| 통계 관리도 F1 | 0.9950 | 기존 생성 규칙의 합성 센서 test 1,050개 |
-| 정상 학습 AE F1 | 0.9885 | 정상 train 3,500개만 fit |
+| 통계 관리도 F1 | 0.9950 | 합성 센서 test 1,050개 |
+| 정상 학습 AE F1 | 0.9885 | 정상 train 3,500개만 학습 |
 | PdM 평균 | 0.941 ms | FFT·9특징·두 모델·HI, 100창 × 5회 |
-| YOLO test mAP50 | 0.9691 | 기존 렌더링 규칙의 합성 영상 test 900장 |
+| YOLO test mAP50 | 0.9691 | 합성 영상 test 900장 |
 | YOLO test mAP50–95 | 0.9116 | validation 선택 후 test 평가 |
 | ONNX 평균 | 66.26 FPS / 15.092 ms | 전처리·NMS 포함, CPU, 100장 |
 | PyTorch 평균 | 25.45 FPS / 39.300 ms | 같은 100장·같은 conf/IoU |
 
-하드웨어: Intel(R) Core(TM) Ultra 5 225H, 14 logical CPU,
-컨테이너 가시 메모리 7.45 GiB.
-Ubuntu 22.04 / Python 3.10.12 / PyTorch 2.5.1+cpu / GPU 사용 없음.
-Grad-CAM·JPEG 디코딩·네트워크·DB 저장 시간은 detector FPS에 포함하지 않았다.
+측정 환경은 Intel Core Ultra 5 225H, 14 logical CPU, 컨테이너 메모리 7.45 GiB, Ubuntu 22.04 / Python 3.10.12 / PyTorch 2.5.1+cpu다. GPU는 사용하지 않았다.
 
-![Gazebo 진동과 FFT](docs/results/vibration_fft.png)
-![정상 영상의 backbone Grad-CAM](docs/results/gradcam_normal.jpg)
-![스크래치 영상의 backbone Grad-CAM](docs/results/gradcam_scratch.jpg)
+Detector FPS에는 Grad-CAM, JPEG 디코딩, 네트워크와 DB 저장 시간이 포함되지 않는다. 실행 중 검사 결과는 약 1초 간격으로 발행한다.
 
-## 검증 재실행
+합성 데이터의 높은 점수가 실제 공장 성능을 보장하지는 않는다. 운전 조건, 약한 고장과 결함 형태를 확장한 v2 검증에서는 기존·후보 모델 모두 조건별 판정이 WARN이며, 실제 공장과 저대비 결함은 UNVALIDATED다. 기본 실행 모델과 후보 실험 모델은 별도로 관리한다.
 
-공정 관제 확장 후 전체 회귀 검사에서 **133개 통과·2개 skip**을 확인했다.
-추가한 공정 상태·대시보드 API 검사 54개는 모두 통과했다.
-skip 2개는 격리된 실행 환경에 원본 학습 데이터가 없어 센서·영상 데이터셋 검사를
-수행하지 않은 경우다. 해당 2개는 원본 v1 데이터를 읽기 전용으로 연결한 별도 실행에서
-모두 통과했다. [공정 관제 검증](docs/process-control.md#검증)에 JUnit 원본과 운전 결과를 기록한다.
-기존 편향 검증은 원본 데이터를 포함해 81개를 통과했으며,
-당시 JUnit 원본은 `docs/results/bias-v2/tests.xml`에 보관한다.
-기존 28개 검사와 성능 측정은 [검증 보고서](docs/validation.md),
-추가 검사 범위는 [합성 데이터 편향 검증](docs/bias-validation.md)에 정리했다.
+[합성 데이터 편향 검증](docs/bias-validation.md)에 조건별 실패와 원시 결과, [모델 카드](artifacts/model-card.json)에 체크포인트 정보를 기록했다.
 
-공개 main의 구현 커밋 `0c949db`을 별도 폴더에 clone하고,
-새 브로커·DB 볼륨 및 빈 데이터 폴더에서 한 명령 기동을 검증했다.
-ONNX 자동 생성, 8개 서비스, 센서·검사 저장과 실제 JPEG 응답을 확인했다.
-기존 Docker 의존성 캐시를 재사용한 조건에서 첫 검사 결과까지 74.408초였다.
-네트워크 다운로드부터 시작하는 새 컴퓨터의 빌드 시간은 별도 측정하지 않았다.
-원본은 [deployment.json](docs/results/deployment.json)에 있다.
+## 데이터 생성과 재학습
+
+학습용 센서·영상 원본은 Git에 포함되지 않는다. 아래 명령으로 Gazebo 데이터 생성부터 학습·평가·실행까지 재현한다.
 
 ```bash
-# 생성 데이터 없이 실행하면 데이터 의존 검사 2개만 skip된다.
+bash scripts/reproduce.sh
+```
+
+기존 데이터는 센서 정상 5,000개·고장 2,000개, 영상 정상 3,000장·결함별 1,000장으로 총 6,000장이다. 생성 시나리오별로 70/15/15 분할하며 테스트는 별도 seed와 카메라·조명·노이즈 조건을 사용한다.
+
+재현 스크립트는 중복 Gazebo 토픽을 방지하기 위해 실행 중인 취득·분석 서비스를 잠시 정지한다. 완료 marker가 있는 데이터는 재사용하며, 저장 데이터나 DB 볼륨을 삭제하지 않는다. CPU 렌더링과 학습에는 시간이 걸린다.
+
+개별 실행 순서와 데이터 기록 방식은 [시뮬레이터 문서](docs/simulator.md)에 있다.
+
+## 검증
+
+```bash
 docker compose run --rm --no-deps pdm python3 -m pytest tests -q
-# 전체 서비스 실행 후 실제 위험 정지와 복구 / DB 이미지 검증
 python3 scripts/verify_runtime.py
 python3 scripts/verify_storage.py
-# 정상·중간 고장 레벨 반복 실험; 끝나면 레벨 0으로 복구한다.
 python3 -m scripts.measure_correlation --hold-seconds 30 --repeats 3
 docker compose run --rm --no-deps pdm python3 scripts/analyze_correlation.py
 ```
 
-`verify_runtime`은 시연을 위해 실제 레벨 10을 적용하고 정상으로 복구한다.
-데이터를 다시 학습하려면 `scripts/reproduce.sh`를 사용한다. 중복 Gazebo
-토픽을 방지하기 위해 현재 실행 중인 분석·시뮬레이터 서비스를 잠시 정지하며,
-저장된 데이터나 DB 볼륨을 삭제하지 않는다.
+데이터가 없는 환경의 회귀 검사는 133개 통과·2개 skip이었다. 데이터 의존 검사 2개는 원본 v1 데이터를 연결한 별도 실행에서 통과했다. 범위와 JUnit 원본은 [공정 관제 검증](docs/process-control.md#검증)에 있다.
+
+`verify_runtime.py`는 전체 서비스가 실행 중일 때 레벨 10으로 위험 정지를 확인하고 정상으로 복구한다. 상관관계 측정 스크립트도 완료 후 레벨 0으로 복구한다.
+
+## 문서
+
+- [시뮬레이터와 데이터](docs/simulator.md)
+- [MQTT 메시지와 시간 동기화](docs/communication.md)
+- [예지보전 학습·평가](docs/predictive-maintenance.md)
+- [YOLO·Grad-CAM·CPU 평가](docs/vision.md)
+- [관제·저장·인터락](docs/integration.md)
+- [공정 관제 화면과 제어 조건](docs/process-control.md)
+- [구현 범위와 평가 기준](docs/plan.md) · [요구사항 검증표](docs/requirements.md)
+- [통합 검증](docs/validation.md) · [기동 검증 원본](docs/results/deployment.json)
+
+라이선스는 [AGPL-3.0](LICENSE)이다. 모델 구조와 학습 방식은 [Ultralytics YOLOv8](https://docs.ultralytics.com/models/yolov8/)을 참고했다.
