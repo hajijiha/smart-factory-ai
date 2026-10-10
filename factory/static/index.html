@@ -1,25 +1,811 @@
 <!doctype html>
-<html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Smart Factory AI</title>
-<style>
-:root{color-scheme:dark;--ink:#e4edf5;--muted:#8198ac;--bg:#101820;--panel:#18242f;--green:#45d4a3;--red:#ff647a;--line:#2b3e4b}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px system-ui,sans-serif}main{max-width:1440px;margin:auto;padding:32px}header{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--line);padding-bottom:24px}h1{font-size:28px;margin:5px 0}small,.muted{color:var(--muted)}.label{font-size:11px;letter-spacing:2px;color:var(--green)}.pill{border:1px solid var(--line);border-radius:18px;padding:7px 14px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin:24px 0}.card,.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:20px}.value{font-size:36px;font-weight:650;margin:10px 0}.layout{display:grid;grid-template-columns:2fr 1fr;gap:18px}.panel{margin-bottom:18px}h2{font-size:16px;font-weight:600;margin:0 0 18px}canvas{width:100%;height:220px}button{background:var(--green);color:#10251e;border:0;border-radius:7px;padding:10px 16px;font-weight:650;cursor:pointer}button.secondary{background:#324858;color:var(--ink)}input[type=range]{width:100%;accent-color:var(--green);margin:22px 0}.control{display:flex;gap:12px;align-items:center;justify-content:space-between}.danger{color:var(--red)}.normal{color:var(--green)}.caution{color:#f0c568}.warning{color:#ffaa65}table{width:100%;border-collapse:collapse;font-size:12px}td,th{text-align:left;padding:10px 5px;border-bottom:1px solid var(--line)}th{color:var(--muted)}.evidence{display:grid;grid-template-columns:1fr 1fr;gap:12px}.evidence img[hidden]{display:none}.evidence img{width:100%;border-radius:7px;display:block}.log{font-size:12px;max-height:200px;overflow:auto}.log p{border-bottom:1px solid var(--line);padding:8px 0;margin:0}#notice{min-height:24px;font-size:13px;color:var(--muted)}footer{margin-top:20px;color:var(--muted);font-size:12px}@media(max-width:850px){main{padding:16px}.grid{grid-template-columns:1fr 1fr}.layout{grid-template-columns:1fr}}
-</style></head><body><main>
-<header><div><span class="label">OT × IT / CPU MONITORING</span><h1>Smart Factory AI</h1><small>설비 상태와 제품 품질을 함께 확인하는 관제 화면</small></div><div class="pill" id="connection">연결 중</div></header>
-<div class="grid"><div class="card"><small>HEALTH INDEX</small><div class="value" id="hi">—</div><span id="status">센서 대기</span></div><div class="card"><small>모터 진동 RMS</small><div class="value" id="rms">—</div><small id="temperature">온도 — °C · 합성 가속도 / a.u.</small></div><div class="card"><small>검사 불량률</small><div class="value" id="rate">—</div><small id="count">검사 대기</small></div><div class="card"><small>CONVEYOR</small><div class="value" id="line">—</div><small id="roller">위험 상태 자동 정지</small></div></div>
-<div class="layout"><div>
-<section class="panel"><h2>설비 추세 <small>Health Index / 진동 × 100</small></h2><canvas id="trend"></canvas></section>
-<section class="panel"><h2>FFT 주파수 스펙트럼 <small id="frequency"></small></h2><canvas id="fft"></canvas></section>
-<section class="panel"><h2>진동과 불량 발생 빈도 <small id="corr"></small></h2><canvas id="scatter"></canvas><small>5초 구간별 평균 RMS와 실제 검사 불량률 · 미검사/정지 구간 제외</small><p class="muted" id="lag"></p></section>
-<section class="panel"><h2>품질 검사 이력</h2><table><thead><tr><th>시각</th><th>판정</th><th>확신도</th><th>동시점 HI</th><th>검사 이미지</th></tr></thead><tbody id="history"></tbody></table></section>
-</div><aside>
-<section class="panel"><h2>고장 주입과 라인 제어</h2><div class="control"><small>Fault Level</small><strong id="faultDisplay">0 / 10</strong></div><input id="fault" type="range" min="0" max="10" value="0"><div class="control"><button id="apply">레벨 적용</button><button class="secondary" id="reset">안전 재시작</button></div><p class="muted">위험 상태는 인터락이 걸립니다. 고장 레벨을 0으로 낮추고 HI가 정상으로 돌아온 뒤 재시작하세요.</p><div id="notice"></div></section>
-<section class="panel"><h2>검사 영상과 판단 근거</h2><div class="evidence"><div><img id="inspection" alt="Gazebo 검사 영상"><small>3D 카메라 영상</small></div><div><img id="cam" alt="Grad-CAM"><small id="camNotice">백본 Grad-CAM</small></div></div><p class="muted" id="evidenceType">불량 검사 대기</p></section>
-<section class="panel"><h2>알람 이력</h2><div id="alarms" class="log">알람 없음</div></section>
-<section class="panel"><h2>모델 실행 상태</h2><p class="muted" id="latency">모델 응답 대기</p><small>관리도 + Autoencoder · YOLOv8n / ONNX</small></section>
-</aside></div><footer>UTC 시각 저장 · 화면은 현지 시각 · 2초마다 갱신 · 시뮬레이터의 인위적 결합으로 실제 현장의 인과관계를 증명하지 않습니다.</footer></main>
-<script>
-const $=id=>document.getElementById(id), names={normal:'정상',caution:'주의',warning:'경고',danger:'위험',scratch:'스크래치',dent:'찍힘',contamination:'이물질'};
-function chart(id,series,{xmax=100,ymax=100,scatter=false}={}){const c=$(id),r=c.getBoundingClientRect(),scale=devicePixelRatio||1;c.width=r.width*scale;c.height=220*scale;const g=c.getContext('2d');g.scale(scale,scale);const w=r.width,h=220,l=44,b=26;g.font='11px system-ui';g.strokeStyle='#2b3e4b';g.fillStyle='#8198ac';for(let i=0;i<5;i++){let y=10+(h-b-10)*i/4;g.beginPath();g.moveTo(l,y);g.lineTo(w-12,y);g.stroke();g.fillText((ymax*(1-i/4)).toFixed(ymax<=1?1:0),3,y+4)}series.forEach(s=>{g.strokeStyle=s.color;g.fillStyle=s.color;g.lineWidth=2;g.beginPath();s.points.forEach(([x,y],i)=>{let px=l+x/xmax*(w-l-12),py=h-b-y/ymax*(h-b-10);if(scatter){g.moveTo(px+4,py);g.arc(px,py,4,0,Math.PI*2)}else i?g.lineTo(px,py):g.moveTo(px,py)});scatter?g.fill():g.stroke()});g.fillStyle='#8198ac';g.fillText('0',l,h-5);g.fillText(String(xmax),w-30,h-5)}
-const esc=s=>String(s??'').replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
-async function refresh(){try{const d=await(await fetch('/api/snapshot')).json(),h=d.latest_health,last=d.rows.at(-1),q=d.inspections;$('connection').textContent='● '+new Date(d.timestamp).toLocaleTimeString();if($('notice').textContent.startsWith('서비스 시작 중')||$('notice').textContent.startsWith('센서 갱신'))$('notice').textContent='';if(h&&Date.now()-Date.parse(h.timestamp)>5000)$('notice').textContent='센서 갱신이 5초 이상 지연됐습니다. 연결 상태를 확인하세요.';if(h){$('hi').textContent=h.health_index.toFixed(1);$('status').textContent=names[h.status];$('status').className=h.status;$('latency').textContent='PdM CPU '+h.inference_ms.toFixed(2)+' ms';const s=h.spectrum;chart('fft',[{color:'#75b9ff',points:s.frequencies.map((x,i)=>[x,s.amplitudes[i]])}],{xmax:400,ymax:Math.max(.2,...s.amplitudes)*1.1});$('frequency').textContent='BPFO '+s.bpfo_hz.toFixed(1)+' Hz / BPFI '+s.bpfi_hz.toFixed(1)+' Hz'}if(last){$('rms').textContent=last.vibration_x.toFixed(3);$('temperature').textContent='온도 '+last.temperature.toFixed(1)+' °C · 합성 가속도 / a.u.';}$('count').textContent=d.counts.inspections+'개 검사 / '+d.counts.defects+'개 불량';$('rate').textContent=d.counts.inspections?(100*d.counts.defects/d.counts.inspections).toFixed(1)+'%':'—';if(d.line){$('line').textContent=d.line.running?'가동':'정지';$('line').className='value '+(d.line.running?'normal':'danger');$('roller').textContent='롤러 '+d.line.roller_velocity.toFixed(3)+' rad/s · Fault '+d.line.fault_level}const rows=d.rows.slice(-120);chart('trend',[{color:'#45d4a3',points:rows.map((x,i)=>[i,x.health_index]).filter(x=>x[1]!=null)},{color:'#75b9ff',points:rows.map((x,i)=>[i,x.vibration_x*100])}],{xmax:Math.max(1,rows.length-1),ymax:120});const a=d.correlation;chart('scatter',[{color:'#ffaa65',points:a.buckets.map(x=>[x.rms,x.defect_rate])}],{xmax:Math.max(1,...a.buckets.map(x=>x.rms)),ymax:1,scatter:true});$('corr').textContent='Pearson '+(a.pearson?.toFixed(3)??'표본 대기')+' / Spearman '+(a.spearman?.toFixed(3)??'표본 대기');const lag=a.lags.filter(x=>x.pearson!=null).sort((a,b)=>Math.abs(b.pearson)-Math.abs(a.pearson))[0];$('lag').textContent=lag?'가장 큰 상관: '+lag.seconds+'초 시차, r='+lag.pearson.toFixed(3)+' ('+lag.pairs+'개 구간)':'시차 분석용 표본 수집 중';$('history').innerHTML=q.map(x=>`<tr><td>${new Date(x.timestamp).toLocaleTimeString()}</td><td>${esc(names[x.defect_type])}</td><td>${x.defect_type==='normal'?'—':(100*x.confidence).toFixed(1)+'%'}</td><td>${x.health_index_at_time?.toFixed(1)??'대기'}</td><td><a href="/images/${encodeURI(x.image_path)}" target="_blank">보기</a></td></tr>`).join('');const evidence=q.find(x=>x.gradcam_path)||q[0];if(evidence){$('inspection').src='/images/'+evidence.image_path;if(evidence.gradcam_path){$('cam').src='/images/'+evidence.gradcam_path;$('cam').hidden=false;$('camNotice').textContent='백본 Grad-CAM';}else{$('cam').removeAttribute('src');$('cam').hidden=true;$('camNotice').textContent='불량 판단 근거 대기';}$('evidenceType').textContent=names[evidence.defect_type]+' · '+new Date(evidence.timestamp).toLocaleTimeString()}$('alarms').innerHTML=d.alarms.map(x=>`<p class="${esc(x.severity)}">${new Date(x.timestamp).toLocaleTimeString()} · ${esc(x.message)}</p>`).join('')||'알람 없음'}catch(e){$('connection').textContent='연결 대기';$('notice').textContent='서비스 시작 중이거나 DB 연결을 확인해야 합니다.'}}
-$('fault').oninput=()=>{$('faultDisplay').textContent=$('fault').value+' / 10'};$('apply').onclick=async()=>{await fetch('/api/fault',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({fault_level:Number($('fault').value)})});$('notice').textContent='명령 전송 완료 · 라인 상태에서 적용 확인'};$('reset').onclick=async()=>{await fetch('/api/reset',{method:'POST'});$('notice').textContent='재시작 요청 전송 · 정상 상태에서만 허용'};refresh();setInterval(refresh,2000);
-</script></body></html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#eff3f7">
+    <title>
+      Smart Factory AI · 공정 관제
+    </title>
+    <link rel="stylesheet" href="/static/dashboard.css">
+    <script src="/static/dashboard.js" defer>
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#processHeading">
+      공정 화면으로 이동
+    </a>
+    <header class="app-header">
+      <a class="brand" href="#top" aria-label="Smart Factory AI 처음으로">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 28 28">
+            <path d="M5 21V11l6 4V9l6 4V5h6v16z"/>
+            <path d="M9 18h2m4 0h2m3 0h2"/>
+          </svg>
+        </span>
+        <span>
+          SMART FACTORY
+          <b>
+            AI
+          </b>
+        </span>
+      </a>
+      <nav aria-label="화면 탐색">
+        <a href="#processHeading" class="nav-active">
+          공정 관제
+        </a>
+        <a href="#analysisHeading">
+          데이터 분석
+        </a>
+        <a href="#historyHeading">
+          검사 이력
+        </a>
+      </nav>
+      <div class="header-status">
+        <span class="connection" id="connection" role="status">
+          <i>
+          </i>
+          연결 중
+        </span>
+        <span id="updatedAt" class="timestamp">
+          —
+        </span>
+      </div>
+    </header>
+    <main id="top">
+      <div class="page-heading">
+        <div>
+          <p class="eyebrow">
+            GAZEBO · MOTOR / CONVEYOR / VISION
+          </p>
+          <h1>
+            공정 관제
+          </h1>
+          <p class="subtitle">
+            설비 진단부터 제품 검사까지, 하나의 라인에서 확인합니다.
+          </p>
+        </div>
+        <div class="environment-tag">
+          <span class="small-dot">
+          </span>
+          시뮬레이션 라인
+          <strong>
+            01
+          </strong>
+        </div>
+      </div>
+      <div id="systemNotice" class="system-notice" role="status" hidden>
+      </div>
+      <section class="kpi-grid" aria-label="주요 상태">
+        <article class="kpi">
+          <div class="kpi-top">
+            <span>
+              설비 건전성
+            </span>
+            <span class="kpi-tag">
+              HI
+            </span>
+          </div>
+          <div class="kpi-number">
+            <strong id="hi">
+              —
+            </strong>
+            <span>
+              / 100
+            </span>
+          </div>
+          <div class="kpi-bottom">
+            <span id="healthStatus" class="status-badge state-waiting">
+              센서 대기
+            </span>
+            <span class="muted">
+              모터 진단
+            </span>
+          </div>
+          <div class="kpi-meter">
+            <span id="healthBar">
+            </span>
+          </div>
+        </article>
+        <article class="kpi">
+          <div class="kpi-top">
+            <span>
+              모터 진동 RMS
+            </span>
+            <span class="kpi-tag">
+              SENSOR
+            </span>
+          </div>
+          <div class="kpi-number">
+            <strong id="rms">
+              —
+            </strong>
+            <span>
+              a.u.
+            </span>
+          </div>
+          <div class="kpi-bottom">
+            <span id="temperature">
+              온도 — °C
+            </span>
+            <span class="muted">
+              합성 가속도
+            </span>
+          </div>
+        </article>
+        <article class="kpi">
+          <div class="kpi-top">
+            <span>
+              누적 검사 불량률
+            </span>
+            <span class="kpi-tag">
+              QUALITY
+            </span>
+          </div>
+          <div class="kpi-number">
+            <strong id="rate">
+              —
+            </strong>
+            <span>
+              %
+            </span>
+          </div>
+          <div class="kpi-bottom">
+            <span id="count">
+              검사 대기
+            </span>
+            <span class="muted">
+              검사 제품 기준
+            </span>
+          </div>
+        </article>
+        <article class="kpi">
+          <div class="kpi-top">
+            <span>
+              컨베이어 상태
+            </span>
+            <span class="kpi-tag">
+              LINE
+            </span>
+          </div>
+          <div class="kpi-number">
+            <strong id="line">
+              대기
+            </strong>
+          </div>
+          <div class="kpi-bottom">
+            <span id="roller">
+              롤러 — rad/s
+            </span>
+            <span id="lineStateDot" class="state-dot state-waiting">
+            </span>
+          </div>
+        </article>
+      </section>
+      <div class="control-layout">
+        <div class="main-column">
+          <section class="panel process-panel" aria-labelledby="processHeading">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">
+                  PROCESS OVERVIEW
+                </p>
+                <h2 id="processHeading" tabindex="-1">
+                  생산 라인 현황
+                </h2>
+              </div>
+              <span id="processStatus" class="status-badge state-waiting">
+                데이터 대기
+              </span>
+            </div>
+            <div class="process-map" id="processMap">
+              <svg viewBox="0 0 940 390" role="group" aria-label="모터 진단, 컨베이어, 검사 카메라로 구성된 공정 배치도">
+                <defs>
+                  <pattern id="floorGrid" width="22" height="22" patternUnits="userSpaceOnUse">
+                    <path d="M 22 0 L 0 0 0 22" fill="none" stroke="#dce4ec" stroke-width=".7"/>
+                  </pattern>
+                  <pattern id="beltPattern" width="24" height="24" patternUnits="userSpaceOnUse">
+                    <path d="M0 0V24" stroke="#a6b5c4" stroke-width="2"/>
+                  </pattern>
+                  <marker id="flowArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+                    <path d="M0 1L9 5L0 9" fill="none" stroke="#96a6b5" stroke-width="1.5"/>
+                  </marker>
+                </defs>
+                <rect class="floor" x="20" y="20" width="900" height="350" rx="16"/>
+                <rect x="21" y="21" width="898" height="348" rx="16" fill="url(#floorGrid)"/>
+                <text x="45" y="52" class="map-label map-dim">
+                  LINE 01 · EQUIPMENT SCHEMATIC
+                </text>
+                <path class="flow-line" d="M264 218H321M570 218H642M827 218H874" marker-end="url(#flowArrow)"/>
+                <text x="294" y="286" class="map-small" text-anchor="middle">
+                  진동 진단
+                </text>
+                <text x="607" y="286" class="map-small" text-anchor="middle">
+                  제품 검사
+                </text>
+                <text x="868" y="254" class="map-small" text-anchor="middle">
+                  출력
+                </text>
+                <g class="equipment state-waiting is-selected" id="mapMotor" data-equipment="motor" role="button" tabindex="0" aria-label="모터 상세 보기" aria-pressed="true">
+                  <rect class="equipment-zone" x="55" y="100" width="213" height="220" rx="16"/>
+                  <text x="78" y="129" class="equipment-code">
+                    M-01
+                  </text>
+                  <circle class="equipment-indicator" cx="244" cy="124" r="5"/>
+                  <rect class="motor-base" x="80" y="233" width="157" height="13" rx="3"/>
+                  <path class="machine-leg" d="M111 224v17m90-17v17"/>
+                  <rect class="motor-body" x="91" y="166" width="128" height="67" rx="14"/>
+                  <path class="motor-fin" d="M138 171v57m13-57v57m13-57v57m13-57v57m13-57v57"/>
+                  <rect class="motor-shaft" x="218" y="190" width="23" height="18" rx="2"/>
+                  <circle class="motor-fan" cx="112" cy="199" r="26"/>
+                  <path class="motor-fan-lines" d="M96 199h32m-16-16v32m-11-27l22 22m-22 0l22-22"/>
+                  <rect class="motor-terminal" x="162" y="155" width="27" height="15" rx="3"/>
+                  <text x="162" y="278" class="equipment-title" text-anchor="middle">
+                    진단 모터
+                  </text>
+                  <text x="162" y="301" class="equipment-status" id="mapMotorStatus" text-anchor="middle">
+                    센서 대기
+                  </text>
+                </g>
+                <g class="equipment state-waiting" id="mapConveyor" data-equipment="conveyor" role="button" tabindex="0" aria-label="컨베이어 상세 보기" aria-pressed="false">
+                  <rect class="equipment-zone" x="326" y="100" width="252" height="220" rx="16"/>
+                  <text x="349" y="129" class="equipment-code">
+                    C-01
+                  </text>
+                  <circle class="equipment-indicator" cx="554" cy="124" r="5"/>
+                  <path class="machine-leg" d="M354 233v15m194-15v15"/>
+                  <rect class="conveyor-body" x="344" y="175" width="215" height="62" rx="9"/>
+                  <rect class="conveyor-belt" x="351" y="183" width="202" height="44" rx="20" fill="url(#beltPattern)"/>
+                  <g class="roller" style="--origin:372px 205px">
+                    <circle cx="372" cy="205" r="16"/>
+                    <path d="M372 193v24m-12-12h24"/>
+                  </g>
+                  <g class="roller" style="--origin:412px 205px">
+                    <circle cx="412" cy="205" r="16"/>
+                    <path d="M412 193v24m-12-12h24"/>
+                  </g>
+                  <g class="roller" style="--origin:452px 205px">
+                    <circle cx="452" cy="205" r="16"/>
+                    <path d="M452 193v24m-12-12h24"/>
+                  </g>
+                  <g class="roller" style="--origin:492px 205px">
+                    <circle cx="492" cy="205" r="16"/>
+                    <path d="M492 193v24m-12-12h24"/>
+                  </g>
+                  <g class="roller" style="--origin:532px 205px">
+                    <circle cx="532" cy="205" r="16"/>
+                    <path d="M532 193v24m-12-12h24"/>
+                  </g>
+                  <text x="452" y="278" class="equipment-title" text-anchor="middle">
+                    컨베이어
+                  </text>
+                  <text x="452" y="301" class="equipment-status" id="mapConveyorStatus" text-anchor="middle">
+                    상태 대기
+                  </text>
+                </g>
+                <g class="equipment state-waiting" id="mapCamera" data-equipment="camera" role="button" tabindex="0" aria-label="검사 카메라 상세 보기" aria-pressed="false">
+                  <rect class="equipment-zone" x="646" y="100" width="187" height="220" rx="16"/>
+                  <text x="669" y="129" class="equipment-code">
+                    V-01
+                  </text>
+                  <circle class="equipment-indicator" cx="809" cy="124" r="5"/>
+                  <path class="camera-support" d="M787 245V157H739"/>
+                  <rect class="camera-body" x="705" y="160" width="65" height="34" rx="6"/>
+                  <rect class="camera-lens" x="727" y="191" width="21" height="12" rx="3"/>
+                  <path class="camera-fov" d="M735 205l-26 33h55l-25-33"/>
+                  <rect class="camera-stage" x="692" y="241" width="92" height="9" rx="3"/>
+                  <text x="740" y="278" class="equipment-title" text-anchor="middle">
+                    검사 카메라
+                  </text>
+                  <text x="740" y="301" class="equipment-status" id="mapCameraStatus" text-anchor="middle">
+                    검사 대기
+                  </text>
+                </g>
+              </svg>
+            </div>
+            <div class="map-footer">
+              <div class="legend">
+                <span>
+                  <i class="state-dot state-normal">
+                  </i>
+                  정상 / 가동
+                </span>
+                <span>
+                  <i class="state-dot state-warning">
+                  </i>
+                  주의 / 경고
+                </span>
+                <span>
+                  <i class="state-dot state-danger">
+                  </i>
+                  위험 / 정지
+                </span>
+                <span>
+                  <i class="state-dot state-stale">
+                  </i>
+                  대기 / 지연
+                </span>
+              </div>
+              <p>
+                설비를 선택하면 상세 정보가 열립니다. 배치도는 공정 구조이며 제품 위치를 추적하지 않습니다.
+              </p>
+            </div>
+          </section>
+          <section class="panel detail-panel" aria-labelledby="detailHeading">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow" id="detailCode">
+                  M-01 · EQUIPMENT DETAIL
+                </p>
+                <h2 id="detailHeading">
+                  진단 모터
+                </h2>
+              </div>
+              <span id="detailStatus" class="status-badge state-waiting">
+                데이터 대기
+              </span>
+            </div>
+            <div class="detail-tabs" role="tablist" aria-label="설비 상세 선택">
+              <button type="button" id="tabMotor" role="tab" aria-controls="motorDetail" aria-selected="true" data-equipment="motor">
+                진단 모터
+              </button>
+              <button type="button" id="tabConveyor" role="tab" aria-controls="conveyorDetail" aria-selected="false" tabindex="-1" data-equipment="conveyor">
+                컨베이어
+              </button>
+              <button type="button" id="tabCamera" role="tab" aria-controls="cameraDetail" aria-selected="false" tabindex="-1" data-equipment="camera">
+                검사 카메라
+              </button>
+            </div>
+            <p id="detailReason" class="detail-reason">
+              센서 데이터 수집을 기다리고 있습니다.
+            </p>
+            <div id="motorDetail" class="equipment-detail" role="tabpanel" aria-labelledby="tabMotor">
+              <div class="detail-metrics">
+                <div>
+                  <span>
+                    회전수
+                  </span>
+                  <strong id="motorRpm">
+                    —
+                    <small>
+                      RPM
+                    </small>
+                  </strong>
+                </div>
+                <div>
+                  <span>
+                    온도
+                  </span>
+                  <strong id="motorTemp">
+                    —
+                    <small>
+                      °C
+                    </small>
+                  </strong>
+                </div>
+                <div>
+                  <span>
+                    PdM 추론 시간
+                  </span>
+                  <strong id="motorLatency">
+                    —
+                    <small>
+                      ms
+                    </small>
+                  </strong>
+                </div>
+              </div>
+              <div class="chart-heading">
+                <h3>
+                  최근 설비 추세
+                </h3>
+                <div class="legend">
+                  <span>
+                    <i class="chart-dot green">
+                    </i>
+                    Health Index
+                  </span>
+                  <span>
+                    <i class="chart-dot blue">
+                    </i>
+                    진동 RMS × 100
+                  </span>
+                </div>
+              </div>
+              <div class="chart-wrap">
+                <canvas id="trend" role="img" aria-label="최근 센서 표본의 Health Index와 진동 추세">
+                </canvas>
+                <p class="chart-empty" id="trendEmpty">
+                  센서 표본을 수집하고 있습니다.
+                </p>
+              </div>
+              <p class="chart-note" id="trendRange">
+                최근 120개 센서 표본 · 시간 순서
+              </p>
+            </div>
+            <div id="conveyorDetail" class="equipment-detail" role="tabpanel" aria-labelledby="tabConveyor" hidden>
+              <div class="detail-metrics">
+                <div>
+                  <span>
+                    롤러 관측 속도
+                  </span>
+                  <strong id="conveyorVelocity">
+                    —
+                    <small>
+                      rad/s
+                    </small>
+                  </strong>
+                </div>
+                <div>
+                  <span>
+                    적용된 고장 레벨
+                  </span>
+                  <strong id="appliedFault">
+                    —
+                    <small>
+                      / 10
+                    </small>
+                  </strong>
+                </div>
+                <div>
+                  <span>
+                    모터 회전수
+                  </span>
+                  <strong id="conveyorRpm">
+                    —
+                    <small>
+                      RPM
+                    </small>
+                  </strong>
+                </div>
+              </div>
+              <div class="interlock-card">
+                <div class="interlock-icon" aria-hidden="true">
+                  !
+                </div>
+                <div>
+                  <h3 id="interlockTitle">
+                    인터락 상태 확인 중
+                  </h3>
+                  <p id="interlockReason">
+                    HI와 라인 상태가 수집되면 재시작 조건을 확인할 수 있습니다.
+                  </p>
+                </div>
+              </div>
+              <ol class="reset-checklist">
+                <li id="checkFault">
+                  고장 레벨 0
+                </li>
+                <li id="checkHealth">
+                  Health Index 80 이상
+                </li>
+                <li id="checkFresh">
+                  센서와 라인 관측 5초 이내
+                </li>
+              </ol>
+              <p class="chart-note">
+                컨베이어를 정지해도 진단 모터는 시험대에서 계속 관측합니다. 롤러 움직임은 관측된 가동 상태만 표시합니다.
+              </p>
+            </div>
+            <div id="cameraDetail" class="equipment-detail" role="tabpanel" aria-labelledby="tabCamera" hidden>
+              <div class="evidence-toolbar">
+                <div>
+                  <strong id="evidenceType">
+                    검사 영상 대기
+                  </strong>
+                  <span id="evidenceTime" class="muted">
+                  </span>
+                </div>
+                <button class="text-button" id="latestImage" type="button">
+                  최신 검사 보기
+                </button>
+              </div>
+              <div class="evidence-grid">
+                <figure>
+                  <div class="inspection-frame" id="inspectionFrame">
+                    <img id="inspection" alt="Gazebo 검사 카메라 영상" hidden>
+                    <svg id="detectionOverlay" aria-label="불량 검출 영역" hidden>
+                    </svg>
+                    <p id="imagePlaceholder">
+                      아직 검사 영상이 없습니다.
+                    </p>
+                  </div>
+                  <figcaption>
+                    카메라 영상 · 검출 영역
+                  </figcaption>
+                </figure>
+                <figure>
+                  <div class="heatmap-frame">
+                    <img id="cam" alt="선택한 검사의 백본 Grad-CAM" hidden>
+                    <p id="camPlaceholder">
+                      불량 검사에서 Grad-CAM이 생성됩니다.
+                    </p>
+                  </div>
+                  <figcaption>
+                    백본 Grad-CAM · 모델 활성 영역
+                  </figcaption>
+                </figure>
+              </div>
+              <p class="chart-note" id="evidenceNote">
+                검출이 없으면 결함 미검출로 기록합니다. Grad-CAM은 모델의 활성 영역이며 결함 원인을 증명하지 않습니다.
+              </p>
+            </div>
+          </section>
+        </div>
+        <aside class="side-column" aria-label="설비 상태와 제어">
+          <section class="panel equipment-panel">
+            <div class="panel-heading">
+              <h2>
+                설비 상태
+              </h2>
+              <span class="panel-count">
+                3 EQUIPMENTS
+              </span>
+            </div>
+            <div class="equipment-cards">
+              <button type="button" class="equipment-card is-selected" data-equipment="motor" id="cardMotor" aria-pressed="true">
+                <div class="equipment-card-top">
+                  <span class="equipment-card-icon" aria-hidden="true">
+                    M
+                  </span>
+                  <span>
+                    <strong>
+                      진단 모터
+                    </strong>
+                    <small>
+                      M-01 · PdM
+                    </small>
+                  </span>
+                  <span id="cardMotorState" class="status-badge state-waiting">
+                    대기
+                  </span>
+                </div>
+                <div class="equipment-card-metric">
+                  <span id="cardMotorMetric">
+                    HI — · RMS —
+                  </span>
+                  <span class="detail-arrow" aria-hidden="true">
+                    ↗
+                  </span>
+                </div>
+                <p id="cardMotorReason">
+                  센서 데이터 대기
+                </p>
+              </button>
+              <button type="button" class="equipment-card" data-equipment="conveyor" id="cardConveyor" aria-pressed="false">
+                <div class="equipment-card-top">
+                  <span class="equipment-card-icon" aria-hidden="true">
+                    C
+                  </span>
+                  <span>
+                    <strong>
+                      컨베이어
+                    </strong>
+                    <small>
+                      C-01 · Interlock
+                    </small>
+                  </span>
+                  <span id="cardConveyorState" class="status-badge state-waiting">
+                    대기
+                  </span>
+                </div>
+                <div class="equipment-card-metric">
+                  <span id="cardConveyorMetric">
+                    롤러 — rad/s
+                  </span>
+                  <span class="detail-arrow" aria-hidden="true">
+                    ↗
+                  </span>
+                </div>
+                <p id="cardConveyorReason">
+                  라인 상태 대기
+                </p>
+              </button>
+              <button type="button" class="equipment-card" data-equipment="camera" id="cardCamera" aria-pressed="false">
+                <div class="equipment-card-top">
+                  <span class="equipment-card-icon" aria-hidden="true">
+                    V
+                  </span>
+                  <span>
+                    <strong>
+                      검사 카메라
+                    </strong>
+                    <small>
+                      V-01 · YOLO / ONNX
+                    </small>
+                  </span>
+                  <span id="cardCameraState" class="status-badge state-waiting">
+                    대기
+                  </span>
+                </div>
+                <div class="equipment-card-metric">
+                  <span id="cardCameraMetric">
+                    검사 영상 대기
+                  </span>
+                  <span class="detail-arrow" aria-hidden="true">
+                    ↗
+                  </span>
+                </div>
+                <p id="cardCameraReason">
+                  검사 결과 대기
+                </p>
+              </button>
+            </div>
+          </section>
+          <section class="panel controls-panel">
+            <div class="panel-heading">
+              <h2>
+                라인 제어
+              </h2>
+              <span class="panel-count">
+                SIMULATION
+              </span>
+            </div>
+            <label class="fault-label" for="fault">
+              <span>
+                고장 주입 레벨
+              </span>
+              <strong id="faultDisplay">
+                0
+                <small>
+                  / 10
+                </small>
+              </strong>
+            </label>
+            <input id="fault" type="range" min="0" max="10" step="1" value="0" disabled>
+            <div class="range-labels">
+              <span>
+                정상 0
+              </span>
+              <span>
+                심각 10
+              </span>
+            </div>
+            <div class="control-buttons">
+              <button id="apply" class="primary-button" type="button" disabled>
+                레벨 적용
+              </button>
+              <button id="reset" class="secondary-button" type="button" disabled>
+                안전 재시작
+              </button>
+            </div>
+            <p class="control-hint" id="resetHint">
+              고장 레벨 0 · HI ≥ 80 · 최근 관측에서만 재시작됩니다.
+            </p>
+            <p id="notice" class="command-notice" role="status" aria-live="polite">
+              명령을 전송한 뒤 관측된 라인 상태에서 적용 여부를 확인합니다.
+            </p>
+          </section>
+          <section class="panel events-panel">
+            <div class="panel-heading">
+              <h2>
+                관제 기록
+              </h2>
+              <span id="eventCount" class="panel-count">
+                0 EVENTS
+              </span>
+            </div>
+            <div id="events" class="event-log">
+              <p class="empty-log">
+                아직 관제 기록이 없습니다.
+              </p>
+            </div>
+          </section>
+        </aside>
+      </div>
+      <section class="panel analysis-panel" aria-labelledby="analysisHeading">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">
+              DIAGNOSTICS & ASSOCIATION
+            </p>
+            <h2 id="analysisHeading">
+              진동 · 품질 분석
+            </h2>
+          </div>
+          <span class="panel-count">
+            CPU INFERENCE
+          </span>
+        </div>
+        <div class="analysis-grid">
+          <div>
+            <div class="chart-heading">
+              <h3>
+                FFT 주파수 스펙트럼
+              </h3>
+              <span id="frequency" class="muted">
+                진단 대기
+              </span>
+            </div>
+            <div class="chart-wrap">
+              <canvas id="fft" role="img" aria-label="모터 진동 FFT 주파수 스펙트럼">
+              </canvas>
+              <p class="chart-empty" id="fftEmpty">
+                스펙트럼 수집 중
+              </p>
+            </div>
+            <p class="chart-note">
+              가로축 주파수(Hz) · 세로축 진폭(a.u.)
+            </p>
+          </div>
+          <div>
+            <div class="chart-heading">
+              <h3>
+                진동과 검사 불량률
+              </h3>
+              <span id="corr" class="muted">
+                표본 대기
+              </span>
+            </div>
+            <div class="chart-wrap">
+              <canvas id="scatter" role="img" aria-label="5초 구간 평균 진동 RMS와 검사 불량률의 산점도">
+              </canvas>
+              <p class="chart-empty" id="scatterEmpty">
+                분석용 검사 표본 수집 중
+              </p>
+            </div>
+            <p class="chart-note" id="lag">
+              5초 구간 · 미검사 / 정지 구간 제외
+            </p>
+          </div>
+        </div>
+        <p class="analysis-limitation">
+          진동과 불량 발생은 시뮬레이터에서 인위적으로 결합했습니다. 이 상관관계로 실제 현장의 인과관계를 판단할 수 없습니다.
+        </p>
+      </section>
+      <section class="panel history-panel" aria-labelledby="historyHeading">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">
+              QUALITY INSPECTION
+            </p>
+          <h2 id="historyHeading" tabindex="-1">
+              최근 검사 이력
+            </h2>
+          </div>
+          <span class="panel-count">
+            LATEST 12 IMAGES
+          </span>
+        </div>
+        <div class="table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>
+                  검사 시각
+                </th>
+                <th>
+                  판정
+                </th>
+                <th>
+                  확신도
+                </th>
+                <th>
+                  동시점 HI
+                </th>
+                <th>
+                  검사 영상
+                </th>
+              </tr>
+            </thead>
+            <tbody id="history">
+              <tr>
+                <td colspan="5" class="empty-table">
+                  검사 결과를 기다리고 있습니다.
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <footer>
+        <span>
+          Smart Factory AI · Gazebo Classic / ROS 2 / MQTT
+        </span>
+        <span>
+          2초마다 갱신 · 시각은 현지 기준 · 라이브 데모는 기존 v1 모델
+        </span>
+      </footer>
+    </main>
+  </body>
+</html>
