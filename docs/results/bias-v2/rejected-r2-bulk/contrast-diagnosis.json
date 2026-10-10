@@ -1,0 +1,92 @@
+{
+  "review_id": "r2-visible-contrast-failure-independent-review",
+  "capture_index": 1015,
+  "generator_fingerprint": "27f9cc3cce206fb7eb95aa4e4736425e793ed1ed23b7f8f9a269dcc448740945",
+  "source_failure_sha256": "62d3ec7953a06174b8461a41db7db3199e421e8f4c5ea46d89e350812a4426f2",
+  "pair_id": "vision-v2-0017-0025",
+  "model_used": false,
+  "ml_results_observed": false,
+  "criteria_unchanged": {
+    "changed_pixel_channel_threshold": 20,
+    "maximum_outside_roi_fraction": 0.1,
+    "minimum_bbox_iou": 0.7,
+    "minimum_changed_pixels": 5,
+    "rounding_tolerance_pixels": 2
+  },
+  "acceptance_recomputed": {
+    "status": "FAIL",
+    "changed_pixels": 357,
+    "outside_roi_pixels": 0,
+    "bbox_iou": 0.6833792665112283,
+    "raw_bbox_iou": 0.6650432540144093,
+    "outside_roi_fraction": 0.0,
+    "observed_bbox_pixels": [
+      191.0,
+      122.0,
+      217.0,
+      149.0
+    ]
+  },
+  "acceptance_matches_recorded": true,
+  "capture_integrity_findings": [],
+  "interpretation": "FAIL remains. The >20 channel-change mask sees the high-contrast core but excludes a rendered low-contrast dent rim. This is a supported-visibility failure; the observed pair does not support a scale/location/stale-scene explanation.",
+  "raw_png_sha256": {
+    "normal": "a66b863f0a9c1f0fc71241bcd1b3b48378d9ecef4cf6058b5ab8a4f1600b1fbe",
+    "defect": "914d2c76b5202de04e802b27cf67059c11d78f6f2a0ac4b53bf0f5ae503082da"
+  },
+  "diagnostic_only_not_acceptance": {
+    "channel_change_threshold": 1,
+    "status": "PASS",
+    "changed_pixels": 862,
+    "outside_roi_pixels": 0,
+    "bbox_iou": 1.0,
+    "raw_bbox_iou": 0.9659821915961543,
+    "outside_roi_fraction": 0.0,
+    "observed_bbox_pixels": [
+      190.0,
+      116.0,
+      223.0,
+      149.0
+    ]
+  },
+  "example_rim_pixel": {
+    "xy": [
+      206,
+      118
+    ],
+    "normal_rgb": [
+      185,
+      193,
+      188
+    ],
+    "defect_rgb": [
+      179,
+      179,
+      179
+    ],
+    "max_channel_delta": 14
+  },
+  "recommendation": [
+    "Preserve the failed r2 dataset and its FAIL status. Do not resume/selectively replace the failing sample.",
+    "If a new revision is chosen, predeclare one class-independent product-relative contrast rule for all defect primitives and all groups before collecting or fitting models.",
+    "Generate the entire new revision into a fresh directory, with the same predeclared seeds/criterion. Record that the supported synthetic domain is visibly contrasting defect proxies.",
+    "Re-run the fixed nine-case and every-defect bulk pixel gates. Any failure aborts without pixel retries/selection.",
+    "Low-contrast real defects remain unsupported/UNVALIDATED; a visible-only revision cannot establish generalization to them.",
+    "Do not use the lower diagnostic pixel threshold for accepting this pair or changing the locked gate."
+  ],
+  "new_revision_risk": "Restricting all defect primitives to visibly contrasting proxies narrows the supported domain. Shared color/shape rules and metadata can still create shortcuts; the revised benchmark does not validate low-contrast or real factory defects.",
+  "revision_authorization": "A fresh full r3 dataset with a global class-independent product-relative contrast policy was approved before observing final model/challenge results. The r2 failure and locked >20 criteria/seed remain unchanged.",
+  "figure": {
+    "path": "contrast-diagnosis.png",
+    "method": "Actual original PNG crops, nearest-neighbour magnification, max-channel raw RGB difference map and unchanged >20 acceptance mask",
+    "roi_xyxy": [
+      185,
+      110,
+      230,
+      155
+    ],
+    "diagnostic_change_threshold_not_acceptance": 1,
+    "acceptance_change_threshold": 20,
+    "sha256": "e7522313a8634be8c5ba2e038eb566ad6bf9ab456e7dce281bd3882a5670e0bf"
+  }
+}

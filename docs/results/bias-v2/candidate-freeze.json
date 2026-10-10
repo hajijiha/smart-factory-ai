@@ -1,0 +1,9 @@
+{
+  "models": {
+    "pdm.pt": "05f5b10897ac42a77a47190e8d8bbbecf164cc642ca653c02612bd02ce47d6f0",
+    "vision.pt": "26f11bc1395717af6aa8583a72f2f5c6157aab5c051899fe475104cb6003c9a8",
+    "vision.onnx": "977f6b540dc3e8ec53be4dfabd663ab4f79cf5f249ab68bbb818bfc624cc67da"
+  },
+  "protocol_sha256": "3c971571c32fb87b67e60658cd7b90ecb04d96033d73ac9fa1bc5524a92cf130",
+  "rule": "No tuning after final challenge outputs are observed"
+}

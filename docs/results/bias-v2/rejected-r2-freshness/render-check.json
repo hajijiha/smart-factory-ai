@@ -1,0 +1,2604 @@
+{
+  "capture_policy": {
+    "minimum_fresh_frames": 3,
+    "minimum_sim_seconds_after_ack": 0.1,
+    "minimum_wall_seconds_after_ack": 0.25
+  },
+  "case_count": 9,
+  "cases": [
+    {
+      "class_id": 0,
+      "defect_camera_sim_time": 4.758,
+      "defect_capture_sync": {
+        "ack_arrival_monotonic": 59872.599610117,
+        "ack_image_sequence": 7,
+        "ack_scene_id": "render-check-class0-scale0.68-defect",
+        "ack_sim_time": 2.741,
+        "camera_sim_time": 4.758,
+        "capture_monotonic": 59872.860790699,
+        "first_fresh_sequence": 49,
+        "fresh_frame_sequences": [
+          49,
+          50,
+          51
+        ],
+        "fresh_frame_sim_times": [
+          4.675,
+          4.699,
+          4.758
+        ],
+        "fresh_frames": 3,
+        "image_arrival_monotonic": 59872.86011484,
+        "image_sequence": 51,
+        "joint_sim_time": 4.78,
+        "policy": {
+          "minimum_fresh_frames": 3,
+          "minimum_sim_seconds_after_ack": 0.1,
+          "minimum_wall_seconds_after_ack": 0.25
+        },
+        "scene_id": "render-check-class0-scale0.68-defect",
+        "settling_wall_seconds": 0.2605047229953925
+      },
+      "defect_image": "render-check/class0-scale0.68-defect.png",
+      "defect_joint": {
+        "position": [
+          500.2862040613059,
+          19.115974512061165
+        ],
+        "sim_time": 4.78,
+        "velocity": [
+          99.99999999999997,
+          3.999999999999999
+        ]
+      },
+      "defect_scene": {
+        "background_bin": "light",
+        "background_color": [
+          0.1569705738870168,
+          0.28062393776338945,
+          0.3095393366391423
+        ],
+        "camera_bin": "high",
+        "camera_pose": [
+          0.08150169553041692,
+          -0.021968784150492405,
+          2.8843927522281168,
+          0,
+          1.4918578898360597,
+          -0.08312075179764926
+        ],
+        "class_id": 0,
+        "condition_id": "81e3b6d23f2c078262c80890a7ac9639a38c1ce5cd77e5ee421f99ab95ef2319",
+        "defect_darkness": 0.12,
+        "defect_primitives": [
+          {
+            "color": [
+              0.12,
+              0.12,
+              0.12
+            ],
+            "name": "part0",
+            "pose": [
+              -0.00789630993917832,
+              -0.02992,
+              0.0,
+              0.0,
+              0.0,
+              0.22364281741349568
+            ],
+            "shape": "box",
+            "size": [
+              0.1120665517654633,
+              0.016767195297060146,
+              0.003
+            ]
+          },
+          {
+            "color": [
+              0.12,
+              0.12,
+              0.12
+            ],
+            "name": "part1",
+            "pose": [
+              -0.0013142531943312896,
+              -0.01496,
+              0.0,
+              0.0,
+              0.0,
+              -0.08666149011604884
+            ],
+            "shape": "box",
+            "size": [
+              0.13136871906159242,
+              0.02093574892251224,
+              0.003
+            ]
+          },
+          {
+            "color": [
+              0.12,
+              0.12,
+              0.12
+            ],
+            "name": "part2",
+            "pose": [
+              0.007856015368097135,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              -0.15543145263617872
+            ],
+            "shape": "box",
+            "size": [
+              0.16940933514643247,
+              0.019918428079994638,
+              0.003
+            ]
+          },
+          {
+            "color": [
+              0.12,
+              0.12,
+              0.12
+            ],
+            "name": "part3",
+            "pose": [
+              0.008919486027448867,
+              0.01496,
+              0.0,
+              0.0,
+              0.0,
+              -0.29940186720834094
+            ],
+            "shape": "box",
+            "size": [
+              0.12937918761520464,
+              0.020713772712777388,
+              0.003
+            ]
+          },
+          {
+            "color": [
+              0.12,
+              0.12,
+              0.12
+            ],
+            "name": "part4",
+            "pose": [
+              0.013417492567039292,
+              0.02992,
+              0.0,
+              0.0,
+              0.0,
+              -0.242573339528227
+            ],
+            "shape": "box",
+            "size": [
+              0.11349027803011055,
+              0.01488948018742467,
+              0.003
+            ]
+          }
+        ],
+        "defect_scale": 0.68,
+        "defect_yaw": 0.5399770739174012,
+        "dx": -0.09845499620150897,
+        "dy": 0.0556505633864878,
+        "generator_version": "v2",
+        "geometry_family": "shape-0003",
+        "group_id": "vision-v2-0003",
+        "image_noise": 1.2893131778470808,
+        "light": 0.6618009606096816,
+        "light_bin": "dim",
+        "material_id": 0,
+        "product_color": [
+          0.7513780417273378,
+          0.741695833635803,
+          0.7207173573193056
+        ],
+        "scene_id": "render-check-class0-scale0.68-defect",
+        "seed": 20294766,
+        "specular": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "split": "train",
+        "x": -0.0654434955867573,
+        "y": 0.0010436347169575089,
+        "yaw": 0.09158650894622755
+      },
+      "defect_sha256": "f9d0682e44d65ba5fb7767dd941b2914f70662fc299aa1695f08d8dafb48713f",
+      "difference_bbox_xyxy": [
+        140.0,
+        223.0,
+        166.0,
+        252.0
+      ],
+      "expected_bbox_pixels": [
+        139.69121033851852,
+        223.271220924115,
+        165.3469475590457,
+        251.56873036878005
+      ],
+      "gt_bbox_xyxy": [
+        139.69121033851852,
+        223.271220924115,
+        165.3469475590457,
+        251.56873036878005
+      ],
+      "metrics": {
+        "bbox_iou": 1.0,
+        "changed_pixels": 377,
+        "observed_bbox_pixels": [
+          140.0,
+          223.0,
+          166.0,
+          252.0
+        ],
+        "outside_roi_fraction": 0.0,
+        "outside_roi_pixels": 0,
+        "raw_bbox_iou": 0.940369443102433,
+        "status": "PASS"
+      },
+      "normal_camera_sim_time": 2.677,
+      "normal_capture_sync": {
+        "ack_arrival_monotonic": 59872.32726797,
+        "ack_image_sequence": 0,
+        "ack_scene_id": "render-check-class0-scale0.68-normal",
+        "ack_sim_time": 0.002,
+        "camera_sim_time": 2.677,
+        "capture_monotonic": 59872.591812423,
+        "first_fresh_sequence": 4,
+        "fresh_frame_sequences": [
+          4,
+          5,
+          6
+        ],
+        "fresh_frame_sim_times": [
+          2.574,
+          2.637,
+          2.677
+        ],
+        "fresh_frames": 3,
+        "image_arrival_monotonic": 59872.591446837,
+        "image_sequence": 6,
+        "joint_sim_time": 2.7,
+        "policy": {
+          "minimum_fresh_frames": 3,
+          "minimum_sim_seconds_after_ack": 0.1,
+          "minimum_wall_seconds_after_ack": 0.25
+        },
+        "scene_id": "render-check-class0-scale0.68-normal",
+        "settling_wall_seconds": 0.2641788670007372
+      },
+      "normal_image": "render-check/class0-scale0.68-normal.png",
+      "normal_joint": {
+        "position": [
+          282.0865278799989,
+          10.795985605367877
+        ],
+        "sim_time": 2.7,
+        "velocity": [
+          100.0,
+          4.000000000000002
+        ]
+      },
+      "normal_scene": {
+        "background_bin": "light",
+        "background_color": [
+          0.1569705738870168,
+          0.28062393776338945,
+          0.3095393366391423
+        ],
+        "camera_bin": "high",
+        "camera_pose": [
+          0.08150169553041692,
+          -0.021968784150492405,
+          2.8843927522281168,
+          0,
+          1.4918578898360597,
+          -0.08312075179764926
+        ],
+        "class_id": -1,
+        "condition_id": "81e3b6d23f2c078262c80890a7ac9639a38c1ce5cd77e5ee421f99ab95ef2319",
+        "defect_darkness": 0.2980015163499599,
+        "defect_primitives": [],
+        "defect_scale": 0.8197325752454967,
+        "defect_yaw": 0.5399770739174012,
+        "dx": -0.09845499620150897,
+        "dy": 0.0556505633864878,
+        "generator_version": "v2",
+        "geometry_family": "shape-0003",
+        "group_id": "vision-v2-0003",
+        "image_noise": 1.2893131778470808,
+        "light": 0.6618009606096816,
+        "light_bin": "dim",
+        "material_id": 0,
+        "product_color": [
+          0.7513780417273378,
+          0.741695833635803,
+          0.7207173573193056
+        ],
+        "scene_id": "render-check-class0-scale0.68-normal",
+        "seed": 20294766,
+        "specular": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "split": "train",
+        "x": -0.0654434955867573,
+        "y": 0.0010436347169575089,
+        "yaw": 0.09158650894622755
+      },
+      "normal_sha256": "14df7ce30f70f3dd14ab0af1a1951120dc30b69e47dc5d9651f45b74461be35e",
+      "pair_id": "class0-scale0.68",
+      "scale": 0.68
+    },
+    {
+      "class_id": 0,
+      "defect_camera_sim_time": 10.297,
+      "defect_capture_sync": {
+        "ack_arrival_monotonic": 59873.186258665,
+        "ack_image_sequence": 114,
+        "ack_scene_id": "render-check-class0-scale0.93-defect",
+        "ack_sim_time": 7.866,
+        "camera_sim_time": 10.297,
+        "capture_monotonic": 59873.45073251,
+        "first_fresh_sequence": 162,
+        "fresh_frame_sequences": [
+          162,
+          163,
+          164
+        ],
+        "fresh_frame_sim_times": [
+          10.186,
+          10.25,
+          10.297
+        ],
+        "fresh_frames": 3,
+        "image_arrival_monotonic": 59873.448951968,
+        "image_sequence": 164,
+        "joint_sim_time": 10.34,
+        "policy": {
+          "minimum_fresh_frames": 3,
+          "minimum_sim_seconds_after_ack": 0.1,
+          "minimum_wall_seconds_after_ack": 0.25
+        },
+        "scene_id": "render-check-class0-scale0.93-defect",
+        "settling_wall_seconds": 0.2626933029969223
+      },
+      "defect_image": "render-check/class0-scale0.93-defect.png",
+      "defect_joint": {
+        "position": [
+          1083.5507230844148,
+          41.35594485879899
+        ],
+        "sim_time": 10.34,
+        "velocity": [
+          100.0,
+          3.9999999999999996
+        ]
+      },
+      "defect_scene": {
+        "background_bin": "dark",
+        "background_color": [
+          0.10950174114865004,
+          0.08516416883976544,
+          0.21684567574440278
+        ],
+        "camera_bin": "low",
+        "camera_pose": [
+          -0.09476050656813434,
+          -0.0003796539386464737,
+          2.794785818456603,
+          0,
+          1.612059996579989,
+          0.039898026654250185
+        ],
+        "class_id": 0,
+        "condition_id": "0582d1db6bc797200d25f07e06498a9e3e0edce12abf8eaad2dcb0ab8626aca8",
+        "defect_darkness": 0.12,
+        "defect_primitives": [
+          {
+            "color": [
+              0.12,
+              0.12,
+              0.12
+            ],
+            "name": "part0",
+            "pose": [
+              0.024847205621716568,
+              -0.04092,
+              0.0,
+              0.0,
+              0.0,
+              0.07670864394243365
+            ],
+            "shape": "box",
+            "size": [
+              0.21385271827451574,
+              0.01896432231280986,
+              0.003
+            ]
+          },
+          {
+            "color": [
+              0.12,
+              0.12,
+              0.12
+            ],
+            "name": "part1",
+            "pose": [
+              0.026366156165926535,
+              -0.02046,
+              0.0,
+              0.0,
+              0.0,
+              -0.11285472486295356
+            ],
+            "shape": "box",
+            "size": [
+              0.2591138627077621,
+              0.021304554481173625,
+              0.003
+            ]
+          },
+          {
+            "color": [
+              0.12,
+              0.12,
+              0.12
+            ],
+            "name": "part2",
+            "pose": [
+              -0.019739803399124657,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.2919512480692199
+            ],
+            "shape": "box",
+            "size": [
+              0.27809069328286423,
+              0.02215655529020702,
+              0.003
+            ]
+          },
+          {
+            "color": [
+              0.12,
+              0.12,
+              0.12
+            ],
+            "name": "part3",
+            "pose": [
+              -0.026023360847271058,
+              0.02046,
+              0.0,
+              0.0,
+              0.0,
+              -0.196246598536908
+            ],
+            "shape": "box",
+            "size": [
+              0.3142847848532099,
+              0.030978145878556032,
+              0.003
+            ]
+          },
+          {
+            "color": [
+              0.12,
+              0.12,
+              0.12
+            ],
+            "name": "part4",
+            "pose": [
+              -0.006106063595511724,
+              0.04092,
+              0.0,
+              0.0,
+              0.0,
+              -0.25703287264284147
+            ],
+            "shape": "box",
+            "size": [
+              0.25561620272202024,
+              0.026837829833325,
+              0.003
+            ]
+          }
+        ],
+        "defect_scale": 0.93,
+        "defect_yaw": 0.32400091618133753,
+        "dx": -0.09559320790168885,
+        "dy": -0.013116817365942501,
+        "generator_version": "v2",
+        "geometry_family": "shape-0004",
+        "group_id": "vision-v2-0004",
+        "image_noise": 1.2581172472106057,
+        "light": 0.8601977948961693,
+        "light_bin": "bright",
+        "material_id": 1,
+        "product_color": [
+          0.7738451240268356,
+          0.7723740699949171,
+          0.8055349580436604
+        ],
+        "scene_id": "render-check-class0-scale0.93-defect",
+        "seed": 20302685,
+        "specular": [
+          0.12,
+          0.12,
+          0.12
+        ],
+        "split": "train",
+        "x": -0.04600451672742378,
+        "y": -0.0947098451116572,
+        "yaw": 0.21572101902861446
+      },
+      "defect_sha256": "9dc1103cfca37c33eebba148e762378ee8bd88b0dc5b89729a2631eb696a91cc",
+      "difference_bbox_xyxy": [
+        165.0,
+        122.0,
+        205.0,
+        187.0
+      ],
+      "expected_bbox_pixels": [
+        165.3233446753515,
+        122.62805013729061,
+        205.0078293765985,
+        186.72383161360722
+      ],
+      "gt_bbox_xyxy": [
+        165.3233446753515,
+        122.62805013729061,
+        205.0078293765985,
+        186.72383161360722
+      ],
+      "metrics": {
+        "bbox_iou": 1.0,
+        "changed_pixels": 1021,
+        "observed_bbox_pixels": [
+          165.0,
+          122.0,
+          205.0,
+          187.0
+        ],
+        "outside_roi_fraction": 0.0,
+        "outside_roi_pixels": 0,
+        "raw_bbox_iou": 0.9779290289476571,
+        "status": "PASS"
+      },
+      "normal_camera_sim_time": 7.756,
+      "normal_capture_sync": {
+        "ack_arrival_monotonic": 59872.918150814,
+        "ack_image_sequence": 62,
+        "ack_scene_id": "render-check-class0-scale0.93-normal",
+        "ack_sim_time": 5.269,
+        "camera_sim_time": 7.756,
+        "capture_monotonic": 59873.183543726,
+        "first_fresh_sequence": 111,
+        "fresh_frame_sequences": [
+          111,
+          112,
+          113
+        ],
+        "fresh_frame_sim_times": [
+          7.676,
+          7.712,
+          7.756
+        ],
+        "fresh_frames": 3,
+        "image_arrival_monotonic": 59873.180339585,
+        "image_sequence": 113,
+        "joint_sim_time": 7.84,
+        "policy": {
+          "minimum_fresh_frames": 3,
+          "minimum_sim_seconds_after_ack": 0.1,
+          "minimum_wall_seconds_after_ack": 0.25
+        },
+        "scene_id": "render-check-class0-scale0.93-normal",
+        "settling_wall_seconds": 0.2621887709974544
+      },
+      "normal_image": "render-check/class0-scale0.93-normal.png",
+      "normal_joint": {
+        "position": [
+          821.2914969049593,
+          31.355958192100324
+        ],
+        "sim_time": 7.84,
+        "velocity": [
+          100.00000000000004,
+          4.000000000000003
+        ]
+      },
+      "normal_scene": {
+        "background_bin": "dark",
+        "background_color": [
+          0.10950174114865004,
+          0.08516416883976544,
+          0.21684567574440278
+        ],
+        "camera_bin": "low",
+        "camera_pose": [
+          -0.09476050656813434,
+          -0.0003796539386464737,
+          2.794785818456603,
+          0,
+          1.612059996579989,
+          0.039898026654250185
+        ],
+        "class_id": -1,
+        "condition_id": "0582d1db6bc797200d25f07e06498a9e3e0edce12abf8eaad2dcb0ab8626aca8",
+        "defect_darkness": 0.11323772569203105,
+        "defect_primitives": [],
+        "defect_scale": 1.15472310986567,
+        "defect_yaw": 0.32400091618133753,
+        "dx": -0.09559320790168885,
+        "dy": -0.013116817365942501,
+        "generator_version": "v2",
+        "geometry_family": "shape-0004",
+        "group_id": "vision-v2-0004",
+        "image_noise": 1.2581172472106057,
+        "light": 0.8601977948961693,
+        "light_bin": "bright",
+        "material_id": 1,
+        "product_color": [
+          0.7738451240268356,
+          0.7723740699949171,
+          0.8055349580436604
+        ],
+        "scene_id": "render-check-class0-scale0.93-normal",
+        "seed": 20302685,
+        "specular": [
+          0.12,
+          0.12,
+          0.12
+        ],
+        "split": "train",
+        "x": -0.04600451672742378,
+        "y": -0.0947098451116572,
+        "yaw": 0.21572101902861446
+      },
+      "normal_sha256": "68843d0d19d42f2d378e6a3ca642007b9d1f9df712c014579fb760efa57e9299",
+      "pair_id": "class0-scale0.93",
+      "scale": 0.93
+    },
+    {
+      "class_id": 0,
+      "defect_camera_sim_time": 14.985,
+      "defect_capture_sync": {
+        "ack_arrival_monotonic": 59873.733817439,
+        "ack_image_sequence": 218,
+        "ack_scene_id": "render-check-class0-scale1.18-defect",
+        "ack_sim_time": 13.085,
+        "camera_sim_time": 14.985,
+        "capture_monotonic": 59873.998233325,
+        "first_fresh_sequence": 261,
+        "fresh_frame_sequences": [
+          261,
+          262,
+          263
+        ],
+        "fresh_frame_sim_times": [
+          14.874,
+          14.936,
+          14.985
+        ],
+        "fresh_frames": 3,
+        "image_arrival_monotonic": 59873.997398991,
+        "image_sequence": 263,
+        "joint_sim_time": 15.02,
+        "policy": {
+          "minimum_fresh_frames": 3,
+          "minimum_sim_seconds_after_ack": 0.1,
+          "minimum_wall_seconds_after_ack": 0.25
+        },
+        "scene_id": "render-check-class0-scale1.18-defect",
+        "settling_wall_seconds": 0.26358155199704925
+      },
+      "defect_image": "render-check/class0-scale1.18-defect.png",
+      "defect_joint": {
+        "position": [
+          1574.4999944923554,
+          60.075919898858885
+        ],
+        "sim_time": 15.02,
+        "velocity": [
+          100.00000000000001,
+          3.9999999999999996
+        ]
+      },
+      "defect_scene": {
+        "background_bin": "dark",
+        "background_color": [
+          0.3429916855482499,
+          0.16807870520370172,
+          0.17686333016035466
+        ],
+        "camera_bin": "low",
+        "camera_pose": [
+          0.06162080581818445,
+          -0.07395959885654188,
+          2.696153022737833,
+          0,
+          1.6122784312925535,
+          -0.03589075373076957
+        ],
+        "class_id": 0,
+        "condition_id": "56768eabe20e52ccd7eef11f183cc8b08fbd27236cbc8ff95d6d23584f37ce30",
+        "defect_darkness": 0.12,
+        "defect_primitives": [
+          {
+            "color": [
+              0.12,
+              0.12,
+              0.12
+            ],
+            "name": "part0",
+            "pose": [
+              0.02986446089537689,
+              -0.025959999999999997,
+              0.0,
+              0.0,
+              0.0,
+              -0.3012344933368586
+            ],
+            "shape": "box",
+            "size": [
+              0.31456173129598364,
+              0.024367720823374118,
+              0.003
+            ]
+          },
+          {
+            "color": [
+              0.12,
+              0.12,
+              0.12
+            ],
+            "name": "part1",
+            "pose": [
+              0.013381586577202675,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              -0.1742085076903854
+            ],
+            "shape": "box",
+            "size": [
+              0.3793971715333783,
+              0.03487947048454645,
+              0.003
+            ]
+          },
+          {
+            "color": [
+              0.12,
+              0.12,
+              0.12
+            ],
+            "name": "part2",
+            "pose": [
+              -8.992946658477537e-06,
+              0.025959999999999997,
+              0.0,
+              0.0,
+              0.0,
+              0.059604959452762785
+            ],
+            "shape": "box",
+            "size": [
+              0.22329787199755782,
+              0.036214184164874805,
+              0.003
+            ]
+          }
+        ],
+        "defect_scale": 1.18,
+        "defect_yaw": -0.05857475063651485,
+        "dx": -0.10543465942977473,
+        "dy": -0.05517981549900346,
+        "generator_version": "v2",
+        "geometry_family": "shape-0014",
+        "group_id": "vision-v2-0014",
+        "image_noise": 2.4060323969263084,
+        "light": 0.8396339232004717,
+        "light_bin": "bright",
+        "material_id": 2,
+        "product_color": [
+          0.6710167797747038,
+          0.6708349889484619,
+          0.7113171204362485
+        ],
+        "scene_id": "render-check-class0-scale1.18-defect",
+        "seed": 20381875,
+        "specular": [
+          0.3,
+          0.3,
+          0.3
+        ],
+        "split": "val",
+        "x": -0.09087365138424029,
+        "y": 0.047152745901010346,
+        "yaw": 0.18235336566679966
+      },
+      "defect_sha256": "ac8e5bdf68635f8d994148bf35d0c4438b10abef1d074d10d8ef63d3130a5088",
+      "difference_bbox_xyxy": [
+        139.0,
+        151.0,
+        163.0,
+        226.0
+      ],
+      "expected_bbox_pixels": [
+        139.26644686126065,
+        151.82532543017317,
+        163.17468600365862,
+        225.41627714653174
+      ],
+      "gt_bbox_xyxy": [
+        139.26644686126065,
+        151.82532543017317,
+        163.17468600365862,
+        225.41627714653174
+      ],
+      "metrics": {
+        "bbox_iou": 1.0,
+        "changed_pixels": 943,
+        "observed_bbox_pixels": [
+          139.0,
+          151.0,
+          163.0,
+          226.0
+        ],
+        "outside_roi_fraction": 0.0,
+        "outside_roi_pixels": 0,
+        "raw_bbox_iou": 0.9634385900344169,
+        "status": "PASS"
+      },
+      "normal_camera_sim_time": 13.015,
+      "normal_capture_sync": {
+        "ack_arrival_monotonic": 59873.466523063,
+        "ack_image_sequence": 167,
+        "ack_scene_id": "render-check-class0-scale1.18-normal",
+        "ack_sim_time": 10.49,
+        "camera_sim_time": 13.015,
+        "capture_monotonic": 59873.730879659,
+        "first_fresh_sequence": 216,
+        "fresh_frame_sequences": [
+          216,
+          217,
+          218
+        ],
+        "fresh_frame_sim_times": [
+          12.928,
+          12.975,
+          13.015
+        ],
+        "fresh_frames": 3,
+        "image_arrival_monotonic": 59873.730209994,
+        "image_sequence": 218,
+        "joint_sim_time": 13.06,
+        "policy": {
+          "minimum_fresh_frames": 3,
+          "minimum_sim_seconds_after_ack": 0.1,
+          "minimum_wall_seconds_after_ack": 0.25
+        },
+        "scene_id": "render-check-class0-scale1.18-normal",
+        "settling_wall_seconds": 0.26368693100084784
+      },
+      "normal_image": "render-check/class0-scale1.18-normal.png",
+      "normal_joint": {
+        "position": [
+          1368.8887611676623,
+          52.23593035216713
+        ],
+        "sim_time": 13.06,
+        "velocity": [
+          100.00000000000001,
+          3.999999999999999
+        ]
+      },
+      "normal_scene": {
+        "background_bin": "dark",
+        "background_color": [
+          0.3429916855482499,
+          0.16807870520370172,
+          0.17686333016035466
+        ],
+        "camera_bin": "low",
+        "camera_pose": [
+          0.06162080581818445,
+          -0.07395959885654188,
+          2.696153022737833,
+          0,
+          1.6122784312925535,
+          -0.03589075373076957
+        ],
+        "class_id": -1,
+        "condition_id": "56768eabe20e52ccd7eef11f183cc8b08fbd27236cbc8ff95d6d23584f37ce30",
+        "defect_darkness": 0.2155484616647152,
+        "defect_primitives": [],
+        "defect_scale": 0.7150981044790261,
+        "defect_yaw": -0.05857475063651485,
+        "dx": -0.10543465942977473,
+        "dy": -0.05517981549900346,
+        "generator_version": "v2",
+        "geometry_family": "shape-0014",
+        "group_id": "vision-v2-0014",
+        "image_noise": 2.4060323969263084,
+        "light": 0.8396339232004717,
+        "light_bin": "bright",
+        "material_id": 2,
+        "product_color": [
+          0.6710167797747038,
+          0.6708349889484619,
+          0.7113171204362485
+        ],
+        "scene_id": "render-check-class0-scale1.18-normal",
+        "seed": 20381875,
+        "specular": [
+          0.3,
+          0.3,
+          0.3
+        ],
+        "split": "val",
+        "x": -0.09087365138424029,
+        "y": 0.047152745901010346,
+        "yaw": 0.18235336566679966
+      },
+      "normal_sha256": "1d3312a9b306f948631a60c49415ea2c1e46482f9c970c75973be628c432f94e",
+      "pair_id": "class0-scale1.18",
+      "scale": 1.18
+    },
+    {
+      "class_id": 1,
+      "defect_camera_sim_time": 20.247,
+      "defect_capture_sync": {
+        "ack_arrival_monotonic": 59874.288583684,
+        "ack_image_sequence": 319,
+        "ack_scene_id": "render-check-class1-scale0.68-defect",
+        "ack_sim_time": 17.695,
+        "camera_sim_time": 20.247,
+        "capture_monotonic": 59874.549805108,
+        "first_fresh_sequence": 368,
+        "fresh_frame_sequences": [
+          368,
+          369,
+          370
+        ],
+        "fresh_frame_sim_times": [
+          20.143,
+          20.2,
+          20.247
+        ],
+        "fresh_frames": 3,
+        "image_arrival_monotonic": 59874.548976951,
+        "image_sequence": 370,
+        "joint_sim_time": 20.28,
+        "policy": {
+          "minimum_fresh_frames": 3,
+          "minimum_sim_seconds_after_ack": 0.1,
+          "minimum_wall_seconds_after_ack": 0.25
+        },
+        "scene_id": "render-check-class1-scale0.68-defect",
+        "settling_wall_seconds": 0.2603932670026552
+      },
+      "defect_image": "render-check/class1-scale0.68-defect.png",
+      "defect_joint": {
+        "position": [
+          2126.29340637393,
+          81.11589184559288
+        ],
+        "sim_time": 20.28,
+        "velocity": [
+          100.00000000000004,
+          3.999999999999999
+        ]
+      },
+      "defect_scene": {
+        "background_bin": "dark",
+        "background_color": [
+          0.10950174114865004,
+          0.08516416883976544,
+          0.21684567574440278
+        ],
+        "camera_bin": "low",
+        "camera_pose": [
+          -0.09476050656813434,
+          -0.0003796539386464737,
+          2.794785818456603,
+          0,
+          1.612059996579989,
+          0.039898026654250185
+        ],
+        "class_id": 1,
+        "condition_id": "0582d1db6bc797200d25f07e06498a9e3e0edce12abf8eaad2dcb0ab8626aca8",
+        "defect_darkness": 0.12,
+        "defect_primitives": [
+          {
+            "color": [
+              0.32,
+              0.32,
+              0.32
+            ],
+            "length": 0.005,
+            "name": "part0",
+            "pose": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 0.06208235567342161,
+            "shape": "cylinder"
+          },
+          {
+            "color": [
+              0.12,
+              0.12,
+              0.12
+            ],
+            "length": 0.007,
+            "name": "part1",
+            "pose": [
+              0.0,
+              0.0,
+              0.003,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 0.04051158890798458,
+            "shape": "cylinder"
+          }
+        ],
+        "defect_scale": 0.68,
+        "defect_yaw": 0.32400091618133753,
+        "dx": -0.09559320790168885,
+        "dy": -0.013116817365942501,
+        "generator_version": "v2",
+        "geometry_family": "shape-0004",
+        "group_id": "vision-v2-0004",
+        "image_noise": 1.2581172472106057,
+        "light": 0.8601977948961693,
+        "light_bin": "bright",
+        "material_id": 1,
+        "product_color": [
+          0.7738451240268356,
+          0.7723740699949171,
+          0.8055349580436604
+        ],
+        "scene_id": "render-check-class1-scale0.68-defect",
+        "seed": 20302685,
+        "specular": [
+          0.12,
+          0.12,
+          0.12
+        ],
+        "split": "train",
+        "x": -0.04600451672742378,
+        "y": -0.0947098451116572,
+        "yaw": 0.21572101902861446
+      },
+      "defect_sha256": "ca0d4320e8603d46417ed77a1dd855717db12f8998d0fe25ab844ed1ec004ffc",
+      "difference_bbox_xyxy": [
+        172.0,
+        140.0,
+        195.0,
+        164.0
+      ],
+      "expected_bbox_pixels": [
+        171.8584153977593,
+        140.37657477608224,
+        195.03269315406123,
+        163.5223973535116
+      ],
+      "gt_bbox_xyxy": [
+        171.8584153977593,
+        140.37657477608224,
+        195.03269315406123,
+        163.5223973535116
+      ],
+      "metrics": {
+        "bbox_iou": 1.0,
+        "changed_pixels": 445,
+        "observed_bbox_pixels": [
+          172.0,
+          140.0,
+          195.0,
+          164.0
+        ],
+        "outside_roi_fraction": 0.0,
+        "outside_roi_pixels": 0,
+        "raw_bbox_iou": 0.9574128719164615,
+        "status": "PASS"
+      },
+      "normal_camera_sim_time": 17.64,
+      "normal_capture_sync": {
+        "ack_arrival_monotonic": 59874.024295676,
+        "ack_image_sequence": 268,
+        "ack_scene_id": "render-check-class1-scale0.68-normal",
+        "ack_sim_time": 15.201,
+        "camera_sim_time": 17.64,
+        "capture_monotonic": 59874.286028437,
+        "first_fresh_sequence": 317,
+        "fresh_frame_sequences": [
+          317,
+          318,
+          319
+        ],
+        "fresh_frame_sim_times": [
+          17.525,
+          17.576999999999998,
+          17.64
+        ],
+        "fresh_frames": 3,
+        "image_arrival_monotonic": 59874.2851605,
+        "image_sequence": 319,
+        "joint_sim_time": 17.68,
+        "policy": {
+          "minimum_fresh_frames": 3,
+          "minimum_sim_seconds_after_ack": 0.1,
+          "minimum_wall_seconds_after_ack": 0.25
+        },
+        "scene_id": "render-check-class1-scale0.68-normal",
+        "settling_wall_seconds": 0.26086482400569366
+      },
+      "normal_image": "render-check/class1-scale0.68-normal.png",
+      "normal_joint": {
+        "position": [
+          1853.543811147296,
+          70.71590571222626
+        ],
+        "sim_time": 17.68,
+        "velocity": [
+          99.99999999999996,
+          3.999999999999999
+        ]
+      },
+      "normal_scene": {
+        "background_bin": "dark",
+        "background_color": [
+          0.10950174114865004,
+          0.08516416883976544,
+          0.21684567574440278
+        ],
+        "camera_bin": "low",
+        "camera_pose": [
+          -0.09476050656813434,
+          -0.0003796539386464737,
+          2.794785818456603,
+          0,
+          1.612059996579989,
+          0.039898026654250185
+        ],
+        "class_id": -1,
+        "condition_id": "0582d1db6bc797200d25f07e06498a9e3e0edce12abf8eaad2dcb0ab8626aca8",
+        "defect_darkness": 0.11323772569203105,
+        "defect_primitives": [],
+        "defect_scale": 1.15472310986567,
+        "defect_yaw": 0.32400091618133753,
+        "dx": -0.09559320790168885,
+        "dy": -0.013116817365942501,
+        "generator_version": "v2",
+        "geometry_family": "shape-0004",
+        "group_id": "vision-v2-0004",
+        "image_noise": 1.2581172472106057,
+        "light": 0.8601977948961693,
+        "light_bin": "bright",
+        "material_id": 1,
+        "product_color": [
+          0.7738451240268356,
+          0.7723740699949171,
+          0.8055349580436604
+        ],
+        "scene_id": "render-check-class1-scale0.68-normal",
+        "seed": 20302685,
+        "specular": [
+          0.12,
+          0.12,
+          0.12
+        ],
+        "split": "train",
+        "x": -0.04600451672742378,
+        "y": -0.0947098451116572,
+        "yaw": 0.21572101902861446
+      },
+      "normal_sha256": "68843d0d19d42f2d378e6a3ca642007b9d1f9df712c014579fb760efa57e9299",
+      "pair_id": "class1-scale0.68",
+      "scale": 0.68
+    },
+    {
+      "class_id": 1,
+      "defect_camera_sim_time": 25.407,
+      "defect_capture_sync": {
+        "ack_arrival_monotonic": 59874.836985917,
+        "ack_image_sequence": 422,
+        "ack_scene_id": "render-check-class1-scale0.93-defect",
+        "ack_sim_time": 22.8,
+        "camera_sim_time": 25.407,
+        "capture_monotonic": 59875.09606012,
+        "first_fresh_sequence": 471,
+        "fresh_frame_sequences": [
+          471,
+          472,
+          473
+        ],
+        "fresh_frame_sim_times": [
+          25.289,
+          25.341,
+          25.407
+        ],
+        "fresh_frames": 3,
+        "image_arrival_monotonic": 59875.095313691,
+        "image_sequence": 473,
+        "joint_sim_time": 25.46,
+        "policy": {
+          "minimum_fresh_frames": 3,
+          "minimum_sim_seconds_after_ack": 0.1,
+          "minimum_wall_seconds_after_ack": 0.25
+        },
+        "scene_id": "render-check-class1-scale0.93-defect",
+        "settling_wall_seconds": 0.2583277740050107
+      },
+      "defect_image": "render-check/class1-scale0.93-defect.png",
+      "defect_joint": {
+        "position": [
+          2669.6945230177616,
+          101.83586421899251
+        ],
+        "sim_time": 25.46,
+        "velocity": [
+          99.99999999999999,
+          4.000000000000001
+        ]
+      },
+      "defect_scene": {
+        "background_bin": "dark",
+        "background_color": [
+          0.3429916855482499,
+          0.16807870520370172,
+          0.17686333016035466
+        ],
+        "camera_bin": "low",
+        "camera_pose": [
+          0.06162080581818445,
+          -0.07395959885654188,
+          2.696153022737833,
+          0,
+          1.6122784312925535,
+          -0.03589075373076957
+        ],
+        "class_id": 1,
+        "condition_id": "56768eabe20e52ccd7eef11f183cc8b08fbd27236cbc8ff95d6d23584f37ce30",
+        "defect_darkness": 0.12,
+        "defect_primitives": [
+          {
+            "color": [
+              0.32,
+              0.32,
+              0.32
+            ],
+            "length": 0.005,
+            "name": "part0",
+            "pose": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 0.0921185679949844,
+            "shape": "cylinder"
+          },
+          {
+            "color": [
+              0.12,
+              0.12,
+              0.12
+            ],
+            "length": 0.007,
+            "name": "part1",
+            "pose": [
+              0.0,
+              0.0,
+              0.003,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 0.058973911416422276,
+            "shape": "cylinder"
+          }
+        ],
+        "defect_scale": 0.93,
+        "defect_yaw": -0.05857475063651485,
+        "dx": -0.10543465942977473,
+        "dy": -0.05517981549900346,
+        "generator_version": "v2",
+        "geometry_family": "shape-0014",
+        "group_id": "vision-v2-0014",
+        "image_noise": 2.4060323969263084,
+        "light": 0.8396339232004717,
+        "light_bin": "bright",
+        "material_id": 2,
+        "product_color": [
+          0.6710167797747038,
+          0.6708349889484619,
+          0.7113171204362485
+        ],
+        "scene_id": "render-check-class1-scale0.93-defect",
+        "seed": 20381875,
+        "specular": [
+          0.3,
+          0.3,
+          0.3
+        ],
+        "split": "val",
+        "x": -0.09087365138424029,
+        "y": 0.047152745901010346,
+        "yaw": 0.18235336566679966
+      },
+      "defect_sha256": "4649f66f679da8ee35a3fe7fa7bad898633e5047091d07546b977674c2a6f60c",
+      "difference_bbox_xyxy": [
+        134.0,
+        173.0,
+        171.0,
+        209.0
+      ],
+      "expected_bbox_pixels": [
+        134.52943060299071,
+        173.40127507660725,
+        170.35562644460066,
+        209.1550223126572
+      ],
+      "gt_bbox_xyxy": [
+        134.52943060299071,
+        173.40127507660725,
+        170.35562644460066,
+        209.1550223126572
+      ],
+      "metrics": {
+        "bbox_iou": 1.0,
+        "changed_pixels": 1036,
+        "observed_bbox_pixels": [
+          134.0,
+          173.0,
+          171.0,
+          209.0
+        ],
+        "outside_roi_fraction": 0.0,
+        "outside_roi_pixels": 0,
+        "raw_bbox_iou": 0.953506942196394,
+        "status": "PASS"
+      },
+      "normal_camera_sim_time": 22.741,
+      "normal_capture_sync": {
+        "ack_arrival_monotonic": 59874.566315854,
+        "ack_image_sequence": 373,
+        "ack_scene_id": "render-check-class1-scale0.93-normal",
+        "ack_sim_time": 20.411,
+        "camera_sim_time": 22.741,
+        "capture_monotonic": 59874.833259989,
+        "first_fresh_sequence": 419,
+        "fresh_frame_sequences": [
+          419,
+          420,
+          421
+        ],
+        "fresh_frame_sim_times": [
+          22.63,
+          22.66,
+          22.741
+        ],
+        "fresh_frames": 3,
+        "image_arrival_monotonic": 59874.832534551,
+        "image_sequence": 421,
+        "joint_sim_time": 22.78,
+        "policy": {
+          "minimum_fresh_frames": 3,
+          "minimum_sim_seconds_after_ack": 0.1,
+          "minimum_wall_seconds_after_ack": 0.25
+        },
+        "scene_id": "render-check-class1-scale0.93-normal",
+        "settling_wall_seconds": 0.2662186970046605
+      },
+      "normal_image": "render-check/class1-scale0.93-normal.png",
+      "normal_joint": {
+        "position": [
+          2388.552632553385,
+          91.11587851229154
+        ],
+        "sim_time": 22.78,
+        "velocity": [
+          100.00000000000004,
+          4.0
+        ]
+      },
+      "normal_scene": {
+        "background_bin": "dark",
+        "background_color": [
+          0.3429916855482499,
+          0.16807870520370172,
+          0.17686333016035466
+        ],
+        "camera_bin": "low",
+        "camera_pose": [
+          0.06162080581818445,
+          -0.07395959885654188,
+          2.696153022737833,
+          0,
+          1.6122784312925535,
+          -0.03589075373076957
+        ],
+        "class_id": -1,
+        "condition_id": "56768eabe20e52ccd7eef11f183cc8b08fbd27236cbc8ff95d6d23584f37ce30",
+        "defect_darkness": 0.2155484616647152,
+        "defect_primitives": [],
+        "defect_scale": 0.7150981044790261,
+        "defect_yaw": -0.05857475063651485,
+        "dx": -0.10543465942977473,
+        "dy": -0.05517981549900346,
+        "generator_version": "v2",
+        "geometry_family": "shape-0014",
+        "group_id": "vision-v2-0014",
+        "image_noise": 2.4060323969263084,
+        "light": 0.8396339232004717,
+        "light_bin": "bright",
+        "material_id": 2,
+        "product_color": [
+          0.6710167797747038,
+          0.6708349889484619,
+          0.7113171204362485
+        ],
+        "scene_id": "render-check-class1-scale0.93-normal",
+        "seed": 20381875,
+        "specular": [
+          0.3,
+          0.3,
+          0.3
+        ],
+        "split": "val",
+        "x": -0.09087365138424029,
+        "y": 0.047152745901010346,
+        "yaw": 0.18235336566679966
+      },
+      "normal_sha256": "1d3312a9b306f948631a60c49415ea2c1e46482f9c970c75973be628c432f94e",
+      "pair_id": "class1-scale0.93",
+      "scale": 0.93
+    },
+    {
+      "class_id": 1,
+      "defect_camera_sim_time": 31.624,
+      "defect_capture_sync": {
+        "ack_arrival_monotonic": 59875.377439465,
+        "ack_image_sequence": 530,
+        "ack_scene_id": "render-check-class1-scale1.18-defect",
+        "ack_sim_time": 28.62,
+        "camera_sim_time": 31.624,
+        "capture_monotonic": 59875.639442435,
+        "first_fresh_sequence": 585,
+        "fresh_frame_sequences": [
+          585,
+          586,
+          587
+        ],
+        "fresh_frame_sim_times": [
+          31.51,
+          31.553,
+          31.624
+        ],
+        "fresh_frames": 3,
+        "image_arrival_monotonic": 59875.639177328,
+        "image_sequence": 587,
+        "joint_sim_time": 31.66,
+        "policy": {
+          "minimum_fresh_frames": 3,
+          "minimum_sim_seconds_after_ack": 0.1,
+          "minimum_wall_seconds_after_ack": 0.25
+        },
+        "scene_id": "render-check-class1-scale1.18-defect",
+        "settling_wall_seconds": 0.26173786299477797
+      },
+      "defect_image": "render-check/class1-scale1.18-defect.png",
+      "defect_joint": {
+        "position": [
+          3320.097403942811,
+          126.6358311524052
+        ],
+        "sim_time": 31.66,
+        "velocity": [
+          100.0,
+          3.9999999999999996
+        ]
+      },
+      "defect_scene": {
+        "background_bin": "light",
+        "background_color": [
+          0.1569705738870168,
+          0.28062393776338945,
+          0.3095393366391423
+        ],
+        "camera_bin": "high",
+        "camera_pose": [
+          0.08150169553041692,
+          -0.021968784150492405,
+          2.8843927522281168,
+          0,
+          1.4918578898360597,
+          -0.08312075179764926
+        ],
+        "class_id": 1,
+        "condition_id": "81e3b6d23f2c078262c80890a7ac9639a38c1ce5cd77e5ee421f99ab95ef2319",
+        "defect_darkness": 0.12,
+        "defect_primitives": [
+          {
+            "color": [
+              0.32,
+              0.32,
+              0.32
+            ],
+            "length": 0.005,
+            "name": "part0",
+            "pose": [
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 0.12145831265672785,
+            "shape": "cylinder"
+          },
+          {
+            "color": [
+              0.12,
+              0.12,
+              0.12
+            ],
+            "length": 0.007,
+            "name": "part1",
+            "pose": [
+              0.0,
+              0.0,
+              0.003,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 0.08387981123457998,
+            "shape": "cylinder"
+          }
+        ],
+        "defect_scale": 1.18,
+        "defect_yaw": 0.5399770739174012,
+        "dx": -0.09845499620150897,
+        "dy": 0.0556505633864878,
+        "generator_version": "v2",
+        "geometry_family": "shape-0003",
+        "group_id": "vision-v2-0003",
+        "image_noise": 1.2893131778470808,
+        "light": 0.6618009606096816,
+        "light_bin": "dim",
+        "material_id": 0,
+        "product_color": [
+          0.7513780417273378,
+          0.741695833635803,
+          0.7207173573193056
+        ],
+        "scene_id": "render-check-class1-scale1.18-defect",
+        "seed": 20294766,
+        "specular": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "split": "train",
+        "x": -0.0654434955867573,
+        "y": 0.0010436347169575089,
+        "yaw": 0.09158650894622755
+      },
+      "defect_sha256": "14df7ce30f70f3dd14ab0af1a1951120dc30b69e47dc5d9651f45b74461be35e",
+      "difference_bbox_xyxy": null,
+      "expected_bbox_pixels": [
+        129.21494241546694,
+        216.27706192274186,
+        173.2332382809811,
+        260.8812288358281
+      ],
+      "gt_bbox_xyxy": [
+        129.21494241546694,
+        216.27706192274186,
+        173.2332382809811,
+        260.8812288358281
+      ],
+      "metrics": {
+        "bbox_iou": 0.0,
+        "changed_pixels": 0,
+        "observed_bbox_pixels": null,
+        "outside_roi_fraction": 1.0,
+        "outside_roi_pixels": 0,
+        "raw_bbox_iou": 0.0,
+        "status": "FAIL"
+      },
+      "normal_camera_sim_time": 28.553,
+      "normal_capture_sync": {
+        "ack_arrival_monotonic": 59875.115200148,
+        "ack_image_sequence": 477,
+        "ack_scene_id": "render-check-class1-scale1.18-normal",
+        "ack_sim_time": 25.688,
+        "camera_sim_time": 28.553,
+        "capture_monotonic": 59875.375270385,
+        "first_fresh_sequence": 528,
+        "fresh_frame_sequences": [
+          528,
+          529,
+          530
+        ],
+        "fresh_frame_sim_times": [
+          28.476,
+          28.519,
+          28.553
+        ],
+        "fresh_frames": 3,
+        "image_arrival_monotonic": 59875.374747325,
+        "image_sequence": 530,
+        "joint_sim_time": 28.6,
+        "policy": {
+          "minimum_fresh_frames": 3,
+          "minimum_sim_seconds_after_ack": 0.1,
+          "minimum_wall_seconds_after_ack": 0.25
+        },
+        "scene_id": "render-check-class1-scale1.18-normal",
+        "settling_wall_seconds": 0.2595471769964206
+      },
+      "normal_image": "render-check/class1-scale1.18-normal.png",
+      "normal_joint": {
+        "position": [
+          2999.0921110991576,
+          114.39584747236603
+        ],
+        "sim_time": 28.6,
+        "velocity": [
+          100.00000000000006,
+          3.9999999999999996
+        ]
+      },
+      "normal_scene": {
+        "background_bin": "light",
+        "background_color": [
+          0.1569705738870168,
+          0.28062393776338945,
+          0.3095393366391423
+        ],
+        "camera_bin": "high",
+        "camera_pose": [
+          0.08150169553041692,
+          -0.021968784150492405,
+          2.8843927522281168,
+          0,
+          1.4918578898360597,
+          -0.08312075179764926
+        ],
+        "class_id": -1,
+        "condition_id": "81e3b6d23f2c078262c80890a7ac9639a38c1ce5cd77e5ee421f99ab95ef2319",
+        "defect_darkness": 0.2980015163499599,
+        "defect_primitives": [],
+        "defect_scale": 0.8197325752454967,
+        "defect_yaw": 0.5399770739174012,
+        "dx": -0.09845499620150897,
+        "dy": 0.0556505633864878,
+        "generator_version": "v2",
+        "geometry_family": "shape-0003",
+        "group_id": "vision-v2-0003",
+        "image_noise": 1.2893131778470808,
+        "light": 0.6618009606096816,
+        "light_bin": "dim",
+        "material_id": 0,
+        "product_color": [
+          0.7513780417273378,
+          0.741695833635803,
+          0.7207173573193056
+        ],
+        "scene_id": "render-check-class1-scale1.18-normal",
+        "seed": 20294766,
+        "specular": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "split": "train",
+        "x": -0.0654434955867573,
+        "y": 0.0010436347169575089,
+        "yaw": 0.09158650894622755
+      },
+      "normal_sha256": "14df7ce30f70f3dd14ab0af1a1951120dc30b69e47dc5d9651f45b74461be35e",
+      "pair_id": "class1-scale1.18",
+      "scale": 1.18
+    },
+    {
+      "class_id": 2,
+      "defect_camera_sim_time": 37.067,
+      "defect_capture_sync": {
+        "ack_arrival_monotonic": 59875.92465912,
+        "ack_image_sequence": 646,
+        "ack_scene_id": "render-check-class2-scale0.68-defect",
+        "ack_sim_time": 34.712,
+        "camera_sim_time": 37.067,
+        "capture_monotonic": 59876.228772225,
+        "first_fresh_sequence": 691,
+        "fresh_frame_sequences": [
+          691,
+          692,
+          693
+        ],
+        "fresh_frame_sim_times": [
+          36.95,
+          36.992,
+          37.067
+        ],
+        "fresh_frames": 3,
+        "image_arrival_monotonic": 59876.220650578,
+        "image_sequence": 693,
+        "joint_sim_time": 37.16,
+        "policy": {
+          "minimum_fresh_frames": 3,
+          "minimum_sim_seconds_after_ack": 0.1,
+          "minimum_wall_seconds_after_ack": 0.25
+        },
+        "scene_id": "render-check-class2-scale0.68-defect",
+        "settling_wall_seconds": 0.2959914579987526
+      },
+      "defect_image": "render-check/class2-scale0.68-defect.png",
+      "defect_joint": {
+        "position": [
+          3897.067701537613,
+          148.63580181914224
+        ],
+        "sim_time": 37.16,
+        "velocity": [
+          100.00000000000004,
+          3.999999999999999
+        ]
+      },
+      "defect_scene": {
+        "background_bin": "dark",
+        "background_color": [
+          0.3429916855482499,
+          0.16807870520370172,
+          0.17686333016035466
+        ],
+        "camera_bin": "low",
+        "camera_pose": [
+          0.06162080581818445,
+          -0.07395959885654188,
+          2.696153022737833,
+          0,
+          1.6122784312925535,
+          -0.03589075373076957
+        ],
+        "class_id": 2,
+        "condition_id": "56768eabe20e52ccd7eef11f183cc8b08fbd27236cbc8ff95d6d23584f37ce30",
+        "defect_darkness": 0.12,
+        "defect_primitives": [
+          {
+            "color": [
+              0.12,
+              0.08841295904777205,
+              0.11028510073896874
+            ],
+            "length": 0.006,
+            "name": "part0",
+            "pose": [
+              -0.00693154544394023,
+              -0.008356086935769863,
+              0.004,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 0.022423757407128264,
+            "shape": "cylinder"
+          },
+          {
+            "color": [
+              0.12,
+              0.08894043823728506,
+              0.083798358669958
+            ],
+            "length": 0.006,
+            "name": "part1",
+            "pose": [
+              0.026041237826132713,
+              0.0392240480509039,
+              0.004,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 0.03816628842732876,
+            "shape": "cylinder"
+          }
+        ],
+        "defect_scale": 0.68,
+        "defect_yaw": -0.05857475063651485,
+        "dx": -0.10543465942977473,
+        "dy": -0.05517981549900346,
+        "generator_version": "v2",
+        "geometry_family": "shape-0014",
+        "group_id": "vision-v2-0014",
+        "image_noise": 2.4060323969263084,
+        "light": 0.8396339232004717,
+        "light_bin": "bright",
+        "material_id": 2,
+        "product_color": [
+          0.6710167797747038,
+          0.6708349889484619,
+          0.7113171204362485
+        ],
+        "scene_id": "render-check-class2-scale0.68-defect",
+        "seed": 20381875,
+        "specular": [
+          0.3,
+          0.3,
+          0.3
+        ],
+        "split": "val",
+        "x": -0.09087365138424029,
+        "y": 0.047152745901010346,
+        "yaw": 0.18235336566679966
+      },
+      "defect_sha256": "c8fa94449fe391e12532c28010573ad92c37d965388b789c48ad8c9cfc0b920b",
+      "difference_bbox_xyxy": [
+        136.0,
+        180.0,
+        159.0,
+        197.0
+      ],
+      "expected_bbox_pixels": [
+        136.62504770804733,
+        180.14424072613514,
+        158.6224418266857,
+        196.8704784233085
+      ],
+      "gt_bbox_xyxy": [
+        136.62504770804733,
+        180.14424072613514,
+        158.6224418266857,
+        196.8704784233085
+      ],
+      "metrics": {
+        "bbox_iou": 1.0,
+        "changed_pixels": 256,
+        "observed_bbox_pixels": [
+          136.0,
+          180.0,
+          159.0,
+          197.0
+        ],
+        "outside_roi_fraction": 0.0,
+        "outside_roi_pixels": 0,
+        "raw_bbox_iou": 0.9410067589430912,
+        "status": "PASS"
+      },
+      "normal_camera_sim_time": 34.655,
+      "normal_capture_sync": {
+        "ack_arrival_monotonic": 59875.657456599,
+        "ack_image_sequence": 591,
+        "ack_scene_id": "render-check-class2-scale0.68-normal",
+        "ack_sim_time": 31.85,
+        "camera_sim_time": 34.655,
+        "capture_monotonic": 59875.921580048,
+        "first_fresh_sequence": 644,
+        "fresh_frame_sequences": [
+          644,
+          645,
+          646
+        ],
+        "fresh_frame_sim_times": [
+          34.53,
+          34.583,
+          34.655
+        ],
+        "fresh_frames": 3,
+        "image_arrival_monotonic": 59875.921220808,
+        "image_sequence": 646,
+        "joint_sim_time": 34.68,
+        "policy": {
+          "minimum_fresh_frames": 3,
+          "minimum_sim_seconds_after_ack": 0.1,
+          "minimum_wall_seconds_after_ack": 0.25
+        },
+        "scene_id": "render-check-class2-scale0.68-normal",
+        "settling_wall_seconds": 0.2637642089975998
+      },
+      "normal_image": "render-check/class2-scale0.68-normal.png",
+      "normal_joint": {
+        "position": [
+          3636.9065491675933,
+          138.7158150457772
+        ],
+        "sim_time": 34.68,
+        "velocity": [
+          100.00000000000001,
+          4.0
+        ]
+      },
+      "normal_scene": {
+        "background_bin": "dark",
+        "background_color": [
+          0.3429916855482499,
+          0.16807870520370172,
+          0.17686333016035466
+        ],
+        "camera_bin": "low",
+        "camera_pose": [
+          0.06162080581818445,
+          -0.07395959885654188,
+          2.696153022737833,
+          0,
+          1.6122784312925535,
+          -0.03589075373076957
+        ],
+        "class_id": -1,
+        "condition_id": "56768eabe20e52ccd7eef11f183cc8b08fbd27236cbc8ff95d6d23584f37ce30",
+        "defect_darkness": 0.2155484616647152,
+        "defect_primitives": [],
+        "defect_scale": 0.7150981044790261,
+        "defect_yaw": -0.05857475063651485,
+        "dx": -0.10543465942977473,
+        "dy": -0.05517981549900346,
+        "generator_version": "v2",
+        "geometry_family": "shape-0014",
+        "group_id": "vision-v2-0014",
+        "image_noise": 2.4060323969263084,
+        "light": 0.8396339232004717,
+        "light_bin": "bright",
+        "material_id": 2,
+        "product_color": [
+          0.6710167797747038,
+          0.6708349889484619,
+          0.7113171204362485
+        ],
+        "scene_id": "render-check-class2-scale0.68-normal",
+        "seed": 20381875,
+        "specular": [
+          0.3,
+          0.3,
+          0.3
+        ],
+        "split": "val",
+        "x": -0.09087365138424029,
+        "y": 0.047152745901010346,
+        "yaw": 0.18235336566679966
+      },
+      "normal_sha256": "1d3312a9b306f948631a60c49415ea2c1e46482f9c970c75973be628c432f94e",
+      "pair_id": "class2-scale0.68",
+      "scale": 0.68
+    },
+    {
+      "class_id": 2,
+      "defect_camera_sim_time": 41.639,
+      "defect_capture_sync": {
+        "ack_arrival_monotonic": 59876.555883573,
+        "ack_image_sequence": 724,
+        "ack_scene_id": "render-check-class2-scale0.93-defect",
+        "ack_sim_time": 38.998,
+        "camera_sim_time": 41.639,
+        "capture_monotonic": 59876.814171861,
+        "first_fresh_sequence": 775,
+        "fresh_frame_sequences": [
+          775,
+          776,
+          777
+        ],
+        "fresh_frame_sim_times": [
+          41.514,
+          41.597,
+          41.639
+        ],
+        "fresh_frames": 3,
+        "image_arrival_monotonic": 59876.813991734,
+        "image_sequence": 777,
+        "joint_sim_time": 41.66,
+        "policy": {
+          "minimum_fresh_frames": 3,
+          "minimum_sim_seconds_after_ack": 0.1,
+          "minimum_wall_seconds_after_ack": 0.25
+        },
+        "scene_id": "render-check-class2-scale0.93-defect",
+        "settling_wall_seconds": 0.258108161004202
+      },
+      "defect_image": "render-check/class2-scale0.93-defect.png",
+      "defect_joint": {
+        "position": [
+          4369.134308660633,
+          166.63577781919986
+        ],
+        "sim_time": 41.66,
+        "velocity": [
+          100.0,
+          3.9999999999999996
+        ]
+      },
+      "defect_scene": {
+        "background_bin": "light",
+        "background_color": [
+          0.1569705738870168,
+          0.28062393776338945,
+          0.3095393366391423
+        ],
+        "camera_bin": "high",
+        "camera_pose": [
+          0.08150169553041692,
+          -0.021968784150492405,
+          2.8843927522281168,
+          0,
+          1.4918578898360597,
+          -0.08312075179764926
+        ],
+        "class_id": 2,
+        "condition_id": "81e3b6d23f2c078262c80890a7ac9639a38c1ce5cd77e5ee421f99ab95ef2319",
+        "defect_darkness": 0.12,
+        "defect_primitives": [
+          {
+            "color": [
+              0.12,
+              0.0775602013307022,
+              0.09833474207371805
+            ],
+            "length": 0.006,
+            "name": "part0",
+            "pose": [
+              0.056617798361605166,
+              0.0461652751912983,
+              0.004,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 0.03125777384106379,
+            "shape": "cylinder"
+          },
+          {
+            "color": [
+              0.12,
+              0.10515574543682059,
+              0.08373359321510984
+            ],
+            "length": 0.006,
+            "name": "part1",
+            "pose": [
+              -0.018496481976458774,
+              -0.05043266809867469,
+              0.004,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 0.038957826699639334,
+            "shape": "cylinder"
+          }
+        ],
+        "defect_scale": 0.93,
+        "defect_yaw": 0.5399770739174012,
+        "dx": -0.09845499620150897,
+        "dy": 0.0556505633864878,
+        "generator_version": "v2",
+        "geometry_family": "shape-0003",
+        "group_id": "vision-v2-0003",
+        "image_noise": 1.2893131778470808,
+        "light": 0.6618009606096816,
+        "light_bin": "dim",
+        "material_id": 0,
+        "product_color": [
+          0.7513780417273378,
+          0.741695833635803,
+          0.7207173573193056
+        ],
+        "scene_id": "render-check-class2-scale0.93-defect",
+        "seed": 20294766,
+        "specular": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "split": "train",
+        "x": -0.0654434955867573,
+        "y": 0.0010436347169575089,
+        "yaw": 0.09158650894622755
+      },
+      "defect_sha256": "6786b0ad989373f1e2799f3f626217871d6e8b77caf762aee8a6155178341ed8",
+      "difference_bbox_xyxy": [
+        132.0,
+        228.0,
+        168.0,
+        243.0
+      ],
+      "expected_bbox_pixels": [
+        132.47189457814383,
+        227.86352724325042,
+        167.39386593061772,
+        242.257879731946
+      ],
+      "gt_bbox_xyxy": [
+        132.47189457814383,
+        227.86352724325042,
+        167.39386593061772,
+        242.257879731946
+      ],
+      "metrics": {
+        "bbox_iou": 1.0,
+        "changed_pixels": 291,
+        "observed_bbox_pixels": [
+          132.0,
+          228.0,
+          168.0,
+          243.0
+        ],
+        "outside_roi_fraction": 0.0,
+        "outside_roi_pixels": 0,
+        "raw_bbox_iou": 0.9139949281824724,
+        "status": "PASS"
+      },
+      "normal_camera_sim_time": 38.939,
+      "normal_capture_sync": {
+        "ack_arrival_monotonic": 59876.25895879,
+        "ack_image_sequence": 697,
+        "ack_scene_id": "render-check-class2-scale0.93-normal",
+        "ack_sim_time": 37.441,
+        "camera_sim_time": 38.939,
+        "capture_monotonic": 59876.554335675,
+        "first_fresh_sequence": 722,
+        "fresh_frame_sequences": [
+          722,
+          723,
+          724
+        ],
+        "fresh_frame_sim_times": [
+          38.775,
+          38.904,
+          38.939
+        ],
+        "fresh_frames": 3,
+        "image_arrival_monotonic": 59876.553623436,
+        "image_sequence": 724,
+        "joint_sim_time": 38.98,
+        "policy": {
+          "minimum_fresh_frames": 3,
+          "minimum_sim_seconds_after_ack": 0.1,
+          "minimum_wall_seconds_after_ack": 0.25
+        },
+        "scene_id": "render-check-class2-scale0.93-normal",
+        "settling_wall_seconds": 0.29466464599681785
+      },
+      "normal_image": "render-check/class2-scale0.93-normal.png",
+      "normal_joint": {
+        "position": [
+          4087.9924181962565,
+          155.91579211249888
+        ],
+        "sim_time": 38.98,
+        "velocity": [
+          100.0,
+          3.999999999999999
+        ]
+      },
+      "normal_scene": {
+        "background_bin": "light",
+        "background_color": [
+          0.1569705738870168,
+          0.28062393776338945,
+          0.3095393366391423
+        ],
+        "camera_bin": "high",
+        "camera_pose": [
+          0.08150169553041692,
+          -0.021968784150492405,
+          2.8843927522281168,
+          0,
+          1.4918578898360597,
+          -0.08312075179764926
+        ],
+        "class_id": -1,
+        "condition_id": "81e3b6d23f2c078262c80890a7ac9639a38c1ce5cd77e5ee421f99ab95ef2319",
+        "defect_darkness": 0.2980015163499599,
+        "defect_primitives": [],
+        "defect_scale": 0.8197325752454967,
+        "defect_yaw": 0.5399770739174012,
+        "dx": -0.09845499620150897,
+        "dy": 0.0556505633864878,
+        "generator_version": "v2",
+        "geometry_family": "shape-0003",
+        "group_id": "vision-v2-0003",
+        "image_noise": 1.2893131778470808,
+        "light": 0.6618009606096816,
+        "light_bin": "dim",
+        "material_id": 0,
+        "product_color": [
+          0.7513780417273378,
+          0.741695833635803,
+          0.7207173573193056
+        ],
+        "scene_id": "render-check-class2-scale0.93-normal",
+        "seed": 20294766,
+        "specular": [
+          0.03,
+          0.03,
+          0.03
+        ],
+        "split": "train",
+        "x": -0.0654434955867573,
+        "y": 0.0010436347169575089,
+        "yaw": 0.09158650894622755
+      },
+      "normal_sha256": "14df7ce30f70f3dd14ab0af1a1951120dc30b69e47dc5d9651f45b74461be35e",
+      "pair_id": "class2-scale0.93",
+      "scale": 0.93
+    },
+    {
+      "class_id": 2,
+      "defect_camera_sim_time": 46.923,
+      "defect_capture_sync": {
+        "ack_arrival_monotonic": 59877.096982598,
+        "ack_image_sequence": 831,
+        "ack_scene_id": "render-check-class2-scale1.18-defect",
+        "ack_sim_time": 44.432,
+        "camera_sim_time": 46.923,
+        "capture_monotonic": 59877.360474588,
+        "first_fresh_sequence": 881,
+        "fresh_frame_sequences": [
+          881,
+          882,
+          883
+        ],
+        "fresh_frame_sim_times": [
+          46.828,
+          46.874,
+          46.923
+        ],
+        "fresh_frames": 3,
+        "image_arrival_monotonic": 59877.360183063,
+        "image_sequence": 883,
+        "joint_sim_time": 46.98,
+        "policy": {
+          "minimum_fresh_frames": 3,
+          "minimum_sim_seconds_after_ack": 0.1,
+          "minimum_wall_seconds_after_ack": 0.25
+        },
+        "scene_id": "render-check-class2-scale1.18-defect",
+        "settling_wall_seconds": 0.26320046500040917
+      },
+      "defect_image": "render-check/class2-scale1.18-defect.png",
+      "defect_joint": {
+        "position": [
+          4927.221941970514,
+          187.9157494459346
+        ],
+        "sim_time": 46.98,
+        "velocity": [
+          100.0,
+          4.000000000000002
+        ]
+      },
+      "defect_scene": {
+        "background_bin": "dark",
+        "background_color": [
+          0.10950174114865004,
+          0.08516416883976544,
+          0.21684567574440278
+        ],
+        "camera_bin": "low",
+        "camera_pose": [
+          -0.09476050656813434,
+          -0.0003796539386464737,
+          2.794785818456603,
+          0,
+          1.612059996579989,
+          0.039898026654250185
+        ],
+        "class_id": 2,
+        "condition_id": "0582d1db6bc797200d25f07e06498a9e3e0edce12abf8eaad2dcb0ab8626aca8",
+        "defect_darkness": 0.12,
+        "defect_primitives": [
+          {
+            "color": [
+              0.12,
+              0.07333911675247277,
+              0.11587071545132058
+            ],
+            "length": 0.006,
+            "name": "part0",
+            "pose": [
+              -0.03631407788477507,
+              -0.008006523483397596,
+              0.004,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 0.0674543815139042,
+            "shape": "cylinder"
+          },
+          {
+            "color": [
+              0.12,
+              0.11380672468760938,
+              0.11126686410237634
+            ],
+            "length": 0.006,
+            "name": "part1",
+            "pose": [
+              -0.053084810983422416,
+              0.04415359803150925,
+              0.004,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 0.05012300339361921,
+            "shape": "cylinder"
+          },
+          {
+            "color": [
+              0.12,
+              0.07632695069159307,
+              0.07925671470249672
+            ],
+            "length": 0.006,
+            "name": "part2",
+            "pose": [
+              -0.06807193777237258,
+              0.04596159504980311,
+              0.004,
+              0.0,
+              0.0,
+              0.0
+            ],
+            "radius": 0.04203032235077573,
+            "shape": "cylinder"
+          }
+        ],
+        "defect_scale": 1.18,
+        "defect_yaw": 0.32400091618133753,
+        "dx": -0.09559320790168885,
+        "dy": -0.013116817365942501,
+        "generator_version": "v2",
+        "geometry_family": "shape-0004",
+        "group_id": "vision-v2-0004",
+        "image_noise": 1.2581172472106057,
+        "light": 0.8601977948961693,
+        "light_bin": "bright",
+        "material_id": 1,
+        "product_color": [
+          0.7738451240268356,
+          0.7723740699949171,
+          0.8055349580436604
+        ],
+        "scene_id": "render-check-class2-scale1.18-defect",
+        "seed": 20302685,
+        "specular": [
+          0.12,
+          0.12,
+          0.12
+        ],
+        "split": "train",
+        "x": -0.04600451672742378,
+        "y": -0.0947098451116572,
+        "yaw": 0.21572101902861446
+      },
+      "defect_sha256": "62c9a6e7e47ae5b67ca7f3584bff6c7542fea27882fd303c92b1302aa637431c",
+      "difference_bbox_xyxy": [
+        171.0,
+        144.0,
+        201.0,
+        175.0
+      ],
+      "expected_bbox_pixels": [
+        171.61083542971127,
+        144.60848514815862,
+        200.651140997972,
+        175.053593730825
+      ],
+      "gt_bbox_xyxy": [
+        171.61083542971127,
+        144.60848514815862,
+        200.651140997972,
+        175.053593730825
+      ],
+      "metrics": {
+        "bbox_iou": 1.0,
+        "changed_pixels": 662,
+        "observed_bbox_pixels": [
+          171.0,
+          144.0,
+          201.0,
+          175.0
+        ],
+        "outside_roi_fraction": 0.0,
+        "outside_roi_pixels": 0,
+        "raw_bbox_iou": 0.9474240083802148,
+        "status": "PASS"
+      },
+      "normal_camera_sim_time": 44.391,
+      "normal_capture_sync": {
+        "ack_arrival_monotonic": 59876.831493983,
+        "ack_image_sequence": 779,
+        "ack_scene_id": "render-check-class2-scale1.18-normal",
+        "ack_sim_time": 41.818,
+        "camera_sim_time": 44.391,
+        "capture_monotonic": 59877.092891399,
+        "first_fresh_sequence": 829,
+        "fresh_frame_sequences": [
+          829,
+          830,
+          831
+        ],
+        "fresh_frame_sim_times": [
+          44.271,
+          44.329,
+          44.391
+        ],
+        "fresh_frames": 3,
+        "image_arrival_monotonic": 59877.092452611,
+        "image_sequence": 831,
+        "joint_sim_time": 44.4,
+        "policy": {
+          "minimum_fresh_frames": 3,
+          "minimum_sim_seconds_after_ack": 0.1,
+          "minimum_wall_seconds_after_ack": 0.25
+        },
+        "scene_id": "render-check-class2-scale1.18-normal",
+        "settling_wall_seconds": 0.26095862800139
+      },
+      "normal_image": "render-check/class2-scale1.18-normal.png",
+      "normal_joint": {
+        "position": [
+          4656.570420553316,
+          177.5957632059016
+        ],
+        "sim_time": 44.4,
+        "velocity": [
+          100.00000000000006,
+          3.999999999999999
+        ]
+      },
+      "normal_scene": {
+        "background_bin": "dark",
+        "background_color": [
+          0.10950174114865004,
+          0.08516416883976544,
+          0.21684567574440278
+        ],
+        "camera_bin": "low",
+        "camera_pose": [
+          -0.09476050656813434,
+          -0.0003796539386464737,
+          2.794785818456603,
+          0,
+          1.612059996579989,
+          0.039898026654250185
+        ],
+        "class_id": -1,
+        "condition_id": "0582d1db6bc797200d25f07e06498a9e3e0edce12abf8eaad2dcb0ab8626aca8",
+        "defect_darkness": 0.11323772569203105,
+        "defect_primitives": [],
+        "defect_scale": 1.15472310986567,
+        "defect_yaw": 0.32400091618133753,
+        "dx": -0.09559320790168885,
+        "dy": -0.013116817365942501,
+        "generator_version": "v2",
+        "geometry_family": "shape-0004",
+        "group_id": "vision-v2-0004",
+        "image_noise": 1.2581172472106057,
+        "light": 0.8601977948961693,
+        "light_bin": "bright",
+        "material_id": 1,
+        "product_color": [
+          0.7738451240268356,
+          0.7723740699949171,
+          0.8055349580436604
+        ],
+        "scene_id": "render-check-class2-scale1.18-normal",
+        "seed": 20302685,
+        "specular": [
+          0.12,
+          0.12,
+          0.12
+        ],
+        "split": "train",
+        "x": -0.04600451672742378,
+        "y": -0.0947098451116572,
+        "yaw": 0.21572101902861446
+      },
+      "normal_sha256": "68843d0d19d42f2d378e6a3ca642007b9d1f9df712c014579fb760efa57e9299",
+      "pair_id": "class2-scale1.18",
+      "scale": 1.18
+    }
+  ],
+  "created_at": "2026-10-09T15:02:25.111Z",
+  "criteria": {
+    "changed_pixel_channel_threshold": 20,
+    "maximum_outside_roi_fraction": 0.1,
+    "minimum_bbox_iou": 0.7,
+    "minimum_changed_pixels": 5,
+    "rounding_tolerance_pixels": 2
+  },
+  "fingerprint": "2fab75e86492a543d418306e7d7467ac5555f77b1f17e881533fa10daefdab4b",
+  "generator_schema_version": 2,
+  "generator_version": "v2",
+  "image_source": "Raw Gazebo camera frames, PNG without added sensor/image noise",
+  "model_used": false,
+  "montage": "render-check-montage.png",
+  "montage_sha256": "d3a34e0653e18fc1567a259edd47a5c1d0a723a9b540105ac2068b811c3cae37",
+  "pair_policy": "Same camera, product/defect pose, light, materials and background; only defect geometry changes",
+  "plugin_binding": {
+    "library_path": "simulator/libfactory_world.so",
+    "library_sha256": "c1e7b3b0156d6ba55a3bea68e629742011e289d7c4c7aaf687edec1e3830c0d5",
+    "schema_version": 1,
+    "source_path": "simulator/plugin/world.cpp",
+    "source_sha256": "e55b75c5df1913cea9df7501ad02d71ee41c32b1b574f84f7ddaf054176e98b0"
+  },
+  "schema_version": 1,
+  "settings": {
+    "camera": {
+      "camera_fov": 0.75,
+      "camera_size": 320
+    },
+    "data_generation": {
+      "seed": 20261009,
+      "sensor_fault_per_level_per_group": 2,
+      "sensor_groups": 100,
+      "sensor_noise": [
+        0.008,
+        0.05
+      ],
+      "sensor_normal_per_group": 50,
+      "sensor_rotation_hz": [
+        8,
+        15
+      ],
+      "vision_groups": 20,
+      "vision_normal_per_group": 45,
+      "vision_per_defect_per_group": 15
+    },
+    "sensor": {
+      "ball_diameter_mm": 7.94,
+      "bearing_balls": 8,
+      "contact_angle_deg": 0,
+      "pitch_diameter_mm": 39.0,
+      "rotation_hz": 25.0,
+      "sampling_hz": 2048,
+      "window_samples": 2048
+    }
+  },
+  "source_hashes": {
+    "factory/pdm/features.py": "d10c39136d1abfc8a91b59f745bc6b56d93cdbfb89ff18e4f12905ec81301817",
+    "simulator/Dockerfile": "15477bf5712572c029d16b911ca8dcd3532efb5c8c516ceb73f82645d91eeee6",
+    "simulator/bridge.py": "02ff8a4e75f12f543396e7ea5c7c6ffa7eb9f94f2a12a96911bd5ff4e106f03e",
+    "simulator/dataset_protocol.py": "75d9c0e98fb8a192f7cf5886bf19e4314647df2d01649f8a713650fe4f2d13cd",
+    "simulator/geometry.py": "0644c1473661cd345aeb39bc33b36a7cb4fc5c0d2b0b0c5416a69774e42f9c7c",
+    "simulator/plugin/world.cpp": "e55b75c5df1913cea9df7501ad02d71ee41c32b1b574f84f7ddaf054176e98b0",
+    "simulator/preflight.py": "c6401dcc4727a161c7239a8ec62700a213092ba5a4373305f9e889503adb5166",
+    "simulator/render_validation.py": "2477c8b4ec69cdd2a2dc0b843aca76f9d9b9d9d4d574c2ac5267a12ab55b8855",
+    "simulator/scenarios.py": "6b983cc8ee183b7eb3c1709ef35686bd0b22887fb27e4a7550845bd13efd7d51",
+    "simulator/sensor_dataset.py": "98a7294ae9c89e2835a3eca09512f903f6678e1cbc3436f191a90c7826a40ac7",
+    "simulator/signal.py": "f55f905221f503f82ac264192d599254eb39a73dbff5a90aeb7f6f8e20fa6fc6",
+    "simulator/start.sh": "4808c0d17e4b2cfd5fbcb3b96637791d2c21f0abe0c64dd8bfb665afa709ee2f",
+    "simulator/vision_dataset.py": "906af9e328be72d0d88f68d7ff17ada7f9c3160865f63df832f0988f23bf7a24",
+    "simulator/world.py": "362b28486b9fdb1ab6d6c0294e3f1da77f9ec9366ed0af5a82e33f750651bef2"
+  },
+  "status": "FAIL"
+}

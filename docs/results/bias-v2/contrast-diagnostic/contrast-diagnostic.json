@@ -1,0 +1,573 @@
+{
+  "capture_policy": {
+    "minimum_fresh_frames": 3,
+    "minimum_sim_seconds_after_ack": 0.1,
+    "minimum_wall_seconds_after_ack": 0.25
+  },
+  "case": {
+    "class_id": 1,
+    "criteria": {
+      "changed_pixel_channel_threshold": 20,
+      "maximum_outside_roi_fraction": 0.1,
+      "minimum_bbox_iou": 0.7,
+      "minimum_changed_pixels": 5,
+      "rounding_tolerance_pixels": 2
+    },
+    "defect_camera_sim_time": 35.196,
+    "defect_capture_sync": {
+      "ack_arrival_monotonic": 62916.541122953,
+      "ack_image_sequence": 466,
+      "ack_scene_id": "vision-v2-0017-0025-visibility-diagnostic-defect",
+      "ack_sim_time": 30.706,
+      "camera_sim_time": 35.196,
+      "capture_monotonic": 62916.80144903,
+      "first_fresh_sequence": 542,
+      "fresh_frame_sequences": [
+        542,
+        543,
+        544
+      ],
+      "fresh_frame_sim_times": [
+        35.088,
+        35.145,
+        35.196
+      ],
+      "fresh_frames": 3,
+      "image_arrival_monotonic": 62916.801170928,
+      "image_sequence": 544,
+      "joint_sim_time": 35.24,
+      "policy": {
+        "minimum_fresh_frames": 3,
+        "minimum_sim_seconds_after_ack": 0.1,
+        "minimum_wall_seconds_after_ack": 0.25
+      },
+      "scene_application_policy": {
+        "application_rounds": 3,
+        "minimum_seconds_between_ack_and_next_command": 0.1
+      },
+      "scene_applications": [
+        {
+          "ack_arrival_monotonic": 62916.336961026,
+          "ack_image_sequence": 409,
+          "ack_scope": "physics_applied_and_visual_messages_enqueued",
+          "ack_sim_time": 26.963,
+          "command_monotonic": 62916.33381565,
+          "scene_application_id": "vision-v2-0017-0025-visibility-diagnostic-defect:b14ce870-b9ae-4ebf-861f-6d306e40d2fd",
+          "scene_apply_round": 0,
+          "scene_command_id": "vision-v2-0017-0025-visibility-diagnostic-defect:b14ce870-b9ae-4ebf-861f-6d306e40d2fd:0",
+          "scene_id": "vision-v2-0017-0025-visibility-diagnostic-defect",
+          "visual_outgoing_count": 0
+        },
+        {
+          "ack_arrival_monotonic": 62916.438943346,
+          "ack_image_sequence": 437,
+          "ack_scope": "physics_applied_and_visual_messages_enqueued",
+          "ack_sim_time": 28.861,
+          "command_monotonic": 62916.437064888,
+          "scene_application_id": "vision-v2-0017-0025-visibility-diagnostic-defect:b14ce870-b9ae-4ebf-861f-6d306e40d2fd",
+          "scene_apply_round": 1,
+          "scene_command_id": "vision-v2-0017-0025-visibility-diagnostic-defect:b14ce870-b9ae-4ebf-861f-6d306e40d2fd:1",
+          "scene_id": "vision-v2-0017-0025-visibility-diagnostic-defect",
+          "visual_outgoing_count": 0
+        },
+        {
+          "ack_arrival_monotonic": 62916.541122953,
+          "ack_image_sequence": 466,
+          "ack_scope": "physics_applied_and_visual_messages_enqueued",
+          "ack_sim_time": 30.706,
+          "command_monotonic": 62916.539625502,
+          "scene_application_id": "vision-v2-0017-0025-visibility-diagnostic-defect:b14ce870-b9ae-4ebf-861f-6d306e40d2fd",
+          "scene_apply_round": 2,
+          "scene_command_id": "vision-v2-0017-0025-visibility-diagnostic-defect:b14ce870-b9ae-4ebf-861f-6d306e40d2fd:2",
+          "scene_id": "vision-v2-0017-0025-visibility-diagnostic-defect",
+          "visual_outgoing_count": 0
+        }
+      ],
+      "scene_id": "vision-v2-0017-0025-visibility-diagnostic-defect",
+      "settling_wall_seconds": 0.2600479750035447
+    },
+    "defect_image": "render-check/fixed-failed-scene-defect.png",
+    "defect_joint": {
+      "position": [
+        3695.652615831791,
+        140.95581205911768
+      ],
+      "sim_time": 35.24,
+      "velocity": [
+        99.99999999999999,
+        4.0
+      ]
+    },
+    "defect_scene": {
+      "background_bin": "light",
+      "background_color": [
+        0.3517340948284766,
+        0.39458846567386335,
+        0.319384449612284
+      ],
+      "camera_bin": "low",
+      "camera_pose": [
+        0.07802559933230381,
+        0.06366263006749055,
+        2.6970712102586343,
+        0,
+        1.6093976504694596,
+        0.021863073754887594
+      ],
+      "class_id": 1,
+      "condition_id": "7517d2cab28060fd8204bc7b186ce435dc989477d905dda021eaef79f57df62e",
+      "defect_darkness": 0.3656348699949997,
+      "defect_primitives": [
+        {
+          "color": [
+            0.18996635403359652,
+            0.18996635403359652,
+            0.18996635403359652
+          ],
+          "color_before_contrast": [
+            0.5656348699949998,
+            0.5656348699949998,
+            0.5656348699949998
+          ],
+          "length": 0.005,
+          "name": "part0",
+          "pose": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "radius": 0.08290774391616328,
+          "shape": "cylinder"
+        },
+        {
+          "color": [
+            0.12279710259219374,
+            0.12279710259219374,
+            0.12279710259219374
+          ],
+          "color_before_contrast": [
+            0.3656348699949997,
+            0.3656348699949997,
+            0.3656348699949997
+          ],
+          "length": 0.007,
+          "name": "part1",
+          "pose": [
+            0.0,
+            0.0,
+            0.003,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "radius": 0.05208510611281575,
+          "shape": "cylinder"
+        }
+      ],
+      "defect_scale": 0.9610120461473826,
+      "defect_yaw": 0.8098691833581506,
+      "dx": 0.05081169076735026,
+      "dy": -0.08627496959941103,
+      "generator_version": "v2",
+      "geometry_family": "shape-0017",
+      "group_id": "vision-v2-0017",
+      "image_noise": 2.2001381762185837,
+      "light": 0.9476601857323872,
+      "light_bin": "bright",
+      "material_id": 2,
+      "product_color": [
+        0.5830384674440052,
+        0.6086436134262875,
+        0.593267397631645
+      ],
+      "scene_id": "vision-v2-0017-0025-visibility-diagnostic-defect",
+      "scene_index": 25,
+      "seed": 20405632,
+      "specular": [
+        0.3,
+        0.3,
+        0.3
+      ],
+      "split": "test",
+      "visibility_policy": {
+        "color_scale": 0.7712734921013741,
+        "minimum_material_rgb_gap": 0.3,
+        "name": "visible_surface_proxy_v1",
+        "primitive_color_upper_bound": 0.218300067184559,
+        "product_minimum_channel": 0.5830384674440052,
+        "raw_palette_max": 0.65,
+        "scope": "High-contrast colored surface proxies; low-contrast defects and real-factory realism are unvalidated. Material RGB gap does not guarantee rendered pixel completion."
+      },
+      "x": 0.10425152895220233,
+      "y": -0.08061698676240259,
+      "yaw": -0.14789560287006706
+    },
+    "defect_sha256": "24250528f1da2f42906ed8ac2d64c05468c2471367161adab504cec16200c9e0",
+    "difference_bbox_xyxy": [
+      190.0,
+      116.0,
+      223.0,
+      149.0
+    ],
+    "expected_bbox_pixels": [
+      190.33903626308506,
+      116.5738890296731,
+      222.8354167673604,
+      149.05659704915988
+    ],
+    "fingerprint": "f6b6eae272c8416aa6756642f4cfd6b9b3782688ad7d776b396e3e5cb2f4e0ae",
+    "gt_bbox_xyxy": [
+      190.33903626308506,
+      116.5738890296731,
+      222.8354167673604,
+      149.05659704915988
+    ],
+    "image_noise_applied": false,
+    "metrics": {
+      "bbox_iou": 1.0,
+      "changed_pixels": 862,
+      "observed_bbox_pixels": [
+        190.0,
+        116.0,
+        223.0,
+        149.0
+      ],
+      "outside_roi_fraction": 0.0,
+      "outside_roi_pixels": 0,
+      "raw_bbox_iou": 0.9659821915961543,
+      "status": "PASS"
+    },
+    "model_used": false,
+    "normal_camera_sim_time": 26.883,
+    "normal_capture_sync": {
+      "ack_arrival_monotonic": 62916.075850226,
+      "ack_image_sequence": 330,
+      "ack_scene_id": "vision-v2-0017-0025-visibility-diagnostic-normal",
+      "ack_sim_time": 22.1,
+      "camera_sim_time": 26.883,
+      "capture_monotonic": 62916.333499535,
+      "first_fresh_sequence": 406,
+      "fresh_frame_sequences": [
+        406,
+        407,
+        408
+      ],
+      "fresh_frame_sim_times": [
+        26.758,
+        26.819,
+        26.883
+      ],
+      "fresh_frames": 3,
+      "image_arrival_monotonic": 62916.332927238,
+      "image_sequence": 408,
+      "joint_sim_time": 26.94,
+      "policy": {
+        "minimum_fresh_frames": 3,
+        "minimum_sim_seconds_after_ack": 0.1,
+        "minimum_wall_seconds_after_ack": 0.25
+      },
+      "scene_application_policy": {
+        "application_rounds": 3,
+        "minimum_seconds_between_ack_and_next_command": 0.1
+      },
+      "scene_applications": [
+        {
+          "ack_arrival_monotonic": 62915.871915507,
+          "ack_image_sequence": 269,
+          "ack_scope": "physics_applied_and_visual_messages_enqueued",
+          "ack_sim_time": 18.15,
+          "command_monotonic": 62914.862211213,
+          "scene_application_id": "vision-v2-0017-0025-visibility-diagnostic-normal:d64a0422-9616-4096-b7b0-9ba366489327",
+          "scene_apply_round": 0,
+          "scene_command_id": "vision-v2-0017-0025-visibility-diagnostic-normal:d64a0422-9616-4096-b7b0-9ba366489327:0",
+          "scene_id": "vision-v2-0017-0025-visibility-diagnostic-normal",
+          "visual_outgoing_count": 0
+        },
+        {
+          "ack_arrival_monotonic": 62915.9743088,
+          "ack_image_sequence": 299,
+          "ack_scope": "physics_applied_and_visual_messages_enqueued",
+          "ack_sim_time": 20.133,
+          "command_monotonic": 62915.972108621,
+          "scene_application_id": "vision-v2-0017-0025-visibility-diagnostic-normal:d64a0422-9616-4096-b7b0-9ba366489327",
+          "scene_apply_round": 1,
+          "scene_command_id": "vision-v2-0017-0025-visibility-diagnostic-normal:d64a0422-9616-4096-b7b0-9ba366489327:1",
+          "scene_id": "vision-v2-0017-0025-visibility-diagnostic-normal",
+          "visual_outgoing_count": 0
+        },
+        {
+          "ack_arrival_monotonic": 62916.075850226,
+          "ack_image_sequence": 330,
+          "ack_scope": "physics_applied_and_visual_messages_enqueued",
+          "ack_sim_time": 22.1,
+          "command_monotonic": 62916.074468703,
+          "scene_application_id": "vision-v2-0017-0025-visibility-diagnostic-normal:d64a0422-9616-4096-b7b0-9ba366489327",
+          "scene_apply_round": 2,
+          "scene_command_id": "vision-v2-0017-0025-visibility-diagnostic-normal:d64a0422-9616-4096-b7b0-9ba366489327:2",
+          "scene_id": "vision-v2-0017-0025-visibility-diagnostic-normal",
+          "visual_outgoing_count": 0
+        }
+      ],
+      "scene_id": "vision-v2-0017-0025-visibility-diagnostic-normal",
+      "settling_wall_seconds": 0.2570770120000816
+    },
+    "normal_image": "render-check/fixed-failed-scene-normal.png",
+    "normal_joint": {
+      "position": [
+        2824.951984915999,
+        107.75585632567812
+      ],
+      "sim_time": 26.94,
+      "velocity": [
+        100.0,
+        3.9999999999999996
+      ]
+    },
+    "normal_scene": {
+      "background_bin": "light",
+      "background_color": [
+        0.3517340948284766,
+        0.39458846567386335,
+        0.319384449612284
+      ],
+      "camera_bin": "low",
+      "camera_pose": [
+        0.07802559933230381,
+        0.06366263006749055,
+        2.6970712102586343,
+        0,
+        1.6093976504694596,
+        0.021863073754887594
+      ],
+      "class_id": -1,
+      "condition_id": "7517d2cab28060fd8204bc7b186ce435dc989477d905dda021eaef79f57df62e",
+      "defect_darkness": 0.3656348699949997,
+      "defect_primitives": [],
+      "defect_scale": 0.9610120461473826,
+      "defect_yaw": 0.8098691833581506,
+      "dx": 0.05081169076735026,
+      "dy": -0.08627496959941103,
+      "generator_version": "v2",
+      "geometry_family": "shape-0017",
+      "group_id": "vision-v2-0017",
+      "image_noise": 2.2001381762185837,
+      "light": 0.9476601857323872,
+      "light_bin": "bright",
+      "material_id": 2,
+      "product_color": [
+        0.5830384674440052,
+        0.6086436134262875,
+        0.593267397631645
+      ],
+      "scene_id": "vision-v2-0017-0025-visibility-diagnostic-normal",
+      "scene_index": 25,
+      "seed": 20405632,
+      "specular": [
+        0.3,
+        0.3,
+        0.3
+      ],
+      "split": "test",
+      "visibility_policy": {
+        "color_scale": 0.7712734921013741,
+        "minimum_material_rgb_gap": 0.3,
+        "name": "visible_surface_proxy_v1",
+        "primitive_color_upper_bound": 0.218300067184559,
+        "product_minimum_channel": 0.5830384674440052,
+        "raw_palette_max": 0.65,
+        "scope": "High-contrast colored surface proxies; low-contrast defects and real-factory realism are unvalidated. Material RGB gap does not guarantee rendered pixel completion."
+      },
+      "x": 0.10425152895220233,
+      "y": -0.08061698676240259,
+      "yaw": -0.14789560287006706
+    },
+    "normal_sha256": "a66b863f0a9c1f0fc71241bcd1b3b48378d9ecef4cf6058b5ab8a4f1600b1fbe",
+    "pair_id": "fixed-failed-scene",
+    "scale": 0.9610120461473826
+  },
+  "case_count": 1,
+  "created_at": "2026-10-09T16:02:15.595Z",
+  "criteria": {
+    "changed_pixel_channel_threshold": 20,
+    "maximum_outside_roi_fraction": 0.1,
+    "minimum_bbox_iou": 0.7,
+    "minimum_changed_pixels": 5,
+    "rounding_tolerance_pixels": 2
+  },
+  "diagnostic_type": "Predetermined r2 failed-scene inspection under a new global high-contrast material policy",
+  "fingerprint": "f6b6eae272c8416aa6756642f4cfd6b9b3782688ad7d776b396e3e5cb2f4e0ae",
+  "generator_schema_version": 2,
+  "generator_version": "v2",
+  "input_failure_sha256": "62d3ec7953a06174b8461a41db7db3199e421e8f4c5ea46d89e350812a4426f2",
+  "model_used": false,
+  "original_fingerprint": "27f9cc3cce206fb7eb95aa4e4736425e793ed1ed23b7f8f9a269dcc448740945",
+  "original_metrics": {
+    "bbox_iou": 0.6833792665112283,
+    "changed_pixels": 357,
+    "observed_bbox_pixels": [
+      191.0,
+      122.0,
+      217.0,
+      149.0
+    ],
+    "outside_roi_fraction": 0.0,
+    "outside_roi_pixels": 0,
+    "raw_bbox_iou": 0.6650432540144093,
+    "status": "FAIL"
+  },
+  "original_scene": {
+    "background_bin": "light",
+    "background_color": [
+      0.3517340948284766,
+      0.39458846567386335,
+      0.319384449612284
+    ],
+    "camera_bin": "low",
+    "camera_pose": [
+      0.07802559933230381,
+      0.06366263006749055,
+      2.6970712102586343,
+      0,
+      1.6093976504694596,
+      0.021863073754887594
+    ],
+    "class_id": 1,
+    "condition_id": "7517d2cab28060fd8204bc7b186ce435dc989477d905dda021eaef79f57df62e",
+    "defect_darkness": 0.3656348699949997,
+    "defect_primitives": [
+      {
+        "color": [
+          0.5656348699949998,
+          0.5656348699949998,
+          0.5656348699949998
+        ],
+        "length": 0.005,
+        "name": "part0",
+        "pose": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "radius": 0.08290774391616328,
+        "shape": "cylinder"
+      },
+      {
+        "color": [
+          0.3656348699949997,
+          0.3656348699949997,
+          0.3656348699949997
+        ],
+        "length": 0.007,
+        "name": "part1",
+        "pose": [
+          0.0,
+          0.0,
+          0.003,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "radius": 0.05208510611281575,
+        "shape": "cylinder"
+      }
+    ],
+    "defect_scale": 0.9610120461473826,
+    "defect_yaw": 0.8098691833581506,
+    "dx": 0.05081169076735026,
+    "dy": -0.08627496959941103,
+    "generator_version": "v2",
+    "geometry_family": "shape-0017",
+    "group_id": "vision-v2-0017",
+    "image_noise": 2.2001381762185837,
+    "light": 0.9476601857323872,
+    "light_bin": "bright",
+    "material_id": 2,
+    "product_color": [
+      0.5830384674440052,
+      0.6086436134262875,
+      0.593267397631645
+    ],
+    "scene_id": "vision-v2-0017-0025",
+    "seed": 20405632,
+    "specular": [
+      0.3,
+      0.3,
+      0.3
+    ],
+    "split": "test",
+    "x": 0.10425152895220233,
+    "y": -0.08061698676240259,
+    "yaw": -0.14789560287006706
+  },
+  "original_scene_id": "vision-v2-0017-0025",
+  "plugin_binding": {
+    "library_path": "simulator/libfactory_world.so",
+    "library_sha256": "35523424683f6facaefb02a92f351fbc256bc43b2910e1d942cb5621e5af3e35",
+    "schema_version": 1,
+    "source_path": "simulator/plugin/world.cpp",
+    "source_sha256": "20f6ba47fc0ae1aefa055d1dc068cc81939e9559f65ed816356c42e58a9cfde6"
+  },
+  "scene_application_policy": {
+    "application_rounds": 3,
+    "minimum_seconds_between_ack_and_next_command": 0.1
+  },
+  "schema_version": 1,
+  "scope": "Diagnostic only; cannot replace the independent nine-case gate or validate the failed r2 acquisition.",
+  "settings": {
+    "camera": {
+      "camera_fov": 0.75,
+      "camera_size": 320
+    },
+    "data_generation": {
+      "seed": 20261009,
+      "sensor_fault_per_level_per_group": 2,
+      "sensor_groups": 100,
+      "sensor_noise": [
+        0.008,
+        0.05
+      ],
+      "sensor_normal_per_group": 50,
+      "sensor_rotation_hz": [
+        8,
+        15
+      ],
+      "vision_groups": 20,
+      "vision_minimum_material_rgb_gap": 0.3,
+      "vision_normal_per_group": 45,
+      "vision_per_defect_per_group": 15,
+      "vision_visibility_policy": "visible_surface_proxy_v1"
+    },
+    "sensor": {
+      "ball_diameter_mm": 7.94,
+      "bearing_balls": 8,
+      "contact_angle_deg": 0,
+      "pitch_diameter_mm": 39.0,
+      "rotation_hz": 25.0,
+      "sampling_hz": 2048,
+      "window_samples": 2048
+    }
+  },
+  "source_hashes": {
+    "factory/pdm/features.py": "d10c39136d1abfc8a91b59f745bc6b56d93cdbfb89ff18e4f12905ec81301817",
+    "simulator/Dockerfile": "15477bf5712572c029d16b911ca8dcd3532efb5c8c516ceb73f82645d91eeee6",
+    "simulator/bridge.py": "d3ab23b8cb3b6e53d94400ff8b9f2f72c6de8ef74a8125d423bdc7b9406935b6",
+    "simulator/dataset_protocol.py": "75d9c0e98fb8a192f7cf5886bf19e4314647df2d01649f8a713650fe4f2d13cd",
+    "simulator/geometry.py": "0644c1473661cd345aeb39bc33b36a7cb4fc5c0d2b0b0c5416a69774e42f9c7c",
+    "simulator/plugin/world.cpp": "20f6ba47fc0ae1aefa055d1dc068cc81939e9559f65ed816356c42e58a9cfde6",
+    "simulator/preflight.py": "c6401dcc4727a161c7239a8ec62700a213092ba5a4373305f9e889503adb5166",
+    "simulator/render_validation.py": "970da503cd4d240acd1973d8b99a1adf7d94d8f7395efd1800c4c403e9334ac4",
+    "simulator/scenarios.py": "eddfea009d295a5cf48e90c1e6cfc81f74b055b9c874949d3a019214c5d439e1",
+    "simulator/sensor_dataset.py": "98a7294ae9c89e2835a3eca09512f903f6678e1cbc3436f191a90c7826a40ac7",
+    "simulator/signal.py": "f55f905221f503f82ac264192d599254eb39a73dbff5a90aeb7f6f8e20fa6fc6",
+    "simulator/start.sh": "4808c0d17e4b2cfd5fbcb3b96637791d2c21f0abe0c64dd8bfb665afa709ee2f",
+    "simulator/vision_dataset.py": "e9ef5bcb52d60353d4490d021591381a498eedc1f9c7ce9ab8042851b38d6f0c",
+    "simulator/world.py": "362b28486b9fdb1ab6d6c0294e3f1da77f9ec9366ed0af5a82e33f750651bef2"
+  },
+  "status": "PASS"
+}

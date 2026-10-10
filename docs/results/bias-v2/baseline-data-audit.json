@@ -1,0 +1,499 @@
+{
+  "protocol_id": "synthetic-bias-challenge-v1",
+  "protocol_sha256": "3c971571c32fb87b67e60658cd7b90ecb04d96033d73ac9fa1bc5524a92cf130",
+  "data_root": "/baseline",
+  "findings": [
+    {
+      "severity": "WARN",
+      "code": "sensor_no_groups",
+      "detail": "Distinct random seeds do not constitute independent machine/session groups"
+    },
+    {
+      "severity": "WARN",
+      "code": "sensor_missing_levels",
+      "detail": [
+        1
+      ]
+    },
+    {
+      "severity": "WARN",
+      "code": "sensor_fixed_rpm",
+      "detail": "Operating-speed generalization cannot be checked from this dataset"
+    },
+    {
+      "severity": "WARN",
+      "code": "sensor_unversioned",
+      "detail": "No fingerprint binds data to source/config; existing data are legacy data"
+    },
+    {
+      "severity": "WARN",
+      "code": "vision_unversioned",
+      "detail": "Legacy count-only COMPLETE does not establish source/config freshness"
+    },
+    {
+      "severity": "WARN",
+      "code": "vision_no_groups",
+      "detail": "Same primitive renderer remains shared across seed-separated splits"
+    },
+    {
+      "severity": "WARN",
+      "code": "vision_class_order_blocks",
+      "detail": {
+        "split": "train",
+        "class_switches": 3
+      }
+    },
+    {
+      "severity": "WARN",
+      "code": "vision_class_order_blocks",
+      "detail": {
+        "split": "val",
+        "class_switches": 3
+      }
+    },
+    {
+      "severity": "WARN",
+      "code": "vision_class_order_blocks",
+      "detail": {
+        "split": "test",
+        "class_switches": 3
+      }
+    },
+    {
+      "severity": "UNVALIDATED",
+      "code": "real_factory_data_absent",
+      "detail": "No independent real sensor or camera dataset is evaluated"
+    }
+  ],
+  "real_factory_validation": "UNVALIDATED",
+  "interpretation": "Integrity and synthetic shortcut checks cannot establish bias-free data",
+  "sensor": {
+    "file_sha256": "0e948a53632f3b48911ebc98c732d6803c4581e645e3071fbe7a4079023ff8b8",
+    "provenance_sha256": "ca41b20235312885290c595da7717aa26b805bce1cee4f73c3a269c5441e14d9",
+    "n": 7000,
+    "groups": null,
+    "counts": {
+      "test/0": 750,
+      "test/2": 30,
+      "test/3": 30,
+      "test/4": 30,
+      "test/5": 42,
+      "test/6": 36,
+      "test/7": 26,
+      "test/8": 38,
+      "test/9": 39,
+      "test/10": 29,
+      "train/0": 3500,
+      "train/2": 166,
+      "train/3": 143,
+      "train/4": 151,
+      "train/5": 162,
+      "train/6": 161,
+      "train/7": 159,
+      "train/8": 162,
+      "train/9": 144,
+      "train/10": 152,
+      "val/0": 750,
+      "val/2": 39,
+      "val/3": 35,
+      "val/4": 20,
+      "val/5": 18,
+      "val/6": 44,
+      "val/7": 33,
+      "val/8": 39,
+      "val/9": 39,
+      "val/10": 33
+    },
+    "rotation_hz_range": [
+      15.915494309189521,
+      15.915494309189546
+    ],
+    "nuisance_fields": [
+      "rotation_hz"
+    ],
+    "nuisance_effects": {
+      "rotation_hz": {
+        "smd": 0.0,
+        "ks": 0.0319,
+        "normal_n": 5000,
+        "fault_n": 2000
+      }
+    },
+    "nuisance_cv": {
+      "metric": "roc_auc",
+      "mean": 0.5,
+      "fold_scores": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "folds": 5,
+      "group_aware": false,
+      "chance": 0.5,
+      "nuisance_feature_count": 1,
+      "n": 7000
+    },
+    "unique_feature_hashes": 7000
+  },
+  "vision": {
+    "n": 6000,
+    "groups": null,
+    "unique_hashes": 6000,
+    "manifest_sha256": "abc96cd8353f293c92bbc63d2284b8cf06aab5149ee14fff6a7c2de1ded9b75f",
+    "counts": {
+      "test/-1": 450,
+      "test/0": 150,
+      "test/1": 150,
+      "test/2": 150,
+      "train/-1": 2100,
+      "train/0": 700,
+      "train/1": 700,
+      "train/2": 700,
+      "val/-1": 450,
+      "val/0": 150,
+      "val/1": 150,
+      "val/2": 150
+    },
+    "class_switches": {
+      "train": 3,
+      "val": 3,
+      "test": 3
+    },
+    "nuisance_fields": [
+      "background_color_0",
+      "background_color_1",
+      "background_color_2",
+      "camera_pose_0",
+      "camera_pose_1",
+      "camera_pose_2",
+      "camera_pose_3",
+      "camera_pose_4",
+      "camera_pose_5",
+      "light",
+      "product_color_0",
+      "product_color_1",
+      "product_color_2",
+      "x",
+      "y",
+      "yaw"
+    ],
+    "nuisance_effects": {
+      "0/background_color_0": {
+        "smd": 0.06759335991161503,
+        "ks": 0.041666666666666664,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "0/background_color_1": {
+        "smd": 0.004323466168613303,
+        "ks": 0.017666666666666667,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "0/background_color_2": {
+        "smd": 0.07466148583375296,
+        "ks": 0.03833333333333333,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "0/camera_pose_0": {
+        "smd": 0.04029794182235371,
+        "ks": 0.03233333333333333,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "0/camera_pose_1": {
+        "smd": 0.022074945141791022,
+        "ks": 0.02666666666666667,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "0/camera_pose_2": {
+        "smd": 0.011879739210556272,
+        "ks": 0.02,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "0/camera_pose_3": {
+        "smd": 0.0,
+        "ks": 0.0,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "0/camera_pose_4": {
+        "smd": 0.015679570701304428,
+        "ks": 0.023,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "0/camera_pose_5": {
+        "smd": 0.007246934253285427,
+        "ks": 0.026,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "0/light": {
+        "smd": 0.04843974647989719,
+        "ks": 0.029666666666666668,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "0/product_color_0": {
+        "smd": 0.013726624809848226,
+        "ks": 0.024666666666666667,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "0/product_color_1": {
+        "smd": 0.013726624809848226,
+        "ks": 0.024666666666666667,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "0/product_color_2": {
+        "smd": 0.013726624809848226,
+        "ks": 0.024666666666666667,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "0/x": {
+        "smd": 0.11346178644162962,
+        "ks": 0.08,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "0/y": {
+        "smd": 0.06646475360191924,
+        "ks": 0.042,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "0/yaw": {
+        "smd": 0.013161895183899614,
+        "ks": 0.03266666666666666,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "1/background_color_0": {
+        "smd": 0.0074141015275318795,
+        "ks": 0.029,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "1/background_color_1": {
+        "smd": 0.0066895344190096555,
+        "ks": 0.02266666666666667,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "1/background_color_2": {
+        "smd": 0.017756257721062985,
+        "ks": 0.023666666666666666,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "1/camera_pose_0": {
+        "smd": 0.058140634615605986,
+        "ks": 0.035,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "1/camera_pose_1": {
+        "smd": 0.022921440428766624,
+        "ks": 0.024,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "1/camera_pose_2": {
+        "smd": 0.003959168035590146,
+        "ks": 0.03133333333333333,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "1/camera_pose_3": {
+        "smd": 0.0,
+        "ks": 0.0,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "1/camera_pose_4": {
+        "smd": 0.05339358542185755,
+        "ks": 0.03866666666666667,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "1/camera_pose_5": {
+        "smd": 0.0029045266988506463,
+        "ks": 0.033666666666666664,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "1/light": {
+        "smd": 0.004049489358650546,
+        "ks": 0.023,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "1/product_color_0": {
+        "smd": 0.004032617737067434,
+        "ks": 0.017,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "1/product_color_1": {
+        "smd": 0.004032617737067434,
+        "ks": 0.017,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "1/product_color_2": {
+        "smd": 0.004032617737067434,
+        "ks": 0.017,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "1/x": {
+        "smd": 0.05339933850819833,
+        "ks": 0.036,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "1/y": {
+        "smd": 0.009954450953731325,
+        "ks": 0.023,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "1/yaw": {
+        "smd": 0.012454640248642273,
+        "ks": 0.025333333333333333,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "2/background_color_0": {
+        "smd": 0.07182720322222176,
+        "ks": 0.041,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "2/background_color_1": {
+        "smd": 0.06912222720477568,
+        "ks": 0.044333333333333336,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "2/background_color_2": {
+        "smd": 0.02651679391356793,
+        "ks": 0.03233333333333333,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "2/camera_pose_0": {
+        "smd": 0.04982824226267817,
+        "ks": 0.03966666666666667,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "2/camera_pose_1": {
+        "smd": 0.005739701246921767,
+        "ks": 0.024333333333333332,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "2/camera_pose_2": {
+        "smd": 0.015855276614684877,
+        "ks": 0.024,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "2/camera_pose_3": {
+        "smd": 0.0,
+        "ks": 0.0,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "2/camera_pose_4": {
+        "smd": 0.012028593491639017,
+        "ks": 0.03133333333333333,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "2/camera_pose_5": {
+        "smd": 0.01670943766292883,
+        "ks": 0.047,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "2/light": {
+        "smd": 0.002805974559462107,
+        "ks": 0.015,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "2/product_color_0": {
+        "smd": 0.03322836746012694,
+        "ks": 0.04133333333333333,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "2/product_color_1": {
+        "smd": 0.03322836746012694,
+        "ks": 0.04133333333333333,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "2/product_color_2": {
+        "smd": 0.03322836746012694,
+        "ks": 0.04133333333333333,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "2/x": {
+        "smd": 0.018998202507277365,
+        "ks": 0.028666666666666667,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "2/y": {
+        "smd": 0.009771865289400142,
+        "ks": 0.026333333333333334,
+        "normal_n": 3000,
+        "fault_n": 1000
+      },
+      "2/yaw": {
+        "smd": 0.036246081802357076,
+        "ks": 0.027333333333333334,
+        "normal_n": 3000,
+        "fault_n": 1000
+      }
+    },
+    "nuisance_cv": {
+      "metric": "balanced_accuracy",
+      "mean": 0.24508333333333332,
+      "fold_scores": [
+        0.22916666666666666,
+        0.25375000000000003,
+        0.26541666666666663,
+        0.23333333333333334,
+        0.24375
+      ],
+      "folds": 5,
+      "group_aware": false,
+      "chance": 0.25,
+      "nuisance_feature_count": 16,
+      "n": 6000
+    },
+    "excluded_from_model_input": [
+      "filename",
+      "class_id",
+      "scene_id",
+      "timestamp",
+      "split",
+      "group_id"
+    ],
+    "domain_class_counts": {}
+  },
+  "status": "WARN"
+}

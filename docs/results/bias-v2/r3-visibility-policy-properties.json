@@ -1,0 +1,34 @@
+{
+  "scope": "Structural/material policy properties only; no physical rendering, dataset completion or model inference claim",
+  "configuration": {
+    "data_generation": {
+      "seed": 20261009,
+      "vision_groups": 20,
+      "vision_normal_per_group": 45,
+      "vision_per_defect_per_group": 15,
+      "vision_visibility_policy": "visible_surface_proxy_v1",
+      "vision_minimum_material_rgb_gap": 0.3
+    }
+  },
+  "source_sha256": {
+    "simulator/scenarios.py": "eddfea009d295a5cf48e90c1e6cfc81f74b055b9c874949d3a019214c5d439e1",
+    "scripts/bias_audit.py": "0d7295944de3f011aaec58528fda2cd7c67f265d9518fd9fe0478caefc4bf83b"
+  },
+  "n_scenes": 1800,
+  "class_counts": {
+    "2": 300,
+    "1": 300,
+    "0": 300,
+    "-1": 900
+  },
+  "n_primitives": 2625,
+  "color_scale_range": [
+    0.6503084793914792,
+    0.9999515778187443
+  ],
+  "independent_policy_check": "PASS",
+  "idempotent_remap": "PASS",
+  "model_used": false,
+  "low_contrast_realism": "UNVALIDATED",
+  "pixel_validation": "Requires actual raw PNG gate, not established by this report"
+}

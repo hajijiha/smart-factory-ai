@@ -3,3 +3,4 @@
 *.png binary
 *.pt binary
 *.onnx binary
+docs/results/bias-v2/** -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol

@@ -1,0 +1,38 @@
+{
+  "metrics": {
+    "chart": {
+      "precision": 1.0,
+      "recall": 0.92,
+      "f1": 0.9583333333333334
+    },
+    "ae": {
+      "precision": 0.9859154929577465,
+      "recall": 0.9333333333333333,
+      "f1": 0.958904109589041
+    }
+  },
+  "python": "3.10.12",
+  "torch": "2.5.1+cpu",
+  "dataset_identity": {
+    "modality": "sensor",
+    "generator_version": "v2",
+    "generator_fingerprint": "f6b6eae272c8416aa6756642f4cfd6b9b3782688ad7d776b396e3e5cb2f4e0ae",
+    "data_sha256": "0ebcb43988b534f26e2020c61cc13cf008dc8db87b825757577f0d45a2e101b4"
+  },
+  "identity_status": "matched",
+  "split_method": "group holdout",
+  "cpu_ms_5_runs": [
+    0.9421228899736889,
+    1.1292943300213665,
+    1.1162283700832631,
+    1.0037892099353485,
+    1.0024202299246099
+  ],
+  "mean_cpu_ms": 1.0387710059876554,
+  "benchmark_rotation_hz": 12.896684253914687,
+  "benchmark_runs": 5,
+  "benchmark_windows_per_run": 100,
+  "warmup_windows": 10,
+  "includes": "Hann FFT, nine features, chart + AE, anomaly score and HI",
+  "cpu_threads": 4
+}

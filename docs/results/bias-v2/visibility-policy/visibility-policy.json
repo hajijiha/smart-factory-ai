@@ -1,0 +1,46 @@
+{
+  "policy_name": "visible_surface_proxy_v1",
+  "revision": "r3_candidate",
+  "configuration": {
+    "data_generation.vision_visibility_policy": "visible_surface_proxy_v1",
+    "data_generation.vision_minimum_material_rgb_gap": 0.3
+  },
+  "scope": "High-contrast colored surface proxies under the sampled Gazebo camera/material/light conditions. Low-contrast defects and real-factory realism are unvalidated.",
+  "rationale": "The r2 failed dent ring was correctly rendered but its raw channel delta14 was below the fixed >20 pixel validation threshold; ring geometry was not missing or oversized.",
+  "mapping": "Each primitive source RGB / shared raw palette maximum .65 * (min(product RGB) - configured minimum gap) * scene color scale. Original primitive color ordering/hue and all geometry/nuisance schedules are retained.",
+  "shared_color_scale": {
+    "range": [
+      0.65,
+      1.0
+    ],
+    "rng": "numpy default_rng(group seed + scene index*43 + 88000)",
+    "label_independent": true,
+    "does_not_consume_existing_nuisance_rng": true
+  },
+  "scene_metadata": [
+    "scene_index",
+    "visibility_policy"
+  ],
+  "primitive_metadata": [
+    "color_before_contrast",
+    "color"
+  ],
+  "exception_policy": "Unsupported product/raw material domains fail acquisition; no scene resampling or outcome-dependent exception.",
+  "unchanged_approval_criteria": {
+    "minimum_bbox_iou": 0.7,
+    "maximum_outside_roi_fraction": 0.1,
+    "rounding_tolerance_pixels": 2,
+    "changed_pixel_channel_threshold": 20,
+    "minimum_changed_pixels": 5
+  },
+  "validation_required": [
+    "New source/config/plugin fingerprint and new DATA_DIR",
+    "Actual independent 3-class x 3-scale nine-pair gate",
+    "One fixed normal counterpart for every defect; failed pair stops acquisition without retry",
+    "Independent byte/pixel/label audits of all raw pairs",
+    "Separate disclosure diagnostic of the predetermined r2 failed scene under this global mapping"
+  ],
+  "material_space_gap_is_not_rendered_pixel_or_realism_guarantee": true,
+  "failed_r2_evidence_preserved": true,
+  "final_model_results_inspected": false
+}

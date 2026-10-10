@@ -73,7 +73,8 @@ Anomaly Score는 [0,1]의 상대 열화 지표이며 보정된 고장 확률이 
 
 ## 실제 평가
 
-`docs/results/pdm.json`의 독립 test 결과다. 검증 데이터로 정한 임계값을 그대로 사용했다.
+`docs/results/pdm.json`은 기존 생성 규칙의 별도 seed 합성 test 결과다.
+검증 데이터로 정한 임계값을 그대로 사용했으며, 실제 설비나 다른 신호 생성 규칙의 검증과 구분한다.
 
 | 알고리즘 | Precision | Recall | F1 |
 |---|---|---|---|
@@ -92,4 +93,4 @@ PyTorch 버전, seed, 교정 임계값을 JSON에 남긴다.
 실제 benchmark 회전수는 15.915494 Hz다.
 
 ![실제 진동/FFT](results/vibration_fft.png)
-![독립 test 오차와 validation 임계값](results/pdm_test_errors.png)
+![기존 합성 test 오차와 validation 임계값](results/pdm_test_errors.png)

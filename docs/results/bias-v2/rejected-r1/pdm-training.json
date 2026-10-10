@@ -1,0 +1,34 @@
+{
+  "dataset_identity": {
+    "modality": "sensor",
+    "generator_version": "v2",
+    "generator_fingerprint": "5ac567d0dd5ac06c4f0969d7bb571f2d66c670ce09c9b0d78dd764144f211764",
+    "data_sha256": "7901d647340f45e331662cd6d5846b8181c2a273e5408da57b409f856f0492b6"
+  },
+  "normal_only_training_windows": 3500,
+  "epochs": 180,
+  "seed": 20261008,
+  "thresholds": {
+    "chart": 2.232768389959929,
+    "ae": 0.5298044924910965
+  },
+  "calibration": {
+    "chart": [
+      0.6555608844238483,
+      7.495951652176341,
+      24.747824293867343,
+      40.36970321176996,
+      192.97400530773768
+    ],
+    "ae": [
+      0.0625369313828448,
+      11.780361495929343,
+      77.2752661454194,
+      139.48698522834223,
+      3255.0029482303376
+    ]
+  },
+  "test_accessed": false,
+  "checkpoint_selection": "fixed architecture/epochs; validation thresholds only",
+  "threshold_selection": "maximize validation F1 subject to normal FPR <= 0.05"
+}

@@ -8,6 +8,8 @@ from collections import defaultdict
 import hashlib
 import json
 import math
+import platform
+from importlib.metadata import version
 from pathlib import Path
 
 import numpy as np
@@ -175,7 +177,11 @@ def evaluate_vision(data, artifacts, protocol, seed):
         if image is None:
             raise ValueError(f'Unreadable image {path}')
         class_id = int(row['scene']['class_id'])
-        label = (root / 'labels/test' / (path.stem + '.txt')).read_text().split()
+        label_path = root / 'labels/test' / (path.stem + '.txt')
+        label_hash = sha256(label_path)
+        if row.get('label_sha256') and label_hash != row['label_sha256']:
+            raise ValueError(f'Label changed: {label_path}')
+        label = label_path.read_text().split()
         box = None
         if class_id >= 0:
             _, x, y, w, h = map(float, label)
@@ -183,11 +189,15 @@ def evaluate_vision(data, artifacts, protocol, seed):
             box = [(x - w / 2) * width, (y - h / 2) * height, (x + w / 2) * width, (y + h / 2) * height]
         names = list(protocol['vision']['transforms']) + (['erase_defect'] if class_id >= 0 else [])
         for name in names:
-            detections = detector.infer(transformed(image, name, box))
+            input_image = np.ascontiguousarray(transformed(image, name, box))
+            transformed_hash = hashlib.sha256(input_image.tobytes()).hexdigest()
+            detections = detector.infer(input_image)
             matched = any(detection['class_id'] == class_id and iou(detection['bbox'], box) >= protocol['vision']['match_iou']
                           for detection in detections) if box is not None and name != 'erase_defect' else False
             top = max(detections, key=lambda item: item['confidence']) if detections else None
-            raw.append({'image': row['image'], 'sha256': row['sha256'], 'class_id': class_id,
+            raw.append({'image': row['image'], 'sha256': row['sha256'], 'label_sha256': label_hash,
+                        'transformed_sha256': transformed_hash, 'input_shape': list(input_image.shape),
+                        'input_dtype': str(input_image.dtype), 'class_id': class_id,
                         'transform': name, 'detected': bool(detections), 'matched': matched,
                         'prediction_count': len(detections), 'top_class': None if top is None else top['class_id'],
                         'top_confidence': None if top is None else top['confidence']})
@@ -231,8 +241,11 @@ def evaluate_vision(data, artifacts, protocol, seed):
             warnings.append({'code': 'paired_stress_sensitivity', 'transform': name, 'recall_drop': drop, 'fpr_gap': fpr_gap})
     if summary['erase_defect']['normal_image_fpr'] > protocol['vision']['erased_defect_fpr_warn']:
         warnings.append({'code': 'erased_defect_detection', 'fpr': summary['erase_defect']['normal_image_fpr']})
+    from factory.common import CONFIG
     return {'status': 'WARN' if warnings else 'PASS_SYNTHETIC_STRESS_ONLY', 'n_selected': len(selected),
             'manifest_sha256': sha256(root / 'manifest.jsonl'), 'summary': summary, 'raw': raw, 'warnings': warnings,
+            'inference_config': {key: CONFIG['vision'][key] for key in ('image_size', 'confidence', 'iou', 'threads', 'classes')},
+            'input_hash_scope': 'Decoded transformed contiguous BGR pixels before detector resize/normalization; shape and dtype recorded separately',
             'interpretation': 'Reused test imagery with postprocessing; no independent geometry/renderer or real-image validation. Inpainting introduces artifacts, so this is not a causal proof.'}
 
 
@@ -267,6 +280,12 @@ def main():
               'protocol_id': protocol['protocol_id'], 'protocol_sha256': protocol_hash,
               'models': before, 'real_factory_validation': 'UNVALIDATED',
               'tuning_rule': protocol['registration'], 'findings': []}
+    source_root = Path(__file__).resolve().parents[1]
+    report['evaluation_source_sha256'] = {name: sha256(source_root / name) for name in (
+        'scripts/bias_evaluate.py', 'scripts/bias_metrics.py', 'factory/pdm/features.py',
+        'factory/pdm/model.py', 'factory/vision/inference.py', 'factory/common.py')}
+    report['environment'] = {'python': platform.python_version(),
+        **{name: version(name) for name in ('numpy', 'scipy', 'torch', 'opencv-python', 'onnxruntime')}}
     if not args.vision_only:
         report['sensor'] = evaluate_sensor(args.artifacts, protocol, report['seed'])
         report['findings'].extend(report['sensor']['warnings'])

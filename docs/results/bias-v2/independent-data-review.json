@@ -1,0 +1,258 @@
+{
+  "scope": "Read-only independent review of the existing actual full audit and COMPLETE/source/config/protocol bindings. Raw images and sensors are not re-audited; no models or training/test/challenge results are opened.",
+  "status": "PASS_SYNTHETIC_CHECKS_ONLY",
+  "real_factory_validation": "UNVALIDATED",
+  "audit_file": "candidate-data-audit.json",
+  "audit_sha256": "2998afc01fa8270cdfca7ff0dce7a10e3ed08450ea8d6cb7aa5519201e13d606",
+  "data_root": "/app/data/bias-v2-r3",
+  "protocol_sha256": "3c971571c32fb87b67e60658cd7b90ecb04d96033d73ac9fa1bc5524a92cf130",
+  "generator_bindings": {
+    "sensor": {
+      "marker_sha256": "770cff98ca44dcc31ae916dc1ee4afea280abe38b1db536324caa8f578bd9c94",
+      "fingerprint": "f6b6eae272c8416aa6756642f4cfd6b9b3782688ad7d776b396e3e5cb2f4e0ae",
+      "row_count": 7000,
+      "files": {
+        "dataset.npz": "0ebcb43988b534f26e2020c61cc13cf008dc8db87b825757577f0d45a2e101b4",
+        "provenance.jsonl": "0c197e653874eedfc6494ac49b16525883480788dbd7d760aa396658d233c96c"
+      },
+      "source_count": 14,
+      "source_hashes": {
+        "factory/pdm/features.py": "d10c39136d1abfc8a91b59f745bc6b56d93cdbfb89ff18e4f12905ec81301817",
+        "simulator/Dockerfile": "15477bf5712572c029d16b911ca8dcd3532efb5c8c516ceb73f82645d91eeee6",
+        "simulator/bridge.py": "d3ab23b8cb3b6e53d94400ff8b9f2f72c6de8ef74a8125d423bdc7b9406935b6",
+        "simulator/dataset_protocol.py": "75d9c0e98fb8a192f7cf5886bf19e4314647df2d01649f8a713650fe4f2d13cd",
+        "simulator/geometry.py": "0644c1473661cd345aeb39bc33b36a7cb4fc5c0d2b0b0c5416a69774e42f9c7c",
+        "simulator/plugin/world.cpp": "20f6ba47fc0ae1aefa055d1dc068cc81939e9559f65ed816356c42e58a9cfde6",
+        "simulator/preflight.py": "c6401dcc4727a161c7239a8ec62700a213092ba5a4373305f9e889503adb5166",
+        "simulator/render_validation.py": "970da503cd4d240acd1973d8b99a1adf7d94d8f7395efd1800c4c403e9334ac4",
+        "simulator/scenarios.py": "eddfea009d295a5cf48e90c1e6cfc81f74b055b9c874949d3a019214c5d439e1",
+        "simulator/sensor_dataset.py": "98a7294ae9c89e2835a3eca09512f903f6678e1cbc3436f191a90c7826a40ac7",
+        "simulator/signal.py": "f55f905221f503f82ac264192d599254eb39a73dbff5a90aeb7f6f8e20fa6fc6",
+        "simulator/start.sh": "4808c0d17e4b2cfd5fbcb3b96637791d2c21f0abe0c64dd8bfb665afa709ee2f",
+        "simulator/vision_dataset.py": "e9ef5bcb52d60353d4490d021591381a498eedc1f9c7ce9ab8042851b38d6f0c",
+        "simulator/world.py": "362b28486b9fdb1ab6d6c0294e3f1da77f9ec9366ed0af5a82e33f750651bef2"
+      },
+      "plugin_binding": {
+        "library_path": "simulator/libfactory_world.so",
+        "library_sha256": "35523424683f6facaefb02a92f351fbc256bc43b2910e1d942cb5621e5af3e35",
+        "schema_version": 1,
+        "source_path": "simulator/plugin/world.cpp",
+        "source_sha256": "20f6ba47fc0ae1aefa055d1dc068cc81939e9559f65ed816356c42e58a9cfde6"
+      },
+      "current_source_config_fingerprint_alignment": "PASS"
+    },
+    "vision": {
+      "marker_sha256": "73dce20010a2f95abd027c486d51a7a2c9a498cbba2f62c85b229b7c96247c8d",
+      "fingerprint": "f6b6eae272c8416aa6756642f4cfd6b9b3782688ad7d776b396e3e5cb2f4e0ae",
+      "row_count": 1800,
+      "files": {
+        "dataset.yaml": "1ba0cf2d81c540b7cad00a9b5d4ddcf476b049e177414c2c657ed457fa47b4b6",
+        "manifest.jsonl": "7a6daf8d1f660e4c0c39fddb1a2c30f1ab29e14c39589b9cd25b952856f5e6f8",
+        "render-check.json": "e9641faa65d34e676e2eb59224e915e15bca71f505293ff56f1e7193382564c7"
+      },
+      "source_count": 14,
+      "source_hashes": {
+        "factory/pdm/features.py": "d10c39136d1abfc8a91b59f745bc6b56d93cdbfb89ff18e4f12905ec81301817",
+        "simulator/Dockerfile": "15477bf5712572c029d16b911ca8dcd3532efb5c8c516ceb73f82645d91eeee6",
+        "simulator/bridge.py": "d3ab23b8cb3b6e53d94400ff8b9f2f72c6de8ef74a8125d423bdc7b9406935b6",
+        "simulator/dataset_protocol.py": "75d9c0e98fb8a192f7cf5886bf19e4314647df2d01649f8a713650fe4f2d13cd",
+        "simulator/geometry.py": "0644c1473661cd345aeb39bc33b36a7cb4fc5c0d2b0b0c5416a69774e42f9c7c",
+        "simulator/plugin/world.cpp": "20f6ba47fc0ae1aefa055d1dc068cc81939e9559f65ed816356c42e58a9cfde6",
+        "simulator/preflight.py": "c6401dcc4727a161c7239a8ec62700a213092ba5a4373305f9e889503adb5166",
+        "simulator/render_validation.py": "970da503cd4d240acd1973d8b99a1adf7d94d8f7395efd1800c4c403e9334ac4",
+        "simulator/scenarios.py": "eddfea009d295a5cf48e90c1e6cfc81f74b055b9c874949d3a019214c5d439e1",
+        "simulator/sensor_dataset.py": "98a7294ae9c89e2835a3eca09512f903f6678e1cbc3436f191a90c7826a40ac7",
+        "simulator/signal.py": "f55f905221f503f82ac264192d599254eb39a73dbff5a90aeb7f6f8e20fa6fc6",
+        "simulator/start.sh": "4808c0d17e4b2cfd5fbcb3b96637791d2c21f0abe0c64dd8bfb665afa709ee2f",
+        "simulator/vision_dataset.py": "e9ef5bcb52d60353d4490d021591381a498eedc1f9c7ce9ab8042851b38d6f0c",
+        "simulator/world.py": "362b28486b9fdb1ab6d6c0294e3f1da77f9ec9366ed0af5a82e33f750651bef2"
+      },
+      "plugin_binding": {
+        "library_path": "simulator/libfactory_world.so",
+        "library_sha256": "35523424683f6facaefb02a92f351fbc256bc43b2910e1d942cb5621e5af3e35",
+        "schema_version": 1,
+        "source_path": "simulator/plugin/world.cpp",
+        "source_sha256": "20f6ba47fc0ae1aefa055d1dc068cc81939e9559f65ed816356c42e58a9cfde6"
+      },
+      "current_source_config_fingerprint_alignment": "PASS"
+    }
+  },
+  "generation_settings": {
+    "sensor": {
+      "sampling_hz": 2048,
+      "window_samples": 2048,
+      "rotation_hz": 25.0,
+      "bearing_balls": 8,
+      "ball_diameter_mm": 7.94,
+      "pitch_diameter_mm": 39.0,
+      "contact_angle_deg": 0
+    },
+    "data_generation": {
+      "seed": 20261009,
+      "sensor_rotation_hz": [
+        8,
+        15
+      ],
+      "sensor_noise": [
+        0.008,
+        0.05
+      ],
+      "sensor_groups": 100,
+      "sensor_normal_per_group": 50,
+      "sensor_fault_per_level_per_group": 2,
+      "vision_groups": 20,
+      "vision_normal_per_group": 45,
+      "vision_per_defect_per_group": 15,
+      "vision_visibility_policy": "visible_surface_proxy_v1",
+      "vision_minimum_material_rgb_gap": 0.3
+    },
+    "camera": {
+      "camera_fov": 0.75,
+      "camera_size": 320
+    }
+  },
+  "source_config_protocol_alignment": "PASS",
+  "sensor": {
+    "windows": 7000,
+    "groups": 100,
+    "counts": {
+      "test/0": 750,
+      "test/1": 30,
+      "test/2": 30,
+      "test/3": 30,
+      "test/4": 30,
+      "test/5": 30,
+      "test/6": 30,
+      "test/7": 30,
+      "test/8": 30,
+      "test/9": 30,
+      "test/10": 30,
+      "train/0": 3500,
+      "train/1": 140,
+      "train/2": 140,
+      "train/3": 140,
+      "train/4": 140,
+      "train/5": 140,
+      "train/6": 140,
+      "train/7": 140,
+      "train/8": 140,
+      "train/9": 140,
+      "train/10": 140,
+      "val/0": 750,
+      "val/1": 30,
+      "val/2": 30,
+      "val/3": 30,
+      "val/4": 30,
+      "val/5": 30,
+      "val/6": 30,
+      "val/7": 30,
+      "val/8": 30,
+      "val/9": 30,
+      "val/10": 30
+    },
+    "unique_feature_hashes": 7000,
+    "test_rpm_noise_level_cells_present": 99,
+    "observed_rotation_hz_range": [
+      8.078184359024826,
+      14.939145553547641
+    ],
+    "metadata_nuisance_cv": {
+      "metric": "roc_auc",
+      "mean": 0.5,
+      "fold_scores": [
+        0.5,
+        0.5,
+        0.5,
+        0.5,
+        0.5
+      ],
+      "folds": 5,
+      "group_aware": true,
+      "chance": 0.5,
+      "nuisance_feature_count": 6,
+      "n": 7000
+    }
+  },
+  "vision": {
+    "images": 1800,
+    "groups": 20,
+    "counts": {
+      "test/-1": 135,
+      "test/0": 45,
+      "test/1": 45,
+      "test/2": 45,
+      "train/-1": 630,
+      "train/0": 210,
+      "train/1": 210,
+      "train/2": 210,
+      "val/-1": 135,
+      "val/0": 45,
+      "val/1": 45,
+      "val/2": 45
+    },
+    "unique_image_hashes": 1800,
+    "metadata_nuisance_cv": {
+      "metric": "balanced_accuracy",
+      "mean": 0.2338888888888889,
+      "fold_scores": [
+        0.20972222222222223,
+        0.25,
+        0.24027777777777778,
+        0.22222222222222224,
+        0.24722222222222223
+      ],
+      "folds": 5,
+      "group_aware": true,
+      "chance": 0.25,
+      "nuisance_feature_count": 17,
+      "n": 1800
+    },
+    "visibility_color_scale_max_smd": 0.11370303497829787,
+    "preflight_pairs_recomputed": 9,
+    "bulk_pairs_recomputed": 900,
+    "all_bulk_pair_statuses": "PASS",
+    "unique_bulk_pair_ids": 900,
+    "bulk_counts": {
+      "test/0": 45,
+      "test/1": 45,
+      "test/2": 45,
+      "train/0": 210,
+      "train/1": 210,
+      "train/2": 210,
+      "val/0": 45,
+      "val/1": 45,
+      "val/2": 45
+    },
+    "minimum_raw_bbox_iou": 0.8254254913010861,
+    "minimum_adjusted_bbox_iou": 1.0,
+    "maximum_outside_roi_fraction": 0.0,
+    "minimum_changed_pixels": 112,
+    "capture_policy": {
+      "minimum_wall_seconds_after_ack": 0.25,
+      "minimum_fresh_frames": 3,
+      "minimum_sim_seconds_after_ack": 0.1
+    },
+    "scene_application_policy": {
+      "application_rounds": 3,
+      "minimum_seconds_between_ack_and_next_command": 0.1
+    }
+  },
+  "criteria_unchanged": {
+    "minimum_bbox_iou": 0.7,
+    "maximum_outside_roi_fraction": 0.1,
+    "rounding_tolerance_pixels": 2,
+    "changed_pixel_channel_threshold": 20,
+    "minimum_changed_pixels": 5
+  },
+  "review_findings": [],
+  "limitations": [
+    "Passing registered checks does not establish bias-free data or real-factory generalization.",
+    "Sensor groups are virtual conditions from one Gazebo motor, not 100 independent measured physical machines.",
+    "Vision has only 20 synthetic geometry/material families and three heldout families, not real product populations or a separate renderer.",
+    "High-contrast visible proxy policy excludes low-contrast realism; shape/color/background shortcuts outside the checked metadata can remain.",
+    "The validation split has only dark background-bin families (three groups); broad coverage of background conditions in validation is not established.",
+    "Enqueued scene acknowledgments are not rendering-completion proofs. Actual stored raw pair comparisons are the supporting rendering evidence.",
+    "Nuisance CV at chance does not rule out unmeasured image or signal shortcuts.",
+    "Plugin loaded-binary path/inode was checked by the producer; this review checks recorded source/binary binding and current source, not a live gzserver process."
+  ]
+}

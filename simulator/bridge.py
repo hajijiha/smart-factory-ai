@@ -170,6 +170,10 @@ class Acquisition(Node):
 def generate(node):
     """Collect reproducible labeled Gazebo data with separate scenario seeds per split."""
     if generator_version() == 'v2':
+        if os.environ.get('CONTRAST_DIAGNOSTIC_FAILURE'):
+            from simulator.render_validation import verify_contrast_diagnostic
+            return verify_contrast_diagnostic(node,os.environ['CONTRAST_DIAGNOSTIC_FAILURE'],
+                os.environ.get('CONTRAST_DIAGNOSTIC_DIR',str(DATA/'contrast-diagnostic')))
         if os.environ.get('VERIFY_RENDERING') == '1':
             from simulator.render_validation import verify_rendering
             return verify_rendering(node, os.environ.get('RENDER_VALIDATION_DIR', str(DATA/'render-validation')))

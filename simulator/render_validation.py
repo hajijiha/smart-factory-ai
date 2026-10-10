@@ -5,7 +5,7 @@ import cv2
 import numpy as np
 from factory.common import CONFIG, utc_now
 from simulator.dataset_protocol import specification, verify_plugin_binding, digest, write_json
-from simulator.scenarios import groups, vision_scenes, defect_primitives
+from simulator.scenarios import groups, vision_scenes, defect_primitives, apply_visibility_policy
 from simulator.geometry import project_bbox
 
 CRITERIA = {'minimum_bbox_iou': .70, 'maximum_outside_roi_fraction': .10,
@@ -158,6 +158,7 @@ def paired_scenes(configuration):
             defect={**base,'scene_id':f'render-check-{pair_id}-defect','class_id':class_id,
                 'defect_scale':scale,'defect_darkness':.12,
                 'defect_primitives':defect_primitives(class_id,group['seed'],scale,.12)}
+            defect=apply_visibility_policy(defect,configuration)
             yield pair_id,normal,defect
 
 
@@ -198,7 +199,7 @@ def check_render_pair(root, case, fingerprint):
     normal,defect=case['normal_scene'],case['defect_scene']
     if normal['class_id']!=-1 or normal['defect_primitives'] or defect['class_id']!=case['class_id'] or normal['scene_id']==defect['scene_id']:
         raise RuntimeError('Invalid normal/defect render pair scenes')
-    for key in ('x','y','yaw','dx','dy','defect_yaw','camera_pose','product_color','background_color','light','material_id','specular','condition_id','group_id'):
+    for key in ('x','y','yaw','dx','dy','defect_yaw','camera_pose','product_color','background_color','light','material_id','specular','condition_id','group_id','visibility_policy'):
         if normal[key]!=defect[key]:
             raise RuntimeError(f'Render pair changed nuisance condition: {key}')
     before_path=root/case['normal_image']; after_path=root/case['defect_image']
@@ -252,6 +253,36 @@ def verify_rendering(node, destination):
     write_json(root/'render-check.json',report)
     if report['status']!='PASS':
         raise RuntimeError(f'Render/label consistency check FAILED; inspect {root}/render-check.json')
+    return report
+
+
+def verify_contrast_diagnostic(node, input_failure, destination):
+    """Inspect a predetermined failed scene once under the new global policy.
+
+    This is disclosure evidence, separate from the nine-case gate and datasets;
+    no scene/seed selection, threshold change or recapture depends on its pixels.
+    """
+    original=json.loads(Path(input_failure).read_text())
+    old_scene=original['render_pair']['defect_scene']
+    scene=apply_visibility_policy(old_scene,CONFIG)
+    identity=specification(CONFIG,verify_plugin_binding())
+    root=Path(destination)
+    if root.exists() and any(root.iterdir()):
+        raise RuntimeError('Contrast diagnostic output exists; preserve it and use a new directory')
+    root.mkdir(parents=True,exist_ok=True)
+    normal={**scene,'scene_id':scene['scene_id']+'-visibility-diagnostic-normal','class_id':-1,'defect_primitives':[]}
+    defect={**scene,'scene_id':scene['scene_id']+'-visibility-diagnostic-defect'}
+    case,_,_,_,_=capture_render_pair(node,root,'fixed-failed-scene',normal,defect,'render-check',identity['fingerprint'])
+    report={**identity,'schema_version':1,'generator_schema_version':2,'model_used':False,
+        'diagnostic_type':'Predetermined r2 failed-scene inspection under a new global high-contrast material policy',
+        'status':case['metrics']['status'],'case_count':1,'criteria':CRITERIA,'capture_policy':CAPTURE_POLICY,
+        'scene_application_policy':SCENE_APPLICATION_POLICY,'case':case,'original_fingerprint':original['fingerprint'],
+        'original_scene_id':old_scene['scene_id'],'original_scene':old_scene,'original_metrics':original['render_pair']['metrics'],
+        'input_failure_sha256':digest(input_failure),'created_at':utc_now(),
+        'scope':'Diagnostic only; cannot replace the independent nine-case gate or validate the failed r2 acquisition.'}
+    write_json(root/'contrast-diagnostic.json',report)
+    if report['status']!='PASS':
+        raise RuntimeError('Fixed-scene contrast diagnostic failed; evidence preserved without retry')
     return report
 
 

@@ -197,6 +197,49 @@ def rendering_criteria(protocol):
             'rounding_tolerance_pixels', 'changed_pixel_channel_threshold', 'minimum_changed_pixels']}
 
 
+def verify_visibility_policy(scene, settings, report, record_id):
+    """Check a declared synthetic visibility domain, rather than infer it from PASS pixels."""
+    expected_name = settings.get('vision_visibility_policy')
+    if expected_name is None:
+        return True
+    policy = scene.get('visibility_policy')
+    if expected_name != 'visible_surface_proxy_v1' or not isinstance(policy, dict):
+        issue(report, 'FAIL', 'vision_visibility_policy_missing', record_id)
+        return False
+    required = ['name', 'minimum_material_rgb_gap', 'raw_palette_max', 'color_scale',
+                'product_minimum_channel', 'primitive_color_upper_bound', 'scope']
+    if any(key not in policy for key in required):
+        issue(report, 'FAIL', 'vision_visibility_policy_schema', record_id)
+        return False
+    product = np.asarray(scene['product_color'], float)
+    numeric = [policy[key] for key in required if key not in ['name', 'scope']]
+    valid = (product.shape == (3,) and np.isfinite(product).all()
+             and all(isinstance(scene.get(key), int) and not isinstance(scene.get(key), bool) for key in ['seed', 'scene_index'])
+             and scene['scene_index'] >= 0
+             and all(isinstance(value, (int, float)) and not isinstance(value, bool) and np.isfinite(value) for value in numeric)
+             and policy['name'] == expected_name and isinstance(policy['scope'], str) and bool(policy['scope']))
+    if valid:
+        gap, scale, palette = policy['minimum_material_rgb_gap'], policy['color_scale'], policy['raw_palette_max']
+        bound = (float(min(product)) - gap) * scale
+        expected_scale = float(np.random.default_rng(scene['seed'] + scene['scene_index'] * 43 + 88000).uniform(.65, 1))
+        valid = (gap == settings.get('vision_minimum_material_rgb_gap') and 0 < gap < min(product)
+                 and .65 <= scale <= 1 and palette == .65
+                 and np.isclose(scale, expected_scale, rtol=0, atol=1e-12)
+                 and np.isclose(policy['product_minimum_channel'], min(product), rtol=0, atol=1e-12)
+                 and np.isclose(policy['primitive_color_upper_bound'], bound, rtol=0, atol=1e-12))
+        for primitive in scene.get('defect_primitives', []):
+            original = np.asarray(primitive.get('color_before_contrast', []), float)
+            mapped = np.asarray(primitive.get('color', []), float)
+            valid = (valid and original.shape == mapped.shape == (3,) and np.isfinite(original).all()
+                     and np.isfinite(mapped).all() and np.all((original >= 0) & (original <= palette)))
+            if valid:
+                valid = (np.allclose(mapped, original / palette * bound, rtol=0, atol=1e-12)
+                         and np.all(product - mapped >= gap - 1e-12))
+    if not valid:
+        issue(report, 'FAIL', 'vision_visibility_policy_consistency', record_id)
+    return bool(valid)
+
+
 def verify_render_pair(root, case, fingerprint, report, criteria, directory):
     """Recompute one actual raw PNG pair, independently of producer PASS text."""
     import cv2
@@ -216,6 +259,9 @@ def verify_render_pair(root, case, fingerprint, report, criteria, directory):
     if len(images) != 2:
         return None
     normal, defect = case['normal_scene'], case['defect_scene']
+    generation_settings = report.get('vision_completion', {}).get('settings', {}).get('data_generation', {})
+    for kind, scene in [('normal', normal), ('defect', defect)]:
+        verify_visibility_policy(scene, generation_settings, report, pair_id + '/' + kind)
     same_inputs = ['x', 'y', 'yaw', 'dx', 'dy', 'defect_yaw', 'camera_pose', 'product_color',
                    'background_color', 'material_id', 'specular', 'light', 'seed', 'group_id', 'condition_id']
     if (normal.get('class_id') != -1 or defect.get('class_id') != case['class_id']
@@ -223,6 +269,8 @@ def verify_render_pair(root, case, fingerprint, report, criteria, directory):
             or defect.get('defect_scale') != case['scale'] or normal.get('defect_primitives') != []
             or any(key not in normal or key not in defect or normal[key] != defect[key] for key in same_inputs)):
         issue(report, 'FAIL', 'vision_render_pair_control', pair_id)
+    if generation_settings.get('vision_visibility_policy') and normal.get('visibility_policy') != defect.get('visibility_policy'):
+        issue(report, 'FAIL', 'vision_render_pair_visibility_control', pair_id)
     sync_valid = []
     for kind, scene in [('normal', normal), ('defect', defect)]:
         sync_valid.append(verify_capture_sync(case.get(kind + '_capture_sync'), scene['scene_id'],
@@ -293,7 +341,9 @@ def verify_bulk_render_pairs(root, records, marker, report, protocol):
             or marker.get('render_pair_count') != len(positives)):
         issue(report, 'FAIL', 'vision_bulk_render_binding', {'expected': expected, 'actual': binding})
     pair_ids, image_paths, recomputed, counts = set(), set(), [], Counter()
+    generation_settings = marker.get('settings', {}).get('data_generation', {})
     for row in records:
+        verify_visibility_policy(row['scene'], generation_settings, report, row['image'])
         case = row.get('render_pair')
         if row['scene']['class_id'] < 0:
             if case is not None:
@@ -444,6 +494,8 @@ def scene_nuisance(scene):
     result = {key: float(scene[key]) for key in ['light', 'x', 'y', 'yaw'] if key in scene}
     for key in ['camera_pose', 'product_color', 'background_color']:
         result.update({f'{key}_{i}': float(value) for i, value in enumerate(scene.get(key, []))})
+    if isinstance(scene.get('visibility_policy'), dict) and 'color_scale' in scene['visibility_policy']:
+        result['visibility_color_scale'] = float(scene['visibility_policy']['color_scale'])
     return result
 
 

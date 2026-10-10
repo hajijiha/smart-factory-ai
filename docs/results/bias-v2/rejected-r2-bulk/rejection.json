@@ -1,0 +1,28 @@
+{
+  "status": "REJECTED_BEFORE_VISION_TRAINING_AND_FINAL_EVALUATION",
+  "data_directory": "/home/gkwlgns02/smart-factory-bias-review/data/bias-v2-r2",
+  "generator_fingerprint": "27f9cc3cce206fb7eb95aa4e4736425e793ed1ed23b7f8f9a269dcc448740945",
+  "vision_completed": false,
+  "partial_rows": 1015,
+  "partial_manifest_sha256": "fdbe082bc56be3e55a468ab7d8bca242a767fca8496dd1fb808468bce5f5e25a",
+  "failure_scene_id": "vision-v2-0017-0025",
+  "failure_metrics": {
+    "bbox_iou": 0.6833792665112283,
+    "changed_pixels": 357,
+    "observed_bbox_pixels": [
+      191.0,
+      122.0,
+      217.0,
+      149.0
+    ],
+    "outside_roi_fraction": 0.0,
+    "outside_roi_pixels": 0,
+    "raw_bbox_iou": 0.6650432540144093,
+    "status": "FAIL"
+  },
+  "retained": "Complete sensor data, partial vision data and train-only sensor weights remain unchanged",
+  "sensor_test_evaluated": false,
+  "vision_trained": false,
+  "final_challenge_evaluated": false,
+  "no_retry_or_sample_exclusion": true
+}
