@@ -1,0 +1,42 @@
+{
+  "verified_at": "2026-10-10T09:15:00.660Z",
+  "url": "http://localhost:8082/",
+  "observations": {
+    "equipment_selection_and_arrow_keyboard": true,
+    "fault_3_accepted_then_observed": true,
+    "selected_image": "/images/inspections/fe74bf8e-96ac-4512-9a42-f460ada5d33f.jpg",
+    "selected_history_retained_after_leaving_latest_12": true,
+    "selected_image_width": 320,
+    "selected_detection_boxes": 1,
+    "same_event_gradcam": "/images/inspections/fe74bf8e-96ac-4512-9a42-f460ada5d33f_gradcam.jpg",
+    "gradcam_width": 320,
+    "fault_10_roller_velocity_rad_s": 0,
+    "fault_10_reset_disabled": true,
+    "fault_0_explicit_ui_restart_roller_rad_s": 4,
+    "mobile": {
+      "viewport_width": 390,
+      "document_width": 375,
+      "body_width": 375
+    },
+    "sensor_stop": {
+      "connection": "관측 갱신 확인",
+      "line": "관측 지연",
+      "apply_disabled": true,
+      "reset_disabled": true,
+      "rollers_animated": false
+    },
+    "server_stop": {
+      "connection": "서버 연결 끊김",
+      "apply_disabled": true,
+      "reset_disabled": true,
+      "rollers_animated": false
+    },
+    "console_errors": []
+  },
+  "screenshots": [
+    "normal.jpg",
+    "danger.jpg",
+    "inspection.jpg"
+  ],
+  "passed": true
+}

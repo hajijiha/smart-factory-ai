@@ -18,8 +18,14 @@ image_bytes, data가 있다. 복수 결함은 검사 이벤트 한 개 아래 �
 ## 화면과 제어
 
 FastAPI 읽기 API가 DB를 조회하고 브라우저는 2초마다 snapshot을 갱신한다.
-실시간 RMS·온도·HI·스펙트럼·검사/불량 건수·영상·알람을 한 화면에 보여준다.
+중앙 공정 개요도는 진단 모터 → 컨베이어 → 검사 카메라를 연결한다.
+설비를 선택하면 RMS·온도·HI·스펙트럼, 실제 롤러 속도 또는 검사 영상과 이력을
+확인할 수 있다. 검사/불량 건수와 최근 알람을 함께 표시한다.
 Canvas로 그래프를 그리므로 외부 CDN이나 유료 Vision 서비스가 필요 없다.
+관측 시각과 설비별 상태는 `factory/process.py`에서 계산한다.
+명령 접수와 실제 적용을 구분하며, 초기 데이터 대기·갱신 지연·연결 오류를 처리한다.
+제품의 위치 좌표를 표시하지 않는 공정 개요도이며, 화면과 상세 상태 규칙은
+[공정 관제](process-control.md)에 정리한다.
 
 고장 명령은 대시보드 → MQTT → 시뮬레이터로 전달한다.
 위험 인터락은 PdM → MQTT health → 독립 controller → MQTT conveyor →
@@ -99,6 +105,10 @@ Pearson r=0.527927, Spearman rho=0.564187였다.
 고장 레벨이 같아도 파형·위상·노이즈에 따라 HI와 상태가 달라진다.
 
 ![관측 상관과 시차](results/correlation.png)
+
+다음은 기존 관제 화면에서 수행한 통합 검증이다.
+공정 개요도를 추가한 현재 화면과 운전 검증은 [공정 관제](process-control.md)에 기록한다.
+
 ![정상 관제](results/dashboard-normal.png)
 ![주의 단계](results/dashboard-caution.png)
 ![위험 정지](results/dashboard-danger.png)

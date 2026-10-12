@@ -4,6 +4,13 @@ Gazebo의 3D 검사 영상과 모터 관측값으로 **설비 상태 → 제품 
 관제·라인 정지**를 연결하는 스마트 팩토리 시뮬레이션 시스템이다. 모든 서비스는 CPU에서 실행하며,
 모듈 간 결과와 제어 명령은 MQTT로 주고받는다.
 
+공정 관제 화면에서 진단 모터·컨베이어·검사 카메라의 상태를 한눈에 확인한다.
+설비를 선택하면 센서 추세, 실제 롤러 속도, 검출 박스와 검사 이력을 볼 수 있다.
+명령 접수와 적용 관측을 구분하고, 오래된 데이터와 연결 오류를 별도로 표시한다.
+[공정 관제 구조와 상태 처리](docs/process-control.md)에 화면과 제어 조건을 정리했다.
+
+![공정 관제 — 정상 운전](docs/results/process-control/normal.jpg)
+
 기존 생성 규칙(v1)에서 별도 seed로 나눈 합성 테스트 세트의 관리도 F1은
 0.9950, AE F1은 0.9885, YOLO 테스트 mAP@0.5는 0.9691다.
 CPU ONNX는 전처리와 NMS를 포함한 테스트 100장 평균 66.26 FPS다.
@@ -138,6 +145,7 @@ factory/vision/     YOLO 파인튜닝, ONNX 검출, 실제 역전파 Grad-CAM
 factory/storage.py  이벤트 ID 기반 DB 저장과 도착 순서 조정
 factory/controller.py  위험 래치·안전 재시작
 factory/dashboard.py   읽기 API와 MQTT 조작 명령
+factory/process.py     관측 시각·설비 상태·공정 관제 응답
 factory/analytics.py   5초 구간 Pearson/Spearman·시차 분석
 factory/static/     외부 CDN 없이 실행되는 관제 UI
 docker/             CPU 실행 이미지, DB 초기 스키마, 브로커 설정
@@ -159,6 +167,7 @@ tests/              물리 주파수·FFT·통계 처리 검증
 - [예지보전 이론·학습·평가](docs/predictive-maintenance.md)
 - [YOLO·Grad-CAM·CPU 평가](docs/vision.md)
 - [통합 관제·DB·상관·인터락](docs/integration.md)
+- [공정 관제 화면·설비 상태·안전 조작](docs/process-control.md)
 - [요구사항 검증표](docs/requirements.md)
 - [테스트·통합 검증 보고서](docs/validation.md)
 
@@ -196,17 +205,19 @@ RUL LSTM은 구현 대상에 포함하지 않으며 PHM의 수명 예측 단계�
 Ubuntu 22.04 / Python 3.10.12 / PyTorch 2.5.1+cpu / GPU 사용 없음.
 Grad-CAM·JPEG 디코딩·네트워크·DB 저장 시간은 detector FPS에 포함하지 않았다.
 
-![대시보드](docs/results/dashboard-normal.png)
-![위험 인터락 정지](docs/results/dashboard-danger.png)
 ![Gazebo 진동과 FFT](docs/results/vibration_fft.png)
 ![정상 영상의 backbone Grad-CAM](docs/results/gradcam_normal.jpg)
 ![스크래치 영상의 backbone Grad-CAM](docs/results/gradcam_scratch.jpg)
 
 ## 검증 재실행
 
-안전 제어, 데이터 분할, 추론, 시간 처리와 새 데이터·모델 무결성 검사를 포함해
-**테스트 81개가 통과**했다. 최신 JUnit 결과는 `docs/results/bias-v2/tests.xml`에 있다.
-생성 데이터가 없는 환경에서는 79개 통과·데이터 의존 검사 2개 skip이다.
+공정 관제 확장 후 전체 회귀 검사에서 **133개 통과·2개 skip**을 확인했다.
+추가한 공정 상태·대시보드 API 검사 54개는 모두 통과했다.
+skip 2개는 격리된 실행 환경에 원본 학습 데이터가 없어 센서·영상 데이터셋 검사를
+수행하지 않은 경우다. 해당 2개는 원본 v1 데이터를 읽기 전용으로 연결한 별도 실행에서
+모두 통과했다. [공정 관제 검증](docs/process-control.md#검증)에 JUnit 원본과 운전 결과를 기록한다.
+기존 편향 검증은 원본 데이터를 포함해 81개를 통과했으며,
+당시 JUnit 원본은 `docs/results/bias-v2/tests.xml`에 보관한다.
 기존 28개 검사와 성능 측정은 [검증 보고서](docs/validation.md),
 추가 검사 범위는 [합성 데이터 편향 검증](docs/bias-validation.md)에 정리했다.
 
