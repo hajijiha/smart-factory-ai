@@ -33,6 +33,16 @@ training:
   vision_per_defect: 1000
   epochs: 10
   batch: 32
+data_generation:
+  seed: 20261009
+  sensor_rotation_hz: [8, 15]
+  sensor_noise: [0.008, 0.05]
+  sensor_groups: 100
+  sensor_normal_per_group: 50
+  sensor_fault_per_level_per_group: 2
+  vision_groups: 100
+  vision_normal_per_group: 30
+  vision_per_defect_per_group: 10
 dashboard:
   refresh_ms: 2000
   correlation_window: 120

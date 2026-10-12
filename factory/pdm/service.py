@@ -5,6 +5,7 @@ import time
 from factory.common import connect, publish, ARTIFACTS
 from factory.pdm.features import extract, NAMES
 from factory.pdm.model import Detector
+from factory.provenance import require_runtime_generator
 
 
 def main():
@@ -13,6 +14,7 @@ def main():
         logging.info('Waiting for trained PdM checkpoint')
         time.sleep(5)
     detector = Detector(ARTIFACTS/'pdm.pt')
+    require_runtime_generator(detector.dataset_identity)
     events = queue.Queue(maxsize=256)
     def handler(topic, message):
         """Queue work without blocking MQTT keepalive."""

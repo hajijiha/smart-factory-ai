@@ -22,6 +22,7 @@ from factory.pdm.features import extract
 from simulator.signal import vibration
 from simulator.geometry import project_bbox
 from simulator.sensor_dataset import generate_sensor
+from simulator.scenarios import generator_version
 
 
 def random_scene(rng, class_id, split, scene_id):
@@ -45,8 +46,13 @@ class Acquisition(Node):
         super().__init__('factory_acquisition')
         self.image = None
         self.image_time = -1
+        self.image_sequence = 0
+        self.image_arrival_time = -1
         self.joint = None
         self.ack = None
+        self.ack_arrival_time = -1
+        self.ack_image_sequence = -1
+        self.last_capture_info = None
         self.running = True
         self.condition = threading.Condition()
         self.publisher = self.create_publisher(String, '/factory/scene', 10)
@@ -61,6 +67,8 @@ class Acquisition(Node):
         with self.condition:
             self.image = image.copy()
             self.image_time = message.header.stamp.sec+message.header.stamp.nanosec/1e9
+            self.image_sequence += 1
+            self.image_arrival_time = time.monotonic()
             self.condition.notify_all()
     def on_joint(self, message):
         """Record the measured Gazebo joint velocity and position as sensor provenance."""
@@ -72,9 +80,13 @@ class Acquisition(Node):
         """Record physics-thread acknowledgment of the scene command."""
         with self.condition:
             self.ack = json.loads(message.data)
+            self.ack_arrival_time = time.monotonic()
+            self.ack_image_sequence = self.image_sequence
             self.condition.notify_all()
     def capture(self, scene):
         """Wait for an acknowledged scene and a newer rendered camera frame."""
+        if scene.get('generator_version') == 'v2':
+            return self.capture_v2(scene)
         deadline = time.monotonic()+30
         with self.condition:
             sent_at = 0
@@ -88,15 +100,91 @@ class Acquisition(Node):
                     if self.image_time >= self.ack['sim_time']+.10:
                         return self.image.copy(),dict(self.joint),self.image_time
                 self.condition.wait(.05)
-        raise TimeoutError(f'Gazebo frame timeout: scene={scene["scene_id"]}, image_time={self.image_time}, ack={self.ack}; inspect /tmp/gazebo.log')
+        raise TimeoutError(f'Gazebo frame timeout: scene={scene["scene_id"]}, image_time={self.image_time}, '
+            f'image_sequence={self.image_sequence}, image_arrival_time={self.image_arrival_time}, '
+            f'ack_arrival_time={self.ack_arrival_time}, ack={self.ack}; inspect /tmp/gazebo.log')
+
+    def capture_v2(self, scene):
+        """Deterministically reapply the full scene before collecting fresh frames."""
+        from simulator.render_validation import CaptureFreshness, SceneApplication, SCENE_APPLICATION_POLICY
+        replay = SceneApplication(scene['scene_id'], str(uuid.uuid4()))
+        deadline = time.monotonic()+30
+        freshness = None
+        sent_at = 0
+        with self.condition:
+            while time.monotonic() < deadline:
+                now = time.monotonic()
+                replay.acknowledge(self.ack, self.ack_arrival_time, self.ack_image_sequence)
+                if replay.advance(now):
+                    sent_at = 0
+                if not replay.acknowledged and now-sent_at >= 1:
+                    replay.sent(now)
+                    self.publisher.publish(String(data=json.dumps({**scene, **replay.fields(), 'running':self.running})))
+                    sent_at = now
+                if replay.complete:
+                    final = replay.records[-1]
+                    if freshness is None:
+                        freshness = CaptureFreshness(final['ack_arrival_monotonic'], final['ack_sim_time'])
+                    if self.image is not None and self.joint and freshness.ready(now, self.image_sequence,
+                            self.image_arrival_time, self.image_time, self.joint['sim_time']):
+                        self.last_capture_info = {**freshness.observation, 'scene_id':scene['scene_id'],
+                            'ack_scene_id':final['scene_id'], 'ack_image_sequence':final['ack_image_sequence'],
+                            'scene_application_policy':dict(SCENE_APPLICATION_POLICY),
+                            'scene_applications':list(replay.records)}
+                        return self.image.copy(),dict(self.joint),self.image_time
+                self.condition.wait(.05)
+        raise TimeoutError(f'v2 scene application/freshness timeout: scene={scene["scene_id"]}, '
+            f'round={replay.round}, acknowledgments={replay.records}, image_time={self.image_time}, '
+            f'image_sequence={self.image_sequence}, ack={self.ack}; inspect /tmp/gazebo.log')
     def conveyor(self, running):
         """Command the physical conveyor roller, retaining the diagnostic motor on its test stand."""
         self.running = bool(running)
         self.publisher.publish(String(data=json.dumps({'running':self.running})))
 
+    def set_motor(self, rpm):
+        """Require a newer, physically settled observation after changing the setpoint."""
+        command_id = str(uuid.uuid4())
+        deadline = time.monotonic() + 30
+        with self.condition:
+            sent_at = 0
+            while time.monotonic() < deadline:
+                acknowledged = self.ack and self.ack.get('motor_command_id') == command_id
+                if not acknowledged and time.monotonic() - sent_at >= 1:
+                    self.publisher.publish(String(data=json.dumps({'motor_rpm': float(rpm), 'motor_command_id': command_id,
+                        'generator_version': generator_version()})))
+                    sent_at = time.monotonic()
+                if acknowledged and self.joint and self.joint['sim_time'] >= self.ack['sim_time'] + .2:
+                    observed = abs(self.joint['velocity'][0]) * 60 / (2 * np.pi)
+                    if abs(observed - rpm) <= max(3., rpm * .01):
+                        logging.info('v2 motor settled commanded=%.3f RPM observed=%.3f RPM diagnostics=%s',
+                            rpm, observed, self.ack.get('motor_diagnostics'))
+                        return dict(self.joint)
+                self.condition.wait(.05)
+        observed_rad_s = self.joint['velocity'][0] if self.joint else None
+        observed_rpm = None if observed_rad_s is None else abs(observed_rad_s) * 60 / (2 * np.pi)
+        raise TimeoutError(f'Physical Gazebo motor did not settle: commanded_rpm={rpm:.6f}, '
+            f'observed_rad_s={observed_rad_s}, observed_rpm={observed_rpm}, '
+            f'joint={self.joint}, acknowledgment={self.ack}')
+
 
 def generate(node):
     """Collect reproducible labeled Gazebo data with separate scenario seeds per split."""
+    if generator_version() == 'v2':
+        if os.environ.get('VERIFY_RENDERING') == '1':
+            from simulator.render_validation import verify_rendering
+            return verify_rendering(node, os.environ.get('RENDER_VALIDATION_DIR', str(DATA/'render-validation')))
+        if os.environ.get('PREFLIGHT_DIR'):
+            from simulator.preflight import capture_preflight
+            return capture_preflight(node, os.environ['PREFLIGHT_DIR'])
+        modality = os.environ.get('GENERATE_MODALITY', 'all')
+        if modality not in ('all', 'sensor', 'vision'):
+            raise ValueError('GENERATE_MODALITY must be all, sensor or vision')
+        if modality != 'vision':
+            generate_sensor(node)
+        if modality == 'sensor':
+            return
+        from simulator.vision_dataset import generate_vision_v2
+        return generate_vision_v2(node)
     generate_sensor(node)
     root = DATA/'vision'
     manifest_path = root/'manifest.jsonl'
@@ -140,6 +228,10 @@ def generate(node):
 
 def live(node):
     """Publish synchronized OT/IT samples and execute MQTT fault/conveyor commands."""
+    if generator_version() != 'v1':
+        # Generation version is not a runtime model switch. Never silently pair new
+        # rendering/signals with old v1 thresholds and YOLO weights.
+        raise RuntimeError('v2 acquisition is generation-only; use v1 for the baseline live demo')
     state = {'level':CONFIG['simulator']['initial_fault_level'],'running':True}
     def handler(topic,message):
         """Apply validated asynchronous commands received from dashboard/controller."""

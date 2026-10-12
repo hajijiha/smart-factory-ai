@@ -26,6 +26,7 @@ class Detector:
         self.model.load_state_dict(saved['model'])
         self.mean, self.std = saved['mean'], saved['std']
         self.thresholds, self.calibration = saved['thresholds'], saved['calibration']
+        self.dataset_identity = saved.get('dataset_identity')
     def errors(self, features):
         """Return chart maximum deviation and AE reconstruction error."""
         z = (transform(features)-self.mean)/self.std

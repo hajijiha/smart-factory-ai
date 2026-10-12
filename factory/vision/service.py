@@ -11,6 +11,8 @@ from ultralytics import YOLO
 from factory.common import ARTIFACTS, DATA, CONFIG, connect, publish
 from factory.vision.inference import VisionDetector
 from factory.vision.gradcam import GradCAM
+from factory.provenance import (read_training_record, require_runtime_generator,
+                                vision_export_current, write_export_record)
 
 
 def main():
@@ -20,8 +22,10 @@ def main():
     while not (ARTIFACTS/'vision.pt').exists():
         logging.info('Waiting for trained vision artifacts')
         time.sleep(5)
-    if not (ARTIFACTS/'vision.onnx').exists():
+    require_runtime_generator(read_training_record(ARTIFACTS, 'vision'))
+    if not vision_export_current(ARTIFACTS):
         YOLO(str(ARTIFACTS/'vision.pt')).export(format='onnx',imgsz=CONFIG['vision']['image_size'],opset=17,simplify=False,device='cpu')
+        write_export_record(ARTIFACTS)
     detector = VisionDetector(ARTIFACTS/'vision.onnx')
     cam = GradCAM(ARTIFACTS/'vision.pt')
     executor = concurrent.futures.ThreadPoolExecutor(max_workers=1)

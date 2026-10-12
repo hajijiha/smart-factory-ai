@@ -2,6 +2,7 @@
 import sys
 from pathlib import Path
 from factory.common import CONFIG
+from simulator.scenarios import generator_version
 
 
 def visual(name, shape, dimensions, color, pose='0 0 0 0 0 0'):
@@ -30,6 +31,12 @@ def build():
     scratch = ''.join(visual(f'groove{i}', 'box', '.30 .018 .003', '.05 .05 .05', f'0 {i*.022-.022} 0 0 0 .1') for i in range(3))
     dent = visual('rim', 'cylinder', (.095,.005), '.45 .45 .46') + visual('pit', 'cylinder', (.061,.007), '.12 .13 .15', '0 0 .003 0 0 0')
     contamination = ''.join(visual(f'oil{i}', 'cylinder', (.052,.006), '.20 .09 .025', f'{x} {y} .004 0 0 0') for i,(x,y) in enumerate([(-.04,-.02),(.03,.02),(-.01,.06)]))
+    if generator_version() == 'v2':
+        # Fixed shape slots are changed through Gazebo visual scale/pose/material.
+        # The exact updated dimensions are also sent in the scene for auto-labels.
+        scratch = ''.join(visual(f'part{i}', 'box', '.30 .018 .003', '.20 .20 .20') for i in range(5))
+        dent = ''.join(visual(f'part{i}', 'cylinder', (.095,.005), '.20 .20 .20') for i in range(2))
+        contamination = ''.join(visual(f'part{i}', 'cylinder', (.095,.005), '.20 .20 .20') for i in range(5))
     models = static('conveyor', '0 0 .48 0 0 0', visual('visual','box','2.5 1.8 .15','.18 .23 .27'))
     models += static('product','0 0 .58 0 0 0',visual('visual','box','.9 .7 .06','.75 .76 .77'))
     for i, geometry in enumerate([scratch,dent,contamination]):

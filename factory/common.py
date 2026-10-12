@@ -11,6 +11,7 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(mess
 CONFIG = yaml.safe_load(Path(os.environ.get('FACTORY_CONFIG', '/app/config.yaml')).read_text())
 DATA = Path(os.environ.get('DATA_DIR', CONFIG['paths']['data']))
 ARTIFACTS = Path(os.environ.get('ARTIFACT_DIR', CONFIG['paths']['artifacts']))
+REPORTS = Path(os.environ.get('REPORT_DIR', CONFIG['paths']['reports']))
 
 
 def utc_now():

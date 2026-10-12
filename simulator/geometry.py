@@ -5,8 +5,25 @@ from scipy.spatial.transform import Rotation
 from factory.common import CONFIG
 
 
-def defect_points(class_id):
+def defect_points(class_id, primitives=None):
     """Return geometric boundary points matching the Gazebo world primitives."""
+    if primitives is not None:
+        points = []
+        for primitive in primitives:
+            if primitive['shape'] == 'box':
+                size = np.asarray(primitive['size']) / 2
+                boundary = np.array([[x,y,z] for x in [-size[0],size[0]] for y in [-size[1],size[1]] for z in [-size[2],size[2]]])
+            elif primitive['shape'] == 'cylinder':
+                r, length = primitive['radius'], primitive['length']
+                boundary = np.array([[r*np.cos(a),r*np.sin(a),z]
+                    for a in np.linspace(0,2*np.pi,128,endpoint=False) for z in [-length/2,length/2]])
+            else:
+                raise ValueError('Unsupported auto-label primitive')
+            pose = primitive['pose']
+            points.extend(Rotation.from_euler('xyz',pose[3:]).apply(boundary)+pose[:3])
+        if not points:
+            raise ValueError('Defect scenes must have actual geometry')
+        return np.asarray(points)
     if class_id == 0:
         points=[]
         for i in range(3):
@@ -27,12 +44,20 @@ def project_bbox(scene):
     class_id=scene['class_id']
     if class_id<0:
         return None
-    points=defect_points(class_id)
+    points=defect_points(class_id,scene.get('defect_primitives'))
     world=Rotation.from_euler('z',scene['yaw']).apply(
         Rotation.from_euler('z',scene['defect_yaw']).apply(points)+[scene['dx'],scene['dy'],.032])+[scene['x'],scene['y'],.58]
     camera=scene['camera_pose']
     local=Rotation.from_euler('xyz',camera[3:]).inv().apply(world-np.array(camera[:3]))
+    if scene.get('generator_version') == 'v2' and (local[:,0] <= .02).any():
+        raise ValueError('Defect geometry crosses the camera near plane')
     focal=.5/math.tan(CONFIG['simulator']['camera_fov']/2)
     uv=np.column_stack([.5-focal*local[:,1]/local[:,0],.5-focal*local[:,2]/local[:,0]])
+    if scene.get('generator_version') == 'v2':
+        if not np.isfinite(uv).all() or (uv < 0).any() or (uv > 1).any():
+            raise ValueError('Defect geometry is outside the camera image')
+        extent = uv.max(axis=0)-uv.min(axis=0)
+        if np.min(extent) * CONFIG['simulator']['camera_size'] < 2:
+            raise ValueError('Defect extent is smaller than two camera pixels')
     low,high=np.clip(uv.min(axis=0),0,1),np.clip(uv.max(axis=0),0,1)
     return [int(class_id),float((low[0]+high[0])/2),float((low[1]+high[1])/2),float(high[0]-low[0]),float(high[1]-low[1])]
