@@ -1,0 +1,176 @@
+{
+  "passed": true,
+  "checked_at_utc": "2026-10-12T15:23:07.461487+00:00",
+  "repository": {
+    "repository_full_name": "hajijiha/smart-factory-ai",
+    "repository_id": "1410234585",
+    "visibility": "public",
+    "default_branch": "main",
+    "repository_url": "https://github.com/hajijiha/smart-factory-ai",
+    "metadata_source": "GitHub connector get_repo",
+    "remote_ref_source": "git ls-remote --symref origin HEAD refs/heads/main refs/heads/codex/complete-requirements refs/heads/archive/pre-completion-20261013",
+    "remote_refs": "ref: refs/heads/main\tHEAD\n56642e6a56fbecdb56e3e09b55b94d498ac9d4ab\tHEAD\n1b4dfba66ee5ffaefb112ea4ab9eec80cf920339\trefs/heads/archive/pre-completion-20261013\n56642e6a56fbecdb56e3e09b55b94d498ac9d4ab\trefs/heads/codex/complete-requirements\n56642e6a56fbecdb56e3e09b55b94d498ac9d4ab\trefs/heads/main\n"
+  },
+  "fetched_remote_refs": {
+    "origin/main": "56642e6a56fbecdb56e3e09b55b94d498ac9d4ab",
+    "origin/codex/complete-requirements": "56642e6a56fbecdb56e3e09b55b94d498ac9d4ab",
+    "origin/archive/pre-completion-20261013": "1b4dfba66ee5ffaefb112ea4ab9eec80cf920339"
+  },
+  "verified_submitted_commit": "56642e6a56fbecdb56e3e09b55b94d498ac9d4ab",
+  "clean_startup_tested_commit": "d200c86db86165e15b5daff4be2e4e6da0a71db6",
+  "archive_preserved_commit": "1b4dfba66ee5ffaefb112ea4ab9eec80cf920339",
+  "main_history_commit_count": 16,
+  "main_history": [
+    {
+      "sha": "56642e6a56fbecdb56e3e09b55b94d498ac9d4ab",
+      "subject": "docs: publish complete requirements and independent verification evidence"
+    },
+    {
+      "sha": "d200c86db86165e15b5daff4be2e4e6da0a71db6",
+      "subject": "feat: complete RUL and drift monitoring with independent validation"
+    },
+    {
+      "sha": "f14f5b00a79855eb76732a4425ae2f8ac54cf62a",
+      "subject": "docs: simplify project overview and remove redundant wording"
+    },
+    {
+      "sha": "5a5fb22a217509b099132c75bd2a3800dc1ba9d9",
+      "subject": "feat: add process control view with observed equipment status"
+    },
+    {
+      "sha": "b723b40d250dba9bffaf78dd9a28e18d7cfd97ca",
+      "subject": "feat: validate synthetic data and compare frozen models"
+    },
+    {
+      "sha": "05f200761035867cf0af908eeddbe13e39e7f153",
+      "subject": "feat: add isolated synthetic data generation and independent bias validation"
+    },
+    {
+      "sha": "499a0642a45ad1bfeda285099f618ec1b3c1f932",
+      "subject": "docs: clarify individual development scope"
+    },
+    {
+      "sha": "22ba508f9b9fb239552f441dedab36aa0a45bc3e",
+      "subject": "docs: refine project overviews and technical documentation"
+    },
+    {
+      "sha": "13b47b790796149caf3ba4db0acce8c8b5529e5d",
+      "subject": "docs: record clean public clone startup and resolve independent review"
+    },
+    {
+      "sha": "0c949db3a40e1c0e78213a2daa3b44c63fe5ce5e",
+      "subject": "fix: validate trained factory pipeline and harden physical interlock"
+    },
+    {
+      "sha": "673c93619829a2295a29a83cd047c6cfd770a37f",
+      "subject": "docs: document solo project methods schemas and reproducible evaluation"
+    },
+    {
+      "sha": "b726994942a28ecd980ac771720ce4dbfde0bf0a",
+      "subject": "feat: integrate quality history dashboard and latched conveyor interlock"
+    },
+    {
+      "sha": "8b90d83c564927f72c46034697121375edb36cb6",
+      "subject": "feat: add YOLOv8 fine tuning ONNX inference and backbone GradCAM"
+    },
+    {
+      "sha": "2a94822dda104743b429fcc1ebfd03b03b8b2ba3",
+      "subject": "feat: add FFT control chart and normal-only autoencoder diagnosis"
+    },
+    {
+      "sha": "c671ef60d70925ff59f98eeec5d21653a4f6ddaf",
+      "subject": "feat: acquire Gazebo 3D camera and motor data over ROS2 and MQTT"
+    },
+    {
+      "sha": "2e2a0538056b953e7d044340f48900154dd18a00",
+      "subject": "chore: scaffold CPU smart factory compose architecture"
+    }
+  ],
+  "main_nonconventional_commits": [],
+  "archive_nonconventional_commits_preserved": [
+    {
+      "sha": "7840522b75630513af640ef83afd19a3b1188004",
+      "subject": "Add process control view with observed equipment status"
+    },
+    {
+      "sha": "24ca000b6ce8ba35024ac325264b89016a12697d",
+      "subject": "Validate synthetic data and compare frozen models"
+    },
+    {
+      "sha": "075f4b8eecaafde6cda96dbf8db77cc38b5f7658",
+      "subject": "Add isolated synthetic data generation and independent bias validation"
+    }
+  ],
+  "core_path_scope": [
+    "factory",
+    "simulator",
+    "compose.yaml",
+    "config.yaml",
+    "docker",
+    "requirements.txt",
+    "artifacts",
+    ".env.example"
+  ],
+  "core_runtime_source_changes": [],
+  "post_clean_test_changes": [
+    "M\tREADME.md",
+    "A\tdocs/completion-validation.md",
+    "M\tdocs/integration.md",
+    "M\tdocs/prognostics.md",
+    "M\tdocs/requirements.md",
+    "M\tdocs/results/completion-v3/code-quality.json",
+    "A\tdocs/results/completion-v3/independent-clean-artifact-hashes.txt",
+    "A\tdocs/results/completion-v3/independent-clean-cleanup.log",
+    "A\tdocs/results/completion-v3/independent-clean-cleanup.sh",
+    "A\tdocs/results/completion-v3/independent-clean-clone.log",
+    "A\tdocs/results/completion-v3/independent-clean-deploy.log",
+    "A\tdocs/results/completion-v3/independent-clean-deploy.sh",
+    "A\tdocs/results/completion-v3/independent-clean-observe.py",
+    "A\tdocs/results/completion-v3/independent-clean-services-final.jsonl",
+    "A\tdocs/results/completion-v3/independent-clean-source.txt",
+    "A\tdocs/results/completion-v3/independent-clean-startup.json",
+    "A\tdocs/results/completion-v3/independent-clean-tests.xml",
+    "A\tdocs/results/completion-v3/independent-clean-tracked-artifacts.txt",
+    "A\tdocs/results/completion-v3/independent-clean-volumes-preserved.json",
+    "A\tdocs/results/completion-v3/independent-data-review.py",
+    "A\tdocs/results/completion-v3/independent-db-review.py",
+    "A\tdocs/results/completion-v3/independent-model-review.py",
+    "A\tdocs/results/completion-v3/independent-required-model-review.py",
+    "A\tdocs/results/completion-v3/independent-review.md",
+    "A\tdocs/results/completion-v3/independent-runtime-review.py",
+    "A\tdocs/results/completion-v3/independent-vision-speed.json",
+    "A\tdocs/results/completion-v3/independent-vision-speed.py",
+    "A\tdocs/results/completion-v3/root-cause-rechecked.json",
+    "A\tdocs/results/completion-v3/rul-validation.png",
+    "A\tdocs/results/completion-v3/storage.json",
+    "M\tscripts/check_quality.py",
+    "A\tscripts/render_prognostics.py",
+    "M\tscripts/reproduce.sh"
+  ],
+  "model_git_blob_bindings": {
+    "artifacts/pdm.pt": {
+      "tested": "ef7cd1d5826ef205a60f8b874768fb7fb2787efb",
+      "submitted": "ef7cd1d5826ef205a60f8b874768fb7fb2787efb"
+    },
+    "artifacts/vision.pt": {
+      "tested": "48fbbbe18ee145cd5c1903fd6ee85239de70f765",
+      "submitted": "48fbbbe18ee145cd5c1903fd6ee85239de70f765"
+    },
+    "artifacts/rul.pt": {
+      "tested": "df8b070a5dba89a3ed04248b321215ce153a1f0b",
+      "submitted": "df8b070a5dba89a3ed04248b321215ce153a1f0b"
+    },
+    "artifacts/drift-reference.json": {
+      "tested": "1d67e2db25e1aacb12b45c3beff40dcc377645fd",
+      "submitted": "1d67e2db25e1aacb12b45c3beff40dcc377645fd"
+    },
+    "artifacts/prognostics-model-card.json": {
+      "tested": "fcc245d3bb9382e5ff3ad3c310805bcc2298e603",
+      "submitted": "fcc245d3bb9382e5ff3ad3c310805bcc2298e603"
+    }
+  },
+  "functional_regression_test_repeat_required": false,
+  "reason_for_reusing_clean_startup": "All deployed factory/simulator/config/compose/Docker/dependency/model files are byte-identical between tested and submitted Git trees; later changes concern documentation, evidence rendering, quality scan scope and reproduction command.",
+  "assessment_scope": "This verifies the fetched public main through exactly 56642e6. Later evidence-only commits are outside this snapshot and need their actual ref/subject/path diff checked before claiming a newer exact tip is verified.",
+  "original_independent_report_preserved": true
+}

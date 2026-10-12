@@ -1,0 +1,10 @@
+{
+  "repository_full_name": "hajijiha/smart-factory-ai",
+  "repository_id": "1410234585",
+  "visibility": "public",
+  "default_branch": "main",
+  "repository_url": "https://github.com/hajijiha/smart-factory-ai",
+  "metadata_source": "GitHub connector get_repo",
+  "remote_ref_source": "git ls-remote --symref origin HEAD refs/heads/main refs/heads/codex/complete-requirements refs/heads/archive/pre-completion-20261013",
+  "remote_refs": "ref: refs/heads/main\tHEAD\n56642e6a56fbecdb56e3e09b55b94d498ac9d4ab\tHEAD\n1b4dfba66ee5ffaefb112ea4ab9eec80cf920339\trefs/heads/archive/pre-completion-20261013\n56642e6a56fbecdb56e3e09b55b94d498ac9d4ab\trefs/heads/codex/complete-requirements\n56642e6a56fbecdb56e3e09b55b94d498ac9d4ab\trefs/heads/main\n"
+}

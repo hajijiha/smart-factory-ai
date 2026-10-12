@@ -106,4 +106,6 @@ Vision 속도는 조건별로분리한다. CPU단독조건은ONNX70.495FPS/PT32.
 
 [독립 검증 보고서](results/completion-v3/independent-review.md), [RUL·PSI 방법](prognostics.md),
 [원인 개입 방법](root-cause.md), [강건성의 실패와 한계](bias-validation.md)에 자세한 근거를 남겼다.
-원격게시·제출이력의최종검산은 별도 public-submission.json에 기록한다.
+독립 원격 조회로Public·default main·보관 브랜치·제출 이력 형식을 확인했다.
+[원격 게시 검산](results/completion-v3/public-submission.json)에 그 시점의SHA와16개커밋·위반0을 기록한다.
+그 뒤에는 이 검산 결과와 정상 복귀 기록만 증거로 추가한다.

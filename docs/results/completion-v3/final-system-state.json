@@ -1,0 +1,53 @@
+{
+  "passed": true,
+  "timestamp": "2026-10-12T15:23:55.235Z",
+  "url": "http://localhost:8084",
+  "counts": {
+    "sensors": 2173,
+    "inspections": 2074,
+    "defects": 50
+  },
+  "line": {
+    "running": true,
+    "motor_rpm": 954.9296585513717,
+    "timestamp": "2026-10-12T15:23:54.376Z",
+    "fault_level": 0,
+    "roller_velocity": 4.000000000000001,
+    "defect_probability": 0.02
+  },
+  "health": {
+    "event_id": "9bbafaa9-3dc6-4724-9bab-a0aa9c4b389c",
+    "timestamp": "2026-10-12T15:23:54.376Z",
+    "health_index": 95.0,
+    "status": "normal"
+  },
+  "prognostics": {
+    "rul": {
+      "reason": "A sustained increasing wear trend is required; stationary or recovering states do not have a validated finite RUL.",
+      "status": "outside_wear_scenario",
+      "samples": 242,
+      "rul_seconds": null,
+      "required_samples": 24,
+      "rms_slope_per_second": 1.5004610773511117e-06
+    },
+    "drift": {
+      "psi": 0.12356105325861305,
+      "status": "stable",
+      "samples": 128,
+      "threshold": 0.25,
+      "feature_psi": {
+        "rms": 0.03519828953394259,
+        "bpfi_amplitude": 0.05883311352454581,
+        "bpfo_amplitude": 0.05825346920463867,
+        "spectral_energy": 0.12356105325861305
+      },
+      "required_samples": 128,
+      "reference_samples": 3500,
+      "reference_dataset_sha256": "0e948a53632f3b48911ebc98c732d6803c4581e645e3071fbe7a4079023ff8b8"
+    },
+    "event_id": "9bbafaa9-3dc6-4724-9bab-a0aa9c4b389c",
+    "timestamp": "2026-10-12T15:23:54.376Z",
+    "drift_evaluated": false
+  },
+  "mqtt_connected": true
+}
