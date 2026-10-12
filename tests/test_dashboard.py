@@ -18,6 +18,7 @@ def dashboard(monkeypatch):
 
 
 def test_disconnected_broker_never_acknowledges_or_publishes(dashboard, monkeypatch):
+    """Verify disconnected broker never acknowledges or publishes."""
     sent = []
     monkeypatch.setattr(dashboard, 'client', SimpleNamespace(is_connected=lambda: False))
     monkeypatch.setattr(dashboard, 'publish', lambda *args, **kwargs: sent.append((args, kwargs)))
@@ -33,6 +34,7 @@ def test_disconnected_broker_never_acknowledges_or_publishes(dashboard, monkeypa
 
 @pytest.mark.parametrize('rc', [4, 15])
 def test_mqtt_queue_failure_never_claims_command_acceptance(dashboard, monkeypatch, rc):
+    """Verify mqtt queue failure never claims command acceptance."""
     monkeypatch.setattr(dashboard, 'publish', lambda *args, **kwargs: SimpleNamespace(rc=rc))
     with pytest.raises(HTTPException) as failure:
         dashboard.fault(dashboard.FaultCommand(fault_level=0))
@@ -40,9 +42,11 @@ def test_mqtt_queue_failure_never_claims_command_acceptance(dashboard, monkeypat
 
 
 def test_command_acceptance_requires_actual_queue_success(dashboard, monkeypatch):
+    """Verify command acceptance requires actual queue success."""
     sent = []
 
     def publish(client, topic, message, retain=False):
+        """Support publish."""
         sent.append((topic, message, retain))
         return SimpleNamespace(rc=0)
 
@@ -61,16 +65,19 @@ def test_command_acceptance_requires_actual_queue_success(dashboard, monkeypatch
 
 @pytest.mark.parametrize('value', [-1, 11, 3.5])
 def test_fault_control_rejects_out_of_range_or_fractional_levels(dashboard, value):
+    """Verify fault control rejects out of range or fractional levels."""
     with pytest.raises(ValidationError):
         dashboard.FaultCommand(fault_level=value)
 
 
 @pytest.mark.parametrize('value', [0, 10])
 def test_fault_control_accepts_both_supported_boundaries(dashboard, value):
+    """Verify fault control accepts both supported boundaries."""
     assert dashboard.FaultCommand(fault_level=value).fault_level == value
 
 
 def test_image_access_serves_only_existing_capture_formats_inside_data(dashboard, monkeypatch, tmp_path):
+    """Verify image access serves only existing capture formats inside data."""
     data = tmp_path/'data'
     data.mkdir()
     (data/'capture.jpg').write_bytes(b'image fixture')

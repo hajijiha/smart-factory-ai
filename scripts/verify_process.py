@@ -6,6 +6,7 @@ import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 from scripts.verify_runtime import ready, request, wait
+from factory.settings import verification_path, dashboard_url
 
 
 def equipment(snapshot, name):
@@ -90,7 +91,7 @@ def verify(base, output):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--url', default='http://localhost:8080')
-    parser.add_argument('--output', type=Path, default=Path('docs/results/process-control/runtime.json'))
+    parser.add_argument('--url', default=dashboard_url())
+    parser.add_argument('--output', type=Path, default=verification_path('process-runtime.json'))
     arguments = parser.parse_args()
     verify(arguments.url.rstrip('/'), arguments.output)

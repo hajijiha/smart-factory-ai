@@ -44,6 +44,7 @@ def apply_visibility_policy(scene, configuration):
 
 
 def generator_version():
+    """Resolve the explicit generator version and reject unsupported values."""
     value = os.environ.get('DATA_GENERATOR_VERSION', os.environ.get('GENERATOR_VERSION', 'v1'))
     if value not in ('v1', 'v2'):
         raise ValueError(f'Unsupported generator version: {value}')
@@ -51,6 +52,7 @@ def generator_version():
 
 
 def condition_id(parameters):
+    """Hash label-independent scenario parameters into a stable condition identity."""
     payload = json.dumps(parameters, sort_keys=True, separators=(',', ':'), allow_nan=False)
     return hashlib.sha256(payload.encode()).hexdigest()
 
@@ -141,9 +143,11 @@ def defect_primitives(class_id, family_seed, scale=1., darkness=.20):
     rng = np.random.default_rng(family_seed + (class_id + 1) * 1009)
     primitives = []
     def box(size, pose, color):
+        """Append a named box primitive with its physical dimensions, pose and material."""
         primitives.append({'name': f'part{len(primitives)}', 'shape': 'box',
             'size': [float(v) for v in size], 'pose': [float(v) for v in pose], 'color': color})
     def cylinder(radius, length, pose, color):
+        """Append a named cylinder primitive with dimensions, pose and material."""
         primitives.append({'name': f'part{len(primitives)}', 'shape': 'cylinder',
             'radius': float(radius), 'length': float(length), 'pose': [float(v) for v in pose], 'color': color})
     color = [float(darkness)] * 3
@@ -168,6 +172,7 @@ def defect_primitives(class_id, family_seed, scale=1., darkness=.20):
 
 
 def vision_scenes(group, configuration):
+    """Shuffle every class within a family and apply a shared visibility policy."""
     settings = configuration.get('data_generation', {})
     normal = int(settings.get('vision_normal_per_group', 30))
     defects = int(settings.get('vision_per_defect_per_group', 10))

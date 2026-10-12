@@ -13,6 +13,7 @@ from scripts.bias_metrics import load_protocol, sha256, write_report
 
 
 def load_comparison(root):
+    """Load frozen-model comparison results and reject mismatched model identities."""
     protocol, protocol_hash = load_protocol()
     reports = {}
     for name in ('baseline', 'candidate'):
@@ -52,6 +53,7 @@ def load_comparison(root):
 
 
 def validate_vision_rows(rows, spec):
+    """Require complete paired-image evaluation records with consistent identities."""
     by_image = defaultdict(list)
     for row in rows:
         if row['class_id'] not in (-1, 0, 1, 2):
@@ -71,6 +73,7 @@ def validate_vision_rows(rows, spec):
 
 
 def summarize(root):
+    """Combine immutable baseline and candidate evidence without refitting either model."""
     reports = load_comparison(root)
     summary = {
         'protocol_id': reports['candidate']['protocol_id'],
@@ -103,6 +106,7 @@ def summarize(root):
 
 
 def plot_comparison(root, reports):
+    """Plot condition-specific error rates from the saved model comparison."""
     colors = {'baseline': '#4169a1', 'candidate': '#00856b'}
     fig, axes = plt.subplots(2, 2, figsize=(12, 8), constrained_layout=True)
     for name, report in reports.items():

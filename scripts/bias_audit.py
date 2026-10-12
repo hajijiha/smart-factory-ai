@@ -192,6 +192,7 @@ def verify_capture_sync(sync, scene_id, camera_sim_time, joint_sim_time, report,
 
 
 def rendering_criteria(protocol):
+    """Validate the versioned thresholds used to judge paired rendering evidence."""
     gate = protocol['render_gate']
     return {key: gate[key] for key in ['minimum_bbox_iou', 'maximum_outside_roi_fraction',
             'rounding_tolerance_pixels', 'changed_pixel_channel_threshold', 'minimum_changed_pixels']}

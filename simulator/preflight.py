@@ -32,6 +32,7 @@ def preflight_scenes(configuration):
 
 
 def capture_preflight(node, destination):
+    """Collect a small balanced pilot before committing to bulk acquisition."""
     identity = specification(CONFIG, verify_plugin_binding())
     root = Path(destination)
     if root.exists() and any(root.iterdir()):

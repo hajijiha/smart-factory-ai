@@ -2,7 +2,7 @@ CREATE EXTENSION IF NOT EXISTS timescaledb;
 CREATE TABLE IF NOT EXISTS sensor_readings (
  timestamp TIMESTAMPTZ NOT NULL, sensor_id TEXT NOT NULL, event_id TEXT NOT NULL,
  vibration_x DOUBLE PRECISION, vibration_y DOUBLE PRECISION, vibration_z DOUBLE PRECISION,
- temperature DOUBLE PRECISION, fault_level INTEGER, rpm DOUBLE PRECISION, data JSONB NOT NULL,
+ temperature DOUBLE PRECISION, fault_level DOUBLE PRECISION, rpm DOUBLE PRECISION, data JSONB NOT NULL,
  PRIMARY KEY(timestamp, sensor_id)
 );
 SELECT create_hypertable('sensor_readings', 'timestamp', if_not_exists => TRUE);
@@ -25,4 +25,7 @@ CREATE TABLE IF NOT EXISTS line_status (
 );
 CREATE TABLE IF NOT EXISTS gradcam_artifacts (
  event_id TEXT PRIMARY KEY, gradcam_path TEXT NOT NULL, metadata JSONB NOT NULL
+);
+CREATE TABLE IF NOT EXISTS prognostics_readings (
+ event_id TEXT PRIMARY KEY, timestamp TIMESTAMPTZ NOT NULL, data JSONB NOT NULL
 );

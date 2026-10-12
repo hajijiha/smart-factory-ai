@@ -6,6 +6,14 @@ mqtt:
   host: broker
   port: 1883
   prefix: factory
+database:
+  host: database
+  port: 5432
+  user: factory
+  password: factory_local_demo
+  name: factory
+verification:
+  run: completion-v3
 sensor:
   sampling_hz: 2048
   window_samples: 2048
@@ -46,5 +54,26 @@ data_generation:
   vision_visibility_policy: visible_surface_proxy_v1
   vision_minimum_material_rgb_gap: 0.30
 dashboard:
+  url: http://localhost:8080
   refresh_ms: 2000
   correlation_window: 120
+rul:
+  seed: 20261012
+  units: 80
+  sequence_length: 24
+  hidden_size: 32
+  epochs: 100
+  patience: 15
+  batch: 128
+  sample_seconds: 1.0
+  lifetime_seconds: [100, 180]
+  failure_level: 9.0
+  maximum_rul_seconds: 180
+  minimum_rms_slope_per_second: 0.00025
+drift:
+  features: [rms, spectral_energy, bpfo_amplitude, bpfi_amplitude]
+  bins: 8
+  window_samples: 128
+  stride_samples: 32
+  threshold: 0.25
+  smoothing: 0.5

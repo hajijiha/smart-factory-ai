@@ -5,13 +5,16 @@ import time
 from datetime import datetime, timezone
 from pathlib import Path
 from scripts.verify_runtime import request, wait, ready
+from factory.settings import verification_path, dashboard_url
 
 
-def measure(base, hold_seconds, repeats):
+def measure(base, hold_seconds, repeats, output=None):
     """Observe repeated non-danger fault levels, preserve events and restore normal."""
     started_time = datetime.now(timezone.utc)
     started = started_time.isoformat()
     rows, steps = {}, []
+    output = Path(output) if output else verification_path('correlation-observations.json')
+    output.parent.mkdir(parents=True, exist_ok=True)
     ready(base)
     try:
         request(base,'/api/fault',{'fault_level':0})
@@ -38,7 +41,7 @@ def measure(base, hold_seconds, repeats):
                 steps.append(step)
                 print(f'Cycle {cycle+1}/{repeats}: level {level}, collected {len(rows)} events',flush=True)
     except Exception as error:
-        partial=Path(__file__).resolve().parents[1]/'docs/results/correlation-aborted.json'
+        partial=output.with_name(output.stem + '-aborted.json')
         partial.write_text(json.dumps({'started_at':started,'aborted':True,'reason':str(error),
             'steps':steps,'rows':list(rows.values()),'override_interlock':False},indent=2))
         raise
@@ -50,7 +53,6 @@ def measure(base, hold_seconds, repeats):
     for row in request(base,'/api/snapshot')['rows']:
         if row['event_id'] in rows:
             rows[row['event_id']]=row
-    output=Path(__file__).resolve().parents[1]/'docs/results/correlation-observations.json'
     output.write_text(json.dumps({'started_at':started,'hold_seconds':hold_seconds,
         'repeats':repeats,'steps':steps,'rows':list(rows.values()),
         'method':'5-second inspected-event buckets; Pearson, Spearman, positive vibration-leading lag 0–30 seconds',
@@ -60,8 +62,9 @@ def measure(base, hold_seconds, repeats):
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
-    parser.add_argument('--url',default='http://localhost:8080')
+    parser.add_argument('--url',default=dashboard_url())
     parser.add_argument('--hold-seconds',type=int,default=30)
     parser.add_argument('--repeats',type=int,default=3)
+    parser.add_argument('--output',type=Path)
     args=parser.parse_args()
-    measure(args.url,args.hold_seconds,args.repeats)
+    measure(args.url,args.hold_seconds,args.repeats,args.output)

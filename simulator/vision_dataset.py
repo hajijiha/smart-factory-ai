@@ -15,6 +15,7 @@ from simulator.render_validation import verify_rendering, check_render_report, c
 
 
 def generate_vision_v2(node):
+    """Acquire balanced 3D camera images only after paired-render validation passes."""
     isolated_directory(DATA, CONFIG)
     root = DATA / 'vision'
     identity = specification(CONFIG, verify_plugin_binding())

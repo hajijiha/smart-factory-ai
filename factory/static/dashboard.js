@@ -6,7 +6,7 @@
   const labels = {motor:'진단 모터', conveyor:'컨베이어', camera:'검사 카메라'};
   const codes = {motor:'M-01', conveyor:'C-01', camera:'V-01'};
   const names = {normal:'결함 미검출', caution:'주의', warning:'경고', danger:'위험', scratch:'스크래치', dent:'찍힘', contamination:'이물질'};
-  const sourceNames = {pdm:'모터 진단', controller:'라인 제어', camera:'품질 검사', simulator:'시뮬레이터', system:'시스템'};
+  const sourceNames = {pdm:'모터 진단', drift:'분포 감시', controller:'라인 제어', camera:'품질 검사', simulator:'시뮬레이터', system:'시스템'};
   const stateNames = new Set(['normal','caution','warning','danger','running','stopped','waiting','stale','attention','offline']);
   let snapshot = null, receivedAt = 0, online = false, selectedEquipment = 'motor';
   let selectedInspectionId = null, selectedInspection = null, displayedInspection = null;
@@ -144,6 +144,18 @@
     updateControls();
     observeCommand();
     if (h?.spectrum) text('frequency', 'BPFO ' + fmt(h.spectrum.bpfo_hz) + ' / BPFI ' + fmt(h.spectrum.bpfi_hz) + ' Hz');
+    renderPrognostics();
+  }
+  function renderPrognostics() {
+    const observation=snapshot?.prognostics, rul=observation?.rul, drift=observation?.drift;
+    const stamp=observation?.timestamp ? new Date(observation.timestamp).getTime() : null;
+    const current=online && stamp !== null && Number.isFinite(stamp) && Date.now()-stamp >= 0 && Date.now()-stamp <= 6000;
+    text('prognosticsTime', observation ? (current?'갱신 ':'마지막 관측 ')+time(observation.timestamp) : '관측 대기');
+    text('rulSeconds', current && num(rul?.rul_seconds) !== null ? fmt(rul.rul_seconds,1)+' 초' : !current && observation ? '관측 지연' : rul?.status==='outside_wear_scenario' ? '추정 조건 대기' : '수집 중');
+    text('rulNote', !current && observation ? '새 진동 관측이 도착하면 예측을 갱신합니다.' : rul?.status==='estimated' ? '최근 '+rul.samples+'개 진동 창 · 합성 운전 시간 기준' : rul?.status==='outside_wear_scenario' ? '지속적인 열화 추세가 관측될 때 수명을 추정합니다.' : '진동 창 '+(rul?.samples || 0)+' / '+(rul?.required_samples || 24)+'개 수집');
+    text('psiScore', current && num(drift?.psi)!==null ? 'PSI '+fmt(drift.psi,3) : !current && observation ? '관측 지연' : '수집 중');
+    text('psiNote', current && num(drift?.psi)!==null ? (drift.status==='drift'?'분포 변화 감지':'학습 분포 범위')+' · 기준 '+fmt(drift.threshold,2)+' · 최근 '+drift.samples+'개 창' : '진동 창 '+(drift?.samples || 0)+' / '+(drift?.required_samples || 128)+'개 수집');
+    $('psiScore').classList.toggle('drift-detected',current && drift?.status==='drift');
   }
   function renderDetail() {
     const current = equipment(selectedEquipment);

@@ -18,6 +18,7 @@ from simulator.render_validation import compare_pixels, paired_scenes, CaptureFr
 
 
 def test_opt_in_and_invalid_versions(monkeypatch):
+    """Verify opt in and invalid versions."""
     monkeypatch.delenv('DATA_GENERATOR_VERSION', raising=False)
     monkeypatch.delenv('GENERATOR_VERSION', raising=False)
     assert generator_version() == 'v1'
@@ -29,6 +30,7 @@ def test_opt_in_and_invalid_versions(monkeypatch):
 
 
 def test_sensor_group_counts_severity_coverage_and_fault_balance():
+    """Verify sensor group counts severity coverage and fault balance."""
     counts, families, conditions, levels, types = Counter(), defaultdict(set), defaultdict(set), Counter(), Counter()
     schedule = list(groups('sensor', CONFIG))
     assert len(schedule) == 100
@@ -55,6 +57,7 @@ def test_sensor_group_counts_severity_coverage_and_fault_balance():
 
 
 def test_quick_sensor_split_is_declared_and_supported():
+    """Verify quick sensor split is declared and supported."""
     configuration = copy.deepcopy(CONFIG)
     configuration['data_generation']['sensor_groups'] = 20
     configuration['data_generation']['sensor_split_groups'] = [10, 5, 5]
@@ -65,6 +68,7 @@ def test_quick_sensor_split_is_declared_and_supported():
 
 
 def test_v2_noise_is_independent_of_severity_and_legacy_wave_is_unchanged():
+    """Verify v2 noise is independent of severity and legacy wave is unchanged."""
     p = next(groups('sensor', CONFIG))['parameters']
     # Zero fault severity must not inject a noise difference due only to the type.
     a = vibration(0, 150, .4, np.random.default_rng(10), fault_type='normal', parameters=p)
@@ -81,6 +85,7 @@ def test_v2_noise_is_independent_of_severity_and_legacy_wave_is_unchanged():
 
 
 def test_vision_shuffle_group_balance_visibility_and_primitive_variation():
+    """Verify vision shuffle group balance visibility and primitive variation."""
     counts, sizes, families = Counter(), defaultdict(set), defaultdict(set)
     for group in groups('vision', CONFIG):
         scenes = list(vision_scenes(group, CONFIG))
@@ -108,6 +113,7 @@ def test_vision_shuffle_group_balance_visibility_and_primitive_variation():
 
 
 def test_rendered_v2_slot_names_and_legacy_world(monkeypatch):
+    """Verify rendered v2 slot names and legacy world."""
     monkeypatch.setenv('DATA_GENERATOR_VERSION','v2')
     document = ET.fromstring(world.build())
     for class_id, count in [(0,5),(1,2),(2,5)]:
@@ -120,6 +126,7 @@ def test_rendered_v2_slot_names_and_legacy_world(monkeypatch):
 
 
 def test_cache_fingerprint_integrity_and_baseline_write_protection(tmp_path, monkeypatch):
+    """Verify cache fingerprint integrity and baseline write protection."""
     identity = specification(CONFIG)
     root = tmp_path/'new-data'
     assert not cached(root, identity, ('dataset.npz',))
@@ -145,6 +152,7 @@ def test_cache_fingerprint_integrity_and_baseline_write_protection(tmp_path, mon
 
 
 def test_projection_refuses_invisible_defect():
+    """Verify projection refuses invisible defect."""
     group = next(groups('vision',CONFIG))
     scene = next(scene for scene in vision_scenes(group,CONFIG) if scene['class_id'] >= 0)
     scene['camera_pose'] = [0,0,.2,0,np.pi/2,0]
@@ -153,6 +161,7 @@ def test_projection_refuses_invisible_defect():
 
 
 def test_runtime_plugin_binding_is_part_of_dataset_identity_and_stale_source_fails(tmp_path, monkeypatch):
+    """Verify runtime plugin binding is part of dataset identity and stale source fails."""
     binding = {'schema_version':1, 'source_path':'simulator/plugin/world.cpp',
         'library_path':'simulator/libfactory_world.so', 'source_sha256':'original', 'library_sha256':'binary'}
     assert specification(CONFIG,binding)['fingerprint'] != specification(CONFIG)['fingerprint']
@@ -167,6 +176,7 @@ def test_runtime_plugin_binding_is_part_of_dataset_identity_and_stale_source_fai
 
 
 def test_pixel_gate_detects_large_rendering_scale_errors_and_allows_raster_rounding():
+    """Verify pixel gate detects large rendering scale errors and allows raster rounding."""
     before=np.zeros((80,80,3),dtype=np.uint8)
     correct=before.copy(); correct[21:39,21:39]=180
     close=compare_pixels(before,correct,[20,20,40,40])
@@ -178,6 +188,7 @@ def test_pixel_gate_detects_large_rendering_scale_errors_and_allows_raster_round
 
 
 def test_render_validation_pairs_change_only_defect_geometry_and_cover_case_matrix():
+    """Verify render validation pairs change only defect geometry and cover case matrix."""
     pairs=list(paired_scenes(CONFIG))
     assert len(pairs)==9
     assert {(after['class_id'],after['defect_scale']) for _,before,after in pairs}=={(c,s) for c in range(3) for s in (.68,.93,1.18)}
@@ -190,6 +201,7 @@ def test_render_validation_pairs_change_only_defect_geometry_and_cover_case_matr
 
 
 def test_capture_freshness_rejects_pre_barrier_frames_and_counts_three_new_frames():
+    """Verify capture freshness rejects pre barrier frames and counts three new frames."""
     gate=CaptureFreshness(10.,100.)
     # Large simulation progress and many old frames cannot bypass wall settling.
     assert not gate.ready(10.24,500,10.24,105.,105.)
@@ -204,6 +216,7 @@ def test_capture_freshness_rejects_pre_barrier_frames_and_counts_three_new_frame
 
 
 def test_capture_freshness_also_requires_post_ack_camera_and_joint_stamps():
+    """Verify capture freshness also requires post ack camera and joint stamps."""
     gate=CaptureFreshness(5.,50.)
     assert not gate.ready(5.30,10,5.29,49.,55.)
     assert not gate.ready(5.35,11,5.34,55.,49.)
@@ -212,6 +225,7 @@ def test_capture_freshness_also_requires_post_ack_camera_and_joint_stamps():
 
 
 def test_capture_freshness_does_not_count_duplicate_camera_timestamps():
+    """Verify capture freshness does not count duplicate camera timestamps."""
     gate=CaptureFreshness(5.,50.)
     assert not gate.ready(5.30,10,5.29,55.,55.)
     assert not gate.ready(5.35,11,5.34,55.,55.)
@@ -222,6 +236,7 @@ def test_capture_freshness_does_not_count_duplicate_camera_timestamps():
 
 
 def test_scene_application_requires_three_distinct_acknowledged_rounds_on_fixed_schedule():
+    """Verify scene application requires three distinct acknowledged rounds on fixed schedule."""
     replay=SceneApplication('scene-a','transaction-1')
     for round_number in range(3):
         now=10.+round_number*.15
@@ -245,6 +260,7 @@ def test_scene_application_requires_three_distinct_acknowledged_rounds_on_fixed_
 
 
 def test_scene_application_rejects_ack_that_does_not_disclose_physics_scope():
+    """Verify scene application rejects ack that does not disclose physics scope."""
     replay=SceneApplication('scene-a','transaction-1')
     replay.sent(10.)
     ack={'scene_id':'scene-a',**replay.fields(),'sim_time':100.}
@@ -253,6 +269,7 @@ def test_scene_application_rejects_ack_that_does_not_disclose_physics_scope():
 
 
 def test_raw_render_pair_is_lossless_bound_to_scenes_and_modified_pixels_are_rejected(tmp_path):
+    """Verify raw render pair is lossless bound to scenes and modified pixels are rejected."""
     _,normal,defect=next(paired_scenes(CONFIG))
     label=project_bbox(defect)
     _,cx,cy,w,h=label
@@ -263,7 +280,9 @@ def test_raw_render_pair_is_lossless_bound_to_scenes_and_modified_pixels_are_rej
     x0,y0,x1,y1=np.rint(expected).astype(int)
     after[y0:y1,x0:x1]=180
     class Camera:
+        """Support Camera."""
         def capture(self,scene):
+            """Support capture."""
             self.last_capture_info={'scene_id':scene['scene_id']}
             return (before if scene['class_id']<0 else after).copy(),{'sim_time':1.},1.
     record,_,captured,_,_=capture_render_pair(Camera(),tmp_path,'fixed-pair',normal,defect,'render-pairs','test-fingerprint')
@@ -277,6 +296,7 @@ def test_raw_render_pair_is_lossless_bound_to_scenes_and_modified_pixels_are_rej
 
 
 def test_shared_visibility_policy_applies_to_every_class_and_preserves_raw_colors():
+    """Verify shared visibility policy applies to every class and preserves raw colors."""
     seen=set()
     for group in groups('vision',CONFIG):
         for scene in vision_scenes(group,CONFIG):
@@ -295,6 +315,7 @@ def test_shared_visibility_policy_applies_to_every_class_and_preserves_raw_color
 
 
 def test_visibility_mapping_does_not_change_nuisance_schedule_geometry_or_labels(monkeypatch):
+    """Verify visibility mapping does not change nuisance schedule geometry or labels."""
     group=next(groups('vision',CONFIG))
     monkeypatch.setattr(scenarios,'apply_visibility_policy',lambda scene,configuration:scene)
     previous=list(vision_scenes(group,CONFIG))
@@ -311,6 +332,7 @@ def test_visibility_mapping_does_not_change_nuisance_schedule_geometry_or_labels
 
 
 def test_visibility_mapping_is_label_independent_idempotent_and_rejects_unsupported_material():
+    """Verify visibility mapping is label independent idempotent and rejects unsupported material."""
     scene=next(vision_scenes(next(groups('vision',CONFIG)),CONFIG))
     normal={**scene,'class_id':-1,'defect_primitives':[]}
     mapped=apply_visibility_policy(scene,CONFIG)
@@ -322,6 +344,7 @@ def test_visibility_mapping_is_label_independent_idempotent_and_rejects_unsuppor
 
 
 def test_visibility_policy_rejects_unknown_policy_without_resampling():
+    """Verify visibility policy rejects unknown policy without resampling."""
     scene=next(vision_scenes(next(groups('vision',CONFIG)),CONFIG))
     configuration=copy.deepcopy(CONFIG)
     configuration['data_generation']['vision_visibility_policy']='unknown'

@@ -1,0 +1,2096 @@
+{
+  "started_at": "2026-10-12T14:58:06.744804+00:00",
+  "health": {
+    "database": "ok",
+    "mqtt": true,
+    "timestamp": "2026-10-12T14:58:09.115Z"
+  },
+  "normal": {
+    "server_timestamp": "2026-10-12T14:58:11.794Z",
+    "process": {
+      "observed_at": "2026-10-12T14:58:11.894191+00:00",
+      "freshness_seconds": 5,
+      "mqtt_connected": true,
+      "state": "running",
+      "label": "공정 가동",
+      "reset_ready": false,
+      "reset_reason": "현재 가동 중",
+      "equipment": [
+        {
+          "id": "motor",
+          "label": "진단 모터",
+          "observed_at": "2026-10-12T14:58:11.001000+00:00",
+          "age_seconds": 0.893,
+          "fresh": true,
+          "metrics": {
+            "health_index": 95.0,
+            "vibration_rms": 0.047629249962047496,
+            "temperature": 35.48027848519328,
+            "rpm": 954.9296585513719,
+            "inference_ms": 4.009035999843036,
+            "health_observed_at": "2026-10-12T14:58:11.001000+00:00",
+            "sensor_observed_at": "2026-10-12T14:58:11.001000+00:00"
+          },
+          "state": "normal",
+          "status_label": "정상",
+          "reason": "측정 진동의 FFT·관리도·Autoencoder 진단"
+        },
+        {
+          "id": "conveyor",
+          "label": "컨베이어",
+          "observed_at": "2026-10-12T14:58:11.001000+00:00",
+          "age_seconds": 0.893,
+          "fresh": true,
+          "metrics": {
+            "roller_velocity": 4.000000000000001,
+            "fault_level": 0,
+            "motor_rpm": 954.9296585513719,
+            "running_requested": true
+          },
+          "state": "running",
+          "status_label": "가동",
+          "reason": "Gazebo 롤러 회전 관측"
+        },
+        {
+          "id": "camera",
+          "label": "검사 카메라",
+          "observed_at": "2026-10-12T14:58:11.001000+00:00",
+          "age_seconds": 0.893,
+          "fresh": true,
+          "metrics": {
+            "last_inspection_at": "2026-10-12T14:58:11.001000+00:00",
+            "defect_type": "normal",
+            "detections": 0,
+            "inference_ms": 21.691452000595746
+          },
+          "state": "normal",
+          "status_label": "결함 미검출",
+          "reason": "현재 검사 영상에서 결함이 검출되지 않았습니다."
+        }
+      ],
+      "recent_events": [
+        {
+          "timestamp": "2026-10-12T14:58:11.001000+00:00",
+          "source": "camera",
+          "severity": "normal",
+          "message": "검사 완료 · 결함 미검출"
+        },
+        {
+          "timestamp": "2026-10-12T14:58:09.972000+00:00",
+          "source": "camera",
+          "severity": "normal",
+          "message": "검사 완료 · 결함 미검출"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:56.720000+00:00",
+          "source": "drift",
+          "severity": "warning",
+          "message": "학습 분포 변화 감지: PSI 4.706 ≥ 0.25. 고장·운전 조건·센서 변화를 확인하세요."
+        },
+        {
+          "timestamp": "2026-10-12T14:57:16.202000+00:00",
+          "source": "pdm",
+          "severity": "danger",
+          "message": "설비 danger / HI 38.93"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:15.110000+00:00",
+          "source": "pdm",
+          "severity": "warning",
+          "message": "설비 warning / HI 41.19"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:14.055000+00:00",
+          "source": "pdm",
+          "severity": "danger",
+          "message": "설비 danger / HI 37.72"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:13.005000+00:00",
+          "source": "pdm",
+          "severity": "warning",
+          "message": "설비 warning / HI 40.56"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:09.782000+00:00",
+          "source": "pdm",
+          "severity": "danger",
+          "message": "설비 danger / HI 35.78"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:05.644000+00:00",
+          "source": "pdm",
+          "severity": "warning",
+          "message": "설비 warning / HI 45.8"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:03.571000+00:00",
+          "source": "pdm",
+          "severity": "danger",
+          "message": "설비 danger / HI 35.91"
+        },
+        {
+          "timestamp": "2026-10-12T14:56:51.131000+00:00",
+          "source": "pdm",
+          "severity": "warning",
+          "message": "설비 warning / HI 54.99"
+        },
+        {
+          "timestamp": "2026-10-12T14:56:50.099000+00:00",
+          "source": "pdm",
+          "severity": "danger",
+          "message": "설비 danger / HI 39.7"
+        },
+        {
+          "timestamp": "2026-10-12T14:56:50.099000+00:00",
+          "source": "camera",
+          "severity": "warning",
+          "message": "검사 완료 · 스크래치"
+        },
+        {
+          "timestamp": "2026-10-12T14:56:49.071000+00:00",
+          "source": "camera",
+          "severity": "normal",
+          "message": "검사 완료 · 결함 미검출"
+        },
+        {
+          "timestamp": "2026-10-12T14:56:48.043000+00:00",
+          "source": "camera",
+          "severity": "warning",
+          "message": "검사 완료 · 이물질"
+        }
+      ]
+    },
+    "line": {
+      "running": true,
+      "motor_rpm": 954.9296585513719,
+      "timestamp": "2026-10-12T14:58:11.001Z",
+      "fault_level": 0,
+      "roller_velocity": 4.000000000000001,
+      "defect_probability": 0.02
+    },
+    "counts": {
+      "sensors": 696,
+      "inspections": 606,
+      "defects": 23
+    },
+    "health": {
+      "event_id": "b5f61553-4cd2-4877-b2a8-62d297b9fdeb",
+      "timestamp": "2026-10-12T14:58:11.001Z",
+      "status": "normal",
+      "health_index": 95.0
+    },
+    "inspection_events": [
+      {
+        "event_id": "b5f61553-4cd2-4877-b2a8-62d297b9fdeb",
+        "timestamp": "2026-10-12T14:58:11.001000+00:00",
+        "image_path": "inspections/b5f61553-4cd2-4877-b2a8-62d297b9fdeb.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 95.0,
+        "inference_ms": 21.691452000595746,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "81baaa9c-7412-406d-b6fb-074fa0b56616",
+        "timestamp": "2026-10-12T14:58:09.972000+00:00",
+        "image_path": "inspections/81baaa9c-7412-406d-b6fb-074fa0b56616.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 95.0,
+        "inference_ms": 26.999765999789815,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "9d253d29-011a-429f-a15a-b8b2b209cef3",
+        "timestamp": "2026-10-12T14:56:50.099000+00:00",
+        "image_path": "inspections/9d253d29-011a-429f-a15a-b8b2b209cef3.jpg",
+        "gradcam_path": "inspections/9d253d29-011a-429f-a15a-b8b2b209cef3_gradcam.jpg",
+        "health_index_at_time": 39.7,
+        "inference_ms": 23.280645000340883,
+        "detections": [
+          {
+            "defect_type": "scratch",
+            "confidence": 0.8289620876312256,
+            "bbox": [
+              110.96299171447754,
+              69.97380256652832,
+              145.55441856384277,
+              137.78993606567383
+            ]
+          }
+        ],
+        "defective": true,
+        "defect_type": "scratch"
+      },
+      {
+        "event_id": "f8e7eff2-3e93-4660-ab40-fda66957ba3d",
+        "timestamp": "2026-10-12T14:56:49.071000+00:00",
+        "image_path": "inspections/f8e7eff2-3e93-4660-ab40-fda66957ba3d.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 53.17,
+        "inference_ms": 25.71339400128636,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "d9f67805-0c38-4844-811f-ecace1f230d7",
+        "timestamp": "2026-10-12T14:56:48.043000+00:00",
+        "image_path": "inspections/d9f67805-0c38-4844-811f-ecace1f230d7.jpg",
+        "gradcam_path": "inspections/d9f67805-0c38-4844-811f-ecace1f230d7_gradcam.jpg",
+        "health_index_at_time": 53.78,
+        "inference_ms": 27.598822000072687,
+        "detections": [
+          {
+            "defect_type": "contamination",
+            "confidence": 0.898594081401825,
+            "bbox": [
+              136.67396545410156,
+              28.168363571166992,
+              171.75922393798828,
+              59.42564010620117
+            ]
+          }
+        ],
+        "defective": true,
+        "defect_type": "contamination"
+      },
+      {
+        "event_id": "35b3d585-d661-48e6-a80f-7f9424681944",
+        "timestamp": "2026-10-12T14:56:47.015000+00:00",
+        "image_path": "inspections/35b3d585-d661-48e6-a80f-7f9424681944.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 55.35,
+        "inference_ms": 23.04565800113778,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "9fe81216-dfc6-4cf6-9c23-a513986b44e2",
+        "timestamp": "2026-10-12T14:56:45.984000+00:00",
+        "image_path": "inspections/9fe81216-dfc6-4cf6-9c23-a513986b44e2.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 56.54,
+        "inference_ms": 19.643972998892423,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "d6240dde-c571-4185-9d74-d8a7e294bccc",
+        "timestamp": "2026-10-12T14:56:44.953000+00:00",
+        "image_path": "inspections/d6240dde-c571-4185-9d74-d8a7e294bccc.jpg",
+        "gradcam_path": "inspections/d6240dde-c571-4185-9d74-d8a7e294bccc_gradcam.jpg",
+        "health_index_at_time": 59.71,
+        "inference_ms": 20.887188000415335,
+        "detections": [
+          {
+            "defect_type": "dent",
+            "confidence": 0.9167879819869995,
+            "bbox": [
+              129.55280303955078,
+              86.2452507019043,
+              165.97837448120117,
+              122.54436492919922
+            ]
+          }
+        ],
+        "defective": true,
+        "defect_type": "dent"
+      },
+      {
+        "event_id": "79fe4c00-f2c2-4420-b821-b2c4155705cb",
+        "timestamp": "2026-10-12T14:56:43.915000+00:00",
+        "image_path": "inspections/79fe4c00-f2c2-4420-b821-b2c4155705cb.jpg",
+        "gradcam_path": "inspections/79fe4c00-f2c2-4420-b821-b2c4155705cb_gradcam.jpg",
+        "health_index_at_time": 48.51,
+        "inference_ms": 28.80656699926476,
+        "detections": [
+          {
+            "defect_type": "dent",
+            "confidence": 0.901633083820343,
+            "bbox": [
+              197.55138397216797,
+              76.2993049621582,
+              233.35737228393555,
+              112.49576568603516
+            ]
+          }
+        ],
+        "defective": true,
+        "defect_type": "dent"
+      },
+      {
+        "event_id": "9e632dbc-99f6-419f-aa4f-37dba87752ed",
+        "timestamp": "2026-10-12T14:56:42.886000+00:00",
+        "image_path": "inspections/9e632dbc-99f6-419f-aa4f-37dba87752ed.jpg",
+        "gradcam_path": "inspections/9e632dbc-99f6-419f-aa4f-37dba87752ed_gradcam.jpg",
+        "health_index_at_time": 58.57,
+        "inference_ms": 38.06014100155153,
+        "detections": [
+          {
+            "defect_type": "scratch",
+            "confidence": 0.6876674890518188,
+            "bbox": [
+              136.06817245483398,
+              102.32148170471191,
+              152.86314010620117,
+              154.719820022583
+            ]
+          }
+        ],
+        "defective": true,
+        "defect_type": "scratch"
+      },
+      {
+        "event_id": "210e8ecd-4aa6-459a-8fb3-be10beb9f548",
+        "timestamp": "2026-10-12T14:56:41.834000+00:00",
+        "image_path": "inspections/210e8ecd-4aa6-459a-8fb3-be10beb9f548.jpg",
+        "gradcam_path": "inspections/210e8ecd-4aa6-459a-8fb3-be10beb9f548_gradcam.jpg",
+        "health_index_at_time": 58.23,
+        "inference_ms": 40.18062300019665,
+        "detections": [
+          {
+            "defect_type": "scratch",
+            "confidence": 0.7217227220535278,
+            "bbox": [
+              136.0631561279297,
+              102.13071823120117,
+              153.42674255371094,
+              154.92786407470703
+            ]
+          }
+        ],
+        "defective": true,
+        "defect_type": "scratch"
+      },
+      {
+        "event_id": "8cf55528-9060-4d54-a578-537c3049a4da",
+        "timestamp": "2026-10-12T14:56:40.782000+00:00",
+        "image_path": "inspections/8cf55528-9060-4d54-a578-537c3049a4da.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 67.38,
+        "inference_ms": 69.8568099996919,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      }
+    ]
+  },
+  "danger_stop": {
+    "server_timestamp": "2026-10-12T14:58:16.750Z",
+    "process": {
+      "observed_at": "2026-10-12T14:58:16.830605+00:00",
+      "freshness_seconds": 5,
+      "mqtt_connected": true,
+      "state": "stopped",
+      "label": "라인 정지",
+      "reset_ready": false,
+      "reset_reason": "적용 고장 레벨을 0으로 낮추세요.",
+      "equipment": [
+        {
+          "id": "motor",
+          "label": "진단 모터",
+          "observed_at": "2026-10-12T14:58:16.219000+00:00",
+          "age_seconds": 0.612,
+          "fresh": true,
+          "metrics": {
+            "health_index": 9.14,
+            "vibration_rms": 0.6280897287377322,
+            "temperature": 54.63696809489402,
+            "rpm": 954.9296585513723,
+            "inference_ms": 2.502436998838675,
+            "health_observed_at": "2026-10-12T14:58:16.219000+00:00",
+            "sensor_observed_at": "2026-10-12T14:58:16.219000+00:00"
+          },
+          "state": "danger",
+          "status_label": "위험",
+          "reason": "측정 진동의 FFT·관리도·Autoencoder 진단"
+        },
+        {
+          "id": "conveyor",
+          "label": "컨베이어",
+          "observed_at": "2026-10-12T14:58:16.219000+00:00",
+          "age_seconds": 0.612,
+          "fresh": true,
+          "metrics": {
+            "roller_velocity": 9.62964972193618e-35,
+            "fault_level": 10,
+            "motor_rpm": 954.9296585513723,
+            "running_requested": false
+          },
+          "state": "stopped",
+          "status_label": "정지 · 재시작 대기",
+          "reason": "롤러 정지 확인 · 진단 모터는 계속 관측"
+        },
+        {
+          "id": "camera",
+          "label": "검사 카메라",
+          "observed_at": "2026-10-12T14:58:15.144000+00:00",
+          "age_seconds": 1.687,
+          "fresh": true,
+          "metrics": {
+            "last_inspection_at": "2026-10-12T14:58:15.144000+00:00",
+            "defect_type": "normal",
+            "detections": 0,
+            "inference_ms": 36.61280300002545
+          },
+          "state": "stopped",
+          "status_label": "검사 일시정지",
+          "reason": "라인 정지 중 · 마지막 검사 영상 보관"
+        }
+      ],
+      "recent_events": [
+        {
+          "timestamp": "2026-10-12T14:58:15.144000+00:00",
+          "source": "pdm",
+          "severity": "danger",
+          "message": "설비 danger / HI 4.19"
+        },
+        {
+          "timestamp": "2026-10-12T14:58:15.144000+00:00",
+          "source": "camera",
+          "severity": "normal",
+          "message": "검사 완료 · 결함 미검출"
+        },
+        {
+          "timestamp": "2026-10-12T14:58:14.114000+00:00",
+          "source": "camera",
+          "severity": "normal",
+          "message": "검사 완료 · 결함 미검출"
+        },
+        {
+          "timestamp": "2026-10-12T14:58:13.076000+00:00",
+          "source": "camera",
+          "severity": "normal",
+          "message": "검사 완료 · 결함 미검출"
+        },
+        {
+          "timestamp": "2026-10-12T14:58:12.049000+00:00",
+          "source": "camera",
+          "severity": "normal",
+          "message": "검사 완료 · 결함 미검출"
+        },
+        {
+          "timestamp": "2026-10-12T14:58:11.001000+00:00",
+          "source": "camera",
+          "severity": "normal",
+          "message": "검사 완료 · 결함 미검출"
+        },
+        {
+          "timestamp": "2026-10-12T14:58:09.972000+00:00",
+          "source": "camera",
+          "severity": "normal",
+          "message": "검사 완료 · 결함 미검출"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:56.720000+00:00",
+          "source": "drift",
+          "severity": "warning",
+          "message": "학습 분포 변화 감지: PSI 4.706 ≥ 0.25. 고장·운전 조건·센서 변화를 확인하세요."
+        },
+        {
+          "timestamp": "2026-10-12T14:57:16.202000+00:00",
+          "source": "pdm",
+          "severity": "danger",
+          "message": "설비 danger / HI 38.93"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:15.110000+00:00",
+          "source": "pdm",
+          "severity": "warning",
+          "message": "설비 warning / HI 41.19"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:14.055000+00:00",
+          "source": "pdm",
+          "severity": "danger",
+          "message": "설비 danger / HI 37.72"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:13.005000+00:00",
+          "source": "pdm",
+          "severity": "warning",
+          "message": "설비 warning / HI 40.56"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:09.782000+00:00",
+          "source": "pdm",
+          "severity": "danger",
+          "message": "설비 danger / HI 35.78"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:05.644000+00:00",
+          "source": "pdm",
+          "severity": "warning",
+          "message": "설비 warning / HI 45.8"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:03.571000+00:00",
+          "source": "pdm",
+          "severity": "danger",
+          "message": "설비 danger / HI 35.91"
+        }
+      ]
+    },
+    "line": {
+      "running": false,
+      "motor_rpm": 954.9296585513723,
+      "timestamp": "2026-10-12T14:58:16.219Z",
+      "fault_level": 10,
+      "roller_velocity": 9.62964972193618e-35,
+      "defect_probability": 0.8700000000000001
+    },
+    "counts": {
+      "sensors": 701,
+      "inspections": 610,
+      "defects": 23
+    },
+    "health": {
+      "event_id": "d5285e16-8696-405e-99ce-3771ab0df6fe",
+      "timestamp": "2026-10-12T14:58:16.219Z",
+      "status": "danger",
+      "health_index": 9.14
+    },
+    "inspection_events": [
+      {
+        "event_id": "20abfdef-2454-456d-9069-7f54f4d4e3bc",
+        "timestamp": "2026-10-12T14:58:15.144000+00:00",
+        "image_path": "inspections/20abfdef-2454-456d-9069-7f54f4d4e3bc.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 4.19,
+        "inference_ms": 36.61280300002545,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "3005a6e6-d297-46c0-b837-6315a1ccc0ba",
+        "timestamp": "2026-10-12T14:58:14.114000+00:00",
+        "image_path": "inspections/3005a6e6-d297-46c0-b837-6315a1ccc0ba.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 94.95,
+        "inference_ms": 49.28149800070969,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "37af8113-c302-4fc7-b640-09a8e3541faf",
+        "timestamp": "2026-10-12T14:58:13.076000+00:00",
+        "image_path": "inspections/37af8113-c302-4fc7-b640-09a8e3541faf.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 95.0,
+        "inference_ms": 29.109211998729734,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "2a4ff4a0-a6ed-4d0e-ae5a-8f68790e53dd",
+        "timestamp": "2026-10-12T14:58:12.049000+00:00",
+        "image_path": "inspections/2a4ff4a0-a6ed-4d0e-ae5a-8f68790e53dd.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 94.91,
+        "inference_ms": 85.18165500026953,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "b5f61553-4cd2-4877-b2a8-62d297b9fdeb",
+        "timestamp": "2026-10-12T14:58:11.001000+00:00",
+        "image_path": "inspections/b5f61553-4cd2-4877-b2a8-62d297b9fdeb.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 95.0,
+        "inference_ms": 21.691452000595746,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "81baaa9c-7412-406d-b6fb-074fa0b56616",
+        "timestamp": "2026-10-12T14:58:09.972000+00:00",
+        "image_path": "inspections/81baaa9c-7412-406d-b6fb-074fa0b56616.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 95.0,
+        "inference_ms": 26.999765999789815,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "9d253d29-011a-429f-a15a-b8b2b209cef3",
+        "timestamp": "2026-10-12T14:56:50.099000+00:00",
+        "image_path": "inspections/9d253d29-011a-429f-a15a-b8b2b209cef3.jpg",
+        "gradcam_path": "inspections/9d253d29-011a-429f-a15a-b8b2b209cef3_gradcam.jpg",
+        "health_index_at_time": 39.7,
+        "inference_ms": 23.280645000340883,
+        "detections": [
+          {
+            "defect_type": "scratch",
+            "confidence": 0.8289620876312256,
+            "bbox": [
+              110.96299171447754,
+              69.97380256652832,
+              145.55441856384277,
+              137.78993606567383
+            ]
+          }
+        ],
+        "defective": true,
+        "defect_type": "scratch"
+      },
+      {
+        "event_id": "f8e7eff2-3e93-4660-ab40-fda66957ba3d",
+        "timestamp": "2026-10-12T14:56:49.071000+00:00",
+        "image_path": "inspections/f8e7eff2-3e93-4660-ab40-fda66957ba3d.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 53.17,
+        "inference_ms": 25.71339400128636,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "d9f67805-0c38-4844-811f-ecace1f230d7",
+        "timestamp": "2026-10-12T14:56:48.043000+00:00",
+        "image_path": "inspections/d9f67805-0c38-4844-811f-ecace1f230d7.jpg",
+        "gradcam_path": "inspections/d9f67805-0c38-4844-811f-ecace1f230d7_gradcam.jpg",
+        "health_index_at_time": 53.78,
+        "inference_ms": 27.598822000072687,
+        "detections": [
+          {
+            "defect_type": "contamination",
+            "confidence": 0.898594081401825,
+            "bbox": [
+              136.67396545410156,
+              28.168363571166992,
+              171.75922393798828,
+              59.42564010620117
+            ]
+          }
+        ],
+        "defective": true,
+        "defect_type": "contamination"
+      },
+      {
+        "event_id": "35b3d585-d661-48e6-a80f-7f9424681944",
+        "timestamp": "2026-10-12T14:56:47.015000+00:00",
+        "image_path": "inspections/35b3d585-d661-48e6-a80f-7f9424681944.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 55.35,
+        "inference_ms": 23.04565800113778,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "9fe81216-dfc6-4cf6-9c23-a513986b44e2",
+        "timestamp": "2026-10-12T14:56:45.984000+00:00",
+        "image_path": "inspections/9fe81216-dfc6-4cf6-9c23-a513986b44e2.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 56.54,
+        "inference_ms": 19.643972998892423,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "d6240dde-c571-4185-9d74-d8a7e294bccc",
+        "timestamp": "2026-10-12T14:56:44.953000+00:00",
+        "image_path": "inspections/d6240dde-c571-4185-9d74-d8a7e294bccc.jpg",
+        "gradcam_path": "inspections/d6240dde-c571-4185-9d74-d8a7e294bccc_gradcam.jpg",
+        "health_index_at_time": 59.71,
+        "inference_ms": 20.887188000415335,
+        "detections": [
+          {
+            "defect_type": "dent",
+            "confidence": 0.9167879819869995,
+            "bbox": [
+              129.55280303955078,
+              86.2452507019043,
+              165.97837448120117,
+              122.54436492919922
+            ]
+          }
+        ],
+        "defective": true,
+        "defect_type": "dent"
+      }
+    ]
+  },
+  "unsafe_reset_rejected": {
+    "server_timestamp": "2026-10-12T14:58:16.933Z",
+    "process": {
+      "observed_at": "2026-10-12T14:58:17.001155+00:00",
+      "freshness_seconds": 5,
+      "mqtt_connected": true,
+      "state": "stopped",
+      "label": "라인 정지",
+      "reset_ready": false,
+      "reset_reason": "적용 고장 레벨을 0으로 낮추세요.",
+      "equipment": [
+        {
+          "id": "motor",
+          "label": "진단 모터",
+          "observed_at": "2026-10-12T14:58:16.219000+00:00",
+          "age_seconds": 0.782,
+          "fresh": true,
+          "metrics": {
+            "health_index": 9.14,
+            "vibration_rms": 0.6280897287377322,
+            "temperature": 54.63696809489402,
+            "rpm": 954.9296585513723,
+            "inference_ms": 2.502436998838675,
+            "health_observed_at": "2026-10-12T14:58:16.219000+00:00",
+            "sensor_observed_at": "2026-10-12T14:58:16.219000+00:00"
+          },
+          "state": "danger",
+          "status_label": "위험",
+          "reason": "측정 진동의 FFT·관리도·Autoencoder 진단"
+        },
+        {
+          "id": "conveyor",
+          "label": "컨베이어",
+          "observed_at": "2026-10-12T14:58:16.219000+00:00",
+          "age_seconds": 0.782,
+          "fresh": true,
+          "metrics": {
+            "roller_velocity": 9.62964972193618e-35,
+            "fault_level": 10,
+            "motor_rpm": 954.9296585513723,
+            "running_requested": false
+          },
+          "state": "stopped",
+          "status_label": "정지 · 재시작 대기",
+          "reason": "롤러 정지 확인 · 진단 모터는 계속 관측"
+        },
+        {
+          "id": "camera",
+          "label": "검사 카메라",
+          "observed_at": "2026-10-12T14:58:15.144000+00:00",
+          "age_seconds": 1.857,
+          "fresh": true,
+          "metrics": {
+            "last_inspection_at": "2026-10-12T14:58:15.144000+00:00",
+            "defect_type": "normal",
+            "detections": 0,
+            "inference_ms": 36.61280300002545
+          },
+          "state": "stopped",
+          "status_label": "검사 일시정지",
+          "reason": "라인 정지 중 · 마지막 검사 영상 보관"
+        }
+      ],
+      "recent_events": [
+        {
+          "timestamp": "2026-10-12T14:58:16.866000+00:00",
+          "source": "controller",
+          "severity": "warning",
+          "message": "재시작 거절: 레벨 0과 최근 5초 이내 정상 상태(HI ≥ 80)를 먼저 확인하세요."
+        },
+        {
+          "timestamp": "2026-10-12T14:58:15.144000+00:00",
+          "source": "pdm",
+          "severity": "danger",
+          "message": "설비 danger / HI 4.19"
+        },
+        {
+          "timestamp": "2026-10-12T14:58:15.144000+00:00",
+          "source": "camera",
+          "severity": "normal",
+          "message": "검사 완료 · 결함 미검출"
+        },
+        {
+          "timestamp": "2026-10-12T14:58:14.114000+00:00",
+          "source": "camera",
+          "severity": "normal",
+          "message": "검사 완료 · 결함 미검출"
+        },
+        {
+          "timestamp": "2026-10-12T14:58:13.076000+00:00",
+          "source": "camera",
+          "severity": "normal",
+          "message": "검사 완료 · 결함 미검출"
+        },
+        {
+          "timestamp": "2026-10-12T14:58:12.049000+00:00",
+          "source": "camera",
+          "severity": "normal",
+          "message": "검사 완료 · 결함 미검출"
+        },
+        {
+          "timestamp": "2026-10-12T14:58:11.001000+00:00",
+          "source": "camera",
+          "severity": "normal",
+          "message": "검사 완료 · 결함 미검출"
+        },
+        {
+          "timestamp": "2026-10-12T14:58:09.972000+00:00",
+          "source": "camera",
+          "severity": "normal",
+          "message": "검사 완료 · 결함 미검출"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:56.720000+00:00",
+          "source": "drift",
+          "severity": "warning",
+          "message": "학습 분포 변화 감지: PSI 4.706 ≥ 0.25. 고장·운전 조건·센서 변화를 확인하세요."
+        },
+        {
+          "timestamp": "2026-10-12T14:57:16.202000+00:00",
+          "source": "pdm",
+          "severity": "danger",
+          "message": "설비 danger / HI 38.93"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:15.110000+00:00",
+          "source": "pdm",
+          "severity": "warning",
+          "message": "설비 warning / HI 41.19"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:14.055000+00:00",
+          "source": "pdm",
+          "severity": "danger",
+          "message": "설비 danger / HI 37.72"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:13.005000+00:00",
+          "source": "pdm",
+          "severity": "warning",
+          "message": "설비 warning / HI 40.56"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:09.782000+00:00",
+          "source": "pdm",
+          "severity": "danger",
+          "message": "설비 danger / HI 35.78"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:05.644000+00:00",
+          "source": "pdm",
+          "severity": "warning",
+          "message": "설비 warning / HI 45.8"
+        }
+      ]
+    },
+    "line": {
+      "running": false,
+      "motor_rpm": 954.9296585513723,
+      "timestamp": "2026-10-12T14:58:16.219Z",
+      "fault_level": 10,
+      "roller_velocity": 9.62964972193618e-35,
+      "defect_probability": 0.8700000000000001
+    },
+    "counts": {
+      "sensors": 701,
+      "inspections": 610,
+      "defects": 23
+    },
+    "health": {
+      "event_id": "d5285e16-8696-405e-99ce-3771ab0df6fe",
+      "timestamp": "2026-10-12T14:58:16.219Z",
+      "status": "danger",
+      "health_index": 9.14
+    },
+    "inspection_events": [
+      {
+        "event_id": "20abfdef-2454-456d-9069-7f54f4d4e3bc",
+        "timestamp": "2026-10-12T14:58:15.144000+00:00",
+        "image_path": "inspections/20abfdef-2454-456d-9069-7f54f4d4e3bc.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 4.19,
+        "inference_ms": 36.61280300002545,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "3005a6e6-d297-46c0-b837-6315a1ccc0ba",
+        "timestamp": "2026-10-12T14:58:14.114000+00:00",
+        "image_path": "inspections/3005a6e6-d297-46c0-b837-6315a1ccc0ba.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 94.95,
+        "inference_ms": 49.28149800070969,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "37af8113-c302-4fc7-b640-09a8e3541faf",
+        "timestamp": "2026-10-12T14:58:13.076000+00:00",
+        "image_path": "inspections/37af8113-c302-4fc7-b640-09a8e3541faf.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 95.0,
+        "inference_ms": 29.109211998729734,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "2a4ff4a0-a6ed-4d0e-ae5a-8f68790e53dd",
+        "timestamp": "2026-10-12T14:58:12.049000+00:00",
+        "image_path": "inspections/2a4ff4a0-a6ed-4d0e-ae5a-8f68790e53dd.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 94.91,
+        "inference_ms": 85.18165500026953,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "b5f61553-4cd2-4877-b2a8-62d297b9fdeb",
+        "timestamp": "2026-10-12T14:58:11.001000+00:00",
+        "image_path": "inspections/b5f61553-4cd2-4877-b2a8-62d297b9fdeb.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 95.0,
+        "inference_ms": 21.691452000595746,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "81baaa9c-7412-406d-b6fb-074fa0b56616",
+        "timestamp": "2026-10-12T14:58:09.972000+00:00",
+        "image_path": "inspections/81baaa9c-7412-406d-b6fb-074fa0b56616.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 95.0,
+        "inference_ms": 26.999765999789815,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "9d253d29-011a-429f-a15a-b8b2b209cef3",
+        "timestamp": "2026-10-12T14:56:50.099000+00:00",
+        "image_path": "inspections/9d253d29-011a-429f-a15a-b8b2b209cef3.jpg",
+        "gradcam_path": "inspections/9d253d29-011a-429f-a15a-b8b2b209cef3_gradcam.jpg",
+        "health_index_at_time": 39.7,
+        "inference_ms": 23.280645000340883,
+        "detections": [
+          {
+            "defect_type": "scratch",
+            "confidence": 0.8289620876312256,
+            "bbox": [
+              110.96299171447754,
+              69.97380256652832,
+              145.55441856384277,
+              137.78993606567383
+            ]
+          }
+        ],
+        "defective": true,
+        "defect_type": "scratch"
+      },
+      {
+        "event_id": "f8e7eff2-3e93-4660-ab40-fda66957ba3d",
+        "timestamp": "2026-10-12T14:56:49.071000+00:00",
+        "image_path": "inspections/f8e7eff2-3e93-4660-ab40-fda66957ba3d.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 53.17,
+        "inference_ms": 25.71339400128636,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "d9f67805-0c38-4844-811f-ecace1f230d7",
+        "timestamp": "2026-10-12T14:56:48.043000+00:00",
+        "image_path": "inspections/d9f67805-0c38-4844-811f-ecace1f230d7.jpg",
+        "gradcam_path": "inspections/d9f67805-0c38-4844-811f-ecace1f230d7_gradcam.jpg",
+        "health_index_at_time": 53.78,
+        "inference_ms": 27.598822000072687,
+        "detections": [
+          {
+            "defect_type": "contamination",
+            "confidence": 0.898594081401825,
+            "bbox": [
+              136.67396545410156,
+              28.168363571166992,
+              171.75922393798828,
+              59.42564010620117
+            ]
+          }
+        ],
+        "defective": true,
+        "defect_type": "contamination"
+      },
+      {
+        "event_id": "35b3d585-d661-48e6-a80f-7f9424681944",
+        "timestamp": "2026-10-12T14:56:47.015000+00:00",
+        "image_path": "inspections/35b3d585-d661-48e6-a80f-7f9424681944.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 55.35,
+        "inference_ms": 23.04565800113778,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "9fe81216-dfc6-4cf6-9c23-a513986b44e2",
+        "timestamp": "2026-10-12T14:56:45.984000+00:00",
+        "image_path": "inspections/9fe81216-dfc6-4cf6-9c23-a513986b44e2.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 56.54,
+        "inference_ms": 19.643972998892423,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "d6240dde-c571-4185-9d74-d8a7e294bccc",
+        "timestamp": "2026-10-12T14:56:44.953000+00:00",
+        "image_path": "inspections/d6240dde-c571-4185-9d74-d8a7e294bccc.jpg",
+        "gradcam_path": "inspections/d6240dde-c571-4185-9d74-d8a7e294bccc_gradcam.jpg",
+        "health_index_at_time": 59.71,
+        "inference_ms": 20.887188000415335,
+        "detections": [
+          {
+            "defect_type": "dent",
+            "confidence": 0.9167879819869995,
+            "bbox": [
+              129.55280303955078,
+              86.2452507019043,
+              165.97837448120117,
+              122.54436492919922
+            ]
+          }
+        ],
+        "defective": true,
+        "defect_type": "dent"
+      }
+    ]
+  },
+  "held_inspection": {
+    "server_timestamp": "2026-10-12T14:58:23.112Z",
+    "process": {
+      "observed_at": "2026-10-12T14:58:23.178097+00:00",
+      "freshness_seconds": 5,
+      "mqtt_connected": true,
+      "state": "stopped",
+      "label": "라인 정지",
+      "reset_ready": false,
+      "reset_reason": "적용 고장 레벨을 0으로 낮추세요.",
+      "equipment": [
+        {
+          "id": "motor",
+          "label": "진단 모터",
+          "observed_at": "2026-10-12T14:58:22.538000+00:00",
+          "age_seconds": 0.64,
+          "fresh": true,
+          "metrics": {
+            "health_index": 9.0,
+            "vibration_rms": 0.6264238378926811,
+            "temperature": 55.06675390289394,
+            "rpm": 954.9296585513719,
+            "inference_ms": 3.734281999641098,
+            "health_observed_at": "2026-10-12T14:58:22.538000+00:00",
+            "sensor_observed_at": "2026-10-12T14:58:22.538000+00:00"
+          },
+          "state": "danger",
+          "status_label": "위험",
+          "reason": "측정 진동의 FFT·관리도·Autoencoder 진단"
+        },
+        {
+          "id": "conveyor",
+          "label": "컨베이어",
+          "observed_at": "2026-10-12T14:58:22.538000+00:00",
+          "age_seconds": 0.64,
+          "fresh": true,
+          "metrics": {
+            "roller_velocity": 9.62964972193618e-35,
+            "fault_level": 10,
+            "motor_rpm": 954.9296585513719,
+            "running_requested": false
+          },
+          "state": "stopped",
+          "status_label": "정지 · 재시작 대기",
+          "reason": "롤러 정지 확인 · 진단 모터는 계속 관측"
+        },
+        {
+          "id": "camera",
+          "label": "검사 카메라",
+          "observed_at": "2026-10-12T14:58:15.144000+00:00",
+          "age_seconds": 8.034,
+          "fresh": false,
+          "metrics": {
+            "last_inspection_at": "2026-10-12T14:58:15.144000+00:00",
+            "defect_type": "normal",
+            "detections": 0,
+            "inference_ms": 36.61280300002545
+          },
+          "state": "stopped",
+          "status_label": "검사 일시정지",
+          "reason": "라인 정지 중 · 마지막 검사 영상 보관"
+        }
+      ],
+      "recent_events": [
+        {
+          "timestamp": "2026-10-12T14:58:16.866000+00:00",
+          "source": "controller",
+          "severity": "warning",
+          "message": "재시작 거절: 레벨 0과 최근 5초 이내 정상 상태(HI ≥ 80)를 먼저 확인하세요."
+        },
+        {
+          "timestamp": "2026-10-12T14:58:15.144000+00:00",
+          "source": "pdm",
+          "severity": "danger",
+          "message": "설비 danger / HI 4.19"
+        },
+        {
+          "timestamp": "2026-10-12T14:58:15.144000+00:00",
+          "source": "camera",
+          "severity": "normal",
+          "message": "검사 완료 · 결함 미검출"
+        },
+        {
+          "timestamp": "2026-10-12T14:58:14.114000+00:00",
+          "source": "camera",
+          "severity": "normal",
+          "message": "검사 완료 · 결함 미검출"
+        },
+        {
+          "timestamp": "2026-10-12T14:58:13.076000+00:00",
+          "source": "camera",
+          "severity": "normal",
+          "message": "검사 완료 · 결함 미검출"
+        },
+        {
+          "timestamp": "2026-10-12T14:58:12.049000+00:00",
+          "source": "camera",
+          "severity": "normal",
+          "message": "검사 완료 · 결함 미검출"
+        },
+        {
+          "timestamp": "2026-10-12T14:58:11.001000+00:00",
+          "source": "camera",
+          "severity": "normal",
+          "message": "검사 완료 · 결함 미검출"
+        },
+        {
+          "timestamp": "2026-10-12T14:58:09.972000+00:00",
+          "source": "camera",
+          "severity": "normal",
+          "message": "검사 완료 · 결함 미검출"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:56.720000+00:00",
+          "source": "drift",
+          "severity": "warning",
+          "message": "학습 분포 변화 감지: PSI 4.706 ≥ 0.25. 고장·운전 조건·센서 변화를 확인하세요."
+        },
+        {
+          "timestamp": "2026-10-12T14:57:16.202000+00:00",
+          "source": "pdm",
+          "severity": "danger",
+          "message": "설비 danger / HI 38.93"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:15.110000+00:00",
+          "source": "pdm",
+          "severity": "warning",
+          "message": "설비 warning / HI 41.19"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:14.055000+00:00",
+          "source": "pdm",
+          "severity": "danger",
+          "message": "설비 danger / HI 37.72"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:13.005000+00:00",
+          "source": "pdm",
+          "severity": "warning",
+          "message": "설비 warning / HI 40.56"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:09.782000+00:00",
+          "source": "pdm",
+          "severity": "danger",
+          "message": "설비 danger / HI 35.78"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:05.644000+00:00",
+          "source": "pdm",
+          "severity": "warning",
+          "message": "설비 warning / HI 45.8"
+        }
+      ]
+    },
+    "line": {
+      "running": false,
+      "motor_rpm": 954.9296585513719,
+      "timestamp": "2026-10-12T14:58:22.538Z",
+      "fault_level": 10,
+      "roller_velocity": 9.62964972193618e-35,
+      "defect_probability": 0.8700000000000001
+    },
+    "counts": {
+      "sensors": 707,
+      "inspections": 610,
+      "defects": 23
+    },
+    "health": {
+      "event_id": "624f6cb5-e98b-483d-9fbe-3249003c102b",
+      "timestamp": "2026-10-12T14:58:22.538Z",
+      "status": "danger",
+      "health_index": 9.0
+    },
+    "inspection_events": [
+      {
+        "event_id": "20abfdef-2454-456d-9069-7f54f4d4e3bc",
+        "timestamp": "2026-10-12T14:58:15.144000+00:00",
+        "image_path": "inspections/20abfdef-2454-456d-9069-7f54f4d4e3bc.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 4.19,
+        "inference_ms": 36.61280300002545,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "3005a6e6-d297-46c0-b837-6315a1ccc0ba",
+        "timestamp": "2026-10-12T14:58:14.114000+00:00",
+        "image_path": "inspections/3005a6e6-d297-46c0-b837-6315a1ccc0ba.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 94.95,
+        "inference_ms": 49.28149800070969,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "37af8113-c302-4fc7-b640-09a8e3541faf",
+        "timestamp": "2026-10-12T14:58:13.076000+00:00",
+        "image_path": "inspections/37af8113-c302-4fc7-b640-09a8e3541faf.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 95.0,
+        "inference_ms": 29.109211998729734,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "2a4ff4a0-a6ed-4d0e-ae5a-8f68790e53dd",
+        "timestamp": "2026-10-12T14:58:12.049000+00:00",
+        "image_path": "inspections/2a4ff4a0-a6ed-4d0e-ae5a-8f68790e53dd.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 94.91,
+        "inference_ms": 85.18165500026953,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "b5f61553-4cd2-4877-b2a8-62d297b9fdeb",
+        "timestamp": "2026-10-12T14:58:11.001000+00:00",
+        "image_path": "inspections/b5f61553-4cd2-4877-b2a8-62d297b9fdeb.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 95.0,
+        "inference_ms": 21.691452000595746,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "81baaa9c-7412-406d-b6fb-074fa0b56616",
+        "timestamp": "2026-10-12T14:58:09.972000+00:00",
+        "image_path": "inspections/81baaa9c-7412-406d-b6fb-074fa0b56616.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 95.0,
+        "inference_ms": 26.999765999789815,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "9d253d29-011a-429f-a15a-b8b2b209cef3",
+        "timestamp": "2026-10-12T14:56:50.099000+00:00",
+        "image_path": "inspections/9d253d29-011a-429f-a15a-b8b2b209cef3.jpg",
+        "gradcam_path": "inspections/9d253d29-011a-429f-a15a-b8b2b209cef3_gradcam.jpg",
+        "health_index_at_time": 39.7,
+        "inference_ms": 23.280645000340883,
+        "detections": [
+          {
+            "defect_type": "scratch",
+            "confidence": 0.8289620876312256,
+            "bbox": [
+              110.96299171447754,
+              69.97380256652832,
+              145.55441856384277,
+              137.78993606567383
+            ]
+          }
+        ],
+        "defective": true,
+        "defect_type": "scratch"
+      },
+      {
+        "event_id": "f8e7eff2-3e93-4660-ab40-fda66957ba3d",
+        "timestamp": "2026-10-12T14:56:49.071000+00:00",
+        "image_path": "inspections/f8e7eff2-3e93-4660-ab40-fda66957ba3d.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 53.17,
+        "inference_ms": 25.71339400128636,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "d9f67805-0c38-4844-811f-ecace1f230d7",
+        "timestamp": "2026-10-12T14:56:48.043000+00:00",
+        "image_path": "inspections/d9f67805-0c38-4844-811f-ecace1f230d7.jpg",
+        "gradcam_path": "inspections/d9f67805-0c38-4844-811f-ecace1f230d7_gradcam.jpg",
+        "health_index_at_time": 53.78,
+        "inference_ms": 27.598822000072687,
+        "detections": [
+          {
+            "defect_type": "contamination",
+            "confidence": 0.898594081401825,
+            "bbox": [
+              136.67396545410156,
+              28.168363571166992,
+              171.75922393798828,
+              59.42564010620117
+            ]
+          }
+        ],
+        "defective": true,
+        "defect_type": "contamination"
+      },
+      {
+        "event_id": "35b3d585-d661-48e6-a80f-7f9424681944",
+        "timestamp": "2026-10-12T14:56:47.015000+00:00",
+        "image_path": "inspections/35b3d585-d661-48e6-a80f-7f9424681944.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 55.35,
+        "inference_ms": 23.04565800113778,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "9fe81216-dfc6-4cf6-9c23-a513986b44e2",
+        "timestamp": "2026-10-12T14:56:45.984000+00:00",
+        "image_path": "inspections/9fe81216-dfc6-4cf6-9c23-a513986b44e2.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 56.54,
+        "inference_ms": 19.643972998892423,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "d6240dde-c571-4185-9d74-d8a7e294bccc",
+        "timestamp": "2026-10-12T14:56:44.953000+00:00",
+        "image_path": "inspections/d6240dde-c571-4185-9d74-d8a7e294bccc.jpg",
+        "gradcam_path": "inspections/d6240dde-c571-4185-9d74-d8a7e294bccc_gradcam.jpg",
+        "health_index_at_time": 59.71,
+        "inference_ms": 20.887188000415335,
+        "detections": [
+          {
+            "defect_type": "dent",
+            "confidence": 0.9167879819869995,
+            "bbox": [
+              129.55280303955078,
+              86.2452507019043,
+              165.97837448120117,
+              122.54436492919922
+            ]
+          }
+        ],
+        "defective": true,
+        "defect_type": "dent"
+      }
+    ]
+  },
+  "images": {
+    "unique_recent_events": 12,
+    "latest_event_id": "20abfdef-2454-456d-9069-7f54f4d4e3bc",
+    "latest_jpeg_bytes": 8134,
+    "all_detection_rows_grouped": true
+  },
+  "recovered_stopped": {
+    "server_timestamp": "2026-10-12T14:58:25.444Z",
+    "process": {
+      "observed_at": "2026-10-12T14:58:25.500780+00:00",
+      "freshness_seconds": 5,
+      "mqtt_connected": true,
+      "state": "stopped",
+      "label": "라인 정지",
+      "reset_ready": true,
+      "reset_reason": "정상 진단·레벨 0 확인 · 수동 재시작 가능",
+      "equipment": [
+        {
+          "id": "motor",
+          "label": "진단 모터",
+          "observed_at": "2026-10-12T14:58:24.648000+00:00",
+          "age_seconds": 0.853,
+          "fresh": true,
+          "metrics": {
+            "health_index": 94.97,
+            "vibration_rms": 0.04743332732884545,
+            "temperature": 34.87738400017633,
+            "rpm": 954.9296585513721,
+            "inference_ms": 3.46572099988407,
+            "health_observed_at": "2026-10-12T14:58:24.648000+00:00",
+            "sensor_observed_at": "2026-10-12T14:58:24.648000+00:00"
+          },
+          "state": "normal",
+          "status_label": "정상",
+          "reason": "측정 진동의 FFT·관리도·Autoencoder 진단"
+        },
+        {
+          "id": "conveyor",
+          "label": "컨베이어",
+          "observed_at": "2026-10-12T14:58:24.648000+00:00",
+          "age_seconds": 0.853,
+          "fresh": true,
+          "metrics": {
+            "roller_velocity": 9.62964972193618e-35,
+            "fault_level": 0,
+            "motor_rpm": 954.9296585513721,
+            "running_requested": false
+          },
+          "state": "stopped",
+          "status_label": "정지 · 재시작 대기",
+          "reason": "롤러 정지 확인 · 진단 모터는 계속 관측"
+        },
+        {
+          "id": "camera",
+          "label": "검사 카메라",
+          "observed_at": "2026-10-12T14:58:15.144000+00:00",
+          "age_seconds": 10.357,
+          "fresh": false,
+          "metrics": {
+            "last_inspection_at": "2026-10-12T14:58:15.144000+00:00",
+            "defect_type": "normal",
+            "detections": 0,
+            "inference_ms": 36.61280300002545
+          },
+          "state": "stopped",
+          "status_label": "검사 일시정지",
+          "reason": "라인 정지 중 · 마지막 검사 영상 보관"
+        }
+      ],
+      "recent_events": [
+        {
+          "timestamp": "2026-10-12T14:58:16.866000+00:00",
+          "source": "controller",
+          "severity": "warning",
+          "message": "재시작 거절: 레벨 0과 최근 5초 이내 정상 상태(HI ≥ 80)를 먼저 확인하세요."
+        },
+        {
+          "timestamp": "2026-10-12T14:58:15.144000+00:00",
+          "source": "pdm",
+          "severity": "danger",
+          "message": "설비 danger / HI 4.19"
+        },
+        {
+          "timestamp": "2026-10-12T14:58:15.144000+00:00",
+          "source": "camera",
+          "severity": "normal",
+          "message": "검사 완료 · 결함 미검출"
+        },
+        {
+          "timestamp": "2026-10-12T14:58:14.114000+00:00",
+          "source": "camera",
+          "severity": "normal",
+          "message": "검사 완료 · 결함 미검출"
+        },
+        {
+          "timestamp": "2026-10-12T14:58:13.076000+00:00",
+          "source": "camera",
+          "severity": "normal",
+          "message": "검사 완료 · 결함 미검출"
+        },
+        {
+          "timestamp": "2026-10-12T14:58:12.049000+00:00",
+          "source": "camera",
+          "severity": "normal",
+          "message": "검사 완료 · 결함 미검출"
+        },
+        {
+          "timestamp": "2026-10-12T14:58:11.001000+00:00",
+          "source": "camera",
+          "severity": "normal",
+          "message": "검사 완료 · 결함 미검출"
+        },
+        {
+          "timestamp": "2026-10-12T14:58:09.972000+00:00",
+          "source": "camera",
+          "severity": "normal",
+          "message": "검사 완료 · 결함 미검출"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:56.720000+00:00",
+          "source": "drift",
+          "severity": "warning",
+          "message": "학습 분포 변화 감지: PSI 4.706 ≥ 0.25. 고장·운전 조건·센서 변화를 확인하세요."
+        },
+        {
+          "timestamp": "2026-10-12T14:57:16.202000+00:00",
+          "source": "pdm",
+          "severity": "danger",
+          "message": "설비 danger / HI 38.93"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:15.110000+00:00",
+          "source": "pdm",
+          "severity": "warning",
+          "message": "설비 warning / HI 41.19"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:14.055000+00:00",
+          "source": "pdm",
+          "severity": "danger",
+          "message": "설비 danger / HI 37.72"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:13.005000+00:00",
+          "source": "pdm",
+          "severity": "warning",
+          "message": "설비 warning / HI 40.56"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:09.782000+00:00",
+          "source": "pdm",
+          "severity": "danger",
+          "message": "설비 danger / HI 35.78"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:05.644000+00:00",
+          "source": "pdm",
+          "severity": "warning",
+          "message": "설비 warning / HI 45.8"
+        }
+      ]
+    },
+    "line": {
+      "running": false,
+      "motor_rpm": 954.9296585513721,
+      "timestamp": "2026-10-12T14:58:24.648Z",
+      "fault_level": 0,
+      "roller_velocity": 9.62964972193618e-35,
+      "defect_probability": 0.02
+    },
+    "counts": {
+      "sensors": 709,
+      "inspections": 610,
+      "defects": 23
+    },
+    "health": {
+      "event_id": "fa388035-4cb2-4d41-8713-b8ad00987b84",
+      "timestamp": "2026-10-12T14:58:24.648Z",
+      "status": "normal",
+      "health_index": 94.97
+    },
+    "inspection_events": [
+      {
+        "event_id": "20abfdef-2454-456d-9069-7f54f4d4e3bc",
+        "timestamp": "2026-10-12T14:58:15.144000+00:00",
+        "image_path": "inspections/20abfdef-2454-456d-9069-7f54f4d4e3bc.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 4.19,
+        "inference_ms": 36.61280300002545,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "3005a6e6-d297-46c0-b837-6315a1ccc0ba",
+        "timestamp": "2026-10-12T14:58:14.114000+00:00",
+        "image_path": "inspections/3005a6e6-d297-46c0-b837-6315a1ccc0ba.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 94.95,
+        "inference_ms": 49.28149800070969,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "37af8113-c302-4fc7-b640-09a8e3541faf",
+        "timestamp": "2026-10-12T14:58:13.076000+00:00",
+        "image_path": "inspections/37af8113-c302-4fc7-b640-09a8e3541faf.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 95.0,
+        "inference_ms": 29.109211998729734,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "2a4ff4a0-a6ed-4d0e-ae5a-8f68790e53dd",
+        "timestamp": "2026-10-12T14:58:12.049000+00:00",
+        "image_path": "inspections/2a4ff4a0-a6ed-4d0e-ae5a-8f68790e53dd.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 94.91,
+        "inference_ms": 85.18165500026953,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "b5f61553-4cd2-4877-b2a8-62d297b9fdeb",
+        "timestamp": "2026-10-12T14:58:11.001000+00:00",
+        "image_path": "inspections/b5f61553-4cd2-4877-b2a8-62d297b9fdeb.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 95.0,
+        "inference_ms": 21.691452000595746,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "81baaa9c-7412-406d-b6fb-074fa0b56616",
+        "timestamp": "2026-10-12T14:58:09.972000+00:00",
+        "image_path": "inspections/81baaa9c-7412-406d-b6fb-074fa0b56616.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 95.0,
+        "inference_ms": 26.999765999789815,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "9d253d29-011a-429f-a15a-b8b2b209cef3",
+        "timestamp": "2026-10-12T14:56:50.099000+00:00",
+        "image_path": "inspections/9d253d29-011a-429f-a15a-b8b2b209cef3.jpg",
+        "gradcam_path": "inspections/9d253d29-011a-429f-a15a-b8b2b209cef3_gradcam.jpg",
+        "health_index_at_time": 39.7,
+        "inference_ms": 23.280645000340883,
+        "detections": [
+          {
+            "defect_type": "scratch",
+            "confidence": 0.8289620876312256,
+            "bbox": [
+              110.96299171447754,
+              69.97380256652832,
+              145.55441856384277,
+              137.78993606567383
+            ]
+          }
+        ],
+        "defective": true,
+        "defect_type": "scratch"
+      },
+      {
+        "event_id": "f8e7eff2-3e93-4660-ab40-fda66957ba3d",
+        "timestamp": "2026-10-12T14:56:49.071000+00:00",
+        "image_path": "inspections/f8e7eff2-3e93-4660-ab40-fda66957ba3d.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 53.17,
+        "inference_ms": 25.71339400128636,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "d9f67805-0c38-4844-811f-ecace1f230d7",
+        "timestamp": "2026-10-12T14:56:48.043000+00:00",
+        "image_path": "inspections/d9f67805-0c38-4844-811f-ecace1f230d7.jpg",
+        "gradcam_path": "inspections/d9f67805-0c38-4844-811f-ecace1f230d7_gradcam.jpg",
+        "health_index_at_time": 53.78,
+        "inference_ms": 27.598822000072687,
+        "detections": [
+          {
+            "defect_type": "contamination",
+            "confidence": 0.898594081401825,
+            "bbox": [
+              136.67396545410156,
+              28.168363571166992,
+              171.75922393798828,
+              59.42564010620117
+            ]
+          }
+        ],
+        "defective": true,
+        "defect_type": "contamination"
+      },
+      {
+        "event_id": "35b3d585-d661-48e6-a80f-7f9424681944",
+        "timestamp": "2026-10-12T14:56:47.015000+00:00",
+        "image_path": "inspections/35b3d585-d661-48e6-a80f-7f9424681944.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 55.35,
+        "inference_ms": 23.04565800113778,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "9fe81216-dfc6-4cf6-9c23-a513986b44e2",
+        "timestamp": "2026-10-12T14:56:45.984000+00:00",
+        "image_path": "inspections/9fe81216-dfc6-4cf6-9c23-a513986b44e2.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 56.54,
+        "inference_ms": 19.643972998892423,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "d6240dde-c571-4185-9d74-d8a7e294bccc",
+        "timestamp": "2026-10-12T14:56:44.953000+00:00",
+        "image_path": "inspections/d6240dde-c571-4185-9d74-d8a7e294bccc.jpg",
+        "gradcam_path": "inspections/d6240dde-c571-4185-9d74-d8a7e294bccc_gradcam.jpg",
+        "health_index_at_time": 59.71,
+        "inference_ms": 20.887188000415335,
+        "detections": [
+          {
+            "defect_type": "dent",
+            "confidence": 0.9167879819869995,
+            "bbox": [
+              129.55280303955078,
+              86.2452507019043,
+              165.97837448120117,
+              122.54436492919922
+            ]
+          }
+        ],
+        "defective": true,
+        "defect_type": "dent"
+      }
+    ]
+  },
+  "resumed": {
+    "server_timestamp": "2026-10-12T14:58:27.757Z",
+    "process": {
+      "observed_at": "2026-10-12T14:58:27.830720+00:00",
+      "freshness_seconds": 5,
+      "mqtt_connected": true,
+      "state": "running",
+      "label": "공정 가동",
+      "reset_ready": false,
+      "reset_reason": "현재 가동 중",
+      "equipment": [
+        {
+          "id": "motor",
+          "label": "진단 모터",
+          "observed_at": "2026-10-12T14:58:26.705000+00:00",
+          "age_seconds": 1.126,
+          "fresh": true,
+          "metrics": {
+            "health_index": 95.0,
+            "vibration_rms": 0.04705566112007547,
+            "temperature": 34.76039304066466,
+            "rpm": 954.9296585513721,
+            "inference_ms": 4.236348999256734,
+            "health_observed_at": "2026-10-12T14:58:26.705000+00:00",
+            "sensor_observed_at": "2026-10-12T14:58:26.705000+00:00"
+          },
+          "state": "normal",
+          "status_label": "정상",
+          "reason": "측정 진동의 FFT·관리도·Autoencoder 진단"
+        },
+        {
+          "id": "conveyor",
+          "label": "컨베이어",
+          "observed_at": "2026-10-12T14:58:26.705000+00:00",
+          "age_seconds": 1.126,
+          "fresh": true,
+          "metrics": {
+            "roller_velocity": 3.9999999999999996,
+            "fault_level": 0,
+            "motor_rpm": 954.9296585513721,
+            "running_requested": true
+          },
+          "state": "running",
+          "status_label": "가동",
+          "reason": "Gazebo 롤러 회전 관측"
+        },
+        {
+          "id": "camera",
+          "label": "검사 카메라",
+          "observed_at": "2026-10-12T14:58:26.705000+00:00",
+          "age_seconds": 1.126,
+          "fresh": true,
+          "metrics": {
+            "last_inspection_at": "2026-10-12T14:58:26.705000+00:00",
+            "defect_type": "normal",
+            "detections": 0,
+            "inference_ms": 24.03473300000769
+          },
+          "state": "normal",
+          "status_label": "결함 미검출",
+          "reason": "현재 검사 영상에서 결함이 검출되지 않았습니다."
+        }
+      ],
+      "recent_events": [
+        {
+          "timestamp": "2026-10-12T14:58:26.705000+00:00",
+          "source": "camera",
+          "severity": "normal",
+          "message": "검사 완료 · 결함 미검출"
+        },
+        {
+          "timestamp": "2026-10-12T14:58:25.677000+00:00",
+          "source": "camera",
+          "severity": "normal",
+          "message": "검사 완료 · 결함 미검출"
+        },
+        {
+          "timestamp": "2026-10-12T14:58:16.866000+00:00",
+          "source": "controller",
+          "severity": "warning",
+          "message": "재시작 거절: 레벨 0과 최근 5초 이내 정상 상태(HI ≥ 80)를 먼저 확인하세요."
+        },
+        {
+          "timestamp": "2026-10-12T14:58:15.144000+00:00",
+          "source": "pdm",
+          "severity": "danger",
+          "message": "설비 danger / HI 4.19"
+        },
+        {
+          "timestamp": "2026-10-12T14:58:15.144000+00:00",
+          "source": "camera",
+          "severity": "normal",
+          "message": "검사 완료 · 결함 미검출"
+        },
+        {
+          "timestamp": "2026-10-12T14:58:14.114000+00:00",
+          "source": "camera",
+          "severity": "normal",
+          "message": "검사 완료 · 결함 미검출"
+        },
+        {
+          "timestamp": "2026-10-12T14:58:13.076000+00:00",
+          "source": "camera",
+          "severity": "normal",
+          "message": "검사 완료 · 결함 미검출"
+        },
+        {
+          "timestamp": "2026-10-12T14:58:12.049000+00:00",
+          "source": "camera",
+          "severity": "normal",
+          "message": "검사 완료 · 결함 미검출"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:56.720000+00:00",
+          "source": "drift",
+          "severity": "warning",
+          "message": "학습 분포 변화 감지: PSI 4.706 ≥ 0.25. 고장·운전 조건·센서 변화를 확인하세요."
+        },
+        {
+          "timestamp": "2026-10-12T14:57:16.202000+00:00",
+          "source": "pdm",
+          "severity": "danger",
+          "message": "설비 danger / HI 38.93"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:15.110000+00:00",
+          "source": "pdm",
+          "severity": "warning",
+          "message": "설비 warning / HI 41.19"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:14.055000+00:00",
+          "source": "pdm",
+          "severity": "danger",
+          "message": "설비 danger / HI 37.72"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:13.005000+00:00",
+          "source": "pdm",
+          "severity": "warning",
+          "message": "설비 warning / HI 40.56"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:09.782000+00:00",
+          "source": "pdm",
+          "severity": "danger",
+          "message": "설비 danger / HI 35.78"
+        },
+        {
+          "timestamp": "2026-10-12T14:57:05.644000+00:00",
+          "source": "pdm",
+          "severity": "warning",
+          "message": "설비 warning / HI 45.8"
+        }
+      ]
+    },
+    "line": {
+      "running": true,
+      "motor_rpm": 954.9296585513721,
+      "timestamp": "2026-10-12T14:58:26.705Z",
+      "fault_level": 0,
+      "roller_velocity": 3.9999999999999996,
+      "defect_probability": 0.02
+    },
+    "counts": {
+      "sensors": 711,
+      "inspections": 612,
+      "defects": 23
+    },
+    "health": {
+      "event_id": "3c6587d9-7628-4272-8c41-dbaae554c443",
+      "timestamp": "2026-10-12T14:58:26.705Z",
+      "status": "normal",
+      "health_index": 95.0
+    },
+    "inspection_events": [
+      {
+        "event_id": "3c6587d9-7628-4272-8c41-dbaae554c443",
+        "timestamp": "2026-10-12T14:58:26.705000+00:00",
+        "image_path": "inspections/3c6587d9-7628-4272-8c41-dbaae554c443.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 95.0,
+        "inference_ms": 24.03473300000769,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "31127a7a-729c-458c-9360-5ac85e05ee0b",
+        "timestamp": "2026-10-12T14:58:25.677000+00:00",
+        "image_path": "inspections/31127a7a-729c-458c-9360-5ac85e05ee0b.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 95.0,
+        "inference_ms": 22.420621000492247,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "20abfdef-2454-456d-9069-7f54f4d4e3bc",
+        "timestamp": "2026-10-12T14:58:15.144000+00:00",
+        "image_path": "inspections/20abfdef-2454-456d-9069-7f54f4d4e3bc.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 4.19,
+        "inference_ms": 36.61280300002545,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "3005a6e6-d297-46c0-b837-6315a1ccc0ba",
+        "timestamp": "2026-10-12T14:58:14.114000+00:00",
+        "image_path": "inspections/3005a6e6-d297-46c0-b837-6315a1ccc0ba.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 94.95,
+        "inference_ms": 49.28149800070969,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "37af8113-c302-4fc7-b640-09a8e3541faf",
+        "timestamp": "2026-10-12T14:58:13.076000+00:00",
+        "image_path": "inspections/37af8113-c302-4fc7-b640-09a8e3541faf.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 95.0,
+        "inference_ms": 29.109211998729734,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "2a4ff4a0-a6ed-4d0e-ae5a-8f68790e53dd",
+        "timestamp": "2026-10-12T14:58:12.049000+00:00",
+        "image_path": "inspections/2a4ff4a0-a6ed-4d0e-ae5a-8f68790e53dd.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 94.91,
+        "inference_ms": 85.18165500026953,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "b5f61553-4cd2-4877-b2a8-62d297b9fdeb",
+        "timestamp": "2026-10-12T14:58:11.001000+00:00",
+        "image_path": "inspections/b5f61553-4cd2-4877-b2a8-62d297b9fdeb.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 95.0,
+        "inference_ms": 21.691452000595746,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "81baaa9c-7412-406d-b6fb-074fa0b56616",
+        "timestamp": "2026-10-12T14:58:09.972000+00:00",
+        "image_path": "inspections/81baaa9c-7412-406d-b6fb-074fa0b56616.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 95.0,
+        "inference_ms": 26.999765999789815,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "9d253d29-011a-429f-a15a-b8b2b209cef3",
+        "timestamp": "2026-10-12T14:56:50.099000+00:00",
+        "image_path": "inspections/9d253d29-011a-429f-a15a-b8b2b209cef3.jpg",
+        "gradcam_path": "inspections/9d253d29-011a-429f-a15a-b8b2b209cef3_gradcam.jpg",
+        "health_index_at_time": 39.7,
+        "inference_ms": 23.280645000340883,
+        "detections": [
+          {
+            "defect_type": "scratch",
+            "confidence": 0.8289620876312256,
+            "bbox": [
+              110.96299171447754,
+              69.97380256652832,
+              145.55441856384277,
+              137.78993606567383
+            ]
+          }
+        ],
+        "defective": true,
+        "defect_type": "scratch"
+      },
+      {
+        "event_id": "f8e7eff2-3e93-4660-ab40-fda66957ba3d",
+        "timestamp": "2026-10-12T14:56:49.071000+00:00",
+        "image_path": "inspections/f8e7eff2-3e93-4660-ab40-fda66957ba3d.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 53.17,
+        "inference_ms": 25.71339400128636,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      },
+      {
+        "event_id": "d9f67805-0c38-4844-811f-ecace1f230d7",
+        "timestamp": "2026-10-12T14:56:48.043000+00:00",
+        "image_path": "inspections/d9f67805-0c38-4844-811f-ecace1f230d7.jpg",
+        "gradcam_path": "inspections/d9f67805-0c38-4844-811f-ecace1f230d7_gradcam.jpg",
+        "health_index_at_time": 53.78,
+        "inference_ms": 27.598822000072687,
+        "detections": [
+          {
+            "defect_type": "contamination",
+            "confidence": 0.898594081401825,
+            "bbox": [
+              136.67396545410156,
+              28.168363571166992,
+              171.75922393798828,
+              59.42564010620117
+            ]
+          }
+        ],
+        "defective": true,
+        "defect_type": "contamination"
+      },
+      {
+        "event_id": "35b3d585-d661-48e6-a80f-7f9424681944",
+        "timestamp": "2026-10-12T14:56:47.015000+00:00",
+        "image_path": "inspections/35b3d585-d661-48e6-a80f-7f9424681944.jpg",
+        "gradcam_path": null,
+        "health_index_at_time": 55.35,
+        "inference_ms": 23.04565800113778,
+        "detections": [],
+        "defective": false,
+        "defect_type": "normal"
+      }
+    ]
+  },
+  "passed": true,
+  "finished_at": "2026-10-12T14:58:27.868410+00:00"
+}

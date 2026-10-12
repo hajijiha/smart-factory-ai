@@ -3,15 +3,10 @@ import json
 import logging
 import os
 from datetime import datetime, timezone
-from pathlib import Path
 import paho.mqtt.client as mqtt
-import yaml
+from factory.settings import CONFIG, DATA, ARTIFACTS, REPORTS
 
 logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
-CONFIG = yaml.safe_load(Path(os.environ.get('FACTORY_CONFIG', '/app/config.yaml')).read_text())
-DATA = Path(os.environ.get('DATA_DIR', CONFIG['paths']['data']))
-ARTIFACTS = Path(os.environ.get('ARTIFACT_DIR', CONFIG['paths']['artifacts']))
-REPORTS = Path(os.environ.get('REPORT_DIR', CONFIG['paths']['reports']))
 
 
 def utc_now():

@@ -1,0 +1,15 @@
+{
+  "passed": true,
+  "failures": [],
+  "rows": 11199,
+  "unit_counts": {
+    "train": 56,
+    "val": 12,
+    "test": 12
+  },
+  "maximum_absolute_feature_replay_error": 2.220446049250313e-15,
+  "recomputed_test_mae_seconds": 3.6478126262760093,
+  "recomputed_test_rmse_seconds": 5.246048706502121,
+  "checkpoints_bound": true,
+  "limits": "Model forward replay and fresh live behavior require the Docker runtime; JSON prediction metrics alone do not validate network execution."
+}

@@ -3,7 +3,7 @@ import hashlib
 import json
 from collections import Counter
 from pathlib import Path
-from factory.common import DATA, CONFIG
+from factory.common import DATA, CONFIG, REPORTS
 
 
 def audit():
@@ -41,7 +41,7 @@ def audit():
             'motor_rpm_range':[min(row['joint']['velocity'][0] for row in sensor)*60/(2*3.141592653589793),
                                max(row['joint']['velocity'][0] for row in sensor)*60/(2*3.141592653589793)],
             'domain_ranges':{key:[min(row['scene'][key] for row in records),max(row['scene'][key] for row in records)] for key in ['light','yaw']}}
-    path=Path(CONFIG['paths']['reports'])/'dataset-audit.json'
+    path=REPORTS/'dataset-audit.json'
     path.write_text(json.dumps(report,indent=2))
     print(json.dumps(report,indent=2))
 

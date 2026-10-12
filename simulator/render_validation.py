@@ -25,6 +25,7 @@ class SceneApplication:
     consistency remains a separate paired-image validation gate.
     """
     def __init__(self, scene_id, token):
+        """Initialize the acknowledgement or frame history for the capture policy."""
         self.scene_id = scene_id
         self.application_id = f'{scene_id}:{token}'
         self.round = 0
@@ -32,25 +33,31 @@ class SceneApplication:
         self.records = []
 
     def fields(self):
+        """Identify the current application round in the outgoing scene command."""
         return {'scene_application_id': self.application_id, 'scene_apply_round': self.round,
             'scene_command_id': f'{self.application_id}:{self.round}'}
 
     def matches(self, ack):
+        """Require the acknowledgement to identify every field of the current command."""
         return bool(ack) and ack.get('scene_id')==self.scene_id and all(ack.get(k)==v for k,v in self.fields().items())
 
     @property
     def acknowledged(self):
+        """Report whether the current scene application round has an acknowledgement."""
         return len(self.records)>self.round
 
     @property
     def complete(self):
+        """Report whether every scheduled scene application has been acknowledged."""
         return len(self.records)==SCENE_APPLICATION_POLICY['application_rounds']
 
     def sent(self, now):
+        """Retain the wall-clock start of the first transmission for this round."""
         if self.command_wall is None:
             self.command_wall = now
 
     def acknowledge(self, ack, wall, sequence):
+        """Accept a matching physics-thread acknowledgement once per application round."""
         if not self.matches(ack) or self.acknowledged or self.command_wall is None:
             return False
         if ack.get('ack_scope')!='physics_applied_and_visual_messages_enqueued':
@@ -61,6 +68,7 @@ class SceneApplication:
         return True
 
     def advance(self, now):
+        """Advance an acknowledged application only after the fixed settling interval."""
         if not self.acknowledged or self.complete:
             return False
         if now < self.records[-1]['ack_arrival_monotonic']+SCENE_APPLICATION_POLICY['minimum_seconds_between_ack_and_next_command']:
@@ -79,6 +87,7 @@ class CaptureFreshness:
     three-frame freshness interval; frames seen before that barrier do not count.
     """
     def __init__(self, ack_wall, ack_sim_time):
+        """Initialize the acknowledgement or frame history for the capture policy."""
         self.ack_wall = ack_wall
         self.ack_sim_time = ack_sim_time
         self.first_sequence = None
@@ -87,6 +96,7 @@ class CaptureFreshness:
         self.observation = None
 
     def ready(self, now, sequence, image_wall, image_sim_time, joint_sim_time):
+        """Require successive fresh camera frames and a settled joint observation."""
         barrier = self.ack_wall + CAPTURE_POLICY['minimum_wall_seconds_after_ack']
         if now < barrier or image_wall < barrier:
             return False
@@ -114,6 +124,7 @@ class CaptureFreshness:
 
 
 def iou(a, b):
+    """Compute intersection over union for two corner-coordinate bounding boxes."""
     a, b = np.asarray(a), np.asarray(b)
     intersection = np.maximum(0, np.minimum(a[2:],b[2:])-np.maximum(a[:2],b[:2])).prod()
     union = np.maximum(0,a[2:]-a[:2]).prod()+np.maximum(0,b[2:]-b[:2]).prod()-intersection
@@ -147,6 +158,7 @@ def compare_pixels(before, after, expected):
 
 
 def paired_scenes(configuration):
+    """Schedule fixed normal and defect counterparts across classes and scales."""
     families=list(groups('vision',configuration))
     chosen=[next(group for group in families if group['parameters']['material_id']==material) for material in range(3)]
     for class_id in range(3):
@@ -218,6 +230,7 @@ def check_render_pair(root, case, fingerprint):
 
 
 def verify_rendering(node, destination):
+    """Capture and assess paired Gazebo frames independently of trained models."""
     identity=specification(CONFIG,verify_plugin_binding())
     root=Path(destination)
     if root.exists() and any(root.iterdir()):

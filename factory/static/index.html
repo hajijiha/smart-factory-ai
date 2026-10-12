@@ -753,6 +753,17 @@
           진동과 불량 발생은 시뮬레이터에서 인위적으로 결합했습니다. 이 상관관계로 실제 현장의 인과관계를 판단할 수 없습니다.
         </p>
       </section>
+      <section class="panel" aria-labelledby="prognosticsHeading">
+        <div class="panel-heading">
+          <div><p class="eyebrow">PROGNOSTICS &amp; MODEL MONITORING</p><h2 id="prognosticsHeading">수명 예측과 분포 감시</h2></div>
+          <span id="prognosticsTime" class="muted">관측 대기</span>
+        </div>
+        <div class="analysis-grid">
+          <div><h3>예상 잔존수명</h3><p class="prognostics-value" id="rulSeconds">수집 중</p><p class="chart-note" id="rulNote">최근 진동 추세를 수집하고 있습니다.</p></div>
+          <div><h3>학습 분포 변화</h3><p class="prognostics-value" id="psiScore">수집 중</p><p class="chart-note" id="psiNote">학습 때 고정한 분포와 실시간 진동 특징을 비교합니다.</p></div>
+        </div>
+        <p class="analysis-limitation">잔존수명은 합성 열화 시나리오 기준의 추정입니다. PSI 증가는 고장뿐 아니라 운전 조건이나 센서 변화에서도 발생할 수 있습니다.</p>
+      </section>
       <section class="panel history-panel" aria-labelledby="historyHeading">
         <div class="panel-heading">
           <div>

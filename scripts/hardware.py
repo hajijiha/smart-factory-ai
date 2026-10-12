@@ -8,7 +8,7 @@ import numpy
 import torch
 import ultralytics
 import onnxruntime
-from factory.common import CONFIG
+from factory.common import CONFIG, REPORTS
 
 
 def record():
@@ -20,7 +20,7 @@ def record():
           'python':platform.python_version(),'torch':torch.__version__,'numpy':numpy.__version__,
           'opencv':cv2.__version__,'ultralytics':ultralytics.__version__,'onnxruntime':onnxruntime.__version__,
           'gpu_used':False,'onnx_intra_op_threads':CONFIG['vision']['threads'],'benchmark_batch':1}
-    output=Path(CONFIG['paths']['reports'])/'hardware.json'
+    output=REPORTS/'hardware.json'
     output.write_text(json.dumps(data,indent=2))
     print(json.dumps(data,indent=2))
 

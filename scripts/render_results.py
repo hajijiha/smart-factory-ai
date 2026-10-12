@@ -6,7 +6,7 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import numpy as np
-from factory.common import DATA, ARTIFACTS, CONFIG
+from factory.common import DATA, ARTIFACTS, CONFIG, REPORTS
 from factory.pdm.features import extract
 from factory.pdm.model import Detector
 from factory.pdm.train import benchmark_rotation
@@ -14,7 +14,7 @@ from factory.pdm.train import benchmark_rotation
 
 def render():
     """Create scientific figures from actual windows and the untouched test split."""
-    output=Path(CONFIG['paths']['reports'])
+    output=REPORTS
     dataset=np.load(DATA/'sensor/dataset.npz')
     rotation=benchmark_rotation(dataset)
     figure,axes=plt.subplots(2,2,figsize=(10,6),constrained_layout=True)

@@ -8,6 +8,7 @@ from factory.provenance import (dataset_identity, verify_evaluation_identity,
 
 
 def test_changed_data_cannot_be_reported_as_same_test(tmp_path):
+    """Verify changed data cannot be reported as same test."""
     sensor = tmp_path / 'sensor'
     sensor.mkdir()
     archive = sensor / 'dataset.npz'
@@ -20,6 +21,7 @@ def test_changed_data_cannot_be_reported_as_same_test(tmp_path):
 
 
 def test_checkpoint_substitution_invalidates_training_record(tmp_path):
+    """Verify checkpoint substitution invalidates training record."""
     weights = tmp_path / 'vision.pt'
     weights.write_bytes(b'fit-a')
     identity = {'generator_version': 'v2'}
@@ -31,6 +33,7 @@ def test_checkpoint_substitution_invalidates_training_record(tmp_path):
 
 
 def test_retraining_or_graph_substitution_requires_reexport(tmp_path):
+    """Verify retraining or graph substitution requires reexport."""
     weights, graph = tmp_path / 'vision.pt', tmp_path / 'vision.onnx'
     weights.write_bytes(b'weights-a')
     graph.write_bytes(b'graph-a')
@@ -46,6 +49,7 @@ def test_retraining_or_graph_substitution_requires_reexport(tmp_path):
 
 
 def test_versioned_model_cannot_run_against_legacy_signal(monkeypatch):
+    """Verify versioned model cannot run against legacy signal."""
     monkeypatch.delenv('DATA_GENERATOR_VERSION', raising=False)
     require_runtime_generator(None)
     with pytest.raises(RuntimeError, match='differs'):
@@ -55,6 +59,7 @@ def test_versioned_model_cannot_run_against_legacy_signal(monkeypatch):
 
 
 def test_original_vision_marker_and_graph_remain_usable(tmp_path):
+    """Verify original vision marker and graph remain usable."""
     root = tmp_path / 'vision'
     root.mkdir()
     (root / 'manifest.jsonl').write_text('{}\n')
@@ -67,6 +72,7 @@ def test_original_vision_marker_and_graph_remain_usable(tmp_path):
 
 
 def test_threshold_cannot_trade_healthy_alarm_budget_for_positive_f1():
+    """Verify threshold cannot trade healthy alarm budget for positive f1."""
     from factory.pdm.train import choose_threshold
     healthy = np.array([0., .1, .2, 10.])
     faults = np.linspace(1., 2., 100)

@@ -1,0 +1,27 @@
+{
+  "passed": true,
+  "test_samples": 1050,
+  "measurements": {
+    "chart": {
+      "tp": 300,
+      "fp": 3,
+      "fn": 0,
+      "tn": 747,
+      "precision": 0.9900990099009901,
+      "recall": 1.0,
+      "f1": 0.9950248756218906
+    },
+    "ae": {
+      "tp": 300,
+      "fp": 7,
+      "fn": 0,
+      "tn": 743,
+      "precision": 0.9771986970684039,
+      "recall": 1.0,
+      "f1": 0.9884678747940692
+    }
+  },
+  "fitted_on_test": false,
+  "checkpoint_sha256": "f829b824123eee1adc66b2fd6cf4fb9a8c50ffd2ba8ea343c06730e93500bb73",
+  "dataset_sha256": "0e948a53632f3b48911ebc98c732d6803c4581e645e3071fbe7a4079023ff8b8"
+}

@@ -1,0 +1,2970 @@
+{
+  "passed": true,
+  "started_at": "2026-10-12T14:55:42.122476+00:00",
+  "finished_at": "2026-10-12T14:57:57.322755+00:00",
+  "transport": "Gazebo joint -> generated waveform -> MQTT sensor -> separate PdM -> MQTT health -> separate prognostics -> PostgreSQL -> HTTP",
+  "scope": "One calibrated synthetic monotonic wear trajectory; independent 12-unit test metrics are in rul.json",
+  "source_events": 111,
+  "estimated_events": 91,
+  "drift_evaluations": 1,
+  "online_mae_seconds": 4.45426240124192,
+  "online_rmse_seconds": 6.243030422509955,
+  "drift_alarms": [
+    {
+      "id": 13,
+      "timestamp": "2026-10-12T14:57:56.720000+00:00",
+      "event_id": "d758ba4b-71a5-4e99-b58e-39ec6e024094",
+      "source": "drift",
+      "severity": "warning",
+      "message": "\ud559\uc2b5 \ubd84\ud3ec \ubcc0\ud654 \uac10\uc9c0: PSI 4.706 \u2265 0.25. \uace0\uc7a5\u00b7\uc6b4\uc804 \uc870\uac74\u00b7\uc13c\uc11c \ubcc0\ud654\ub97c \ud655\uc778\ud558\uc138\uc694."
+    }
+  ],
+  "observations": [
+    {
+      "rul": {
+        "status": "warming_up",
+        "samples": 1,
+        "rul_seconds": null,
+        "required_samples": 24,
+        "required_history_seconds": 23.0
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 1,
+        "required_samples": 128
+      },
+      "event_id": "5614aaab-c65a-42cd-90c8-fab69ae3b573",
+      "timestamp": "2026-10-12T14:55:44.903Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 1.0363335359998018,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 118.9636664640002
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "status": "warming_up",
+        "samples": 3,
+        "rul_seconds": null,
+        "required_samples": 24,
+        "required_history_seconds": 23.0
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 3,
+        "required_samples": 128
+      },
+      "event_id": "0043345e-ccf5-4578-8756-ac55fe9bac88",
+      "timestamp": "2026-10-12T14:55:46.972Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 3.1054464150001877,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 116.89455358499981
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "status": "warming_up",
+        "samples": 4,
+        "rul_seconds": null,
+        "required_samples": 24,
+        "required_history_seconds": 23.0
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 4,
+        "required_samples": 128
+      },
+      "event_id": "af9c6d2f-8c5b-4c06-ba92-35ccd9161adb",
+      "timestamp": "2026-10-12T14:55:48.007Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 4.139710256000399,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 115.8602897439996
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "status": "warming_up",
+        "samples": 5,
+        "rul_seconds": null,
+        "required_samples": 24,
+        "required_history_seconds": 23.0
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 5,
+        "required_samples": 128
+      },
+      "event_id": "4eba3fcf-326f-4704-bc43-09aaad7b3a4f",
+      "timestamp": "2026-10-12T14:55:49.038Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 5.1714780800011795,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 114.82852191999882
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "status": "warming_up",
+        "samples": 6,
+        "rul_seconds": null,
+        "required_samples": 24,
+        "required_history_seconds": 23.0
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 6,
+        "required_samples": 128
+      },
+      "event_id": "ff40dfca-c460-41cb-8896-1af92aa3e87c",
+      "timestamp": "2026-10-12T14:55:50.073Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 6.206499687999894,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 113.7935003120001
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "status": "warming_up",
+        "samples": 7,
+        "rul_seconds": null,
+        "required_samples": 24,
+        "required_history_seconds": 23.0
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 7,
+        "required_samples": 128
+      },
+      "event_id": "17837cfa-674c-4f4a-8521-e19bfa3a213e",
+      "timestamp": "2026-10-12T14:55:51.110Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 7.242799395000475,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 112.75720060499953
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "status": "warming_up",
+        "samples": 8,
+        "rul_seconds": null,
+        "required_samples": 24,
+        "required_history_seconds": 23.0
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 8,
+        "required_samples": 128
+      },
+      "event_id": "c57fd503-6b9a-45e3-ad34-8b763f5bb44b",
+      "timestamp": "2026-10-12T14:55:52.167Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 8.299992297001154,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 111.70000770299885
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "status": "warming_up",
+        "samples": 9,
+        "rul_seconds": null,
+        "required_samples": 24,
+        "required_history_seconds": 23.0
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 9,
+        "required_samples": 128
+      },
+      "event_id": "202d4f47-29d5-4849-8d97-d314913d6e78",
+      "timestamp": "2026-10-12T14:55:53.218Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 9.350724191001063,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 110.64927580899894
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "status": "warming_up",
+        "samples": 11,
+        "rul_seconds": null,
+        "required_samples": 24,
+        "required_history_seconds": 23.0
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 11,
+        "required_samples": 128
+      },
+      "event_id": "dd2d3a31-2fc1-4581-8182-b79c395e54bf",
+      "timestamp": "2026-10-12T14:55:55.278Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 11.410924457000874,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 108.58907554299913
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "status": "warming_up",
+        "samples": 12,
+        "rul_seconds": null,
+        "required_samples": 24,
+        "required_history_seconds": 23.0
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 12,
+        "required_samples": 128
+      },
+      "event_id": "3a4dc27f-923d-4985-8e83-3d6dbebbe0ea",
+      "timestamp": "2026-10-12T14:55:56.309Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 12.441920242999913,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 107.55807975700009
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "status": "warming_up",
+        "samples": 13,
+        "rul_seconds": null,
+        "required_samples": 24,
+        "required_history_seconds": 23.0
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 13,
+        "required_samples": 128
+      },
+      "event_id": "8413bf27-df2a-455b-97cc-f93af7a2c6b2",
+      "timestamp": "2026-10-12T14:55:57.345Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 13.478146103001563,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 106.52185389699844
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "status": "warming_up",
+        "samples": 14,
+        "rul_seconds": null,
+        "required_samples": 24,
+        "required_history_seconds": 23.0
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 14,
+        "required_samples": 128
+      },
+      "event_id": "61ed84e6-67fc-4d10-9c33-24ec93481e67",
+      "timestamp": "2026-10-12T14:55:58.369Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 14.503703568001583,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 105.49629643199842
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "status": "warming_up",
+        "samples": 15,
+        "rul_seconds": null,
+        "required_samples": 24,
+        "required_history_seconds": 23.0
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 15,
+        "required_samples": 128
+      },
+      "event_id": "193d7ee2-2bf1-4fd3-9860-0e44a16a8e85",
+      "timestamp": "2026-10-12T14:55:59.404Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 15.538638488000288,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 104.46136151199971
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "status": "warming_up",
+        "samples": 16,
+        "rul_seconds": null,
+        "required_samples": 24,
+        "required_history_seconds": 23.0
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 16,
+        "required_samples": 128
+      },
+      "event_id": "3e73a789-51e3-452c-8114-c2bf491de064",
+      "timestamp": "2026-10-12T14:56:00.433Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 16.567291778001163,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 103.43270822199884
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "status": "warming_up",
+        "samples": 17,
+        "rul_seconds": null,
+        "required_samples": 24,
+        "required_history_seconds": 23.0
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 17,
+        "required_samples": 128
+      },
+      "event_id": "789aa076-7d4a-4d9d-a877-fdd1f685268c",
+      "timestamp": "2026-10-12T14:56:01.460Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 17.594277312000486,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 102.40572268799951
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "status": "warming_up",
+        "samples": 19,
+        "rul_seconds": null,
+        "required_samples": 24,
+        "required_history_seconds": 23.0
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 19,
+        "required_samples": 128
+      },
+      "event_id": "d410f9e4-4945-4bb1-ada2-3d8d90a6665c",
+      "timestamp": "2026-10-12T14:56:03.583Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 19.717856524001036,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 100.28214347599896
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "status": "warming_up",
+        "samples": 20,
+        "rul_seconds": null,
+        "required_samples": 24,
+        "required_history_seconds": 23.0
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 20,
+        "required_samples": 128
+      },
+      "event_id": "569a58a0-2ae1-42a5-9424-7e8a371e1541",
+      "timestamp": "2026-10-12T14:56:04.612Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 20.746098047000487,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 99.25390195299951
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "status": "warming_up",
+        "samples": 21,
+        "rul_seconds": null,
+        "required_samples": 24,
+        "required_history_seconds": 23.0
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 21,
+        "required_samples": 128
+      },
+      "event_id": "e74b9f66-c0cf-4a18-bb5d-b7ab541e15cf",
+      "timestamp": "2026-10-12T14:56:05.645Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 21.779278751000675,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 98.22072124899933
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "status": "warming_up",
+        "samples": 22,
+        "rul_seconds": null,
+        "required_samples": 24,
+        "required_history_seconds": 23.0
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 22,
+        "required_samples": 128
+      },
+      "event_id": "01a8e9f7-4d1f-4e20-9fe2-14331676b2e5",
+      "timestamp": "2026-10-12T14:56:06.687Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 22.82155013600095,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 97.17844986399905
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "status": "warming_up",
+        "samples": 23,
+        "rul_seconds": null,
+        "required_samples": 24,
+        "required_history_seconds": 23.0
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 23,
+        "required_samples": 128
+      },
+      "event_id": "042a86da-f9ba-4efa-9701-819831b84827",
+      "timestamp": "2026-10-12T14:56:07.715Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 23.849333375999777,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 96.15066662400022
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 24,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 84.81,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.0038626695821178635
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 24,
+        "required_samples": 128
+      },
+      "event_id": "b461d910-ada5-4b97-9e11-cd809d6db42a",
+      "timestamp": "2026-10-12T14:56:08.750Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 24.884313022999777,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 95.11568697700022
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 25,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 84.95,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.0038945889551538658
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 25,
+        "required_samples": 128
+      },
+      "event_id": "98d3a98a-8307-4a9d-a0e9-00916e091c31",
+      "timestamp": "2026-10-12T14:56:09.778Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 25.91236424300041,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 94.08763575699959
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 27,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 83.67,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.003905391679395007
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 27,
+        "required_samples": 128
+      },
+      "event_id": "da5f7835-2f4b-4d27-8162-910b2c962eae",
+      "timestamp": "2026-10-12T14:56:11.849Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 27.983401974001026,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 92.01659802599897
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 28,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 82.59,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.003919884393410681
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 28,
+        "required_samples": 128
+      },
+      "event_id": "be4fddc6-2b84-4e51-8950-c830df8a41dc",
+      "timestamp": "2026-10-12T14:56:12.880Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 29.014375925000422,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 90.98562407499958
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 29,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 80.74,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.003924322528688682
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 29,
+        "required_samples": 128
+      },
+      "event_id": "44fea53d-c774-45dc-9887-5b72088d90bd",
+      "timestamp": "2026-10-12T14:56:13.905Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 30.039159522000773,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 89.96084047799923
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 30,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 77.58,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.0039314452750564685
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 30,
+        "required_samples": 128
+      },
+      "event_id": "bd068835-8512-4bd4-9427-76d33d1cfc71",
+      "timestamp": "2026-10-12T14:56:14.929Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 31.063673915001345,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 88.93632608499865
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 31,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 74.75,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.0039534653179989
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 31,
+        "required_samples": 128
+      },
+      "event_id": "2788d635-c2f5-4549-a5ce-bea46299c1a1",
+      "timestamp": "2026-10-12T14:56:15.974Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 32.109238308001295,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 87.8907616919987
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 32,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 75.39,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.003979957040746899
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 32,
+        "required_samples": 128
+      },
+      "event_id": "e1f13bf8-7d48-4ddc-a15a-95090bd2cffe",
+      "timestamp": "2026-10-12T14:56:17.005Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 33.13979976100018,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 86.86020023899982
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 33,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 71.79,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004010190618950701
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 33,
+        "required_samples": 128
+      },
+      "event_id": "8807656f-dee1-4993-85fa-2bf78593430f",
+      "timestamp": "2026-10-12T14:56:18.038Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 34.17235595300008,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 85.82764404699992
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 34,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 71.02,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004033381012552686
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 34,
+        "required_samples": 128
+      },
+      "event_id": "8b6acda3-c589-4566-988f-9ad796f60d92",
+      "timestamp": "2026-10-12T14:56:19.070Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 35.20432889600124,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 84.79567110399876
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 36,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 67.36,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004062343120991717
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 36,
+        "required_samples": 128
+      },
+      "event_id": "a0ad1d00-71e1-4c66-a1fb-fcec459b7bdd",
+      "timestamp": "2026-10-12T14:56:21.131Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 37.26606786100092,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 82.73393213899908
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 37,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 66.53,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004053861846644069
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 37,
+        "required_samples": 128
+      },
+      "event_id": "da9a74a5-7e3b-4b51-8a80-0b3fff97edce",
+      "timestamp": "2026-10-12T14:56:22.180Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 38.314682595000704,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 81.6853174049993
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 38,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 66.44,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.00407503226679626
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 38,
+        "required_samples": 128
+      },
+      "event_id": "f8967ff5-f489-477f-9809-582a1ae34a66",
+      "timestamp": "2026-10-12T14:56:23.208Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 39.34235854800136,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 80.65764145199864
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 39,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 66.77,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004091221167197225
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 39,
+        "required_samples": 128
+      },
+      "event_id": "d94034ef-931f-42c2-8cdd-4b1cee54c8b6",
+      "timestamp": "2026-10-12T14:56:24.241Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 40.37521502100026,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 79.62478497899974
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 40,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 67.23,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004090267227094299
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 40,
+        "required_samples": 128
+      },
+      "event_id": "fc0c2c5c-71d2-40ad-bfaa-a5a96902f4f3",
+      "timestamp": "2026-10-12T14:56:25.272Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 41.40696833200127,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 78.59303166799873
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 41,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 67.46,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004111993017399932
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 41,
+        "required_samples": 128
+      },
+      "event_id": "be047ea2-c3a5-44e6-9934-23313ef633ea",
+      "timestamp": "2026-10-12T14:56:26.300Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 42.43408087200078,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 77.56591912799922
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 43,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 64.49,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004156081656766534
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 43,
+        "required_samples": 128
+      },
+      "event_id": "eea95332-f87c-41ab-a1ca-fd57dac59b0d",
+      "timestamp": "2026-10-12T14:56:28.352Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 44.48882042800142,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 75.51117957199858
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 44,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 63.31,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004168213108730208
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 44,
+        "required_samples": 128
+      },
+      "event_id": "bc6ebe7d-8c0a-4d41-b785-fe4c2f7d3972",
+      "timestamp": "2026-10-12T14:56:29.381Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 45.517832833000284,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 74.48216716699972
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 45,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 61.9,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004167259794147885
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 45,
+        "required_samples": 128
+      },
+      "event_id": "4c0c848f-fc4a-4af8-87e6-049d68072a9e",
+      "timestamp": "2026-10-12T14:56:30.412Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 46.54910556300092,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 73.45089443699908
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 46,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 62.15,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004169164270934871
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 46,
+        "required_samples": 128
+      },
+      "event_id": "b9ad2c44-8b25-453d-8ee9-65437bb32119",
+      "timestamp": "2026-10-12T14:56:31.444Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 47.58108739599993,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 72.41891260400007
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 47,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 61.41,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.0042063114273438685
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 47,
+        "required_samples": 128
+      },
+      "event_id": "fb47a715-f68d-43fa-9cac-9298369b9a80",
+      "timestamp": "2026-10-12T14:56:32.497Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 48.633804229000816,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 71.36619577099918
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 48,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 61.46,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004225976085927741
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 48,
+        "required_samples": 128
+      },
+      "event_id": "1e25ce86-7026-43be-b9d9-8a2acb62dc11",
+      "timestamp": "2026-10-12T14:56:33.546Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 49.682509524000125,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 70.31749047599988
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 49,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 62.98,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004222442914083188
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 49,
+        "required_samples": 128
+      },
+      "event_id": "bb5bc10f-5ae1-46ff-85a1-b246e9b0afb5",
+      "timestamp": "2026-10-12T14:56:34.575Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 50.71159218899993,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 69.28840781100007
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 50,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 64.38,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004207084451966699
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 50,
+        "required_samples": 128
+      },
+      "event_id": "45ef1374-750c-4d28-83ff-f18d37729f43",
+      "timestamp": "2026-10-12T14:56:35.606Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 51.742493981000734,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 68.25750601899927
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 52,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 66.07,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004176260911328849
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 52,
+        "required_samples": 128
+      },
+      "event_id": "08574582-802f-4045-9f0c-7b91cc7de24e",
+      "timestamp": "2026-10-12T14:56:37.665Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 53.80222736300129,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 66.1977726369987
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 53,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 66.19,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004200739707692368
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 53,
+        "required_samples": 128
+      },
+      "event_id": "39b67ddc-8b9a-4f9f-ad26-657737e375db",
+      "timestamp": "2026-10-12T14:56:38.708Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 54.84532392800065,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 65.15467607199935
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 54,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 65.97,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004215106941387914
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 54,
+        "required_samples": 128
+      },
+      "event_id": "6d26c0a8-4f8c-495f-bc84-353186149d41",
+      "timestamp": "2026-10-12T14:56:39.747Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 55.88408823300051,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 64.11591176699949
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 55,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 67.48,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004233680619928148
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 55,
+        "required_samples": 128
+      },
+      "event_id": "8cf55528-9060-4d54-a578-537c3049a4da",
+      "timestamp": "2026-10-12T14:56:40.782Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 56.91917804800141,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 63.08082195199859
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 56,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 66.92,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004245089527067437
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 56,
+        "required_samples": 128
+      },
+      "event_id": "210e8ecd-4aa6-459a-8fb3-be10beb9f548",
+      "timestamp": "2026-10-12T14:56:41.834Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 57.97090105300049,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 62.02909894699951
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 57,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 66.05,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004267755686880558
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 57,
+        "required_samples": 128
+      },
+      "event_id": "9e632dbc-99f6-419f-aa4f-37dba87752ed",
+      "timestamp": "2026-10-12T14:56:42.886Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 59.02301786899989,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 60.97698213100011
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 59,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 66.0,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004332662448486746
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 59,
+        "required_samples": 128
+      },
+      "event_id": "d6240dde-c571-4185-9d74-d8a7e294bccc",
+      "timestamp": "2026-10-12T14:56:44.953Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 61.089864015000785,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 58.910135984999215
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 60,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 65.19,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.00431605384389202
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 60,
+        "required_samples": 128
+      },
+      "event_id": "9fe81216-dfc6-4cf6-9c23-a513986b44e2",
+      "timestamp": "2026-10-12T14:56:45.984Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 62.12086059300054,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 57.87913940699946
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 61,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 62.48,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004331663641611012
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 61,
+        "required_samples": 128
+      },
+      "event_id": "35b3d585-d661-48e6-a80f-7f9424681944",
+      "timestamp": "2026-10-12T14:56:47.015Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 63.15224914100145,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 56.84775085899855
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 62,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 60.18,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.00431534643611658
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 62,
+        "required_samples": 128
+      },
+      "event_id": "d9f67805-0c38-4844-811f-ecace1f230d7",
+      "timestamp": "2026-10-12T14:56:48.043Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 64.1795130620012,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 55.820486937998794
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 63,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 57.41,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004307498020503707
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 63,
+        "required_samples": 128
+      },
+      "event_id": "f8e7eff2-3e93-4660-ab40-fda66957ba3d",
+      "timestamp": "2026-10-12T14:56:49.071Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 65.2083985549998,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 54.7916014450002
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 64,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 55.39,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004336739359656162
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 64,
+        "required_samples": 128
+      },
+      "event_id": "9d253d29-011a-429f-a15a-b8b2b209cef3",
+      "timestamp": "2026-10-12T14:56:50.099Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 66.23631362200103,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 53.763686377998965
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 65,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 53.33,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004308977994174026
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 65,
+        "required_samples": 128
+      },
+      "event_id": "8343dbd0-aa40-485f-8f83-0a8d5d47ddcf",
+      "timestamp": "2026-10-12T14:56:51.131Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 67.26821347199984,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 52.73178652800016
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 66,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 51.93,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004334039189718367
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 66,
+        "required_samples": 128
+      },
+      "event_id": "07dfd9e4-4f57-44cd-9ec4-24be88cca517",
+      "timestamp": "2026-10-12T14:56:52.171Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 68.3082885620006,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 51.6917114379994
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 68,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 50.17,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004315786522042138
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 68,
+        "required_samples": 128
+      },
+      "event_id": "4987c4cf-dfdf-4c46-8853-afe902822077",
+      "timestamp": "2026-10-12T14:56:54.231Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 70.36829647500053,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 49.631703524999466
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 69,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 49.09,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004301849384153652
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 69,
+        "required_samples": 128
+      },
+      "event_id": "f6c82c3a-850a-4920-b40a-ea25be27f8bd",
+      "timestamp": "2026-10-12T14:56:55.260Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 71.39707888500016,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 48.602921114999845
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 70,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 46.68,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004339080953743346
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 70,
+        "required_samples": 128
+      },
+      "event_id": "845dc2d0-8dcd-47fc-a77f-1c4f142e14fd",
+      "timestamp": "2026-10-12T14:56:56.294Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 72.43145646999983,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 47.56854353000017
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 71,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 48.3,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.0042856203549234565
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 71,
+        "required_samples": 128
+      },
+      "event_id": "cd942838-4284-4eb3-b49f-f266f1508d97",
+      "timestamp": "2026-10-12T14:56:57.328Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 73.46448081700146,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 46.53551918299854
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 72,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 46.37,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004303887038556955
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 72,
+        "required_samples": 128
+      },
+      "event_id": "59ab5cea-295f-416d-8e6f-505b7e469e47",
+      "timestamp": "2026-10-12T14:56:58.361Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 74.50095020500157,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 45.49904979499843
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 73,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 48.3,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004254863569157879
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 73,
+        "required_samples": 128
+      },
+      "event_id": "abddbd23-1f5e-4d01-a1bd-85c89d1bbdf1",
+      "timestamp": "2026-10-12T14:56:59.383Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 75.52292432600007,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 44.477075673999934
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 75,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 48.44,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004194683833801281
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 75,
+        "required_samples": 128
+      },
+      "event_id": "da734d70-a2f0-4d66-a22b-59b3df26c6e3",
+      "timestamp": "2026-10-12T14:57:01.439Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 77.57879945600143,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 42.421200543998566
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 76,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 47.26,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004218189806071394
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 76,
+        "required_samples": 128
+      },
+      "event_id": "599aa098-6086-470a-aa51-ff2b4122213e",
+      "timestamp": "2026-10-12T14:57:02.548Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 78.68786431800072,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 41.31213568199928
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 77,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 46.96,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004250415430237433
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 77,
+        "required_samples": 128
+      },
+      "event_id": "49c5488b-de4e-49e5-9f32-a3e460024014",
+      "timestamp": "2026-10-12T14:57:03.571Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 79.71097689800081,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 40.28902310199919
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 78,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 45.1,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004287156302939563
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 78,
+        "required_samples": 128
+      },
+      "event_id": "42fbc291-35fa-4a82-bc3f-ddc9b2f4dd6e",
+      "timestamp": "2026-10-12T14:57:04.611Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 80.75119875200107,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 39.24880124799893
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 79,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 42.26,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.00432271013598814
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 79,
+        "required_samples": 128
+      },
+      "event_id": "893c67c4-794c-4ebe-9839-4c6aea60c305",
+      "timestamp": "2026-10-12T14:57:05.644Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 81.78478789100154,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 38.21521210899846
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 80,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 39.78,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004390679909828311
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 80,
+        "required_samples": 128
+      },
+      "event_id": "2482ac38-d817-4ad7-a8a6-bc8fe6bd1d3f",
+      "timestamp": "2026-10-12T14:57:06.675Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 82.8152189299999,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 37.1847810700001
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 81,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 38.2,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004449720149399915
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 81,
+        "required_samples": 128
+      },
+      "event_id": "8467f3a9-2849-4a35-bd9f-fa83806f0993",
+      "timestamp": "2026-10-12T14:57:07.704Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 83.84408104100112,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 36.15591895899888
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 83,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 34.83,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.0044731124164279976
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 83,
+        "required_samples": 128
+      },
+      "event_id": "dcae7071-3173-478e-86b6-e0b8d2c990bf",
+      "timestamp": "2026-10-12T14:57:09.782Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 85.92214582199995,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 34.07785417800005
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 84,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 32.69,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004593271670096551
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 84,
+        "required_samples": 128
+      },
+      "event_id": "c79a01b4-16d4-4375-94b5-4fa9c5e381da",
+      "timestamp": "2026-10-12T14:57:10.823Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 86.96360770300089,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 33.03639229699911
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 85,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 31.91,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004611345881839631
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 85,
+        "required_samples": 128
+      },
+      "event_id": "52a6a036-8ecf-4a62-b27b-0918de4d75c4",
+      "timestamp": "2026-10-12T14:57:11.883Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 88.02289115500025,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 31.977108844999748
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 86,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 30.44,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004629515954509529
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 86,
+        "required_samples": 128
+      },
+      "event_id": "2da34d56-7e0c-4b4d-a5af-529b89f059fe",
+      "timestamp": "2026-10-12T14:57:13.005Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 89.14566338700024,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 30.85433661299976
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 87,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 29.64,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004613567328120376
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 87,
+        "required_samples": 128
+      },
+      "event_id": "f05a64fe-f81d-4d5b-b060-4466c046e0d2",
+      "timestamp": "2026-10-12T14:57:14.055Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 90.19554784499996,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 29.804452155000035
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 88,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 26.9,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004613996301832066
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 88,
+        "required_samples": 128
+      },
+      "event_id": "57e58b76-572c-4b1e-92a3-ba1d8dedb33a",
+      "timestamp": "2026-10-12T14:57:15.110Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 91.25070554400008,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 28.749294455999916
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 90,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 25.25,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004656747106649729
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 90,
+        "required_samples": 128
+      },
+      "event_id": "66a4bf1b-92d9-4f3c-b1cc-b0894416fd9e",
+      "timestamp": "2026-10-12T14:57:17.232Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 93.37224509400039,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 26.62775490599961
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 91,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 24.33,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004699787281570323
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 91,
+        "required_samples": 128
+      },
+      "event_id": "75bd4db4-abda-40de-975d-e58dfb79b920",
+      "timestamp": "2026-10-12T14:57:18.264Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 94.40421604699986,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 25.595783953000137
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 92,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 24.96,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004659909212390932
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 92,
+        "required_samples": 128
+      },
+      "event_id": "009586ec-b67e-47f0-8f94-338d7a681563",
+      "timestamp": "2026-10-12T14:57:19.309Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 95.44922706299985,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 24.550772937000147
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 93,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 24.56,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004696406180648549
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 93,
+        "required_samples": 128
+      },
+      "event_id": "67f36f4f-d9be-495b-b053-1755c75f74ce",
+      "timestamp": "2026-10-12T14:57:20.348Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 96.48844262100101,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 23.511557378998987
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 94,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 24.22,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004638707564686768
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 94,
+        "required_samples": 128
+      },
+      "event_id": "434bab74-d962-442d-a302-5d0e0ab995a4",
+      "timestamp": "2026-10-12T14:57:21.384Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 97.52415500500138,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 22.475844994998624
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 95,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 24.48,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004659368527303975
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 95,
+        "required_samples": 128
+      },
+      "event_id": "4b6b7106-fa16-4768-a06d-2ba6f9482a7a",
+      "timestamp": "2026-10-12T14:57:22.436Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 98.57588850600041,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 21.42411149399959
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 97,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 22.07,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.00449270866059367
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 97,
+        "required_samples": 128
+      },
+      "event_id": "208f0d54-bc19-477e-a6e3-82563335effb",
+      "timestamp": "2026-10-12T14:57:24.516Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 100.6565073640013,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 19.3434926359987
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 98,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 20.72,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.0044595582659463
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 98,
+        "required_samples": 128
+      },
+      "event_id": "393915f5-67dc-46ec-9525-24768013a2e4",
+      "timestamp": "2026-10-12T14:57:25.543Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 101.68315052800062,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 18.316849471999376
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 99,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 19.13,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004379440044040591
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 99,
+        "required_samples": 128
+      },
+      "event_id": "28f0b1ac-7715-4d01-9fe1-1e94c8f09ef8",
+      "timestamp": "2026-10-12T14:57:26.573Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 102.71310883100159,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 17.28689116899841
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 100,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 18.4,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004362844158277592
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 100,
+        "required_samples": 128
+      },
+      "event_id": "759738ce-2a9c-494e-8ee7-0a873382d4f0",
+      "timestamp": "2026-10-12T14:57:27.601Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 103.7412530900001,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 16.2587469099999
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 101,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 17.23,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004367236048818043
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 101,
+        "required_samples": 128
+      },
+      "event_id": "5b553a59-e41a-4170-b162-f4b715995678",
+      "timestamp": "2026-10-12T14:57:28.626Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 104.76705185799983,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 15.232948142000168
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 102,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 15.42,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004400563538477674
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 102,
+        "required_samples": 128
+      },
+      "event_id": "d2c54778-3488-45e1-98c2-1e38732fb04d",
+      "timestamp": "2026-10-12T14:57:29.684Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 105.82554252500086,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 14.174457474999144
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 103,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 13.91,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004468061510396077
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 103,
+        "required_samples": 128
+      },
+      "event_id": "66494f18-03ba-4532-b42c-12ae8e411553",
+      "timestamp": "2026-10-12T14:57:30.715Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 106.85612675000084,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 13.14387324999916
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 105,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 11.89,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004482229040922854
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 105,
+        "required_samples": 128
+      },
+      "event_id": "88ccbe27-cc5a-4b04-889d-8e9f79cf8ec1",
+      "timestamp": "2026-10-12T14:57:32.830Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 108.97156192300099,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 11.02843807699901
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 106,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 11.37,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004422868121541072
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 106,
+        "required_samples": 128
+      },
+      "event_id": "6f810228-7179-4b98-bb11-c3331008c29a",
+      "timestamp": "2026-10-12T14:57:33.856Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 109.99778330000117,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 10.002216699998826
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 107,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 10.36,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004530877034903448
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 107,
+        "required_samples": 128
+      },
+      "event_id": "a037dc02-d749-45ef-9380-1755171b5e2b",
+      "timestamp": "2026-10-12T14:57:34.915Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 111.05617016700126,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 8.943829832998745
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 108,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 9.43,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004591880171542244
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 108,
+        "required_samples": 128
+      },
+      "event_id": "78468c32-2fba-421b-833e-19ad069a541f",
+      "timestamp": "2026-10-12T14:57:35.946Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 112.0878607300001,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 7.912139269999898
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 109,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 8.91,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004598187514993349
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 109,
+        "required_samples": 128
+      },
+      "event_id": "e80269a3-300d-466d-a8f9-28127058dff5",
+      "timestamp": "2026-10-12T14:57:36.980Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 113.12142297399987,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 6.87857702600013
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 110,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 7.57,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004554037588425753
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 110,
+        "required_samples": 128
+      },
+      "event_id": "5a14cc91-48ba-4f12-8f50-5dad3e5c873f",
+      "timestamp": "2026-10-12T14:57:38.014Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 114.1555873870002,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 5.844412612999804
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 112,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 5.53,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004612500394960746
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 112,
+        "required_samples": 128
+      },
+      "event_id": "68d64b40-aa80-4880-9e11-6edf0d41f974",
+      "timestamp": "2026-10-12T14:57:40.088Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 116.2299114590005,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 3.7700885409994953
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 113,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 4.38,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004607007547424617
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 113,
+        "required_samples": 128
+      },
+      "event_id": "f63e69b1-ecc1-4abd-b59c-49a4ec72f2b2",
+      "timestamp": "2026-10-12T14:57:41.116Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 117.25784195100096,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 2.7421580489990447
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 114,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 3.43,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004731645574935642
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 114,
+        "required_samples": 128
+      },
+      "event_id": "100d8943-79e1-43e5-8728-37d47edc2601",
+      "timestamp": "2026-10-12T14:57:42.178Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 118.31999765600085,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 1.6800023439991492
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 115,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 2.68,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004651156723259623
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 115,
+        "required_samples": 128
+      },
+      "event_id": "4853f504-8831-4f22-82a6-143968b5a205",
+      "timestamp": "2026-10-12T14:57:43.211Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 119.35246435600129,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 0.6475356439987081
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 116,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 2.02,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004712124795072184
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 116,
+        "required_samples": 128
+      },
+      "event_id": "8b2768bb-2570-48a8-9bee-529d398c96f1",
+      "timestamp": "2026-10-12T14:57:44.258Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 120.0,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 0.0
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 118,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 1.53,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004513932699976236
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 118,
+        "required_samples": 128
+      },
+      "event_id": "21ea4859-9d02-4cca-bfb0-50e8fc6e5a5b",
+      "timestamp": "2026-10-12T14:57:46.346Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 120.0,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 0.0
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 119,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 1.36,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004353153667983396
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 119,
+        "required_samples": 128
+      },
+      "event_id": "26b39b87-6dab-48da-b7a2-e59ce3f34c34",
+      "timestamp": "2026-10-12T14:57:47.390Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 120.0,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 0.0
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 120,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 1.26,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.004181323306572992
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 120,
+        "required_samples": 128
+      },
+      "event_id": "772d9563-9748-40e6-826b-f21179f453c0",
+      "timestamp": "2026-10-12T14:57:48.423Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 120.0,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 0.0
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 121,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 1.16,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.003988581858215476
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 121,
+        "required_samples": 128
+      },
+      "event_id": "349d5582-5417-4f22-99ed-6bccad6c0477",
+      "timestamp": "2026-10-12T14:57:49.447Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 120.0,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 0.0
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 122,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 1.14,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.003710896871669233
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 122,
+        "required_samples": 128
+      },
+      "event_id": "7240299e-ea50-4c69-b576-ecf502fa6b01",
+      "timestamp": "2026-10-12T14:57:50.475Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 120.0,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 0.0
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 123,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 1.17,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.0033900028804055853
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 123,
+        "required_samples": 128
+      },
+      "event_id": "7cc88db7-9bae-4604-bc95-7e51d1712adf",
+      "timestamp": "2026-10-12T14:57:51.504Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 120.0,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 0.0
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 125,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 1.08,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.0028117620461189873
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 125,
+        "required_samples": 128
+      },
+      "event_id": "6b3c410e-46c6-4a94-b8a6-26409d538b4c",
+      "timestamp": "2026-10-12T14:57:53.609Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 120.0,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 0.0
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 126,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 1.09,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.002516479542359402
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 126,
+        "required_samples": 128
+      },
+      "event_id": "7f4168d1-f210-477b-a87b-b4f335b758f7",
+      "timestamp": "2026-10-12T14:57:54.660Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 120.0,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 0.0
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 127,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 1.06,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.00222077832744423
+      },
+      "drift": {
+        "psi": null,
+        "status": "warming_up",
+        "samples": 127,
+        "required_samples": 128
+      },
+      "event_id": "3742ef91-3cdc-41ef-be81-a446ac4236b1",
+      "timestamp": "2026-10-12T14:57:55.689Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 120.0,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 0.0
+      },
+      "drift_evaluated": false
+    },
+    {
+      "rul": {
+        "scope": "synthetic_monotonic_wear_proxy",
+        "status": "estimated",
+        "samples": 128,
+        "time_unit": "virtual operating second of the calibrated synthetic wear scenario",
+        "rul_seconds": 1.08,
+        "sample_seconds": 1.0,
+        "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+        "rms_slope_per_second": 0.00194007182652639
+      },
+      "drift": {
+        "psi": 4.706409503556414,
+        "status": "drift",
+        "samples": 128,
+        "threshold": 0.25,
+        "feature_psi": {
+          "rms": 4.706409503556414,
+          "bpfi_amplitude": 4.359926180449025,
+          "bpfo_amplitude": 4.533134283662469,
+          "spectral_energy": 4.706409503556414
+        },
+        "required_samples": 128,
+        "reference_samples": 3500,
+        "reference_dataset_sha256": "0e948a53632f3b48911ebc98c732d6803c4581e645e3071fbe7a4079023ff8b8"
+      },
+      "event_id": "d758ba4b-71a5-4e99-b58e-39ec6e024094",
+      "timestamp": "2026-10-12T14:57:56.720Z",
+      "wear_scenario": {
+        "scope": "calibrated_synthetic_wear_only",
+        "age_seconds": 120.0,
+        "failure_seconds": 120.0,
+        "true_rul_seconds": 0.0
+      },
+      "drift_evaluated": true
+    }
+  ]
+}

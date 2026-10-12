@@ -1,0 +1,50 @@
+{
+  "failure_definition": "Injected wear level reaches 9.0; conveyor is physically stopped. This is a functional-failure proxy, not a damaged-bearing mechanics model.",
+  "feature_names": [
+    "mean",
+    "rms",
+    "peak",
+    "crest_factor",
+    "kurtosis",
+    "dominant_frequency",
+    "spectral_energy",
+    "bpfo_amplitude",
+    "bpfi_amplitude"
+  ],
+  "files": {
+    "dataset.npz": "f37b0837f9a8038369fd8a9fc0d61bd442862a4f018d62d5bf8be8bf4ec9cb24",
+    "provenance.jsonl": "e110beafe2ad5397a5974caee65e35a0b10ba54c1ec6ebba2c0c6bce22cb2a13",
+    "units.json": "5aaf9ab474bd76cb0845751869375ef0b84ae9a230690d1fff439d7ce3423301"
+  },
+  "fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+  "row_count": 11199,
+  "schema_version": 1,
+  "settings": {
+    "batch": 128,
+    "epochs": 100,
+    "failure_level": 9.0,
+    "hidden_size": 32,
+    "lifetime_seconds": [
+      100,
+      180
+    ],
+    "maximum_rul_seconds": 180,
+    "patience": 15,
+    "sample_seconds": 1.0,
+    "seed": 20261012,
+    "sequence_length": 24,
+    "units": 80
+  },
+  "source": "Gazebo ODE joint observation plus declared mathematical wear injection",
+  "source_hashes": {
+    "factory/pdm/features.py": "d10c39136d1abfc8a91b59f745bc6b56d93cdbfb89ff18e4f12905ec81301817",
+    "simulator/rul_dataset.py": "fe88483792616b9a112236076880f8fe580388823f69ba3b5efdb7ff2e4872db",
+    "simulator/signal.py": "f55f905221f503f82ac264192d599254eb39a73dbff5a90aeb7f6f8e20fa6fc6"
+  },
+  "time_policy": "Accelerated virtual operating seconds; each one-second signal window is synthesized from a newer physical joint observation. Virtual age is distinct from Gazebo sim_time and UTC.",
+  "unit_counts": {
+    "test": 12,
+    "train": 56,
+    "val": 12
+  }
+}

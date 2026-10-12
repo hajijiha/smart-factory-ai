@@ -42,6 +42,7 @@ def equipment(result, name):
 
 
 def test_empty_history_is_waiting_and_never_reset_ready():
+    """Verify empty history is waiting and never reset ready."""
     result = build_process_snapshot({'mqtt_connected': True}, now=NOW)
     assert result['state'] == 'waiting'
     assert result['reset_ready'] is False
@@ -50,6 +51,7 @@ def test_empty_history_is_waiting_and_never_reset_ready():
 
 
 def test_normal_requires_measured_motion_and_does_not_offer_reset():
+    """Verify normal requires measured motion and does not offer reset."""
     result = build_process_snapshot(snapshot(), now=NOW)
     assert result['state'] == 'running'
     assert equipment(result, 'motor')['state'] == 'normal'
@@ -58,6 +60,7 @@ def test_normal_requires_measured_motion_and_does_not_offer_reset():
 
 
 def test_danger_does_not_fabricate_an_already_stopped_conveyor():
+    """Verify danger does not fabricate an already stopped conveyor."""
     data = snapshot(hi=15, level=10)
     result = build_process_snapshot(data, now=NOW)
     assert result['state'] == 'attention'
@@ -68,12 +71,14 @@ def test_danger_does_not_fabricate_an_already_stopped_conveyor():
 
 @pytest.mark.parametrize('running,velocity', [(True, 0), (True, .25), (False, 4), (False, -.2)])
 def test_command_and_measured_speed_disagreement_is_a_transition(running, velocity):
+    """Verify command and measured speed disagreement is a transition."""
     result = build_process_snapshot(snapshot(running=running, velocity=velocity), now=NOW)
     assert equipment(result, 'conveyor')['state'] == 'warning'
     assert result['state'] == 'attention'
 
 
 def test_recovered_health_does_not_automatically_restart():
+    """Verify recovered health does not automatically restart."""
     result = build_process_snapshot(snapshot(running=False), now=NOW)
     assert result['state'] == 'stopped'
     assert equipment(result, 'conveyor')['state'] == 'stopped'
@@ -84,6 +89,7 @@ def test_recovered_health_does_not_automatically_restart():
 @pytest.mark.parametrize('timestamp', [stamp(5.001), stamp(-1), 'bad-date',
                                       '2026-10-10T06:00:00', None])
 def test_reset_independently_rejects_bad_health_and_line_times(key, timestamp):
+    """Verify reset independently rejects bad health and line times."""
     data = snapshot(running=False)
     data[key]['timestamp'] = timestamp
     result = build_process_snapshot(data, now=NOW)
@@ -92,6 +98,7 @@ def test_reset_independently_rejects_bad_health_and_line_times(key, timestamp):
 
 
 def test_exact_five_second_observations_satisfy_controller_boundary():
+    """Verify exact five second observations satisfy controller boundary."""
     data = snapshot(running=False)
     data['latest_health']['timestamp'] = stamp(5)
     data['line']['timestamp'] = stamp(5)
@@ -101,15 +108,18 @@ def test_exact_five_second_observations_satisfy_controller_boundary():
 
 @pytest.mark.parametrize('hi,level', [(79.99, 0), (95, 1), (80, 10)])
 def test_reset_rejects_low_health_or_nonzero_fault(hi, level):
+    """Verify reset rejects low health or nonzero fault."""
     assert build_process_snapshot(snapshot(running=False, hi=hi, level=level),
                                   now=NOW)['reset_ready'] is False
 
 
 def test_reset_health_threshold_is_inclusive():
+    """Verify reset health threshold is inclusive."""
     assert build_process_snapshot(snapshot(running=False, hi=80), now=NOW)['reset_ready'] is True
 
 
 def test_disconnected_mqtt_never_allows_a_reset():
+    """Verify disconnected mqtt never allows a reset."""
     data = snapshot(running=False)
     data['mqtt_connected'] = False
     result = build_process_snapshot(data, now=NOW)
@@ -118,12 +128,14 @@ def test_disconnected_mqtt_never_allows_a_reset():
 
 @pytest.mark.parametrize('key', ['latest_health', 'line'])
 def test_missing_service_observation_never_allows_a_reset(key):
+    """Verify missing service observation never allows a reset."""
     data = snapshot(running=False)
     data[key] = None
     assert build_process_snapshot(data, now=NOW)['reset_ready'] is False
 
 
 def test_old_sensor_cannot_make_motor_look_healthy_with_a_new_health_record():
+    """Verify old sensor cannot make motor look healthy with a new health record."""
     data = snapshot()
     data['rows'][0]['timestamp'] = stamp(20)
     result = build_process_snapshot(data, now=NOW)
@@ -132,6 +144,7 @@ def test_old_sensor_cannot_make_motor_look_healthy_with_a_new_health_record():
 
 
 def test_retained_running_state_cannot_make_a_stale_conveyor_live():
+    """Verify retained running state cannot make a stale conveyor live."""
     data = snapshot()
     data['line']['timestamp'] = stamp(60)
     result = build_process_snapshot(data, now=NOW)
@@ -142,6 +155,7 @@ def test_retained_running_state_cannot_make_a_stale_conveyor_live():
 
 @pytest.mark.parametrize('value', [None, 'false', 0])
 def test_invalid_running_observation_cannot_claim_a_physical_stop(value):
+    """Verify invalid running observation cannot claim a physical stop."""
     data = snapshot(running=False)
     data['line']['running'] = value
     result = build_process_snapshot(data, now=NOW)
@@ -151,6 +165,7 @@ def test_invalid_running_observation_cannot_claim_a_physical_stop(value):
 
 @pytest.mark.parametrize('value', [None, math.nan, math.inf])
 def test_absent_or_invalid_roller_speed_is_not_a_confirmed_stop(value):
+    """Verify absent or invalid roller speed is not a confirmed stop."""
     data = snapshot(running=False)
     data['line']['roller_velocity'] = value
     result = build_process_snapshot(data, now=NOW)
@@ -159,6 +174,7 @@ def test_absent_or_invalid_roller_speed_is_not_a_confirmed_stop(value):
 
 
 def test_camera_holds_last_inspection_when_the_physical_line_is_stopped():
+    """Verify camera holds last inspection when the physical line is stopped."""
     data = snapshot(running=False, hi=15, level=10)
     data['inspections'][0]['timestamp'] = stamp(60)
     result = build_process_snapshot(data, now=NOW)
@@ -169,6 +185,7 @@ def test_camera_holds_last_inspection_when_the_physical_line_is_stopped():
 
 
 def test_camera_delays_are_visible_when_the_line_is_running():
+    """Verify camera delays are visible when the line is running."""
     data = snapshot()
     data['inspections'][0]['timestamp'] = stamp(60)
     result = build_process_snapshot(data, now=NOW)
@@ -177,12 +194,14 @@ def test_camera_delays_are_visible_when_the_line_is_running():
 
 @pytest.mark.parametrize('value', [None, math.nan, math.inf, -1, 101])
 def test_invalid_health_cannot_authorize_reset(value):
+    """Verify invalid health cannot authorize reset."""
     data = snapshot(running=False)
     data['latest_health']['health_index'] = value
     assert build_process_snapshot(data, now=NOW)['reset_ready'] is False
 
 
 def test_datetime_database_values_and_iso_json_values_have_same_freshness():
+    """Verify datetime database values and iso json values have same freshness."""
     data = snapshot(running=False)
     expected = build_process_snapshot(data, now=NOW)
     for item in [data['rows'][0], data['latest_health'], data['line'], data['inspections'][0]]:
@@ -194,6 +213,7 @@ def test_datetime_database_values_and_iso_json_values_have_same_freshness():
 
 
 def test_multi_detection_history_is_one_event_without_losing_boxes():
+    """Verify multi detection history is one event without losing boxes."""
     rows = [
         {'id': 'new-0', 'event_id': 'new', 'timestamp': stamp(1),
          'image_path': 'inspections/new.jpg', 'defect_type': 'scratch',
@@ -219,6 +239,7 @@ def test_multi_detection_history_is_one_event_without_losing_boxes():
 
 
 def test_grouped_history_accepts_database_datetime_ordering():
+    """Verify grouped history accepts database datetime ordering."""
     rows = [{'id': 'older-0', 'event_id': 'older', 'timestamp': NOW-timedelta(seconds=3),
              'image_path': 'older.jpg', 'defect_type': 'normal'},
             {'id': 'newer-0', 'event_id': 'newer', 'timestamp': NOW-timedelta(seconds=1),

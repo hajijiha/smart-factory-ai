@@ -12,10 +12,12 @@ SOURCE_FILES = ('simulator/Dockerfile', 'simulator/start.sh', 'simulator/scenari
 
 
 def digest(path):
+    """Return the SHA-256 identity of a file used in acquisition evidence."""
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
 def specification(configuration, plugin_binding=None):
+    """Fingerprint the generator sources, acquisition settings and loaded plugin binding."""
     root = Path(__file__).resolve().parents[1]
     sources = {name: digest(root / name) for name in SOURCE_FILES}
     settings = {key: configuration[key] for key in ('sensor', 'data_generation') if key in configuration}
@@ -64,11 +66,13 @@ def verify_plugin_binding(timeout=30):
 def isolated_directory(data, configuration):
     """v2 is opt-in and may never write to the configured v1 data directory."""
     explicit = os.environ.get('DATA_DIR')
-    if not explicit or Path(data).resolve() == Path(configuration['paths']['data']).resolve():
+    baseline = configuration.get('_baseline_paths', configuration['paths'])['data']
+    if not explicit or Path(data).resolve() == Path(baseline).resolve():
         raise RuntimeError('v2 requires an explicit DATA_DIR different from the baseline data directory')
 
 
 def write_json(path, value):
+    """Atomically replace a JSON evidence file with finite, deterministic serialization."""
     path = Path(path)
     temporary = path.with_name(path.name + '.pending')
     temporary.write_text(json.dumps(value, indent=2, sort_keys=True, allow_nan=False) + '\n')
@@ -99,6 +103,7 @@ def cached(root, expected, files):
 
 
 def complete(root, expected, files, count, **metadata):
+    """Record acquisition completion after hashing the required output files."""
     value = {**expected, 'row_count': int(count), 'files': {name: digest(Path(root) / name) for name in files}, **metadata}
     write_json(Path(root) / 'COMPLETE', value)
     return value

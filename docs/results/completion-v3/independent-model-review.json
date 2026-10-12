@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "test_units": 12,
+  "test_sequences": 1361,
+  "independent_test_mae_seconds": 3.6478126262760093,
+  "maximum_difference_from_reported_predictions_seconds": 0.0,
+  "fit_or_selection_performed": false,
+  "network": "LSTM9x32 then Linear32x16/ReLU/Linear16x1/Sigmoid",
+  "torch_version": "2.5.1+cpu",
+  "hardware_scope": "CPU inference in a separate network-disabled container"
+}

@@ -7,6 +7,15 @@ from pathlib import Path
 import psycopg
 from psycopg.types.json import Jsonb
 from factory.common import DATA, connect
+from factory.settings import database_url
+
+
+def ensure_optional_schema(db):
+    """Preserve old rows while adding prognostics and allowing continuous synthetic wear."""
+    db.execute('CREATE TABLE IF NOT EXISTS prognostics_readings (event_id TEXT PRIMARY KEY, timestamp TIMESTAMPTZ NOT NULL, data JSONB NOT NULL)')
+    column = db.execute("SELECT data_type FROM information_schema.columns WHERE table_name='sensor_readings' AND column_name='fault_level'").fetchone()
+    if column and column[0] == 'integer':
+        db.execute('ALTER TABLE sensor_readings ALTER COLUMN fault_level TYPE DOUBLE PRECISION USING fault_level::double precision')
 
 
 def safe_image(path):
@@ -43,6 +52,9 @@ def store(db, topic, message):
                            (message['event_id'],message['gradcam_path'],Jsonb(message['metadata'])))
             cursor.execute('UPDATE quality_inspections SET gradcam_path=%s WHERE event_id=%s',
                            (message['gradcam_path'],message['event_id']))
+        elif topic == 'factory/prognostics':
+            cursor.execute('INSERT INTO prognostics_readings VALUES(%s,%s,%s) ON CONFLICT(event_id) DO NOTHING',
+                           (message['event_id'],message['timestamp'],Jsonb(message)))
         elif topic == 'factory/alarm':
             cursor.execute('INSERT INTO alarms(timestamp,event_id,source,severity,message) VALUES(%s,%s,%s,%s,%s)',
                 (message['timestamp'],message.get('event_id'),message['source'],message['severity'],message['message']))
@@ -57,14 +69,15 @@ def main():
     def handler(topic,message):
         """Enqueue incoming events without blocking database operations in MQTT."""
         events.put_nowait((topic,message))
-    client = connect('storage',['factory/sensor','factory/health','factory/quality','factory/gradcam','factory/alarm','factory/line'],handler)
+    client = connect('storage',['factory/sensor','factory/health','factory/quality','factory/gradcam','factory/alarm','factory/line','factory/prognostics'],handler)
     db = None
     while True:
         topic,message = events.get()
         while True:
             try:
                 if db is None or db.closed:
-                    db = psycopg.connect(os.environ['DATABASE_URL'],autocommit=True)
+                    db = psycopg.connect(database_url(),autocommit=True)
+                    ensure_optional_schema(db)
                 store(db,topic,message)
                 break
             except psycopg.OperationalError:

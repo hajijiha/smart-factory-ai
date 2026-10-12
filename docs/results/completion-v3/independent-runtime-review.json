@@ -1,0 +1,50 @@
+{
+  "passed": true,
+  "cadence_one_second": {
+    "status": "estimated",
+    "rul_seconds": 74.67,
+    "samples": 31,
+    "scope": "synthetic_monotonic_wear_proxy",
+    "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+    "rms_slope_per_second": 0.0019999999999999987,
+    "sample_seconds": 1.0,
+    "time_unit": "virtual operating second of the calibrated synthetic wear scenario"
+  },
+  "cadence_two_seconds": {
+    "status": "estimated",
+    "rul_seconds": 74.67,
+    "samples": 16,
+    "scope": "synthetic_monotonic_wear_proxy",
+    "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+    "rms_slope_per_second": 0.0019999999999999987,
+    "sample_seconds": 1.0,
+    "time_unit": "virtual operating second of the calibrated synthetic wear scenario"
+  },
+  "cadence_irregular": {
+    "status": "estimated",
+    "rul_seconds": 74.67,
+    "samples": 24,
+    "scope": "synthetic_monotonic_wear_proxy",
+    "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+    "rms_slope_per_second": 0.0020000000000000005,
+    "sample_seconds": 1.0,
+    "time_unit": "virtual operating second of the calibrated synthetic wear scenario"
+  },
+  "gap_result": {
+    "status": "warming_up",
+    "rul_seconds": null,
+    "samples": 1,
+    "required_samples": 24,
+    "required_history_seconds": 23.0
+  },
+  "independent_psi": {
+    "rms": 4.706409503556414,
+    "spectral_energy": 4.706409503556414,
+    "bpfo_amplitude": 4.706409503556414,
+    "bpfi_amplitude": 4.706409503556414
+  },
+  "maximum_psi_formula_disagreement": 0.0,
+  "psi_complete_window_only": true,
+  "controls_sent": false,
+  "live_broker_access": false
+}

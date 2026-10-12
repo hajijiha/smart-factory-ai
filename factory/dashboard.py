@@ -8,9 +8,10 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel, Field
-from factory.common import CONFIG, DATA, connect, publish, utc_now
+from factory.common import CONFIG, DATA, REPORTS, connect, publish, utc_now
 from factory.analytics import associations
 from factory.process import build_process_snapshot, group_inspections
+from factory.settings import database_url
 
 app = FastAPI(title='Smart Factory AI')
 STATIC = Path(__file__).parent / 'static'
@@ -32,7 +33,7 @@ def home():
 @app.get('/api/health')
 def health():
     """Verify that database and MQTT transport are reachable."""
-    with psycopg.connect(os.environ['DATABASE_URL']) as db:
+    with psycopg.connect(database_url()) as db:
         db.execute('SELECT 1')
     return {'database':'ok','mqtt':client.is_connected(),'timestamp':utc_now()}
 
@@ -40,7 +41,7 @@ def health():
 @app.get('/api/snapshot')
 def snapshot():
     """Retrieve recent event-joined sensor, health, quality and alarm data."""
-    with psycopg.connect(os.environ['DATABASE_URL'],row_factory=dict_row) as db:
+    with psycopg.connect(database_url(),row_factory=dict_row) as db:
         rows = db.execute('''SELECT s.timestamp,s.event_id,s.vibration_x,s.temperature,s.fault_level,s.rpm,
                     h.health_index,h.status,q.defective
             FROM (SELECT * FROM sensor_readings ORDER BY timestamp DESC LIMIT 600) s
@@ -60,10 +61,12 @@ def snapshot():
         counts = db.execute('''SELECT (SELECT count(*) FROM sensor_readings) AS sensors,
                         (SELECT count(DISTINCT event_id) FROM quality_inspections) AS inspections,
                         (SELECT count(DISTINCT event_id) FROM quality_inspections WHERE defect_type<>'normal') AS defects''').fetchone()
+        available = db.execute("SELECT to_regclass('public.prognostics_readings') AS name").fetchone()
+        prediction = db.execute('SELECT data FROM prognostics_readings ORDER BY timestamp DESC LIMIT 1').fetchone() if available['name'] else None
     result = {'timestamp':utc_now(),'rows':rows,'latest_health':latest['data'] if latest else None,
             'inspections':inspections,'alarms':alarms,'line':line['data'] if line else None,
             'counts':counts,'correlation':associations(rows), 'mqtt_connected':client.is_connected(),
-            'inspection_events':group_inspections(inspections)}
+            'inspection_events':group_inspections(inspections), 'prognostics': prediction['data'] if prediction else None}
     result['process'] = build_process_snapshot(result)
     return result
 
@@ -103,5 +106,5 @@ def image(path: str):
 @app.get('/api/results')
 def results():
     """Expose actual experiment reports when present; absent metrics stay absent."""
-    directory = Path(CONFIG['paths']['reports'])
+    directory = REPORTS
     return {file.stem:json.loads(file.read_text()) for file in directory.glob('*.json')}

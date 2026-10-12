@@ -17,7 +17,7 @@ from rclpy.executors import ExternalShutdownException
 from rclpy.qos import qos_profile_sensor_data
 from sensor_msgs.msg import Image, JointState
 from std_msgs.msg import String
-from factory.common import CONFIG, DATA, connect, publish, utc_now
+from factory.common import CONFIG, DATA, REPORTS, connect, publish, utc_now
 from factory.pdm.features import extract
 from simulator.signal import vibration
 from simulator.geometry import project_bbox
@@ -225,7 +225,7 @@ def generate(node):
         raise RuntimeError('Incomplete image dataset; inspect manifest before resuming or choose a new DATA_DIR')
     publish_counts = {'vision_images':int((root/'COMPLETE').read_text()),'sensor_windows':CONFIG['training']['sensor_normal']+CONFIG['training']['sensor_fault'],
                       'source':'Gazebo Classic 11 + ROS2 Humble camera and ODE joint observations', 'completed_at':utc_now()}
-    report = Path(CONFIG['paths']['reports'])/'dataset.json'
+    report = REPORTS/'dataset.json'
     report.parent.mkdir(parents=True,exist_ok=True)
     report.write_text(json.dumps(publish_counts,indent=2))
 
@@ -246,14 +246,22 @@ def live(node):
             node.conveyor(state['running'])
     client = connect('simulator',['factory/command/fault','factory/command/conveyor'],handler)
     rng = np.random.default_rng(CONFIG['simulator']['seed'])
+    wear_seconds = float(os.environ.get('LIVE_WEAR_SECONDS', '0'))
+    if wear_seconds and not 100 <= wear_seconds <= 180:
+        raise ValueError('LIVE_WEAR_SECONDS must match the calibrated 100–180 operating-second lifetime')
+    wear_started = time.monotonic()
     while True:
         event_id = str(uuid.uuid4())
-        timestamp = utc_now()
-        level = state['level']
+        age = min(wear_seconds, time.monotonic() - wear_started) if wear_seconds else None
+        level = CONFIG['rul']['failure_level'] * age / wear_seconds if wear_seconds else state['level']
         probability = .02+.085*level
         class_id = int(rng.integers(0,3)) if rng.random() < probability else -1
         scene = random_scene(rng,class_id,'test',event_id)
         image,joint,sim_time = node.capture(scene)
+        timestamp = utc_now()
+        if wear_seconds:
+            age = min(wear_seconds, time.monotonic() - wear_started)
+            level = CONFIG['rul']['failure_level'] * age / wear_seconds
         (DATA/'live').mkdir(parents=True,exist_ok=True)
         cv2.imwrite(str(DATA/'live/latest.jpg'),image)
         wave = vibration(level,joint['velocity'][0],joint['position'][0],rng)
@@ -263,6 +271,9 @@ def live(node):
                   'temperature':35+2*level+float(rng.normal(0,.3)),
                   'fault_level':level,'rpm':abs(joint['velocity'][0])*60/(2*np.pi),
                   'sampling_hz':CONFIG['sensor']['sampling_hz'],'waveform':wave.tolist(),'joint_observation':joint,'sim_time':sim_time}
+        if wear_seconds:
+            sensor['wear_scenario'] = {'age_seconds': age, 'failure_seconds': wear_seconds,
+                                      'true_rul_seconds': wear_seconds - age, 'scope': 'calibrated_synthetic_wear_only'}
         publish(client,'factory/sensor',sensor)
         if state['running']:
             _, encoded = cv2.imencode('.jpg',image)
@@ -270,7 +281,7 @@ def live(node):
                     'sim_time':sim_time,'ground_truth_class':class_id,'defect_probability':probability})
         publish(client,'factory/line',{'timestamp':timestamp,'fault_level':level,'running':state['running'],
                 'roller_velocity':joint['velocity'][1],'motor_rpm':sensor['rpm'],'defect_probability':probability},retain=True)
-        logging.info('Fault_Level=%d vibration=%.3f defect_probability=%.3f conveyor=%s roller=%.4f',
+        logging.info('Fault_Level=%.3f vibration=%.3f defect_probability=%.3f conveyor=%s roller=%.4f',
                      level,rms,probability,state['running'],joint['velocity'][1])
         time.sleep(CONFIG['simulator']['publication_interval_s'])
 
@@ -288,7 +299,13 @@ def main():
     thread=threading.Thread(target=spin_node,daemon=True)
     thread.start()
     try:
-        if os.environ.get('GENERATE_DATA') == '1':
+        if os.environ.get('GENERATE_CAUSAL') == '1':
+            from simulator.causal_dataset import generate_causal
+            generate_causal(node)
+        elif os.environ.get('GENERATE_RUL') == '1':
+            from simulator.rul_dataset import generate_rul
+            generate_rul(node)
+        elif os.environ.get('GENERATE_DATA') == '1':
             generate(node)
         else:
             live(node)

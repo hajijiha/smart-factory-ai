@@ -9,10 +9,11 @@
 |---|---|---|
 | `factory/sensor` | 시뮬레이터 → PdM, 저장 | event_id, timestamp, sensor_id, vibration_x/y/z, temperature, fault_level, rpm, sampling_hz, waveform |
 | `factory/image` | 시뮬레이터 → 비전 | event_id, timestamp, image_base64, sim_time |
-| `factory/health` | PdM → 저장, 인터락 | event_id, timestamp, anomaly_score, health_index, status, features, spectrum, inference_ms |
+| `factory/health` | PdM → 저장, 인터락, prognostics | event_id, timestamp, anomaly_score, health_index, status, features, spectrum, inference_ms |
+| `factory/prognostics` | prognostics → 저장 | event_id, timestamp, rul(status/rul_seconds/time_unit), drift(status/psi/feature_psi), drift_evaluated |
 | `factory/quality` | 비전 → 저장 | event_id, timestamp, image_path, defective, detections, inference_ms |
 | `factory/gradcam` | 비전 → 저장 | event_id, timestamp, gradcam_path, metadata |
-| `factory/alarm` | PdM, 인터락 → 저장 | timestamp, event_id?, source, severity, message |
+| `factory/alarm` | PdM, 인터락, PSI → 저장 | timestamp, event_id?, source(pdm/controller/drift), severity, message |
 | `factory/line` | 시뮬레이터 → 저장 | timestamp, fault_level, running, roller_velocity, motor_rpm, defect_probability |
 | `factory/command/fault` | 대시보드 → 시뮬레이터 | timestamp, fault_level: 정수 0–10 |
 | `factory/command/conveyor` | 인터락 → 시뮬레이터 | timestamp, running, reason, event_id? |
@@ -39,3 +40,8 @@ Gazebo `sim_time`은 물리 시간이고 UTC와 별도 필드다. 실제 카메�
 QoS 1 중복은 이벤트별 PK로 제거한다. 고장·컨베이어 명령은 retained로
 재연결 후에도 적용한다. 운용 중 MQTT 브로커·DB 재시작 시 연결을 재시도한다.
 이 구성은 localhost 학습용이며 MQTT 포트를 외부에 공개하지 않는다.
+
+RUL은 UTC 관측 간격을 이용해 과거 특징을 학습과 같은 1초 격자로 재표본화한다.
+중복·역순·5초 이상 지연·미래 시각을 거부하며, 관측 공백이5초를 넘으면 RUL/PSI 이력을 초기화한다.
+수명 단위는 교정된 합성 열화의 가상 운전초다. Gazebo 물리 시간·벽시계 수명·실제 베어링 수명과 구분한다.
+연속 열화 검증에서만 포함되는 `wear_scenario`는 사후 평가용 참값이며 모델의 특징 입력에 들어가지 않는다.

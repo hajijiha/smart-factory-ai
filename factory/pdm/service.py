@@ -29,6 +29,8 @@ def main():
         result.update(event_id=message['event_id'], timestamp=message['timestamp'],
                       features=dict(zip(NAMES, feature.tolist())), spectrum=spectrum,
                       inference_ms=1000*(time.perf_counter()-start))
+        if 'wear_scenario' in message:
+            result['wear_scenario'] = message['wear_scenario']
         publish(client, 'factory/health', result)
         if result['status'] in ['warning', 'danger'] and result['status'] != previous:
             publish(client, 'factory/alarm', {'timestamp':message['timestamp'], 'event_id':message['event_id'],

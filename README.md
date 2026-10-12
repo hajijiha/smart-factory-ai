@@ -16,7 +16,7 @@ cd smart-factory-ai
 docker compose up --build
 ```
 
-대시보드는 **http://localhost:8080**에서 열린다. 학습된 `pdm.pt`, `vision.pt`를 포함하며, ONNX 그래프는 최초 실행 시 자동으로 생성한다. 처음 빌드할 때 의존성 다운로드를 위한 인터넷 연결과 초기화 시간이 필요하다.
+대시보드는 **http://localhost:8080**에서 열린다. 학습된 `pdm.pt`, `vision.pt`, `rul.pt`와 PSI 기준 분포를 포함하며, ONNX 그래프는 최초 실행 시 자동으로 생성한다. 처음 빌드할 때 의존성 다운로드를 위한 인터넷 연결과 초기화 시간이 필요하다.
 
 ```bash
 docker compose up -d
@@ -45,6 +45,8 @@ flowchart LR
     M --> P[FFT · 관리도 · Autoencoder]
     M --> V[YOLOv8n ONNX · Grad-CAM]
     P -->|health / alarm| M
+    M --> R[LSTM 수명 예측 · PSI 감시]
+    R -->|prognostics / drift alarm| M
     V -->|quality / gradcam| M
     M --> S[저장 서비스]
     S --> DB[(PostgreSQL / TimescaleDB)]
@@ -61,6 +63,7 @@ flowchart LR
 |---|---|
 | `simulator/` | Gazebo 장면, C++ 플러그인, ROS2 취득과 센서 합성 |
 | `factory/pdm/` | FFT 특징, 관리도, Autoencoder 학습·추론 |
+| `factory/prognostics.py` | 독립 LSTM RUL·PSI 감시와 알람 |
 | `factory/vision/` | YOLO 학습, ONNX 검출, Grad-CAM |
 | `factory/storage.py` | 이벤트 저장과 도착 순서 처리 |
 | `factory/controller.py` | 위험 정지와 안전 재시작 |
@@ -81,6 +84,8 @@ flowchart LR
 | YOLO test mAP50–95 | 0.9116 | validation 선택 후 test 평가 |
 | ONNX 평균 | 66.26 FPS / 15.092 ms | 전처리·NMS 포함, CPU, 100장 |
 | PyTorch 평균 | 25.45 FPS / 39.300 ms | 같은 100장·같은 conf/IoU |
+| LSTM RUL MAE / RMSE | 3.648 / 5.246 가상 운전초 | 학습에서 제외한 12개 개체, 1,361개 시퀀스 |
+| RUL 상수 기준선 MAE | 31.369 가상 운전초 | 학습 개체의 중앙값만 사용 |
 
 측정 환경은 Intel Core Ultra 5 225H, 14 logical CPU, 컨테이너 메모리 7.45 GiB, Ubuntu 22.04 / Python 3.10.12 / PyTorch 2.5.1+cpu다. GPU는 사용하지 않았다.
 
@@ -104,6 +109,12 @@ bash scripts/reproduce.sh
 
 개별 실행 순서와 데이터 기록 방식은 [시뮬레이터 문서](docs/simulator.md)에 있다.
 
+선택 과제 세 가지(LSTM RUL, ONNX 비교, PSI 감시·알람)를 모두 포함한다.
+RUL은 진동 이력이 23초 이상 쌓이고 증가 추세가 있을 때 예측하며 정상·회복 상태에서는 조건 대기를 표시한다.
+PSI는 정상 학습 분포를 고정해128개 관측마다 최초 평가하고 이후32개 관측마다 갱신한다.
+[수명 예측·분포 감시](docs/prognostics.md)에 별도 재현 명령과 한계를 설명한다.
+[60쌍의 원인 개입 실험](docs/root-cause.md)도 별도 기록한다.
+
 ## 검증
 
 ```bash
@@ -116,6 +127,9 @@ docker compose run --rm --no-deps pdm python3 scripts/analyze_correlation.py
 
 데이터가 없는 환경의 회귀 검사는 133개 통과·2개 skip이었다. 데이터 의존 검사 2개는 원본 v1 데이터를 연결한 별도 실행에서 통과했다. 범위와 JUnit 원본은 [공정 관제 검증](docs/process-control.md#검증)에 있다.
 
+선택 과제를 포함한 최신 전체 회귀 검사는 원본 v1 데이터 연결 조건에서151개 통과·skip0이다.
+[JUnit 원본](docs/results/completion-v3/tests.xml)과 [온라인 추가 과제 검증](docs/results/completion-v3/optional-runtime.json)을 보존한다.
+
 `verify_runtime.py`는 전체 서비스가 실행 중일 때 레벨 10으로 위험 정지를 확인하고 정상으로 복구한다. 상관관계 측정 스크립트도 완료 후 레벨 0으로 복구한다.
 
 ## 문서
@@ -123,6 +137,7 @@ docker compose run --rm --no-deps pdm python3 scripts/analyze_correlation.py
 - [시뮬레이터와 데이터](docs/simulator.md)
 - [MQTT 메시지와 시간 동기화](docs/communication.md)
 - [예지보전 학습·평가](docs/predictive-maintenance.md)
+- [LSTM 수명 예측·PSI 감시](docs/prognostics.md) · [원인 개입 실험](docs/root-cause.md)
 - [YOLO·Grad-CAM·CPU 평가](docs/vision.md)
 - [관제·저장·인터락](docs/integration.md)
 - [공정 관제 화면과 제어 조건](docs/process-control.md)

@@ -1,0 +1,52 @@
+{
+  "rul": {
+    "file": "rul.pt",
+    "sha256": "602def1bf05519682fb97a0c7f41507d141aed920bd63f616af6a87a5b2ef323",
+    "dataset_fingerprint": "c21e5aaa424d237144f4255f4820ed4844e9b5b00fac248d0b9f22aa8afde87e",
+    "dataset_sha256": "f37b0837f9a8038369fd8a9fc0d61bd442862a4f018d62d5bf8be8bf4ec9cb24",
+    "virtual_units": {
+      "train": 56,
+      "validation": 12,
+      "test": 12
+    },
+    "feature_windows": 11199,
+    "sequence_length": 24,
+    "sample_seconds": 1.0,
+    "architecture": "9 feature input -> LSTM hidden 32 -> Linear 16 -> ReLU -> Linear 1 -> Sigmoid * 180",
+    "normalization": "Mean and standard deviation fitted on training units only",
+    "selection": "Minimum validation-unit MAE, epoch 49; checkpoint frozen before test evaluation",
+    "test_mae_seconds": 3.6478126262760093,
+    "test_rmse_seconds": 5.246048706502121,
+    "constant_baseline_mae_seconds": 31.368846436443793,
+    "excluded_inputs": [
+      "age_seconds",
+      "failure_seconds",
+      "wear_level",
+      "rul_seconds",
+      "unit_id",
+      "split"
+    ],
+    "runtime_time_policy": "Causal interpolation of available chronological observations onto the trained one-second grid; reset after gaps over five seconds",
+    "limitations": "Virtual operating seconds for calibrated synthetic monotonic wear with level-9 functional failure; not real damaged-bearing lifespan. Stationary/recovering trends have no validated finite RUL."
+  },
+  "psi": {
+    "file": "drift-reference.json",
+    "reference_dataset_sha256": "0e948a53632f3b48911ebc98c732d6803c4581e645e3071fbe7a4079023ff8b8",
+    "reference_samples": 3500,
+    "selection": "Normal training windows only; no validation/test/live adaptation",
+    "features": [
+      "rms",
+      "spectral_energy",
+      "bpfo_amplitude",
+      "bpfi_amplitude"
+    ],
+    "quantile_bins": 8,
+    "open_tail_bins": true,
+    "smoothing": 0.5,
+    "window_samples": 128,
+    "stride_samples": 32,
+    "threshold": 0.25,
+    "alarm": "One MQTT warning on stable-to-drift transition; rearmed after stable recovery",
+    "limitations": "Distribution change can reflect wear, load, sensors or acquisition conditions; PSI is neither fault probability nor causal attribution"
+  }
+}

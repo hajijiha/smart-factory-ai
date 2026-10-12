@@ -1,0 +1,16 @@
+{
+  "read_only": "on",
+  "fault_level_type": "double precision",
+  "sensor_rows": 819,
+  "quality_rows": 720,
+  "prognostics_rows": 813,
+  "sensor_level_json_mismatches": 0,
+  "prognostics_without_health": 0,
+  "prognostics_health_timestamp_mismatches": 0,
+  "estimated_rul_rows": 124,
+  "estimated_rul_wear_rows": 109,
+  "drift_alarm_rows": 1,
+  "drift_alarms_without_evaluated_threshold_crossing": 0,
+  "wear_true_rul_below_zero": 0,
+  "passed": true
+}

@@ -6,6 +6,7 @@ import urllib.request
 import urllib.error
 from pathlib import Path
 from datetime import datetime, timezone
+from factory.settings import verification_path, dashboard_url
 
 
 def request(base, path, payload=None):
@@ -77,7 +78,7 @@ def verify(base, output=None):
     recovered = wait(base,lambda s:s['line'] and s['line']['running'] and abs(s['line']['roller_velocity'])>.5)
     report['recovery'] = {'line':recovered['line'],'counts':recovered['counts']}
     report['passed'] = True
-    output = Path(output) if output else Path(__file__).resolve().parents[1]/'docs/results/integration.json'
+    output = Path(output) if output else verification_path('integration.json')
     output.parent.mkdir(parents=True,exist_ok=True)
     output.write_text(json.dumps(report,indent=2))
     print(f'Integration verified: {output}')
@@ -85,7 +86,7 @@ def verify(base, output=None):
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
-    parser.add_argument('--url',default='http://localhost:8080')
+    parser.add_argument('--url',default=dashboard_url())
     parser.add_argument('--output',type=Path,help='Separate result path for an isolated regression run')
     args=parser.parse_args()
     verify(args.url,args.output)
