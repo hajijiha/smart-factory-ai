@@ -1,0 +1,360 @@
+{
+  "capture_index": 1015,
+  "fingerprint": "27f9cc3cce206fb7eb95aa4e4736425e793ed1ed23b7f8f9a269dcc448740945",
+  "model_used": false,
+  "reason": "Bulk render/label consistency failed; acquisition stopped without retry",
+  "render_pair": {
+    "class_id": 1,
+    "criteria": {
+      "changed_pixel_channel_threshold": 20,
+      "maximum_outside_roi_fraction": 0.1,
+      "minimum_bbox_iou": 0.7,
+      "minimum_changed_pixels": 5,
+      "rounding_tolerance_pixels": 2
+    },
+    "defect_camera_sim_time": 6569.784,
+    "defect_capture_sync": {
+      "ack_arrival_monotonic": 61611.769810683,
+      "ack_image_sequence": 128705,
+      "ack_scene_id": "vision-v2-0017-0025",
+      "ack_sim_time": 6568.131,
+      "camera_sim_time": 6569.784,
+      "capture_monotonic": 61612.041289424,
+      "first_fresh_sequence": 128734,
+      "fresh_frame_sequences": [
+        128734,
+        128735,
+        128736
+      ],
+      "fresh_frame_sim_times": [
+        6569.599,
+        6569.746,
+        6569.784
+      ],
+      "fresh_frames": 3,
+      "image_arrival_monotonic": 61612.040642065,
+      "image_sequence": 128736,
+      "joint_sim_time": 6569.8,
+      "policy": {
+        "minimum_fresh_frames": 3,
+        "minimum_sim_seconds_after_ack": 0.1,
+        "minimum_wall_seconds_after_ack": 0.25
+      },
+      "scene_application_policy": {
+        "application_rounds": 3,
+        "minimum_seconds_between_ack_and_next_command": 0.1
+      },
+      "scene_applications": [
+        {
+          "ack_arrival_monotonic": 61611.555159527,
+          "ack_image_sequence": 128677,
+          "ack_scope": "physics_applied_and_visual_messages_enqueued",
+          "ack_sim_time": 6566.931,
+          "command_monotonic": 61611.552266405,
+          "scene_application_id": "vision-v2-0017-0025:3a339178-5a51-4bae-93a5-bda6d7e5cb47",
+          "scene_apply_round": 0,
+          "scene_command_id": "vision-v2-0017-0025:3a339178-5a51-4bae-93a5-bda6d7e5cb47:0",
+          "scene_id": "vision-v2-0017-0025",
+          "visual_outgoing_count": 0
+        },
+        {
+          "ack_arrival_monotonic": 61611.660176171,
+          "ack_image_sequence": 128691,
+          "ack_scope": "physics_applied_and_visual_messages_enqueued",
+          "ack_sim_time": 6567.426,
+          "command_monotonic": 61611.655580522,
+          "scene_application_id": "vision-v2-0017-0025:3a339178-5a51-4bae-93a5-bda6d7e5cb47",
+          "scene_apply_round": 1,
+          "scene_command_id": "vision-v2-0017-0025:3a339178-5a51-4bae-93a5-bda6d7e5cb47:1",
+          "scene_id": "vision-v2-0017-0025",
+          "visual_outgoing_count": 0
+        },
+        {
+          "ack_arrival_monotonic": 61611.769810683,
+          "ack_image_sequence": 128705,
+          "ack_scope": "physics_applied_and_visual_messages_enqueued",
+          "ack_sim_time": 6568.131,
+          "command_monotonic": 61611.761053783,
+          "scene_application_id": "vision-v2-0017-0025:3a339178-5a51-4bae-93a5-bda6d7e5cb47",
+          "scene_apply_round": 2,
+          "scene_command_id": "vision-v2-0017-0025:3a339178-5a51-4bae-93a5-bda6d7e5cb47:2",
+          "scene_id": "vision-v2-0017-0025",
+          "visual_outgoing_count": 0
+        }
+      ],
+      "scene_id": "vision-v2-0017-0025",
+      "settling_wall_seconds": 0.27083138200396206
+    },
+    "defect_image": "render-pairs/vision-v2-0017-0025-defect.png",
+    "defect_joint": {
+      "position": [
+        530398.6711527077,
+        26279.160961156085
+      ],
+      "sim_time": 6569.8,
+      "velocity": [
+        81.03225701553103,
+        4.0
+      ]
+    },
+    "defect_scene": {
+      "background_bin": "light",
+      "background_color": [
+        0.3517340948284766,
+        0.39458846567386335,
+        0.319384449612284
+      ],
+      "camera_bin": "low",
+      "camera_pose": [
+        0.07802559933230381,
+        0.06366263006749055,
+        2.6970712102586343,
+        0,
+        1.6093976504694596,
+        0.021863073754887594
+      ],
+      "class_id": 1,
+      "condition_id": "7517d2cab28060fd8204bc7b186ce435dc989477d905dda021eaef79f57df62e",
+      "defect_darkness": 0.3656348699949997,
+      "defect_primitives": [
+        {
+          "color": [
+            0.5656348699949998,
+            0.5656348699949998,
+            0.5656348699949998
+          ],
+          "length": 0.005,
+          "name": "part0",
+          "pose": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "radius": 0.08290774391616328,
+          "shape": "cylinder"
+        },
+        {
+          "color": [
+            0.3656348699949997,
+            0.3656348699949997,
+            0.3656348699949997
+          ],
+          "length": 0.007,
+          "name": "part1",
+          "pose": [
+            0.0,
+            0.0,
+            0.003,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "radius": 0.05208510611281575,
+          "shape": "cylinder"
+        }
+      ],
+      "defect_scale": 0.9610120461473826,
+      "defect_yaw": 0.8098691833581506,
+      "dx": 0.05081169076735026,
+      "dy": -0.08627496959941103,
+      "generator_version": "v2",
+      "geometry_family": "shape-0017",
+      "group_id": "vision-v2-0017",
+      "image_noise": 2.2001381762185837,
+      "light": 0.9476601857323872,
+      "light_bin": "bright",
+      "material_id": 2,
+      "product_color": [
+        0.5830384674440052,
+        0.6086436134262875,
+        0.593267397631645
+      ],
+      "scene_id": "vision-v2-0017-0025",
+      "seed": 20405632,
+      "specular": [
+        0.3,
+        0.3,
+        0.3
+      ],
+      "split": "test",
+      "x": 0.10425152895220233,
+      "y": -0.08061698676240259,
+      "yaw": -0.14789560287006706
+    },
+    "defect_sha256": "914d2c76b5202de04e802b27cf67059c11d78f6f2a0ac4b53bf0f5ae503082da",
+    "difference_bbox_xyxy": [
+      191.0,
+      122.0,
+      217.0,
+      149.0
+    ],
+    "expected_bbox_pixels": [
+      190.33903626308506,
+      116.5738890296731,
+      222.8354167673604,
+      149.05659704915988
+    ],
+    "fingerprint": "27f9cc3cce206fb7eb95aa4e4736425e793ed1ed23b7f8f9a269dcc448740945",
+    "gt_bbox_xyxy": [
+      190.33903626308506,
+      116.5738890296731,
+      222.8354167673604,
+      149.05659704915988
+    ],
+    "image_noise_applied": false,
+    "metrics": {
+      "bbox_iou": 0.6833792665112283,
+      "changed_pixels": 357,
+      "observed_bbox_pixels": [
+        191.0,
+        122.0,
+        217.0,
+        149.0
+      ],
+      "outside_roi_fraction": 0.0,
+      "outside_roi_pixels": 0,
+      "raw_bbox_iou": 0.6650432540144093,
+      "status": "FAIL"
+    },
+    "model_used": false,
+    "normal_camera_sim_time": 6566.884,
+    "normal_capture_sync": {
+      "ack_arrival_monotonic": 61611.283635403,
+      "ack_image_sequence": 128639,
+      "ack_scene_id": "vision-v2-0017-0025-counterpart-normal",
+      "ack_sim_time": 6565.273,
+      "camera_sim_time": 6566.884,
+      "capture_monotonic": 61611.552042019,
+      "first_fresh_sequence": 128675,
+      "fresh_frame_sequences": [
+        128675,
+        128676,
+        128677
+      ],
+      "fresh_frame_sim_times": [
+        6566.777,
+        6566.813,
+        6566.884
+      ],
+      "fresh_frames": 3,
+      "image_arrival_monotonic": 61611.551514766,
+      "image_sequence": 128677,
+      "joint_sim_time": 6566.9,
+      "policy": {
+        "minimum_fresh_frames": 3,
+        "minimum_sim_seconds_after_ack": 0.1,
+        "minimum_wall_seconds_after_ack": 0.25
+      },
+      "scene_application_policy": {
+        "application_rounds": 3,
+        "minimum_seconds_between_ack_and_next_command": 0.1
+      },
+      "scene_applications": [
+        {
+          "ack_arrival_monotonic": 61611.078689576,
+          "ack_image_sequence": 128590,
+          "ack_scope": "physics_applied_and_visual_messages_enqueued",
+          "ack_sim_time": 6562.305,
+          "command_monotonic": 61611.076703503,
+          "scene_application_id": "vision-v2-0017-0025-counterpart-normal:8b3ec2c4-8777-4c70-9b0c-2fc8558cf91a",
+          "scene_apply_round": 0,
+          "scene_command_id": "vision-v2-0017-0025-counterpart-normal:8b3ec2c4-8777-4c70-9b0c-2fc8558cf91a:0",
+          "scene_id": "vision-v2-0017-0025-counterpart-normal",
+          "visual_outgoing_count": 0
+        },
+        {
+          "ack_arrival_monotonic": 61611.180685808,
+          "ack_image_sequence": 128614,
+          "ack_scope": "physics_applied_and_visual_messages_enqueued",
+          "ack_sim_time": 6563.781,
+          "command_monotonic": 61611.179326827,
+          "scene_application_id": "vision-v2-0017-0025-counterpart-normal:8b3ec2c4-8777-4c70-9b0c-2fc8558cf91a",
+          "scene_apply_round": 1,
+          "scene_command_id": "vision-v2-0017-0025-counterpart-normal:8b3ec2c4-8777-4c70-9b0c-2fc8558cf91a:1",
+          "scene_id": "vision-v2-0017-0025-counterpart-normal",
+          "visual_outgoing_count": 0
+        },
+        {
+          "ack_arrival_monotonic": 61611.283635403,
+          "ack_image_sequence": 128639,
+          "ack_scope": "physics_applied_and_visual_messages_enqueued",
+          "ack_sim_time": 6565.273,
+          "command_monotonic": 61611.281007414,
+          "scene_application_id": "vision-v2-0017-0025-counterpart-normal:8b3ec2c4-8777-4c70-9b0c-2fc8558cf91a",
+          "scene_apply_round": 2,
+          "scene_command_id": "vision-v2-0017-0025-counterpart-normal:8b3ec2c4-8777-4c70-9b0c-2fc8558cf91a:2",
+          "scene_id": "vision-v2-0017-0025-counterpart-normal",
+          "visual_outgoing_count": 0
+        }
+      ],
+      "scene_id": "vision-v2-0017-0025-counterpart-normal",
+      "settling_wall_seconds": 0.2678793629966094
+    },
+    "normal_image": "render-pairs/vision-v2-0017-0025-normal.png",
+    "normal_joint": {
+      "position": [
+        530163.806065937,
+        26267.560976622713
+      ],
+      "sim_time": 6566.9,
+      "velocity": [
+        81.03225701553103,
+        3.9999999999999996
+      ]
+    },
+    "normal_scene": {
+      "background_bin": "light",
+      "background_color": [
+        0.3517340948284766,
+        0.39458846567386335,
+        0.319384449612284
+      ],
+      "camera_bin": "low",
+      "camera_pose": [
+        0.07802559933230381,
+        0.06366263006749055,
+        2.6970712102586343,
+        0,
+        1.6093976504694596,
+        0.021863073754887594
+      ],
+      "class_id": -1,
+      "condition_id": "7517d2cab28060fd8204bc7b186ce435dc989477d905dda021eaef79f57df62e",
+      "defect_darkness": 0.3656348699949997,
+      "defect_primitives": [],
+      "defect_scale": 0.9610120461473826,
+      "defect_yaw": 0.8098691833581506,
+      "dx": 0.05081169076735026,
+      "dy": -0.08627496959941103,
+      "generator_version": "v2",
+      "geometry_family": "shape-0017",
+      "group_id": "vision-v2-0017",
+      "image_noise": 2.2001381762185837,
+      "light": 0.9476601857323872,
+      "light_bin": "bright",
+      "material_id": 2,
+      "product_color": [
+        0.5830384674440052,
+        0.6086436134262875,
+        0.593267397631645
+      ],
+      "scene_id": "vision-v2-0017-0025-counterpart-normal",
+      "seed": 20405632,
+      "specular": [
+        0.3,
+        0.3,
+        0.3
+      ],
+      "split": "test",
+      "x": 0.10425152895220233,
+      "y": -0.08061698676240259,
+      "yaw": -0.14789560287006706
+    },
+    "normal_sha256": "a66b863f0a9c1f0fc71241bcd1b3b48378d9ecef4cf6058b5ab8a4f1600b1fbe",
+    "pair_id": "vision-v2-0017-0025",
+    "scale": 0.9610120461473826
+  }
+}

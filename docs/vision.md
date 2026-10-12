@@ -61,7 +61,7 @@ target layer는 YOLOv8 backbone의 마지막 SPPF Conv2d인
 
 | 항목 | 실측 |
 |---|---|
-| 독립 테스트 mAP@0.5 | 0.969052 |
+| 기존 렌더링 규칙의 합성 테스트 mAP@0.5 | 0.969052 |
 | scratch / dent / contamination AP50 | 0.966465 / 0.945825 / 0.994867 |
 | ONNX, 전처리+NMS 포함 100장 평균 FPS | 66.261 |
 | PyTorch, 같은 100장 평균 FPS | 25.446 |

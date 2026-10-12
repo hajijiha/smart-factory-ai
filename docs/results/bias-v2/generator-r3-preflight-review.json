@@ -1,0 +1,196 @@
+{
+  "review_type": "Read-only actual r3 preflight pixel/policy inspection",
+  "created_at": "2026-10-09T16:06:36.832111+00:00",
+  "dataset_fingerprint": "f6b6eae272c8416aa6756642f4cfd6b9b3782688ad7d776b396e3e5cb2f4e0ae",
+  "source_file_count": 14,
+  "model_used": false,
+  "criteria_modified": false,
+  "source_reports": [
+    {
+      "path": "/home/gkwlgns02/smart-factory-bias-review/docs/results/bias-v2-r3-contrast-diagnostic/contrast-diagnostic.json",
+      "kind": "diagnostic",
+      "report_sha256": "4342c7b3b9ff9f3918470c787fd30f9d18f32b1b4f8ca33c04a3d90dc3610aa1"
+    },
+    {
+      "path": "/home/gkwlgns02/smart-factory-bias-review/docs/results/bias-v2-r3-render-check/render-check.json",
+      "kind": "gate",
+      "report_sha256": "e9641faa65d34e676e2eb59224e915e15bca71f505293ff56f1e7193382564c7"
+    }
+  ],
+  "case_reviews": [
+    {
+      "evidence": "gate",
+      "pair_id": "class0-scale0.68",
+      "class_id": 0,
+      "status": "PASS",
+      "png_hashes_verified": true,
+      "visibility_policy_verified": true,
+      "capture_sync_verified": true,
+      "bbox_iou": 1.0,
+      "raw_bbox_iou": 0.940369443102433,
+      "outside_roi_fraction": 0.0,
+      "changed_pixels": 377,
+      "outside_roi_pixels": 0
+    },
+    {
+      "evidence": "gate",
+      "pair_id": "class0-scale0.93",
+      "class_id": 0,
+      "status": "PASS",
+      "png_hashes_verified": true,
+      "visibility_policy_verified": true,
+      "capture_sync_verified": true,
+      "bbox_iou": 1.0,
+      "raw_bbox_iou": 0.9779290289476571,
+      "outside_roi_fraction": 0.0,
+      "changed_pixels": 1021,
+      "outside_roi_pixels": 0
+    },
+    {
+      "evidence": "gate",
+      "pair_id": "class0-scale1.18",
+      "class_id": 0,
+      "status": "PASS",
+      "png_hashes_verified": true,
+      "visibility_policy_verified": true,
+      "capture_sync_verified": true,
+      "bbox_iou": 1.0,
+      "raw_bbox_iou": 0.9634385900344169,
+      "outside_roi_fraction": 0.0,
+      "changed_pixels": 943,
+      "outside_roi_pixels": 0
+    },
+    {
+      "evidence": "gate",
+      "pair_id": "class1-scale0.68",
+      "class_id": 1,
+      "status": "PASS",
+      "png_hashes_verified": true,
+      "visibility_policy_verified": true,
+      "capture_sync_verified": true,
+      "bbox_iou": 1.0,
+      "raw_bbox_iou": 0.9574128719164615,
+      "outside_roi_fraction": 0.0,
+      "changed_pixels": 445,
+      "outside_roi_pixels": 0
+    },
+    {
+      "evidence": "gate",
+      "pair_id": "class1-scale0.93",
+      "class_id": 1,
+      "status": "PASS",
+      "png_hashes_verified": true,
+      "visibility_policy_verified": true,
+      "capture_sync_verified": true,
+      "bbox_iou": 1.0,
+      "raw_bbox_iou": 0.953506942196394,
+      "outside_roi_fraction": 0.0,
+      "changed_pixels": 1036,
+      "outside_roi_pixels": 0
+    },
+    {
+      "evidence": "gate",
+      "pair_id": "class1-scale1.18",
+      "class_id": 1,
+      "status": "PASS",
+      "png_hashes_verified": true,
+      "visibility_policy_verified": true,
+      "capture_sync_verified": true,
+      "bbox_iou": 1.0,
+      "raw_bbox_iou": 0.9695799585259298,
+      "outside_roi_fraction": 0.0,
+      "changed_pixels": 1581,
+      "outside_roi_pixels": 0
+    },
+    {
+      "evidence": "gate",
+      "pair_id": "class2-scale0.68",
+      "class_id": 2,
+      "status": "PASS",
+      "png_hashes_verified": true,
+      "visibility_policy_verified": true,
+      "capture_sync_verified": true,
+      "bbox_iou": 1.0,
+      "raw_bbox_iou": 0.9410067589430912,
+      "outside_roi_fraction": 0.0,
+      "changed_pixels": 256,
+      "outside_roi_pixels": 0
+    },
+    {
+      "evidence": "gate",
+      "pair_id": "class2-scale0.93",
+      "class_id": 2,
+      "status": "PASS",
+      "png_hashes_verified": true,
+      "visibility_policy_verified": true,
+      "capture_sync_verified": true,
+      "bbox_iou": 1.0,
+      "raw_bbox_iou": 0.9139949281824724,
+      "outside_roi_fraction": 0.0,
+      "changed_pixels": 291,
+      "outside_roi_pixels": 0
+    },
+    {
+      "evidence": "gate",
+      "pair_id": "class2-scale1.18",
+      "class_id": 2,
+      "status": "PASS",
+      "png_hashes_verified": true,
+      "visibility_policy_verified": true,
+      "capture_sync_verified": true,
+      "bbox_iou": 1.0,
+      "raw_bbox_iou": 0.9474240083802148,
+      "outside_roi_fraction": 0.0,
+      "changed_pixels": 662,
+      "outside_roi_pixels": 0
+    },
+    {
+      "evidence": "diagnostic",
+      "pair_id": "fixed-failed-scene",
+      "class_id": 1,
+      "status": "PASS",
+      "png_hashes_verified": true,
+      "visibility_policy_verified": true,
+      "capture_sync_verified": true,
+      "bbox_iou": 1.0,
+      "raw_bbox_iou": 0.9659821915961543,
+      "outside_roi_fraction": 0.0,
+      "changed_pixels": 862,
+      "outside_roi_pixels": 0
+    }
+  ],
+  "gate": {
+    "status": "PASS",
+    "case_count": 9,
+    "minimum_raw_bbox_iou": 0.9139949281824724,
+    "maximum_raw_bbox_iou": 0.9779290289476571,
+    "maximum_outside_roi_fraction": 0.0
+  },
+  "fixed_failed_scene_diagnostic": {
+    "evidence": "diagnostic",
+    "pair_id": "fixed-failed-scene",
+    "class_id": 1,
+    "status": "PASS",
+    "png_hashes_verified": true,
+    "visibility_policy_verified": true,
+    "capture_sync_verified": true,
+    "bbox_iou": 1.0,
+    "raw_bbox_iou": 0.9659821915961543,
+    "outside_roi_fraction": 0.0,
+    "changed_pixels": 862,
+    "outside_roi_pixels": 0
+  },
+  "visual_review_status": "PASS_FOR_TEN_PREFLIGHT_PAIRS",
+  "limitations": [
+    "Preflight checks ten predetermined pairs; this is not proof of completed bulk acquisition.",
+    "High-contrast colored surface proxy material domain excludes low-contrast realism and does not establish real-factory transfer.",
+    "Physics/transport acknowledgments confirm enqueueing, rather than atomic renderer completion; raw paired pixel checks remain mandatory."
+  ],
+  "source_or_data_modified": false,
+  "visual_observations": [
+    "Nine raw before/after gate pairs contain the intended scratch, dent-disk and contamination proxy shapes inside their analytical boxes.",
+    "All paired normal images show plain products at the same pose/background as their defect counterpart.",
+    "The predetermined failed r2 scene now visibly includes both outer dent ring and central pit at the original geometry/position; only its global material policy changed.",
+    "No missing defect, oversized geometry or whole-frame mismatch was observed in these preflight images."
+  ]
+}

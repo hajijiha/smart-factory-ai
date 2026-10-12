@@ -1,0 +1,348 @@
+{
+  "review_type": "Read-only data review before inspecting model performance",
+  "dataset_fingerprint": "5ac567d0dd5ac06c4f0969d7bb571f2d66c670ce09c9b0d78dd764144f211764",
+  "sensor_fingerprint": "5ac567d0dd5ac06c4f0969d7bb571f2d66c670ce09c9b0d78dd764144f211764",
+  "vision_images": 1800,
+  "sensor_windows": 7000,
+  "split_group_counts": {
+    "train": 14,
+    "test": 3,
+    "val": 3
+  },
+  "class_counts": {
+    "train/2": 210,
+    "train/1": 210,
+    "train/0": 210,
+    "train/-1": 630,
+    "test/0": 45,
+    "test/-1": 135,
+    "test/1": 45,
+    "test/2": 45,
+    "val/1": 45,
+    "val/-1": 135,
+    "val/0": 45,
+    "val/2": 45
+  },
+  "selection_protocol": "One normal and three defect classes per split; choose metadata scale min/median/max by preset cyclic ranks, not model scores; normal material strata when available.",
+  "selected_sample_count": 12,
+  "selected_samples": [
+    {
+      "image": "images/train/-1_00247.jpg",
+      "image_sha256": "7723ed578afa75e9f3e520fbc9a296e46c1c228530f72b19d92187dac68076ee",
+      "label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "split": "train",
+      "class_id": -1,
+      "group_id": "vision-v2-0006",
+      "geometry_family": "shape-0006",
+      "scale": 1.0701396112358414,
+      "primitive_count": 0,
+      "material_id": 0,
+      "light_bin": "bright",
+      "empty_negative_label": true,
+      "contrast_probe": {
+        "plate_median_luma": 225.0,
+        "dark_pixels_inside_plate": 0,
+        "threshold_below_plate_median": 35
+      }
+    },
+    {
+      "image": "images/train/0_00049.jpg",
+      "image_sha256": "2fcc47e5330f2818540f954ebf4daa259862cfb145cca21ee31cddab91b5458e",
+      "label_sha256": "f9a765101ecff94f743975798ebd96c84fd277c8bf7434f9912dba18ecab835c",
+      "split": "train",
+      "class_id": 0,
+      "group_id": "vision-v2-0013",
+      "geometry_family": "shape-0013",
+      "scale": 0.6844785640192763,
+      "primitive_count": 3,
+      "material_id": 1,
+      "light_bin": "bright",
+      "saved_bbox_pixels": [
+        157.542026985257,
+        129.6224026077682,
+        195.04206236663518,
+        144.87915267543545
+      ],
+      "independent_projection_max_delta_pixels": 5.684341886080802e-14,
+      "minimum_bbox_side_pixels": 15.256750067667237,
+      "contrast_probe": {
+        "plate_median_luma": 36.0,
+        "dark_pixels_inside_plate": 0,
+        "threshold_below_plate_median": 35
+      }
+    },
+    {
+      "image": "images/train/1_00002.jpg",
+      "image_sha256": "a25a5529e28db1732d6a94f9ce96651b1affbff900f9f5f9c8c46662f247c06f",
+      "label_sha256": "5f357a6df0a3740c7f5bd9dc974c6b0dfba54b31e55bfb8bdff49de0b172e7bd",
+      "split": "train",
+      "class_id": 1,
+      "group_id": "vision-v2-0003",
+      "geometry_family": "shape-0003",
+      "scale": 0.9079823314691131,
+      "primitive_count": 2,
+      "material_id": 0,
+      "light_bin": "dim",
+      "saved_bbox_pixels": [
+        156.1263641888608,
+        186.8708242992048,
+        189.7708259406575,
+        220.6962170304915
+      ],
+      "independent_projection_max_delta_pixels": 1.1368683772161603e-13,
+      "minimum_bbox_side_pixels": 33.64446175179669,
+      "contrast_probe": {
+        "plate_median_luma": 54.0,
+        "dark_pixels_inside_plate": 0,
+        "threshold_below_plate_median": 35
+      }
+    },
+    {
+      "image": "images/train/2_00032.jpg",
+      "image_sha256": "246838f81dc7da79bc3aad4e10e435a9469005527477a9c2a05bda20adefc9c1",
+      "label_sha256": "d10537c147eb43b784a848f10a3272f070a82391cd5e674a80426113e677edd5",
+      "split": "train",
+      "class_id": 2,
+      "group_id": "vision-v2-0009",
+      "geometry_family": "shape-0009",
+      "scale": 1.1769988056005256,
+      "primitive_count": 2,
+      "material_id": 0,
+      "light_bin": "bright",
+      "saved_bbox_pixels": [
+        147.01316607655625,
+        158.56037270379872,
+        170.14161694778744,
+        186.69873191276685
+      ],
+      "independent_projection_max_delta_pixels": 2.842170943040401e-14,
+      "minimum_bbox_side_pixels": 23.128450871231188,
+      "contrast_probe": {
+        "plate_median_luma": 72.0,
+        "dark_pixels_inside_plate": 0,
+        "threshold_below_plate_median": 35
+      }
+    },
+    {
+      "image": "images/val/-1_00067.jpg",
+      "image_sha256": "80a890b9bdeccae8e524aa51b961cdab7ae5977b1b1654e009cce500bd6e8cdd",
+      "label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "split": "val",
+      "class_id": -1,
+      "group_id": "vision-v2-0016",
+      "geometry_family": "shape-0016",
+      "scale": 0.9632353066131973,
+      "primitive_count": 0,
+      "material_id": 1,
+      "light_bin": "dim",
+      "empty_negative_label": true,
+      "contrast_probe": {
+        "plate_median_luma": 169.0,
+        "dark_pixels_inside_plate": 0,
+        "threshold_below_plate_median": 35
+      }
+    },
+    {
+      "image": "images/val/0_00013.jpg",
+      "image_sha256": "0c35879f4c7a4812820a4418a97469976b7b0a63ea244284395d16e1e37e0e70",
+      "label_sha256": "d27c3577528f8a7e1a32b2a5def010a9bb1f0701b19b538ce34c1398a045d29b",
+      "split": "val",
+      "class_id": 0,
+      "group_id": "vision-v2-0014",
+      "geometry_family": "shape-0014",
+      "scale": 1.1789778302102478,
+      "primitive_count": 3,
+      "material_id": 2,
+      "light_bin": "bright",
+      "saved_bbox_pixels": [
+        134.9929535626335,
+        86.64656611035682,
+        178.29993135265968,
+        155.6254922987226
+      ],
+      "independent_projection_max_delta_pixels": 5.684341886080802e-14,
+      "minimum_bbox_side_pixels": 43.30697779002618,
+      "contrast_probe": {
+        "plate_median_luma": 83.0,
+        "dark_pixels_inside_plate": 0,
+        "threshold_below_plate_median": 35
+      }
+    },
+    {
+      "image": "images/val/1_00014.jpg",
+      "image_sha256": "055b1f9e7006d39d127411fa62b3c712d99176d9568f95ebf4a5736d8c058b80",
+      "label_sha256": "573348a4f12f33fa0df7f5823895de0e99c7747f1c6a6d82639f5d3124f1fda8",
+      "split": "val",
+      "class_id": 1,
+      "group_id": "vision-v2-0014",
+      "geometry_family": "shape-0014",
+      "scale": 0.690399470481394,
+      "primitive_count": 2,
+      "material_id": 2,
+      "light_bin": "bright",
+      "saved_bbox_pixels": [
+        108.5979842716646,
+        154.80424877931267,
+        135.31857618072905,
+        181.44876030893354
+      ],
+      "independent_projection_max_delta_pixels": 2.842170943040401e-14,
+      "minimum_bbox_side_pixels": 26.64451152962089,
+      "contrast_probe": {
+        "plate_median_luma": 37.0,
+        "dark_pixels_inside_plate": 0,
+        "threshold_below_plate_median": 35
+      }
+    },
+    {
+      "image": "images/val/2_00011.jpg",
+      "image_sha256": "89993535bfd5611aa22b726a76197569e43f083480f88ed5a015ed9b5609560f",
+      "label_sha256": "58d53636d4aebd11c7f31866375a7dd2e5291f02836f196034770d1d29e5fba4",
+      "split": "val",
+      "class_id": 2,
+      "group_id": "vision-v2-0014",
+      "geometry_family": "shape-0014",
+      "scale": 0.9093700756533267,
+      "primitive_count": 2,
+      "material_id": 2,
+      "light_bin": "bright",
+      "saved_bbox_pixels": [
+        149.25978844757816,
+        140.59099434427287,
+        179.99030673065988,
+        160.56905159211163
+      ],
+      "independent_projection_max_delta_pixels": 0.0,
+      "minimum_bbox_side_pixels": 19.978057247838752,
+      "contrast_probe": {
+        "plate_median_luma": 52.0,
+        "dark_pixels_inside_plate": 0,
+        "threshold_below_plate_median": 35
+      }
+    },
+    {
+      "image": "images/test/-1_00067.jpg",
+      "image_sha256": "4434bb0badfb38b730b801fe77feb3f455d49ae0507d722cb68f2f680a60a1b6",
+      "label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "split": "test",
+      "class_id": -1,
+      "group_id": "vision-v2-0017",
+      "geometry_family": "shape-0017",
+      "scale": 0.8340839551021343,
+      "primitive_count": 0,
+      "material_id": 2,
+      "light_bin": "bright",
+      "empty_negative_label": true,
+      "contrast_probe": {
+        "plate_median_luma": 189.0,
+        "dark_pixels_inside_plate": 0,
+        "threshold_below_plate_median": 35
+      }
+    },
+    {
+      "image": "images/test/0_00039.jpg",
+      "image_sha256": "52d0f0fc2939546c04be409e1851e500fbab8372f77bb9abbcd10723e2bf554a",
+      "label_sha256": "23c98dd78876cbee12cc2ccbf721320b784758a3cf103883d9968d9fce4eebfe",
+      "split": "test",
+      "class_id": 0,
+      "group_id": "vision-v2-0018",
+      "geometry_family": "shape-0018",
+      "scale": 0.9328704832103837,
+      "primitive_count": 2,
+      "material_id": 0,
+      "light_bin": "dim",
+      "saved_bbox_pixels": [
+        120.67306231661365,
+        146.7553658261755,
+        149.79490327373458,
+        194.03686954853993
+      ],
+      "independent_projection_max_delta_pixels": 8.526512829121202e-14,
+      "minimum_bbox_side_pixels": 29.12184095712094,
+      "contrast_probe": {
+        "plate_median_luma": 27.0,
+        "dark_pixels_inside_plate": 0,
+        "threshold_below_plate_median": 35
+      }
+    },
+    {
+      "image": "images/test/1_00015.jpg",
+      "image_sha256": "db059632d69a3090554ef0ddd6052e3f37086520fec207a7de383c39049ca8ca",
+      "label_sha256": "326c53de013dd19cabec44e2aa73ed7c12fc0d55c99d2e29928ba855b2fd1ad8",
+      "split": "test",
+      "class_id": 1,
+      "group_id": "vision-v2-0017",
+      "geometry_family": "shape-0017",
+      "scale": 1.169654291187549,
+      "primitive_count": 2,
+      "material_id": 2,
+      "light_bin": "bright",
+      "saved_bbox_pixels": [
+        154.20359995778412,
+        145.1939158563111,
+        193.53946858594355,
+        184.48351129684968
+      ],
+      "independent_projection_max_delta_pixels": 5.684341886080802e-14,
+      "minimum_bbox_side_pixels": 39.289595440538605,
+      "contrast_probe": {
+        "plate_median_luma": 60.0,
+        "dark_pixels_inside_plate": 0,
+        "threshold_below_plate_median": 35
+      }
+    },
+    {
+      "image": "images/test/2_00039.jpg",
+      "image_sha256": "a006a7974ea0c2e5bf69099458f46150d9d08cf5c7c54358b7fa0b3fabca68f8",
+      "label_sha256": "fa92c4439f4ed20d9fa4c9b886ab9ccb27891711186088a53564eda8b8c135c0",
+      "split": "test",
+      "class_id": 2,
+      "group_id": "vision-v2-0018",
+      "geometry_family": "shape-0018",
+      "scale": 0.6905787922321287,
+      "primitive_count": 5,
+      "material_id": 0,
+      "light_bin": "dim",
+      "saved_bbox_pixels": [
+        161.9791462336059,
+        150.186799902774,
+        185.76373787015035,
+        177.73171096181818
+      ],
+      "independent_projection_max_delta_pixels": 5.684341886080802e-14,
+      "minimum_bbox_side_pixels": 23.784591636544477,
+      "contrast_probe": {
+        "plate_median_luma": 150.0,
+        "dark_pixels_inside_plate": 9272,
+        "threshold_below_plate_median": 35,
+        "dark_pixels_outside_label_plus_2px": 8282
+      }
+    }
+  ],
+  "integrity": "All 12 selected image and label SHA256 values match the acquisition manifest",
+  "analytical_projection": "Independent explicit rotation-matrix calculation agrees with saved labels within 1e-9 pixels on nine selected defect samples",
+  "visual_review_status": "FAIL: All nine selected defect images render geometry much larger than their saved boxes",
+  "limitations": [
+    "Only 12 images receive human visual review; this is not a full pixel segmentation validation.",
+    "Contrast probe is heuristic and does not prove semantic defect ground truth.",
+    "Dent geometry is a surface visual proxy, not a physically deformed product mesh.",
+    "Only three vision test acquisition groups; real-world transfer is not assessed.",
+    "Physical cause of the observed high-speed 100 rad/s equilibrium is unconfirmed."
+  ],
+  "montage": "generator-review-montage.png",
+  "montage_sha256": "a279d1e04aad0778dad65ac31ffad1a682d2a4ec23f16c15a0e6b4b4ee4b8979",
+  "visual_bbox_validation": {
+    "status": "FAIL",
+    "selected_defect_samples": 9,
+    "clearly_mismatched_samples": 9,
+    "selected_normal_samples": 3,
+    "normal_labels_empty": 3,
+    "finding": "Scratch primitives form plate-sized rectangles; dent and contamination circles greatly exceed the green analytical boxes."
+  },
+  "release_gate": {
+    "vision_dataset": "blocked pending geometry scaling fix and fresh acquisition",
+    "sensor_dataset": "not invalidated by this image review; separate sensor checks apply"
+  },
+  "suspected_cause": "Visual scale messages use SDF-size ratios while Gazebo appears to expect absolute primitive dimensions; source verification pending.",
+  "recommended_action": "Preserve this 1800-image acquisition as failed evidence; do not report its training metrics as valid. Fix renderer scale semantics and generate a new fingerprinted vision acquisition."
+}

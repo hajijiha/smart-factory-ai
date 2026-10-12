@@ -6,6 +6,41 @@ import os
 import numpy as np
 
 FAULT_TYPES = ('imbalance', 'looseness', 'outer_race', 'inner_race', 'mixed')
+VISIBILITY_POLICY_NAME = 'visible_surface_proxy_v1'
+RAW_PALETTE_MAX = .65
+
+
+def apply_visibility_policy(scene, configuration):
+    """Declare and map every class into the same high-contrast material domain.
+
+    This material-space gap does not guarantee a rendered pixel difference.
+    Raw paired-frame validation remains mandatory. The color scale uses a
+    separate label-independent random stream, leaving existing pose/shape/light
+    schedules intact. Low-contrast defects are outside this proxy domain.
+    """
+    settings=configuration.get('data_generation',{})
+    name=settings.get('vision_visibility_policy',VISIBILITY_POLICY_NAME)
+    gap=float(settings.get('vision_minimum_material_rgb_gap',.30))
+    if name!=VISIBILITY_POLICY_NAME or not 0<gap<1:
+        raise ValueError('Unsupported vision visibility policy or material RGB gap')
+    product=np.asarray(scene['product_color'],dtype=float)
+    if product.shape!=(3,) or not np.isfinite(product).all() or (product<0).any() or (product>1).any() or product.min()<=gap+.01:
+        raise ValueError('Product material is outside the declared visible-proxy contrast domain')
+    index=scene.get('scene_index')
+    if index is None:
+        index=int(scene['scene_id'].rsplit('-',1)[1])
+    color_scale=float(np.random.default_rng(scene['seed']+int(index)*43+88000).uniform(.65,1.))
+    upper=float((product.min()-gap)*color_scale)
+    parts=[]
+    for part in scene['defect_primitives']:
+        original=np.asarray(part.get('color_before_contrast',part['color']),dtype=float)
+        if original.shape!=(3,) or not np.isfinite(original).all() or (original<0).any() or (original>RAW_PALETTE_MAX).any():
+            raise ValueError('Primitive color is outside the declared shared raw palette')
+        parts.append({**part,'color_before_contrast':original.tolist(),'color':(original/RAW_PALETTE_MAX*upper).tolist()})
+    policy={'name':name,'minimum_material_rgb_gap':gap,'raw_palette_max':RAW_PALETTE_MAX,
+        'color_scale':color_scale,'product_minimum_channel':float(product.min()),'primitive_color_upper_bound':upper,
+        'scope':'High-contrast colored surface proxies; low-contrast defects and real-factory realism are unvalidated. Material RGB gap does not guarantee rendered pixel completion.'}
+    return {**scene,'scene_index':int(index),'visibility_policy':policy,'defect_primitives':parts}
 
 
 def generator_version():
@@ -163,4 +198,4 @@ def vision_scenes(group, configuration):
             'light_bin': 'dim' if p['light'] < .75 else 'bright',
             'background_bin': 'dark' if np.mean(p['background_color']) < .24 else 'light',
             'defect_primitives': defect_primitives(class_id, group['seed'], scale, darkness)}
-        yield scene
+        yield apply_visibility_policy(scene,configuration)

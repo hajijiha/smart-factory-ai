@@ -1,0 +1,98 @@
+{
+  "dataset_fingerprint": "27f9cc3cce206fb7eb95aa4e4736425e793ed1ed23b7f8f9a269dcc448740945",
+  "generator_source_commit": "075f4b8",
+  "capture_index": 1015,
+  "scene_id": "vision-v2-0017-0025",
+  "model_used": false,
+  "status": "FAIL_PRESERVED",
+  "criteria_modified": false,
+  "stored_metrics": {
+    "bbox_iou": 0.6833792665112283,
+    "changed_pixels": 357,
+    "observed_bbox_pixels": [
+      191.0,
+      122.0,
+      217.0,
+      149.0
+    ],
+    "outside_roi_fraction": 0.0,
+    "outside_roi_pixels": 0,
+    "raw_bbox_iou": 0.6650432540144093,
+    "status": "FAIL"
+  },
+  "product_color": [
+    0.5830384674440052,
+    0.6086436134262875,
+    0.593267397631645
+  ],
+  "rim_color": [
+    0.5656348699949998,
+    0.5656348699949998,
+    0.5656348699949998
+  ],
+  "pit_color": [
+    0.3656348699949997,
+    0.3656348699949997,
+    0.3656348699949997
+  ],
+  "raw_png_sha256_verified": true,
+  "rim_interior_diagnostic": {
+    "pixels": 296,
+    "max_channel_absolute_difference_quantiles": [
+      14.0,
+      14.0,
+      14.0,
+      14.0,
+      14.0,
+      14.0,
+      14.0
+    ],
+    "pixels_at_or_below_existing_channel_threshold_20": 296,
+    "fraction_at_or_below_existing_channel_threshold_20": 1.0
+  },
+  "pit_interior_diagnostic": {
+    "pixels": 283,
+    "max_channel_absolute_difference_quantiles": [
+      77.0,
+      77.0,
+      77.0,
+      77.0,
+      77.0,
+      77.0,
+      77.0
+    ],
+    "pixels_at_or_below_existing_channel_threshold_20": 0,
+    "fraction_at_or_below_existing_channel_threshold_20": 0.0
+  },
+  "expected_bbox_pixels": [
+    190.33903626308506,
+    116.5738890296731,
+    222.8354167673604,
+    149.05659704915988
+  ],
+  "projected_outer_top_disk_bbox": [
+    190.4119555786308,
+    116.57388902967305,
+    222.8354167673604,
+    149.05659704915985
+  ],
+  "projected_inner_top_disk_bbox": [
+    196.5091652572585,
+    122.58529247487022,
+    216.91778803303836,
+    143.031220767516
+  ],
+  "changed_pixels_outside_gt_plus_two_pixels": 0,
+  "diagnostic_method": "Projected top-disk masks eroded one pixel; outer-ring mask excludes an expanded pit. Summarize continuous raw RGB differences under the existing fixed threshold; no alternative acceptance threshold or repeated capture.",
+  "visual_review_status": "VISIBLE_GEOMETRY_MATCHES_EXPECTED_BBOX",
+  "interpretation": "The outer dent ring is rendered at the expected location and extent, while its interior raw channel difference is uniformly 14 and therefore excluded by the unchanged >20 validation mask. The central pit difference is 77. This failure exposes a low-contrast limitation of the pixel validation assumption; it is not a missing/full-frame scene or oversized geometry error.",
+  "limitations": [
+    "Pixel masks approximate rasterized top faces; cylinder side walls and antialiasing are excluded from interior contrast summaries.",
+    "This diagnostic does not turn a failed acquisition into passing evidence or authorize reuse of the partial dataset.",
+    "No real-world realism or trained-model generalization is measured."
+  ],
+  "montage": "generator-r2-failure-review.png",
+  "montage_sha256": "43ff979cb1c233f296b7b93232d11791094a072491a9e7996c88c322b4e7c98b",
+  "acquisition_decision": "FAIL retained; preserve the partial acquisition and associated r2 assets. No retry, threshold change or favorable-image selection.",
+  "proposed_revision_scope": "A separately versioned, class-independent high-contrast surface-proxy material domain; all scene conditions sampled without reference to pixel outcomes, with low-contrast r2 evidence retained as unsupported/OOD."
+}

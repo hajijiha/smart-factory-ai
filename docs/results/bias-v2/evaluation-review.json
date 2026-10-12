@@ -1,0 +1,3211 @@
+{
+  "scope": "Independent review of completed frozen final evaluations; no fitting, tuning, retraining, export or ordinary heldout benchmark",
+  "status": "WARN",
+  "execution": {
+    "runtime_image": "smart-factory-runtime:local",
+    "network": "none",
+    "source_data_models": "read-only",
+    "write_scope": "docs/results/bias-v2 only",
+    "two_model_freezes_validated_before_any_final_evaluation": true,
+    "phase": "final",
+    "seed": 862047,
+    "protocol_sha256": "3c971571c32fb87b67e60658cd7b90ecb04d96033d73ac9fa1bc5524a92cf130"
+  },
+  "integrity": {
+    "post_evaluation_model_and_freeze_hashes": {
+      "baseline": {
+        "models": {
+          "pdm.pt": "f829b824123eee1adc66b2fd6cf4fb9a8c50ffd2ba8ea343c06730e93500bb73",
+          "vision.pt": "de2b27a91410cd0ee12167a43b9651a9ef06198e6c86d80fdd2e9d84dffcde57",
+          "vision.onnx": "e8bc6f517174105955e7b095059e77be7ff1ff222631a5b19d8ca3a03a56d665"
+        },
+        "freeze_sha256": "3057a39c697bc64e9458312002f109a7461073c3b94951fff446f77ed04b6548",
+        "challenge_sha256": "071ae79c70984c904e6fa70279a7d8fe8a2bf20e2ab46024920391b436cd7545",
+        "unchanged_from_preflight": "PASS"
+      },
+      "candidate": {
+        "models": {
+          "pdm.pt": "05f5b10897ac42a77a47190e8d8bbbecf164cc642ca653c02612bd02ce47d6f0",
+          "vision.pt": "26f11bc1395717af6aa8583a72f2f5c6157aab5c051899fe475104cb6003c9a8",
+          "vision.onnx": "977f6b540dc3e8ec53be4dfabd663ab4f79cf5f249ab68bbb818bfc624cc67da"
+        },
+        "freeze_sha256": "053bc43f73dd35e73fbc0abfa6e943c8ffa54bb08b7d7d100d41a61f7441f61f",
+        "challenge_sha256": "c0885d31af3247336709ba98843301de6261a024c6d58bbd6163f050eddc2746",
+        "unchanged_from_preflight": "PASS"
+      }
+    },
+    "protocol_and_data_audit_unchanged": "PASS",
+    "evaluation_source_sha256": {
+      "scripts/bias_evaluate.py": "57a0eca20492f15328b751ee35a8df2a9c6aa01e9a65121964d0929e925b925d",
+      "scripts/bias_metrics.py": "c0674464b898e4ed973c662c270c02e61408617ebb5d946cc79094857a462911",
+      "factory/pdm/features.py": "d10c39136d1abfc8a91b59f745bc6b56d93cdbfb89ff18e4f12905ec81301817",
+      "factory/pdm/model.py": "b67ff5a0f6f6838cbf4eee73ed98bcef0990ae9c20f4dee1bcd3647dea7f16f1",
+      "factory/vision/inference.py": "b18a5495eb11627046f06dc7bf7c13bb610df66588d941fa35dbc98b28a51128",
+      "factory/common.py": "9f46257fee298aa34953982c413848f8788a036340a6f6e62d53813944f04ca6"
+    },
+    "environment": {
+      "python": "3.10.12",
+      "numpy": "1.26.4",
+      "scipy": "1.13.1",
+      "torch": "2.5.1+cpu",
+      "opencv-python": "4.10.0.84",
+      "onnxruntime": "1.20.1"
+    },
+    "same_sensor_features_sha256": "a28a616679a7fa6eba0803c05503a0b1ca7c97a1a2da66d121412d14e84efbdb",
+    "same_vision_manifest_sha256": "7a6daf8d1f660e4c0c39fddb1a2c30f1ab29e14c39589b9cd25b952856f5e6f8",
+    "same_vision_source_and_transformed_pixel_hashes": "PASS",
+    "inference_config": {
+      "image_size": 256,
+      "confidence": 0.25,
+      "iou": 0.45,
+      "threads": 4,
+      "classes": [
+        "scratch",
+        "dent",
+        "contamination"
+      ]
+    },
+    "sensor_windows": 3630,
+    "vision_selected_images": 160,
+    "vision_transform_evaluations": 1080,
+    "raw_count_aggregate_consistency": "PASS",
+    "comparison_file_sha256": "ab85347c71d1958782169817e6074379fb8886695298d40fc18ba9e5db19a5a1"
+  },
+  "models": {
+    "baseline": {
+      "status": "WARN",
+      "sensor": {
+        "chart": {
+          "aggregate": {
+            "supported": {
+              "n": 2970,
+              "tp": 2659,
+              "fn": 41,
+              "fp": 181,
+              "tn": 89,
+              "precision": 0.9362676056338028,
+              "recall": 0.9848148148148148,
+              "f1": 0.959927797833935,
+              "normal_fpr": 0.6703703703703704,
+              "recall_wilson95": [
+                0.979465433796969,
+                0.9887866031186365
+              ],
+              "normal_fpr_wilson95": [
+                0.6122530086099071,
+                0.7237078075360505
+              ]
+            },
+            "ood": {
+              "n": 660,
+              "tp": 600,
+              "fn": 0,
+              "fp": 60,
+              "tn": 0,
+              "precision": 0.9090909090909091,
+              "recall": 1.0,
+              "f1": 0.9523809523809523,
+              "normal_fpr": 1.0,
+              "recall_wilson95": [
+                0.9936382989862994,
+                1.0
+              ],
+              "normal_fpr_wilson95": [
+                0.93982814785791,
+                0.9999999999999998
+              ]
+            }
+          },
+          "fault_type_metrics": {
+            "imbalance": {
+              "n": 594,
+              "tp": 527,
+              "fn": 13,
+              "fp": 37,
+              "tn": 17,
+              "precision": 0.9343971631205674,
+              "recall": 0.975925925925926,
+              "f1": 0.9547101449275363,
+              "normal_fpr": 0.6851851851851852,
+              "recall_wilson95": [
+                0.9592504314837592,
+                0.9858779541207431
+              ],
+              "normal_fpr_wilson95": [
+                0.5525655517520491,
+                0.7932071933994709
+              ]
+            },
+            "looseness": {
+              "n": 594,
+              "tp": 525,
+              "fn": 15,
+              "fp": 37,
+              "tn": 17,
+              "precision": 0.9341637010676157,
+              "recall": 0.9722222222222222,
+              "f1": 0.9528130671506352,
+              "normal_fpr": 0.6851851851851852,
+              "recall_wilson95": [
+                0.9546779959391469,
+                0.9830953049524795
+              ],
+              "normal_fpr_wilson95": [
+                0.5525655517520491,
+                0.7932071933994709
+              ]
+            },
+            "outer_race": {
+              "n": 594,
+              "tp": 533,
+              "fn": 7,
+              "fp": 39,
+              "tn": 15,
+              "precision": 0.9318181818181818,
+              "recall": 0.987037037037037,
+              "f1": 0.9586330935251799,
+              "normal_fpr": 0.7222222222222222,
+              "recall_wilson95": [
+                0.9734867823067677,
+                0.993706857436361
+              ],
+              "normal_fpr_wilson95": [
+                0.5910955707120475,
+                0.8238317234697763
+              ]
+            },
+            "inner_race": {
+              "n": 594,
+              "tp": 534,
+              "fn": 6,
+              "fp": 35,
+              "tn": 19,
+              "precision": 0.9384885764499121,
+              "recall": 0.9888888888888889,
+              "f1": 0.9630297565374211,
+              "normal_fpr": 0.6481481481481481,
+              "recall_wilson95": [
+                0.9759731778874571,
+                0.9948980042121093
+              ],
+              "normal_fpr_wilson95": [
+                0.5148483072023632,
+                0.7617698889188528
+              ]
+            },
+            "mixed": {
+              "n": 594,
+              "tp": 540,
+              "fn": 0,
+              "fp": 33,
+              "tn": 21,
+              "precision": 0.9424083769633508,
+              "recall": 1.0,
+              "f1": 0.9703504043126685,
+              "normal_fpr": 0.6111111111111112,
+              "recall_wilson95": [
+                0.9929364362381928,
+                0.9999999999999999
+              ],
+              "normal_fpr_wilson95": [
+                0.47788298538207685,
+                0.7295806617088351
+              ]
+            }
+          },
+          "supported_level_metrics": {
+            "1": {
+              "n": 270,
+              "tp": 229,
+              "fn": 41,
+              "recall": 0.8481481481481481,
+              "wilson95": [
+                0.8004792296079026,
+                0.8860493946903583
+              ]
+            },
+            "2": {
+              "n": 270,
+              "tp": 270,
+              "fn": 0,
+              "recall": 1.0,
+              "wilson95": [
+                0.9859719604283536,
+                1.0
+              ]
+            },
+            "3": {
+              "n": 270,
+              "tp": 270,
+              "fn": 0,
+              "recall": 1.0,
+              "wilson95": [
+                0.9859719604283536,
+                1.0
+              ]
+            },
+            "4": {
+              "n": 270,
+              "tp": 270,
+              "fn": 0,
+              "recall": 1.0,
+              "wilson95": [
+                0.9859719604283536,
+                1.0
+              ]
+            },
+            "5": {
+              "n": 270,
+              "tp": 270,
+              "fn": 0,
+              "recall": 1.0,
+              "wilson95": [
+                0.9859719604283536,
+                1.0
+              ]
+            },
+            "6": {
+              "n": 270,
+              "tp": 270,
+              "fn": 0,
+              "recall": 1.0,
+              "wilson95": [
+                0.9859719604283536,
+                1.0
+              ]
+            },
+            "7": {
+              "n": 270,
+              "tp": 270,
+              "fn": 0,
+              "recall": 1.0,
+              "wilson95": [
+                0.9859719604283536,
+                1.0
+              ]
+            },
+            "8": {
+              "n": 270,
+              "tp": 270,
+              "fn": 0,
+              "recall": 1.0,
+              "wilson95": [
+                0.9859719604283536,
+                1.0
+              ]
+            },
+            "9": {
+              "n": 270,
+              "tp": 270,
+              "fn": 0,
+              "recall": 1.0,
+              "wilson95": [
+                0.9859719604283536,
+                1.0
+              ]
+            },
+            "10": {
+              "n": 270,
+              "tp": 270,
+              "fn": 0,
+              "recall": 1.0,
+              "wilson95": [
+                0.9859719604283536,
+                1.0
+              ]
+            }
+          },
+          "supported_normal_control_cells": [
+            {
+              "domain": "supported",
+              "rotation_hz": 8.0,
+              "noise": 0.008,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 30,
+              "tn": 0,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 1.0,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.8864866068260312,
+                0.9999999999999999
+              ]
+            },
+            {
+              "domain": "supported",
+              "rotation_hz": 8.0,
+              "noise": 0.025,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 1,
+              "tn": 29,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 0.03333333333333333,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.005908590381612455,
+                0.16670390991409173
+              ]
+            },
+            {
+              "domain": "supported",
+              "rotation_hz": 8.0,
+              "noise": 0.05,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 30,
+              "tn": 0,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 1.0,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.8864866068260312,
+                0.9999999999999999
+              ]
+            },
+            {
+              "domain": "supported",
+              "rotation_hz": 11.5,
+              "noise": 0.008,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 22,
+              "tn": 8,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 0.7333333333333333,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.555520383048111,
+                0.8581733668040368
+              ]
+            },
+            {
+              "domain": "supported",
+              "rotation_hz": 11.5,
+              "noise": 0.025,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 10,
+              "tn": 20,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 0.3333333333333333,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.19230498083676134,
+                0.5121994835545616
+              ]
+            },
+            {
+              "domain": "supported",
+              "rotation_hz": 11.5,
+              "noise": 0.05,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 30,
+              "tn": 0,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 1.0,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.8864866068260312,
+                0.9999999999999999
+              ]
+            },
+            {
+              "domain": "supported",
+              "rotation_hz": 15.0,
+              "noise": 0.008,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 3,
+              "tn": 27,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 0.1,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.03459988874733419,
+                0.25621082579184085
+              ]
+            },
+            {
+              "domain": "supported",
+              "rotation_hz": 15.0,
+              "noise": 0.025,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 25,
+              "tn": 5,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 0.8333333333333334,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.6643564949358398,
+                0.9266345762815145
+              ]
+            },
+            {
+              "domain": "supported",
+              "rotation_hz": 15.0,
+              "noise": 0.05,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 30,
+              "tn": 0,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 1.0,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.8864866068260312,
+                0.9999999999999999
+              ]
+            }
+          ],
+          "normal_control_cells_above_registered_fpr": 8,
+          "worst_supported_normal_cell": {
+            "domain": "supported",
+            "rotation_hz": 8.0,
+            "noise": 0.008,
+            "level": 0,
+            "n": 30,
+            "tp": 0,
+            "fn": 0,
+            "fp": 30,
+            "tn": 0,
+            "precision": 0.0,
+            "recall": null,
+            "f1": 0.0,
+            "normal_fpr": 1.0,
+            "recall_wilson95": null,
+            "normal_fpr_wilson95": [
+              0.8864866068260312,
+              0.9999999999999999
+            ]
+          },
+          "weak_fault_level_1_2_diagnostic": {
+            "scope": "Exploratory, not the level3..10 support gate",
+            "tp": 499,
+            "fn": 41,
+            "n": 540
+          },
+          "supported_level3_10_gate_all_met": true
+        },
+        "ae": {
+          "aggregate": {
+            "supported": {
+              "n": 2970,
+              "tp": 2700,
+              "fn": 0,
+              "fp": 270,
+              "tn": 0,
+              "precision": 0.9090909090909091,
+              "recall": 1.0,
+              "f1": 0.9523809523809523,
+              "normal_fpr": 1.0,
+              "recall_wilson95": [
+                0.9985792588510829,
+                0.9999999999999998
+              ],
+              "normal_fpr_wilson95": [
+                0.9859719604283536,
+                1.0
+              ]
+            },
+            "ood": {
+              "n": 660,
+              "tp": 600,
+              "fn": 0,
+              "fp": 60,
+              "tn": 0,
+              "precision": 0.9090909090909091,
+              "recall": 1.0,
+              "f1": 0.9523809523809523,
+              "normal_fpr": 1.0,
+              "recall_wilson95": [
+                0.9936382989862994,
+                1.0
+              ],
+              "normal_fpr_wilson95": [
+                0.93982814785791,
+                0.9999999999999998
+              ]
+            }
+          },
+          "fault_type_metrics": {
+            "imbalance": {
+              "n": 594,
+              "tp": 540,
+              "fn": 0,
+              "fp": 54,
+              "tn": 0,
+              "precision": 0.9090909090909091,
+              "recall": 1.0,
+              "f1": 0.9523809523809523,
+              "normal_fpr": 1.0,
+              "recall_wilson95": [
+                0.9929364362381928,
+                0.9999999999999999
+              ],
+              "normal_fpr_wilson95": [
+                0.9335864119091037,
+                1.0
+              ]
+            },
+            "looseness": {
+              "n": 594,
+              "tp": 540,
+              "fn": 0,
+              "fp": 54,
+              "tn": 0,
+              "precision": 0.9090909090909091,
+              "recall": 1.0,
+              "f1": 0.9523809523809523,
+              "normal_fpr": 1.0,
+              "recall_wilson95": [
+                0.9929364362381928,
+                0.9999999999999999
+              ],
+              "normal_fpr_wilson95": [
+                0.9335864119091037,
+                1.0
+              ]
+            },
+            "outer_race": {
+              "n": 594,
+              "tp": 540,
+              "fn": 0,
+              "fp": 54,
+              "tn": 0,
+              "precision": 0.9090909090909091,
+              "recall": 1.0,
+              "f1": 0.9523809523809523,
+              "normal_fpr": 1.0,
+              "recall_wilson95": [
+                0.9929364362381928,
+                0.9999999999999999
+              ],
+              "normal_fpr_wilson95": [
+                0.9335864119091037,
+                1.0
+              ]
+            },
+            "inner_race": {
+              "n": 594,
+              "tp": 540,
+              "fn": 0,
+              "fp": 54,
+              "tn": 0,
+              "precision": 0.9090909090909091,
+              "recall": 1.0,
+              "f1": 0.9523809523809523,
+              "normal_fpr": 1.0,
+              "recall_wilson95": [
+                0.9929364362381928,
+                0.9999999999999999
+              ],
+              "normal_fpr_wilson95": [
+                0.9335864119091037,
+                1.0
+              ]
+            },
+            "mixed": {
+              "n": 594,
+              "tp": 540,
+              "fn": 0,
+              "fp": 54,
+              "tn": 0,
+              "precision": 0.9090909090909091,
+              "recall": 1.0,
+              "f1": 0.9523809523809523,
+              "normal_fpr": 1.0,
+              "recall_wilson95": [
+                0.9929364362381928,
+                0.9999999999999999
+              ],
+              "normal_fpr_wilson95": [
+                0.9335864119091037,
+                1.0
+              ]
+            }
+          },
+          "supported_level_metrics": {
+            "1": {
+              "n": 270,
+              "tp": 270,
+              "fn": 0,
+              "recall": 1.0,
+              "wilson95": [
+                0.9859719604283536,
+                1.0
+              ]
+            },
+            "2": {
+              "n": 270,
+              "tp": 270,
+              "fn": 0,
+              "recall": 1.0,
+              "wilson95": [
+                0.9859719604283536,
+                1.0
+              ]
+            },
+            "3": {
+              "n": 270,
+              "tp": 270,
+              "fn": 0,
+              "recall": 1.0,
+              "wilson95": [
+                0.9859719604283536,
+                1.0
+              ]
+            },
+            "4": {
+              "n": 270,
+              "tp": 270,
+              "fn": 0,
+              "recall": 1.0,
+              "wilson95": [
+                0.9859719604283536,
+                1.0
+              ]
+            },
+            "5": {
+              "n": 270,
+              "tp": 270,
+              "fn": 0,
+              "recall": 1.0,
+              "wilson95": [
+                0.9859719604283536,
+                1.0
+              ]
+            },
+            "6": {
+              "n": 270,
+              "tp": 270,
+              "fn": 0,
+              "recall": 1.0,
+              "wilson95": [
+                0.9859719604283536,
+                1.0
+              ]
+            },
+            "7": {
+              "n": 270,
+              "tp": 270,
+              "fn": 0,
+              "recall": 1.0,
+              "wilson95": [
+                0.9859719604283536,
+                1.0
+              ]
+            },
+            "8": {
+              "n": 270,
+              "tp": 270,
+              "fn": 0,
+              "recall": 1.0,
+              "wilson95": [
+                0.9859719604283536,
+                1.0
+              ]
+            },
+            "9": {
+              "n": 270,
+              "tp": 270,
+              "fn": 0,
+              "recall": 1.0,
+              "wilson95": [
+                0.9859719604283536,
+                1.0
+              ]
+            },
+            "10": {
+              "n": 270,
+              "tp": 270,
+              "fn": 0,
+              "recall": 1.0,
+              "wilson95": [
+                0.9859719604283536,
+                1.0
+              ]
+            }
+          },
+          "supported_normal_control_cells": [
+            {
+              "domain": "supported",
+              "rotation_hz": 8.0,
+              "noise": 0.008,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 30,
+              "tn": 0,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 1.0,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.8864866068260312,
+                0.9999999999999999
+              ]
+            },
+            {
+              "domain": "supported",
+              "rotation_hz": 8.0,
+              "noise": 0.025,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 30,
+              "tn": 0,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 1.0,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.8864866068260312,
+                0.9999999999999999
+              ]
+            },
+            {
+              "domain": "supported",
+              "rotation_hz": 8.0,
+              "noise": 0.05,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 30,
+              "tn": 0,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 1.0,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.8864866068260312,
+                0.9999999999999999
+              ]
+            },
+            {
+              "domain": "supported",
+              "rotation_hz": 11.5,
+              "noise": 0.008,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 30,
+              "tn": 0,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 1.0,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.8864866068260312,
+                0.9999999999999999
+              ]
+            },
+            {
+              "domain": "supported",
+              "rotation_hz": 11.5,
+              "noise": 0.025,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 30,
+              "tn": 0,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 1.0,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.8864866068260312,
+                0.9999999999999999
+              ]
+            },
+            {
+              "domain": "supported",
+              "rotation_hz": 11.5,
+              "noise": 0.05,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 30,
+              "tn": 0,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 1.0,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.8864866068260312,
+                0.9999999999999999
+              ]
+            },
+            {
+              "domain": "supported",
+              "rotation_hz": 15.0,
+              "noise": 0.008,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 30,
+              "tn": 0,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 1.0,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.8864866068260312,
+                0.9999999999999999
+              ]
+            },
+            {
+              "domain": "supported",
+              "rotation_hz": 15.0,
+              "noise": 0.025,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 30,
+              "tn": 0,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 1.0,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.8864866068260312,
+                0.9999999999999999
+              ]
+            },
+            {
+              "domain": "supported",
+              "rotation_hz": 15.0,
+              "noise": 0.05,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 30,
+              "tn": 0,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 1.0,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.8864866068260312,
+                0.9999999999999999
+              ]
+            }
+          ],
+          "normal_control_cells_above_registered_fpr": 9,
+          "worst_supported_normal_cell": {
+            "domain": "supported",
+            "rotation_hz": 8.0,
+            "noise": 0.008,
+            "level": 0,
+            "n": 30,
+            "tp": 0,
+            "fn": 0,
+            "fp": 30,
+            "tn": 0,
+            "precision": 0.0,
+            "recall": null,
+            "f1": 0.0,
+            "normal_fpr": 1.0,
+            "recall_wilson95": null,
+            "normal_fpr_wilson95": [
+              0.8864866068260312,
+              0.9999999999999999
+            ]
+          },
+          "weak_fault_level_1_2_diagnostic": {
+            "scope": "Exploratory, not the level3..10 support gate",
+            "tp": 540,
+            "fn": 0,
+            "n": 540
+          },
+          "supported_level3_10_gate_all_met": true
+        }
+      },
+      "vision_summary": {
+        "identity": {
+          "positive_images": 120,
+          "matched_images": 107,
+          "recall_iou50": 0.8916666666666667,
+          "recall_wilson95": [
+            0.8234463978470834,
+            0.9355885884582658
+          ],
+          "negative_images": 40,
+          "false_positive_images": 0,
+          "normal_image_fpr": 0.0,
+          "fpr_wilson95": [
+            0.0,
+            0.08762160119728664
+          ],
+          "class_recall": {
+            "0": {
+              "n": 40,
+              "matched": 37,
+              "recall": 0.925,
+              "wilson95": [
+                0.8013576647568946,
+                0.9741639742254119
+              ]
+            },
+            "1": {
+              "n": 40,
+              "matched": 30,
+              "recall": 0.75,
+              "wilson95": [
+                0.5980603857923197,
+                0.858128813609037
+              ]
+            },
+            "2": {
+              "n": 40,
+              "matched": 40,
+              "recall": 1.0,
+              "wilson95": [
+                0.9123783988027135,
+                1.0
+              ]
+            }
+          }
+        },
+        "grayscale": {
+          "positive_images": 120,
+          "matched_images": 118,
+          "recall_iou50": 0.9833333333333333,
+          "recall_wilson95": [
+            0.941264037027841,
+            0.9954174354340789
+          ],
+          "negative_images": 40,
+          "false_positive_images": 0,
+          "normal_image_fpr": 0.0,
+          "fpr_wilson95": [
+            0.0,
+            0.08762160119728664
+          ],
+          "class_recall": {
+            "0": {
+              "n": 40,
+              "matched": 39,
+              "recall": 0.975,
+              "wilson95": [
+                0.8711863103652591,
+                0.9955731684973186
+              ]
+            },
+            "1": {
+              "n": 40,
+              "matched": 39,
+              "recall": 0.975,
+              "wilson95": [
+                0.8711863103652591,
+                0.9955731684973186
+              ]
+            },
+            "2": {
+              "n": 40,
+              "matched": 40,
+              "recall": 1.0,
+              "wilson95": [
+                0.9123783988027135,
+                1.0
+              ]
+            }
+          },
+          "paired_recall_drop": -0.09166666666666656,
+          "paired_normal_fpr_gap": 0.0,
+          "paired_top_class_changes": 16,
+          "paired_n": 160,
+          "paired_confidence_delta_n": 120,
+          "paired_confidence_delta_mean": 0.012612745662530263
+        },
+        "darken": {
+          "positive_images": 120,
+          "matched_images": 104,
+          "recall_iou50": 0.8666666666666667,
+          "recall_wilson95": [
+            0.7943520342531574,
+            0.916233910373127
+          ],
+          "negative_images": 40,
+          "false_positive_images": 0,
+          "normal_image_fpr": 0.0,
+          "fpr_wilson95": [
+            0.0,
+            0.08762160119728664
+          ],
+          "class_recall": {
+            "0": {
+              "n": 40,
+              "matched": 38,
+              "recall": 0.95,
+              "wilson95": [
+                0.8349612263085903,
+                0.9861793326138516
+              ]
+            },
+            "1": {
+              "n": 40,
+              "matched": 26,
+              "recall": 0.65,
+              "wilson95": [
+                0.49505880837257693,
+                0.7786547112682372
+              ]
+            },
+            "2": {
+              "n": 40,
+              "matched": 40,
+              "recall": 1.0,
+              "wilson95": [
+                0.9123783988027135,
+                1.0
+              ]
+            }
+          },
+          "paired_recall_drop": 0.025000000000000022,
+          "paired_normal_fpr_gap": 0.0,
+          "paired_top_class_changes": 7,
+          "paired_n": 160,
+          "paired_confidence_delta_n": 119,
+          "paired_confidence_delta_mean": 0.015932348345508093
+        },
+        "brighten": {
+          "positive_images": 120,
+          "matched_images": 109,
+          "recall_iou50": 0.9083333333333333,
+          "recall_wilson95": [
+            0.843291530273291,
+            0.9480428171514347
+          ],
+          "negative_images": 40,
+          "false_positive_images": 0,
+          "normal_image_fpr": 0.0,
+          "fpr_wilson95": [
+            0.0,
+            0.08762160119728664
+          ],
+          "class_recall": {
+            "0": {
+              "n": 40,
+              "matched": 37,
+              "recall": 0.925,
+              "wilson95": [
+                0.8013576647568946,
+                0.9741639742254119
+              ]
+            },
+            "1": {
+              "n": 40,
+              "matched": 32,
+              "recall": 0.8,
+              "wilson95": [
+                0.652426936536005,
+                0.895000102745623
+              ]
+            },
+            "2": {
+              "n": 40,
+              "matched": 40,
+              "recall": 1.0,
+              "wilson95": [
+                0.9123783988027135,
+                1.0
+              ]
+            }
+          },
+          "paired_recall_drop": -0.016666666666666607,
+          "paired_normal_fpr_gap": 0.0,
+          "paired_top_class_changes": 6,
+          "paired_n": 160,
+          "paired_confidence_delta_n": 119,
+          "paired_confidence_delta_mean": -0.009096400827920738
+        },
+        "blur": {
+          "positive_images": 120,
+          "matched_images": 100,
+          "recall_iou50": 0.8333333333333334,
+          "recall_wilson95": [
+            0.7565471860673773,
+            0.8894400363201539
+          ],
+          "negative_images": 40,
+          "false_positive_images": 0,
+          "normal_image_fpr": 0.0,
+          "fpr_wilson95": [
+            0.0,
+            0.08762160119728664
+          ],
+          "class_recall": {
+            "0": {
+              "n": 40,
+              "matched": 35,
+              "recall": 0.875,
+              "wilson95": [
+                0.738878801611489,
+                0.945404997490546
+              ]
+            },
+            "1": {
+              "n": 40,
+              "matched": 26,
+              "recall": 0.65,
+              "wilson95": [
+                0.49505880837257693,
+                0.7786547112682372
+              ]
+            },
+            "2": {
+              "n": 40,
+              "matched": 39,
+              "recall": 0.975,
+              "wilson95": [
+                0.8711863103652591,
+                0.9955731684973186
+              ]
+            }
+          },
+          "paired_recall_drop": 0.05833333333333335,
+          "paired_normal_fpr_gap": 0.0,
+          "paired_top_class_changes": 9,
+          "paired_n": 160,
+          "paired_confidence_delta_n": 119,
+          "paired_confidence_delta_mean": -0.007990130857259286
+        },
+        "jpeg": {
+          "positive_images": 120,
+          "matched_images": 116,
+          "recall_iou50": 0.9666666666666667,
+          "recall_wilson95": [
+            0.917419662440894,
+            0.9869624489016494
+          ],
+          "negative_images": 40,
+          "false_positive_images": 0,
+          "normal_image_fpr": 0.0,
+          "fpr_wilson95": [
+            0.0,
+            0.08762160119728664
+          ],
+          "class_recall": {
+            "0": {
+              "n": 40,
+              "matched": 39,
+              "recall": 0.975,
+              "wilson95": [
+                0.8711863103652591,
+                0.9955731684973186
+              ]
+            },
+            "1": {
+              "n": 40,
+              "matched": 38,
+              "recall": 0.95,
+              "wilson95": [
+                0.8349612263085903,
+                0.9861793326138516
+              ]
+            },
+            "2": {
+              "n": 40,
+              "matched": 39,
+              "recall": 0.975,
+              "wilson95": [
+                0.8711863103652591,
+                0.9955731684973186
+              ]
+            }
+          },
+          "paired_recall_drop": -0.07499999999999996,
+          "paired_normal_fpr_gap": 0.0,
+          "paired_top_class_changes": 18,
+          "paired_n": 160,
+          "paired_confidence_delta_n": 119,
+          "paired_confidence_delta_mean": 0.01720823084606844
+        },
+        "erase_defect": {
+          "positive_images": 0,
+          "matched_images": 0,
+          "recall_iou50": null,
+          "recall_wilson95": null,
+          "negative_images": 120,
+          "false_positive_images": 0,
+          "normal_image_fpr": 0.0,
+          "fpr_wilson95": [
+            0.0,
+            0.031019166418703486
+          ],
+          "class_recall": {
+            "0": {
+              "n": 0,
+              "matched": 0,
+              "recall": null,
+              "wilson95": null
+            },
+            "1": {
+              "n": 0,
+              "matched": 0,
+              "recall": null,
+              "wilson95": null
+            },
+            "2": {
+              "n": 0,
+              "matched": 0,
+              "recall": null,
+              "wilson95": null
+            }
+          }
+        }
+      },
+      "warning_counts": {
+        "supported_gate_not_met": 2,
+        "normal_noise_control_false_alarm": 17
+      },
+      "original_findings_retained": [
+        {
+          "model": "chart",
+          "code": "supported_gate_not_met",
+          "metrics": {
+            "n": 2970,
+            "tp": 2659,
+            "fn": 41,
+            "fp": 181,
+            "tn": 89,
+            "precision": 0.9362676056338028,
+            "recall": 0.9848148148148148,
+            "f1": 0.959927797833935,
+            "normal_fpr": 0.6703703703703704,
+            "recall_wilson95": [
+              0.979465433796969,
+              0.9887866031186365
+            ],
+            "normal_fpr_wilson95": [
+              0.6122530086099071,
+              0.7237078075360505
+            ]
+          }
+        },
+        {
+          "model": "chart",
+          "code": "normal_noise_control_false_alarm",
+          "cell": {
+            "domain": "supported",
+            "rotation_hz": 8.0,
+            "noise": 0.008,
+            "level": 0,
+            "n": 30,
+            "tp": 0,
+            "fn": 0,
+            "fp": 30,
+            "tn": 0,
+            "precision": 0.0,
+            "recall": null,
+            "f1": 0.0,
+            "normal_fpr": 1.0,
+            "recall_wilson95": null,
+            "normal_fpr_wilson95": [
+              0.8864866068260312,
+              0.9999999999999999
+            ]
+          }
+        },
+        {
+          "model": "chart",
+          "code": "normal_noise_control_false_alarm",
+          "cell": {
+            "domain": "supported",
+            "rotation_hz": 8.0,
+            "noise": 0.05,
+            "level": 0,
+            "n": 30,
+            "tp": 0,
+            "fn": 0,
+            "fp": 30,
+            "tn": 0,
+            "precision": 0.0,
+            "recall": null,
+            "f1": 0.0,
+            "normal_fpr": 1.0,
+            "recall_wilson95": null,
+            "normal_fpr_wilson95": [
+              0.8864866068260312,
+              0.9999999999999999
+            ]
+          }
+        },
+        {
+          "model": "chart",
+          "code": "normal_noise_control_false_alarm",
+          "cell": {
+            "domain": "supported",
+            "rotation_hz": 11.5,
+            "noise": 0.008,
+            "level": 0,
+            "n": 30,
+            "tp": 0,
+            "fn": 0,
+            "fp": 22,
+            "tn": 8,
+            "precision": 0.0,
+            "recall": null,
+            "f1": 0.0,
+            "normal_fpr": 0.7333333333333333,
+            "recall_wilson95": null,
+            "normal_fpr_wilson95": [
+              0.555520383048111,
+              0.8581733668040368
+            ]
+          }
+        },
+        {
+          "model": "chart",
+          "code": "normal_noise_control_false_alarm",
+          "cell": {
+            "domain": "supported",
+            "rotation_hz": 11.5,
+            "noise": 0.025,
+            "level": 0,
+            "n": 30,
+            "tp": 0,
+            "fn": 0,
+            "fp": 10,
+            "tn": 20,
+            "precision": 0.0,
+            "recall": null,
+            "f1": 0.0,
+            "normal_fpr": 0.3333333333333333,
+            "recall_wilson95": null,
+            "normal_fpr_wilson95": [
+              0.19230498083676134,
+              0.5121994835545616
+            ]
+          }
+        },
+        {
+          "model": "chart",
+          "code": "normal_noise_control_false_alarm",
+          "cell": {
+            "domain": "supported",
+            "rotation_hz": 11.5,
+            "noise": 0.05,
+            "level": 0,
+            "n": 30,
+            "tp": 0,
+            "fn": 0,
+            "fp": 30,
+            "tn": 0,
+            "precision": 0.0,
+            "recall": null,
+            "f1": 0.0,
+            "normal_fpr": 1.0,
+            "recall_wilson95": null,
+            "normal_fpr_wilson95": [
+              0.8864866068260312,
+              0.9999999999999999
+            ]
+          }
+        },
+        {
+          "model": "chart",
+          "code": "normal_noise_control_false_alarm",
+          "cell": {
+            "domain": "supported",
+            "rotation_hz": 15.0,
+            "noise": 0.008,
+            "level": 0,
+            "n": 30,
+            "tp": 0,
+            "fn": 0,
+            "fp": 3,
+            "tn": 27,
+            "precision": 0.0,
+            "recall": null,
+            "f1": 0.0,
+            "normal_fpr": 0.1,
+            "recall_wilson95": null,
+            "normal_fpr_wilson95": [
+              0.03459988874733419,
+              0.25621082579184085
+            ]
+          }
+        },
+        {
+          "model": "chart",
+          "code": "normal_noise_control_false_alarm",
+          "cell": {
+            "domain": "supported",
+            "rotation_hz": 15.0,
+            "noise": 0.025,
+            "level": 0,
+            "n": 30,
+            "tp": 0,
+            "fn": 0,
+            "fp": 25,
+            "tn": 5,
+            "precision": 0.0,
+            "recall": null,
+            "f1": 0.0,
+            "normal_fpr": 0.8333333333333334,
+            "recall_wilson95": null,
+            "normal_fpr_wilson95": [
+              0.6643564949358398,
+              0.9266345762815145
+            ]
+          }
+        },
+        {
+          "model": "chart",
+          "code": "normal_noise_control_false_alarm",
+          "cell": {
+            "domain": "supported",
+            "rotation_hz": 15.0,
+            "noise": 0.05,
+            "level": 0,
+            "n": 30,
+            "tp": 0,
+            "fn": 0,
+            "fp": 30,
+            "tn": 0,
+            "precision": 0.0,
+            "recall": null,
+            "f1": 0.0,
+            "normal_fpr": 1.0,
+            "recall_wilson95": null,
+            "normal_fpr_wilson95": [
+              0.8864866068260312,
+              0.9999999999999999
+            ]
+          }
+        },
+        {
+          "model": "ae",
+          "code": "supported_gate_not_met",
+          "metrics": {
+            "n": 2970,
+            "tp": 2700,
+            "fn": 0,
+            "fp": 270,
+            "tn": 0,
+            "precision": 0.9090909090909091,
+            "recall": 1.0,
+            "f1": 0.9523809523809523,
+            "normal_fpr": 1.0,
+            "recall_wilson95": [
+              0.9985792588510829,
+              0.9999999999999998
+            ],
+            "normal_fpr_wilson95": [
+              0.9859719604283536,
+              1.0
+            ]
+          }
+        },
+        {
+          "model": "ae",
+          "code": "normal_noise_control_false_alarm",
+          "cell": {
+            "domain": "supported",
+            "rotation_hz": 8.0,
+            "noise": 0.008,
+            "level": 0,
+            "n": 30,
+            "tp": 0,
+            "fn": 0,
+            "fp": 30,
+            "tn": 0,
+            "precision": 0.0,
+            "recall": null,
+            "f1": 0.0,
+            "normal_fpr": 1.0,
+            "recall_wilson95": null,
+            "normal_fpr_wilson95": [
+              0.8864866068260312,
+              0.9999999999999999
+            ]
+          }
+        },
+        {
+          "model": "ae",
+          "code": "normal_noise_control_false_alarm",
+          "cell": {
+            "domain": "supported",
+            "rotation_hz": 8.0,
+            "noise": 0.025,
+            "level": 0,
+            "n": 30,
+            "tp": 0,
+            "fn": 0,
+            "fp": 30,
+            "tn": 0,
+            "precision": 0.0,
+            "recall": null,
+            "f1": 0.0,
+            "normal_fpr": 1.0,
+            "recall_wilson95": null,
+            "normal_fpr_wilson95": [
+              0.8864866068260312,
+              0.9999999999999999
+            ]
+          }
+        },
+        {
+          "model": "ae",
+          "code": "normal_noise_control_false_alarm",
+          "cell": {
+            "domain": "supported",
+            "rotation_hz": 8.0,
+            "noise": 0.05,
+            "level": 0,
+            "n": 30,
+            "tp": 0,
+            "fn": 0,
+            "fp": 30,
+            "tn": 0,
+            "precision": 0.0,
+            "recall": null,
+            "f1": 0.0,
+            "normal_fpr": 1.0,
+            "recall_wilson95": null,
+            "normal_fpr_wilson95": [
+              0.8864866068260312,
+              0.9999999999999999
+            ]
+          }
+        },
+        {
+          "model": "ae",
+          "code": "normal_noise_control_false_alarm",
+          "cell": {
+            "domain": "supported",
+            "rotation_hz": 11.5,
+            "noise": 0.008,
+            "level": 0,
+            "n": 30,
+            "tp": 0,
+            "fn": 0,
+            "fp": 30,
+            "tn": 0,
+            "precision": 0.0,
+            "recall": null,
+            "f1": 0.0,
+            "normal_fpr": 1.0,
+            "recall_wilson95": null,
+            "normal_fpr_wilson95": [
+              0.8864866068260312,
+              0.9999999999999999
+            ]
+          }
+        },
+        {
+          "model": "ae",
+          "code": "normal_noise_control_false_alarm",
+          "cell": {
+            "domain": "supported",
+            "rotation_hz": 11.5,
+            "noise": 0.025,
+            "level": 0,
+            "n": 30,
+            "tp": 0,
+            "fn": 0,
+            "fp": 30,
+            "tn": 0,
+            "precision": 0.0,
+            "recall": null,
+            "f1": 0.0,
+            "normal_fpr": 1.0,
+            "recall_wilson95": null,
+            "normal_fpr_wilson95": [
+              0.8864866068260312,
+              0.9999999999999999
+            ]
+          }
+        },
+        {
+          "model": "ae",
+          "code": "normal_noise_control_false_alarm",
+          "cell": {
+            "domain": "supported",
+            "rotation_hz": 11.5,
+            "noise": 0.05,
+            "level": 0,
+            "n": 30,
+            "tp": 0,
+            "fn": 0,
+            "fp": 30,
+            "tn": 0,
+            "precision": 0.0,
+            "recall": null,
+            "f1": 0.0,
+            "normal_fpr": 1.0,
+            "recall_wilson95": null,
+            "normal_fpr_wilson95": [
+              0.8864866068260312,
+              0.9999999999999999
+            ]
+          }
+        },
+        {
+          "model": "ae",
+          "code": "normal_noise_control_false_alarm",
+          "cell": {
+            "domain": "supported",
+            "rotation_hz": 15.0,
+            "noise": 0.008,
+            "level": 0,
+            "n": 30,
+            "tp": 0,
+            "fn": 0,
+            "fp": 30,
+            "tn": 0,
+            "precision": 0.0,
+            "recall": null,
+            "f1": 0.0,
+            "normal_fpr": 1.0,
+            "recall_wilson95": null,
+            "normal_fpr_wilson95": [
+              0.8864866068260312,
+              0.9999999999999999
+            ]
+          }
+        },
+        {
+          "model": "ae",
+          "code": "normal_noise_control_false_alarm",
+          "cell": {
+            "domain": "supported",
+            "rotation_hz": 15.0,
+            "noise": 0.025,
+            "level": 0,
+            "n": 30,
+            "tp": 0,
+            "fn": 0,
+            "fp": 30,
+            "tn": 0,
+            "precision": 0.0,
+            "recall": null,
+            "f1": 0.0,
+            "normal_fpr": 1.0,
+            "recall_wilson95": null,
+            "normal_fpr_wilson95": [
+              0.8864866068260312,
+              0.9999999999999999
+            ]
+          }
+        },
+        {
+          "model": "ae",
+          "code": "normal_noise_control_false_alarm",
+          "cell": {
+            "domain": "supported",
+            "rotation_hz": 15.0,
+            "noise": 0.05,
+            "level": 0,
+            "n": 30,
+            "tp": 0,
+            "fn": 0,
+            "fp": 30,
+            "tn": 0,
+            "precision": 0.0,
+            "recall": null,
+            "f1": 0.0,
+            "normal_fpr": 1.0,
+            "recall_wilson95": null,
+            "normal_fpr_wilson95": [
+              0.8864866068260312,
+              0.9999999999999999
+            ]
+          }
+        }
+      ]
+    },
+    "candidate": {
+      "status": "WARN",
+      "sensor": {
+        "chart": {
+          "aggregate": {
+            "supported": {
+              "n": 2970,
+              "tp": 2448,
+              "fn": 252,
+              "fp": 18,
+              "tn": 252,
+              "precision": 0.9927007299270073,
+              "recall": 0.9066666666666666,
+              "f1": 0.9477351916376306,
+              "normal_fpr": 0.06666666666666667,
+              "recall_wilson95": [
+                0.8951089127541211,
+                0.9170688844447595
+              ],
+              "normal_fpr_wilson95": [
+                0.04258246318506562,
+                0.10290850444369476
+              ]
+            },
+            "ood": {
+              "n": 660,
+              "tp": 600,
+              "fn": 0,
+              "fp": 60,
+              "tn": 0,
+              "precision": 0.9090909090909091,
+              "recall": 1.0,
+              "f1": 0.9523809523809523,
+              "normal_fpr": 1.0,
+              "recall_wilson95": [
+                0.9936382989862994,
+                1.0
+              ],
+              "normal_fpr_wilson95": [
+                0.93982814785791,
+                0.9999999999999998
+              ]
+            }
+          },
+          "fault_type_metrics": {
+            "imbalance": {
+              "n": 594,
+              "tp": 516,
+              "fn": 24,
+              "fp": 3,
+              "tn": 51,
+              "precision": 0.9942196531791907,
+              "recall": 0.9555555555555556,
+              "f1": 0.9745042492917847,
+              "normal_fpr": 0.05555555555555555,
+              "recall_wilson95": [
+                0.9347212976166815,
+                0.9699541220670055
+              ],
+              "normal_fpr_wilson95": [
+                0.0190732684546909,
+                0.15107214318166143
+              ]
+            },
+            "looseness": {
+              "n": 594,
+              "tp": 519,
+              "fn": 21,
+              "fp": 3,
+              "tn": 51,
+              "precision": 0.9942528735632183,
+              "recall": 0.9611111111111111,
+              "f1": 0.9774011299435028,
+              "normal_fpr": 0.05555555555555555,
+              "recall_wilson95": [
+                0.9412823542792168,
+                0.9744256924737833
+              ],
+              "normal_fpr_wilson95": [
+                0.0190732684546909,
+                0.15107214318166143
+              ]
+            },
+            "outer_race": {
+              "n": 594,
+              "tp": 434,
+              "fn": 106,
+              "fp": 5,
+              "tn": 49,
+              "precision": 0.9886104783599089,
+              "recall": 0.8037037037037037,
+              "f1": 0.8866189989785496,
+              "normal_fpr": 0.09259259259259259,
+              "recall_wilson95": [
+                0.7681073370223028,
+                0.8350096094334885
+              ],
+              "normal_fpr_wilson95": [
+                0.04020113475702944,
+                0.19909882590962688
+              ]
+            },
+            "inner_race": {
+              "n": 594,
+              "tp": 447,
+              "fn": 93,
+              "fp": 4,
+              "tn": 50,
+              "precision": 0.991130820399113,
+              "recall": 0.8277777777777777,
+              "f1": 0.9021190716448032,
+              "normal_fpr": 0.07407407407407407,
+              "recall_wilson95": [
+                0.7936449817271314,
+                0.8572800153623505
+              ],
+              "normal_fpr_wilson95": [
+                0.02918152776550481,
+                0.1755411583859995
+              ]
+            },
+            "mixed": {
+              "n": 594,
+              "tp": 532,
+              "fn": 8,
+              "fp": 3,
+              "tn": 51,
+              "precision": 0.994392523364486,
+              "recall": 0.9851851851851852,
+              "f1": 0.9897674418604652,
+              "normal_fpr": 0.05555555555555555,
+              "recall_wilson95": [
+                0.9710416896317376,
+                0.9924744077549531
+              ],
+              "normal_fpr_wilson95": [
+                0.0190732684546909,
+                0.15107214318166143
+              ]
+            }
+          },
+          "supported_level_metrics": {
+            "1": {
+              "n": 270,
+              "tp": 117,
+              "fn": 153,
+              "recall": 0.43333333333333335,
+              "wilson95": [
+                0.37556983364894436,
+                0.49296723829394185
+              ]
+            },
+            "2": {
+              "n": 270,
+              "tp": 191,
+              "fn": 79,
+              "recall": 0.7074074074074074,
+              "wilson95": [
+                0.6505347586678059,
+                0.7584610175098814
+              ]
+            },
+            "3": {
+              "n": 270,
+              "tp": 251,
+              "fn": 19,
+              "recall": 0.9296296296296296,
+              "wilson95": [
+                0.89271563977922,
+                0.9544898965888466
+              ]
+            },
+            "4": {
+              "n": 270,
+              "tp": 269,
+              "fn": 1,
+              "recall": 0.9962962962962963,
+              "wilson95": [
+                0.9793225585315078,
+                0.9993459058936728
+              ]
+            },
+            "5": {
+              "n": 270,
+              "tp": 270,
+              "fn": 0,
+              "recall": 1.0,
+              "wilson95": [
+                0.9859719604283536,
+                1.0
+              ]
+            },
+            "6": {
+              "n": 270,
+              "tp": 270,
+              "fn": 0,
+              "recall": 1.0,
+              "wilson95": [
+                0.9859719604283536,
+                1.0
+              ]
+            },
+            "7": {
+              "n": 270,
+              "tp": 270,
+              "fn": 0,
+              "recall": 1.0,
+              "wilson95": [
+                0.9859719604283536,
+                1.0
+              ]
+            },
+            "8": {
+              "n": 270,
+              "tp": 270,
+              "fn": 0,
+              "recall": 1.0,
+              "wilson95": [
+                0.9859719604283536,
+                1.0
+              ]
+            },
+            "9": {
+              "n": 270,
+              "tp": 270,
+              "fn": 0,
+              "recall": 1.0,
+              "wilson95": [
+                0.9859719604283536,
+                1.0
+              ]
+            },
+            "10": {
+              "n": 270,
+              "tp": 270,
+              "fn": 0,
+              "recall": 1.0,
+              "wilson95": [
+                0.9859719604283536,
+                1.0
+              ]
+            }
+          },
+          "supported_normal_control_cells": [
+            {
+              "domain": "supported",
+              "rotation_hz": 8.0,
+              "noise": 0.008,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 6,
+              "tn": 24,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 0.2,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.0950510717728987,
+                0.3730569641314825
+              ]
+            },
+            {
+              "domain": "supported",
+              "rotation_hz": 8.0,
+              "noise": 0.025,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 0,
+              "tn": 30,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 0.0,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.0,
+                0.11351339317396876
+              ]
+            },
+            {
+              "domain": "supported",
+              "rotation_hz": 8.0,
+              "noise": 0.05,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 1,
+              "tn": 29,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 0.03333333333333333,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.005908590381612455,
+                0.16670390991409173
+              ]
+            },
+            {
+              "domain": "supported",
+              "rotation_hz": 11.5,
+              "noise": 0.008,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 0,
+              "tn": 30,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 0.0,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.0,
+                0.11351339317396876
+              ]
+            },
+            {
+              "domain": "supported",
+              "rotation_hz": 11.5,
+              "noise": 0.025,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 0,
+              "tn": 30,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 0.0,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.0,
+                0.11351339317396876
+              ]
+            },
+            {
+              "domain": "supported",
+              "rotation_hz": 11.5,
+              "noise": 0.05,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 1,
+              "tn": 29,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 0.03333333333333333,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.005908590381612455,
+                0.16670390991409173
+              ]
+            },
+            {
+              "domain": "supported",
+              "rotation_hz": 15.0,
+              "noise": 0.008,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 0,
+              "tn": 30,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 0.0,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.0,
+                0.11351339317396876
+              ]
+            },
+            {
+              "domain": "supported",
+              "rotation_hz": 15.0,
+              "noise": 0.025,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 0,
+              "tn": 30,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 0.0,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.0,
+                0.11351339317396876
+              ]
+            },
+            {
+              "domain": "supported",
+              "rotation_hz": 15.0,
+              "noise": 0.05,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 10,
+              "tn": 20,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 0.3333333333333333,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.19230498083676134,
+                0.5121994835545616
+              ]
+            }
+          ],
+          "normal_control_cells_above_registered_fpr": 2,
+          "worst_supported_normal_cell": {
+            "domain": "supported",
+            "rotation_hz": 15.0,
+            "noise": 0.05,
+            "level": 0,
+            "n": 30,
+            "tp": 0,
+            "fn": 0,
+            "fp": 10,
+            "tn": 20,
+            "precision": 0.0,
+            "recall": null,
+            "f1": 0.0,
+            "normal_fpr": 0.3333333333333333,
+            "recall_wilson95": null,
+            "normal_fpr_wilson95": [
+              0.19230498083676134,
+              0.5121994835545616
+            ]
+          },
+          "weak_fault_level_1_2_diagnostic": {
+            "scope": "Exploratory, not the level3..10 support gate",
+            "tp": 308,
+            "fn": 232,
+            "n": 540
+          },
+          "supported_level3_10_gate_all_met": true
+        },
+        "ae": {
+          "aggregate": {
+            "supported": {
+              "n": 2970,
+              "tp": 2543,
+              "fn": 157,
+              "fp": 13,
+              "tn": 257,
+              "precision": 0.9949139280125195,
+              "recall": 0.9418518518518518,
+              "f1": 0.9676560121765602,
+              "normal_fpr": 0.04814814814814815,
+              "recall_wilson95": [
+                0.9323808077033628,
+                0.9500673817850385
+              ],
+              "normal_fpr_wilson95": [
+                0.028350915878327814,
+                0.08062257173456762
+              ]
+            },
+            "ood": {
+              "n": 660,
+              "tp": 600,
+              "fn": 0,
+              "fp": 60,
+              "tn": 0,
+              "precision": 0.9090909090909091,
+              "recall": 1.0,
+              "f1": 0.9523809523809523,
+              "normal_fpr": 1.0,
+              "recall_wilson95": [
+                0.9936382989862994,
+                1.0
+              ],
+              "normal_fpr_wilson95": [
+                0.93982814785791,
+                0.9999999999999998
+              ]
+            }
+          },
+          "fault_type_metrics": {
+            "imbalance": {
+              "n": 594,
+              "tp": 516,
+              "fn": 24,
+              "fp": 2,
+              "tn": 52,
+              "precision": 0.9961389961389961,
+              "recall": 0.9555555555555556,
+              "f1": 0.9754253308128544,
+              "normal_fpr": 0.037037037037037035,
+              "recall_wilson95": [
+                0.9347212976166815,
+                0.9699541220670055
+              ],
+              "normal_fpr_wilson95": [
+                0.01021636794844559,
+                0.12535176917275476
+              ]
+            },
+            "looseness": {
+              "n": 594,
+              "tp": 530,
+              "fn": 10,
+              "fp": 3,
+              "tn": 51,
+              "precision": 0.9943714821763602,
+              "recall": 0.9814814814814815,
+              "f1": 0.9878844361602982,
+              "normal_fpr": 0.05555555555555555,
+              "recall_wilson95": [
+                0.9662504166798215,
+                0.9899105959939939
+              ],
+              "normal_fpr_wilson95": [
+                0.0190732684546909,
+                0.15107214318166143
+              ]
+            },
+            "outer_race": {
+              "n": 594,
+              "tp": 479,
+              "fn": 61,
+              "fp": 0,
+              "tn": 54,
+              "precision": 1.0,
+              "recall": 0.8870370370370371,
+              "f1": 0.9401373895976447,
+              "normal_fpr": 0.0,
+              "recall_wilson95": [
+                0.8575588393573362,
+                0.9110475131381538
+              ],
+              "normal_fpr_wilson95": [
+                0.0,
+                0.0664135880908964
+              ]
+            },
+            "inner_race": {
+              "n": 594,
+              "tp": 483,
+              "fn": 57,
+              "fp": 3,
+              "tn": 51,
+              "precision": 0.9938271604938271,
+              "recall": 0.8944444444444445,
+              "f1": 0.9415204678362573,
+              "normal_fpr": 0.05555555555555555,
+              "recall_wilson95": [
+                0.8656840590968463,
+                0.9176324628243947
+              ],
+              "normal_fpr_wilson95": [
+                0.0190732684546909,
+                0.15107214318166143
+              ]
+            },
+            "mixed": {
+              "n": 594,
+              "tp": 535,
+              "fn": 5,
+              "fp": 5,
+              "tn": 49,
+              "precision": 0.9907407407407407,
+              "recall": 0.9907407407407407,
+              "f1": 0.9907407407407407,
+              "normal_fpr": 0.09259259259259259,
+              "recall_wilson95": [
+                0.9785100276031609,
+                0.9960386968528432
+              ],
+              "normal_fpr_wilson95": [
+                0.04020113475702944,
+                0.19909882590962688
+              ]
+            }
+          },
+          "supported_level_metrics": {
+            "1": {
+              "n": 270,
+              "tp": 156,
+              "fn": 114,
+              "recall": 0.5777777777777777,
+              "wilson95": [
+                0.5181773981247715,
+                0.6351960179418612
+              ]
+            },
+            "2": {
+              "n": 270,
+              "tp": 231,
+              "fn": 39,
+              "recall": 0.8555555555555555,
+              "wilson95": [
+                0.8086337382551874,
+                0.8925018780494194
+              ]
+            },
+            "3": {
+              "n": 270,
+              "tp": 266,
+              "fn": 4,
+              "recall": 0.9851851851851852,
+              "wilson95": [
+                0.9625338542752435,
+                0.994224122140418
+              ]
+            },
+            "4": {
+              "n": 270,
+              "tp": 270,
+              "fn": 0,
+              "recall": 1.0,
+              "wilson95": [
+                0.9859719604283536,
+                1.0
+              ]
+            },
+            "5": {
+              "n": 270,
+              "tp": 270,
+              "fn": 0,
+              "recall": 1.0,
+              "wilson95": [
+                0.9859719604283536,
+                1.0
+              ]
+            },
+            "6": {
+              "n": 270,
+              "tp": 270,
+              "fn": 0,
+              "recall": 1.0,
+              "wilson95": [
+                0.9859719604283536,
+                1.0
+              ]
+            },
+            "7": {
+              "n": 270,
+              "tp": 270,
+              "fn": 0,
+              "recall": 1.0,
+              "wilson95": [
+                0.9859719604283536,
+                1.0
+              ]
+            },
+            "8": {
+              "n": 270,
+              "tp": 270,
+              "fn": 0,
+              "recall": 1.0,
+              "wilson95": [
+                0.9859719604283536,
+                1.0
+              ]
+            },
+            "9": {
+              "n": 270,
+              "tp": 270,
+              "fn": 0,
+              "recall": 1.0,
+              "wilson95": [
+                0.9859719604283536,
+                1.0
+              ]
+            },
+            "10": {
+              "n": 270,
+              "tp": 270,
+              "fn": 0,
+              "recall": 1.0,
+              "wilson95": [
+                0.9859719604283536,
+                1.0
+              ]
+            }
+          },
+          "supported_normal_control_cells": [
+            {
+              "domain": "supported",
+              "rotation_hz": 8.0,
+              "noise": 0.008,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 2,
+              "tn": 28,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 0.06666666666666667,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.018477023791270378,
+                0.2132345836261692
+              ]
+            },
+            {
+              "domain": "supported",
+              "rotation_hz": 8.0,
+              "noise": 0.025,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 3,
+              "tn": 27,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 0.1,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.03459988874733419,
+                0.25621082579184085
+              ]
+            },
+            {
+              "domain": "supported",
+              "rotation_hz": 8.0,
+              "noise": 0.05,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 1,
+              "tn": 29,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 0.03333333333333333,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.005908590381612455,
+                0.16670390991409173
+              ]
+            },
+            {
+              "domain": "supported",
+              "rotation_hz": 11.5,
+              "noise": 0.008,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 2,
+              "tn": 28,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 0.06666666666666667,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.018477023791270378,
+                0.2132345836261692
+              ]
+            },
+            {
+              "domain": "supported",
+              "rotation_hz": 11.5,
+              "noise": 0.025,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 1,
+              "tn": 29,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 0.03333333333333333,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.005908590381612455,
+                0.16670390991409173
+              ]
+            },
+            {
+              "domain": "supported",
+              "rotation_hz": 11.5,
+              "noise": 0.05,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 0,
+              "tn": 30,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 0.0,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.0,
+                0.11351339317396876
+              ]
+            },
+            {
+              "domain": "supported",
+              "rotation_hz": 15.0,
+              "noise": 0.008,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 0,
+              "tn": 30,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 0.0,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.0,
+                0.11351339317396876
+              ]
+            },
+            {
+              "domain": "supported",
+              "rotation_hz": 15.0,
+              "noise": 0.025,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 0,
+              "tn": 30,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 0.0,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.0,
+                0.11351339317396876
+              ]
+            },
+            {
+              "domain": "supported",
+              "rotation_hz": 15.0,
+              "noise": 0.05,
+              "level": 0,
+              "n": 30,
+              "tp": 0,
+              "fn": 0,
+              "fp": 4,
+              "tn": 26,
+              "precision": 0.0,
+              "recall": null,
+              "f1": 0.0,
+              "normal_fpr": 0.13333333333333333,
+              "recall_wilson95": null,
+              "normal_fpr_wilson95": [
+                0.053096554840547455,
+                0.296813266820363
+              ]
+            }
+          ],
+          "normal_control_cells_above_registered_fpr": 4,
+          "worst_supported_normal_cell": {
+            "domain": "supported",
+            "rotation_hz": 15.0,
+            "noise": 0.05,
+            "level": 0,
+            "n": 30,
+            "tp": 0,
+            "fn": 0,
+            "fp": 4,
+            "tn": 26,
+            "precision": 0.0,
+            "recall": null,
+            "f1": 0.0,
+            "normal_fpr": 0.13333333333333333,
+            "recall_wilson95": null,
+            "normal_fpr_wilson95": [
+              0.053096554840547455,
+              0.296813266820363
+            ]
+          },
+          "weak_fault_level_1_2_diagnostic": {
+            "scope": "Exploratory, not the level3..10 support gate",
+            "tp": 387,
+            "fn": 153,
+            "n": 540
+          },
+          "supported_level3_10_gate_all_met": true
+        }
+      },
+      "vision_summary": {
+        "identity": {
+          "positive_images": 120,
+          "matched_images": 120,
+          "recall_iou50": 1.0,
+          "recall_wilson95": [
+            0.9689808335812966,
+            1.0
+          ],
+          "negative_images": 40,
+          "false_positive_images": 0,
+          "normal_image_fpr": 0.0,
+          "fpr_wilson95": [
+            0.0,
+            0.08762160119728664
+          ],
+          "class_recall": {
+            "0": {
+              "n": 40,
+              "matched": 40,
+              "recall": 1.0,
+              "wilson95": [
+                0.9123783988027135,
+                1.0
+              ]
+            },
+            "1": {
+              "n": 40,
+              "matched": 40,
+              "recall": 1.0,
+              "wilson95": [
+                0.9123783988027135,
+                1.0
+              ]
+            },
+            "2": {
+              "n": 40,
+              "matched": 40,
+              "recall": 1.0,
+              "wilson95": [
+                0.9123783988027135,
+                1.0
+              ]
+            }
+          }
+        },
+        "grayscale": {
+          "positive_images": 120,
+          "matched_images": 120,
+          "recall_iou50": 1.0,
+          "recall_wilson95": [
+            0.9689808335812966,
+            1.0
+          ],
+          "negative_images": 40,
+          "false_positive_images": 0,
+          "normal_image_fpr": 0.0,
+          "fpr_wilson95": [
+            0.0,
+            0.08762160119728664
+          ],
+          "class_recall": {
+            "0": {
+              "n": 40,
+              "matched": 40,
+              "recall": 1.0,
+              "wilson95": [
+                0.9123783988027135,
+                1.0
+              ]
+            },
+            "1": {
+              "n": 40,
+              "matched": 40,
+              "recall": 1.0,
+              "wilson95": [
+                0.9123783988027135,
+                1.0
+              ]
+            },
+            "2": {
+              "n": 40,
+              "matched": 40,
+              "recall": 1.0,
+              "wilson95": [
+                0.9123783988027135,
+                1.0
+              ]
+            }
+          },
+          "paired_recall_drop": 0.0,
+          "paired_normal_fpr_gap": 0.0,
+          "paired_top_class_changes": 0,
+          "paired_n": 160,
+          "paired_confidence_delta_n": 120,
+          "paired_confidence_delta_mean": 0.010342183212439219
+        },
+        "darken": {
+          "positive_images": 120,
+          "matched_images": 120,
+          "recall_iou50": 1.0,
+          "recall_wilson95": [
+            0.9689808335812966,
+            1.0
+          ],
+          "negative_images": 40,
+          "false_positive_images": 0,
+          "normal_image_fpr": 0.0,
+          "fpr_wilson95": [
+            0.0,
+            0.08762160119728664
+          ],
+          "class_recall": {
+            "0": {
+              "n": 40,
+              "matched": 40,
+              "recall": 1.0,
+              "wilson95": [
+                0.9123783988027135,
+                1.0
+              ]
+            },
+            "1": {
+              "n": 40,
+              "matched": 40,
+              "recall": 1.0,
+              "wilson95": [
+                0.9123783988027135,
+                1.0
+              ]
+            },
+            "2": {
+              "n": 40,
+              "matched": 40,
+              "recall": 1.0,
+              "wilson95": [
+                0.9123783988027135,
+                1.0
+              ]
+            }
+          },
+          "paired_recall_drop": 0.0,
+          "paired_normal_fpr_gap": 0.0,
+          "paired_top_class_changes": 0,
+          "paired_n": 160,
+          "paired_confidence_delta_n": 120,
+          "paired_confidence_delta_mean": 0.004061037302017212
+        },
+        "brighten": {
+          "positive_images": 120,
+          "matched_images": 120,
+          "recall_iou50": 1.0,
+          "recall_wilson95": [
+            0.9689808335812966,
+            1.0
+          ],
+          "negative_images": 40,
+          "false_positive_images": 0,
+          "normal_image_fpr": 0.0,
+          "fpr_wilson95": [
+            0.0,
+            0.08762160119728664
+          ],
+          "class_recall": {
+            "0": {
+              "n": 40,
+              "matched": 40,
+              "recall": 1.0,
+              "wilson95": [
+                0.9123783988027135,
+                1.0
+              ]
+            },
+            "1": {
+              "n": 40,
+              "matched": 40,
+              "recall": 1.0,
+              "wilson95": [
+                0.9123783988027135,
+                1.0
+              ]
+            },
+            "2": {
+              "n": 40,
+              "matched": 40,
+              "recall": 1.0,
+              "wilson95": [
+                0.9123783988027135,
+                1.0
+              ]
+            }
+          },
+          "paired_recall_drop": 0.0,
+          "paired_normal_fpr_gap": 0.0,
+          "paired_top_class_changes": 0,
+          "paired_n": 160,
+          "paired_confidence_delta_n": 120,
+          "paired_confidence_delta_mean": -0.00017352104187011718
+        },
+        "blur": {
+          "positive_images": 120,
+          "matched_images": 118,
+          "recall_iou50": 0.9833333333333333,
+          "recall_wilson95": [
+            0.941264037027841,
+            0.9954174354340789
+          ],
+          "negative_images": 40,
+          "false_positive_images": 0,
+          "normal_image_fpr": 0.0,
+          "fpr_wilson95": [
+            0.0,
+            0.08762160119728664
+          ],
+          "class_recall": {
+            "0": {
+              "n": 40,
+              "matched": 40,
+              "recall": 1.0,
+              "wilson95": [
+                0.9123783988027135,
+                1.0
+              ]
+            },
+            "1": {
+              "n": 40,
+              "matched": 40,
+              "recall": 1.0,
+              "wilson95": [
+                0.9123783988027135,
+                1.0
+              ]
+            },
+            "2": {
+              "n": 40,
+              "matched": 38,
+              "recall": 0.95,
+              "wilson95": [
+                0.8349612263085903,
+                0.9861793326138516
+              ]
+            }
+          },
+          "paired_recall_drop": 0.01666666666666672,
+          "paired_normal_fpr_gap": 0.0,
+          "paired_top_class_changes": 3,
+          "paired_n": 160,
+          "paired_confidence_delta_n": 120,
+          "paired_confidence_delta_mean": -0.008118882278601329
+        },
+        "jpeg": {
+          "positive_images": 120,
+          "matched_images": 120,
+          "recall_iou50": 1.0,
+          "recall_wilson95": [
+            0.9689808335812966,
+            1.0
+          ],
+          "negative_images": 40,
+          "false_positive_images": 0,
+          "normal_image_fpr": 0.0,
+          "fpr_wilson95": [
+            0.0,
+            0.08762160119728664
+          ],
+          "class_recall": {
+            "0": {
+              "n": 40,
+              "matched": 40,
+              "recall": 1.0,
+              "wilson95": [
+                0.9123783988027135,
+                1.0
+              ]
+            },
+            "1": {
+              "n": 40,
+              "matched": 40,
+              "recall": 1.0,
+              "wilson95": [
+                0.9123783988027135,
+                1.0
+              ]
+            },
+            "2": {
+              "n": 40,
+              "matched": 40,
+              "recall": 1.0,
+              "wilson95": [
+                0.9123783988027135,
+                1.0
+              ]
+            }
+          },
+          "paired_recall_drop": 0.0,
+          "paired_normal_fpr_gap": 0.0,
+          "paired_top_class_changes": 1,
+          "paired_n": 160,
+          "paired_confidence_delta_n": 120,
+          "paired_confidence_delta_mean": -0.012418036162853242
+        },
+        "erase_defect": {
+          "positive_images": 0,
+          "matched_images": 0,
+          "recall_iou50": null,
+          "recall_wilson95": null,
+          "negative_images": 120,
+          "false_positive_images": 0,
+          "normal_image_fpr": 0.0,
+          "fpr_wilson95": [
+            0.0,
+            0.031019166418703486
+          ],
+          "class_recall": {
+            "0": {
+              "n": 0,
+              "matched": 0,
+              "recall": null,
+              "wilson95": null
+            },
+            "1": {
+              "n": 0,
+              "matched": 0,
+              "recall": null,
+              "wilson95": null
+            },
+            "2": {
+              "n": 0,
+              "matched": 0,
+              "recall": null,
+              "wilson95": null
+            }
+          }
+        }
+      },
+      "warning_counts": {
+        "supported_gate_not_met": 1,
+        "normal_noise_control_false_alarm": 6
+      },
+      "original_findings_retained": [
+        {
+          "model": "chart",
+          "code": "supported_gate_not_met",
+          "metrics": {
+            "n": 2970,
+            "tp": 2448,
+            "fn": 252,
+            "fp": 18,
+            "tn": 252,
+            "precision": 0.9927007299270073,
+            "recall": 0.9066666666666666,
+            "f1": 0.9477351916376306,
+            "normal_fpr": 0.06666666666666667,
+            "recall_wilson95": [
+              0.8951089127541211,
+              0.9170688844447595
+            ],
+            "normal_fpr_wilson95": [
+              0.04258246318506562,
+              0.10290850444369476
+            ]
+          }
+        },
+        {
+          "model": "chart",
+          "code": "normal_noise_control_false_alarm",
+          "cell": {
+            "domain": "supported",
+            "rotation_hz": 8.0,
+            "noise": 0.008,
+            "level": 0,
+            "n": 30,
+            "tp": 0,
+            "fn": 0,
+            "fp": 6,
+            "tn": 24,
+            "precision": 0.0,
+            "recall": null,
+            "f1": 0.0,
+            "normal_fpr": 0.2,
+            "recall_wilson95": null,
+            "normal_fpr_wilson95": [
+              0.0950510717728987,
+              0.3730569641314825
+            ]
+          }
+        },
+        {
+          "model": "chart",
+          "code": "normal_noise_control_false_alarm",
+          "cell": {
+            "domain": "supported",
+            "rotation_hz": 15.0,
+            "noise": 0.05,
+            "level": 0,
+            "n": 30,
+            "tp": 0,
+            "fn": 0,
+            "fp": 10,
+            "tn": 20,
+            "precision": 0.0,
+            "recall": null,
+            "f1": 0.0,
+            "normal_fpr": 0.3333333333333333,
+            "recall_wilson95": null,
+            "normal_fpr_wilson95": [
+              0.19230498083676134,
+              0.5121994835545616
+            ]
+          }
+        },
+        {
+          "model": "ae",
+          "code": "normal_noise_control_false_alarm",
+          "cell": {
+            "domain": "supported",
+            "rotation_hz": 8.0,
+            "noise": 0.008,
+            "level": 0,
+            "n": 30,
+            "tp": 0,
+            "fn": 0,
+            "fp": 2,
+            "tn": 28,
+            "precision": 0.0,
+            "recall": null,
+            "f1": 0.0,
+            "normal_fpr": 0.06666666666666667,
+            "recall_wilson95": null,
+            "normal_fpr_wilson95": [
+              0.018477023791270378,
+              0.2132345836261692
+            ]
+          }
+        },
+        {
+          "model": "ae",
+          "code": "normal_noise_control_false_alarm",
+          "cell": {
+            "domain": "supported",
+            "rotation_hz": 8.0,
+            "noise": 0.025,
+            "level": 0,
+            "n": 30,
+            "tp": 0,
+            "fn": 0,
+            "fp": 3,
+            "tn": 27,
+            "precision": 0.0,
+            "recall": null,
+            "f1": 0.0,
+            "normal_fpr": 0.1,
+            "recall_wilson95": null,
+            "normal_fpr_wilson95": [
+              0.03459988874733419,
+              0.25621082579184085
+            ]
+          }
+        },
+        {
+          "model": "ae",
+          "code": "normal_noise_control_false_alarm",
+          "cell": {
+            "domain": "supported",
+            "rotation_hz": 11.5,
+            "noise": 0.008,
+            "level": 0,
+            "n": 30,
+            "tp": 0,
+            "fn": 0,
+            "fp": 2,
+            "tn": 28,
+            "precision": 0.0,
+            "recall": null,
+            "f1": 0.0,
+            "normal_fpr": 0.06666666666666667,
+            "recall_wilson95": null,
+            "normal_fpr_wilson95": [
+              0.018477023791270378,
+              0.2132345836261692
+            ]
+          }
+        },
+        {
+          "model": "ae",
+          "code": "normal_noise_control_false_alarm",
+          "cell": {
+            "domain": "supported",
+            "rotation_hz": 15.0,
+            "noise": 0.05,
+            "level": 0,
+            "n": 30,
+            "tp": 0,
+            "fn": 0,
+            "fp": 4,
+            "tn": 26,
+            "precision": 0.0,
+            "recall": null,
+            "f1": 0.0,
+            "normal_fpr": 0.13333333333333333,
+            "recall_wilson95": null,
+            "normal_fpr_wilson95": [
+              0.053096554840547455,
+              0.296813266820363
+            ]
+          }
+        }
+      ]
+    }
+  },
+  "conclusions": [
+    "Both final outcomes are WARN and preserved without threshold/model changes.",
+    "Supported normal false alarms improve: chart181/270 to18/270; AE270/270 to13/270. Chart6.67% misses registered5%; AE4.81% point estimate meets it but its interval crosses5% and four normal-control cells exceed5%.",
+    "Candidate misses252 chart and157 AE positive windows versus baseline41 and0; this is not uniform improvement in every metric.",
+    "Both models/methods alarm on60/60 healthy OOD inputs (5/18Hz,noise0.10). High OOD F1 does not indicate healthy-condition generalization.",
+    "Candidate vision matches120/120 original/grayscale positives and118/120 blur positives, with0/40 normal and0/120 inpainted-erase detections. These finite-sample synthetic stress observations are not mAP or real-camera guarantees.",
+    "Training sizes, learning-rate schedule and PdM threshold selection differ; this is not a controlled data-only ablation.",
+    "Any future revision informed by these final results requires a new preregistered final evaluation."
+  ],
+  "limitations": [
+    "Visible high-contrast proxies exclude low-contrast realism.",
+    "Reused heldout image postprocessing is not new-renderer/geometry/real-factory validation.",
+    "Inpaint artifacts prevent causal defect-only learning conclusions; zero detections does not rule out every shortcut.",
+    "Window/image Wilson intervals do not account for shared virtual families or paired nuisance seeds as independent physical equipment/products.",
+    "Nuisance classifiers at chance do not prove bias-free inputs."
+  ],
+  "real_factory_validation": "UNVALIDATED",
+  "default_models_replaced": false
+}

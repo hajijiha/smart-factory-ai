@@ -1,0 +1,13 @@
+{
+  "dataset_identity": {
+    "modality": "vision",
+    "generator_version": "v2",
+    "generator_fingerprint": "f6b6eae272c8416aa6756642f4cfd6b9b3782688ad7d776b396e3e5cb2f4e0ae",
+    "data_sha256": "7a6daf8d1f660e4c0c39fddb1a2c30f1ab29e14c39589b9cd25b952856f5e6f8"
+  },
+  "epochs": 10,
+  "seed": 20261008,
+  "test_evaluated": false,
+  "test_used_for_fit_or_selection": false,
+  "checkpoint_selection": "validation fitness only"
+}

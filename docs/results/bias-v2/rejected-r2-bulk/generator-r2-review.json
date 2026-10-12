@@ -1,0 +1,582 @@
+{
+  "review_type": "Read-only integrity and geometry review of ongoing acquisition",
+  "created_at": "2026-10-09T15:42:38.884882+00:00",
+  "dataset_fingerprint": "27f9cc3cce206fb7eb95aa4e4736425e793ed1ed23b7f8f9a269dcc448740945",
+  "generator_source_commit": "075f4b8",
+  "model_used": false,
+  "acquisition_snapshot": {
+    "snapshot_source": "/home/gkwlgns02/smart-factory-bias-review/data/bias-v2-r2/vision/manifest.pending.jsonl",
+    "snapshot_sha256": "98c70b04199f049eeb793a298ed5b2ede5805e3b771eb157cb61e537ff85d7d0",
+    "snapshot_rows": 804,
+    "source_bytes_read": 6829559,
+    "discarded_incomplete_tail_lines": 0,
+    "counts": {
+      "2": 135,
+      "1": 133,
+      "0": 135,
+      "-1": 401
+    },
+    "split_counts": {
+      "train": 540,
+      "test": 90,
+      "val": 174
+    },
+    "group_count": 9,
+    "fingerprint": "27f9cc3cce206fb7eb95aa4e4736425e793ed1ed23b7f8f9a269dcc448740945",
+    "selection_seed": 20261010,
+    "model_used": false,
+    "complete_at_review": false
+  },
+  "selection_protocol": "Seed 20261010 assigns random ranks to sorted scene IDs. One sample per class and split; one additional sample per class prefers an unused group and material. Selection uses only metadata and never image content or model results.",
+  "selected_sample_count": 16,
+  "selected_samples": [
+    {
+      "image": "images/train/-1_00091.jpg",
+      "image_sha256": "0c82830c595e8fe9a154c96461827011ddf9d56df70f29f0fc15be415861e39b",
+      "label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "split": "train",
+      "class_id": -1,
+      "group_id": "vision-v2-0009",
+      "geometry_family": "shape-0009",
+      "scale": 0.7370686206602367,
+      "primitive_count": 0,
+      "material_id": 0,
+      "camera_bin": "low",
+      "light_bin": "bright",
+      "background_bin": "light",
+      "capture_index": 186,
+      "empty_negative_label": true
+    },
+    {
+      "image": "images/train/0_00034.jpg",
+      "image_sha256": "2302aaa14265098fad5191229870dd04a3456298b832805e23e7890ec829862d",
+      "label_sha256": "f93e40ce0354ab0a05d26993da9a43f467c8d3a72c30b978941f7a2b04951383",
+      "split": "train",
+      "class_id": 0,
+      "group_id": "vision-v2-0009",
+      "geometry_family": "shape-0009",
+      "scale": 1.1128282081987602,
+      "primitive_count": 4,
+      "material_id": 0,
+      "camera_bin": "low",
+      "light_bin": "bright",
+      "background_bin": "light",
+      "capture_index": 206,
+      "saved_bbox_pixels": [
+        151.6239698075982,
+        154.96589522812857,
+        200.1456731702794,
+        224.64748123391146
+      ],
+      "independent_projection_max_delta_pixels": 8.526512829121202e-14,
+      "raw_pair_pixel_check": {
+        "changed_pixels": 1249,
+        "outside_roi_pixels": 0,
+        "outside_roi_fraction": 0.0,
+        "bbox_iou": 1.0,
+        "raw_bbox_iou": 0.9838401392628546,
+        "observed_bbox_pixels": [
+          152.0,
+          155.0,
+          200.0,
+          225.0
+        ]
+      }
+    },
+    {
+      "image": "images/train/1_00017.jpg",
+      "image_sha256": "6ea6499342ee3a4d8cf024ac0289f38835356e5748727263e83d32370cea65ab",
+      "label_sha256": "e9ad364bc5aaca7334421cd4fa8ba9e5632f19f8bcf64b1b94dac6a9b5b6536c",
+      "split": "train",
+      "class_id": 1,
+      "group_id": "vision-v2-0004",
+      "geometry_family": "shape-0004",
+      "scale": 1.084879947681838,
+      "primitive_count": 2,
+      "material_id": 1,
+      "camera_bin": "low",
+      "light_bin": "bright",
+      "background_bin": "dark",
+      "capture_index": 95,
+      "saved_bbox_pixels": [
+        128.69878657390836,
+        94.18019840043871,
+        165.7727193411226,
+        131.42778289292045
+      ],
+      "independent_projection_max_delta_pixels": 5.684341886080802e-14,
+      "raw_pair_pixel_check": {
+        "changed_pixels": 1125,
+        "outside_roi_pixels": 0,
+        "outside_roi_fraction": 0.0,
+        "bbox_iou": 1.0,
+        "raw_bbox_iou": 0.9563119412849029,
+        "observed_bbox_pixels": [
+          128.0,
+          94.0,
+          166.0,
+          132.0
+        ]
+      }
+    },
+    {
+      "image": "images/train/2_00006.jpg",
+      "image_sha256": "8e9c8f0e9ca6622fc675fc13a9d0069f6577661152c72606d72d7a0aacbce7c9",
+      "label_sha256": "4c43b200f84ddcbc45c29062f1f9f924957137a85cc46dcfc475b5c5412690eb",
+      "split": "train",
+      "class_id": 2,
+      "group_id": "vision-v2-0003",
+      "geometry_family": "shape-0003",
+      "scale": 0.6827573502769155,
+      "primitive_count": 2,
+      "material_id": 0,
+      "camera_bin": "high",
+      "light_bin": "dim",
+      "background_bin": "light",
+      "capture_index": 51,
+      "saved_bbox_pixels": [
+        113.77229542912448,
+        199.81751240448745,
+        135.42796073011414,
+        219.79375728516487
+      ],
+      "independent_projection_max_delta_pixels": 5.684341886080802e-14,
+      "raw_pair_pixel_check": {
+        "changed_pixels": 160,
+        "outside_roi_pixels": 0,
+        "outside_roi_fraction": 0.0,
+        "bbox_iou": 1.0,
+        "raw_bbox_iou": 0.8956498408003278,
+        "observed_bbox_pixels": [
+          113.0,
+          199.0,
+          136.0,
+          220.0
+        ]
+      }
+    },
+    {
+      "image": "images/val/-1_00054.jpg",
+      "image_sha256": "b246c03e7b3c7b42d54370fef6009c505d70534f249ee614ed1330021ecf6c48",
+      "label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "split": "val",
+      "class_id": -1,
+      "group_id": "vision-v2-0016",
+      "geometry_family": "shape-0016",
+      "scale": 1.070951805062131,
+      "primitive_count": 0,
+      "material_id": 1,
+      "camera_bin": "low",
+      "light_bin": "dim",
+      "background_bin": "dark",
+      "capture_index": 732,
+      "empty_negative_label": true
+    },
+    {
+      "image": "images/val/0_00004.jpg",
+      "image_sha256": "123fbec12966808c3ce514c7e5309e1e0cbe1c2a08f76b5839fa9e065cd0956e",
+      "label_sha256": "ba6b7edfa0c98e4d5b783b6d6a928e6700b3e9a76b5db828b9632fc10a04766f",
+      "split": "val",
+      "class_id": 0,
+      "group_id": "vision-v2-0014",
+      "geometry_family": "shape-0014",
+      "scale": 1.0103291553079001,
+      "primitive_count": 3,
+      "material_id": 2,
+      "camera_bin": "low",
+      "light_bin": "bright",
+      "background_bin": "dark",
+      "capture_index": 476,
+      "saved_bbox_pixels": [
+        100.93876628100233,
+        146.73359359400263,
+        163.68400129326744,
+        171.90156427201654
+      ],
+      "independent_projection_max_delta_pixels": 0.0,
+      "raw_pair_pixel_check": {
+        "changed_pixels": 719,
+        "outside_roi_pixels": 0,
+        "outside_roi_fraction": 0.0,
+        "bbox_iou": 1.0,
+        "raw_bbox_iou": 0.9797200360280965,
+        "observed_bbox_pixels": [
+          101.0,
+          147.0,
+          164.0,
+          172.0
+        ]
+      }
+    },
+    {
+      "image": "images/val/1_00018.jpg",
+      "image_sha256": "17da2a01dee2d41dd651100d0d80462105219acc10a2df1ec68b8eddbb782c66",
+      "label_sha256": "640a53c0c84c0baa013690a0c12bf8ad5c4c93c2f9f91646ff1c74439d6d8c34",
+      "split": "val",
+      "class_id": 1,
+      "group_id": "vision-v2-0016",
+      "geometry_family": "shape-0016",
+      "scale": 0.7699050069932772,
+      "primitive_count": 2,
+      "material_id": 1,
+      "camera_bin": "low",
+      "light_bin": "dim",
+      "background_bin": "dark",
+      "capture_index": 742,
+      "saved_bbox_pixels": [
+        134.389356906766,
+        153.7537939211238,
+        165.5411211450919,
+        184.86388531310178
+      ],
+      "independent_projection_max_delta_pixels": 2.842170943040401e-14,
+      "raw_pair_pixel_check": {
+        "changed_pixels": 771,
+        "outside_roi_pixels": 0,
+        "outside_roi_fraction": 0.0,
+        "bbox_iou": 1.0,
+        "raw_bbox_iou": 0.9464201489020212,
+        "observed_bbox_pixels": [
+          134.0,
+          153.0,
+          166.0,
+          185.0
+        ]
+      }
+    },
+    {
+      "image": "images/val/2_00005.jpg",
+      "image_sha256": "a724d1981de6cc3878cf7bcd72bafc38f7281aaa0a8babea8c2b5d545626ce2a",
+      "label_sha256": "5b89bfb5e19278702bd701d6e07b6ac73f95f984302589bcef678c9894e752d6",
+      "split": "val",
+      "class_id": 2,
+      "group_id": "vision-v2-0014",
+      "geometry_family": "shape-0014",
+      "scale": 1.0535693421539147,
+      "primitive_count": 2,
+      "material_id": 2,
+      "camera_bin": "low",
+      "light_bin": "bright",
+      "background_bin": "dark",
+      "capture_index": 466,
+      "saved_bbox_pixels": [
+        144.56373631255752,
+        161.997357683787,
+        167.6519779748014,
+        197.7636802212388
+      ],
+      "independent_projection_max_delta_pixels": 2.842170943040401e-14,
+      "raw_pair_pixel_check": {
+        "changed_pixels": 597,
+        "outside_roi_pixels": 0,
+        "outside_roi_fraction": 0.0,
+        "bbox_iou": 1.0,
+        "raw_bbox_iou": 0.9556275373260082,
+        "observed_bbox_pixels": [
+          144.0,
+          162.0,
+          168.0,
+          198.0
+        ]
+      }
+    },
+    {
+      "image": "images/test/-1_00043.jpg",
+      "image_sha256": "cd249836fa5d819b4dcbdfa6802b1f57e78daa30619f2374afc08b82fd5e7134",
+      "label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "split": "test",
+      "class_id": -1,
+      "group_id": "vision-v2-0019",
+      "geometry_family": "shape-0019",
+      "scale": 1.1403159598329187,
+      "primitive_count": 0,
+      "material_id": 1,
+      "camera_bin": "high",
+      "light_bin": "bright",
+      "background_bin": "light",
+      "capture_index": 357,
+      "empty_negative_label": true
+    },
+    {
+      "image": "images/test/0_00013.jpg",
+      "image_sha256": "024ea3574ff5a0ddf2ba53b59612641b8cb1fdf37d3e002eb6da8fe0e7c3904b",
+      "label_sha256": "aa1d20b3b814273412691c54e85c654baee7c9addf94b74bd848616cdd26f8b4",
+      "split": "test",
+      "class_id": 0,
+      "group_id": "vision-v2-0019",
+      "geometry_family": "shape-0019",
+      "scale": 1.0799270347941827,
+      "primitive_count": 5,
+      "material_id": 1,
+      "camera_bin": "high",
+      "light_bin": "bright",
+      "background_bin": "light",
+      "capture_index": 354,
+      "saved_bbox_pixels": [
+        134.74057266297174,
+        188.700163913758,
+        188.01431238708653,
+        242.3814627220887
+      ],
+      "independent_projection_max_delta_pixels": 8.526512829121202e-14,
+      "raw_pair_pixel_check": {
+        "changed_pixels": 1199,
+        "outside_roi_pixels": 0,
+        "outside_roi_fraction": 0.0,
+        "bbox_iou": 1.0,
+        "raw_bbox_iou": 0.9780927889906668,
+        "observed_bbox_pixels": [
+          135.0,
+          189.0,
+          188.0,
+          243.0
+        ]
+      }
+    },
+    {
+      "image": "images/test/1_00005.jpg",
+      "image_sha256": "e2abc56bc17e946a870fcb96db9f59b0a04e20872f4f56d3bb130562c45aee56",
+      "label_sha256": "e317518d41b822fd138cf72bb0816ae01bc29f1f40436dff38b19143eaa1d20e",
+      "split": "test",
+      "class_id": 1,
+      "group_id": "vision-v2-0019",
+      "geometry_family": "shape-0019",
+      "scale": 0.9738664382047186,
+      "primitive_count": 2,
+      "material_id": 1,
+      "camera_bin": "high",
+      "light_bin": "bright",
+      "background_bin": "light",
+      "capture_index": 307,
+      "saved_bbox_pixels": [
+        167.83491352098252,
+        189.41860038299433,
+        202.09042977009494,
+        223.7745743534901
+      ],
+      "independent_projection_max_delta_pixels": 5.684341886080802e-14,
+      "raw_pair_pixel_check": {
+        "changed_pixels": 952,
+        "outside_roi_pixels": 0,
+        "outside_roi_fraction": 0.0,
+        "bbox_iou": 1.0,
+        "raw_bbox_iou": 0.9557595634764121,
+        "observed_bbox_pixels": [
+          167.0,
+          189.0,
+          202.0,
+          224.0
+        ]
+      }
+    },
+    {
+      "image": "images/test/2_00001.jpg",
+      "image_sha256": "6ba94bcb4aacb427e100d2f68affa9a1ea46dd4686453ae21379ed7b9542673f",
+      "label_sha256": "024493c82dd5166f4d04fe4e3986dc74f9800f074d3c8e407d17c1282c4d7b07",
+      "split": "test",
+      "class_id": 2,
+      "group_id": "vision-v2-0019",
+      "geometry_family": "shape-0019",
+      "scale": 1.0676309618966642,
+      "primitive_count": 2,
+      "material_id": 1,
+      "camera_bin": "high",
+      "light_bin": "bright",
+      "background_bin": "light",
+      "capture_index": 281,
+      "saved_bbox_pixels": [
+        149.77526977108568,
+        171.89575281543213,
+        169.61364466066607,
+        192.93783105130132
+      ],
+      "independent_projection_max_delta_pixels": 8.526512829121202e-14,
+      "raw_pair_pixel_check": {
+        "changed_pixels": 325,
+        "outside_roi_pixels": 0,
+        "outside_roi_fraction": 0.0,
+        "bbox_iou": 1.0,
+        "raw_bbox_iou": 0.9374914301261295,
+        "observed_bbox_pixels": [
+          149.0,
+          172.0,
+          170.0,
+          193.0
+        ]
+      }
+    },
+    {
+      "image": "images/val/-1_00019.jpg",
+      "image_sha256": "d0beed724448ba1ab54c64d11606763a7a7699b1be5c544f6cb6369bdd40dc38",
+      "label_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "split": "val",
+      "class_id": -1,
+      "group_id": "vision-v2-0014",
+      "geometry_family": "shape-0014",
+      "scale": 0.7192356471418355,
+      "primitive_count": 0,
+      "material_id": 2,
+      "camera_bin": "low",
+      "light_bin": "bright",
+      "background_bin": "dark",
+      "capture_index": 490,
+      "empty_negative_label": true
+    },
+    {
+      "image": "images/train/0_00061.jpg",
+      "image_sha256": "cf55a3b65e9b31d0a012b98d68bc6b5cb6145dd1b5ff5e746ae8a63b116e3c80",
+      "label_sha256": "8578044791b5fb8ebf285a4abbc0ca47973b025851ed29fede059be8482b3e02",
+      "split": "train",
+      "class_id": 0,
+      "group_id": "vision-v2-0011",
+      "geometry_family": "shape-0011",
+      "scale": 1.0030923818265127,
+      "primitive_count": 3,
+      "material_id": 2,
+      "camera_bin": "high",
+      "light_bin": "dim",
+      "background_bin": "dark",
+      "capture_index": 555,
+      "saved_bbox_pixels": [
+        116.51530409084384,
+        168.0722617673967,
+        135.895095744137,
+        231.74761965718778
+      ],
+      "independent_projection_max_delta_pixels": 8.526512829121202e-14,
+      "raw_pair_pixel_check": {
+        "changed_pixels": 636,
+        "outside_roi_pixels": 0,
+        "outside_roi_fraction": 0.0,
+        "bbox_iou": 1.0,
+        "raw_bbox_iou": 0.9640743510570526,
+        "observed_bbox_pixels": [
+          116.0,
+          168.0,
+          136.0,
+          232.0
+        ]
+      }
+    },
+    {
+      "image": "images/train/1_00040.jpg",
+      "image_sha256": "461bd849e0a6b4950df651f0479b601ce9f508dcc1f2f9432869b0c8a6f405a1",
+      "label_sha256": "c7c955fe77d4a18f79fc9d026875ab5b49e8ca80a59a8d86e570af6ed75aa733",
+      "split": "train",
+      "class_id": 1,
+      "group_id": "vision-v2-0009",
+      "geometry_family": "shape-0009",
+      "scale": 1.0009003084866213,
+      "primitive_count": 2,
+      "material_id": 0,
+      "camera_bin": "low",
+      "light_bin": "bright",
+      "background_bin": "light",
+      "capture_index": 242,
+      "saved_bbox_pixels": [
+        169.64828729061844,
+        134.34608853120716,
+        199.57631533895687,
+        164.25929345512714
+      ],
+      "independent_projection_max_delta_pixels": 5.684341886080802e-14,
+      "raw_pair_pixel_check": {
+        "changed_pixels": 733,
+        "outside_roi_pixels": 0,
+        "outside_roi_fraction": 0.0,
+        "bbox_iou": 1.0,
+        "raw_bbox_iou": 0.9315746472203668,
+        "observed_bbox_pixels": [
+          169.0,
+          134.0,
+          200.0,
+          165.0
+        ]
+      }
+    },
+    {
+      "image": "images/val/2_00015.jpg",
+      "image_sha256": "aec6741cf182efef9561bce8956d8e028309062aa0c130c67f9b51454578f404",
+      "label_sha256": "0a28d04a6d5e6ee99b338b31e0dd9968f771dd08139c270f6ae10cb60603db0d",
+      "split": "val",
+      "class_id": 2,
+      "group_id": "vision-v2-0016",
+      "geometry_family": "shape-0016",
+      "scale": 0.9026494773789115,
+      "primitive_count": 4,
+      "material_id": 1,
+      "camera_bin": "low",
+      "light_bin": "dim",
+      "background_bin": "dark",
+      "capture_index": 734,
+      "saved_bbox_pixels": [
+        156.78171240615632,
+        93.44430351321819,
+        188.79652203144553,
+        121.49775453374517
+      ],
+      "independent_projection_max_delta_pixels": 2.842170943040401e-14,
+      "raw_pair_pixel_check": {
+        "changed_pixels": 554,
+        "outside_roi_pixels": 0,
+        "outside_roi_fraction": 0.0,
+        "bbox_iou": 1.0,
+        "raw_bbox_iou": 0.9384805577372484,
+        "observed_bbox_pixels": [
+          156.0,
+          93.0,
+          189.0,
+          122.0
+        ]
+      }
+    }
+  ],
+  "integrity": {
+    "training_images": 16,
+    "training_labels": 16,
+    "paired_raw_pngs": 24,
+    "hash_status": "PASS"
+  },
+  "independent_projection": {
+    "sample_count": 12,
+    "maximum_delta_pixels": 8.526512829121202e-14,
+    "status": "PASS"
+  },
+  "independent_raw_pair_pixel_check": {
+    "sample_count": 12,
+    "status": "PASS",
+    "minimum_bbox_iou": 1.0,
+    "minimum_raw_bbox_iou": 0.8956498408003278,
+    "maximum_outside_roi_fraction": 0.0
+  },
+  "visual_review_status": "PASS_FOR_SELECTED_SAMPLES",
+  "limitations": [
+    "Review snapshot contains 804 of the planned 1800 image rows; it is not completion evidence.",
+    "Manual inspection covers only 16 metadata-selected images; independent full acquisition auditing is separate.",
+    "Dent is a visual surface proxy, rather than a physically deformed product mesh.",
+    "Synthetic geometry and rendering do not establish real-factory realism or transfer performance.",
+    "The physical cause of the high-speed 100 rad/s equilibrium remains unconfirmed."
+  ],
+  "montage": "generator-r2-review-montage.png",
+  "montage_sha256": "3f0d6a70e25a0e5e9d56b486d1f82885d1c2a794bae73c7d0c8e629bd1b16050",
+  "visual_review": {
+    "reviewer": "Data-generation review agent",
+    "sample_count": 16,
+    "defect_samples": 12,
+    "normal_samples": 4,
+    "observations": [
+      "All twelve visible defects agree with the saved green ground-truth boxes in shape extent and position.",
+      "Four normal samples show a plain product with empty negative labels and no visible defect proxy.",
+      "No oversized unit-mesh geometry, missing defect, whole-frame mismatch or crop was observed among the sixteen selected samples.",
+      "Camera/product pose, background color, material and defect size vary across the metadata-selected samples.",
+      "Scratch strokes, concentric dent disks and contamination spots remain stylized visual proxies."
+    ],
+    "scope": "Read-only inspection of sixteen predetermined samples from an 804-row partial acquisition snapshot; not a claim about all final images or real-factory transfer."
+  },
+  "selected_group_count": 7,
+  "selected_material_ids": [
+    0,
+    1,
+    2
+  ]
+}

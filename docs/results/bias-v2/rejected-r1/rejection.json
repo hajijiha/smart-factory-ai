@@ -1,0 +1,11 @@
+{
+  "status": "REJECTED_BEFORE_FINAL_EVALUATION",
+  "reason": "Gazebo visual scale represented absolute primitive dimensions, but ratio scaling enlarged rendered defects beyond analytical boxes.",
+  "data_fingerprint": "5ac567d0dd5ac06c4f0969d7bb571f2d66c670ce09c9b0d78dd764144f211764",
+  "final_test_evaluated": false,
+  "independent_challenge_evaluated": false,
+  "vision_training": "interrupted; not used as a validated detector",
+  "data_retained": "/app/data/bias-v2",
+  "candidate_weights_retained": "/app/artifacts/bias-v2",
+  "disposition": "Excluded from candidate performance claims; baseline checkpoints unaffected"
+}

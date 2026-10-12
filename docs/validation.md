@@ -3,6 +3,10 @@
 검증 범위는 회귀 테스트, 데이터 무결성, 모델 평가·변환, DB 저장과 물리 인터락이다.
 측정 원본은 `results/qa.json`, JUnit 결과는 `results/tests.xml`에 있다.
 
+이 문서는 기존 v1 모델·데이터의 측정 기록이다. v2 데이터 생성과 편향 검증 추가 후
+전체 회귀 검사는 81개가 통과했으며, 결과는 `results/bias-v2/tests.xml`에 있다.
+새 검사·파일럿 실험의 범위와 한계는 [합성 데이터 편향 검증](bias-validation.md)에 정리했다.
+
 ## 회귀 테스트
 
 2026-10-08 CPU 런타임에서 **28 passed / 0 failed / 0 skipped**를 기록했다.

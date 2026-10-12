@@ -43,6 +43,8 @@ data_generation:
   vision_groups: 100
   vision_normal_per_group: 30
   vision_per_defect_per_group: 10
+  vision_visibility_policy: visible_surface_proxy_v1
+  vision_minimum_material_rgb_gap: 0.30
 dashboard:
   refresh_ms: 2000
   correlation_window: 120

@@ -9,7 +9,7 @@ import pytest
 
 from scripts.bias_audit import (independently_compare_pixels, numeric_nuisance, scene_nuisance,
                                verify_bulk_render_pairs, verify_capture_sync, verify_render_gate,
-                               verify_scene_application, verify_versioned_marker)
+                               verify_scene_application, verify_versioned_marker, verify_visibility_policy)
 from scripts.bias_evaluate import independent_wave, transformed
 from scripts.bias_metrics import (assert_group_separation, binary_metrics, iou,
                                   nuisance_cv, nuisance_difference, wilson)
@@ -360,3 +360,64 @@ def test_bulk_pair_pass_text_cannot_hide_modified_raw_png(tmp_path):
     report = {'findings': []}
     verify_bulk_render_pairs(tmp_path, [row], marker, report, load_protocol()[0])
     assert any(finding['code'] == 'vision_render_pixel_consistency' for finding in report['findings'])
+
+
+def visible_scene_fixture(class_id):
+    """Use one policy on different raw class palettes; no detector or pixel selection."""
+    product = [.55, .60, .58]
+    gap, scale, palette = .30, float(np.random.default_rng(121 + 7 * 43 + 88000).uniform(.65, 1)), .65
+    bound = (min(product) - gap) * scale
+    raw = [.50, .42, .37]
+    primitive = {'color_before_contrast': raw, 'color': (np.asarray(raw) / palette * bound).tolist()}
+    return {'class_id': class_id, 'product_color': product, 'seed': 121, 'scene_index': 7,
+            'defect_primitives': [] if class_id < 0 else [primitive],
+            'visibility_policy': {'name': 'visible_surface_proxy_v1', 'minimum_material_rgb_gap': gap,
+                'raw_palette_max': palette, 'color_scale': scale, 'product_minimum_channel': min(product),
+                'primitive_color_upper_bound': bound, 'scope': 'Visible synthetic proxies; low contrast unvalidated'}}
+
+
+def test_visibility_policy_is_the_same_material_rule_for_all_classes():
+    """The support rule is validated on normals and every defect class, not a known bad group."""
+    settings = {'vision_visibility_policy': 'visible_surface_proxy_v1', 'vision_minimum_material_rgb_gap': .30}
+    for class_id in [-1, 0, 1, 2]:
+        report = {'findings': []}
+        assert verify_visibility_policy(visible_scene_fixture(class_id), settings, report, str(class_id))
+        assert not report['findings']
+
+
+def test_visibility_policy_rejects_forged_bound_mapping_and_raw_palette():
+    """A visibility claim cannot hide an unchanged weak-contrast rim or class-specific mapping."""
+    settings = {'vision_visibility_policy': 'visible_surface_proxy_v1', 'vision_minimum_material_rgb_gap': .30}
+    for mutation in ['bound', 'mapped_color', 'original_palette', 'sampling_range', 'wrong_gap', 'label_coded_scale']:
+        scene = visible_scene_fixture(1)
+        if mutation == 'bound':
+            scene['visibility_policy']['primitive_color_upper_bound'] = .50
+        elif mutation == 'mapped_color':
+            scene['defect_primitives'][0]['color'] = [.50] * 3
+        elif mutation == 'original_palette':
+            scene['defect_primitives'][0]['color_before_contrast'] = [.80] * 3
+        elif mutation == 'sampling_range':
+            scene['visibility_policy']['color_scale'] = .50
+        elif mutation == 'wrong_gap':
+            scene['visibility_policy']['minimum_material_rgb_gap'] = .10
+        elif mutation == 'label_coded_scale':
+            scene['visibility_policy']['color_scale'] = .80
+            scene['visibility_policy']['primitive_color_upper_bound'] = .20
+            scene['defect_primitives'][0]['color'] = (np.asarray(scene['defect_primitives'][0]['color_before_contrast']) / .65 * .20).tolist()
+        report = {'findings': []}
+        assert not verify_visibility_policy(scene, settings, report, mutation)
+        assert any(finding['code'] == 'vision_visibility_policy_consistency' for finding in report['findings'])
+
+
+def test_visibility_policy_is_required_when_dataset_declares_it():
+    """Stale scenes cannot silently inherit the new revision's config claim."""
+    report = {'findings': []}
+    assert not verify_visibility_policy({'class_id': -1}, {'vision_visibility_policy': 'visible_surface_proxy_v1'}, report, 'stale')
+    assert report['findings'][0]['code'] == 'vision_visibility_policy_missing'
+
+
+def test_visibility_nuisance_input_excludes_defect_palette_and_mapped_outcome():
+    """Only the independent scale draw joins the nuisance classifier, not the answer geometry/color."""
+    features = scene_nuisance(visible_scene_fixture(2))
+    assert features['visibility_color_scale'] == visible_scene_fixture(2)['visibility_policy']['color_scale']
+    assert not {'class_id', 'color', 'color_before_contrast', 'primitive_color_upper_bound'} & set(features)

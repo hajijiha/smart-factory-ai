@@ -1,0 +1,145 @@
+{
+  "scope": "Adversarial in-memory summary guard fixtures only; no actual model, training result or final challenge is read/run",
+  "valid_control": "PASS",
+  "adversarial_cases_rejected": 20,
+  "cases": [
+    {
+      "case": "development_seed",
+      "status": "REJECTED",
+      "reason": "baseline evaluation differs from the registered final protocol"
+    },
+    {
+      "case": "unregistered_protocol",
+      "status": "REJECTED",
+      "reason": "baseline evaluation differs from the registered final protocol"
+    },
+    {
+      "case": "wrong_protocol_id",
+      "status": "REJECTED",
+      "reason": "baseline evaluation differs from the registered final protocol"
+    },
+    {
+      "case": "development_phase",
+      "status": "REJECTED",
+      "reason": "baseline is not a frozen final evaluation"
+    },
+    {
+      "case": "single_image_duplicates",
+      "status": "REJECTED",
+      "reason": "Vision challenge lacks the registered unique images per class"
+    },
+    {
+      "case": "duplicate_transform",
+      "status": "REJECTED",
+      "reason": "Duplicate or missing vision transformations"
+    },
+    {
+      "case": "missing_transform",
+      "status": "REJECTED",
+      "reason": "Duplicate or missing vision transformations"
+    },
+    {
+      "case": "inconsistent_label",
+      "status": "REJECTED",
+      "reason": "A challenge image has inconsistent source metadata"
+    },
+    {
+      "case": "inconsistent_original_hash",
+      "status": "REJECTED",
+      "reason": "A challenge image has inconsistent source metadata"
+    },
+    {
+      "case": "inconsistent_class",
+      "status": "REJECTED",
+      "reason": "A challenge image has inconsistent source metadata"
+    },
+    {
+      "case": "transformed_pixels_mismatch",
+      "status": "REJECTED",
+      "reason": "Selected vision images or transformations differ"
+    },
+    {
+      "case": "shape_mismatch",
+      "status": "REJECTED",
+      "reason": "Selected vision images or transformations differ"
+    },
+    {
+      "case": "dtype_mismatch",
+      "status": "REJECTED",
+      "reason": "Selected vision images or transformations differ"
+    },
+    {
+      "case": "inference_config_mismatch",
+      "status": "REJECTED",
+      "reason": "Vision inference configurations differ"
+    },
+    {
+      "case": "source_mismatch",
+      "status": "REJECTED",
+      "reason": "Compared evaluations differ in evaluation_source_sha256"
+    },
+    {
+      "case": "environment_mismatch",
+      "status": "REJECTED",
+      "reason": "Compared evaluations differ in environment"
+    },
+    {
+      "case": "frozen_model_mismatch",
+      "status": "REJECTED",
+      "reason": "candidate is not a frozen final evaluation"
+    },
+    {
+      "case": "sensor_inputs_mismatch",
+      "status": "REJECTED",
+      "reason": "Sensor challenge inputs differ"
+    },
+    {
+      "case": "manifest_mismatch",
+      "status": "REJECTED",
+      "reason": "Vision challenge manifests differ"
+    },
+    {
+      "case": "missing_model",
+      "status": "REJECTED",
+      "reason": "candidate evaluation is missing a model"
+    }
+  ],
+  "source_sha256": {
+    "scripts/bias_summary.py": "929f38a4edfc15325cc4e0a04e46a2a8d0839fc6300327d60899a7b28cf212b3",
+    "scripts/bias_evaluate.py": "57a0eca20492f15328b751ee35a8df2a9c6aa01e9a65121964d0929e925b925d"
+  },
+  "protocol_sha256": "3c971571c32fb87b67e60658cd7b90ecb04d96033d73ac9fa1bc5524a92cf130",
+  "runtime_review": {
+    "scope": "Actual Docker runtime imports/version queries and synthetic array transforms only; no model inference or final challenge",
+    "imports": "PASS",
+    "environment": {
+      "python": "3.10.12",
+      "numpy": "1.26.4",
+      "scipy": "1.13.1",
+      "torch": "2.5.1+cpu",
+      "opencv-python": "4.10.0.84",
+      "onnxruntime": "1.20.1"
+    },
+    "source_sha256": {
+      "scripts/bias_evaluate.py": "57a0eca20492f15328b751ee35a8df2a9c6aa01e9a65121964d0929e925b925d",
+      "scripts/bias_summary.py": "929f38a4edfc15325cc4e0a04e46a2a8d0839fc6300327d60899a7b28cf212b3"
+    },
+    "deterministic_contiguous_bgr_transforms": [
+      "identity",
+      "grayscale",
+      "darken",
+      "brighten",
+      "blur",
+      "jpeg",
+      "erase_defect"
+    ],
+    "fixture_output_shape": [
+      48,
+      48,
+      3
+    ],
+    "fixture_dtype": "uint8",
+    "input_hash_scope": "Contiguous decoded BGR pixels before detector resize/normalization; identical inference source/config/environment checked separately"
+  },
+  "runtime_and_windows_source_hashes_match": true
+}

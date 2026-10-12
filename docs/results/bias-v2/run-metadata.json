@@ -1,0 +1,342 @@
+{
+  "recorded_at_utc": "2026-10-09T16:55:58.754260+00:00",
+  "cpu": {
+    "Model name": "Intel(R) Core(TM) Ultra 5 225H",
+    "CPU(s)": "14"
+  },
+  "execution": "Ubuntu 22.04 containers in Docker Desktop/WSL, CPU only; 4 ML inference threads",
+  "container_images": {
+    "smart-factory-runtime:local": "sha256:91a007e4396e469e3f864ebae538f85a6854403cf3737f1afc04675d6f260e27",
+    "smart-factory-bias-review-simulator:latest": "sha256:7b7e66238f93fdbc1844f40e3cf18924783ea76f1fa1717de25dc4f70c1fed8c"
+  },
+  "experiment": "bias-v2-r3",
+  "generator_fingerprint": "f6b6eae272c8416aa6756642f4cfd6b9b3782688ad7d776b396e3e5cb2f4e0ae",
+  "dataset_counts": {
+    "sensor": 7000,
+    "vision": 1800,
+    "extra_normal_counterparts": 900
+  },
+  "split_counts": {
+    "sensor_groups": {
+      "test": 15,
+      "train": 70,
+      "val": 15
+    },
+    "vision_groups": {
+      "test": 3,
+      "train": 14,
+      "val": 3
+    },
+    "sensor_levels": {
+      "0": 5000,
+      "1": 200,
+      "10": 200,
+      "2": 200,
+      "3": 200,
+      "4": 200,
+      "5": 200,
+      "6": 200,
+      "7": 200,
+      "8": 200,
+      "9": 200
+    },
+    "vision_split_classes": {
+      "test/-1": 135,
+      "test/0": 45,
+      "test/1": 45,
+      "test/2": 45,
+      "train/-1": 630,
+      "train/0": 210,
+      "train/1": 210,
+      "train/2": 210,
+      "val/-1": 135,
+      "val/0": 45,
+      "val/1": 45,
+      "val/2": 45
+    }
+  },
+  "vision_capture_start_utc": "2026-10-09T16:03:11.859Z",
+  "vision_capture_end_utc": "2026-10-09T16:33:26.623Z",
+  "completion_records": {
+    "sensor": {
+      "files": {
+        "dataset.npz": "0ebcb43988b534f26e2020c61cc13cf008dc8db87b825757577f0d45a2e101b4",
+        "provenance.jsonl": "0c197e653874eedfc6494ac49b16525883480788dbd7d760aa396658d233c96c"
+      },
+      "fingerprint": "f6b6eae272c8416aa6756642f4cfd6b9b3782688ad7d776b396e3e5cb2f4e0ae",
+      "generator_version": "v2",
+      "group_counts": {
+        "test": 15,
+        "train": 70,
+        "val": 15
+      },
+      "level_counts": {
+        "0": 5000,
+        "1": 200,
+        "10": 200,
+        "2": 200,
+        "3": 200,
+        "4": 200,
+        "5": 200,
+        "6": 200,
+        "7": 200,
+        "8": 200,
+        "9": 200
+      },
+      "plugin_binding": {
+        "library_path": "simulator/libfactory_world.so",
+        "library_sha256": "35523424683f6facaefb02a92f351fbc256bc43b2910e1d942cb5621e5af3e35",
+        "schema_version": 1,
+        "source_path": "simulator/plugin/world.cpp",
+        "source_sha256": "20f6ba47fc0ae1aefa055d1dc068cc81939e9559f65ed816356c42e58a9cfde6"
+      },
+      "row_count": 7000,
+      "schema_version": 2,
+      "settings": {
+        "camera": {
+          "camera_fov": 0.75,
+          "camera_size": 320
+        },
+        "data_generation": {
+          "seed": 20261009,
+          "sensor_fault_per_level_per_group": 2,
+          "sensor_groups": 100,
+          "sensor_noise": [
+            0.008,
+            0.05
+          ],
+          "sensor_normal_per_group": 50,
+          "sensor_rotation_hz": [
+            8,
+            15
+          ],
+          "vision_groups": 20,
+          "vision_minimum_material_rgb_gap": 0.3,
+          "vision_normal_per_group": 45,
+          "vision_per_defect_per_group": 15,
+          "vision_visibility_policy": "visible_surface_proxy_v1"
+        },
+        "sensor": {
+          "ball_diameter_mm": 7.94,
+          "bearing_balls": 8,
+          "contact_angle_deg": 0,
+          "pitch_diameter_mm": 39.0,
+          "rotation_hz": 25.0,
+          "sampling_hz": 2048,
+          "window_samples": 2048
+        }
+      },
+      "source_hashes": {
+        "factory/pdm/features.py": "d10c39136d1abfc8a91b59f745bc6b56d93cdbfb89ff18e4f12905ec81301817",
+        "simulator/Dockerfile": "15477bf5712572c029d16b911ca8dcd3532efb5c8c516ceb73f82645d91eeee6",
+        "simulator/bridge.py": "d3ab23b8cb3b6e53d94400ff8b9f2f72c6de8ef74a8125d423bdc7b9406935b6",
+        "simulator/dataset_protocol.py": "75d9c0e98fb8a192f7cf5886bf19e4314647df2d01649f8a713650fe4f2d13cd",
+        "simulator/geometry.py": "0644c1473661cd345aeb39bc33b36a7cb4fc5c0d2b0b0c5416a69774e42f9c7c",
+        "simulator/plugin/world.cpp": "20f6ba47fc0ae1aefa055d1dc068cc81939e9559f65ed816356c42e58a9cfde6",
+        "simulator/preflight.py": "c6401dcc4727a161c7239a8ec62700a213092ba5a4373305f9e889503adb5166",
+        "simulator/render_validation.py": "970da503cd4d240acd1973d8b99a1adf7d94d8f7395efd1800c4c403e9334ac4",
+        "simulator/scenarios.py": "eddfea009d295a5cf48e90c1e6cfc81f74b055b9c874949d3a019214c5d439e1",
+        "simulator/sensor_dataset.py": "98a7294ae9c89e2835a3eca09512f903f6678e1cbc3436f191a90c7826a40ac7",
+        "simulator/signal.py": "f55f905221f503f82ac264192d599254eb39a73dbff5a90aeb7f6f8e20fa6fc6",
+        "simulator/start.sh": "4808c0d17e4b2cfd5fbcb3b96637791d2c21f0abe0c64dd8bfb665afa709ee2f",
+        "simulator/vision_dataset.py": "e9ef5bcb52d60353d4490d021591381a498eedc1f9c7ce9ab8042851b38d6f0c",
+        "simulator/world.py": "362b28486b9fdb1ab6d6c0294e3f1da77f9ec9366ed0af5a82e33f750651bef2"
+      },
+      "split_counts": {
+        "test": 1050,
+        "train": 4900,
+        "val": 1050
+      },
+      "split_method": "Independent operating families, assigned before samples; all labels mixed within each family"
+    },
+    "vision": {
+      "bulk_render_check": {
+        "criteria": {
+          "changed_pixel_channel_threshold": 20,
+          "maximum_outside_roi_fraction": 0.1,
+          "minimum_bbox_iou": 0.7,
+          "minimum_changed_pixels": 5,
+          "rounding_tolerance_pixels": 2
+        },
+        "image_noise_applied": false,
+        "method": "all_defect_normal_pairs",
+        "model_used": false,
+        "pair_count": 900,
+        "status": "PASS"
+      },
+      "class_counts": {
+        "test/-1": 135,
+        "test/0": 45,
+        "test/1": 45,
+        "test/2": 45,
+        "train/-1": 630,
+        "train/0": 210,
+        "train/1": 210,
+        "train/2": 210,
+        "val/-1": 135,
+        "val/0": 45,
+        "val/1": 45,
+        "val/2": 45
+      },
+      "files": {
+        "dataset.yaml": "1ba0cf2d81c540b7cad00a9b5d4ddcf476b049e177414c2c657ed457fa47b4b6",
+        "manifest.jsonl": "7a6daf8d1f660e4c0c39fddb1a2c30f1ab29e14c39589b9cd25b952856f5e6f8",
+        "render-check.json": "e9641faa65d34e676e2eb59224e915e15bca71f505293ff56f1e7193382564c7"
+      },
+      "fingerprint": "f6b6eae272c8416aa6756642f4cfd6b9b3782688ad7d776b396e3e5cb2f4e0ae",
+      "generator_version": "v2",
+      "group_counts": {
+        "test": 3,
+        "train": 14,
+        "val": 3
+      },
+      "label_method": "Projected boundary of the same Gazebo primitive definitions; no near-plane crossings or clipping",
+      "plugin_binding": {
+        "library_path": "simulator/libfactory_world.so",
+        "library_sha256": "35523424683f6facaefb02a92f351fbc256bc43b2910e1d942cb5621e5af3e35",
+        "schema_version": 1,
+        "source_path": "simulator/plugin/world.cpp",
+        "source_sha256": "20f6ba47fc0ae1aefa055d1dc068cc81939e9559f65ed816356c42e58a9cfde6"
+      },
+      "realism": "Synthetic surface visual proxies; no real-factory generalization claim",
+      "rejected_samples": 0,
+      "render_check": {
+        "case_count": 9,
+        "model_used": false,
+        "path": "render-check.json",
+        "schema_version": 1,
+        "status": "PASS"
+      },
+      "render_pair_count": 900,
+      "row_count": 1800,
+      "schema_version": 2,
+      "settings": {
+        "camera": {
+          "camera_fov": 0.75,
+          "camera_size": 320
+        },
+        "data_generation": {
+          "seed": 20261009,
+          "sensor_fault_per_level_per_group": 2,
+          "sensor_groups": 100,
+          "sensor_noise": [
+            0.008,
+            0.05
+          ],
+          "sensor_normal_per_group": 50,
+          "sensor_rotation_hz": [
+            8,
+            15
+          ],
+          "vision_groups": 20,
+          "vision_minimum_material_rgb_gap": 0.3,
+          "vision_normal_per_group": 45,
+          "vision_per_defect_per_group": 15,
+          "vision_visibility_policy": "visible_surface_proxy_v1"
+        },
+        "sensor": {
+          "ball_diameter_mm": 7.94,
+          "bearing_balls": 8,
+          "contact_angle_deg": 0,
+          "pitch_diameter_mm": 39.0,
+          "rotation_hz": 25.0,
+          "sampling_hz": 2048,
+          "window_samples": 2048
+        }
+      },
+      "source_hashes": {
+        "factory/pdm/features.py": "d10c39136d1abfc8a91b59f745bc6b56d93cdbfb89ff18e4f12905ec81301817",
+        "simulator/Dockerfile": "15477bf5712572c029d16b911ca8dcd3532efb5c8c516ceb73f82645d91eeee6",
+        "simulator/bridge.py": "d3ab23b8cb3b6e53d94400ff8b9f2f72c6de8ef74a8125d423bdc7b9406935b6",
+        "simulator/dataset_protocol.py": "75d9c0e98fb8a192f7cf5886bf19e4314647df2d01649f8a713650fe4f2d13cd",
+        "simulator/geometry.py": "0644c1473661cd345aeb39bc33b36a7cb4fc5c0d2b0b0c5416a69774e42f9c7c",
+        "simulator/plugin/world.cpp": "20f6ba47fc0ae1aefa055d1dc068cc81939e9559f65ed816356c42e58a9cfde6",
+        "simulator/preflight.py": "c6401dcc4727a161c7239a8ec62700a213092ba5a4373305f9e889503adb5166",
+        "simulator/render_validation.py": "970da503cd4d240acd1973d8b99a1adf7d94d8f7395efd1800c4c403e9334ac4",
+        "simulator/scenarios.py": "eddfea009d295a5cf48e90c1e6cfc81f74b055b9c874949d3a019214c5d439e1",
+        "simulator/sensor_dataset.py": "98a7294ae9c89e2835a3eca09512f903f6678e1cbc3436f191a90c7826a40ac7",
+        "simulator/signal.py": "f55f905221f503f82ac264192d599254eb39a73dbff5a90aeb7f6f8e20fa6fc6",
+        "simulator/start.sh": "4808c0d17e4b2cfd5fbcb3b96637791d2c21f0abe0c64dd8bfb665afa709ee2f",
+        "simulator/vision_dataset.py": "e9ef5bcb52d60353d4490d021591381a498eedc1f9c7ce9ab8042851b38d6f0c",
+        "simulator/world.py": "362b28486b9fdb1ab6d6c0294e3f1da77f9ec9366ed0af5a82e33f750651bef2"
+      },
+      "split_method": "Independent geometry and rendering families; shuffled class acquisition inside each family"
+    }
+  },
+  "code_sha256": {
+    "config.bias.yaml": "5c2d7e025cb26ca05a7f843a104f72b191c6cfc82b11e5fdffca52eb032fb503",
+    "requirements.txt": "0ad060609b1a23dc7508c5d0e49102c8ff02df6473e1077efdf78a6a8a1422a6",
+    "compose.bias.yaml": "f536f96ac168ef2d7935e2932cddaabd36bcc894336c8436aba7c95f2bb0f614",
+    "scripts/bias-protocol.json": "3c971571c32fb87b67e60658cd7b90ecb04d96033d73ac9fa1bc5524a92cf130",
+    "scripts/bias_audit.py": "0d7295944de3f011aaec58528fda2cd7c67f265d9518fd9fe0478caefc4bf83b",
+    "scripts/bias_evaluate.py": "57a0eca20492f15328b751ee35a8df2a9c6aa01e9a65121964d0929e925b925d",
+    "scripts/bias_metrics.py": "c0674464b898e4ed973c662c270c02e61408617ebb5d946cc79094857a462911",
+    "scripts/bias_summary.py": "929f38a4edfc15325cc4e0a04e46a2a8d0839fc6300327d60899a7b28cf212b3",
+    "scripts/run_bias_validation.sh": "a9230d0b9e60069de10f8295a7dccf01cd6d037aa70dbd38914fd8f2901315ff",
+    "factory/provenance.py": "3ad1118ccd6c43f53147c0f0f542412f44e17c82f811cc552245d16326367517",
+    "factory/pdm/train.py": "3d2994f6b8452e96fc68fcf5e59ff0cd28906f7d11f0dc8745ee230beefcd497",
+    "factory/vision/train.py": "fc52ea5e3f61af1f907ba78aaf5a8cc043ccf0e4c8eb4c0254fb93d75f001bde"
+  },
+  "coco_initialization_sha256": "f59b3d833e2ff32e194b5bb8e08d211dc7c5bdf144b90d2c8412c47ccfc83b36",
+  "model_selection": {
+    "sensor": {
+      "dataset_identity": {
+        "modality": "sensor",
+        "generator_version": "v2",
+        "generator_fingerprint": "f6b6eae272c8416aa6756642f4cfd6b9b3782688ad7d776b396e3e5cb2f4e0ae",
+        "data_sha256": "0ebcb43988b534f26e2020c61cc13cf008dc8db87b825757577f0d45a2e101b4"
+      },
+      "normal_only_training_windows": 3500,
+      "epochs": 180,
+      "seed": 20261008,
+      "thresholds": {
+        "chart": 2.537468066605525,
+        "ae": 0.44593002150076455
+      },
+      "calibration": {
+        "chart": [
+          0.8578615328005524,
+          6.770306114734338,
+          23.884284002468505,
+          39.75378713443599,
+          189.26285389179782
+        ],
+        "ae": [
+          0.0901679608068233,
+          14.020571415751904,
+          76.38124782347218,
+          162.03830164461232,
+          3125.4373014424946
+        ]
+      },
+      "test_evaluated": false,
+      "test_used_for_fit_or_selection": false,
+      "checkpoint_selection": "fixed architecture/epochs; validation thresholds only",
+      "threshold_selection": "maximize validation F1 subject to normal FPR <= 0.05"
+    },
+    "vision": {
+      "dataset_identity": {
+        "modality": "vision",
+        "generator_version": "v2",
+        "generator_fingerprint": "f6b6eae272c8416aa6756642f4cfd6b9b3782688ad7d776b396e3e5cb2f4e0ae",
+        "data_sha256": "7a6daf8d1f660e4c0c39fddb1a2c30f1ab29e14c39589b9cd25b952856f5e6f8"
+      },
+      "epochs": 10,
+      "seed": 20261008,
+      "test_evaluated": false,
+      "test_used_for_fit_or_selection": false,
+      "checkpoint_selection": "validation fitness only"
+    }
+  },
+  "baseline_models_preserved": true,
+  "default_candidate_deployment": false,
+  "real_factory_validation": "UNVALIDATED",
+  "low_contrast_defects": "UNVALIDATED",
+  "rejected_experiments_preserved": [
+    "rejected-r1",
+    "rejected-r2-transport",
+    "rejected-r2-freshness",
+    "rejected-r2-bulk"
+  ],
+  "comparison_limits": "Same final inputs and fixed protocol, not a data-only ablation. Legacy vision6000/10epochs chosen from a35epoch learning-rate schedule vs candidate1800/10epoch schedule; sensor threshold policy also differs."
+}

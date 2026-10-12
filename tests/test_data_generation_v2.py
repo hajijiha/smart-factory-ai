@@ -7,7 +7,8 @@ import cv2
 import numpy as np
 import pytest
 from factory.common import CONFIG
-from simulator.scenarios import groups, sensor_records, vision_scenes, generator_version
+from simulator.scenarios import groups, sensor_records, vision_scenes, generator_version, apply_visibility_policy
+from simulator import scenarios
 from simulator.dataset_protocol import specification, complete, cached, isolated_directory
 from simulator.geometry import defect_points, project_bbox
 from simulator.signal import vibration
@@ -183,7 +184,7 @@ def test_render_validation_pairs_change_only_defect_geometry_and_cover_case_matr
     for pair_id,before,after in pairs:
         assert before['class_id']==-1 and not before['defect_primitives']
         assert before['scene_id']!=after['scene_id']
-        for key in ('x','y','yaw','dx','dy','defect_yaw','camera_pose','product_color','background_color','light','material_id','specular'):
+        for key in ('x','y','yaw','dx','dy','defect_yaw','camera_pose','product_color','background_color','light','material_id','specular','visibility_policy'):
             assert before[key]==after[key]
         assert project_bbox(after) is not None
 
@@ -273,3 +274,56 @@ def test_raw_render_pair_is_lossless_bound_to_scenes_and_modified_pixels_are_rej
     (tmp_path/record['normal_image']).write_bytes(b'corrupt')
     with pytest.raises(RuntimeError,match='Modified'):
         check_render_pair(tmp_path,record,'test-fingerprint')
+
+
+def test_shared_visibility_policy_applies_to_every_class_and_preserves_raw_colors():
+    seen=set()
+    for group in groups('vision',CONFIG):
+        for scene in vision_scenes(group,CONFIG):
+            policy=scene['visibility_policy']
+            assert policy['name']=='visible_surface_proxy_v1'
+            assert .65<=policy['color_scale']<=1.
+            assert policy['minimum_material_rgb_gap']==.30
+            for part in scene['defect_primitives']:
+                seen.add(scene['class_id'])
+                assert 'color_before_contrast' in part
+                assert all(0<=v<=policy['primitive_color_upper_bound'] for v in part['color'])
+                assert np.all(np.asarray(scene['product_color'])-part['color']>=.30-1e-12)
+        if seen=={0,1,2}:
+            break
+    assert seen=={0,1,2}
+
+
+def test_visibility_mapping_does_not_change_nuisance_schedule_geometry_or_labels(monkeypatch):
+    group=next(groups('vision',CONFIG))
+    monkeypatch.setattr(scenarios,'apply_visibility_policy',lambda scene,configuration:scene)
+    previous=list(vision_scenes(group,CONFIG))
+    monkeypatch.setattr(scenarios,'apply_visibility_policy',apply_visibility_policy)
+    current=list(vision_scenes(group,CONFIG))
+    for old,new in zip(previous,current):
+        for key,value in old.items():
+            if key!='defect_primitives':
+                assert new[key]==value
+        assert project_bbox(old)==project_bbox(new)
+        for before,after in zip(old['defect_primitives'],new['defect_primitives']):
+            assert after['color_before_contrast']==before['color']
+            assert all(after[key]==value for key,value in before.items() if key!='color')
+
+
+def test_visibility_mapping_is_label_independent_idempotent_and_rejects_unsupported_material():
+    scene=next(vision_scenes(next(groups('vision',CONFIG)),CONFIG))
+    normal={**scene,'class_id':-1,'defect_primitives':[]}
+    mapped=apply_visibility_policy(scene,CONFIG)
+    assert mapped==apply_visibility_policy(mapped,CONFIG)
+    assert mapped['visibility_policy']==apply_visibility_policy(normal,CONFIG)['visibility_policy']
+    outside={**scene,'product_color':[.25,.25,.25]}
+    with pytest.raises(ValueError,match='outside the declared'):
+        apply_visibility_policy(outside,CONFIG)
+
+
+def test_visibility_policy_rejects_unknown_policy_without_resampling():
+    scene=next(vision_scenes(next(groups('vision',CONFIG)),CONFIG))
+    configuration=copy.deepcopy(CONFIG)
+    configuration['data_generation']['vision_visibility_policy']='unknown'
+    with pytest.raises(ValueError,match='Unsupported'):
+        apply_visibility_policy(scene,configuration)
