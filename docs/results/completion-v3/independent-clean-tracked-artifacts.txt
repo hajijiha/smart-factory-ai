@@ -1,0 +1,7 @@
+artifacts/README.md
+artifacts/drift-reference.json
+artifacts/model-card.json
+artifacts/pdm.pt
+artifacts/prognostics-model-card.json
+artifacts/rul.pt
+artifacts/vision.pt

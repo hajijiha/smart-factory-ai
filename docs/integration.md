@@ -57,7 +57,7 @@ Pearson은 선형 관계, Spearman은 순위에 기반한 단조 관계를 측�
 
 ## 통합 검증
 
-`python3 scripts/verify_runtime.py`는 UI API에 실제 명령을 보내고 다음을 확인한다.
+`python3 -m scripts.verify_runtime`는 UI API에 실제 명령을 보내고 다음을 확인한다.
 
 1. 레벨 0에서 정상 HI와 센서/검사 이력 증가.
 2. 레벨 10에서 위험 HI, 인터락, 실제 Gazebo 롤러 속도 절댓값 <0.01.

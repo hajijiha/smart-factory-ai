@@ -1,5 +1,7 @@
 # 요구사항과 검증 결과
 
+2026년10월13일 최종 항목별 판정과 독립 검증 근거는 [전체53항목·선택3항목 검증표](completion-validation.md)에 있다.
+
 | 요구사항 | 구현 | 실측 근거 |
 |---|---|---|
 | Ubuntu22.04/Python≤3.11/Torch≥2/CPU | Dockerfile 두 개 | hardware.json: Ubuntu22.04.5, Python3.10.12, Torch2.5.1+cpu |

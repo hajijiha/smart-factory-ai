@@ -95,6 +95,8 @@ Detector FPS에는 Grad-CAM, JPEG 디코딩, 네트워크와 DB 저장 시간이
 
 [합성 데이터 편향 검증](docs/bias-validation.md)에 조건별 실패와 원시 결과, [모델 카드](artifacts/model-card.json)에 체크포인트 정보를 기록했다.
 
+[최종 요구사항 검증](docs/completion-validation.md)에 필수53항목과 선택3항목, 새clone9서비스기동 및 독립 검산 근거를 정리했다.
+
 ## 데이터 생성과 재학습
 
 학습용 센서·영상 원본은 Git에 포함되지 않는다. 아래 명령으로 Gazebo 데이터 생성부터 학습·평가·실행까지 재현한다.
@@ -119,8 +121,8 @@ PSI는 정상 학습 분포를 고정해128개 관측마다 최초 평가하고 
 
 ```bash
 docker compose run --rm --no-deps pdm python3 -m pytest tests -q
-python3 scripts/verify_runtime.py
-python3 scripts/verify_storage.py
+docker compose run --rm --no-deps pdm python3 -m scripts.verify_runtime --url http://dashboard:8080
+python3 -m scripts.verify_storage
 python3 -m scripts.measure_correlation --hold-seconds 30 --repeats 3
 docker compose run --rm --no-deps pdm python3 scripts/analyze_correlation.py
 ```
@@ -131,6 +133,7 @@ docker compose run --rm --no-deps pdm python3 scripts/analyze_correlation.py
 [JUnit 원본](docs/results/completion-v3/tests.xml)과 [온라인 추가 과제 검증](docs/results/completion-v3/optional-runtime.json)을 보존한다.
 
 `verify_runtime.py`는 전체 서비스가 실행 중일 때 레벨 10으로 위험 정지를 확인하고 정상으로 복구한다. 상관관계 측정 스크립트도 완료 후 레벨 0으로 복구한다.
+호스트에서 실행하는 DB·상관 검증 도구는 Python3와 PyYAML이 필요하다. 운영 서비스의 Python 환경은 Docker에 포함된다.
 
 ## 문서
 

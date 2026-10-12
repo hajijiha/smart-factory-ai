@@ -42,6 +42,8 @@ age, failure time, wear level, RUL label, 개체 ID와 split은 입력하지 않
 별도 실행의 [위험 정지·복구](results/completion-v3/process-runtime.json)와
 [일반 운전 복귀 후 재검증](results/completion-v3/process-runtime-restored.json)도 통과했다.
 
+![별도 시험 개체와 실제 온라인 실행의 RUL](results/completion-v3/rul-validation.png)
+
 ## 고정 PSI 기준과 알람
 
 원본 v1의 정상 train3,500개로만 RMS·spectral energy·BPFO·BPFI의8개 분위수 bin을 맞춘다.

@@ -1,0 +1,388 @@
+ Image smart-factory-runtime:local Building 
+ Image smart-factory-runtime:local Building 
+ Image smart-factory-independent-clean-20261013-simulator Building 
+ Image smart-factory-runtime:local Building 
+ Image smart-factory-runtime:local Building 
+ Image smart-factory-runtime:local Building 
+ Image smart-factory-runtime:local Building 
+#1 [internal] load local bake definitions
+#1 reading from stdin 3.86kB done
+#1 DONE 0.0s
+
+#2 [pdm internal] load build definition from Dockerfile
+#2 transferring dockerfile:
+#2 transferring dockerfile: 578B 0.1s done
+#2 DONE 1.1s
+
+#3 [simulator internal] load build definition from Dockerfile
+#3 transferring dockerfile: 1.29kB 0.0s done
+#3 DONE 1.1s
+
+#4 [simulator internal] load metadata for docker.io/osrf/ros:humble-desktop-full
+#4 DONE 0.1s
+
+#5 [vision internal] load metadata for docker.io/library/ubuntu:22.04
+#5 ...
+
+#6 [simulator internal] load .dockerignore
+#6 transferring context: 113B 0.0s done
+#6 DONE 0.1s
+
+#7 [simulator internal] load build context
+#7 DONE 0.0s
+
+#8 [simulator 1/7] FROM docker.io/osrf/ros:humble-desktop-full@sha256:1db1e4e941d4f77fab55bcd479158a75273329335e86ec468bff280859e8178c
+#8 resolve docker.io/osrf/ros:humble-desktop-full@sha256:1db1e4e941d4f77fab55bcd479158a75273329335e86ec468bff280859e8178c 0.1s done
+#8 DONE 0.1s
+
+#7 [simulator internal] load build context
+#7 transferring context: 13.96MB 0.3s done
+#7 DONE 0.5s
+
+#9 [simulator 2/7] RUN apt-get update && apt-get install -y --no-install-recommends ros-humble-gazebo-ros-pkgs libgazebo-dev nlohmann-json3-dev xvfb mesa-utils python3-pip python3-scipy python3-opencv && rm -rf /var/lib/apt/lists/*
+#9 CACHED
+
+#10 [simulator 3/7] RUN pip3 install --no-cache-dir paho-mqtt==2.1.0 PyYAML==6.0.2
+#10 CACHED
+
+#11 [simulator 4/7] WORKDIR /app
+#11 CACHED
+
+#12 [simulator 5/7] COPY . .
+#12 DONE 0.2s
+
+#5 [vision internal] load metadata for docker.io/library/ubuntu:22.04
+#5 ...
+
+#13 [auth] library/ubuntu:pull token for registry-1.docker.io
+#13 DONE 0.0s
+
+#14 [simulator 6/7] RUN . /opt/ros/humble/setup.sh && cmake -S simulator/plugin -B /tmp/factory-build && cmake --build /tmp/factory-build -j4 && cp /tmp/factory-build/libfactory_world.so /app/simulator/
+#14 ...
+
+#6 [pdm internal] load .dockerignore
+#6 transferring context: 113B 0.0s done
+#6 DONE 0.1s
+
+#7 [controller internal] load build context
+#7 transferring context: 13.96MB 0.3s done
+#7 DONE 0.5s
+
+#5 [dashboard internal] load metadata for docker.io/library/ubuntu:22.04
+#5 DONE 2.0s
+
+#15 [pdm 1/7] FROM docker.io/library/ubuntu:22.04@sha256:5ec03bb3441e8b0bf3b4f9cd4629a1ae763010dc3035bb8da3ae6cf026486401
+#15 resolve docker.io/library/ubuntu:22.04@sha256:5ec03bb3441e8b0bf3b4f9cd4629a1ae763010dc3035bb8da3ae6cf026486401 0.1s done
+#15 DONE 0.1s
+
+#16 [storage 3/7] WORKDIR /app
+#16 CACHED
+
+#17 [storage 4/7] RUN pip3 install --no-cache-dir torch==2.5.1+cpu torchvision==0.20.1+cpu --index-url https://download.pytorch.org/whl/cpu
+#17 CACHED
+
+#18 [storage 5/7] COPY requirements.txt .
+#18 CACHED
+
+#19 [storage 2/7] RUN apt-get update && apt-get install -y --no-install-recommends python3 python3-pip libglib2.0-0 libgl1 ca-certificates && rm -rf /var/lib/apt/lists/*
+#19 CACHED
+
+#20 [storage 6/7] RUN pip3 install --no-cache-dir -r requirements.txt
+#20 CACHED
+
+#21 [dashboard 7/7] COPY . .
+#21 DONE 0.2s
+
+#22 [pdm] exporting to image
+#22 exporting layers
+#22 exporting layers 1.6s done
+#22 exporting manifest sha256:32f6c6edfaf12b6e1124319d07c426614ab1e858b8db1fbaecdc281962cd46c7
+#22 exporting manifest sha256:32f6c6edfaf12b6e1124319d07c426614ab1e858b8db1fbaecdc281962cd46c7 0.2s done
+#22 exporting config sha256:2cf24a09892c15168b3a0cc19d5b270fab70f650b6677fc03c94e97d9714cc52
+#22 exporting config sha256:2cf24a09892c15168b3a0cc19d5b270fab70f650b6677fc03c94e97d9714cc52 0.2s done
+#22 exporting attestation manifest sha256:b8e752606da80e9074d587171663a567c259ddda79207d2523e76c83b74316ab
+#22 exporting attestation manifest sha256:b8e752606da80e9074d587171663a567c259ddda79207d2523e76c83b74316ab 0.4s done
+#22 exporting manifest list sha256:db26984b9ff32bee91e056e6201c35424879492fa594ae8129eb51cca8283177
+#22 exporting manifest list sha256:db26984b9ff32bee91e056e6201c35424879492fa594ae8129eb51cca8283177 0.2s done
+#22 naming to docker.io/library/smart-factory-runtime:local
+#22 naming to docker.io/library/smart-factory-runtime:local 0.0s done
+#22 unpacking to docker.io/library/smart-factory-runtime:local
+#22 unpacking to docker.io/library/smart-factory-runtime:local 0.5s done
+#22 DONE 3.2s
+
+#23 [controller] exporting to image
+#23 exporting layers 1.6s done
+#23 exporting manifest sha256:df332176a4ca8f76d09cc000c3541f9f5b0e0b53261bce73c52cd100789bd907 0.2s done
+#23 exporting config sha256:fc679884881d6d4f0dc8474ab1d53dd15a4887ef7f0c9be14da47620bcb10280 0.2s done
+#23 exporting attestation manifest sha256:6165ed484be65e56972c2e27de385d9bfebf7358042d8fe99838ff41a28fd16b 0.4s done
+#23 exporting manifest list sha256:d74d35b62fef34f8e0f07e505250c3f5162a94970e6775fc67057f87bf12a2a2 0.2s done
+#23 naming to docker.io/library/smart-factory-runtime:local 0.1s done
+#23 unpacking to docker.io/library/smart-factory-runtime:local 0.5s done
+#23 DONE 3.3s
+
+#24 [dashboard] exporting to image
+#24 exporting layers 1.6s done
+#24 exporting manifest sha256:a57e285676455e45828e04217143ff31ea5d28492df4568693830b71ec0d776f 0.2s done
+#24 exporting config sha256:513c24a4e1f8b79482377a06a1f0151b3924471f2c72212d2a8d030645f1b759 0.2s done
+#24 exporting attestation manifest sha256:3765fb700760cf7b8093f7671cf08cfa48e54d667d8560026dfc990d3949e33a 0.4s done
+#24 exporting manifest list sha256:91aabc6624700f735f394856165278bcd12e7a8a608fe8a158f7a7c7b48132ea 0.2s done
+#24 naming to docker.io/library/smart-factory-runtime:local 0.0s done
+#24 unpacking to docker.io/library/smart-factory-runtime:local 0.5s done
+#24 DONE 3.3s
+
+#14 [simulator 6/7] RUN . /opt/ros/humble/setup.sh && cmake -S simulator/plugin -B /tmp/factory-build && cmake --build /tmp/factory-build -j4 && cp /tmp/factory-build/libfactory_world.so /app/simulator/
+#14 1.681 -- The C compiler identification is GNU 11.4.0
+#14 1.902 -- The CXX compiler identification is GNU 11.4.0
+#14 1.927 -- Detecting C compiler ABI info
+#14 2.135 -- Detecting C compiler ABI info - done
+#14 2.143 -- Check for working C compiler: /usr/bin/cc - skipped
+#14 2.145 -- Detecting C compile features
+#14 2.148 -- Detecting C compile features - done
+#14 2.156 -- Detecting CXX compiler ABI info
+#14 2.352 -- Detecting CXX compiler ABI info - done
+#14 2.365 -- Check for working CXX compiler: /usr/bin/c++ - skipped
+#14 2.366 -- Detecting CXX compile features
+#14 2.367 -- Detecting CXX compile features - done
+#14 2.403 CMake Warning (dev) at /usr/share/cmake-3.22/Modules/FindPackageHandleStandardArgs.cmake:438 (message):
+#14 2.403   The package name passed to `find_package_handle_standard_args` (PkgConfig)
+#14 2.403   does not match the name of the calling package (gazebo).  This can lead to
+#14 2.403   problems in calling code that expects `find_package` result variables
+#14 2.403   (e.g., `_FOUND`) to follow a certain pattern.
+#14 2.403 Call Stack (most recent call first):
+#14 2.403   /usr/share/cmake-3.22/Modules/FindPkgConfig.cmake:99 (find_package_handle_standard_args)
+#14 2.403   /usr/lib/x86_64-linux-gnu/cmake/gazebo/gazebo-config.cmake:72 (include)
+#14 2.403   CMakeLists.txt:3 (find_package)
+#14 2.403 This warning is for project developers.  Use -Wno-dev to suppress it.
+#14 2.403 
+#14 2.403 -- Found PkgConfig: /usr/bin/pkg-config (found version "0.29.2") 
+#14 2.418 -- Checking for module 'bullet>=2.82'
+#14 2.456 --   Found bullet, version 3.05
+#14 2.726 -- Found fcl: /usr/include (found suitable version "0.7.0", minimum required is "0.5.0") 
+#14 2.859 -- Found assimp: /usr/include (found version "5.2.0") 
+#14 2.912 -- Found DART: /usr/include (Required is at least version "6.6") found components: dart 
+#14 3.321 -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.74.0/BoostConfig.cmake (found suitable version "1.74.0", minimum required is "1.40.0") found components: thread system filesystem program_options regex iostreams date_time 
+#14 3.372 -- Found Protobuf: /usr/lib/x86_64-linux-gnu/libprotobuf.so (found version "3.12.4") 
+#14 3.391 -- Looking for ignition-math6 -- found version 6.16.0
+#14 3.420 -- Searching for dependencies of ignition-math6
+#14 3.424 -- Looking for OGRE...
+#14 3.425 -- OGRE_PREFIX_WATCH changed.
+#14 3.436 -- Checking for module 'OGRE'
+#14 3.472 --   Found OGRE, version 1.9.0
+#14 3.557 -- Found Ogre Ghadamon (1.9.0)
+#14 3.577 -- Found OGRE: optimized;/usr/lib/x86_64-linux-gnu/libOgreMain.so;debug;/usr/lib/x86_64-linux-gnu/libOgreMain.so
+#14 3.595 -- Looking for OGRE_Paging...
+#14 3.599 -- Found OGRE_Paging: optimized;/usr/lib/x86_64-linux-gnu/libOgrePaging.so;debug;/usr/lib/x86_64-linux-gnu/libOgrePaging.so
+#14 3.599 -- Looking for OGRE_Terrain...
+#14 3.602 -- Found OGRE_Terrain: optimized;/usr/lib/x86_64-linux-gnu/libOgreTerrain.so;debug;/usr/lib/x86_64-linux-gnu/libOgreTerrain.so
+#14 3.602 -- Looking for OGRE_Property...
+#14 3.611 -- Found OGRE_Property: optimized;/usr/lib/x86_64-linux-gnu/libOgreProperty.so;debug;/usr/lib/x86_64-linux-gnu/libOgreProperty.so
+#14 3.611 -- Looking for OGRE_RTShaderSystem...
+#14 3.617 -- Found OGRE_RTShaderSystem: optimized;/usr/lib/x86_64-linux-gnu/libOgreRTShaderSystem.so;debug;/usr/lib/x86_64-linux-gnu/libOgreRTShaderSystem.so
+#14 3.617 -- Looking for OGRE_Volume...
+#14 3.620 -- Found OGRE_Volume: optimized;/usr/lib/x86_64-linux-gnu/libOgreVolume.so;debug;/usr/lib/x86_64-linux-gnu/libOgreVolume.so
+#14 3.620 -- Looking for OGRE_Overlay...
+#14 3.629 -- Found OGRE_Overlay: optimized;/usr/lib/x86_64-linux-gnu/libOgreOverlay.so;debug;/usr/lib/x86_64-linux-gnu/libOgreOverlay.so
+#14 3.764 -- Looking for ignition-math6 -- found version 6.16.0
+#14 3.771 -- Looking for ignition-transport8 -- found version 8.2.1
+#14 3.772 -- Searching for dependencies of ignition-transport8
+#14 3.810 -- Found Protobuf: /usr/lib/x86_64-linux-gnu/libprotobuf.so (found suitable version "3.12.4", minimum required is "3") 
+#14 3.830 -- Config-file not installed for ZeroMQ -- checking for pkg-config
+#14 3.842 -- Checking for module 'libzmq >= 4'
+#14 3.874 --   Found libzmq , version 4.3.4
+#14 3.971 -- Found ZeroMQ: TRUE (Required is at least version "4") 
+#14 3.981 -- Checking for module 'uuid'
+#14 4.012 --   Found uuid, version 2.37.2
+#14 4.123 -- Found UUID: TRUE  
+#14 4.129 -- Looking for ignition-msgs5 -- found version 5.8.1
+#14 4.129 -- Searching for dependencies of ignition-msgs5
+#14 4.169 -- Looking for ignition-math6 -- found version 6.16.0
+#14 4.185 -- Checking for module 'tinyxml2'
+#14 4.243 --   Found tinyxml2, version 9.0.0
+#14 4.400 -- Looking for ignition-msgs5 -- found version 5.8.1
+#14 4.408 -- Looking for ignition-common3 -- found version 3.14.0
+#14 4.410 -- Searching for dependencies of ignition-common3
+#14 4.410 -- Looking for dlfcn.h - found
+#14 4.411 -- Looking for libdl - found
+#14 4.414 -- Found DL: TRUE  
+#14 4.443 -- Found tinyobjloader: /usr/lib/x86_64-linux-gnu/cmake/tinyobjloader/tinyobjloader-config.cmake (found version "2.0.0") 
+#14 4.445 -- Searching for <ignition-common3> component [graphics]
+#14 4.453 -- Looking for ignition-common3-graphics -- found version 3.14.0
+#14 4.458 -- Searching for dependencies of ignition-common3-graphics
+#14 4.458 -- Looking for ignition-math6 -- found version 6.16.0
+#14 4.462 -- Looking for ignition-fuel_tools4 -- found version 4.4.0
+#14 4.463 -- Searching for dependencies of ignition-fuel_tools4
+#14 ...
+
+#25 [prognostics] exporting to image
+#25 exporting layers 1.6s done
+#25 exporting manifest sha256:ed023edbab71aa8846a9e479606f2975d7dca71729bbb71016dcb26784a79768 0.2s done
+#25 exporting config sha256:d450cc9b12517ef357f6b071bf75dc53113f9abfbc32e91bf07fe67366ed3bb0 0.2s done
+#25 exporting attestation manifest sha256:f03bf56f866d5a36cc197c50dc299ebce04e2aaa0bfb1611b62676b6e7d6bb2f 0.4s done
+#25 exporting manifest list sha256:0a81784a52ecc9351cb77569190342710a92defc354c563af41df1d8e4643ab0 0.2s done
+#25 naming to docker.io/library/smart-factory-runtime:local 0.0s done
+#25 unpacking to docker.io/library/smart-factory-runtime:local 0.5s done
+#25 DONE 3.4s
+
+#26 [storage] exporting to image
+#26 exporting layers 1.6s done
+#26 exporting manifest sha256:e3ea326094456cfc99f44dfe842f4a287a801ded7ae44528e3ec3228ecf85b97 0.1s done
+#26 exporting config sha256:c4e78b5b1860a2f80318f25c3a7ff16893b2001a5cd7d00b16a94833c997beee 0.2s done
+#26 exporting attestation manifest sha256:a3ba87ba3f6f42c9bc4f4c53cb6126213dcd4f6bfd66e13fd9066f7ae0efc4c3 0.4s done
+#26 exporting manifest list sha256:8ad0ec90154c167bad0a02831a532f44402355156633b646e50a00594765c353 0.2s done
+#26 naming to docker.io/library/smart-factory-runtime:local 0.1s done
+#26 unpacking to docker.io/library/smart-factory-runtime:local 0.6s done
+#26 DONE 3.4s
+
+#27 [vision] exporting to image
+#27 exporting layers 1.6s done
+#27 exporting manifest sha256:2ff61e43bfa4496054b28ed1602cfb592dd7d30ecab4e859fa30f5c3921842df 0.2s done
+#27 exporting config sha256:b29558bcd383637199e35378863da1d1fa27d9fa24a15dad91a8b039e047f996 0.2s done
+#27 exporting attestation manifest sha256:db8981bed79a167600bea14dc253902e88ca6e3d8b2609d0c0cd1e295461d4bd 0.4s done
+#27 exporting manifest list sha256:b4e75e1447142673dbe0a491dfba07a513c9e8c18036062e08083606b45b50bc 0.3s done
+#27 naming to docker.io/library/smart-factory-runtime:local 0.0s done
+#27 unpacking to docker.io/library/smart-factory-runtime:local 0.5s done
+#27 DONE 3.6s
+
+#14 [simulator 6/7] RUN . /opt/ros/humble/setup.sh && cmake -S simulator/plugin -B /tmp/factory-build && cmake --build /tmp/factory-build -j4 && cp /tmp/factory-build/libfactory_world.so /app/simulator/
+#14 4.710 -- Found CURL: /usr/lib/x86_64-linux-gnu/libcurl.so (found version "7.81.0")  
+#14 4.743 -- Checking for module 'jsoncpp'
+#14 4.786 --   Found jsoncpp, version 1.9.5
+#14 4.899 -- Found JSONCPP: TRUE  
+#14 4.913 -- Checking for module 'libzip'
+#14 4.946 --   Found libzip, version 1.7.3
+#14 5.046 -- Found ZIP: TRUE  
+#14 5.046 -- Looking for ignition-common3 -- found version 3.14.0
+#14 5.046 -- Looking for ignition-math6 -- found version 6.16.0
+#14 5.046 -- Looking for ignition-msgs5 -- found version 5.8.1
+#14 5.076 -- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)
+#14 5.473 -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+#14 5.756 -- Found gazebo_ros: 3.9.0 (/opt/ros/humble/share/gazebo_ros/cmake)
+#14 5.886 -- Found rosidl_generator_c: 3.1.9 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+#14 5.893 -- Found rosidl_adapter: 3.1.9 (/opt/ros/humble/share/rosidl_adapter/cmake)
+#14 5.920 -- Found rosidl_generator_cpp: 3.1.9 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+#14 5.956 -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+#14 5.999 -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+#14 6.153 -- Found rmw_implementation_cmake: 6.1.3 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+#14 6.162 -- Found rmw_fastrtps_cpp: 6.2.10 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+#14 6.476 -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+#14 6.575 -- Found FastRTPS: /opt/ros/humble/include  
+#14 ...
+
+#28 [pdm] resolving provenance for metadata file
+#28 DONE 1.0s
+
+#29 [prognostics] resolving provenance for metadata file
+#29 DONE 0.3s
+
+#30 [controller] resolving provenance for metadata file
+#30 DONE 1.0s
+
+#31 [storage] resolving provenance for metadata file
+#31 DONE 0.9s
+
+#32 [vision] resolving provenance for metadata file
+#32 DONE 0.7s
+
+#33 [dashboard] resolving provenance for metadata file
+#33 DONE 0.0s
+
+#14 [simulator 6/7] RUN . /opt/ros/humble/setup.sh && cmake -S simulator/plugin -B /tmp/factory-build && cmake --build /tmp/factory-build -j4 && cp /tmp/factory-build/libfactory_world.so /app/simulator/
+#14 6.725 -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+#14 6.758 -- Found Threads: TRUE  
+#14 6.905 -- Gazebo version: 11.10
+#14 6.909 -- Checking for module 'tbb'
+#14 6.942 --   Found tbb, version 2021.5.0
+#14 7.082 -- Found sensor_msgs: 4.9.2 (/opt/ros/humble/share/sensor_msgs/cmake)
+#14 7.411 -- Configuring done
+#14 7.581 -- Generating done
+#14 7.586 -- Build files have been written to: /tmp/factory-build
+#14 7.721 [ 50%] Building CXX object CMakeFiles/factory_world.dir/world.cpp.o
+#14 74.54 [100%] Linking CXX shared library libfactory_world.so
+#14 78.00 [100%] Built target factory_world
+#14 DONE 78.2s
+
+#34 [simulator 7/7] RUN python3 -c 'import hashlib,json,pathlib; root=pathlib.Path("/app"); source=root/"simulator/plugin/world.cpp"; library=root/"simulator/libfactory_world.so"; value={"schema_version":1,"source_path":"simulator/plugin/world.cpp","library_path":"simulator/libfactory_world.so","source_sha256":hashlib.sha256(source.read_bytes()).hexdigest(),"library_sha256":hashlib.sha256(library.read_bytes()).hexdigest()}; (root/"simulator/plugin-build.json").write_text(json.dumps(value,sort_keys=True)+"\n")'
+#34 DONE 0.6s
+
+#35 [simulator] exporting to image
+#35 exporting layers
+#35 exporting layers 1.6s done
+#35 exporting manifest sha256:8296001d7ed57c68506e95a01819e54b995d473aee4829891d3020a43b7f3983 0.0s done
+#35 exporting config sha256:100159fed6f708a0a9ed3175e19e56b241d6f70eb0b9409f4f01cf1f17768f51 0.0s done
+#35 exporting attestation manifest sha256:baeeda3493e260424579986f4e696f349f321baf48c3699de445145ff5dd59c8
+#35 exporting attestation manifest sha256:baeeda3493e260424579986f4e696f349f321baf48c3699de445145ff5dd59c8 0.1s done
+#35 exporting manifest list sha256:1ca46c0109bee35b705971847d3f16029116c1a8b4e8e36410de423e562f447b 0.0s done
+#35 naming to docker.io/library/smart-factory-independent-clean-20261013-simulator:latest 0.0s done
+#35 unpacking to docker.io/library/smart-factory-independent-clean-20261013-simulator:latest
+#35 unpacking to docker.io/library/smart-factory-independent-clean-20261013-simulator:latest 0.6s done
+#35 DONE 2.5s
+
+#36 [simulator] resolving provenance for metadata file
+#36 DONE 0.0s
+ Image smart-factory-runtime:local Built 
+ Image smart-factory-runtime:local Built 
+ Image smart-factory-runtime:local Built 
+ Image smart-factory-runtime:local Built 
+ Image smart-factory-runtime:local Built 
+ Image smart-factory-independent-clean-20261013-simulator Built 
+ Image smart-factory-runtime:local Built 
+ Network smart-factory-independent-clean-20261013_default Creating 
+ Network smart-factory-independent-clean-20261013_default Created 
+ Volume smart-factory-independent-clean-20261013_mqtt-data Creating 
+ Volume smart-factory-independent-clean-20261013_mqtt-data Created 
+ Volume smart-factory-independent-clean-20261013_database-data Creating 
+ Volume smart-factory-independent-clean-20261013_database-data Created 
+ Container smart-factory-independent-clean-20261013-broker-1 Creating 
+ Container smart-factory-independent-clean-20261013-database-1 Creating 
+ Container smart-factory-independent-clean-20261013-broker-1 Created 
+ Container smart-factory-independent-clean-20261013-vision-1 Creating 
+ Container smart-factory-independent-clean-20261013-simulator-1 Creating 
+ Container smart-factory-independent-clean-20261013-controller-1 Creating 
+ Container smart-factory-independent-clean-20261013-pdm-1 Creating 
+ Container smart-factory-independent-clean-20261013-prognostics-1 Creating 
+ Container smart-factory-independent-clean-20261013-database-1 Created 
+ Container smart-factory-independent-clean-20261013-storage-1 Creating 
+ Container smart-factory-independent-clean-20261013-dashboard-1 Creating 
+ Container smart-factory-independent-clean-20261013-vision-1 Created 
+ Container smart-factory-independent-clean-20261013-controller-1 Created 
+ Container smart-factory-independent-clean-20261013-pdm-1 Created 
+ Container smart-factory-independent-clean-20261013-prognostics-1 Created 
+ Container smart-factory-independent-clean-20261013-dashboard-1 Created 
+ Container smart-factory-independent-clean-20261013-storage-1 Created 
+ Container smart-factory-independent-clean-20261013-simulator-1 Created 
+ Container smart-factory-independent-clean-20261013-database-1 Starting 
+ Container smart-factory-independent-clean-20261013-broker-1 Starting 
+ Container smart-factory-independent-clean-20261013-broker-1 Started 
+ Container smart-factory-independent-clean-20261013-broker-1 Waiting 
+ Container smart-factory-independent-clean-20261013-broker-1 Waiting 
+ Container smart-factory-independent-clean-20261013-broker-1 Waiting 
+ Container smart-factory-independent-clean-20261013-broker-1 Waiting 
+ Container smart-factory-independent-clean-20261013-broker-1 Waiting 
+ Container smart-factory-independent-clean-20261013-database-1 Started 
+ Container smart-factory-independent-clean-20261013-broker-1 Waiting 
+ Container smart-factory-independent-clean-20261013-database-1 Waiting 
+ Container smart-factory-independent-clean-20261013-broker-1 Waiting 
+ Container smart-factory-independent-clean-20261013-database-1 Waiting 
+ Container smart-factory-independent-clean-20261013-broker-1 Healthy 
+ Container smart-factory-independent-clean-20261013-broker-1 Healthy 
+ Container smart-factory-independent-clean-20261013-database-1 Healthy 
+ Container smart-factory-independent-clean-20261013-storage-1 Starting 
+ Container smart-factory-independent-clean-20261013-broker-1 Healthy 
+ Container smart-factory-independent-clean-20261013-vision-1 Starting 
+ Container smart-factory-independent-clean-20261013-broker-1 Healthy 
+ Container smart-factory-independent-clean-20261013-controller-1 Starting 
+ Container smart-factory-independent-clean-20261013-broker-1 Healthy 
+ Container smart-factory-independent-clean-20261013-simulator-1 Starting 
+ Container smart-factory-independent-clean-20261013-broker-1 Healthy 
+ Container smart-factory-independent-clean-20261013-pdm-1 Starting 
+ Container smart-factory-independent-clean-20261013-broker-1 Healthy 
+ Container smart-factory-independent-clean-20261013-prognostics-1 Starting 
+ Container smart-factory-independent-clean-20261013-database-1 Healthy 
+ Container smart-factory-independent-clean-20261013-dashboard-1 Starting 
+ Container smart-factory-independent-clean-20261013-storage-1 Started 
+ Container smart-factory-independent-clean-20261013-vision-1 Started 
+ Container smart-factory-independent-clean-20261013-prognostics-1 Started 
+ Container smart-factory-independent-clean-20261013-dashboard-1 Started 
+ Container smart-factory-independent-clean-20261013-pdm-1 Started 
+ Container smart-factory-independent-clean-20261013-simulator-1 Started 
+ Container smart-factory-independent-clean-20261013-controller-1 Started 

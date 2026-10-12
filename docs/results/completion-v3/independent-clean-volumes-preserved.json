@@ -1,0 +1,30 @@
+[
+    {
+        "CreatedAt": "2026-10-12T15:05:37Z",
+        "Driver": "local",
+        "Labels": {
+            "com.docker.compose.config-hash": "c144ff41376aa7fc72485e216e91636890af13f06e133fd25cf3cb40b8cd938f",
+            "com.docker.compose.project": "smart-factory-independent-clean-20261013",
+            "com.docker.compose.version": "5.1.0",
+            "com.docker.compose.volume": "database-data"
+        },
+        "Mountpoint": "/var/lib/docker/volumes/smart-factory-independent-clean-20261013_database-data/_data",
+        "Name": "smart-factory-independent-clean-20261013_database-data",
+        "Options": null,
+        "Scope": "local"
+    },
+    {
+        "CreatedAt": "2026-10-12T15:05:37Z",
+        "Driver": "local",
+        "Labels": {
+            "com.docker.compose.config-hash": "8dd3e194dfa5e20d2d7a1e8eb2d600999c1d8e282e8e07496b113537641d7ceb",
+            "com.docker.compose.project": "smart-factory-independent-clean-20261013",
+            "com.docker.compose.version": "5.1.0",
+            "com.docker.compose.volume": "mqtt-data"
+        },
+        "Mountpoint": "/var/lib/docker/volumes/smart-factory-independent-clean-20261013_mqtt-data/_data",
+        "Name": "smart-factory-independent-clean-20261013_mqtt-data",
+        "Options": null,
+        "Scope": "local"
+    }
+]

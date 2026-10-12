@@ -11,7 +11,7 @@ def audit(root, check_git=True):
     """Return all missing docstrings and commit-format violations without changing sources."""
     missing = []
     definitions = 0
-    for folder in ('factory', 'simulator', 'scripts', 'tests'):
+    for folder in ('factory', 'simulator', 'scripts', 'tests', 'docs'):
         for file in sorted((root / folder).rglob('*.py')):
             for node in ast.walk(ast.parse(file.read_text(encoding='utf-8-sig'))):
                 if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef, ast.ClassDef)):

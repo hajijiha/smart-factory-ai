@@ -15,5 +15,5 @@ docker compose run --rm pdm python3 scripts/render_results.py
 docker compose run --rm pdm python3 -m pytest tests -q
 bash scripts/run_optional_validation.sh
 docker compose up -d
-python3 scripts/verify_runtime.py
+docker compose run --rm --no-deps pdm python3 -m scripts.verify_runtime --url http://dashboard:8080
 echo 'Dashboard: http://localhost:8080'
