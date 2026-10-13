@@ -1,0 +1,109 @@
+{
+  "passed": true,
+  "observed_at": "2026-10-13T13:27:44.641428+00:00",
+  "restart_index": 1,
+  "previous_run_id": "factory-1791897994262674",
+  "run_id": "factory-1791898052542692",
+  "wait_seconds": 10.969000000040978,
+  "initial_observation": {
+    "run_id": "factory-1791898052542692",
+    "sequence": 62,
+    "sim_time": 5.148,
+    "cameras": {
+      "inspection": {
+        "timestamp": "2026-10-13T13:27:38.088Z",
+        "sim_time": 5.024,
+        "run_id": "factory-1791898052542692",
+        "sequence": 8,
+        "age_ms": 159.9,
+        "stale": false
+      },
+      "overview": {
+        "timestamp": "2026-10-13T13:27:38.093Z",
+        "sim_time": 5.024,
+        "run_id": "factory-1791898052542692",
+        "sequence": 1,
+        "age_ms": 154.9,
+        "stale": false
+      }
+    }
+  },
+  "final_observation": {
+    "sequence": 88,
+    "sim_time": 7.38,
+    "world_age_ms": 10.4,
+    "cameras": {
+      "inspection": {
+        "timestamp": "2026-10-13T13:27:40.231Z",
+        "sim_time": 7.024,
+        "run_id": "factory-1791898052542692",
+        "sequence": 12,
+        "age_ms": 379.4,
+        "stale": false
+      },
+      "overview": {
+        "timestamp": "2026-10-13T13:27:39.501Z",
+        "sim_time": 6.356,
+        "run_id": "factory-1791898052542692",
+        "sequence": 3,
+        "age_ms": 1109.4,
+        "stale": false
+      }
+    }
+  },
+  "actual_jpeg_frames": {
+    "inspection": {
+      "size": [
+        320,
+        320
+      ],
+      "bytes": 15237,
+      "sha256": "843ba618d286d40a1feb029209033a924ca7e3d833678e73fd7fcb591127e2d5",
+      "headers": {
+        "Content-Type": "image/jpeg",
+        "X-Observed-At": "2026-10-13T13:27:42.317Z",
+        "X-Sim-Time": "8.856",
+        "X-Frame-Sequence": "16"
+      },
+      "path": "C:\\Users\\gkwlg\\OneDrive\\Documents\\ChatGPT\\smart factory\\smart-factory-ai\\docs\\results\\factory-web-v1\\display-restart-1-inspection.jpg"
+    },
+    "overview": {
+      "size": [
+        640,
+        360
+      ],
+      "bytes": 20208,
+      "sha256": "854237a7f26e0ebba1cf6b985fbe47f2bd483e7654bda92affdcaf2200246397",
+      "headers": {
+        "Content-Type": "image/jpeg",
+        "X-Observed-At": "2026-10-13T13:27:42.881Z",
+        "X-Sim-Time": "9.356",
+        "X-Frame-Sequence": "6"
+      },
+      "path": "C:\\Users\\gkwlg\\OneDrive\\Documents\\ChatGPT\\smart factory\\smart-factory-ai\\docs\\results\\factory-web-v1\\display-restart-1-overview.jpg"
+    }
+  },
+  "xvfb_process_evidence": {
+    "display": ":0",
+    "xvfb": [
+      {
+        "pid": "16",
+        "args": [
+          "Xvfb",
+          "-displayfd",
+          "3",
+          "-screen",
+          "0",
+          "1024x768x24",
+          "-nolisten",
+          "tcp",
+          ""
+        ]
+      }
+    ],
+    "sockets": [
+      "X0"
+    ],
+    "locks": []
+  }
+}

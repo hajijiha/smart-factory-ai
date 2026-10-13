@@ -1,0 +1,2631 @@
+{
+  "duration_seconds": 30.041066056997806,
+  "scope": "Single main9service stack; root30minute observer and PdM/control collection may be active; read-only raw MQTT/API trace",
+  "condition": "Additional clean Gazebo/service stack stopped before this trace; no service, camera or guard changes",
+  "started_at": "2026-10-13T13:54:31.472+00:00",
+  "summary": {
+    "overview": {
+      "messages": 18,
+      "observed_fps": 0.6541898617020935,
+      "maximum_receipt_gap_seconds": 4.295001993996266,
+      "gaps_over2seconds": 6,
+      "minimum_source_to_receipt_ms": 2.327,
+      "maximum_source_to_receipt_ms": 5.437
+    },
+    "inspection": {
+      "messages": 56,
+      "observed_fps": 1.8626088897373305,
+      "maximum_receipt_gap_seconds": 0.6672989270009566,
+      "gaps_over2seconds": 0,
+      "minimum_source_to_receipt_ms": 1.486,
+      "maximum_source_to_receipt_ms": 4.378
+    }
+  },
+  "raw_mqtt": {
+    "overview": [
+      {
+        "elapsed_seconds": 2.5223385990029783,
+        "received_at": "2026-10-13T13:54:33.983+00:00",
+        "source_timestamp": "2026-10-13T13:54:33.981Z",
+        "source_to_receipt_ms": 2.823,
+        "sim_time": 1371.632,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 27312
+      },
+      {
+        "elapsed_seconds": 2.8899412090031547,
+        "received_at": "2026-10-13T13:54:34.351+00:00",
+        "source_timestamp": "2026-10-13T13:54:34.346Z",
+        "source_to_receipt_ms": 5.437,
+        "sim_time": 1371.964,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 27240,
+        "receipt_gap_seconds": 0.36760261000017636
+      },
+      {
+        "elapsed_seconds": 5.451323330999003,
+        "received_at": "2026-10-13T13:54:36.912+00:00",
+        "source_timestamp": "2026-10-13T13:54:36.910Z",
+        "source_to_receipt_ms": 2.8240000000000003,
+        "sim_time": 1374.296,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 27404,
+        "receipt_gap_seconds": 2.561382121995848
+      },
+      {
+        "elapsed_seconds": 9.724438976001693,
+        "received_at": "2026-10-13T13:54:41.185+00:00",
+        "source_timestamp": "2026-10-13T13:54:41.183Z",
+        "source_to_receipt_ms": 2.9250000000000003,
+        "sim_time": 1378.296,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 27456,
+        "receipt_gap_seconds": 4.27311564500269
+      },
+      {
+        "elapsed_seconds": 11.814575431002595,
+        "received_at": "2026-10-13T13:54:43.276+00:00",
+        "source_timestamp": "2026-10-13T13:54:43.273Z",
+        "source_to_receipt_ms": 3.061,
+        "sim_time": 1380.3,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 27268,
+        "receipt_gap_seconds": 2.090136455000902
+      },
+      {
+        "elapsed_seconds": 12.161489181002253,
+        "received_at": "2026-10-13T13:54:43.622+00:00",
+        "source_timestamp": "2026-10-13T13:54:43.620Z",
+        "source_to_receipt_ms": 2.985,
+        "sim_time": 1380.632,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 27336,
+        "receipt_gap_seconds": 0.34691374999965774
+      },
+      {
+        "elapsed_seconds": 12.86500886399881,
+        "received_at": "2026-10-13T13:54:44.326+00:00",
+        "source_timestamp": "2026-10-13T13:54:44.323Z",
+        "source_to_receipt_ms": 3.5010000000000003,
+        "sim_time": 1381.296,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 27364,
+        "receipt_gap_seconds": 0.7035196829965571
+      },
+      {
+        "elapsed_seconds": 13.258957402002125,
+        "received_at": "2026-10-13T13:54:44.720+00:00",
+        "source_timestamp": "2026-10-13T13:54:44.717Z",
+        "source_to_receipt_ms": 3.4499999999999997,
+        "sim_time": 1381.632,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 27308,
+        "receipt_gap_seconds": 0.39394853800331475
+      },
+      {
+        "elapsed_seconds": 13.623502494003333,
+        "received_at": "2026-10-13T13:54:45.085+00:00",
+        "source_timestamp": "2026-10-13T13:54:45.082Z",
+        "source_to_receipt_ms": 3.049,
+        "sim_time": 1381.964,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 27460,
+        "receipt_gap_seconds": 0.3645450920012081
+      },
+      {
+        "elapsed_seconds": 14.681840730001568,
+        "received_at": "2026-10-13T13:54:46.143+00:00",
+        "source_timestamp": "2026-10-13T13:54:46.141Z",
+        "source_to_receipt_ms": 2.327,
+        "sim_time": 1382.964,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 27404,
+        "receipt_gap_seconds": 1.0583382359982352
+      },
+      {
+        "elapsed_seconds": 18.976842723997834,
+        "received_at": "2026-10-13T13:54:50.438+00:00",
+        "source_timestamp": "2026-10-13T13:54:50.436Z",
+        "source_to_receipt_ms": 2.327,
+        "sim_time": 1386.964,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 27396,
+        "receipt_gap_seconds": 4.295001993996266
+      },
+      {
+        "elapsed_seconds": 22.12794615599705,
+        "received_at": "2026-10-13T13:54:53.589+00:00",
+        "source_timestamp": "2026-10-13T13:54:53.587Z",
+        "source_to_receipt_ms": 2.44,
+        "sim_time": 1389.964,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 27276,
+        "receipt_gap_seconds": 3.1511034319992177
+      },
+      {
+        "elapsed_seconds": 24.584449201996904,
+        "received_at": "2026-10-13T13:54:56.045+00:00",
+        "source_timestamp": "2026-10-13T13:54:56.041Z",
+        "source_to_receipt_ms": 4.9350000000000005,
+        "sim_time": 1392.296,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 27236,
+        "receipt_gap_seconds": 2.4565030459998525
+      },
+      {
+        "elapsed_seconds": 26.339386744002695,
+        "received_at": "2026-10-13T13:54:57.800+00:00",
+        "source_timestamp": "2026-10-13T13:54:57.798Z",
+        "source_to_receipt_ms": 2.873,
+        "sim_time": 1393.964,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 27316,
+        "receipt_gap_seconds": 1.7549375420057913
+      },
+      {
+        "elapsed_seconds": 27.37502419899829,
+        "received_at": "2026-10-13T13:54:58.836+00:00",
+        "source_timestamp": "2026-10-13T13:54:58.833Z",
+        "source_to_receipt_ms": 3.513,
+        "sim_time": 1394.964,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 27380,
+        "receipt_gap_seconds": 1.0356374549955945
+      },
+      {
+        "elapsed_seconds": 27.722799285998917,
+        "received_at": "2026-10-13T13:54:59.184+00:00",
+        "source_timestamp": "2026-10-13T13:54:59.181Z",
+        "source_to_receipt_ms": 3.284,
+        "sim_time": 1395.296,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 27228,
+        "receipt_gap_seconds": 0.34777508700062754
+      },
+      {
+        "elapsed_seconds": 28.143708684001467,
+        "received_at": "2026-10-13T13:54:59.605+00:00",
+        "source_timestamp": "2026-10-13T13:54:59.602Z",
+        "source_to_receipt_ms": 3.197,
+        "sim_time": 1395.632,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 27464,
+        "receipt_gap_seconds": 0.42090939800255
+      },
+      {
+        "elapsed_seconds": 28.508678338002937,
+        "received_at": "2026-10-13T13:54:59.970+00:00",
+        "source_timestamp": "2026-10-13T13:54:59.967Z",
+        "source_to_receipt_ms": 3.164,
+        "sim_time": 1395.964,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 27312,
+        "receipt_gap_seconds": 0.3649696540014702
+      }
+    ],
+    "inspection": [
+      {
+        "elapsed_seconds": 0.16298239000025205,
+        "received_at": "2026-10-13T13:54:31.624+00:00",
+        "source_timestamp": "2026-10-13T13:54:31.621Z",
+        "source_to_receipt_ms": 3.509,
+        "sim_time": 1369.392,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 16420
+      },
+      {
+        "elapsed_seconds": 0.6802059320034459,
+        "received_at": "2026-10-13T13:54:32.141+00:00",
+        "source_timestamp": "2026-10-13T13:54:32.139Z",
+        "source_to_receipt_ms": 2.712,
+        "sim_time": 1369.892,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 17604,
+        "receipt_gap_seconds": 0.5172235420031939
+      },
+      {
+        "elapsed_seconds": 1.2050774879971868,
+        "received_at": "2026-10-13T13:54:32.666+00:00",
+        "source_timestamp": "2026-10-13T13:54:32.664Z",
+        "source_to_receipt_ms": 2.591,
+        "sim_time": 1370.392,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 17600,
+        "receipt_gap_seconds": 0.5248715559937409
+      },
+      {
+        "elapsed_seconds": 1.7136624850027147,
+        "received_at": "2026-10-13T13:54:33.175+00:00",
+        "source_timestamp": "2026-10-13T13:54:33.173Z",
+        "source_to_receipt_ms": 2.157,
+        "sim_time": 1370.892,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 17600,
+        "receipt_gap_seconds": 0.5085849970055278
+      },
+      {
+        "elapsed_seconds": 2.265006153000286,
+        "received_at": "2026-10-13T13:54:33.726+00:00",
+        "source_timestamp": "2026-10-13T13:54:33.724Z",
+        "source_to_receipt_ms": 2.49,
+        "sim_time": 1371.396,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 17224,
+        "receipt_gap_seconds": 0.5513436679975712
+      },
+      {
+        "elapsed_seconds": 2.7955943300039507,
+        "received_at": "2026-10-13T13:54:34.257+00:00",
+        "source_timestamp": "2026-10-13T13:54:34.255Z",
+        "source_to_receipt_ms": 2.091,
+        "sim_time": 1371.896,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 17168,
+        "receipt_gap_seconds": 0.5305881770036649
+      },
+      {
+        "elapsed_seconds": 3.3982967609990737,
+        "received_at": "2026-10-13T13:54:34.859+00:00",
+        "source_timestamp": "2026-10-13T13:54:34.857Z",
+        "source_to_receipt_ms": 2.7889999999999997,
+        "sim_time": 1372.396,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 16204,
+        "receipt_gap_seconds": 0.602702430995123
+      },
+      {
+        "elapsed_seconds": 3.9470768539977144,
+        "received_at": "2026-10-13T13:54:35.408+00:00",
+        "source_timestamp": "2026-10-13T13:54:35.406Z",
+        "source_to_receipt_ms": 2.574,
+        "sim_time": 1372.896,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 15836,
+        "receipt_gap_seconds": 0.5487800929986406
+      },
+      {
+        "elapsed_seconds": 4.494919876000495,
+        "received_at": "2026-10-13T13:54:35.956+00:00",
+        "source_timestamp": "2026-10-13T13:54:35.954Z",
+        "source_to_receipt_ms": 2.417,
+        "sim_time": 1373.396,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 17068,
+        "receipt_gap_seconds": 0.5478430220027803
+      },
+      {
+        "elapsed_seconds": 5.021606624999549,
+        "received_at": "2026-10-13T13:54:36.483+00:00",
+        "source_timestamp": "2026-10-13T13:54:36.481Z",
+        "source_to_receipt_ms": 2.095,
+        "sim_time": 1373.9,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 16988,
+        "receipt_gap_seconds": 0.5266867489990545
+      },
+      {
+        "elapsed_seconds": 5.549679907002428,
+        "received_at": "2026-10-13T13:54:37.011+00:00",
+        "source_timestamp": "2026-10-13T13:54:37.009Z",
+        "source_to_receipt_ms": 2.1719999999999997,
+        "sim_time": 1374.4,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 17136,
+        "receipt_gap_seconds": 0.5280732820028788
+      },
+      {
+        "elapsed_seconds": 6.0690831870015245,
+        "received_at": "2026-10-13T13:54:37.530+00:00",
+        "source_timestamp": "2026-10-13T13:54:37.528Z",
+        "source_to_receipt_ms": 2.578,
+        "sim_time": 1374.9,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 16688,
+        "receipt_gap_seconds": 0.5194032799990964
+      },
+      {
+        "elapsed_seconds": 6.59945560900087,
+        "received_at": "2026-10-13T13:54:38.060+00:00",
+        "source_timestamp": "2026-10-13T13:54:38.058Z",
+        "source_to_receipt_ms": 2.9979999999999998,
+        "sim_time": 1375.4,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 16924,
+        "receipt_gap_seconds": 0.5303724219993455
+      },
+      {
+        "elapsed_seconds": 7.125316700999974,
+        "received_at": "2026-10-13T13:54:38.586+00:00",
+        "source_timestamp": "2026-10-13T13:54:38.584Z",
+        "source_to_receipt_ms": 2.801,
+        "sim_time": 1375.9,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 16640,
+        "receipt_gap_seconds": 0.5258610919991042
+      },
+      {
+        "elapsed_seconds": 7.701950765003858,
+        "received_at": "2026-10-13T13:54:39.163+00:00",
+        "source_timestamp": "2026-10-13T13:54:39.161Z",
+        "source_to_receipt_ms": 2.4459999999999997,
+        "sim_time": 1376.4,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 15980,
+        "receipt_gap_seconds": 0.5766340640038834
+      },
+      {
+        "elapsed_seconds": 8.249126709997654,
+        "received_at": "2026-10-13T13:54:39.710+00:00",
+        "source_timestamp": "2026-10-13T13:54:39.708Z",
+        "source_to_receipt_ms": 2.608,
+        "sim_time": 1376.9,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 16260,
+        "receipt_gap_seconds": 0.5471759449937963
+      },
+      {
+        "elapsed_seconds": 8.775055678001081,
+        "received_at": "2026-10-13T13:54:40.236+00:00",
+        "source_timestamp": "2026-10-13T13:54:40.234Z",
+        "source_to_receipt_ms": 2.542,
+        "sim_time": 1377.4,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 17192,
+        "receipt_gap_seconds": 0.5259289680034271
+      },
+      {
+        "elapsed_seconds": 9.293524298998818,
+        "received_at": "2026-10-13T13:54:40.754+00:00",
+        "source_timestamp": "2026-10-13T13:54:40.753Z",
+        "source_to_receipt_ms": 2.0149999999999997,
+        "sim_time": 1377.9,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 17624,
+        "receipt_gap_seconds": 0.5184686209977372
+      },
+      {
+        "elapsed_seconds": 9.840849446998618,
+        "received_at": "2026-10-13T13:54:41.302+00:00",
+        "source_timestamp": "2026-10-13T13:54:41.300Z",
+        "source_to_receipt_ms": 2.34,
+        "sim_time": 1378.404,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 17592,
+        "receipt_gap_seconds": 0.5473251479997998
+      },
+      {
+        "elapsed_seconds": 10.36162393700215,
+        "received_at": "2026-10-13T13:54:41.823+00:00",
+        "source_timestamp": "2026-10-13T13:54:41.820Z",
+        "source_to_receipt_ms": 3.108,
+        "sim_time": 1378.908,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 17260,
+        "receipt_gap_seconds": 0.5207744900035323
+      },
+      {
+        "elapsed_seconds": 10.883350315998541,
+        "received_at": "2026-10-13T13:54:42.344+00:00",
+        "source_timestamp": "2026-10-13T13:54:42.342Z",
+        "source_to_receipt_ms": 2.856,
+        "sim_time": 1379.408,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 17776,
+        "receipt_gap_seconds": 0.5217263789963908
+      },
+      {
+        "elapsed_seconds": 11.401523323998845,
+        "received_at": "2026-10-13T13:54:42.862+00:00",
+        "source_timestamp": "2026-10-13T13:54:42.861Z",
+        "source_to_receipt_ms": 2.0170000000000003,
+        "sim_time": 1379.908,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 16924,
+        "receipt_gap_seconds": 0.5181730080003035
+      },
+      {
+        "elapsed_seconds": 11.921211164997658,
+        "received_at": "2026-10-13T13:54:43.382+00:00",
+        "source_timestamp": "2026-10-13T13:54:43.380Z",
+        "source_to_receipt_ms": 2.726,
+        "sim_time": 1380.412,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 16972,
+        "receipt_gap_seconds": 0.519687840998813
+      },
+      {
+        "elapsed_seconds": 12.455226126003254,
+        "received_at": "2026-10-13T13:54:43.916+00:00",
+        "source_timestamp": "2026-10-13T13:54:43.914Z",
+        "source_to_receipt_ms": 2.732,
+        "sim_time": 1380.92,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 17352,
+        "receipt_gap_seconds": 0.534014961005596
+      },
+      {
+        "elapsed_seconds": 13.013598443001683,
+        "received_at": "2026-10-13T13:54:44.475+00:00",
+        "source_timestamp": "2026-10-13T13:54:44.472Z",
+        "source_to_receipt_ms": 3.091,
+        "sim_time": 1381.416,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 18096,
+        "receipt_gap_seconds": 0.5583723169984296
+      },
+      {
+        "elapsed_seconds": 13.561283100003493,
+        "received_at": "2026-10-13T13:54:45.022+00:00",
+        "source_timestamp": "2026-10-13T13:54:45.020Z",
+        "source_to_receipt_ms": 2.779,
+        "sim_time": 1381.916,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 18096,
+        "receipt_gap_seconds": 0.5476846570018097
+      },
+      {
+        "elapsed_seconds": 14.09656430999894,
+        "received_at": "2026-10-13T13:54:45.558+00:00",
+        "source_timestamp": "2026-10-13T13:54:45.555Z",
+        "source_to_receipt_ms": 3.079,
+        "sim_time": 1382.416,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 18408,
+        "receipt_gap_seconds": 0.5352812099954463
+      },
+      {
+        "elapsed_seconds": 14.628909101003956,
+        "received_at": "2026-10-13T13:54:46.090+00:00",
+        "source_timestamp": "2026-10-13T13:54:46.088Z",
+        "source_to_receipt_ms": 2.405,
+        "sim_time": 1382.916,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 18480,
+        "receipt_gap_seconds": 0.5323447910050163
+      },
+      {
+        "elapsed_seconds": 15.178893534000963,
+        "received_at": "2026-10-13T13:54:46.640+00:00",
+        "source_timestamp": "2026-10-13T13:54:46.637Z",
+        "source_to_receipt_ms": 3.379,
+        "sim_time": 1383.416,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 18544,
+        "receipt_gap_seconds": 0.5499844329970074
+      },
+      {
+        "elapsed_seconds": 15.84619246100192,
+        "received_at": "2026-10-13T13:54:47.307+00:00",
+        "source_timestamp": "2026-10-13T13:54:47.305Z",
+        "source_to_receipt_ms": 2.709,
+        "sim_time": 1384.084,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 18952,
+        "receipt_gap_seconds": 0.6672989270009566
+      },
+      {
+        "elapsed_seconds": 16.364709243003745,
+        "received_at": "2026-10-13T13:54:47.826+00:00",
+        "source_timestamp": "2026-10-13T13:54:47.824Z",
+        "source_to_receipt_ms": 2.1919999999999997,
+        "sim_time": 1384.58,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 19912,
+        "receipt_gap_seconds": 0.518516782001825
+      },
+      {
+        "elapsed_seconds": 16.887314626997977,
+        "received_at": "2026-10-13T13:54:48.348+00:00",
+        "source_timestamp": "2026-10-13T13:54:48.347Z",
+        "source_to_receipt_ms": 1.824,
+        "sim_time": 1385.08,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 19548,
+        "receipt_gap_seconds": 0.5226053839942324
+      },
+      {
+        "elapsed_seconds": 17.41464689499844,
+        "received_at": "2026-10-13T13:54:48.876+00:00",
+        "source_timestamp": "2026-10-13T13:54:48.874Z",
+        "source_to_receipt_ms": 2.13,
+        "sim_time": 1385.584,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 21124,
+        "receipt_gap_seconds": 0.527332268000464
+      },
+      {
+        "elapsed_seconds": 18.03141529000277,
+        "received_at": "2026-10-13T13:54:49.492+00:00",
+        "source_timestamp": "2026-10-13T13:54:49.491Z",
+        "source_to_receipt_ms": 1.891,
+        "sim_time": 1386.084,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 20224,
+        "receipt_gap_seconds": 0.6167683950043283
+      },
+      {
+        "elapsed_seconds": 18.56286906800233,
+        "received_at": "2026-10-13T13:54:50.024+00:00",
+        "source_timestamp": "2026-10-13T13:54:50.022Z",
+        "source_to_receipt_ms": 2.371,
+        "sim_time": 1386.584,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 20844,
+        "receipt_gap_seconds": 0.531453777999559
+      },
+      {
+        "elapsed_seconds": 19.109848642001452,
+        "received_at": "2026-10-13T13:54:50.571+00:00",
+        "source_timestamp": "2026-10-13T13:54:50.567Z",
+        "source_to_receipt_ms": 4.378,
+        "sim_time": 1387.088,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 20112,
+        "receipt_gap_seconds": 0.5469795739991241
+      },
+      {
+        "elapsed_seconds": 19.634058429997822,
+        "received_at": "2026-10-13T13:54:51.095+00:00",
+        "source_timestamp": "2026-10-13T13:54:51.093Z",
+        "source_to_receipt_ms": 2.553,
+        "sim_time": 1387.588,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 20944,
+        "receipt_gap_seconds": 0.5242097879963694
+      },
+      {
+        "elapsed_seconds": 20.161129068001173,
+        "received_at": "2026-10-13T13:54:51.622+00:00",
+        "source_timestamp": "2026-10-13T13:54:51.620Z",
+        "source_to_receipt_ms": 2.624,
+        "sim_time": 1388.088,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 20408,
+        "receipt_gap_seconds": 0.5270706380033516
+      },
+      {
+        "elapsed_seconds": 20.68608440599928,
+        "received_at": "2026-10-13T13:54:52.147+00:00",
+        "source_timestamp": "2026-10-13T13:54:52.145Z",
+        "source_to_receipt_ms": 2.5860000000000003,
+        "sim_time": 1388.588,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 20608,
+        "receipt_gap_seconds": 0.524955337998108
+      },
+      {
+        "elapsed_seconds": 21.207283739997365,
+        "received_at": "2026-10-13T13:54:52.668+00:00",
+        "source_timestamp": "2026-10-13T13:54:52.666Z",
+        "source_to_receipt_ms": 2.7920000000000003,
+        "sim_time": 1389.088,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 20508,
+        "receipt_gap_seconds": 0.5211993339980836
+      },
+      {
+        "elapsed_seconds": 21.72679729400261,
+        "received_at": "2026-10-13T13:54:53.188+00:00",
+        "source_timestamp": "2026-10-13T13:54:53.186Z",
+        "source_to_receipt_ms": 2.281,
+        "sim_time": 1389.588,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 20548,
+        "receipt_gap_seconds": 0.5195135540052433
+      },
+      {
+        "elapsed_seconds": 22.249736664998636,
+        "received_at": "2026-10-13T13:54:53.711+00:00",
+        "source_timestamp": "2026-10-13T13:54:53.709Z",
+        "source_to_receipt_ms": 2.226,
+        "sim_time": 1390.088,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 19800,
+        "receipt_gap_seconds": 0.5229393709960277
+      },
+      {
+        "elapsed_seconds": 22.77437537899823,
+        "received_at": "2026-10-13T13:54:54.235+00:00",
+        "source_timestamp": "2026-10-13T13:54:54.233Z",
+        "source_to_receipt_ms": 2.908,
+        "sim_time": 1390.588,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 19356,
+        "receipt_gap_seconds": 0.5246387139995932
+      },
+      {
+        "elapsed_seconds": 23.32593669200287,
+        "received_at": "2026-10-13T13:54:54.787+00:00",
+        "source_timestamp": "2026-10-13T13:54:54.785Z",
+        "source_to_receipt_ms": 2.422,
+        "sim_time": 1391.092,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 19196,
+        "receipt_gap_seconds": 0.5515613130046404
+      },
+      {
+        "elapsed_seconds": 23.839756613000645,
+        "received_at": "2026-10-13T13:54:55.301+00:00",
+        "source_timestamp": "2026-10-13T13:54:55.299Z",
+        "source_to_receipt_ms": 2.422,
+        "sim_time": 1391.588,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 18832,
+        "receipt_gap_seconds": 0.5138199209977756
+      },
+      {
+        "elapsed_seconds": 24.36119970100117,
+        "received_at": "2026-10-13T13:54:55.822+00:00",
+        "source_timestamp": "2026-10-13T13:54:55.820Z",
+        "source_to_receipt_ms": 2.6830000000000003,
+        "sim_time": 1392.088,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 17924,
+        "receipt_gap_seconds": 0.5214430880005239
+      },
+      {
+        "elapsed_seconds": 24.879731822002213,
+        "received_at": "2026-10-13T13:54:56.341+00:00",
+        "source_timestamp": "2026-10-13T13:54:56.339Z",
+        "source_to_receipt_ms": 2.238,
+        "sim_time": 1392.588,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 18556,
+        "receipt_gap_seconds": 0.5185321210010443
+      },
+      {
+        "elapsed_seconds": 25.401621990997228,
+        "received_at": "2026-10-13T13:54:56.863+00:00",
+        "source_timestamp": "2026-10-13T13:54:56.860Z",
+        "source_to_receipt_ms": 3.106,
+        "sim_time": 1393.088,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 18108,
+        "receipt_gap_seconds": 0.5218901689950144
+      },
+      {
+        "elapsed_seconds": 25.92495838100149,
+        "received_at": "2026-10-13T13:54:57.386+00:00",
+        "source_timestamp": "2026-10-13T13:54:57.384Z",
+        "source_to_receipt_ms": 2.442,
+        "sim_time": 1393.588,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 18108,
+        "receipt_gap_seconds": 0.5233363900042605
+      },
+      {
+        "elapsed_seconds": 26.45200110699807,
+        "received_at": "2026-10-13T13:54:57.913+00:00",
+        "source_timestamp": "2026-10-13T13:54:57.912Z",
+        "source_to_receipt_ms": 1.486,
+        "sim_time": 1394.088,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 17272,
+        "receipt_gap_seconds": 0.52704272599658
+      },
+      {
+        "elapsed_seconds": 26.979676975002803,
+        "received_at": "2026-10-13T13:54:58.441+00:00",
+        "source_timestamp": "2026-10-13T13:54:58.439Z",
+        "source_to_receipt_ms": 2.169,
+        "sim_time": 1394.596,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 16924,
+        "receipt_gap_seconds": 0.5276758680047351
+      },
+      {
+        "elapsed_seconds": 27.500913128998945,
+        "received_at": "2026-10-13T13:54:58.962+00:00",
+        "source_timestamp": "2026-10-13T13:54:58.960Z",
+        "source_to_receipt_ms": 2.397,
+        "sim_time": 1395.096,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 16044,
+        "receipt_gap_seconds": 0.5212361539961421
+      },
+      {
+        "elapsed_seconds": 28.093213541003934,
+        "received_at": "2026-10-13T13:54:59.554+00:00",
+        "source_timestamp": "2026-10-13T13:54:59.551Z",
+        "source_to_receipt_ms": 3.7030000000000003,
+        "sim_time": 1395.596,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 16004,
+        "receipt_gap_seconds": 0.5923004120049882
+      },
+      {
+        "elapsed_seconds": 28.639879132002534,
+        "received_at": "2026-10-13T13:55:00.101+00:00",
+        "source_timestamp": "2026-10-13T13:55:00.099Z",
+        "source_to_receipt_ms": 2.367,
+        "sim_time": 1396.096,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 16688,
+        "receipt_gap_seconds": 0.5466655909986002
+      },
+      {
+        "elapsed_seconds": 29.157783050002763,
+        "received_at": "2026-10-13T13:55:00.619+00:00",
+        "source_timestamp": "2026-10-13T13:55:00.617Z",
+        "source_to_receipt_ms": 2.2889999999999997,
+        "sim_time": 1396.596,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 16912,
+        "receipt_gap_seconds": 0.5179039180002292
+      },
+      {
+        "elapsed_seconds": 29.69145737100189,
+        "received_at": "2026-10-13T13:55:01.152+00:00",
+        "source_timestamp": "2026-10-13T13:55:01.150Z",
+        "source_to_receipt_ms": 2.9589999999999996,
+        "sim_time": 1397.1,
+        "run_id": "factory-1791898116588790",
+        "encoded_length": 16952,
+        "receipt_gap_seconds": 0.5336743209991255
+      }
+    ]
+  },
+  "api_samples": [
+    {
+      "elapsed_seconds": 0.01151917200331809,
+      "received_at": "2026-10-13T13:54:31.472+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 189.7,
+      "world_sequence": 16872,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1369.256,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:31.094Z",
+          "sim_time": 1368.892,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2834,
+          "age_ms": 565.1,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:30.827Z",
+          "sim_time": 1368.632,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1355,
+          "age_ms": 832.1,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 0.514128205999441,
+      "received_at": "2026-10-13T13:54:31.975+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 37.0,
+      "world_sequence": 16878,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1369.7,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:31.621Z",
+          "sim_time": 1369.392,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2835,
+          "age_ms": 347.0,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:30.827Z",
+          "sim_time": 1368.632,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1355,
+          "age_ms": 1332.4,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 1.0122573589978856,
+      "received_at": "2026-10-13T13:54:32.473+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 83.8,
+      "world_sequence": 16883,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1370.136,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:32.139Z",
+          "sim_time": 1369.892,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2836,
+          "age_ms": 329.8,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:30.827Z",
+          "sim_time": 1368.632,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1355,
+          "age_ms": 1833.2,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 1.5169392910029273,
+      "received_at": "2026-10-13T13:54:32.978+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 37.9,
+      "world_sequence": 16889,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": true,
+      "sim_time": 1370.668,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:32.664Z",
+          "sim_time": 1370.392,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2837,
+          "age_ms": 306.9,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:30.827Z",
+          "sim_time": 1368.632,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1355,
+          "age_ms": 2335.4,
+          "stale": true
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 2.0139904620009474,
+      "received_at": "2026-10-13T13:54:33.475+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 74.3,
+      "world_sequence": 16894,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1371.108,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:33.173Z",
+          "sim_time": 1370.892,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2838,
+          "age_ms": 297.3,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:30.827Z",
+          "sim_time": 1368.632,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1355,
+          "age_ms": 2834.7,
+          "stale": true
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 2.5156117099977564,
+      "received_at": "2026-10-13T13:54:33.977+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 19.8,
+      "world_sequence": 16900,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1371.62,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:33.724Z",
+          "sim_time": 1371.396,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2839,
+          "age_ms": 247.8,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:30.827Z",
+          "sim_time": 1368.632,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1355,
+          "age_ms": 3336.2,
+          "stale": true
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 3.015823077999812,
+      "received_at": "2026-10-13T13:54:34.477+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 49.3,
+      "world_sequence": 16905,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1372.04,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:34.255Z",
+          "sim_time": 1371.896,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2840,
+          "age_ms": 216.3,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:34.346Z",
+          "sim_time": 1371.964,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1357,
+          "age_ms": 125.3,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 3.516619328998786,
+      "received_at": "2026-10-13T13:54:34.978+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 9.6,
+      "world_sequence": 16911,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1372.504,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:34.857Z",
+          "sim_time": 1372.396,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2841,
+          "age_ms": 115.6,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:34.346Z",
+          "sim_time": 1371.964,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1357,
+          "age_ms": 626.6,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 4.01515949700115,
+      "received_at": "2026-10-13T13:54:35.476+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 38.5,
+      "world_sequence": 16916,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1372.924,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:35.406Z",
+          "sim_time": 1372.896,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2842,
+          "age_ms": 65.5,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:34.346Z",
+          "sim_time": 1371.964,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1357,
+          "age_ms": 1125.5,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 4.515701320000517,
+      "received_at": "2026-10-13T13:54:35.977+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 90.1,
+      "world_sequence": 16921,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1373.332,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:35.954Z",
+          "sim_time": 1373.396,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2843,
+          "age_ms": 18.1,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:34.346Z",
+          "sim_time": 1371.964,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1357,
+          "age_ms": 1626.1,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 5.015468890000193,
+      "received_at": "2026-10-13T13:54:36.476+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 39.2,
+      "world_sequence": 16927,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1373.86,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:35.954Z",
+          "sim_time": 1373.396,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2843,
+          "age_ms": 518.3,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:34.346Z",
+          "sim_time": 1371.964,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1357,
+          "age_ms": 2126.3,
+          "stale": true
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 5.516103412002849,
+      "received_at": "2026-10-13T13:54:36.977+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 81.5,
+      "world_sequence": 16932,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": true,
+      "sim_time": 1374.296,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:36.481Z",
+          "sim_time": 1373.9,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2844,
+          "age_ms": 491.5,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:36.910Z",
+          "sim_time": 1374.296,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1358,
+          "age_ms": 62.5,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 6.025994169998739,
+      "received_at": "2026-10-13T13:54:37.487+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 38.3,
+      "world_sequence": 16938,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1374.82,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:37.009Z",
+          "sim_time": 1374.4,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2845,
+          "age_ms": 470.3,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:36.910Z",
+          "sim_time": 1374.296,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1358,
+          "age_ms": 569.3,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 6.517040639002516,
+      "received_at": "2026-10-13T13:54:37.978+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 77.9,
+      "world_sequence": 16943,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1375.256,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:37.528Z",
+          "sim_time": 1374.9,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2846,
+          "age_ms": 445.9,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:36.910Z",
+          "sim_time": 1374.296,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1358,
+          "age_ms": 1063.9,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 7.017654258997936,
+      "received_at": "2026-10-13T13:54:38.479+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 28.3,
+      "world_sequence": 16949,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1375.776,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:38.058Z",
+          "sim_time": 1375.4,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2847,
+          "age_ms": 416.3,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:36.910Z",
+          "sim_time": 1374.296,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1358,
+          "age_ms": 1564.3,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 7.5177616069995565,
+      "received_at": "2026-10-13T13:54:38.979+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 68.3,
+      "world_sequence": 16954,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1376.212,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:38.584Z",
+          "sim_time": 1375.9,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2848,
+          "age_ms": 390.3,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:36.910Z",
+          "sim_time": 1374.296,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1358,
+          "age_ms": 2064.3,
+          "stale": true
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 8.018598544003908,
+      "received_at": "2026-10-13T13:54:39.480+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 20.2,
+      "world_sequence": 16960,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1376.664,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:39.161Z",
+          "sim_time": 1376.4,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2849,
+          "age_ms": 314.2,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:36.910Z",
+          "sim_time": 1374.296,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1358,
+          "age_ms": 2565.2,
+          "stale": true
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 8.51882212000055,
+      "received_at": "2026-10-13T13:54:39.980+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 61.4,
+      "world_sequence": 16965,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1377.104,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:39.708Z",
+          "sim_time": 1376.9,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2850,
+          "age_ms": 267.4,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:36.910Z",
+          "sim_time": 1374.296,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1358,
+          "age_ms": 3065.4,
+          "stale": true
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 9.019969458997366,
+      "received_at": "2026-10-13T13:54:40.481+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 17.9,
+      "world_sequence": 16971,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1377.628,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:40.234Z",
+          "sim_time": 1377.4,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2851,
+          "age_ms": 242.9,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:36.910Z",
+          "sim_time": 1374.296,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1358,
+          "age_ms": 3566.9,
+          "stale": true
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 9.521194127002673,
+      "received_at": "2026-10-13T13:54:40.982+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 61.9,
+      "world_sequence": 16976,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": true,
+      "sim_time": 1378.064,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:40.753Z",
+          "sim_time": 1377.9,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2852,
+          "age_ms": 223.9,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:36.910Z",
+          "sim_time": 1374.296,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1358,
+          "age_ms": 4067.0,
+          "stale": true
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 10.024515883000277,
+      "received_at": "2026-10-13T13:54:41.485+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 14.3,
+      "world_sequence": 16982,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1378.576,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:41.300Z",
+          "sim_time": 1378.404,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2853,
+          "age_ms": 181.4,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:41.183Z",
+          "sim_time": 1378.296,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1359,
+          "age_ms": 298.4,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 10.522127411000838,
+      "received_at": "2026-10-13T13:54:41.983+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 52.6,
+      "world_sequence": 16987,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1379.016,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:41.820Z",
+          "sim_time": 1378.908,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2854,
+          "age_ms": 158.6,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:41.183Z",
+          "sim_time": 1378.296,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1359,
+          "age_ms": 795.6,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 11.026046054001199,
+      "received_at": "2026-10-13T13:54:42.487+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 15.2,
+      "world_sequence": 16993,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1379.54,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:42.342Z",
+          "sim_time": 1379.408,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2855,
+          "age_ms": 141.2,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:41.183Z",
+          "sim_time": 1378.296,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1359,
+          "age_ms": 1300.2,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 11.524136391002685,
+      "received_at": "2026-10-13T13:54:42.985+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 54.0,
+      "world_sequence": 16998,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1379.976,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:42.861Z",
+          "sim_time": 1379.908,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2856,
+          "age_ms": 118.0,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:41.183Z",
+          "sim_time": 1378.296,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1359,
+          "age_ms": 1796.1,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 12.023922904001665,
+      "received_at": "2026-10-13T13:54:43.485+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 10.5,
+      "world_sequence": 17004,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1380.5,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:43.380Z",
+          "sim_time": 1380.412,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2857,
+          "age_ms": 99.5,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:43.273Z",
+          "sim_time": 1380.3,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1360,
+          "age_ms": 206.5,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 12.524399201000051,
+      "received_at": "2026-10-13T13:54:43.985+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 53.6,
+      "world_sequence": 17009,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1380.94,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:43.914Z",
+          "sim_time": 1380.92,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2858,
+          "age_ms": 67.6,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:43.620Z",
+          "sim_time": 1380.632,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1361,
+          "age_ms": 361.6,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 13.025308898999356,
+      "received_at": "2026-10-13T13:54:44.486+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 80.3,
+      "world_sequence": 17014,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": true,
+      "sim_time": 1381.38,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:44.472Z",
+          "sim_time": 1381.416,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2859,
+          "age_ms": 9.4,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:44.323Z",
+          "sim_time": 1381.296,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1362,
+          "age_ms": 158.4,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 13.526551126000413,
+      "received_at": "2026-10-13T13:54:44.988+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 37.6,
+      "world_sequence": 17020,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": true,
+      "sim_time": 1381.856,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:44.472Z",
+          "sim_time": 1381.416,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2859,
+          "age_ms": 509.6,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:44.717Z",
+          "sim_time": 1381.632,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1363,
+          "age_ms": 264.6,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 14.025199577998137,
+      "received_at": "2026-10-13T13:54:45.486+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 82.3,
+      "world_sequence": 17025,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1382.276,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:45.020Z",
+          "sim_time": 1381.916,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2860,
+          "age_ms": 462.3,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:45.082Z",
+          "sim_time": 1381.964,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1364,
+          "age_ms": 400.3,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 14.527098962003947,
+      "received_at": "2026-10-13T13:54:45.988+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 32.8,
+      "world_sequence": 17031,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1382.792,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:45.555Z",
+          "sim_time": 1382.416,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2861,
+          "age_ms": 427.8,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:45.082Z",
+          "sim_time": 1381.964,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1364,
+          "age_ms": 900.9,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 15.026240441002301,
+      "received_at": "2026-10-13T13:54:46.487+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 73.4,
+      "world_sequence": 17036,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1383.232,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:46.088Z",
+          "sim_time": 1382.916,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2862,
+          "age_ms": 395.5,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:46.141Z",
+          "sim_time": 1382.964,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1365,
+          "age_ms": 342.5,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 15.526807289003045,
+      "received_at": "2026-10-13T13:54:46.988+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 25.9,
+      "world_sequence": 17042,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1383.756,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:46.637Z",
+          "sim_time": 1383.416,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2863,
+          "age_ms": 346.9,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:46.141Z",
+          "sim_time": 1382.964,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1365,
+          "age_ms": 842.9,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 16.029443204002746,
+      "received_at": "2026-10-13T13:54:47.490+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 69.9,
+      "world_sequence": 17047,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1384.196,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:47.305Z",
+          "sim_time": 1384.084,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2864,
+          "age_ms": 179.9,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:46.141Z",
+          "sim_time": 1382.964,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1365,
+          "age_ms": 1343.9,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 16.533244774000195,
+      "received_at": "2026-10-13T13:54:47.994+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 20.4,
+      "world_sequence": 17053,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1384.724,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:47.824Z",
+          "sim_time": 1384.58,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2865,
+          "age_ms": 163.4,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:46.141Z",
+          "sim_time": 1382.964,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1365,
+          "age_ms": 1846.4,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 17.03104055100266,
+      "received_at": "2026-10-13T13:54:48.492+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 57.0,
+      "world_sequence": 17058,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1385.168,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:48.347Z",
+          "sim_time": 1385.08,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2866,
+          "age_ms": 141.0,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:46.141Z",
+          "sim_time": 1382.964,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1365,
+          "age_ms": 2347.0,
+          "stale": true
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 17.533465467997303,
+      "received_at": "2026-10-13T13:54:48.994+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 102.8,
+      "world_sequence": 17063,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1385.6,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:48.874Z",
+          "sim_time": 1385.584,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2867,
+          "age_ms": 113.8,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:46.141Z",
+          "sim_time": 1382.964,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1365,
+          "age_ms": 2846.8,
+          "stale": true
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 18.030738251000002,
+      "received_at": "2026-10-13T13:54:49.492+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 38.7,
+      "world_sequence": 17069,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1386.056,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:48.874Z",
+          "sim_time": 1385.584,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2867,
+          "age_ms": 613.7,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:46.141Z",
+          "sim_time": 1382.964,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1365,
+          "age_ms": 3346.7,
+          "stale": true
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 18.536240075001842,
+      "received_at": "2026-10-13T13:54:49.997+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 86.4,
+      "world_sequence": 17074,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1386.484,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:49.491Z",
+          "sim_time": 1386.084,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2868,
+          "age_ms": 501.4,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:46.141Z",
+          "sim_time": 1382.964,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1365,
+          "age_ms": 3851.4,
+          "stale": true
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 19.032481533002283,
+      "received_at": "2026-10-13T13:54:50.493+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 35.2,
+      "world_sequence": 17080,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1386.992,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:50.022Z",
+          "sim_time": 1386.584,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2869,
+          "age_ms": 467.2,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:50.436Z",
+          "sim_time": 1386.964,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1366,
+          "age_ms": 53.2,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 19.536731924999913,
+      "received_at": "2026-10-13T13:54:50.998+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 76.7,
+      "world_sequence": 17085,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1387.428,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:50.567Z",
+          "sim_time": 1387.088,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2870,
+          "age_ms": 423.7,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:50.436Z",
+          "sim_time": 1386.964,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1366,
+          "age_ms": 554.7,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 20.036230577003153,
+      "received_at": "2026-10-13T13:54:51.497+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 26.9,
+      "world_sequence": 17091,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1387.948,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:51.093Z",
+          "sim_time": 1387.588,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2871,
+          "age_ms": 397.9,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:50.436Z",
+          "sim_time": 1386.964,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1366,
+          "age_ms": 1054.9,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 20.533776276002754,
+      "received_at": "2026-10-13T13:54:51.995+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 69.8,
+      "world_sequence": 17096,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1388.384,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:51.620Z",
+          "sim_time": 1388.088,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2872,
+          "age_ms": 370.8,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:50.436Z",
+          "sim_time": 1386.964,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1366,
+          "age_ms": 1554.8,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 21.034655832998396,
+      "received_at": "2026-10-13T13:54:52.496+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 20.7,
+      "world_sequence": 17102,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1388.912,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:52.145Z",
+          "sim_time": 1388.588,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2873,
+          "age_ms": 346.7,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:50.436Z",
+          "sim_time": 1386.964,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1366,
+          "age_ms": 2055.7,
+          "stale": true
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 21.536835181999777,
+      "received_at": "2026-10-13T13:54:52.998+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 65.9,
+      "world_sequence": 17107,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1389.352,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:52.666Z",
+          "sim_time": 1389.088,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2874,
+          "age_ms": 327.9,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:50.436Z",
+          "sim_time": 1386.964,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1366,
+          "age_ms": 2557.9,
+          "stale": true
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 22.03757654400397,
+      "received_at": "2026-10-13T13:54:53.499+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 13.4,
+      "world_sequence": 17113,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1389.876,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:53.186Z",
+          "sim_time": 1389.588,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2875,
+          "age_ms": 306.4,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:50.436Z",
+          "sim_time": 1386.964,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1366,
+          "age_ms": 3056.4,
+          "stale": true
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 22.536127582003246,
+      "received_at": "2026-10-13T13:54:53.997+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 57.1,
+      "world_sequence": 17118,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1390.316,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:53.709Z",
+          "sim_time": 1390.088,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2876,
+          "age_ms": 284.1,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:53.587Z",
+          "sim_time": 1389.964,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1367,
+          "age_ms": 406.2,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 23.039955603002454,
+      "received_at": "2026-10-13T13:54:54.501+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 101.8,
+      "world_sequence": 17123,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1390.756,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:54.233Z",
+          "sim_time": 1390.588,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2877,
+          "age_ms": 260.9,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:53.587Z",
+          "sim_time": 1389.964,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1367,
+          "age_ms": 906.9,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 23.53959301100258,
+      "received_at": "2026-10-13T13:54:55.001+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 51.0,
+      "world_sequence": 17129,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1391.256,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:54.785Z",
+          "sim_time": 1391.092,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2878,
+          "age_ms": 210.0,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:53.587Z",
+          "sim_time": 1389.964,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1367,
+          "age_ms": 1408.0,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 24.038824757997645,
+      "received_at": "2026-10-13T13:54:55.500+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 92.2,
+      "world_sequence": 17134,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1391.696,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:55.299Z",
+          "sim_time": 1391.588,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2879,
+          "age_ms": 196.2,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:53.587Z",
+          "sim_time": 1389.964,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1367,
+          "age_ms": 1908.2,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 24.542730139000923,
+      "received_at": "2026-10-13T13:54:56.004+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 49.4,
+      "world_sequence": 17140,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1392.22,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:55.820Z",
+          "sim_time": 1392.088,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2880,
+          "age_ms": 179.5,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:53.587Z",
+          "sim_time": 1389.964,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1367,
+          "age_ms": 2412.5,
+          "stale": true
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 25.04087975499715,
+      "received_at": "2026-10-13T13:54:56.502+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 91.5,
+      "world_sequence": 17145,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1392.66,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:56.339Z",
+          "sim_time": 1392.588,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2881,
+          "age_ms": 158.5,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:56.041Z",
+          "sim_time": 1392.296,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1368,
+          "age_ms": 456.5,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 25.54110394699819,
+      "received_at": "2026-10-13T13:54:57.002+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 41.5,
+      "world_sequence": 17151,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": true,
+      "sim_time": 1393.184,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:56.860Z",
+          "sim_time": 1393.088,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2882,
+          "age_ms": 137.6,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:56.041Z",
+          "sim_time": 1392.296,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1368,
+          "age_ms": 956.6,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 26.052664838003693,
+      "received_at": "2026-10-13T13:54:57.514+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 95.5,
+      "world_sequence": 17156,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": true,
+      "sim_time": 1393.624,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:57.384Z",
+          "sim_time": 1393.588,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2883,
+          "age_ms": 123.5,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:56.041Z",
+          "sim_time": 1392.296,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1368,
+          "age_ms": 1466.5,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 26.54562162500224,
+      "received_at": "2026-10-13T13:54:58.007+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 39.9,
+      "world_sequence": 17162,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1394.144,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:57.912Z",
+          "sim_time": 1394.088,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2884,
+          "age_ms": 89.9,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:57.798Z",
+          "sim_time": 1393.964,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1369,
+          "age_ms": 203.9,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 27.045361657001195,
+      "received_at": "2026-10-13T13:54:58.506+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 84.2,
+      "world_sequence": 17167,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1394.584,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:58.439Z",
+          "sim_time": 1394.596,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2885,
+          "age_ms": 62.2,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:57.798Z",
+          "sim_time": 1393.964,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1369,
+          "age_ms": 703.2,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 27.543662957999913,
+      "received_at": "2026-10-13T13:54:59.005+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 34.9,
+      "world_sequence": 17173,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1395.112,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:58.960Z",
+          "sim_time": 1395.096,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2886,
+          "age_ms": 40.9,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:58.833Z",
+          "sim_time": 1394.964,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1370,
+          "age_ms": 167.9,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 28.07142218000081,
+      "received_at": "2026-10-13T13:54:59.532+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 13.0,
+      "world_sequence": 17179,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1395.58,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:58.960Z",
+          "sim_time": 1395.096,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2886,
+          "age_ms": 567.0,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:59.181Z",
+          "sim_time": 1395.296,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1371,
+          "age_ms": 346.0,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 28.546856827000738,
+      "received_at": "2026-10-13T13:55:00.008+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 28.8,
+      "world_sequence": 17184,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1395.984,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:54:59.551Z",
+          "sim_time": 1395.596,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2887,
+          "age_ms": 451.8,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:59.967Z",
+          "sim_time": 1395.964,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1373,
+          "age_ms": 35.8,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 29.046253963002528,
+      "received_at": "2026-10-13T13:55:00.507+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 71.5,
+      "world_sequence": 17189,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": false,
+      "sim_time": 1396.424,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:55:00.099Z",
+          "sim_time": 1396.096,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2888,
+          "age_ms": 403.5,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:59.967Z",
+          "sim_time": 1395.964,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1373,
+          "age_ms": 535.5,
+          "stale": false
+        }
+      }
+    },
+    {
+      "elapsed_seconds": 29.548537082999246,
+      "received_at": "2026-10-13T13:55:01.010+00:00",
+      "world_connected": true,
+      "world_stale": false,
+      "world_age_ms": 23.1,
+      "world_sequence": 17195,
+      "run_id": "factory-1791898116588790",
+      "running": true,
+      "inspection_hold": true,
+      "sim_time": 1396.944,
+      "rejected_messages": 6,
+      "cameras": {
+        "inspection": {
+          "timestamp": "2026-10-13T13:55:00.617Z",
+          "sim_time": 1396.596,
+          "run_id": "factory-1791898116588790",
+          "sequence": 2889,
+          "age_ms": 387.2,
+          "stale": false
+        },
+        "overview": {
+          "timestamp": "2026-10-13T13:54:59.967Z",
+          "sim_time": 1395.964,
+          "run_id": "factory-1791898116588790",
+          "sequence": 1373,
+          "age_ms": 1037.2,
+          "stale": false
+        }
+      }
+    }
+  ],
+  "errors": []
+}

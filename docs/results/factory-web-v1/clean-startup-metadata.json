@@ -1,0 +1,399 @@
+{
+  "project": "smart-factory-web-clean-20261013",
+  "clone_path": "/home/gkwlgns02/smart-factory-web-clean-20261013",
+  "host_port": 8087,
+  "startup_command": "wsl -d Ubuntu -- bash -lc \"exec docker compose --project-directory '/home/gkwlgns02/smart-factory-web-clean-20261013' --env-file '/home/gkwlgns02/smart-factory-web-clean-20261013/.clean-startup.env' -p 'smart-factory-web-clean-20261013' -f '/home/gkwlgns02/smart-factory-web-clean-20261013/compose.yaml' -f '/home/gkwlgns02/smart-factory-web-clean-20261013/compose.factory.yaml' up -d --build > '/tmp/smart-factory-web-clean-20261013-up.log' 2>&1\"",
+  "single_compose_up_build": true,
+  "no_preexisting_project_containers_or_volumes": true,
+  "services_before_intentional_stop": [
+    [
+      "smart-factory-web-clean-20261013-simulator-1",
+      "running",
+      "Up 7 minutes"
+    ],
+    [
+      "smart-factory-web-clean-20261013-pdm-1",
+      "running",
+      "Up 7 minutes"
+    ],
+    [
+      "smart-factory-web-clean-20261013-prognostics-1",
+      "running",
+      "Up 7 minutes"
+    ],
+    [
+      "smart-factory-web-clean-20261013-vision-1",
+      "running",
+      "Up 7 minutes"
+    ],
+    [
+      "smart-factory-web-clean-20261013-storage-1",
+      "running",
+      "Up 7 minutes"
+    ],
+    [
+      "smart-factory-web-clean-20261013-controller-1",
+      "running",
+      "Up 7 minutes"
+    ],
+    [
+      "smart-factory-web-clean-20261013-dashboard-1",
+      "running",
+      "Up 7 minutes"
+    ],
+    [
+      "smart-factory-web-clean-20261013-database-1",
+      "running",
+      "Up 7 minutes (healthy)"
+    ],
+    [
+      "smart-factory-web-clean-20261013-broker-1",
+      "running",
+      "Up 7 minutes (healthy)"
+    ]
+  ],
+  "plugin_loaded_source_binding": {
+    "header_path": "simulator/plugin/live.hpp",
+    "header_sha256": "faa7a3ed0b72a37f00386564efd4cd1292d46d4a78c28524f3833a250863b5c7",
+    "library_path": "simulator/libfactory_world.so",
+    "library_sha256": "97dadd47fbfe063d33bf9461ccf9cf0fc684b5491b187abcf1df8ae1cbd6a6f7",
+    "schema_version": 1,
+    "source_path": "simulator/plugin/world.cpp",
+    "source_sha256": "ac866068fc16c3fce1c8c4aac0f5e466b5b162eeea46898e33422e7a7a983973"
+  },
+  "mounts": [
+    {
+      "Type": "bind",
+      "Source": "/home/gkwlgns02/smart-factory-web-clean-20261013/simulator/dataset_protocol.py",
+      "Destination": "/app/simulator/dataset_protocol.py",
+      "Mode": "ro",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/home/gkwlgns02/smart-factory-web-clean-20261013/simulator/bridge.py",
+      "Destination": "/app/simulator/bridge.py",
+      "Mode": "ro",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/home/gkwlgns02/smart-factory-web-clean-20261013/simulator/world.py",
+      "Destination": "/app/simulator/world.py",
+      "Mode": "ro",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/home/gkwlgns02/smart-factory-web-clean-20261013/simulator/vision_dataset.py",
+      "Destination": "/app/simulator/vision_dataset.py",
+      "Mode": "ro",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/home/gkwlgns02/smart-factory-web-clean-20261013/simulator/preflight.py",
+      "Destination": "/app/simulator/preflight.py",
+      "Mode": "ro",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/home/gkwlgns02/smart-factory-web-clean-20261013/simulator/live_evaluation.py",
+      "Destination": "/app/simulator/live_evaluation.py",
+      "Mode": "ro",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/home/gkwlgns02/smart-factory-web-clean-20261013/simulator/geometry.py",
+      "Destination": "/app/simulator/geometry.py",
+      "Mode": "ro",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/home/gkwlgns02/smart-factory-web-clean-20261013/simulator/live_world.py",
+      "Destination": "/app/simulator/live_world.py",
+      "Mode": "ro",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/home/gkwlgns02/smart-factory-web-clean-20261013/docs/results",
+      "Destination": "/app/docs/results",
+      "Mode": "rw",
+      "RW": true,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/home/gkwlgns02/smart-factory-web-clean-20261013/factory",
+      "Destination": "/app/factory",
+      "Mode": "ro",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/home/gkwlgns02/smart-factory-web-clean-20261013/simulator/scenarios.py",
+      "Destination": "/app/simulator/scenarios.py",
+      "Mode": "ro",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/home/gkwlgns02/smart-factory-web-clean-20261013/data",
+      "Destination": "/app/data",
+      "Mode": "rw",
+      "RW": true,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/home/gkwlgns02/smart-factory-web-clean-20261013/simulator/signal.py",
+      "Destination": "/app/simulator/signal.py",
+      "Mode": "ro",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/home/gkwlgns02/smart-factory-web-clean-20261013/simulator/sensor_dataset.py",
+      "Destination": "/app/simulator/sensor_dataset.py",
+      "Mode": "ro",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/home/gkwlgns02/smart-factory-web-clean-20261013/simulator/render_validation.py",
+      "Destination": "/app/simulator/render_validation.py",
+      "Mode": "ro",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/home/gkwlgns02/smart-factory-web-clean-20261013/simulator/display.py",
+      "Destination": "/app/simulator/display.py",
+      "Mode": "ro",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/home/gkwlgns02/smart-factory-web-clean-20261013/simulator/causal_dataset.py",
+      "Destination": "/app/simulator/causal_dataset.py",
+      "Mode": "ro",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/home/gkwlgns02/smart-factory-web-clean-20261013/simulator/live_bridge.py",
+      "Destination": "/app/simulator/live_bridge.py",
+      "Mode": "ro",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/home/gkwlgns02/smart-factory-web-clean-20261013/simulator/plugin/live.hpp",
+      "Destination": "/app/simulator/plugin/live.hpp",
+      "Mode": "ro",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/home/gkwlgns02/smart-factory-web-clean-20261013/artifacts",
+      "Destination": "/app/artifacts",
+      "Mode": "rw",
+      "RW": true,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/home/gkwlgns02/smart-factory-web-clean-20261013/config.yaml",
+      "Destination": "/app/config.yaml",
+      "Mode": "ro",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/home/gkwlgns02/smart-factory-web-clean-20261013/simulator/start.sh",
+      "Destination": "/app/simulator/start.sh",
+      "Mode": "ro",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/home/gkwlgns02/smart-factory-web-clean-20261013/simulator/plugin/world.cpp",
+      "Destination": "/app/simulator/plugin/world.cpp",
+      "Mode": "ro",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/home/gkwlgns02/smart-factory-web-clean-20261013/simulator/rul_dataset.py",
+      "Destination": "/app/simulator/rul_dataset.py",
+      "Mode": "ro",
+      "RW": false,
+      "Propagation": "rprivate"
+    },
+    {
+      "Type": "bind",
+      "Source": "/home/gkwlgns02/smart-factory-web-clean-20261013/simulator/live_protocol.py",
+      "Destination": "/app/simulator/live_protocol.py",
+      "Mode": "ro",
+      "RW": false,
+      "Propagation": "rprivate"
+    }
+  ],
+  "source_and_models_after_pytest": {
+    "model_hashes": {
+      "pdm.pt": "f829b824123eee1adc66b2fd6cf4fb9a8c50ffd2ba8ea343c06730e93500bb73",
+      "vision.pt": "de2b27a91410cd0ee12167a43b9651a9ef06198e6c86d80fdd2e9d84dffcde57",
+      "rul.pt": "602def1bf05519682fb97a0c7f41507d141aed920bd63f616af6a87a5b2ef323",
+      "drift-reference.json": "8bc12684ec570284af367730e68b82d8a1b03ba922f5dbf46daaad5095eae45d"
+    },
+    "tracked_changes": "",
+    "tree": "14cfcae5271cf02df5f84406869d976b14cac3cd",
+    "bulk_sensor_dataset_exists": false,
+    "bulk_vision_complete_exists": false
+  },
+  "pytest": {
+    "passed": 271,
+    "skipped": 2,
+    "warnings": 15,
+    "seconds": 25.03,
+    "expected_skips": "test_review_dataset.py original sensor/vision datasets absent in clean clone",
+    "output": "........................................................................ [ 26%]\n........................................................................ [ 52%]\n........................................................................ [ 79%]\n...............ss........................................                [100%]\n=============================== warnings summary ===============================\n../usr/local/lib/python3.10/dist-packages/matplotlib/_fontconfig_pattern.py:64\n  /usr/local/lib/python3.10/dist-packages/matplotlib/_fontconfig_pattern.py:64: PyparsingDeprecationWarning: 'oneOf' deprecated - use 'one_of'\n    prop = Group((name + Suppress(\"=\") + comma_separated(value)) | oneOf(_CONSTANTS))\n\n../usr/local/lib/python3.10/dist-packages/matplotlib/_fontconfig_pattern.py:85\n../usr/local/lib/python3.10/dist-packages/matplotlib/_fontconfig_pattern.py:85\n../usr/local/lib/python3.10/dist-packages/matplotlib/_fontconfig_pattern.py:85\n../usr/local/lib/python3.10/dist-packages/matplotlib/_fontconfig_pattern.py:85\n../usr/local/lib/python3.10/dist-packages/matplotlib/_fontconfig_pattern.py:85\n../usr/local/lib/python3.10/dist-packages/matplotlib/_fontconfig_pattern.py:85\n  /usr/local/lib/python3.10/dist-packages/matplotlib/_fontconfig_pattern.py:85: PyparsingDeprecationWarning: 'parseString' deprecated - use 'parse_string'\n    parse = parser.parseString(pattern)\n\n../usr/local/lib/python3.10/dist-packages/matplotlib/_fontconfig_pattern.py:89\n../usr/local/lib/python3.10/dist-packages/matplotlib/_fontconfig_pattern.py:89\n../usr/local/lib/python3.10/dist-packages/matplotlib/_fontconfig_pattern.py:89\n../usr/local/lib/python3.10/dist-packages/matplotlib/_fontconfig_pattern.py:89\n../usr/local/lib/python3.10/dist-packages/matplotlib/_fontconfig_pattern.py:89\n../usr/local/lib/python3.10/dist-packages/matplotlib/_fontconfig_pattern.py:89\n  /usr/local/lib/python3.10/dist-packages/matplotlib/_fontconfig_pattern.py:89: PyparsingDeprecationWarning: 'resetCache' deprecated - use 'reset_cache'\n    parser.resetCache()\n\n../usr/local/lib/python3.10/dist-packages/matplotlib/_mathtext.py:45\n  /usr/local/lib/python3.10/dist-packages/matplotlib/_mathtext.py:45: PyparsingDeprecationWarning: 'enablePackrat' deprecated - use 'enable_packrat'\n    ParserElement.enablePackrat()\n\ntests/test_bias_audit.py::test_nuisance_classifier_detects_a_manufactured_shortcut\n  /app/scripts/bias_metrics.py:68: DeprecationWarning: Conversion of an array with ndim > 0 to a scalar is deprecated, and will error in future. Ensure you extract a single element from your array before performing this operation. (Deprecated NumPy 1.25.)\n    return {'smd': float(smd), 'ks': float(ks_2samp(normal, fault).statistic),\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n271 passed, 2 skipped, 15 warnings in 25.03s\n"
+  },
+  "shutdown": {
+    "command": "docker compose -p smart-factory-web-clean-20261013 stop -t 10",
+    "stop_succeeded": true,
+    "services_after_stop": [
+      [
+        "smart-factory-web-clean-20261013-simulator-1",
+        "exited",
+        "Exited (1) About a minute ago"
+      ],
+      [
+        "smart-factory-web-clean-20261013-pdm-1",
+        "exited",
+        "Exited (137) About a minute ago"
+      ],
+      [
+        "smart-factory-web-clean-20261013-prognostics-1",
+        "exited",
+        "Exited (137) About a minute ago"
+      ],
+      [
+        "smart-factory-web-clean-20261013-vision-1",
+        "exited",
+        "Exited (137) About a minute ago"
+      ],
+      [
+        "smart-factory-web-clean-20261013-storage-1",
+        "exited",
+        "Exited (137) About a minute ago"
+      ],
+      [
+        "smart-factory-web-clean-20261013-controller-1",
+        "exited",
+        "Exited (137) About a minute ago"
+      ],
+      [
+        "smart-factory-web-clean-20261013-dashboard-1",
+        "exited",
+        "Exited (0) About a minute ago"
+      ],
+      [
+        "smart-factory-web-clean-20261013-database-1",
+        "exited",
+        "Exited (0) About a minute ago"
+      ],
+      [
+        "smart-factory-web-clean-20261013-broker-1",
+        "exited",
+        "Exited (0) About a minute ago"
+      ]
+    ],
+    "exit_details": [
+      [
+        "/smart-factory-web-clean-20261013-simulator-1",
+        "false",
+        "1",
+        "2026-10-13T13:49:10.759073887Z"
+      ],
+      [
+        "/smart-factory-web-clean-20261013-pdm-1",
+        "false",
+        "137",
+        "2026-10-13T13:49:18.028098539Z"
+      ],
+      [
+        "/smart-factory-web-clean-20261013-prognostics-1",
+        "false",
+        "137",
+        "2026-10-13T13:49:18.228581596Z"
+      ],
+      [
+        "/smart-factory-web-clean-20261013-vision-1",
+        "false",
+        "137",
+        "2026-10-13T13:49:18.051191345Z"
+      ],
+      [
+        "/smart-factory-web-clean-20261013-storage-1",
+        "false",
+        "137",
+        "2026-10-13T13:49:17.995839656Z"
+      ],
+      [
+        "/smart-factory-web-clean-20261013-controller-1",
+        "false",
+        "137",
+        "2026-10-13T13:49:18.050443082Z"
+      ],
+      [
+        "/smart-factory-web-clean-20261013-dashboard-1",
+        "false",
+        "0",
+        "2026-10-13T13:49:08.558267505Z"
+      ],
+      [
+        "/smart-factory-web-clean-20261013-database-1",
+        "false",
+        "0",
+        "2026-10-13T13:49:18.599190981Z"
+      ],
+      [
+        "/smart-factory-web-clean-20261013-broker-1",
+        "false",
+        "0",
+        "2026-10-13T13:49:19.189547574Z"
+      ]
+    ],
+    "volumes_preserved": [
+      "smart-factory-web-clean-20261013_database-data",
+      "smart-factory-web-clean-20261013_mqtt-data"
+    ],
+    "note": "Exit137 followed intentional stop timeout; all OOMKilled flags false. Database/broker exited0."
+  },
+  "no_existing_8086_control_or_stop_during_this_validation": true
+}

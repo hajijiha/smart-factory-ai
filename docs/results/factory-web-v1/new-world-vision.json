@@ -1,0 +1,481 @@
+{
+  "timestamp": "2026-10-13T14:17:04Z",
+  "run_id": "factory-1791898116588790",
+  "model_status": "Frozen original baseline; no training, export, threshold fitting or promotion",
+  "frames": 100,
+  "selection": "First 100 unique records of the specified balanced-evaluation run in manifest order",
+  "source_manifest_sha256": "46513df05d9e4bb507327afc63c0b378458d6925bdb65f0f7fe51e8fa222c133",
+  "selection_manifest_sha256": "ae80ca9cc3eaf9644ed6362bb7632b6e2bd841777bcdf1d8de6a05a8e8203bb0",
+  "model_hashes": {
+    "vision.pt": "de2b27a91410cd0ee12167a43b9651a9ef06198e6c86d80fdd2e9d84dffcde57",
+    "vision.onnx": "9ae732b3f3bd3165b1a2e69a13d08bd0f18a3a7fa6581f85d20c3074fc68c4cc"
+  },
+  "actual_ai_frame_and_model_evidence_verified": true,
+  "onnx_export_binding_verified": true,
+  "camera_pose_alignment": {
+    "approximate": true,
+    "extrapolated": false,
+    "aligned_pose_time_note": "Pose timestamp is assigned to camera time by bounded interpolation; it is not a direct camera-time pose observation.",
+    "maximum_observation_gap_sim_seconds": 0.09200000000009823,
+    "p95_observation_gap_sim_seconds": 0.08800000000019281,
+    "maximum_camera_receipt_age_seconds_at_capture": 0.11831646499922499,
+    "p95_camera_receipt_age_seconds_at_capture": 0.11096654055363614,
+    "maximum_abs_sensor_sim_time_offset_seconds": 0.11599999999998545,
+    "p95_abs_sensor_sim_time_offset_seconds": 0.09999999999992042,
+    "maximum_delivery_delay_seconds": 0.05505884200101718
+  },
+  "focused_class_counts": {
+    "0": 25,
+    "-1": 25,
+    "2": 25,
+    "1": 25
+  },
+  "visible_label_counts": {
+    "0": 53,
+    "2": 49,
+    "1": 45
+  },
+  "focused_normal_frames_with_visible_neighbor_defects": 24,
+  "raw_whole_frame": {
+    "pytorch_official": {
+      "mAP50": 0.8628062809840849,
+      "mAP50_95": 0.6960982613948007,
+      "class_AP50": {
+        "scratch": 0.919523908671251,
+        "dent": 0.8233498800568909,
+        "contamination": 0.845545054224113
+      },
+      "method": "Ultralytics frozen PT model.val(split=test) on all visible defect labels"
+    },
+    "onnx": {
+      "mAP50": 0.9496813667360532,
+      "mAP50_95": 0.7252376728753372,
+      "classes": {
+        "scratch": {
+          "AP50": 0.9287328542094455,
+          "AP50_95": 0.648525957287837,
+          "labels": 53
+        },
+        "dent": {
+          "AP50": 0.995,
+          "AP50_95": 0.8350266963108701,
+          "labels": 45
+        },
+        "contamination": {
+          "AP50": 0.925311245998714,
+          "AP50_95": 0.6921603650273045,
+          "labels": 49
+        }
+      },
+      "confidence_floor": 0.001,
+      "nms_iou": 0.7,
+      "method": "Confidence-ordered one-to-one class/IoU matches; official Ultralytics AP integration"
+    },
+    "onnx_operating_point": {
+      "image_classification": {
+        "n": 100,
+        "tp": 99,
+        "fn": 0,
+        "fp": 1,
+        "tn": 0,
+        "precision": 0.99,
+        "recall": 1.0,
+        "f1": 0.9949748743718593,
+        "normal_fpr": 1.0,
+        "recall_wilson95": [
+          0.9626467879321726,
+          1.0
+        ],
+        "normal_fpr_wilson95": [
+          0.20654931437723745,
+          1.0
+        ]
+      },
+      "detection_iou50": {
+        "tp": 135,
+        "fp": 101,
+        "fn": 12,
+        "precision": 0.5720338983050848,
+        "recall": 0.9183673469387755,
+        "f1": 0.7049608355091384
+      },
+      "normal_definition": "Whole camera image with no visible reference defect",
+      "confidence": 0.25,
+      "nms_iou": 0.45
+    }
+  },
+  "target_product_roi": {
+    "pytorch": {
+      "mAP50": 0.995,
+      "mAP50_95": 0.8262013393852524,
+      "classes": {
+        "scratch": {
+          "AP50": 0.995,
+          "AP50_95": 0.7008721739130435,
+          "labels": 25
+        },
+        "dent": {
+          "AP50": 0.995,
+          "AP50_95": 0.8955,
+          "labels": 25
+        },
+        "contamination": {
+          "AP50": 0.995,
+          "AP50_95": 0.8822318442427137,
+          "labels": 25
+        }
+      },
+      "confidence_floor": 0.001,
+      "nms_iou": 0.7,
+      "method": "Confidence-ordered one-to-one class/IoU matches; official Ultralytics AP integration"
+    },
+    "onnx": {
+      "mAP50": 0.995,
+      "mAP50_95": 0.8262013393852524,
+      "classes": {
+        "scratch": {
+          "AP50": 0.995,
+          "AP50_95": 0.7008721739130435,
+          "labels": 25
+        },
+        "dent": {
+          "AP50": 0.995,
+          "AP50_95": 0.8955,
+          "labels": 25
+        },
+        "contamination": {
+          "AP50": 0.995,
+          "AP50_95": 0.8822318442427137,
+          "labels": 25
+        }
+      },
+      "confidence_floor": 0.001,
+      "nms_iou": 0.7,
+      "method": "Confidence-ordered one-to-one class/IoU matches; official Ultralytics AP integration"
+    },
+    "pytorch_operating_point": {
+      "image_classification": {
+        "n": 100,
+        "tp": 75,
+        "fn": 0,
+        "fp": 0,
+        "tn": 25,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "normal_fpr": 0.0,
+        "recall_wilson95": [
+          0.9512761575171942,
+          1.0
+        ],
+        "normal_fpr_wilson95": [
+          1.3877787807814457e-17,
+          0.13319225093904846
+        ]
+      },
+      "detection_iou50": {
+        "tp": 75,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "normal_definition": "Selected normal product",
+      "confidence": 0.25,
+      "nms_iou": 0.45
+    },
+    "onnx_operating_point": {
+      "image_classification": {
+        "n": 100,
+        "tp": 75,
+        "fn": 0,
+        "fp": 0,
+        "tn": 25,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "normal_fpr": 0.0,
+        "recall_wilson95": [
+          0.9512761575171942,
+          1.0
+        ],
+        "normal_fpr_wilson95": [
+          1.3877787807814457e-17,
+          0.13319225093904846
+        ]
+      },
+      "detection_iou50": {
+        "tp": 75,
+        "fp": 0,
+        "fn": 0,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "normal_definition": "Selected normal product",
+      "confidence": 0.25,
+      "nms_iou": 0.45
+    },
+    "rule": "Detection bbox center within plate bounds projected from observed pose; reference labels never used to define ROI"
+  },
+  "benchmark": {
+    "device": "CPU",
+    "threads": 4,
+    "actual_torch_threads": 4,
+    "warmup_images": 10,
+    "batch_size": 1,
+    "images": 100,
+    "scope": "Resize, BGR/RGB, normalization, inference and NMS; excludes JPEG decoding, DB, ROI filter and Grad-CAM",
+    "workload": "Nine factory services and browser active; CPU detector evaluation concurrent",
+    "onnx": {
+      "images": 100,
+      "mean_ms": 38.46618670009775,
+      "p50_ms": 32.84165999866673,
+      "p95_ms": 65.14953389669245,
+      "fps": 25.99685817043723,
+      "times_ms": [
+        27.78076200047508,
+        25.84572500200011,
+        26.758305997645948,
+        42.081243998836726,
+        27.22613199875923,
+        22.37542399961967,
+        23.75564099929761,
+        37.75354000390507,
+        58.769716997630894,
+        27.015186999051366,
+        53.8122209982248,
+        50.29927899886388,
+        66.99533900246024,
+        60.0943899989943,
+        25.066983005672228,
+        26.35971699783113,
+        23.878289997810498,
+        25.188629995682277,
+        26.565387997834478,
+        31.573291002132464,
+        22.150311000586953,
+        24.136161999194883,
+        46.50919499545125,
+        32.99929499917198,
+        28.62157500203466,
+        27.216282003792003,
+        35.36967899708543,
+        26.543701002083253,
+        30.432979001489002,
+        34.40646799572278,
+        23.279598994122352,
+        46.02864399930695,
+        29.053438003757037,
+        26.387796002381947,
+        26.35833000385901,
+        30.365378996066283,
+        49.49472500447882,
+        43.64531399914995,
+        35.69696200429462,
+        46.28125399904093,
+        49.724120006430894,
+        45.73767900001258,
+        44.83396699652076,
+        120.01585299731232,
+        49.70258600224042,
+        31.265351004549302,
+        43.853675000718795,
+        77.75760399817955,
+        32.603860992821865,
+        20.69627099990612,
+        28.561856001033448,
+        30.585394000809174,
+        56.19635999755701,
+        26.972045001457445,
+        22.820673999376595,
+        23.782169999321923,
+        25.667941001302097,
+        39.27721599757206,
+        31.818691997614224,
+        56.368292003753595,
+        55.202349001774564,
+        56.254738999996334,
+        57.872791003319435,
+        35.4441500021494,
+        25.91799200308742,
+        33.30802099662833,
+        22.790743001678493,
+        32.219316002738196,
+        32.316636003088206,
+        40.880357002606615,
+        63.99348600098165,
+        30.92494099837495,
+        34.00009799952386,
+        30.330964000313543,
+        40.145571998436935,
+        24.03606799634872,
+        31.62394499668153,
+        35.9871119944728,
+        36.64854100497905,
+        26.257917001203168,
+        46.556972003600094,
+        37.61472699989099,
+        27.062298002419993,
+        23.597953004355077,
+        38.84266599925468,
+        66.77273999957833,
+        65.06410199654056,
+        42.799734001164325,
+        103.03134699643124,
+        32.84918500139611,
+        53.294855999411084,
+        24.307528001372702,
+        39.157446000899654,
+        28.623172001971398,
+        28.838099002314266,
+        56.20792199624702,
+        37.53327100275783,
+        32.83413499593735,
+        52.18587599665625,
+        30.875002004904673
+      ]
+    },
+    "pytorch": {
+      "images": 100,
+      "mean_ms": 164.24914322014956,
+      "p50_ms": 116.80531749516376,
+      "p95_ms": 540.6404250952619,
+      "fps": 6.088311819439209,
+      "times_ms": [
+        72.63551499636378,
+        83.37332800147124,
+        59.741072000178974,
+        97.92554400337394,
+        95.1632750002318,
+        94.809449998138,
+        122.68483099614969,
+        106.9006920006359,
+        167.5635119972867,
+        115.77200999454362,
+        251.16160199831938,
+        175.8433579962002,
+        589.3866390033509,
+        106.50610000448069,
+        104.64483100076905,
+        108.72919199755415,
+        78.89108700328507,
+        81.13253399642417,
+        68.61081699753413,
+        79.79484800307546,
+        91.69568999641342,
+        146.7503969979589,
+        109.30443799588829,
+        86.03825700265588,
+        65.74504900345346,
+        89.10886100056814,
+        96.12725199986016,
+        79.48544200189644,
+        71.31376500183251,
+        76.84885599883273,
+        146.39306099707028,
+        126.88470000284724,
+        125.70967800274957,
+        98.6741480010096,
+        94.4432809992577,
+        111.96854800073197,
+        135.52051399892662,
+        133.25144199916394,
+        151.30481400410645,
+        263.02713900076924,
+        213.53516999806743,
+        135.16657500440488,
+        330.0477479933761,
+        1015.6903649985907,
+        181.09239600016735,
+        187.42112000472844,
+        263.246602997242,
+        294.09587999543874,
+        118.13463299768046,
+        95.09604799677618,
+        94.83856099541299,
+        193.0987060040934,
+        186.90203200094402,
+        148.3668669970939,
+        76.39453800220508,
+        84.24171800288605,
+        60.4315000018687,
+        83.10586199513637,
+        160.72412399807945,
+        316.6559290039004,
+        230.84694200224476,
+        222.45905700401636,
+        540.3772399949958,
+        118.46841299848165,
+        73.71943000180181,
+        84.01853399846004,
+        77.77085600537248,
+        138.31865799875231,
+        72.27727400459116,
+        287.7742720011156,
+        126.66070900013437,
+        117.8386249957839,
+        124.9899969989201,
+        107.43677199934609,
+        177.06168499717023,
+        63.51749000168638,
+        88.64256800006842,
+        91.60822799458401,
+        120.3312600046047,
+        135.6255000064266,
+        111.63274900172837,
+        106.51590800262056,
+        80.39929599908646,
+        123.67680400348036,
+        149.24706400051946,
+        281.7971380063682,
+        545.6409420003183,
+        862.396168995474,
+        554.9567659982131,
+        245.17730899970047,
+        88.08664200478233,
+        98.29981599614257,
+        76.1367950035492,
+        80.37187800073298,
+        128.87560600211145,
+        199.91304600262083,
+        132.18927900015842,
+        97.2847270022612,
+        96.61428700201213,
+        166.80664700106718
+      ]
+    }
+  },
+  "hardware": {
+    "logical_cpus": 14,
+    "python": "3.10.12",
+    "torch": "2.5.1+cpu"
+  },
+  "limitations": [
+    "Synthetic balanced test; not a real-factory accuracy claim or production defect prevalence estimate.",
+    "One run and camera/lighting condition; trajectory/product IDs are distinct, physical slots are reused.",
+    "Reference labels use approximate interpolation between measured states at most 0.10 simulation seconds apart; they are not manual pixel masks.",
+    "Whole-frame and selected-product metrics use different references and must be read separately."
+  ],
+  "gates": {
+    "raw_whole_frame_mAP50_ge_0_80": true,
+    "target_roi_onnx_mAP50_ge_0_80": true,
+    "onnx_100_images_fps_ge_20": true
+  },
+  "prediction_evidence": {
+    "file": "new-world-predictions.jsonl",
+    "frames": 100,
+    "instrumentation": "External report driver copies detection_metrics/operating_metrics input arrays after metrics return; no detector, warmup, timed-loop or numerical changes.",
+    "available_scopes": [
+      "onnx_ap_whole_frame",
+      "onnx_operating_whole_frame",
+      "pytorch_ap_target_roi",
+      "onnx_ap_target_roi",
+      "pytorch_operating_target_roi",
+      "onnx_operating_target_roi"
+    ],
+    "pytorch_whole_frame_scope": "Official aggregate validation metrics retained; raw PT whole-frame arrays are not passed to these metric helpers.",
+    "sha256": "a8cab4ab3bb0e25b3073393a227cf9a40f71ae28de4515cc00f472ce27b40789"
+  }
+}

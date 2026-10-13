@@ -1,0 +1,783 @@
+{
+  "review_kind": "independent_final_readonly_review",
+  "run_id": "factory-1791898116588790",
+  "source_commit": "9c4b793f7be7945b70a07d1d7cc63e4511aa1edc",
+  "source_tree": "14cfcae5271cf02df5f84406869d976b14cac3cd",
+  "timestamp": "2026-10-13T14:35:45.489365+00:00",
+  "passed_in_audited_scope": true,
+  "conclusion": "검토 범위에서 미해결 중대한 source 오류와 제품·검사·영상·분류 모순을 발견하지 못했다. 성능·기동·브라우저 원본은 범위와 한계를 구분하여 검토했다.",
+  "sql_and_file_audit": {
+    "timestamp": "2026-10-13T14:35:45.489365+00:00",
+    "run_id": "factory-1791898116588790",
+    "database_snapshot_at": "2026-10-13T14:35:44.731177+00:00",
+    "query_policy": "REPEATABLE READ READ ONLY; SELECT only; transaction rolled back; filesystem evidence read only",
+    "frozen_vision_sha256": "de2b27a91410cd0ee12167a43b9651a9ef06198e6c86d80fdd2e9d84dffcde57",
+    "stats": {
+      "manifest_after_database_snapshot_excluded": 0,
+      "product_history_rows": 458,
+      "distinct_logical_products": 458,
+      "quality_detection_rows": 458,
+      "distinct_quality_events": 458,
+      "capture_sensor_rows": 458,
+      "private_manifest_rows": 458,
+      "manifest_duplicate_product_id": 0,
+      "manifest_duplicate_inspection_id": 0,
+      "manifest_duplicate_event_id": 0,
+      "products_with_multiple_inspections": 0,
+      "stage_outfeed": 456,
+      "outcome_normal": 115,
+      "quality_joined_products": 458,
+      "approximate_frame_labels": 458,
+      "normal_without_cam_rows": 115,
+      "outfeed_rows": 456,
+      "outfeed_lane_normal": 114,
+      "outfeed_classification_normal": 114,
+      "physically_confirmed_prediction_consistent_outfeed_rows": 456,
+      "outcome_defective": 343,
+      "cam_present_rows": 343,
+      "outfeed_lane_reject": 342,
+      "outfeed_classification_defective": 342,
+      "stage_captured": 2,
+      "missing_quality_rows": 0,
+      "captured_missing_quality_rows": 0,
+      "outfeed_missing_quality_rows": 0,
+      "inflight_missing_quality_rows": 0,
+      "missing_health_rows": 0,
+      "defective_cam_missing_rows": 0,
+      "explicit_unclassified_outfeed_rows": 0,
+      "unclassified_outfeed_with_later_quality_rows": 0,
+      "known_outfeed_without_quality_rows": 0,
+      "known_prediction_lane_mismatch_rows": 0,
+      "outfeed_lane_unknown": 0,
+      "outfeed_lane_unconfirmed": 0,
+      "recent_manifest_awaiting_history": 0,
+      "recent_quality_awaiting_sensor": 0,
+      "recent_quality_awaiting_manifest": 0,
+      "recent_quality_awaiting_health": 0
+    },
+    "findings": [],
+    "passed": true,
+    "notices": [],
+    "limitations": [
+      "Snapshot includes current in-flight products; missing and unknown counters are explicit. New file records after DB snapshot are excluded; cross-worker missing joins younger than a predeclared five-second maturity margin are counted as pending.",
+      "Camera-time pose labels are bounded interpolation, not exact raw render-time poses or manual pixel masks.",
+      "No line controls, training, service lifecycle commands, schema writes or database writes were issued.",
+      "CAM provenance is checked by event-joined DB artifact path/metadata; missing CAM counts are explicit.",
+      "Outfeed is the observed handoff gate on rollers; receiving-tray bin transfer is not validated."
+    ]
+  },
+  "locked100_and_pdm_audit": {
+    "timestamp": "2026-10-13T14:36:53.374185+00:00",
+    "run_id": "factory-1791898116588790",
+    "vision_reports": [
+      {
+        "path": "factory-web-v1/new-world-vision.json",
+        "selection_manifest_sha256": "ae80ca9cc3eaf9644ed6362bb7632b6e2bd841777bcdf1d8de6a05a8e8203bb0",
+        "class_counts": {
+          "0": 25,
+          "1": 25,
+          "2": 25,
+          "-1": 25
+        },
+        "independent_actual_runtime_raw_operating_metrics": {
+          "image_classification": {
+            "n": 100,
+            "tp": 99,
+            "fp": 1,
+            "fn": 0,
+            "tn": 0,
+            "precision": 0.99,
+            "recall": 1,
+            "f1": 0.9949748743718593,
+            "normal_fpr": 1
+          },
+          "detection_iou50": {
+            "tp": 135,
+            "fp": 101,
+            "fn": 12,
+            "precision": 0.5720338983050848,
+            "recall": 0.9183673469387755,
+            "f1": 0.7049608355091384
+          }
+        },
+        "independent_actual_runtime_roi_operating_metrics": {
+          "image_classification": {
+            "n": 100,
+            "tp": 75,
+            "fp": 0,
+            "fn": 0,
+            "tn": 25,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "normal_fpr": 0
+          },
+          "detection_iou50": {
+            "tp": 75,
+            "fp": 0,
+            "fn": 0,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1
+          }
+        }
+      }
+    ],
+    "pdm": {
+      "run_id": "factory-1791898116588790",
+      "waveforms": 100,
+      "independent_metrics": {
+        "chart": {
+          "aggregate": {
+            "n": 100,
+            "tp": 75,
+            "fp": 0,
+            "fn": 0,
+            "tn": 25,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "normal_fpr": 0
+          },
+          "per_level": {
+            "0": {
+              "n": 25,
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "tn": 25,
+              "precision": 0,
+              "recall": null,
+              "f1": 0,
+              "normal_fpr": 0
+            },
+            "1": {
+              "n": 25,
+              "tp": 25,
+              "fp": 0,
+              "fn": 0,
+              "tn": 0,
+              "precision": 1,
+              "recall": 1,
+              "f1": 1,
+              "normal_fpr": null
+            },
+            "3": {
+              "n": 25,
+              "tp": 25,
+              "fp": 0,
+              "fn": 0,
+              "tn": 0,
+              "precision": 1,
+              "recall": 1,
+              "f1": 1,
+              "normal_fpr": null
+            },
+            "5": {
+              "n": 25,
+              "tp": 25,
+              "fp": 0,
+              "fn": 0,
+              "tn": 0,
+              "precision": 1,
+              "recall": 1,
+              "f1": 1,
+              "normal_fpr": null
+            }
+          },
+          "deployed_agreement": 100
+        },
+        "ae": {
+          "aggregate": {
+            "n": 100,
+            "tp": 75,
+            "fp": 0,
+            "fn": 0,
+            "tn": 25,
+            "precision": 1,
+            "recall": 1,
+            "f1": 1,
+            "normal_fpr": 0
+          },
+          "per_level": {
+            "0": {
+              "n": 25,
+              "tp": 0,
+              "fp": 0,
+              "fn": 0,
+              "tn": 25,
+              "precision": 0,
+              "recall": null,
+              "f1": 0,
+              "normal_fpr": 0
+            },
+            "1": {
+              "n": 25,
+              "tp": 25,
+              "fp": 0,
+              "fn": 0,
+              "tn": 0,
+              "precision": 1,
+              "recall": 1,
+              "f1": 1,
+              "normal_fpr": null
+            },
+            "3": {
+              "n": 25,
+              "tp": 25,
+              "fp": 0,
+              "fn": 0,
+              "tn": 0,
+              "precision": 1,
+              "recall": 1,
+              "f1": 1,
+              "normal_fpr": null
+            },
+            "5": {
+              "n": 25,
+              "tp": 25,
+              "fp": 0,
+              "fn": 0,
+              "tn": 0,
+              "precision": 1,
+              "recall": 1,
+              "f1": 1,
+              "normal_fpr": null
+            }
+          },
+          "deployed_agreement": 100
+        }
+      }
+    },
+    "checks_count": 1728,
+    "findings": [],
+    "passed": true,
+    "limitations": [
+      "Independent operating metrics are reconstructed from the locked private labels and actual stored deployed raw/ROI predictions, without running the detector.",
+      "PdM count/F1 arithmetic is reconstructed from stored blind flags and scoring labels without rerunning models.",
+      "All SQL is READ ONLY and all artifact reads are non-mutating.",
+      "Raw waveforms are deliberately omitted from sensor_readings.data; their 2048-sample length and saved flags are checked in the MQTT observations gzip, while DB sensor envelope identities and health flags are joined separately."
+    ]
+  },
+  "prediction_ap_and_timing_audit": {
+    "run_id": "factory-1791898116588790",
+    "prediction_sha256": "a8cab4ab3bb0e25b3073393a227cf9a40f71ae28de4515cc00f472ce27b40789",
+    "checks_count": 1752,
+    "findings": [],
+    "passed": true,
+    "independent_ap": {
+      "raw_onnx": {
+        "mAP50": 0.9496813667360531,
+        "mAP50_95": 0.7252376728753372,
+        "classes": {
+          "scratch": {
+            "AP50": 0.9287328542094455,
+            "AP50_95": 0.648525957287837,
+            "labels": 53
+          },
+          "dent": {
+            "AP50": 0.995,
+            "AP50_95": 0.8350266963108701,
+            "labels": 45
+          },
+          "contamination": {
+            "AP50": 0.925311245998714,
+            "AP50_95": 0.6921603650273045,
+            "labels": 49
+          }
+        }
+      },
+      "roi_onnx": {
+        "mAP50": 0.995,
+        "mAP50_95": 0.8262013393852524,
+        "classes": {
+          "scratch": {
+            "AP50": 0.995,
+            "AP50_95": 0.7008721739130435,
+            "labels": 25
+          },
+          "dent": {
+            "AP50": 0.995,
+            "AP50_95": 0.8955,
+            "labels": 25
+          },
+          "contamination": {
+            "AP50": 0.995,
+            "AP50_95": 0.8822318442427137,
+            "labels": 25
+          }
+        }
+      },
+      "roi_pytorch": {
+        "mAP50": 0.995,
+        "mAP50_95": 0.8262013393852524,
+        "classes": {
+          "scratch": {
+            "AP50": 0.995,
+            "AP50_95": 0.7008721739130435,
+            "labels": 25
+          },
+          "dent": {
+            "AP50": 0.995,
+            "AP50_95": 0.8955,
+            "labels": 25
+          },
+          "contamination": {
+            "AP50": 0.995,
+            "AP50_95": 0.8822318442427137,
+            "labels": 25
+          }
+        }
+      }
+    },
+    "independent_loaded_timings": {
+      "onnx": {
+        "images": 100,
+        "mean_ms": 38.46618670009775,
+        "p50_ms": 32.84165999866673,
+        "p95_ms": 65.14953389669245,
+        "fps": 25.99685817043723
+      },
+      "pytorch": {
+        "images": 100,
+        "mean_ms": 164.24914322014956,
+        "p50_ms": 116.80531749516376,
+        "p95_ms": 540.6404250952619,
+        "fps": 6.088311819439209
+      }
+    },
+    "preserved_model_hashes": {
+      "vision.pt": "de2b27a91410cd0ee12167a43b9651a9ef06198e6c86d80fdd2e9d84dffcde57",
+      "pdm.pt": "f829b824123eee1adc66b2fd6cf4fb9a8c50ffd2ba8ea343c06730e93500bb73",
+      "rul.pt": "602def1bf05519682fb97a0c7f41507d141aed920bd63f616af6a87a5b2ef323",
+      "drift-reference.json": "8bc12684ec570284af367730e68b82d8a1b03ba922f5dbf46daaad5095eae45d"
+    },
+    "local_runtime_artifacts_absent": [
+      {
+        "artifact": "vision.onnx",
+        "reported_sha256": "9ae732b3f3bd3165b1a2e69a13d08bd0f18a3a7fa6581f85d20c3074fc68c4cc",
+        "scope": "Runtime-generated graph absent from Windows source checkout; live evaluator checks its binding before/after evaluation."
+      }
+    ],
+    "limitations": [
+      "AP reconstructed without model inference using saved low-confidence arrays, confidence-ordered one-to-one class/IoU matching and 101-point precision-envelope integration.",
+      "Official PT whole-frame model.val arrays are not in the artifact. Its aggregate class mean is checked separately; it cannot be treated as identical to custom raw ONNX matching AP.",
+      "This checks saved evidence, not real-world labels or a repeated model execution."
+    ]
+  },
+  "saved_runtime_and_browser_evidence": {
+    "stability": {
+      "duration_wall_seconds": 1800.0398065499976,
+      "http_samples": 34901,
+      "unique_world_observations": 18897,
+      "observed_state_rate_hz": 10.498101170450488,
+      "world_age_mean_ms": 123.72619982235513,
+      "world_age_p95_ms": 103.9,
+      "stale_samples": 263,
+      "run_ids": [
+        "factory-1791898116588790"
+      ],
+      "product_body_count_min": 10,
+      "product_body_count_max": 10,
+      "distinct_product_serials": 288,
+      "outfeed_replenishment_resets": 278,
+      "integrity_findings": [],
+      "sim_time_start": 1149.82,
+      "sim_time_end": 2678.864,
+      "stopped_observation_samples": 2868,
+      "camera_observations": {
+        "inspection": {
+          "unique_observed_frames": 3174,
+          "observed_fps_wall": 1.763294338519863,
+          "age_p95_ms": 560.4,
+          "stale_samples": 266
+        },
+        "overview": {
+          "unique_observed_frames": 1351,
+          "observed_fps_wall": 0.7505389575741446,
+          "age_p95_ms": 4054.1,
+          "stale_samples": 7270
+        }
+      },
+      "scope": "Gazebo-origin observations via HTTP; display FPS is measured separately in the browser",
+      "real_time_factor": 0.8494501035122134,
+      "source_state_rate_hz": 10.682541536042358,
+      "passed": true
+    },
+    "resource_summary": {
+      "duration_wall_seconds": 1800.0661071159993,
+      "samples": 180,
+      "service_count": 9,
+      "cpu_convention": "Docker: 100% means one logical CPU, not the whole host",
+      "sum_cpu_mean_percent": 293.3636666666667,
+      "sum_cpu_p95_percent": 1157.3169999999998,
+      "sum_cpu_max_percent": 1543.9099999999999,
+      "memory_min_gib": 1.8593564453125,
+      "memory_max_gib": 2.49598828125
+    },
+    "browser_samples": [
+      {
+        "recordedAt": "2026-10-13T14:12:29.993Z",
+        "run_id": "factory-1791898116588790",
+        "fps": 144.03496572958494,
+        "source_to_display_p95_ms": 174.94692307379313,
+        "latency_samples": 180,
+        "products": 10,
+        "renderer_available": true,
+        "stale": false
+      },
+      {
+        "recordedAt": "2026-10-13T14:17:34.668Z",
+        "run_id": "factory-1791898116588790",
+        "fps": 143.9856014398426,
+        "source_to_display_p95_ms": 168.71980519536933,
+        "latency_samples": 180,
+        "products": 10,
+        "renderer_available": true,
+        "stale": false
+      }
+    ],
+    "browser_gpu_vendor": "not measured",
+    "browser_ui": {
+      "source_commit": "9c4b793",
+      "scope": "Actual IAB semantic navigation, history, reload and mobile layout checks; live WebGL2 works, GPU failure not exercised",
+      "checks": [
+        {
+          "check": "monitor_navigation",
+          "url": "http://127.0.0.1:8086/monitor",
+          "heading": "공정 관제",
+          "state": {
+            "connection": "라이브 연결",
+            "scrollWidth": 336,
+            "width": 336
+          }
+        },
+        {
+          "check": "factory_back",
+          "url": "http://127.0.0.1:8086/factory",
+          "heading": "공장 시뮬레이션"
+        },
+        {
+          "check": "monitor_forward",
+          "url": "http://127.0.0.1:8086/monitor",
+          "heading": "공정 관제"
+        },
+        {
+          "check": "monitor_reload",
+          "url": "http://127.0.0.1:8086/monitor",
+          "heading": "공정 관제"
+        },
+        {
+          "check": "factory_mobile_no_horizontal_overflow",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "cameras": [
+            {
+              "height": 360,
+              "id": "overviewImage",
+              "loaded": true,
+              "width": 640
+            },
+            {
+              "height": 320,
+              "id": "inspectionImage",
+              "loaded": true,
+              "width": 320
+            }
+          ],
+          "clientWidth": 375,
+          "detailsInitiallyClosed": true,
+          "scrollWidth": 375
+        },
+        {
+          "check": "mobile_equipment_selection",
+          "detailsOpen": true,
+          "heading": "진단 모터"
+        },
+        {
+          "check": "repeat_monitor_0",
+          "url": "http://127.0.0.1:8086/monitor",
+          "heading": "공정 관제"
+        },
+        {
+          "check": "repeat_factory_0",
+          "url": "http://127.0.0.1:8086/factory",
+          "heading": "공장 시뮬레이션"
+        },
+        {
+          "check": "repeat_monitor_1",
+          "url": "http://127.0.0.1:8086/monitor",
+          "heading": "공정 관제"
+        },
+        {
+          "check": "repeat_factory_1",
+          "url": "http://127.0.0.1:8086/factory",
+          "heading": "공장 시뮬레이션"
+        },
+        {
+          "check": "monitor_mobile_no_horizontal_overflow",
+          "viewport": {
+            "width": 390,
+            "height": 844
+          },
+          "clientWidth": 375,
+          "scrollWidth": 375
+        },
+        {
+          "check": "factory_direct_url",
+          "url": "http://127.0.0.1:8086/factory",
+          "heading": "공장 시뮬레이션"
+        }
+      ]
+    },
+    "proofs": {
+      "controls-final.json": {
+        "checks": {
+          "operator_stop_observed": true,
+          "healthy_manual_restart": true,
+          "danger_reset_denied": true,
+          "normal_recovery_stays_stopped": true,
+          "explicit_recovery_restart": true
+        },
+        "passed": true
+      },
+      "controller-watchdog-final.json": {
+        "checks": {
+          "world_disconnected_and_stale": true,
+          "independent_controller_retained_stop": true,
+          "stale_reset_409": true,
+          "cached_positions_and_sequence_frozen": true,
+          "watchdog_stop_retained_through_pause": true,
+          "fresh_world_never_resumes": true,
+          "only_explicit_safe_reset_resumes": true
+        },
+        "passed": true,
+        "pause_wall_seconds": 15
+      },
+      "broker-disconnect-final.json": {
+        "checks": {
+          "api_disconnected_and_stale": true,
+          "physical_stop_without_mqtt": true,
+          "offline_reset_denied": true,
+          "outage_stays_stopped": true,
+          "same_product_identities_during_stop": true,
+          "reconnect_stays_stopped": true,
+          "explicit_manual_resume": true
+        },
+        "passed": true,
+        "outage_wall_seconds": 30
+      },
+      "browser-freeze-final.json": {
+        "checks": {
+          "stale_and_controls_locked": true,
+          "sequence_frozen": true,
+          "positions_frozen": true
+        },
+        "scope": "Actual browser during deliberate broker outage after the 30-minute stability run"
+      }
+    },
+    "findings": [],
+    "passed": true
+  },
+  "verified_preservation_and_source_boundaries": {
+    "run_id": "factory-1791898116588790",
+    "source_commit": "9c4b793f7be7945b70a07d1d7cc63e4511aa1edc",
+    "source_tree": "14cfcae5271cf02df5f84406869d976b14cac3cd",
+    "readonly_scope": "직접 Windows Docker 경로의 읽기 전용 SQL·증거 파일 검산. 제어·고장 주입·서비스 변경·학습·원본 보고서 변경 없음.",
+    "regression": {
+      "path": "tests-final.xml",
+      "tests": 273,
+      "passed": 273,
+      "errors": 0,
+      "failures": 0,
+      "skipped": 0,
+      "independently_rerun": false
+    },
+    "quality": {
+      "path": "quality-final.json",
+      "definitions": 621,
+      "missing_docstrings": 0,
+      "nonconventional_commits": 0,
+      "passed": true,
+      "independently_rerun": false,
+      "scope": "Latest quality-final.json includes the public proof tools; zero missing docstrings/conventional-commit violations."
+    },
+    "display_restart": {
+      "path": "display-restart-proof.json",
+      "recovery": 1,
+      "ordinary_restarts": 2,
+      "checks_passed": 3,
+      "unit_test_count": 15,
+      "current_run": "factory-1791898116588790",
+      "both_actual_camera_jpegs": true,
+      "independently_actuated": false
+    },
+    "clean_startup": {
+      "path": "clean-startup.json",
+      "project": "smart-factory-web-clean-20261013",
+      "run_id": "factory-1791898847942077",
+      "source_commit": "9c4b793f7be7945b70a07d1d7cc63e4511aa1edc",
+      "empty_data": true,
+      "no_existing_onnx": true,
+      "single_compose": true,
+      "new_database_complete_joins": 3,
+      "nine_services": true,
+      "frozen_pt_export_binding": true,
+      "pytest_passed": 271,
+      "pytest_skipped": 2,
+      "expected_skips": "Original bulk sensor/vision datasets absent",
+      "source_tree_unchanged": true,
+      "passed": true,
+      "scope": "Local committed clone, not public remote download; short startup, not accuracy/sustained throughput"
+    },
+    "limitations": [
+      "검산은 저장된 관측·판정·동결 참조를 확인한다. 현실 공장의 정확도 또는 모든 원시 접촉·낙하 사건을 재구성하지 않는다.",
+      "프레임 pose 참조는 ≤0.10 sim 초 관측 bracket 안의 근사 보간이며 수동 픽셀 mask가 아니다.",
+      "실측 배출은 outfeed roller handoff gate다. receiving tray로의 완전 물리 bin transfer와 투입점 이후 전체 회송 동역학은 포함하지 않는다.",
+      "원본 테스트/기동/장애/브라우저/성능 도구는 운영 담당자가 실행했다. 독립 검토는 결과 원본과 의미 있는 source 경로를 읽고 SQL·파일·산술을 별도로 검산한다.",
+      "저신뢰도 ONNX whole-frame 및 PT·ONNX ROI 배열은 새 predictions.jsonl로 재구성했다. official PT whole-frame의 개별 검출 배열은 없으므로 class 평균 산술만 확인했다.",
+      "Windows checkout에는 runtime-generated vision.onnx가 없다. checkpoint 네 파일은 독립 hash 검사했고 graph SHA와 PT export binding은 live evaluator 및 clean-startup 원본의 검증 범위로 구분한다.",
+      "이번 누적 DB snapshot(458 제품)은 30분 observer(288 논리 ID)의 시작·종료 범위와 다르다. 같은 건수여야 한다고 가정하지 않는다."
+    ],
+    "camera_evidence": {
+      "path": "overview-single-stack-summary.json",
+      "scope": "Single nine-service stack, active conveyor, 30.041 sec; exact final run",
+      "overview": {
+        "observed_fps": 0.6541898617020935,
+        "api_age_p95_ms": 3346.7,
+        "gaps_over2seconds": 6,
+        "api_stale_samples": 17,
+        "api_samples": 60
+      },
+      "inspection": {
+        "observed_fps": 1.8626088897373305,
+        "api_age_p95_ms": 518.3,
+        "gaps_over2seconds": 0,
+        "api_stale_samples": 0,
+        "api_samples": 60
+      },
+      "world_stale_samples": 0,
+      "rejected_messages_first_last": [
+        6,
+        6
+      ],
+      "cpu_busy_mean": 15.99148734398459
+    },
+    "source_review": {
+      "ack_batch": {
+        "file": "simulator/live_protocol.py",
+        "line": 116,
+        "closed": true,
+        "scope": "Immutable parts are completed only after each PUBACK; sparse lifecycle pops after ACK; memory-only batch"
+      },
+      "alignment": {
+        "file": "simulator/live_protocol.py",
+        "line": 29,
+        "closed": true,
+        "scope": "Same product/run/inspection measured bracket, <=0.10 sim sec; quaternion interpolation; no extrapolation"
+      },
+      "watchdog": {
+        "file": "factory/controller.py",
+        "line": 20,
+        "closed": true,
+        "scope": "Independent 250 ms loop; RLock; armed only after accepted live world; explicit dataset exclusion; fresh observation never releases latch"
+      },
+      "receipt": {
+        "file": "factory/world_state.py",
+        "line": 42,
+        "closed": true,
+        "scope": "Validated source delay anchored at monotonic receipt; accepted cached observations do not become fresh/old from later UTC correction; truly future arrivals rejected"
+      },
+      "display": {
+        "file": "simulator/start.sh",
+        "line": 6,
+        "closed": true,
+        "scope": "Own Xvfb -displayfd file+PID, finite readiness deadline, no shared display-lock deletion"
+      },
+      "reset_utc_scope": {
+        "file": "factory/controller.py",
+        "line": 11,
+        "scope": "Legacy recent() health/line/reset command guards still compare current UTC. Monotonic watchdog fix does not make every manual reset guard independent of UTC correction; conservative temporary refusal possible, no automatic resume"
+      }
+    }
+  },
+  "not_in_this_review": [
+    "최종 운영 모드 복구: coordinator가 별도 완료 원본을 기록한다. 이 독립 검토는 제어·복구 명령을 실행하지 않았다.",
+    "실제 브라우저 GPU 장애 강제·fallback 전환은 실행하지 않았다.",
+    "official PT whole-frame 개별 검출 AP 곡선 독립 재구성은 수행하지 못했다."
+  ],
+  "standalone_timing_audit": {
+    "run_id": "factory-1791898116588790",
+    "checks_count": 430,
+    "findings": [],
+    "passed": true,
+    "metrics": {
+      "onnx": {
+        "images": 100,
+        "mean_ms": 10.169326940158498,
+        "p50_ms": 9.058542000275338,
+        "p95_ms": 16.717102749680635,
+        "fps": 98.3349248071686
+      },
+      "pytorch": {
+        "images": 100,
+        "mean_ms": 23.98753753004712,
+        "p50_ms": 21.40275949932402,
+        "p95_ms": 40.93716124953062,
+        "fps": 41.688314140098214
+      }
+    },
+    "scope": "Resize, BGR/RGB, normalization, inference and NMS; excludes JPEG decoding, DB, ROI filter and Grad-CAM",
+    "workload": "Standalone CPU detector; browser about:blank; seven main factory workers stopped; broker/database idle",
+    "runtime": {
+      "validated_source_commit": "9c4b793f7be7945b70a07d1d7cc63e4511aa1edc",
+      "container_network": "none",
+      "source_data_artifacts_mount": "read-only /app",
+      "output_mount": "read-write unique standalone-20261013-final only",
+      "stopped_services": [
+        "simulator",
+        "pdm",
+        "vision",
+        "controller",
+        "dashboard",
+        "prognostics",
+        "storage"
+      ],
+      "remaining_services": {
+        "broker": "running healthy",
+        "database": "running healthy"
+      },
+      "python": "3.10.12 (main, Aug 31 2026, 10:18:17) [GCC 11.4.0]",
+      "packages": {
+        "torch": "2.5.1+cpu",
+        "onnxruntime": "1.20.1",
+        "ultralytics": "8.3.40",
+        "numpy": "1.26.4",
+        "opencv-python": "4.10.0.84"
+      },
+      "logical_cpus_visible": 14
+    },
+    "accuracy_repeated": false,
+    "selection_manifest_sha256": "ae80ca9cc3eaf9644ed6362bb7632b6e2bd841777bcdf1d8de6a05a8e8203bb0",
+    "model_hashes": {
+      "vision.pt": "de2b27a91410cd0ee12167a43b9651a9ef06198e6c86d80fdd2e9d84dffcde57",
+      "vision.onnx": "9ae732b3f3bd3165b1a2e69a13d08bd0f18a3a7fa6581f85d20c3074fc68c4cc"
+    }
+  },
+  "pdm_cpu_and_capture_bounds": {
+    "passed": true,
+    "findings": [],
+    "pdm_cpu": {
+      "mean_ms": 1.8954674399719806,
+      "p95_ms": 2.928452654668943
+    },
+    "capture_bounds": {
+      "maximum_observation_gap_sim_seconds": 0.09200000000009823,
+      "maximum_camera_receipt_age_seconds_at_capture": 0.11831646499922499,
+      "maximum_abs_sensor_sim_time_offset_seconds": 0.11599999999998545,
+      "maximum_delivery_delay_seconds": 0.05505884200101718
+    }
+  }
+}

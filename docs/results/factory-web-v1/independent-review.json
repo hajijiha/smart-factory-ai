@@ -20,7 +20,8 @@
       "scripts/evaluate_live_factory.py",
       "scripts/evaluate_live_pdm.py",
       "scripts/verify_factory_disconnect.py",
-      "scripts/verify_factory_resources.py"
+      "scripts/verify_factory_resources.py",
+      "tests/test_review_controller.py"
     ],
     "unresolved_material_findings": [],
     "closed_findings": [
@@ -43,6 +44,11 @@
         "finding": "Factory camera selection ignored equipment-specific freshness limit",
         "resolution": "equipmentFresh uses freshness_seconds with process/default fallback; frame health remains separate from historical AI verdict",
         "verification": "Read-only source recheck"
+      },
+      {
+        "finding": "A wholly paused simulator cannot issue its own bridge timeout stop",
+        "resolution": "An independent controller watchdog checks accepted live world freshness every 250ms under the same RLock as callbacks, latches one retained stop without new MQTT input, and never starts on recovered observations. Both watchdog and reset respect an explicit dataset mode even when an old retained live epoch exists.",
+        "verification": "Read-only review of controller and transition/main-loop timer/dataset retained-world regression; actual 15-second pause proof remains coordinator runtime evidence"
       }
     ],
     "boundaries": [
@@ -117,9 +123,9 @@
   },
   "reported_regressions_not_independently_rerun": {
     "latest_full": {
-      "passed": 227,
-      "skipped": 2,
-      "skip_scope": "Expected source DATA-dependent baseline tests"
+      "passed": 239,
+      "skipped": 0,
+      "scope": "Original DATA connected; coordinator report before the additional explicit-dataset retained-world regression"
     },
     "original_data_connected_before_latest_refinement": {
       "passed": 219,
@@ -128,7 +134,11 @@
     "frontend_targeted": {
       "passed": 66
     },
-    "origin": "Coordinator-provided execution results; this reviewer did not run the suite or invoke control tests"
+    "origin": "Coordinator-provided execution results; this reviewer did not run the suite or invoke control tests",
+    "controller_targeted_after_dataset_regression": {
+      "passed": 42,
+      "skipped": 0
+    }
   },
   "runtime_limits": {
     "motion_stability_30min": "NOT VERIFIED by this review; no independent 1800-second observer recording for this run",
@@ -136,7 +146,8 @@
     "new_world_vision_or_pdm_accuracy": "Evaluator source reviewed; inference/training/evaluation not executed by this reviewer",
     "fresh_clone": "NOT EXECUTED by this reviewer",
     "prefinal_run": "factory-1791828868974374",
-    "source_and_run_are_prefinal": true
+    "source_and_run_are_prefinal": true,
+    "final_30min_run_pending": "factory-1791862766610240"
   },
   "tool_access": {
     "first_nonescalated_docker_attempt": "Sandbox denied named-pipe access; no SQL executed",

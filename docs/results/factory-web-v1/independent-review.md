@@ -41,6 +41,8 @@ quality 35건은 정상 9·불량 26이며 34건이 배출됐다. 배출은 실�
 
 현재 읽은 범위에서 남은 중대한 source 오류는 발견하지 못했다. 이 판정은 모든 runtime 시나리오의 통과를 뜻하지 않는다.
 
+추가된 controller watchdog도 읽기 전용으로 검토했다. simulator 전체가 pause되어 bridge가 동작하지 않아도 독립 controller의 250ms timer가 accepted live world의 지연을 감시하고 retained stop을 한 번 latch한다. handler와 timer는 같은 RLock을 사용하며 새 관측만으로 가동을 재개하지 않는다. 초기 world 미수신에는 arm하지 않고, 명시적인 dataset 모드는 과거 retained live state가 있어도 watchdog과 reset 양쪽에서 제외한다. 무입력 timer·회복 후 no-resume·retained-world dataset reset의 의미 있는 regression source를 확인했다. 실제 15초 pause 증거는 운영 담당자의 runtime 결과로 별도 검증한다.
+
 ## source와 평가 범위
 
 - Gazebo 제품은 접촉·마찰로 이송되고 분류는 실제 body force를 사용한다. outfeed 이후 공급 reset은 새 logical serial을 부여하는 명시적 재배치다.
@@ -55,6 +57,8 @@ quality 35건은 정상 9·불량 26이며 34건이 배출됐다. 배출은 실�
 ## 아직 독립 실행하지 않은 항목
 
 운영 담당자가 전달한 최신 회귀는 227 passed / 2 예상 DATA skip, 원본 연결의 refinement 전 검사는 219 passed / 0 skip, frontend targeted 검사는 66 passed였다. 이 검토는 해당 테스트를 다시 실행하지 않았으며 최종 JUnit·기동·browser·장애 결과 원본을 별도 확인해야 한다.
+
+watchdog 추가 후 원본 DATA 연결 전체 회귀는 운영 담당자 보고로 239 passed / 0 skip이었다. 이어진 retained-world dataset regression 포함 controller targeted 결과는 42 passed였다. 이 수치들은 독립 재실행 수치와 구분한다. 최종 30분 target은 `factory-1791862766610240`이며, 위 DB snapshot은 여전히 이전 run의 최종 운전 전 증거다.
 
 이번 검토는 제어 명령, 고장 주입, 서비스 stop/start, schema 변경, DB write, 학습 또는 모델 교체를 수행하지 않았다. 첫 일반 Docker 연결은 sandbox named-pipe 권한으로 차단됐고 SQL을 실행하지 못했다. 이후 승인된 직접 Windows Docker 읽기 경로가 정상 동작하여 위 검산을 수행했다. WSL 우회 경로는 사용하지 않았다.
 

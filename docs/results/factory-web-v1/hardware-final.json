@@ -1,0 +1,28 @@
+{
+  "recorded_at_utc": "2026-10-13T14:39:26.1284304Z",
+  "host_cpu": {
+    "Name": "Intel(R) Core(TM) Ultra 5 225H",
+    "NumberOfCores": 14,
+    "NumberOfLogicalProcessors": 14
+  },
+  "host_os": {
+    "Caption": "Microsoft Windows 11 Home",
+    "Version": "10.0.26200",
+    "TotalVisibleMemorySize": 16122100
+  },
+  "host_power_scheme": "전원 구성표 GUID: 381b4222-f694-41f0-9685-ff5bb260df2e  (균형 조정)",
+  "ai_device": "CPU",
+  "browser_gpu_vendor": "not measured",
+  "host_cpu_governor": "not collected",
+  "source_commit": "9c4b793f7be7945b70a07d1d7cc63e4511aa1edc",
+  "declared_container_runtime": {
+    "onnxruntime": "1.20.1",
+    "cpu_limit": "max 100000",
+    "pytorch": "2.5.1+cpu",
+    "scope": "Versions from evaluated runtime, not a new install; host settings read only",
+    "memory_limit": "max",
+    "gazebo": "11.10.2",
+    "python": "3.10.12",
+    "ros": "ROS2 Humble"
+  }
+}

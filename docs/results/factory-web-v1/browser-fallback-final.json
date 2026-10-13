@@ -1,0 +1,20 @@
+{
+  "recorded_at": "2026-10-13T14:40:22.457827+00:00",
+  "source": "factory/static/factory.js",
+  "source_sha256": "bcaa6f0e474f1b6c221ba15d43c3e5b226ed1b6e9387c100d93561f4d59d7045",
+  "source_matches_previously_executed_vm_proof": true,
+  "validation": "Existing production JavaScript definitions executed earlier in this conversation in an isolated Node VM with DOM/canvas dependencies stubbed; persisted without new browser or runtime measurements",
+  "checks": {
+    "no_webgl2_fallback_keeps_fresh_camera_ui": "passed",
+    "get_context_error_is_caught_and_camera_ui_survives": "passed",
+    "fallback_does_not_claim_stale_camera_as_live": "passed"
+  },
+  "observed_branch_behavior": {
+    "fallback_notice_visible": true,
+    "renderer_not_created_when_context_missing": true,
+    "fresh_overview_and_inspection_stream_urls_assigned": true,
+    "stale_cameras_not_claimed_live": true
+  },
+  "scope_limit": "Unit branch proof only. No real browser GPU failure, context-loss event, WebGL restoration, network-image load or stream-survival under browser failure was tested.",
+  "browser_normal_path_is_separate_evidence": "Root normal-browser WebGL2 and actual640x360/320x320 camera load checks do not simulate WebGL failure."
+}

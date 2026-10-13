@@ -1,0 +1,22 @@
+{
+  "verified_at_utc": "2026-10-13T14:44:39.4756062Z",
+  "runtime_source_matches_windows_validated_commit_files": true,
+  "original_loaded_evidence_preserved": true,
+  "files": [
+    {
+      "name": "new-world-latency.csv",
+      "sha256": "eea759c25d9c98be0c36bdeffce961d8bd6175bfcef05693cd81eb7761c363f6",
+      "bytes": 14300
+    },
+    {
+      "name": "new-world-timing.json",
+      "sha256": "8e99a4697096d44c4597d0f68d27d24af935d5dbeb9deb7d674c679847b9343c",
+      "bytes": 6212
+    },
+    {
+      "name": "runtime-context.json",
+      "sha256": "a6f3ef18b8c8654008424cdb1ee44d8b0900b151203603ee782b7a56051c2ec3",
+      "bytes": 2954
+    }
+  ]
+}

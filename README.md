@@ -4,7 +4,9 @@ Gazebo의 모터 센서와 3D 검사 영상을 분석하는 스마트 팩토리 
 
 한 웹앱의 공장 화면에서는 10개 제품의 실제 롤러 이송·검사·분류·배출과 Gazebo 카메라 영상을 확인한다. 관제 화면에서는 설비 상태, 센서 추세, 롤러 속도, 검출 결과와 검사 이력을 확인한다. 제어 명령의 접수·적용 상태와 오래된 데이터도 구분해서 표시한다.
 
-![공장 시뮬레이션](docs/results/factory-web-v1/factory-desktop.png)
+![공장 시뮬레이션](docs/results/factory-web-v1/factory-desktop-final.png)
+
+[공장·웹 첫 버전 결과](docs/results/factory-web-v1/REPORT.md): 10개 제품 30분 운전, 원본 연결 273개 회귀 통과, 새 장면 whole-frame mAP50 0.863. ONNX CPU는 9서비스·웹 동시 약26FPS, 단독 약98FPS다. 전경 영상의 간헐적 지연과 실측 realtime factor 0.85도 보고서에 공개한다. [운영·재현](docs/factory-live.md)과 [독립 검토](docs/results/factory-web-v1/independent-review-final.md)를 함께 확인한다.
 
 ## 실행
 

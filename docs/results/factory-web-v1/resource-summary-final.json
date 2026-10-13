@@ -1,0 +1,176 @@
+{
+  "created_at": "2026-10-13T14:40:22.454081+00:00",
+  "sources": [
+    "resources-30min.json",
+    "stability-30min.json",
+    "controller-watchdog-final.json"
+  ],
+  "project": "smart-factory-web-20261013",
+  "service_count": 9,
+  "resource_samples": 180,
+  "resource_duration_seconds": 1800.0661071159993,
+  "all_samples_have_expected9services": true,
+  "cpu": {
+    "convention": "100 percent is one logical CPU core; not whole-host percent",
+    "aggregation": "Sum all9service CPU percentages separately at each sample; then compute arithmetic mean, nearest-rank p95 and maximum of those sample sums",
+    "total_percent_mean": 293.3636666666667,
+    "total_percent_p95": 1156.48,
+    "total_percent_max": 1543.9099999999999,
+    "logical_core_equivalents_mean": 2.9336366666666667,
+    "logical_core_equivalents_p95": 11.5648,
+    "logical_core_equivalents_max": 15.439099999999998,
+    "percentile_method": "nearest rank ceil(sample_count*0.95)-1",
+    "largest_total_samples": [
+      {
+        "wall_seconds": 1560.0595211819964,
+        "total_percent": 1543.9099999999999,
+        "three_largest_contributors": [
+          {
+            "service": "smart-factory-web-20261013-dashboard-1",
+            "cpu_percent": 1230.84
+          },
+          {
+            "service": "smart-factory-web-20261013-simulator-1",
+            "cpu_percent": 233.69
+          },
+          {
+            "service": "smart-factory-web-20261013-database-1",
+            "cpu_percent": 40.84
+          }
+        ]
+      },
+      {
+        "wall_seconds": 1530.052579338997,
+        "total_percent": 1482.5,
+        "three_largest_contributors": [
+          {
+            "service": "smart-factory-web-20261013-dashboard-1",
+            "cpu_percent": 829.47
+          },
+          {
+            "service": "smart-factory-web-20261013-vision-1",
+            "cpu_percent": 436.6
+          },
+          {
+            "service": "smart-factory-web-20261013-simulator-1",
+            "cpu_percent": 188.44
+          }
+        ]
+      },
+      {
+        "wall_seconds": 1520.0467851739959,
+        "total_percent": 1402.18,
+        "three_largest_contributors": [
+          {
+            "service": "smart-factory-web-20261013-dashboard-1",
+            "cpu_percent": 1130.65
+          },
+          {
+            "service": "smart-factory-web-20261013-simulator-1",
+            "cpu_percent": 238.96
+          },
+          {
+            "service": "smart-factory-web-20261013-pdm-1",
+            "cpu_percent": 11.89
+          }
+        ]
+      }
+    ],
+    "scope_limit": "These are sampled Docker CPU percentages, including large recorded tail values; core equivalents express the Docker convention and are not a separately measured whole-host utilization or guaranteed simultaneous-core count.",
+    "mean_equals_sum_of_complete_per_service_means": true
+  },
+  "memory": {
+    "convention": "Sum only Docker usage before the slash; reconstruct from reported rounded human-readable binary units; shared host limit is not summed",
+    "total_mib_mean": 2026.7071277777777,
+    "total_mib_min": 1903.981,
+    "total_mib_max": 2555.892,
+    "total_gib_min": 1.8593564453125,
+    "total_gib_max": 2.49598828125,
+    "per_service_mib_range": {
+      "smart-factory-web-20261013-broker-1": {
+        "min": 5.168,
+        "max": 6.281
+      },
+      "smart-factory-web-20261013-controller-1": {
+        "min": 15.63,
+        "max": 15.8
+      },
+      "smart-factory-web-20261013-dashboard-1": {
+        "min": 108.5,
+        "max": 700.2
+      },
+      "smart-factory-web-20261013-database-1": {
+        "min": 408.9,
+        "max": 436.1
+      },
+      "smart-factory-web-20261013-pdm-1": {
+        "min": 161.5,
+        "max": 188.2
+      },
+      "smart-factory-web-20261013-prognostics-1": {
+        "min": 161.7,
+        "max": 162.2
+      },
+      "smart-factory-web-20261013-simulator-1": {
+        "min": 718.6,
+        "max": 737.4
+      },
+      "smart-factory-web-20261013-storage-1": {
+        "min": 21.76,
+        "max": 22.02
+      },
+      "smart-factory-web-20261013-vision-1": {
+        "min": 292.8,
+        "max": 304.3
+      }
+    }
+  },
+  "stability": {
+    "duration_seconds": 1800.0398065499976,
+    "http_samples": 34901,
+    "stale_samples": 263,
+    "stale_fraction": 0.007535600699120369,
+    "source_state_rate_hz": 10.682541536042358,
+    "world_age_p95_ms": 103.9,
+    "real_time_factor": 0.8494501035122134,
+    "integrity_findings_count": 0,
+    "camera_observations": {
+      "inspection": {
+        "unique_observed_frames": 3174,
+        "observed_fps_wall": 1.763294338519863,
+        "age_p95_ms": 560.4,
+        "stale_samples": 266
+      },
+      "overview": {
+        "unique_observed_frames": 1351,
+        "observed_fps_wall": 0.7505389575741446,
+        "age_p95_ms": 4054.1,
+        "stale_samples": 7270
+      }
+    }
+  },
+  "planned_pause_consistency": {
+    "evidence": "controller-watchdog-final.json",
+    "same_run_as_stability": true,
+    "pause_wall_seconds": 15,
+    "last_cached_observation_timestamp": "2026-10-13T14:08:56.578Z",
+    "stale_threshold_seconds": 2.0,
+    "stale_threshold_crossing_timestamp": "2026-10-13T14:08:58.578000+00:00",
+    "first_documented_after_unpause_timestamp": "2026-10-13T14:09:11.876Z",
+    "documented_source_gap_seconds": 15.298,
+    "stale_window_until_documented_after_unpause_seconds": 13.298,
+    "observed_average_http_rate_hz": 19.389015661210376,
+    "target_poll_rate_hz": 20.0,
+    "count_equivalent_seconds_range_at_mean_to_target_rates": [
+      13.15,
+      13.564381224682656
+    ],
+    "estimated_stale_count_range_at_mean_to_target_rates": [
+      257.8351302627756,
+      265.96
+    ],
+    "count263_within_estimated_range": true,
+    "interpretation": "The263stale polls are consistent with the documented15second planned simulator pause and unchanged2second guard. This is a range consistency check, not exact attribution.",
+    "limitation": "stability-30min.json stores an aggregate stale count rather than per-poll timestamps, so it cannot prove that every stale poll belongs to this pause or subtract a precise unplanned-stale count."
+  }
+}

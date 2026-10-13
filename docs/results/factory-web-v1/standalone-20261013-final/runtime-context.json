@@ -1,0 +1,84 @@
+{
+  "timestamp": "2026-10-13T14:44:00.395151+00:00",
+  "validated_source_commit": "9c4b793f7be7945b70a07d1d7cc63e4511aa1edc",
+  "source_binding_note": "Isolated runtime source mirror has no .git; bound files are hashed for comparison with validated Windows commit.",
+  "runtime_image": "smart-factory-runtime:local",
+  "runtime_image_sha256": "f51fe408f949012f96f702d92654676b8e9e7ec180ec487dc14d72ac51ae116d",
+  "python": "3.10.12 (main, Aug 31 2026, 10:18:17) [GCC 11.4.0]",
+  "packages": {
+    "torch": "2.5.1+cpu",
+    "onnxruntime": "1.20.1",
+    "ultralytics": "8.3.40",
+    "numpy": "1.26.4",
+    "opencv-python": "4.10.0.84"
+  },
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+  "logical_cpus_visible": 14,
+  "cpu_affinity": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13
+  ],
+  "container_network": "none",
+  "source_data_artifacts_mount": "read-only /app",
+  "output_mount": "read-write unique standalone-20261013-final only",
+  "browser": "Parent moved live tab to about:blank before this measurement; no factory WebGL or polling workload.",
+  "stopped_services": [
+    "simulator",
+    "pdm",
+    "vision",
+    "controller",
+    "dashboard",
+    "prognostics",
+    "storage"
+  ],
+  "remaining_services": {
+    "broker": "running healthy",
+    "database": "running healthy"
+  },
+  "checks": {
+    "same_100_images_in_same_order": true,
+    "selection_hash_unchanged": true,
+    "same_pt_and_onnx_hashes": true,
+    "threads_4_batch_1_warmup_10": true,
+    "accuracy_not_repeated": true
+  },
+  "loaded_evidence_sha256": {
+    "new-world-vision.json": "2094894834204bd7294fa3c4e70584e05d0234d2500e5a4d0a093427d52461a6",
+    "new-world-selection.jsonl": "ae80ca9cc3eaf9644ed6362bb7632b6e2bd841777bcdf1d8de6a05a8e8203bb0",
+    "new-world-latency.csv": "53e6362fa487a388c5f6251bcd87a3f5f1bc90046701ae8cdf0d12cef2e0c5e1",
+    "new-world-predictions.jsonl": "a8cab4ab3bb0e25b3073393a227cf9a40f71ae28de4515cc00f472ce27b40789"
+  },
+  "source_files_sha256": {
+    "scripts/evaluate_live_factory.py": "97605709b7b986de0b008fa4ceaa4281436e276e57b529bac69a1b52e9e3dcd6",
+    "factory/vision/inference.py": "b18a5495eb11627046f06dc7bf7c13bb610df66588d941fa35dbc98b28a51128",
+    "factory/settings.py": "5040ff169fa42dd10e41108b95751cf8211aaf5d07172b4ab192cfaa99e85729",
+    "factory/provenance.py": "3ad1118ccd6c43f53147c0f0f542412f44e17c82f811cc552245d16326367517",
+    "config.yaml": "226f179855c0c8ffee3e317331af61d0cb4791b8308a8d8ef85345e0f05c80ae"
+  },
+  "comparison": {
+    "onnx": {
+      "loaded_mean_ms": 38.46618670009775,
+      "standalone_mean_ms": 10.169326940158498,
+      "loaded_fps": 25.99685817043723,
+      "standalone_fps": 98.3349248071686
+    },
+    "pytorch": {
+      "loaded_mean_ms": 164.24914322014956,
+      "standalone_mean_ms": 23.98753753004712,
+      "loaded_fps": 6.088311819439209,
+      "standalone_fps": 41.688314140098214
+    }
+  }
+}

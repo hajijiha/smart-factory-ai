@@ -1,0 +1,120 @@
+{
+  "source_commit": "9c4b793",
+  "scope": "Actual IAB navigation/history/reload/desktop selection/product link/mobile layout; fresh operational run and evaluated balanced run distinguished in checks",
+  "checks": [
+    {
+      "check": "monitor_navigation",
+      "url": "http://127.0.0.1:8086/monitor",
+      "heading": "공정 관제",
+      "state": {
+        "connection": "라이브 연결",
+        "scrollWidth": 336,
+        "width": 336
+      }
+    },
+    {
+      "check": "factory_back",
+      "url": "http://127.0.0.1:8086/factory",
+      "heading": "공장 시뮬레이션"
+    },
+    {
+      "check": "monitor_forward",
+      "url": "http://127.0.0.1:8086/monitor",
+      "heading": "공정 관제"
+    },
+    {
+      "check": "monitor_reload",
+      "url": "http://127.0.0.1:8086/monitor",
+      "heading": "공정 관제"
+    },
+    {
+      "check": "factory_mobile_no_horizontal_overflow",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "cameras": [
+        {
+          "height": 360,
+          "id": "overviewImage",
+          "loaded": true,
+          "width": 640
+        },
+        {
+          "height": 320,
+          "id": "inspectionImage",
+          "loaded": true,
+          "width": 320
+        }
+      ],
+      "clientWidth": 375,
+      "detailsInitiallyClosed": true,
+      "scrollWidth": 375
+    },
+    {
+      "check": "mobile_equipment_selection",
+      "detailsOpen": true,
+      "heading": "진단 모터"
+    },
+    {
+      "check": "repeat_monitor_0",
+      "url": "http://127.0.0.1:8086/monitor",
+      "heading": "공정 관제"
+    },
+    {
+      "check": "repeat_factory_0",
+      "url": "http://127.0.0.1:8086/factory",
+      "heading": "공장 시뮬레이션"
+    },
+    {
+      "check": "repeat_monitor_1",
+      "url": "http://127.0.0.1:8086/monitor",
+      "heading": "공정 관제"
+    },
+    {
+      "check": "repeat_factory_1",
+      "url": "http://127.0.0.1:8086/factory",
+      "heading": "공장 시뮬레이션"
+    },
+    {
+      "check": "monitor_mobile_no_horizontal_overflow",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "clientWidth": 375,
+      "scrollWidth": 375
+    },
+    {
+      "check": "factory_direct_url",
+      "url": "http://127.0.0.1:8086/factory",
+      "heading": "공장 시뮬레이션"
+    },
+    {
+      "check": "desktop_equipment_selection",
+      "heading": "진단 모터",
+      "run": "factory-1791902723392349"
+    },
+    {
+      "check": "desktop_product_selection",
+      "heading": "factory-1791902723392349-P9",
+      "run": "factory-1791902723392349"
+    },
+    {
+      "check": "product_to_monitor_link",
+      "url": "http://127.0.0.1:8086/monitor?equipment=camera&product=factory-1791902723392349-P12&run=factory-1791902723392349",
+      "heading": "\n            공정 관제\n          "
+    },
+    {
+      "check": "monitor_direct_url_loaded",
+      "url": "http://127.0.0.1:8086/monitor",
+      "connected": true
+    },
+    {
+      "check": "factory_reload_loaded",
+      "url": "http://127.0.0.1:8086/factory",
+      "heading": "공장 시뮬레이션",
+      "connected": true
+    }
+  ]
+}

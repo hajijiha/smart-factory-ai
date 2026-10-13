@@ -1,0 +1,654 @@
+{
+  "scope": "Global Linux CPU from proc-stat deltas, separately recorded from camera metadata",
+  "samples": [
+    {
+      "elapsed_seconds": 0.5372579309987486,
+      "cpu_count": 14,
+      "busy_percent": 63.458856345885636,
+      "iowait_percent": 1.1157601115760112,
+      "load_average": [
+        4.38427734375,
+        3.3818359375,
+        2.3310546875
+      ]
+    },
+    {
+      "elapsed_seconds": 1.0248056479977095,
+      "cpu_count": 14,
+      "busy_percent": 59.07738095238095,
+      "iowait_percent": 1.9345238095238095,
+      "load_average": [
+        4.38427734375,
+        3.3818359375,
+        2.3310546875
+      ]
+    },
+    {
+      "elapsed_seconds": 1.522141178997117,
+      "cpu_count": 14,
+      "busy_percent": 57.0162481536189,
+      "iowait_percent": 1.9202363367799113,
+      "load_average": [
+        4.38427734375,
+        3.3818359375,
+        2.3310546875
+      ]
+    },
+    {
+      "elapsed_seconds": 2.025381974002812,
+      "cpu_count": 14,
+      "busy_percent": 65.55716353111433,
+      "iowait_percent": 2.6049204052098407,
+      "load_average": [
+        4.38427734375,
+        3.3818359375,
+        2.3310546875
+      ]
+    },
+    {
+      "elapsed_seconds": 2.524768884999503,
+      "cpu_count": 14,
+      "busy_percent": 66.57060518731988,
+      "iowait_percent": 4.178674351585014,
+      "load_average": [
+        4.38427734375,
+        3.3818359375,
+        2.3310546875
+      ]
+    },
+    {
+      "elapsed_seconds": 3.029944740002975,
+      "cpu_count": 14,
+      "busy_percent": 68.42105263157895,
+      "iowait_percent": 0.43859649122807015,
+      "load_average": [
+        4.38427734375,
+        3.3818359375,
+        2.3310546875
+      ]
+    },
+    {
+      "elapsed_seconds": 3.5268423529996653,
+      "cpu_count": 14,
+      "busy_percent": 56.417910447761194,
+      "iowait_percent": 7.462686567164179,
+      "load_average": [
+        4.38427734375,
+        3.3818359375,
+        2.3310546875
+      ]
+    },
+    {
+      "elapsed_seconds": 4.031068652999238,
+      "cpu_count": 14,
+      "busy_percent": 63.8235294117647,
+      "iowait_percent": 2.7941176470588234,
+      "load_average": [
+        4.38427734375,
+        3.3818359375,
+        2.3310546875
+      ]
+    },
+    {
+      "elapsed_seconds": 4.528000498001347,
+      "cpu_count": 14,
+      "busy_percent": 65.63421828908555,
+      "iowait_percent": 3.2448377581120944,
+      "load_average": [
+        4.38427734375,
+        3.3818359375,
+        2.3310546875
+      ]
+    },
+    {
+      "elapsed_seconds": 5.0292044620000524,
+      "cpu_count": 14,
+      "busy_percent": 66.81286549707602,
+      "iowait_percent": 1.608187134502924,
+      "load_average": [
+        4.75390625,
+        3.4755859375,
+        2.3671875
+      ]
+    },
+    {
+      "elapsed_seconds": 5.550980817999516,
+      "cpu_count": 14,
+      "busy_percent": 62.134502923976605,
+      "iowait_percent": 6.432748538011696,
+      "load_average": [
+        4.75390625,
+        3.4755859375,
+        2.3671875
+      ]
+    },
+    {
+      "elapsed_seconds": 6.077778476996173,
+      "cpu_count": 14,
+      "busy_percent": 61.979913916786224,
+      "iowait_percent": 22.381635581061694,
+      "load_average": [
+        4.75390625,
+        3.4755859375,
+        2.3671875
+      ]
+    },
+    {
+      "elapsed_seconds": 6.554891047999263,
+      "cpu_count": 14,
+      "busy_percent": 72.10031347962382,
+      "iowait_percent": 0.6269592476489029,
+      "load_average": [
+        4.75390625,
+        3.4755859375,
+        2.3671875
+      ]
+    },
+    {
+      "elapsed_seconds": 7.052324147996842,
+      "cpu_count": 14,
+      "busy_percent": 65.50632911392405,
+      "iowait_percent": 0.31645569620253167,
+      "load_average": [
+        4.75390625,
+        3.4755859375,
+        2.3671875
+      ]
+    },
+    {
+      "elapsed_seconds": 7.550457081000786,
+      "cpu_count": 14,
+      "busy_percent": 67.71300448430493,
+      "iowait_percent": 0.7473841554559043,
+      "load_average": [
+        4.75390625,
+        3.4755859375,
+        2.3671875
+      ]
+    },
+    {
+      "elapsed_seconds": 8.050871093997557,
+      "cpu_count": 14,
+      "busy_percent": 63.150074294205055,
+      "iowait_percent": 3.4175334323922733,
+      "load_average": [
+        4.75390625,
+        3.4755859375,
+        2.3671875
+      ]
+    },
+    {
+      "elapsed_seconds": 8.614858478002134,
+      "cpu_count": 14,
+      "busy_percent": 63.58839050131926,
+      "iowait_percent": 3.825857519788918,
+      "load_average": [
+        4.75390625,
+        3.4755859375,
+        2.3671875
+      ]
+    },
+    {
+      "elapsed_seconds": 9.054565070997342,
+      "cpu_count": 14,
+      "busy_percent": 72.0,
+      "iowait_percent": 3.0,
+      "load_average": [
+        4.75390625,
+        3.4755859375,
+        2.3671875
+      ]
+    },
+    {
+      "elapsed_seconds": 9.55428591799864,
+      "cpu_count": 14,
+      "busy_percent": 65.53755522827687,
+      "iowait_percent": 0.8836524300441826,
+      "load_average": [
+        4.75390625,
+        3.4755859375,
+        2.3671875
+      ]
+    },
+    {
+      "elapsed_seconds": 10.05615878500248,
+      "cpu_count": 14,
+      "busy_percent": 66.81481481481481,
+      "iowait_percent": 0.2962962962962963,
+      "load_average": [
+        6.13525390625,
+        3.783203125,
+        2.47265625
+      ]
+    },
+    {
+      "elapsed_seconds": 10.560639149000053,
+      "cpu_count": 14,
+      "busy_percent": 67.49633967789165,
+      "iowait_percent": 0.43923865300146414,
+      "load_average": [
+        6.13525390625,
+        3.783203125,
+        2.47265625
+      ]
+    },
+    {
+      "elapsed_seconds": 11.058662142997491,
+      "cpu_count": 14,
+      "busy_percent": 64.13690476190476,
+      "iowait_percent": 1.3392857142857142,
+      "load_average": [
+        6.13525390625,
+        3.783203125,
+        2.47265625
+      ]
+    },
+    {
+      "elapsed_seconds": 11.560064224002417,
+      "cpu_count": 14,
+      "busy_percent": 63.89301634472511,
+      "iowait_percent": 1.337295690936107,
+      "load_average": [
+        6.13525390625,
+        3.783203125,
+        2.47265625
+      ]
+    },
+    {
+      "elapsed_seconds": 12.05920152500039,
+      "cpu_count": 14,
+      "busy_percent": 70.98214285714286,
+      "iowait_percent": 2.6785714285714284,
+      "load_average": [
+        6.13525390625,
+        3.783203125,
+        2.47265625
+      ]
+    },
+    {
+      "elapsed_seconds": 12.566973767003219,
+      "cpu_count": 14,
+      "busy_percent": 72.38372093023256,
+      "iowait_percent": 4.505813953488372,
+      "load_average": [
+        6.13525390625,
+        3.783203125,
+        2.47265625
+      ]
+    },
+    {
+      "elapsed_seconds": 13.062257334997412,
+      "cpu_count": 14,
+      "busy_percent": 68.00595238095238,
+      "iowait_percent": 1.6369047619047619,
+      "load_average": [
+        6.13525390625,
+        3.783203125,
+        2.47265625
+      ]
+    },
+    {
+      "elapsed_seconds": 13.562855825999577,
+      "cpu_count": 14,
+      "busy_percent": 65.7393850658858,
+      "iowait_percent": 1.4641288433382138,
+      "load_average": [
+        6.13525390625,
+        3.783203125,
+        2.47265625
+      ]
+    },
+    {
+      "elapsed_seconds": 14.071399457003281,
+      "cpu_count": 14,
+      "busy_percent": 65.12968299711815,
+      "iowait_percent": 1.8731988472622478,
+      "load_average": [
+        6.13525390625,
+        3.783203125,
+        2.47265625
+      ]
+    },
+    {
+      "elapsed_seconds": 14.564269700997102,
+      "cpu_count": 14,
+      "busy_percent": 52.12298682284041,
+      "iowait_percent": 0.5856515373352855,
+      "load_average": [
+        6.13525390625,
+        3.783203125,
+        2.47265625
+      ]
+    },
+    {
+      "elapsed_seconds": 15.066467627999373,
+      "cpu_count": 14,
+      "busy_percent": 46.00870827285922,
+      "iowait_percent": 4.644412191582003,
+      "load_average": [
+        7.08544921875,
+        4.01953125,
+        2.55615234375
+      ]
+    },
+    {
+      "elapsed_seconds": 15.56953497500217,
+      "cpu_count": 14,
+      "busy_percent": 56.82819383259912,
+      "iowait_percent": 3.671071953010279,
+      "load_average": [
+        7.08544921875,
+        4.01953125,
+        2.55615234375
+      ]
+    },
+    {
+      "elapsed_seconds": 16.065704847002053,
+      "cpu_count": 14,
+      "busy_percent": 51.914241960183766,
+      "iowait_percent": 4.134762633996937,
+      "load_average": [
+        7.08544921875,
+        4.01953125,
+        2.55615234375
+      ]
+    },
+    {
+      "elapsed_seconds": 16.686983079998754,
+      "cpu_count": 14,
+      "busy_percent": 47.75928297055058,
+      "iowait_percent": 2.816901408450704,
+      "load_average": [
+        7.08544921875,
+        4.01953125,
+        2.55615234375
+      ]
+    },
+    {
+      "elapsed_seconds": 17.077201558000525,
+      "cpu_count": 14,
+      "busy_percent": 56.0377358490566,
+      "iowait_percent": 3.3962264150943398,
+      "load_average": [
+        7.08544921875,
+        4.01953125,
+        2.55615234375
+      ]
+    },
+    {
+      "elapsed_seconds": 17.567923818001873,
+      "cpu_count": 14,
+      "busy_percent": 20.857988165680474,
+      "iowait_percent": 5.621301775147929,
+      "load_average": [
+        7.08544921875,
+        4.01953125,
+        2.55615234375
+      ]
+    },
+    {
+      "elapsed_seconds": 18.066396440000972,
+      "cpu_count": 14,
+      "busy_percent": 32.758620689655174,
+      "iowait_percent": 5.603448275862069,
+      "load_average": [
+        7.08544921875,
+        4.01953125,
+        2.55615234375
+      ]
+    },
+    {
+      "elapsed_seconds": 18.568048141001782,
+      "cpu_count": 14,
+      "busy_percent": 28.715728715728716,
+      "iowait_percent": 5.194805194805195,
+      "load_average": [
+        7.08544921875,
+        4.01953125,
+        2.55615234375
+      ]
+    },
+    {
+      "elapsed_seconds": 19.068675984002766,
+      "cpu_count": 14,
+      "busy_percent": 34.69387755102041,
+      "iowait_percent": 1.1661807580174928,
+      "load_average": [
+        7.08544921875,
+        4.01953125,
+        2.55615234375
+      ]
+    },
+    {
+      "elapsed_seconds": 19.56845879500179,
+      "cpu_count": 14,
+      "busy_percent": 34.097421203438394,
+      "iowait_percent": 4.441260744985673,
+      "load_average": [
+        7.08544921875,
+        4.01953125,
+        2.55615234375
+      ]
+    },
+    {
+      "elapsed_seconds": 20.06917465299921,
+      "cpu_count": 14,
+      "busy_percent": 16.305916305916305,
+      "iowait_percent": 20.634920634920636,
+      "load_average": [
+        7.39892578125,
+        4.1357421875,
+        2.6015625
+      ]
+    },
+    {
+      "elapsed_seconds": 20.571086949996243,
+      "cpu_count": 14,
+      "busy_percent": 18.803418803418804,
+      "iowait_percent": 18.66096866096866,
+      "load_average": [
+        7.39892578125,
+        4.1357421875,
+        2.6015625
+      ]
+    },
+    {
+      "elapsed_seconds": 21.075351100997068,
+      "cpu_count": 14,
+      "busy_percent": 62.42774566473989,
+      "iowait_percent": 7.08092485549133,
+      "load_average": [
+        7.39892578125,
+        4.1357421875,
+        2.6015625
+      ]
+    },
+    {
+      "elapsed_seconds": 21.575540730002103,
+      "cpu_count": 14,
+      "busy_percent": 39.36324167872648,
+      "iowait_percent": 14.182344428364688,
+      "load_average": [
+        7.39892578125,
+        4.1357421875,
+        2.6015625
+      ]
+    },
+    {
+      "elapsed_seconds": 22.075712204998126,
+      "cpu_count": 14,
+      "busy_percent": 39.5924308588064,
+      "iowait_percent": 9.024745269286754,
+      "load_average": [
+        7.39892578125,
+        4.1357421875,
+        2.6015625
+      ]
+    },
+    {
+      "elapsed_seconds": 22.583319015997404,
+      "cpu_count": 14,
+      "busy_percent": 60.894660894660895,
+      "iowait_percent": 3.751803751803752,
+      "load_average": [
+        7.39892578125,
+        4.1357421875,
+        2.6015625
+      ]
+    },
+    {
+      "elapsed_seconds": 23.07479952099675,
+      "cpu_count": 14,
+      "busy_percent": 37.24340175953079,
+      "iowait_percent": 2.4926686217008798,
+      "load_average": [
+        7.39892578125,
+        4.1357421875,
+        2.6015625
+      ]
+    },
+    {
+      "elapsed_seconds": 23.585273456999857,
+      "cpu_count": 14,
+      "busy_percent": 26.080691642651296,
+      "iowait_percent": 1.585014409221902,
+      "load_average": [
+        7.39892578125,
+        4.1357421875,
+        2.6015625
+      ]
+    },
+    {
+      "elapsed_seconds": 24.081405213000835,
+      "cpu_count": 14,
+      "busy_percent": 25.35816618911175,
+      "iowait_percent": 0.28653295128939826,
+      "load_average": [
+        7.39892578125,
+        4.1357421875,
+        2.6015625
+      ]
+    },
+    {
+      "elapsed_seconds": 24.57424067700049,
+      "cpu_count": 14,
+      "busy_percent": 13.839285714285714,
+      "iowait_percent": 4.910714285714286,
+      "load_average": [
+        7.39892578125,
+        4.1357421875,
+        2.6015625
+      ]
+    },
+    {
+      "elapsed_seconds": 25.077766784001142,
+      "cpu_count": 14,
+      "busy_percent": 26.600284495021338,
+      "iowait_percent": 3.271692745376956,
+      "load_average": [
+        7.20654296875,
+        4.150390625,
+        2.61474609375
+      ]
+    },
+    {
+      "elapsed_seconds": 25.577801157996873,
+      "cpu_count": 14,
+      "busy_percent": 37.06395348837209,
+      "iowait_percent": 2.761627906976744,
+      "load_average": [
+        7.20654296875,
+        4.150390625,
+        2.61474609375
+      ]
+    },
+    {
+      "elapsed_seconds": 26.084849788996507,
+      "cpu_count": 14,
+      "busy_percent": 54.32835820895522,
+      "iowait_percent": 1.9402985074626866,
+      "load_average": [
+        7.20654296875,
+        4.150390625,
+        2.61474609375
+      ]
+    },
+    {
+      "elapsed_seconds": 26.580866866002907,
+      "cpu_count": 14,
+      "busy_percent": 30.33033033033033,
+      "iowait_percent": 4.054054054054054,
+      "load_average": [
+        7.20654296875,
+        4.150390625,
+        2.61474609375
+      ]
+    },
+    {
+      "elapsed_seconds": 27.080881412002782,
+      "cpu_count": 14,
+      "busy_percent": 18.857142857142858,
+      "iowait_percent": 3.857142857142857,
+      "load_average": [
+        7.20654296875,
+        4.150390625,
+        2.61474609375
+      ]
+    },
+    {
+      "elapsed_seconds": 27.58054910100327,
+      "cpu_count": 14,
+      "busy_percent": 17.857142857142858,
+      "iowait_percent": 4.428571428571429,
+      "load_average": [
+        7.20654296875,
+        4.150390625,
+        2.61474609375
+      ]
+    },
+    {
+      "elapsed_seconds": 28.078038751998974,
+      "cpu_count": 14,
+      "busy_percent": 18.394160583941606,
+      "iowait_percent": 1.0218978102189782,
+      "load_average": [
+        7.20654296875,
+        4.150390625,
+        2.61474609375
+      ]
+    },
+    {
+      "elapsed_seconds": 28.582022911999957,
+      "cpu_count": 14,
+      "busy_percent": 33.333333333333336,
+      "iowait_percent": 5.4331864904552125,
+      "load_average": [
+        7.20654296875,
+        4.150390625,
+        2.61474609375
+      ]
+    },
+    {
+      "elapsed_seconds": 29.079834094001853,
+      "cpu_count": 14,
+      "busy_percent": 57.49279538904899,
+      "iowait_percent": 5.475504322766571,
+      "load_average": [
+        7.20654296875,
+        4.150390625,
+        2.61474609375
+      ]
+    },
+    {
+      "elapsed_seconds": 29.58125486600329,
+      "cpu_count": 14,
+      "busy_percent": 49.15966386554622,
+      "iowait_percent": 4.761904761904762,
+      "load_average": [
+        7.20654296875,
+        4.150390625,
+        2.61474609375
+      ]
+    }
+  ]
+}

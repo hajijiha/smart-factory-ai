@@ -154,6 +154,14 @@ FACTORY_POC_PRODUCTS=10 FACTORY_LIVE_DEFECT_MODE=operational \
 
 100장 CPU FPS 범위는 전처리·추론·NMS이며 JPEG decoding, ROI filter, CAM, MQTT, DB와 browser frame rate는 제외한다. 기존 v1의 높은 F1/mAP/FPS를 이번 장면의 결과로 재사용하지 않는다. 새 clone·빈 data·새 DB·ONNX 미생성 조건의 한 Compose 기동도 기존 볼륨 기동과 별도 증거로 확인한다.
 
+## 최종 측정과 운영 복구
+
+[첫 버전 결과](results/factory-web-v1/REPORT.md)에 30분 운전·새 장면 고정100장·동시/단독 CPU·273개 회귀·빈 data/새 DB clone·독립 검토를 연결했다. 평가 run과 일반 운영 run을 구분하고, 최종 복구는 [runtime-final.json](results/factory-web-v1/runtime-final.json)을 확인한다.
+
+실측 realtime factor는 약0.85였으며 전경 카메라는 간헐적으로2초 freshness 기준을 넘었다. 이때 UI는 지연으로 표시한다. 검사 영상·world pose의 속도와 웹 렌더링 FPS는 별개다. WebGL fallback은 production JS의 분기 검사까지 확인했고 실제 GPU context failure/복구는 미시험이다.
+
+수신 완료한 cache 관측의 age는 수신 당시 source delay와 monotonic 경과시간으로 계산한다. 실제 수신 당시 future·stale 관측은 거절한다. controller의 일부 reset 경로에는 기존 UTC freshness 확인이 남아 있으므로 모든 재시작 경로가 시계 보정에 면역이라고 해석하지 않는다.
+
 ## 첫 버전의 경계와 후속 단계
 
 이번 버전은 한 생산라인과 한 제품 형상, 세 가지 단순 결함 형상을 사용한 정지 검사다. 연속 이동 검사, 가림·motion blur·반사·저대비의 대표성, RPM·하중·시동 조건의 PdM 강건성, 약한 고장 개선, 실공장 정확도·물리 교정은 별도 시험이 필요하다.

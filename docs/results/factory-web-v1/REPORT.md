@@ -1,133 +1,119 @@
-# 공장 웹 첫 버전 구현·검증 보고서
+# 공장 시뮬레이션·통합 웹 첫 버전 결과
 
-작성일: 2026년 10월 13일, 한국 시각. 운영 world: `live-v1`. 기준 소스: `a82a325ab4cd8cf2ffb97cc9c81c24d1ec14d8f2`.
+작성일: 2026년 10월 13일, 한국 시각. 구현 `f38912f`, 검증한 수정 소스 `9c4b793f7be7945b70a07d1d7cc63e4511aa1edc` (tree `14cfcae5271cf02df5f84406869d976b14cac3cd`). 이후 문서 커밋은 이 소스의 결과와 증거를 게시한다.
 
-**상태: 최종 측정 대기.** 아래 구현·보존·예비 증거와 최종 수용 기준을 구분한다. `PENDING`은 미측정 또는 최종 원본 미확인이며 통과·실패를 뜻하지 않는다. 최종 검증자가 각 값을 원시 결과와 연결하고 실제 commit·run·설정·하드웨어를 기록한 뒤 판정을 갱신한다.
+계획의 첫 배포 범위인 단계 0–6을 구현하고 실제 실행·정지·장애 복구·새 장면 평가를 확인했다. **10개 제품의 물리 이송과 웹 연동, 안전 수동 복구, 새 장면 AI 목표는 통과했다.** 전경 영상의 간헐적 지연과 실시간 배율 목표 미달은 아래에 공개한다. 후속 분석 페이지·사건 재생·다중 라인·운전 조건별 모델 개선까지 완료했다는 의미는 아니다.
 
-운영 절차와 재현 명령은 [공장 운영 문서](../../factory-live.md)에 있다. 계획은 workspace의 `FACTORY_WEB_IMPROVEMENT_PLAN.md`를 기준으로 한다.
+운영·재현은 [factory-live.md](../../factory-live.md), 독립 검토는 [independent-review-final.md](independent-review-final.md), 실행 복구 상태는 [runtime-final.json](runtime-final.json)에 기록한다.
 
-## 구현 결과
+## 구현한 결과
 
-| 범위 | 구현한 동작 | 증거·경계 |
+| 범위 | 실제 동작 |
+|---|---|
+| 공통 웹앱 | `/`·`/factory` 공장, `/monitor` 관제, 메뉴·직접 URL·새로고침·브라우저 이력 지원 |
+| 물리 생산라인 | 72개 ODE 롤러와 10개 dynamic plate의 접촉·마찰 이송, 검사 정지, 판정에 따른 횡방향 힘, 실측 배출 |
+| 공장 장면 | 모터 하우징·검사셀·제어반·경광등·펜스·랙·바닥 통로와 롤러 회전 표식 |
+| 웹 3D와 영상 | 공통 layout, 실제 관측 pose·관절 속도, 설비·제품 선택, 실제 Gazebo 전경/검사 JPEG |
+| 제품 증거 | run/product/inspection/sensor/camera/model ID에 HI·YOLO·CAM·실측 outfeed를 연결 |
+| 안전 복구 | 위험·운영자·world/MQTT 지연 정지, 독립 watchdog, 위험/오래된 관측 재시작 거절, 회복 후 수동 재시작 |
+| 기준 보존 | 모델 네 파일과 원본 데이터 보존, additive DB schema, 이번 확장의 재학습·강화학습·모델 교체 없음 |
+
+배출 후 공급은 빈 투입점에서 명시적으로 pose를 재설정하고 새 제품 ID를 부여한다. 물리 회송 라인·수거함 낙하는 구현하지 않았다. 미검사 제품은 `unknown`으로 유지하며 정상 판정으로 집계하지 않는다. 진동은 Gazebo 관절 관측에 수식을 적용한 합성 파형이다.
+
+## 실행 조건과 재현성
+
+| 항목 | 실제 조건 |
+|---|---|
+| 호스트 | Intel Core Ultra 5 225H, 14 논리 코어, Windows 11 Home, 균형 조정 전원 구성 [hardware-final.json](hardware-final.json) |
+| 실행 | WSL Ubuntu, Compose `smart-factory-web-20261013`, 9개 서비스와 실제 IAB 공장 화면 |
+| 평가 run | `factory-1791898116588790`, `balanced-evaluation`, 10개 제품 |
+| 런타임 | Python 3.10.12, PyTorch 2.5.1+cpu, ONNX Runtime 1.20.1, Gazebo 11.10.2, ROS2 Humble |
+| 물리 조건 | step 0.004초, solver 30회, 목표 realtime factor 1, 모터 100rad/s ≈ 954.93RPM, 롤러 setpoint 6rad/s |
+| 자원 제한 | 컨테이너 cpu.max `max 100000`, memory.max `max`; WSL/호스트 가용 자원과 구분 |
+| 웹 측정 | 1920×1080 viewport override (실제 content 1905×1080), mobile 390×844 (content 375폭), 실제 WebGL2 |
+| 가속·시계 | 서버 AI·Gazebo는 CPU/Mesa; 브라우저 GPU vendor·가속 방식/버전 별도 측정하지 않음. 표시 지연은 같은 호스트 UTC 기준 |
+
+CPU governor는 채집하지 않았다. 기존 8084 및 독립 clone 8087 서비스는 종료하고 볼륨을 보존했다. 전체 실행 측정과 단독 detector 측정을 구분하며, 기존 v1의 성능을 새 장면의 결과로 재사용하지 않는다.
+
+## 계획 기준과 검증 결과
+
+| 기준 | 결과 | 원본 |
 |---|---|---|
-| 한 웹앱의 두 페이지 | 기본 `/`·`/factory`, 기존 관제 `/monitor`, 공통 메뉴·직접 URL | 최종 desktop/mobile 브라우저 검증은 아래 별도 gate |
-| 실제 제품 이송 | 기본 10개 dynamic plate, 72개 실제 ODE roller, 공통 layout | body 좌표·속도는 Gazebo 관측; 장시간 안정성은 최종 측정 대기 |
-| 검사 lifecycle | 투입→이송→정지 검사→YOLO 판정→힘에 의한 횡분류→실측 배출 | 배출 후 공급 reset은 명시적 pose 재배치, 물리 회송은 구현하지 않음 |
-| 실제 영상·웹 3D | 실제 Gazebo inspection/overview JPEG, 로컬 Three.js, 설비·제품 선택 | pose 보간은 측정한 두 관측 사이, WebGL 대체 영상 제공 |
-| 제품 증거 연결 | run/product/inspection/event/camera/model identity, HI·CAM·outfeed 저장 | 미검사와 결함 미검출을 구분; 제품 중복 집계는 DB identity 제약 |
-| 안전·freshness | 위험 인터락, 운영자 정지, 관측 지연, 직접 ROS 통신 정지와 수동 재시작 | PUBACK은 broker 확인; 실제 AI·DB 완료 및 프로세스 crash 복구와 구분 |
-| 기존 기준 보존 | 네 모델·reference SHA256 유지, 원본 generation 분리, additive DB schema | 이번 장면 가중치 재학습·강화학습·모델 승격 없음 |
+| URL·화면 lifecycle | 메뉴·직접 접근·새로고침·뒤로/앞으로·반복 이동, mobile 두 페이지 overflow 0 | [browser-ui-final.json](browser-ui-final.json) |
+| 다중 제품 이송 | 10개 body 유지, 288개 logical 제품 ID, 278회 배출 후 재공급 | [stability-30min.json](stability-30min.json) |
+| 30분 운전 | 벽시계 1,800.040초, 18,897개 world 관측, 좌표 bounds·겹침·소실 heuristic finding 0 | 같은 원본 |
+| 장면·선택·영상 | 전체 공장과 제품 흐름, 선택 정보, 실제 두 카메라, mobile 접이식 정보 | [factory-desktop-final.png](factory-desktop-final.png), [factory-mobile-final.png](factory-mobile-final.png), [monitor-mobile-final.png](monitor-mobile-final.png) |
+| 30FPS 목표 | 실제 브라우저 두 표본 약 144FPS | [browser-performance-final.json](browser-performance-final.json) |
+| 10Hz·표시 p95≤500ms | source 10.683Hz, HTTP 고유 관측 10.498Hz, browser 관측→표시 p95 174.95/168.72ms | browser 원본과 stability |
+| 실제 카메라 | 검사 1.763FPS / 영상 나이 p95 560.4ms, 전경 0.751FPS / p95 4,054.1ms | stability `camera_observations` |
+| stale freeze·복구 | broker 단절 중 실제 화면의 seq/제품 pose 동일, 재시작 잠금; API watchdog freeze·새 관측 복귀·수동 복구 | [browser-freeze-final.json](browser-freeze-final.json), [controller-watchdog-final.json](controller-watchdog-final.json) |
+| 인터락 | 운영자 정지·위험 reset 거절·정상 회복 후 정지 유지·수동 재시작 5개 검사; broker 7개·watchdog 7개 검사 통과 | [controls-final.json](controls-final.json), [broker-disconnect-final.json](broker-disconnect-final.json) |
+| ID·AI·배출 | SQL snapshot 458개 검사 연결, 중복/혼입 0; 456개 실측 배출과 판정·명령·좌표 일치 | 독립 검토 |
+| PdM F1≥0.80·≤100ms | 관리도/AE F1 각각 1.000, 평균 1.895ms, p95 2.928ms | [live-pdm-final.json](live-pdm-final.json) |
+| whole-frame mAP50≥0.80 | 고정 첫 100장 공식 PT mAP50 0.862806, mAP50–95 0.696098 | [new-world-vision.json](new-world-vision.json) |
+| CPU detector ≥20FPS | 전체 서비스 가동 ONNX 평균 38.466ms = 25.997FPS, p95 65.150ms | [new-world-latency.csv](new-world-latency.csv) |
+| 회귀 | 원본 DATA 읽기 전용 연결 273 passed, 0 skipped, 0 failures | [tests-final.xml](tests-final.xml) |
+| 새 clone 한 번 기동 | 정확한 소스 clone·빈 data·새 DB/MQTT 볼륨·ONNX 미생성에서 Compose up --build, 9서비스·실제 영상·AI join 확인; 271 passed / 원본 부재 2 예상 skip | [clean-startup.json](clean-startup.json) |
+| 카메라 재시작 수정 | Xvfb 동적 displayfd, 준비/PID/10초 deadline 확인; 두 차례 일반 restart 후 두 카메라 복귀 | [display-restart-proof.json](display-restart-proof.json) |
+| WebGL 대체 | production JS의 WebGL2 없음·context 생성 예외·stale 영상 분기 확인; 실제 브라우저 GPU 실패/복구는 미시험 | [browser-fallback-final.json](browser-fallback-final.json) |
 
-진단 모터는 동결 v1 관측 조건인 `100 rad/s ≈ 954.93 RPM`에 맞췄다. 롤러 setpoint는 `6 rad/s`다. 최종 물리 설정은 ODE `0.004`초 step, `30` solver iterations, realtime 목표 1이다. 이 값은 설정이며 실측 속도·realtime factor·지연의 결과값이 아니다. 진동은 실제 관절 관측에 수식을 적용한 합성 신호이며 실제 베어링 열화 역학은 모델링하지 않는다.
+30분 관측의 world stale는 34,901표본 중 263회다. 계획된 15초 simulator pause와 2초 guard에서 예상되는 약 258–266회와 일치하지만, 집계 원본에 각 poll 시각이 없어 전부 그 구간에 귀속됐다고 확정하지 않는다. 정지 표본 2,868개는 운영자/PdM/검사/장애 시험을 포함한다. browser freeze 원본은 **30분 운전 이후 broker 단절 중 실제 화면**의 증거이며, 별도 watchdog pause 당시 UI 채집을 대신하지 않는다.
 
-source의 transport는 **ROS2 Humble**이다. Dockerfile의 Humble 이미지·패키지, `rclpy` 취득 노드, `gazebo_ros::Node` 플러그인을 읽기 전용으로 확인했다. 최종 source·측정 image·프로세스의 binding은 새 clone 기동 증거와 함께 기록한다.
+안정성 도구는 API 좌표 표본의 heuristic 검사다. 모든 순간의 접촉·충돌을 완전히 감사한 영상 증거가 아니다. 양의 X 변위 누적도 실제 이동의 표본 지표이며 경로 총거리와 다르다. SQL snapshot의 나머지 2개 제품은 검사 완료 후 이송 중이었다.
 
-## 기준 보존과 main 정리
+API까지의 source 나이 p95 103.9ms와 브라우저 표시 p95는 다른 측정이다. world source Hz·renderer FPS·카메라 FPS·detector FPS도 각각 다른 값이다.
 
-[baseline.json](baseline.json)은 구현 전 모델 hash와 당시 branch snapshot이다. 그 안의 과거 branch 이름을 현재 branch로 해석하지 않는다. 문서 작성 시 읽기 전용 hash 재확인에서 다음 네 파일은 baseline과 동일했다.
+## 새 장면 YOLO와 CPU 속도
 
-| 파일 | SHA256 |
+첫 100개 고유 검사 순서를 고정했다. 선택 manifest SHA256은 `ae80ca9cc3eaf9644ed6362bb7632b6e2bd841777bcdf1d8de6a05a8e8203bb0`이다. 참값은 평가 전용이고 배포 AI 입력이나 ROI 정의에 노출하지 않았다. [selection](new-world-selection.jsonl), [predictions](new-world-predictions.jsonl), [평가 그림](new-world-vision.png)을 보존했다.
+
+| 평가 범위 | mAP50 | mAP50–95 | 해석 |
+|---|---:|---:|---|
+| 전체 영상 PT 공식 Ultralytics | 0.862806 | 0.696098 | 목표 0.80 판정에 사용 |
+| 전체 영상 ONNX 독립 matching | 0.949681 | 0.725238 | 공식 PT와 matching 절차가 달라 직접적인 export 정확도 향상 근거가 아님 |
+| 관측 pose 기반 제품 ROI PT/ONNX | 0.995000 | 0.826201 | 동일 평가 절차에서 두 결과 일치 |
+
+ROI 클래스별 AP50은 scratch/dent/contamination 각각 0.995다. AP50–95는 0.700872/0.895500/0.882232다. 전체 영상 PT AP50은 각각 0.919524/0.823350/0.845545다.
+
+제품별 정상/스크래치/찍힘/이물질을 각각 25개 취득했고, 전체 영상에는 주변 제품까지 합쳐 147개 결함 label이 있다. 정상 제품을 대상으로 한 25개 영상 중 24개는 이웃 제품의 결함이 보인다. 그래서 **제품 정상 오검출 0/25**와 **전체 영상 무결함 표본 1개에 대한 오검출 1/1**을 섞지 않는다. raw whole-frame 운영점의 box precision/recall/F1은 0.572/0.918/0.705이며, 제품 ROI 운영점의 TP75/TN25/FP0/FN0, F1 1.000과 별도다. 정상 25개에서 오검출 0이라는 결과의 Wilson 95% 상한은 약 13.3%다.
+
+| 부하 조건 | ONNX 평균 / FPS / p95 | PT 평균 / FPS / p95 |
+|---|---|---|
+| 9서비스·공장 브라우저 동시 | 38.466ms / 25.997 / 65.150ms | 164.249ms / 6.088 / 540.640ms |
+| 단독·같은 첫100장 | 10.169ms / 98.335 / 16.717ms | 23.988ms / 41.688 / 40.937ms |
+
+단독 원본은 [new-world-timing.json](standalone-20261013-final/new-world-timing.json)에 있다. 7개 실행 서비스를 정지하고 broker/database만 idle 상태로 유지했으며 공장 브라우저도 about:blank로 이동했다. network none인 별도 컨테이너에서 4threads·batch1·warmup10으로 이미지와 두 모델 hash를 다시 대조했다. 정확도는 반복하지 않았다. 시간 범위는 resize·BGR/RGB·정규화·추론·NMS이며 JPEG decode·제품 ROI filter·CAM·MQTT·DB·브라우저 표시를 제외한다. 현재 배포 detector는 ONNX이며 전체 서비스 동시 실행에서 PT가 20FPS를 달성했다고 주장하지 않는다.
+
+선택 100장 모두 실제 AI 입력 JPEG·model·제품·카메라·센서·HI join과 ONNX export binding을 확인했다. pose는 camera 시각을 양쪽 관측 사이에서 근사 보간하며 외삽하지 않는다. 최대 bracket 0.092sim초, 영상 수신 나이 최대 0.1183초, sensor offset 절대값 최대 0.116sim초, PUBACK delay 최대 0.0551초다. JPEG byte 일치는 label projection의 픽셀 정확도를 보장하지 않는다.
+
+## PdM·자원·남은 성능 제약
+
+PdM은 고정 955RPM의 합성 파형에서 fault 0/1/3/5별 25창, 사전 지정한 settling 2창 제외 후 첫 fresh join 100개를 사용했다. 관리도와 AE 모두 TP75/TN25/FP0/FN0, 배포 HI 차이 0이었다. FFT·특징·두 모델·HI의 4threads CPU 시간이 위 표의 1.895ms다. **9서비스·카메라·웹은 가동했지만 이 PdM 측정 구간의 컨베이어는 의도적으로 정지했고 진단 모터는 계속 회전했다.** 일반 이송 중 PdM latency 또는 실제 베어링 성능으로 확대하지 않는다. 원시 파형은 [observations gzip](live-pdm-final-observations.jsonl.gz)에 보존한다.
+
+자원 원본은 [resources-30min.json](resources-30min.json), 계산 요약은 [resource-summary-final.json](resource-summary-final.json)이다. Docker CPU 100%는 논리 코어 1개이며 호스트 전체 100%가 아니다. 9서비스 10초 간격 180표본에서 각 표본의 서비스 CPU 합계를 계산했다. 합계 평균 293.36%(2.934코어), nearest-rank p95 1156.48%, 최대 1543.91%이며 높은 tail도 원본 그대로 공개한다. p95는 정렬 표본의 ceil(180×0.95)번째 값이며 선형 보간 p95 1157.32%와 구분한다. 이 합계를 정확한 호스트 전체 이용률로 해석하지 않는다. 합산 메모리는 1.859–2.496GiB다.
+
+- 실측 realtime factor는 **0.84945**로 목표 1에 미달했다. 중간의 계획 pause와 시험 부하를 포함한 30분 벽시계 대비 값이다.
+- 전경 카메라는 2초 freshness 기준을 자주 넘었다. 단일 9서비스 30초 추가 trace에서도 최대 frame 간격 4.30초가 남았다. world stale·cache reject 증가가 없고 broker 전달 자체는 수 ms였으므로 상류 카메라 도착 지연으로 좁혔지만 renderer/DDS의 구체 원인은 확정하지 못했다. [추가 trace](overview-single-stack-summary.json)
+- 검사 카메라는 같은 추가 trace에서 stale 0, 약 1.86FPS였다. 카메라의 낮은 실제 FPS를 3D 화면 144FPS로 대체해서 보고하지 않는다.
+- WebGL2 unavailable fallback 코드 분기를 확인했으나 실제 GPU context loss·복구/완전한 GPU 미탑재 브라우저 조합의 성능은 미시험이다.
+
+## 수정·기준 보존·후속 범위
+
+벽시계의 수십 ms 역방향 보정이 수신 완료한 관측을 future로 오판해 정지시키던 문제를 수정했다. 수신 당시 source delay와 monotonic 경과시간으로 cache의 나이를 계산한다. 실제 future-at-receipt·2초 world/camera·5초 health/line 한계는 유지한다. controller의 일부 reset 경로에는 legacy UTC freshness 확인이 남아 있으므로 모든 reset 경로가 시계 보정에 면역이라고 주장하지 않는다. 이 경로는 보수적으로 재시작을 거절하며 자동 재시작하지 않는다.
+
+검사 발행은 immutable sensor/image batch의 개별 PUBACK 뒤에 완료하고 미확인 부분만 같은 UUID·bytes로 재시도한다. PUBACK은 broker 인수 확인이며 AI·DB commit 완료 확인은 아니다. outbox는 bridge 메모리 범위이며 프로세스 crash·DB 장기 장애·모든 queue 포화의 무손실 복구는 포함하지 않는다.
+
+[baseline.json](baseline.json)의 네 SHA256을 그대로 유지했다.
+
+| 기준 파일 | SHA256 |
 |---|---|
-| `vision.pt` | `de2b27a91410cd0ee12167a43b9651a9ef06198e6c86d80fdd2e9d84dffcde57` |
-| `pdm.pt` | `f829b824123eee1adc66b2fd6cf4fb9a8c50ffd2ba8ea343c06730e93500bb73` |
-| `rul.pt` | `602def1bf05519682fb97a0c7f41507d141aed920bd63f616af6a87a5b2ef323` |
-| `drift-reference.json` | `8bc12684ec570284af367730e68b82d8a1b03ba922f5dbf46daaad5095eae45d` |
+| vision.pt | `de2b27a91410cd0ee12167a43b9651a9ef06198e6c86d80fdd2e9d84dffcde57` |
+| pdm.pt | `f829b824123eee1adc66b2fd6cf4fb9a8c50ffd2ba8ea343c06730e93500bb73` |
+| rul.pt | `602def1bf05519682fb97a0c7f41507d141aed920bd63f616af6a87a5b2ef323` |
+| drift-reference.json | `8bc12684ec570284af367730e68b82d8a1b03ba922f5dbf46daaad5095eae45d` |
 
-작업 저장소의 현재 source branch는 `main`이다. 읽기 전용 local ref 확인에는 `main`, `origin/main`과 아래 보존 tag가 남았다. 원격 게시·최종 tip 확인은 최종 검증 때 별도 기록한다.
+소스 작업과 공개 기본 branch는 `main`이다. 기존 고유 커밋은 `archive/completion-20261013`, `archive/data-validation-20261013`, `archive/process-control-20261013`, `archive/pre-completion-20261013` 태그로 보존했다. 새 branch 이름에 codex를 사용하지 않았다.
 
-| 보존 tag | 보존 commit |
-|---|---|
-| `archive/completion-20261013` | `a82a325ab4cd8cf2ffb97cc9c81c24d1ec14d8f2` |
-| `archive/data-validation-20261013` | `24ca000b6ce8ba35024ac325264b89016a12697d` |
-| `archive/process-control-20261013` | `7840522b75630513af640ef83afd19a3b1188004` |
-| `archive/pre-completion-20261013` | `1b4dfba66ee5ffaefb112ea4ab9eec80cf920339` |
+원본 DATA 연결 회귀 273개는 실패·skip 0이며 기존 라이브러리 deprecation warning 15개를 기록했다. 새 clone은 **로컬 Git의 검증 소스를 새로 복제한 증거**이며 GitHub에서 내려받은 공개 clone 검증과 구분한다. 공개 증거 도구까지 포함한 [quality-final.json](quality-final.json)의 Python 정의 621개 docstring 누락·Conventional Commit 위반은 0이다.
 
-최종 commit: **PENDING**. 최종 공개 main/tag 검증 증거: **PENDING**.
-
-## 현재 저장된 예비 증거
-
-[frontend-api-final10-proof.json](frontend-api-final10-proof.json)은 `factory-1791826572366001`의 read-only API 표본이다. world sequence `4050→4073`, 10개 동일 제품 ID 모두의 양의 X 이동 약 `0.21744 m`, 실제 camera metadata와 `connected=true`, `stale=false`를 기록한다. 이 표본은 실제 관측 이동을 확인하지만 브라우저 렌더링·전체 이송 시간·30분 안정성·최종 0.004초 물리 설정의 반복 운전을 증명하지 않는다. 해당 run은 `balanced-evaluation`이었다.
-
-[frontend-source-regressions.json](frontend-source-regressions.json)은 실제 production JS 함수를 Node VM과 고정 Three.js primitive로 실행한 검증이다. 문법, 과거 epoch snapshot에서 재시작 잠금, matching epoch 허용, stale 제어 잠금, 그려진 제품 ID·색과 미래 slot 재사용 분리, 다른 run/미검사 제품의 판정 색 방지를 통과했다. 이것은 실제 브라우저 WebGL·카메라 표시·mobile layout의 대체 증거가 아니다.
-
-최종 검증 담당자가 전달한 최적화 구성의 첫 1분 관측은 source 상태 `10.63 Hz`, 물리 UTC→API 나이 p95 `114.5 ms`, realtime factor `0.5894`, 10개 body 모두 이동·integrity finding 0이었다. 이 값은 짧은 초기 관측이며 원본 파일 연결은 **PENDING**이다. API까지의 나이를 browser display 지연으로 해석하지 않는다. realtime factor 1은 목표 설정이며 이 측정은 실시간과 동일한 속도를 달성했다는 결과가 아니다.
-
-독립 읽기 전용 코드 검토에서 두 문제를 발견하고 수정했다.
-
-1. sensor/image 발행 성공을 확인하지 않고 검사 완료를 보내던 경로는 immutable batch의 개별 PUBACK 이후 완료하도록 변경했다. sparse lifecycle도 PUBACK 전에는 큐에서 제거하지 않는다. 연결·전달 실패는 직접 ROS 정지와 fresh manual resume latch로 처리한다.
-2. 영상과 별도의 최신 pose를 결합하던 경로는 최대 0.10 시뮬레이션 초 간격의 같은 제품 관측 bracket에서 camera 시각의 pose를 보간하도록 변경했다. 2초 영상 수신 나이·±0.15초 센서 시각 차이·근사 여부와 ACK 시간을 기록한다. 평가 도구도 이 조건을 검증한다.
-
-수정 후 코드 검토에서 두 경로의 보완을 확인했다. 실제 브로커 단절·장시간 운전·전체 성능은 최종 runtime 증거로 판정한다. `tests/test_live_protocol.py`는 보간·외삽 거부·slot reuse·stale/future frame·PUBACK timeout·partial retry·수동 재시작을 검증하도록 추가됐다. 최종 검증 담당자가 전달한 현재 회귀는 `217 passed, 2 skipped`이며 2개는 원본 DATA 미연결에 따른 예상 skip이다. 뒤이어 추가한 장애 검증 도구를 포함한 최종 재실행, 원본 DATA 연결과 JUnit 원본은 **PENDING**이다.
-
-## 최종 실행 조건 기록
-
-아래는 최종 결과를 채울 자리다. 예비 표본의 조건과 섞지 않는다.
-
-| 항목 | 최종 기록 |
-|---|---|
-| source commit / tree diff hash | **PENDING** |
-| 실행 UTC / 한국 시각 | **PENDING** |
-| OS·WSL/Docker·CPU·logical cores·메모리 제한 | **PENDING** |
-| CPU governor/host 전원 상태와 동시 workload | **PENDING** |
-| Python·Gazebo·PyTorch·ONNX Runtime·browser version | **PENDING** |
-| ROS transport / source·image·process binding | source ROS2 Humble 확인; 최종 runtime binding **PENDING** |
-| stability run_id / defect mode / 제품 수 | **PENDING** |
-| evaluation run_id / first100 selection hash | **PENDING** |
-| 물리 step·iters / 측정 realtime factor | **PENDING** |
-| 실제 desktop 해상도 / mobile viewport / WebGL 가속·대체 경로 | **PENDING** |
-
-## 계획 수용 기준과 측정값
-
-모든 목표는 동일 하드웨어의 최종 동시 실행 조건에서 확인한다. 기존 completion-v3의 결과는 비교 기준이며 이번 장면의 통과값으로 재사용하지 않는다.
-
-| 계획 기준 | 목표·판정할 내용 | 최종 실측·판정 | 원본 증거 |
-|---|---|---|---|
-| 1. URL·메뉴 lifecycle | 공장↔관제, 직접 접근·새로고침·뒤로가기·반복 이동, 중복 renderer/polling 정리 | **PENDING** | 실제 브라우저 QA·캡처 |
-| 2. 제품 수·실제 이동 | 8개 이상 고유 제품 ID와 Gazebo-origin 양의 이송 | 예비 10개 표본 확인; 최종 **PENDING** | API 예비 표본 + 최종 observer |
-| 3. 30분 안정성 | 1,800초 벽시계, 가동·정지·재시작 반복, 겹침·낙하·소실·중복 검사·reset 기록 | **PENDING** | `stability-30min.json` 등 최종 원본 |
-| 4. 장면·선택·작은 화면 | 1920×1080 흐름·롤러·단계, 선택 설비 실측값, 작은 화면 영상·접이식 정보 | **PENDING** | desktop/mobile 캡처 |
-| 5a. 브라우저 renderer | 기본 환경 30FPS | **PENDING** | 실제 browser diagnostics |
-| 5b. world 전송·표시 | world 10Hz 이상, 정상 관측-to-display p95 ≤500ms | **PENDING** | 물리 UTC origin + browser diagnostics |
-| 5c. 실제 영상·대체 경로 | camera 실측 FPS·나이, CPU 소프트웨어 렌더·WebGL 대체 확인 | **PENDING** | camera metadata·CPU/영상 측정 |
-| 6. stale·재연결·새 epoch | 마지막 pose freeze, 지연 표시, 최신 snapshot 복귀, 이전 run 상태 제거 | source 회귀 확인; runtime **PENDING** | 장애·복구 브라우저/API 원본 |
-| 7. 인터락·수동 복구 | 실제 롤러 정지·제품 잔류 이동, 위험/지연 reset 거절, 회복 후 수동 재시작 | 코드 경로 확인; runtime **PENDING** | `controls.json` 등 최종 원본 |
-| 8. 제품·AI·배출 증거 | ID·camera·HI·YOLO·CAM·모델·outfeed 일치, unknown 유지·중복 없음 | source 경로 확인; DB/runtime **PENDING** | backend oracle + 실제 run DB audit |
-| 9a. 새 조건 PdM | F1≥0.80, CPU PdM≤100ms; 운전 조건·고장별 범위 표시 | **PENDING** | 새 조건/기준 회귀 및 동시 latency |
-| 9b. 새 장면 YOLO | whole-frame mAP50≥0.80와 별도 제품 ROI mAP50·클래스별 AP·정상 오검출 | **PENDING** | `new-world-vision.json`·고정 first100 |
-| 9c. CPU detector | 100장 평균≥20FPS; 동시 실행과 단독 benchmark 분리 | **PENDING** | latency CSV·workload 명시 report |
-| 10. 회귀·새 clone | 원본 연결 회귀, 새 state/physics/UI 검사, 빈 data·새 DB·ONNX 없음의 한 Compose 기동 | **PENDING** | JUnit·독립 clone 기동 원본 |
-
-안정성 observer는 API 표본에 기반한 좌표 bounds·겹침 heuristic을 사용한다. 영상 전체의 모든 접촉·충돌을 완전히 감사한 검사는 아니다. 도구의 `passed` 외에 10개 제품 보존·실제 logical ID 재공급·배출·DB 검사 건수와 stop/recovery 구간을 독립 확인한다.
-
-world 전송 Hz·API 수신 Hz·display FPS와 camera FPS는 별도로 표기한다. source UTC가 물리 스레드에서 생성되므로 관측-to-display는 bridge 이후 구간에만 한정되지 않는다. browser 측정에는 브라우저와 컨테이너가 같은 호스트 시계를 쓰는 조건을 기록한다. 전체 CPU 부하의 평균·p95·측정 간격·서비스 범위도 **PENDING**이다.
-
-## 새 장면 detector 평가 기록
-
-평가는 학습·export·threshold fitting·가중치 승격 없이 고정 checkpoint로 수행한다. 지정한 균형 run의 첫 100개 고유 frame을 manifest 순서로 선택하며, 모델·이미지 hash와 실제 AI event join을 확인한다. 생성 class 참값은 private ROS reference와 평가 파일 안에서만 사용한다.
-
-| 평가 항목 | 최종 값 |
-|---|---|
-| 정상/스크래치/찍힘/이물질 표본 수 | **PENDING** |
-| 전체 영상 PyTorch 공식 mAP50 / mAP50–95 | **PENDING** |
-| 전체 영상 ONNX mAP50 / 정상 오검출 | **PENDING** |
-| 제품 ROI ONNX mAP50 / 클래스별 AP50 | **PENDING** |
-| 제품 ROI 운영 threshold precision·recall·F1 / 정상 오검출 | **PENDING** |
-| 동시 실행 ONNX·PyTorch 100장 평균 ms / FPS / p95 ms | **PENDING** |
-| 단독 detector 같은 100장·설정의 평균 ms / FPS / p95 ms | **PENDING** |
-| pose bracket 최대 sim 간격 / camera 수신 나이 / sensor 시각 차이 | **PENDING** |
-| PUBACK 최대 delay / actual frame·model binding 확인 | **PENDING** |
-
-전체 영상과 제품 ROI는 서로 다른 참값 범위다. ROI는 제품의 관측 기하로 정하며 결함 참값으로 잘라내지 않는다. 주변 support 구조·인접 제품에 대한 raw detector 출력은 보존한다. raw whole-frame 목표가 미달하면 ROI 통과로 대체해서 전체 영상 목표도 달성했다고 쓰지 않는다.
-
-pose 라벨은 양쪽 관측 사이의 근사 보간이다. `pose_sim_time-camera_sim_time=0`은 보간을 camera 시각에서 평가했다는 뜻이며 원시 render-time pose의 정확도를 뜻하지 않는다. 프레임별 `pose_alignment.approximate=true`, gap·sequence·외삽 없음과 실제 bound를 함께 공개한다. JPEG hash와 AI 입력 bytes의 일치는 이 근사 라벨의 픽셀 정확도를 별도로 보장하지 않는다.
-
-## 첫 버전의 한계와 후속 범위
-
-- 한 라인·한 plate 형상·세 가지 단순 결함·정지 검사·고정 검사 카메라 조건이다. 균형 합성 표본은 실공장 정확도나 운영 불량률 추정 근거가 아니다.
-- 현재 v1 진단 모델의 지원 조건은 약 955RPM의 합성 신호다. RPM·하중 변화, 약한 고장, 실제 베어링 RUL·오차 구간을 새로 검증하거나 개선한 결과는 아직 포함하지 않는다.
-- 횡분류는 실제 body force actuator이고, 기계식 pusher 접촉이나 전체 공급·회송 동역학은 단순화되어 있다. 투입점 reset은 명시적 lifecycle 처리다.
-- quality가 없는 제품은 중앙의 미분류 배출 `unknown`이며 정상·reject의 실제 분류로 집계하지 않는다.
-- 중요한 발행의 PUBACK은 broker 인수 확인이다. bridge 메모리 batch는 프로세스 crash 후 복구하는 영속 outbox가 아니다. AI·storage queue 포화·장기 DB 장애를 포함한 모든 장애의 무손실 보장을 주장하지 않는다.
-- `/analysis`, `/models`, 사건 replay, 여러 생산라인, 연속 이동·가림·반사·저대비 영상 검사, 운전 조건별 PdM 개선, 모델 승격, Gazebo 후속 버전 이전은 후속 단계다.
-
-최종 결론: **PENDING — 위 원본 확인과 실제 미달·미검증 조건을 기록한 뒤 작성.**
+이번 범위는 한 라인·한 판형 제품·단순 세 결함·정지 검사·합성 진동이다. `/analysis`, `/models`, 사건 재생, RPM·하중·시동 강건성/약한 고장, 이동·가림·반사·저대비 검사, 실제 RUL 교정·오차 구간, 다중 라인, 영속 outbox와 Gazebo 후속 버전 이전은 후속 단계다.
