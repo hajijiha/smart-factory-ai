@@ -24,6 +24,9 @@ sensor:
   contact_angle_deg: 0
 simulator:
   initial_fault_level: 0
+  live_motor_rpm: 954.929658551372
+  live_step_size: 0.004
+  live_solver_iterations: 30
   publication_interval_s: 1.0
   camera_size: 320
   camera_fov: 0.75

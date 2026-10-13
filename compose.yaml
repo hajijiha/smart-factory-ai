@@ -33,6 +33,9 @@ services:
       LIBGL_ALWAYS_SOFTWARE: '1'
       GAZEBO_MODEL_DATABASE_URI: ''
       LIVE_WEAR_SECONDS: '${LIVE_WEAR_SECONDS:-0}'
+      FACTORY_WORLD_MODE: '${FACTORY_WORLD_MODE:-live}'
+      FACTORY_POC_PRODUCTS: '${FACTORY_POC_PRODUCTS:-10}'
+      FACTORY_LIVE_DEFECT_MODE: '${FACTORY_LIVE_DEFECT_MODE:-operational}'
     volumes:
       - ./data:/app/data
       - ./artifacts:/app/artifacts
@@ -53,6 +56,11 @@ services:
       - ./simulator/render_validation.py:/app/simulator/render_validation.py:ro
       - ./simulator/rul_dataset.py:/app/simulator/rul_dataset.py:ro
       - ./simulator/causal_dataset.py:/app/simulator/causal_dataset.py:ro
+      - ./simulator/live_world.py:/app/simulator/live_world.py:ro
+      - ./simulator/live_bridge.py:/app/simulator/live_bridge.py:ro
+      - ./simulator/live_evaluation.py:/app/simulator/live_evaluation.py:ro
+      - ./simulator/live_protocol.py:/app/simulator/live_protocol.py:ro
+      - ./simulator/plugin/live.hpp:/app/simulator/plugin/live.hpp:ro
     depends_on:
       broker: {condition: service_healthy}
     shm_size: 512mb
@@ -101,7 +109,9 @@ services:
     image: smart-factory-runtime:local
     build: {context: ., dockerfile: docker/Dockerfile}
     command: [python3, -m, factory.controller]
-    environment: *runtime-env
+    environment:
+      <<: *runtime-env
+      FACTORY_WORLD_MODE: '${FACTORY_WORLD_MODE:-live}'
     volumes: *runtime-volumes
     depends_on:
       broker: {condition: service_healthy}
@@ -109,7 +119,9 @@ services:
     image: smart-factory-runtime:local
     build: {context: ., dockerfile: docker/Dockerfile}
     command: [uvicorn, factory.dashboard:app, --host, '${DASHBOARD_BIND_ADDRESS:-0.0.0.0}', --port, '${DASHBOARD_INTERNAL_PORT:-8080}']
-    environment: *runtime-env
+    environment:
+      <<: *runtime-env
+      FACTORY_WORLD_MODE: '${FACTORY_WORLD_MODE:-live}'
     volumes: *runtime-volumes
     ports: ['${DASHBOARD_HOST_ADDRESS:-127.0.0.1}:${DASHBOARD_PORT:-8080}:${DASHBOARD_INTERNAL_PORT:-8080}']
     depends_on:

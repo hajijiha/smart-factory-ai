@@ -13,6 +13,7 @@
 #include <algorithm>
 #include <cmath>
 #include <stdexcept>
+#include "live.hpp"
 
 namespace gazebo {
 class FactoryWorld : public WorldPlugin {
@@ -21,6 +22,11 @@ class FactoryWorld : public WorldPlugin {
   void Load(physics::WorldPtr world, sdf::ElementPtr sdf) override {
     world_ = world;
     ros_ = gazebo_ros::Node::Get(sdf);
+    if (sdf->HasElement("live_mode") && sdf->Get<bool>("live_mode")) {
+      live_ = std::make_unique<LiveFactoryController>(world_,ros_,sdf);
+      update_ = event::Events::ConnectWorldUpdateBegin(std::bind(&FactoryWorld::Update,this));
+      return;
+    }
     node_ = transport::NodePtr(new transport::Node()); node_->Init(world->Name());
     visual_ = node_->Advertise<msgs::Visual>("~/visual");
     light_ = node_->Advertise<msgs::Light>("~/light/modify");
@@ -84,6 +90,7 @@ class FactoryWorld : public WorldPlugin {
   }
   /** Apply scene commands on the physics thread and emit joint observations. */
   void Update() {
+    if (live_) { live_->Update(); return; }
     auto motor = world_->ModelByName("motor");
     if (!motor) return;
     auto joint = motor->GetJoint("shaft_joint");
@@ -178,6 +185,7 @@ class FactoryWorld : public WorldPlugin {
   event::ConnectionPtr update_; common::Time last_; std::mutex mutex_;
   std::deque<std::string> pending_; bool running_ = true;
   double motorOmega_ = 157.079632679;
+  std::unique_ptr<LiveFactoryController> live_;
 };
 GZ_REGISTER_WORLD_PLUGIN(FactoryWorld)
 }

@@ -192,6 +192,92 @@ def test_camera_delays_are_visible_when_the_line_is_running():
     assert equipment(result, 'camera')['state'] == 'stale'
 
 
+def live_camera(data, *, age=.5, run='run-1'):
+    """Attach independently timed frame observations to a live run."""
+    data['world'] = {'mqtt_connected': True, 'connected': True, 'stale': False,
+                     'state': {'run_id': 'run-1'}, 'cameras': {'inspection': {
+                         'timestamp': stamp(age), 'sim_time': 100, 'sequence': 12,
+                         'run_id': run, 'age_ms': age * 1000, 'stale': age > 2}}}
+    return data
+
+
+def test_live_camera_health_does_not_expire_between_product_inspections():
+    """A ten-second quality cycle must not make a healthy frame feed stale."""
+    data = live_camera(snapshot())
+    data['inspections'][0]['timestamp'] = stamp(10)
+    data['inspections'][0]['run_id'] = 'run-1'
+    result = build_process_snapshot(data, now=NOW)
+    camera = equipment(result, 'camera')
+    assert result['state'] == 'running'
+    assert camera['state'] == 'normal' and camera['fresh']
+    assert camera['status_label'] == '영상 연결'
+    assert camera['metrics']['last_inspection_age_seconds'] == 10
+    assert camera['metrics']['last_inspection_current_run'] is True
+    assert camera['age_seconds'] == .5
+
+
+def test_live_camera_status_does_not_claim_its_last_defect_is_a_current_frame_verdict():
+    """Keep a defect as quality evidence while reporting frame availability."""
+    data = live_camera(snapshot())
+    data['inspections'][0].update(defect_type='scratch', bbox=[1, 2, 5, 8])
+    result = build_process_snapshot(data, now=NOW)
+    camera = equipment(result, 'camera')
+    assert camera['state'] == 'normal' and camera['status_label'] == '영상 연결'
+    assert camera['metrics']['last_inspection_defective'] is True
+    assert any(event['severity'] == 'warning' for event in result['recent_events'])
+
+
+def test_first_live_frame_does_not_need_a_first_quality_result_to_be_healthy():
+    """An uninspected line can still have an observed functioning camera."""
+    data = live_camera(snapshot())
+    data['inspections'] = []
+    camera = equipment(build_process_snapshot(data, now=NOW), 'camera')
+    assert camera['fresh'] and camera['state'] == 'normal'
+    assert camera['metrics']['last_inspection_at'] is None
+    assert camera['metrics']['last_inspection_defective'] is None
+
+
+@pytest.mark.parametrize('age', [2.001, -1])
+def test_live_camera_rejects_stale_or_future_frames_despite_recent_quality(age):
+    """A new stored verdict cannot conceal a stale or invalid live feed."""
+    camera = equipment(build_process_snapshot(live_camera(snapshot(), age=age), now=NOW), 'camera')
+    assert camera['state'] == 'stale' and camera['fresh'] is False
+
+
+def test_live_camera_rejects_previous_run_and_missing_frame_metadata():
+    """Never treat an earlier epoch's video or absent feed as current."""
+    data = live_camera(snapshot(), run='run-old')
+    assert equipment(build_process_snapshot(data, now=NOW), 'camera')['state'] == 'stale'
+    data['world']['cameras'] = {}
+    assert equipment(build_process_snapshot(data, now=NOW), 'camera')['state'] == 'waiting'
+
+
+def test_live_camera_respects_delivery_age_even_if_source_timestamp_is_new():
+    """Use the slower source/receipt age so an old cached frame fails closed."""
+    data = live_camera(snapshot())
+    data['world']['cameras']['inspection']['age_ms'] = 3000
+    assert equipment(build_process_snapshot(data, now=NOW), 'camera')['fresh'] is False
+
+
+def test_live_camera_remains_independent_of_stopped_rollers_and_pose_delay():
+    """A stopped line or delayed pose channel does not invent a video outage."""
+    data = live_camera(snapshot(running=False))
+    data['world'].update(connected=False, stale=True)
+    result = build_process_snapshot(data, now=NOW)
+    assert equipment(result, 'camera')['fresh']
+    assert result['state'] == 'stopped' and result['reset_ready'] is True
+
+
+def test_live_camera_frame_health_never_relaxes_danger_or_broker_reset_guards():
+    """A functioning video feed grants no authority to restart unsafe machinery."""
+    data = live_camera(snapshot(running=False, hi=15, level=10))
+    assert build_process_snapshot(data, now=NOW)['reset_ready'] is False
+    data['mqtt_connected'] = False
+    result = build_process_snapshot(data, now=NOW)
+    assert equipment(result, 'camera')['fresh'] is False
+    assert result['reset_ready'] is False
+
+
 @pytest.mark.parametrize('value', [None, math.nan, math.inf, -1, 101])
 def test_invalid_health_cannot_authorize_reset(value):
     """Verify invalid health cannot authorize reset."""

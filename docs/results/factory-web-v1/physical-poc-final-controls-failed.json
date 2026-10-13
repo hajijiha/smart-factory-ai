@@ -1,0 +1,39 @@
+{
+  "passed": false,
+  "failed_stage": "operator_stop_all_rollers",
+  "error": "45 second timeout waiting for every roller velocity below 0.01 rad/s",
+  "run_id": "factory-1791827912743273",
+  "sim_time": 396.448,
+  "timestamp": "2026-10-12T18:06:49.035Z",
+  "running": false,
+  "residual_rolls": [
+    {
+      "id": "roller_62/shaft_joint",
+      "position": 1.5070420211782576,
+      "velocity": -0.5960500493751526
+    },
+    {
+      "id": "roller_67/shaft_joint",
+      "position": 406.96932771108135,
+      "velocity": -0.00033775338671333615
+    },
+    {
+      "id": "roller_65/shaft_joint",
+      "position": 412.92203398456564,
+      "velocity": -2.2012282450774143E-05
+    },
+    {
+      "id": "roller_57/shaft_joint",
+      "position": 413.531042982208,
+      "velocity": 8.154973748868538E-07
+    },
+    {
+      "id": "roller_60/shaft_joint",
+      "position": 413.42259625489396,
+      "velocity": 5.750320322702032E-07
+    }
+  ],
+  "cause": "First wide roller at x=0.7 intersected the fixed guide rail ending at x=0.7; receiving trays also overlapped terminal roller collision envelopes",
+  "correction": "Rails end at x=0.60; receiving trays start at x=2.60; outfeed support top lowered to z=0.41",
+  "scope": "Motion observer passed; stop controls failed and are repeated after corrected geometry"
+}

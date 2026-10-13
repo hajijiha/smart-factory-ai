@@ -8,6 +8,7 @@
       Smart Factory AI · 공정 관제
     </title>
     <link rel="stylesheet" href="/static/dashboard.css">
+    <link rel="stylesheet" href="/static/app-nav.css">
     <script src="/static/dashboard.js" defer>
     </script>
   </head>
@@ -16,7 +17,7 @@
       공정 화면으로 이동
     </a>
     <header class="app-header">
-      <a class="brand" href="#top" aria-label="Smart Factory AI 처음으로">
+      <a class="brand" href="/factory" aria-label="Smart Factory AI 공장 시뮬레이션">
         <span class="brand-mark" aria-hidden="true">
           <svg viewBox="0 0 28 28">
             <path d="M5 21V11l6 4V9l6 4V5h6v16z"/>
@@ -31,14 +32,11 @@
         </span>
       </a>
       <nav aria-label="화면 탐색">
-        <a href="#processHeading" class="nav-active">
-          공정 관제
+        <a href="/factory">
+          공장 시뮬레이션
         </a>
-        <a href="#analysisHeading">
-          데이터 분석
-        </a>
-        <a href="#historyHeading">
-          검사 이력
+        <a href="/monitor" class="nav-active" aria-current="page">
+          관제
         </a>
       </nav>
       <div class="header-status">
@@ -786,6 +784,9 @@
                   검사 시각
                 </th>
                 <th>
+                  제품 ID
+                </th>
+                <th>
                   판정
                 </th>
                 <th>
@@ -801,7 +802,7 @@
             </thead>
             <tbody id="history">
               <tr>
-                <td colspan="5" class="empty-table">
+                <td colspan="6" class="empty-table">
                   검사 결과를 기다리고 있습니다.
                 </td>
               </tr>
@@ -811,9 +812,9 @@
       </section>
       <footer>
         <span>
-          Smart Factory AI · Gazebo Classic / ROS 2 / MQTT
+          Smart Factory AI · Gazebo Classic / ROS2 Humble / MQTT
         </span>
-        <span>
+        <span id="refreshCadence">
           2초마다 갱신 · 시각은 현지 기준 · 라이브 데모는 기존 v1 모델
         </span>
       </footer>

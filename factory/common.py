@@ -14,9 +14,11 @@ def utc_now():
     return datetime.now(timezone.utc).isoformat(timespec='milliseconds').replace('+00:00', 'Z')
 
 
-def connect(client_id, topics=(), handler=None):
+def connect(client_id, topics=(), handler=None, max_queue=None):
     """Start a reconnecting MQTT client; subscription is renewed after reconnect."""
     client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, client_id=client_id)
+    if max_queue is not None:
+        client.max_queued_messages_set(max_queue)
     def on_connect(client, userdata, flags, reason_code, properties):
         """Resubscribe to all configured topics on connection."""
         for topic in topics:

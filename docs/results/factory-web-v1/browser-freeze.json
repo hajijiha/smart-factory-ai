@@ -1,0 +1,9 @@
+{
+  "stale_before": true,
+  "stale_after": true,
+  "sequence_before": 7199,
+  "sequence_after": 7199,
+  "positions_identical": true,
+  "product_count": 10,
+  "reset_http_status": 409
+}

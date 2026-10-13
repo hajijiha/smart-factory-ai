@@ -10,6 +10,7 @@ from pydantic import ValidationError
 @pytest.fixture
 def dashboard(monkeypatch):
     """Prevent the dashboard's import from starting an MQTT network thread."""
+    monkeypatch.setenv('FACTORY_WORLD_MODE', 'dataset')
     from factory import common
     monkeypatch.setattr(common, 'connect', lambda *args, **kwargs: None)
     module = importlib.import_module('factory.dashboard')
@@ -91,3 +92,44 @@ def test_image_access_serves_only_existing_capture_formats_inside_data(dashboard
         with pytest.raises(HTTPException) as failure:
             dashboard.image(path)
         assert failure.value.status_code == 404
+
+
+def test_operator_stop_acknowledges_only_mqtt_queue(dashboard, monkeypatch):
+    """The stop reply must not claim Gazebo has already stopped moving."""
+    sent = []
+    def publish(client, topic, message, retain=False):
+        """Capture a successful command queue operation."""
+        sent.append((topic, message, retain))
+        return SimpleNamespace(rc=0)
+    monkeypatch.setattr(dashboard, 'publish', publish)
+    reply = dashboard.stop()
+    assert reply['accepted']
+    assert 'running' not in reply
+    assert sent[0][0] == 'factory/command/conveyor'
+    assert sent[0][1]['running'] is False and sent[0][2] is True
+
+
+def test_live_reset_refuses_missing_physical_observation(dashboard, monkeypatch):
+    """Live UI reset fails closed before publishing when no world frame exists."""
+    from factory.world_state import WorldCache
+    monkeypatch.setenv('FACTORY_WORLD_MODE', 'live')
+    monkeypatch.setattr(dashboard, 'world_cache', WorldCache())
+    sent = []
+    monkeypatch.setattr(dashboard, 'publish', lambda *args, **kwargs: sent.append(args))
+    with pytest.raises(HTTPException) as failure:
+        dashboard.reset()
+    assert failure.value.status_code == 409
+    assert not sent
+
+
+def test_camera_route_never_resolves_arbitrary_name_to_file(dashboard, monkeypatch):
+    """Only configured camera names can reach the frame cache."""
+    from factory.world_state import WorldCache
+    monkeypatch.setattr(dashboard, 'world_cache', WorldCache())
+    for name in ['../../private', 'unknown']:
+        with pytest.raises(HTTPException) as failure:
+            dashboard.camera_frame(name)
+        assert failure.value.status_code == 404
+    with pytest.raises(HTTPException) as failure:
+        dashboard.camera_frame('inspection')
+    assert failure.value.status_code == 503

@@ -1,0 +1,19 @@
+{
+  "source": "a82a325ab4cd8cf2ffb97cc9c81c24d1ec14d8f2",
+  "models": {
+    "rul.pt": "602def1bf05519682fb97a0c7f41507d141aed920bd63f616af6a87a5b2ef323",
+    "drift-reference.json": "8bc12684ec570284af367730e68b82d8a1b03ba922f5dbf46daaad5095eae45d",
+    "vision.pt": "de2b27a91410cd0ee12167a43b9651a9ef06198e6c86d80fdd2e9d84dffcde57",
+    "pdm.pt": "f829b824123eee1adc66b2fd6cf4fb9a8c50ffd2ba8ea343c06730e93500bb73"
+  },
+  "branches": [
+    "refs/heads/codex/complete-requirements a82a325ab4cd8cf2ffb97cc9c81c24d1ec14d8f2",
+    "refs/heads/codex/factory-data-validation 24ca000b6ce8ba35024ac325264b89016a12697d",
+    "refs/heads/codex/process-control-ui 7840522b75630513af640ef83afd19a3b1188004",
+    "refs/heads/main a82a325ab4cd8cf2ffb97cc9c81c24d1ec14d8f2",
+    "refs/remotes/origin/HEAD a82a325ab4cd8cf2ffb97cc9c81c24d1ec14d8f2",
+    "refs/remotes/origin/archive/pre-completion-20261013 1b4dfba66ee5ffaefb112ea4ab9eec80cf920339",
+    "refs/remotes/origin/codex/complete-requirements a82a325ab4cd8cf2ffb97cc9c81c24d1ec14d8f2",
+    "refs/remotes/origin/main a82a325ab4cd8cf2ffb97cc9c81c24d1ec14d8f2"
+  ]
+}

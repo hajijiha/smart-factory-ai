@@ -1,0 +1,6 @@
+/* Shared navigation: the active page owns its observation lifecycle. */
+.app-header nav a { white-space:nowrap; }
+.app-header nav a[aria-current="page"] { color:var(--accent); border-bottom-color:var(--accent); }
+.app-header { gap:42px; }
+.app-header nav { gap:30px; }
+@media(max-width:680px) { .app-header { gap:12px; } .app-header nav { gap:26px; } }

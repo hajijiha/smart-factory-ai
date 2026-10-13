@@ -9,4 +9,5 @@ gzserver --verbose -s libgazebo_ros_init.so -s libgazebo_ros_factory.so /tmp/fac
 GAZEBO_PID=$!
 export FACTORY_GAZEBO_PID="$GAZEBO_PID"
 trap 'kill "$GAZEBO_PID" 2>/dev/null || true' EXIT
+python3 -c 'from simulator.dataset_protocol import verify_plugin_binding; verify_plugin_binding()'
 exec python3 -m simulator.bridge

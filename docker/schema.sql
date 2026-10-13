@@ -29,3 +29,20 @@ CREATE TABLE IF NOT EXISTS gradcam_artifacts (
 CREATE TABLE IF NOT EXISTS prognostics_readings (
  event_id TEXT PRIMARY KEY, timestamp TIMESTAMPTZ NOT NULL, data JSONB NOT NULL
 );
+CREATE TABLE IF NOT EXISTS product_history (
+ run_id TEXT NOT NULL, product_id TEXT NOT NULL, inspection_id TEXT NOT NULL,
+ stage TEXT NOT NULL DEFAULT 'inspection_pending', outcome TEXT NOT NULL DEFAULT 'unknown',
+ entered_at TIMESTAMPTZ, captured_at TIMESTAMPTZ, outfeed_at TIMESTAMPTZ,
+ camera_timestamp TIMESTAMPTZ, camera_sim_time DOUBLE PRECISION, sensor_event_id TEXT,
+ model_version TEXT, health_index DOUBLE PRECISION, quality JSONB,
+ gradcam_path TEXT, gradcam_metadata JSONB, updated_at TIMESTAMPTZ NOT NULL,
+ PRIMARY KEY(run_id, product_id, inspection_id),
+ CHECK(outcome IN ('unknown','normal','defective'))
+);
+CREATE INDEX IF NOT EXISTS product_history_updated_idx ON product_history(updated_at DESC);
+CREATE INDEX IF NOT EXISTS product_history_sensor_idx ON product_history(sensor_event_id);
+CREATE UNIQUE INDEX IF NOT EXISTS product_history_evidence_idx ON product_history(sensor_event_id) WHERE sensor_event_id IS NOT NULL;
+ALTER TABLE product_history
+ ADD COLUMN IF NOT EXISTS outfeed_position JSONB,
+ ADD COLUMN IF NOT EXISTS outfeed_lane TEXT,
+ ADD COLUMN IF NOT EXISTS outfeed_classification TEXT;

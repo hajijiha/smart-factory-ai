@@ -1,0 +1,21 @@
+{
+  "validation": "Production JavaScript functions executed in Node VM with the pinned local Three.js primitives",
+  "source": "factory/static/factory.js",
+  "syntax_check": "passed",
+  "control_epoch_scenarios": {
+    "healthy_snapshot_from_prior_run_keeps_restart_locked": "passed",
+    "healthy_matching_run_enables_restart": "passed",
+    "stale_world_locks_stop_and_restart": "passed",
+    "missing_snapshot_world_identity_keeps_restart_locked": "passed"
+  },
+  "rendered_product_scenarios": {
+    "displayed_identity_matches_drawn_observation": "passed",
+    "latest_identity_remains_separate_during_recycle": "passed",
+    "drawn_defect_color_survives_future_slot_recycle": "passed",
+    "product_result_polling_joins_drawn_identity": "passed",
+    "recycled_product_uses_known_new_pose_without_old_trajectory_interpolation": "passed",
+    "uninspected_or_other_run_product_cannot_receive_a_verdict_color": "passed"
+  },
+  "browser_limit": "Follow-up child browser surfaces unavailable; root agent performs final desktop/mobile browser QA.",
+  "live_api_proof": "frontend-api-final10-proof.json"
+}

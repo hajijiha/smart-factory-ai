@@ -48,6 +48,7 @@ class Acquisition(Node):
         self.image_time = -1
         self.image_sequence = 0
         self.image_arrival_time = -1
+        self.image_observed_at = None
         self.joint = None
         self.ack = None
         self.ack_arrival_time = -1
@@ -69,6 +70,7 @@ class Acquisition(Node):
             self.image_time = message.header.stamp.sec+message.header.stamp.nanosec/1e9
             self.image_sequence += 1
             self.image_arrival_time = time.monotonic()
+            self.image_observed_at = utc_now()
             self.condition.notify_all()
     def on_joint(self, message):
         """Record the measured Gazebo joint velocity and position as sensor provenance."""
@@ -290,6 +292,11 @@ def main():
     """Start the ROS2 acquisition loop and select live or dataset-generation mode."""
     rclpy.init()
     node = Acquisition()
+    generating = any(os.environ.get(name) == '1' for name in ('GENERATE_DATA','GENERATE_RUL','GENERATE_CAUSAL'))
+    production = not generating and os.environ.get('FACTORY_WORLD_MODE', 'live') == 'live'
+    if production:
+        from simulator.live_bridge import attach_live_topics
+        attach_live_topics(node)
     def spin_node():
         """Exit the ROS2 spin thread cleanly when the acquisition process shuts down."""
         try:
@@ -307,6 +314,9 @@ def main():
             generate_rul(node)
         elif os.environ.get('GENERATE_DATA') == '1':
             generate(node)
+        elif production:
+            from simulator.live_bridge import live_factory
+            live_factory(node)
         else:
             live(node)
     except KeyboardInterrupt:

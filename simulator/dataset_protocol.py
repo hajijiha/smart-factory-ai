@@ -8,7 +8,7 @@ from pathlib import Path
 SCHEMA_VERSION = 2
 SOURCE_FILES = ('simulator/Dockerfile', 'simulator/start.sh', 'simulator/scenarios.py', 'simulator/dataset_protocol.py', 'simulator/signal.py',
     'simulator/sensor_dataset.py', 'simulator/vision_dataset.py', 'simulator/bridge.py',
-    'simulator/world.py', 'simulator/geometry.py', 'simulator/preflight.py', 'simulator/render_validation.py', 'simulator/plugin/world.cpp', 'factory/pdm/features.py')
+    'simulator/world.py', 'simulator/geometry.py', 'simulator/preflight.py', 'simulator/render_validation.py', 'simulator/plugin/world.cpp', 'simulator/plugin/live.hpp', 'factory/pdm/features.py')
 
 
 def digest(path):
@@ -46,6 +46,10 @@ def verify_plugin_binding(timeout=30):
     for key, expected_path in (('source', 'simulator/plugin/world.cpp'), ('library', 'simulator/libfactory_world.so')):
         if binding.get(f'{key}_path') != expected_path or digest(root / expected_path) != binding.get(f'{key}_sha256'):
             raise RuntimeError(f'Stale plugin {key} binding; rebuild the simulator image')
+    header = root / 'simulator/plugin/live.hpp'
+    if header.exists() and (binding.get('header_path') != 'simulator/plugin/live.hpp' or
+                            binding.get('header_sha256') != digest(header)):
+        raise RuntimeError('Stale plugin header binding; rebuild the simulator image')
     pid = os.environ.get('FACTORY_GAZEBO_PID')
     if not pid or not pid.isdigit():
         raise RuntimeError('FACTORY_GAZEBO_PID is required to verify the loaded plugin')

@@ -1,0 +1,12 @@
+services:
+  simulator:
+    environment:
+      FACTORY_WORLD_MODE: '${FACTORY_WORLD_MODE:-live}'
+      FACTORY_POC_PRODUCTS: '${FACTORY_POC_PRODUCTS:-10}'
+      FACTORY_LIVE_DEFECT_MODE: '${FACTORY_LIVE_DEFECT_MODE:-operational}'
+  dashboard:
+    environment:
+      FACTORY_WORLD_MODE: '${FACTORY_WORLD_MODE:-live}'
+  controller:
+    environment:
+      FACTORY_WORLD_MODE: '${FACTORY_WORLD_MODE:-live}'

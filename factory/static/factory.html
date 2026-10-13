@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#edf2f7">
+  <title>Smart Factory AI · 공장 시뮬레이션</title>
+  <link rel="stylesheet" href="/static/dashboard.css">
+  <link rel="stylesheet" href="/static/app-nav.css">
+  <link rel="stylesheet" href="/static/factory.css">
+  <script type="importmap">{"imports":{"three":"/static/vendor/three-r170/three.module.js"}}</script>
+  <script type="module" src="/static/factory.js"></script>
+</head>
+<body class="factory-page">
+  <a class="skip-link" href="#factoryHeading">공장 화면으로 이동</a>
+  <header class="app-header">
+    <a class="brand" href="/factory" aria-label="Smart Factory AI 공장 시뮬레이션">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 28 28"><path d="M5 21V11l6 4V9l6 4V5h6v16z"/><path d="M9 18h2m4 0h2m3 0h2"/></svg></span>
+      <span>SMART FACTORY <b>AI</b></span>
+    </a>
+    <nav aria-label="화면 탐색">
+      <a href="/factory" class="nav-active" aria-current="page">공장 시뮬레이션</a>
+      <a href="/monitor">관제</a>
+    </nav>
+    <div class="header-status"><span class="connection" id="connection" role="status"><i></i>연결 중</span><span id="updatedAt" class="timestamp">관측 대기</span></div>
+  </header>
+  <main>
+    <div class="page-heading">
+      <div><p class="eyebrow">LIVE FACTORY · LINE 01</p><h1 id="factoryHeading" tabindex="-1">공장 시뮬레이션</h1><p class="subtitle">제품의 흐름과 설비의 상태를 한눈에 확인합니다.</p></div>
+      <div class="environment-tag"><span class="small-dot"></span>Gazebo 실시간 관측<strong>01</strong></div>
+    </div>
+    <div id="systemNotice" class="system-notice" role="status">Gazebo의 첫 관측을 기다리고 있습니다.</div>
+    <section class="factory-kpis" aria-label="라인 주요 상태">
+      <article><span class="metric-label">라인 상태</span><strong id="lineState">관측 대기</strong><small id="lineDetail">실측 롤러 속도 —</small></article>
+      <article><span class="metric-label">라인 위 제품</span><strong><span id="productCount">—</span><em>개</em></strong><small id="stageCounts">투입 → 이송 → 검사 → 배출</small></article>
+      <article><span class="metric-label">설비 건전성</span><strong><span id="healthValue">—</span><em>/ 100</em></strong><small id="healthDetail">HI · 센서 관측 대기</small></article>
+      <article><span class="metric-label">누적 검사 불량률</span><strong><span id="qualityRate">—</span><em>%</em></strong><small id="qualityDetail">검사 결과 대기</small></article>
+    </section>
+    <div class="factory-layout">
+      <section class="panel world-panel" aria-labelledby="worldHeading">
+        <div class="panel-heading"><div><p class="eyebrow">PRODUCTION FLOOR</p><h2 id="worldHeading">생산 라인 전경</h2></div><span class="status-badge state-waiting" id="worldBadge">관측 대기</span></div>
+        <div class="view-toolbar" role="group" aria-label="공장 시점 선택">
+          <button data-view="overview" aria-pressed="true">공장 전체</button><button data-view="top" aria-pressed="false">상부</button><button data-view="inspection" aria-pressed="false">검사셀</button><button data-view="motor" aria-pressed="false">모터</button>
+          <button id="follow" class="follow-button" aria-pressed="false">선택 따라보기</button>
+        </div>
+        <div class="world-viewport" id="viewport">
+          <canvas id="worldCanvas" aria-label="Gazebo 관측 좌표를 표시하는 3D 공장. 아래 제품 목록과 설비 버튼으로도 선택할 수 있습니다."></canvas>
+          <div class="world-labels" id="worldLabels" aria-hidden="true"></div>
+          <div class="viewport-caption"><span class="live-dot"></span><span id="viewportState">첫 관측 대기</span></div>
+          <div class="view-help">드래그 회전 · 휠 확대 · 우클릭 이동</div>
+          <div class="viewer-fallback" id="viewerFallback" hidden><strong>3D 화면을 사용할 수 없습니다.</strong><p id="fallbackReason">아래 실제 Gazebo 전경 영상으로 라인을 확인할 수 있습니다.</p><a href="#cameraHeading">실제 카메라 보기 ↓</a></div>
+        </div>
+        <div class="world-footer"><div class="world-legend"><span><i class="legend-product"></i>미검사</span><span><i class="legend-normal"></i>결함 미검출</span><span><i class="legend-defect"></i>불량 판정</span><span>설비·제품을 클릭해 상세 확인</span></div><div class="render-metrics"><span id="renderFps">화면 — FPS</span><span id="worldHz">관측 — Hz</span><span id="realtimeFactor">시뮬레이션 ×—</span><span id="displayDelay">관측 지연 —</span></div></div>
+      </section>
+      <aside class="factory-sidebar">
+        <section class="panel selection-panel" aria-labelledby="selectionHeading">
+          <div class="panel-heading"><div><p class="eyebrow" id="selectionCode">EQUIPMENT DETAIL</p><h2 id="selectionHeading">컨베이어</h2></div><span class="status-badge state-waiting" id="selectionBadge">관측 대기</span></div>
+          <div class="equipment-picker" role="group" aria-label="설비 선택"><button data-select="conveyor" aria-pressed="true">컨베이어</button><button data-select="motor" aria-pressed="false">모터</button><button data-select="camera" aria-pressed="false">검사셀</button></div>
+          <details class="selection-details" id="selectionDetails" open><summary>선택 설비 · 제품 상세</summary>
+          <p class="selection-description" id="selectionDescription">실제 라인 상태를 기다리고 있습니다.</p>
+          <dl class="selection-metrics" id="selectionMetrics"><div><dt>관측</dt><dd>—</dd></div></dl>
+          <a class="detail-link" id="monitorLink" href="/monitor?equipment=conveyor">관제에서 자세히 보기 <span>↗</span></a>
+          </details>
+        </section>
+        <section class="panel controls-panel" aria-labelledby="controlHeading">
+          <div class="panel-heading"><div><p class="eyebrow">LINE CONTROL</p><h2 id="controlHeading">라인 제어</h2></div><span class="control-lock" id="controlLock">연결 확인</span></div>
+          <div class="factory-control-buttons"><button class="stop-button" id="stop" disabled><span aria-hidden="true">■</span> 라인 정지</button><button class="restart-button" id="restart" disabled><span aria-hidden="true">▶</span> 안전 재시작</button></div>
+          <p class="control-hint" id="resetHint">최근 센서·라인 관측을 확인한 뒤 제어할 수 있습니다.</p>
+          <p class="command-notice" id="commandNotice" role="status">명령 접수 후 실제 롤러·제품의 움직임으로 적용을 확인합니다.</p>
+        </section>
+        <section class="panel flow-panel" aria-labelledby="flowHeading"><div class="panel-heading"><div><p class="eyebrow">PROCESS FLOW</p><h2 id="flowHeading">공정 흐름</h2></div></div><ol class="flow-steps"><li><b>01</b><span>제품 투입<small>개별 제품 ID 부여</small></span></li><li><b>02</b><span>롤러 이송<small>접촉·마찰로 이동</small></span></li><li><b>03</b><span>검사셀<small>Gazebo 영상 · YOLO 판정</small></span></li><li><b>04</b><span>배출<small>제품별 결과 기록</small></span></li></ol><p class="flow-note">웹은 관측된 위치를 표시합니다. 진단 모터는 라인 정지 중에도 계속 관측합니다.</p></section>
+      </aside>
+    </div>
+    <section class="panel cameras-panel" aria-labelledby="cameraHeading">
+      <div class="panel-heading"><div><p class="eyebrow">GAZEBO CAMERA FEEDS</p><h2 id="cameraHeading">실제 카메라 영상</h2></div><span class="camera-note">전경과 검사 영상의 촬영 시각을 각각 표시합니다.</span></div>
+      <div class="camera-grid">
+        <figure><div class="camera-frame"><img id="overviewImage" alt="Gazebo 전경 카메라의 실제 영상" hidden><div class="camera-empty" id="overviewEmpty">전경 카메라 관측 대기</div><span class="camera-live" id="overviewBadge">관측 대기</span></div><figcaption><strong>전경 카메라 <span>OVERVIEW</span></strong><span id="overviewTime">촬영 시각 —</span><span id="overviewMetrics">시뮬레이션 시간 —</span></figcaption></figure>
+        <figure><div class="camera-frame"><img id="inspectionImage" alt="Gazebo 검사 카메라의 실제 영상" hidden><div class="camera-empty" id="inspectionEmpty">검사 카메라 관측 대기</div><span class="camera-live" id="inspectionBadge">관측 대기</span></div><figcaption><strong>검사 카메라 <span>INSPECTION</span></strong><span id="inspectionTime">촬영 시각 —</span><span id="inspectionMetrics">시뮬레이션 시간 —</span></figcaption></figure>
+      </div>
+    </section>
+    <section class="panel product-panel" aria-labelledby="productsHeading">
+      <div class="panel-heading"><div><p class="eyebrow">PRODUCT TRACKING</p><h2 id="productsHeading">제품별 이송 · 검사</h2></div><span class="panel-count" id="trackingCount">관측 대기</span></div>
+      <div class="product-list" id="productList"><p class="empty-products">첫 제품 관측을 기다리고 있습니다.</p></div>
+      <p class="tracking-note">미검사는 정상 판정과 구분합니다. 색상은 해당 제품·검사 ID에 연결된 실제 검사 결과로만 바뀝니다.</p>
+    </section>
+    <footer><span>SMART FACTORY AI · LINE 01</span><span id="worldMetadata">Gazebo 관측 기반 · 실제 카메라 영상</span></footer>
+  </main>
+</body>
+</html>

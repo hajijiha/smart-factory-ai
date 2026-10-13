@@ -12,6 +12,9 @@
   let selectedInspectionId = null, selectedInspection = null, displayedInspection = null;
   let currentImagePath = '', currentCamPath = '', pendingCommand = null, commandBusy = false;
   let sliderTouched = false, staleSignature = '', refreshTimer;
+  const pageQuery = new URLSearchParams(location.search);
+  let requestedProductId = pageQuery.get('product'), pageActive = true, refreshRequest = null;
+  const requestedRunId = pageQuery.get('run'), requestedInspectionId = pageQuery.get('inspection');
   const num = value => typeof value === 'number' && Number.isFinite(value) ? value : null;
   const fmt = (value, precision=1) => num(value) === null ? '—' : value.toFixed(precision);
   const integer = value => num(value) === null ? '—' : value.toLocaleString();
@@ -39,7 +42,7 @@
   }
   function isFresh(eq) {
     const elapsed = age(eq);
-    return online && eq.fresh === true && elapsed !== null && elapsed >= 0 && elapsed <= (snapshot?.process?.freshness_seconds || 5);
+    return online && eq.fresh === true && elapsed !== null && elapsed >= 0 && elapsed <= (eq.freshness_seconds || snapshot?.process?.freshness_seconds || 5);
   }
   function equipment(id) {
     const raw = rawEquipment(id), fresh = isFresh(raw);
@@ -113,7 +116,13 @@
     text('roller', '롤러 ' + fmt(c.roller_velocity, 3) + ' rad/s');
     $('lineStateDot').className = 'state-dot state-' + conveyor.state;
     document.querySelectorAll('.kpi').forEach((element, index) => element.classList.toggle('is-stale', !online || (index < 2 && !motor.fresh) || (index === 3 && !conveyor.fresh)));
-    $('processMap').classList.toggle('is-running', online && conveyor.fresh && conveyor.state === 'running');
+    // The schematic also uses observed angles; CSS must not invent roller motion.
+    $('processMap').classList.remove('is-running');
+    const world=snapshot.world, joints=world?.state?.joints?.filter(item => String(item.id).includes('roller')) || [];
+    if (online && world?.connected === true && world.stale !== true) document.querySelectorAll('.process-map .roller').forEach((roller,index) => {
+      const observation=joints[Math.floor(index*Math.max(0,joints.length-1)/4)];
+      if (num(observation?.position) !== null) {roller.style.transform='rotate('+(observation.position*180/Math.PI)+'deg)';roller.setAttribute('aria-label',observation.id+' · 관측 각도 '+fmt(observation.position,2)+' rad');}
+    });
     [motor, conveyor, camera].forEach(item => {
       const suffix = cap(item.id), map = $('map' + suffix);
       map.classList.forEach(value => { if (value.startsWith('state-')) map.classList.remove(value); });
@@ -124,7 +133,9 @@
     });
     text('cardMotorMetric', 'HI ' + fmt(m.health_index) + ' · RMS ' + fmt(m.vibration_rms, 3));
     text('cardConveyorMetric', '롤러 ' + fmt(c.roller_velocity, 3) + ' rad/s · 레벨 ' + fmt(c.fault_level, 0));
-    text('cardCameraMetric', camera.metrics?.last_inspection_at ? '마지막 검사 ' + time(camera.metrics.last_inspection_at) : '검사 영상 대기');
+    const lastInspectionAge=num(camera.metrics?.last_inspection_age_seconds)===null?null:camera.metrics.last_inspection_age_seconds+Math.max(0,performance.now()-receivedAt)/1000;
+    text('cardCameraMetric', camera.metrics?.last_inspection_at ? '마지막 판정 ' + time(camera.metrics.last_inspection_at)+(lastInspectionAge!==null?' · '+fmt(lastInspectionAge,0)+'초 전':'') : 'AI 판정 대기');
+    text('refreshCadence',(camera.metrics?.freshness_source==='camera_feed'?'1':'2')+'초마다 관제 갱신 · 시각은 현지 기준 · 라이브 데모는 기존 v1 모델');
     if (!sliderTouched && num(c.fault_level) !== null) {
       $('fault').value = String(Math.round(c.fault_level));
       text('faultDisplay', $('fault').value + ' / 10');
@@ -179,8 +190,9 @@
   function showInspection(item) {
     displayedInspection = item || null;
     $('latestImage').hidden = selectedInspectionId === null;
-    text('evidenceType', item ? detectionDescription(item) : '검사 영상 대기');
-    text('evidenceTime', item ? (selectedInspectionId ? '선택한 검사 · ' : '최신 검사 · ') + fullTime(item.timestamp) : '');
+    text('evidenceType', item ? '마지막 판정 · ' + detectionDescription(item) : requestedProductId ? requestedProductId + ' · 미검사 / 결과 대기' : 'AI 판정 대기');
+    const evidenceStamp=item?.camera_timestamp || item?.timestamp, evidenceAge=evidenceStamp?Math.max(0,(Date.now()-Date.parse(evidenceStamp))/1000):null;
+    text('evidenceTime', item ? (item.product_id ? item.product_id + ' · ' : '') + (selectedInspectionId ? '선택한 검사 · ' : '최근 검사 · ') + fullTime(evidenceStamp)+(Number.isFinite(evidenceAge)?' · '+fmt(evidenceAge,0)+'초 전':'') : '');
     const image = $('inspection'), cam = $('cam'), url = imageUrl(item?.image_path), camUrl = imageUrl(item?.gradcam_path);
     if (!url) {
       currentImagePath=''; image.removeAttribute('src'); image.hidden=true;
@@ -228,17 +240,22 @@
   }
   function renderInspections() {
     const events=inspectionEvents(), fragment=document.createDocumentFragment();
+    if (requestedProductId && !selectedInspectionId) {
+      const productEvent=events.find(item => item.product_id === requestedProductId && (!requestedRunId || item.run_id === requestedRunId) && (!requestedInspectionId || item.inspection_id === requestedInspectionId));
+      if (productEvent) { selectedInspectionId=productEvent.event_id; selectedInspection=productEvent; }
+    }
     const active = $('history').contains(document.activeElement) ? document.activeElement : null;
     const focusedEventId = active?.dataset.eventId;
     let focusReplacement = null;
     if (!events.length) {
       const row=document.createElement('tr'), cell=document.createElement('td');
-      cell.colSpan=5; cell.className='empty-table'; cell.textContent='검사 결과를 기다리고 있습니다.'; row.append(cell); fragment.append(row);
+      cell.colSpan=6; cell.className='empty-table'; cell.textContent='검사 결과를 기다리고 있습니다.'; row.append(cell); fragment.append(row);
     }
     events.forEach(item => {
       const row=document.createElement('tr');
       row.classList.toggle('selected-row', selectedInspectionId === item.event_id);
       const stamp=document.createElement('td'); stamp.textContent=time(item.timestamp); stamp.title=fullTime(item.timestamp);
+      const identity=document.createElement('td'); identity.textContent=item.product_id || '단일 샘플'; identity.title=item.inspection_id || item.event_id;
       const result=document.createElement('td'), tag=document.createElement('span');
       tag.className='status-badge state-' + (item.defective ? 'warning' : 'normal'); tag.textContent=detectionDescription(item); result.append(tag);
       const confidence=document.createElement('td'), values=(item.detections || []).map(d => num(d.confidence)).filter(v => v !== null);
@@ -255,14 +272,14 @@
         $('detailHeading').scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',block:'start'});
         $('tabCamera').focus({preventScroll:true});
       };
-      action.append(button); row.append(stamp,result,confidence,health,action); fragment.append(row);
+      action.append(button); row.append(stamp,identity,result,confidence,health,action); fragment.append(row);
     });
     $('history').replaceChildren(fragment);
     if (focusedEventId) (focusReplacement || $('historyHeading')).focus({preventScroll:true});
     if (selectedInspectionId) {
       selectedInspection=events.find(item => item.event_id === selectedInspectionId) || selectedInspection;
       showInspection(selectedInspection);
-    } else showInspection(events[0]);
+    } else showInspection(requestedProductId ? null : events[0]);
   }
   function renderEvents() {
     const events=Array.isArray(snapshot.process.recent_events) ? snapshot.process.recent_events : [], fragment=document.createDocumentFragment();
@@ -356,7 +373,9 @@
   }
 
   async function refresh() {
+    if (!pageActive) return;
     const controller=new AbortController(), timeout=setTimeout(() => controller.abort(),6500);
+    refreshRequest=controller;
     try {
       const response=await fetch('/api/snapshot',{cache:'no-store',signal:controller.signal});
       if (!response.ok) throw new Error('Snapshot HTTP '+response.status);
@@ -373,7 +392,7 @@
         text('systemNotice','관제 서버에 연결하지 못했습니다. 서비스가 실행되면 자동으로 연결합니다.');
         badge('processStatus','waiting','공정 데이터 대기'); updateControls();
       }
-    } finally { clearTimeout(timeout); refreshTimer=setTimeout(refresh,2000); }
+    } finally { clearTimeout(timeout); refreshRequest=null; if (pageActive) refreshTimer=setTimeout(refresh,rawEquipment('camera').metrics?.freshness_source==='camera_feed'?1000:2000); }
   }
 
   document.querySelectorAll('[data-equipment]').forEach(element => {
@@ -394,19 +413,27 @@
   $('fault').addEventListener('input',() => {sliderTouched=true; text('faultDisplay',$('fault').value+' / 10');});
   $('apply').addEventListener('click',() => sendCommand('fault'));
   $('reset').addEventListener('click',() => sendCommand('reset'));
-  $('latestImage').addEventListener('click',() => {selectedInspectionId=null; selectedInspection=null; renderInspections();});
+  $('latestImage').addEventListener('click',() => {requestedProductId=null; selectedInspectionId=null; selectedInspection=null; renderInspections();});
   $('inspection').addEventListener('load',() => {$('inspection').hidden=false; $('imagePlaceholder').hidden=true; drawDetections();});
   $('inspection').addEventListener('error',() => {currentImagePath=''; $('inspection').hidden=true; $('detectionOverlay').hidden=true; $('imagePlaceholder').hidden=false; text('imagePlaceholder','검사 영상을 불러오지 못했습니다.');});
   $('cam').addEventListener('load',() => {$('cam').hidden=false; $('camPlaceholder').hidden=true;});
   $('cam').addEventListener('error',() => {currentCamPath=''; $('cam').hidden=true; $('camPlaceholder').hidden=false; text('camPlaceholder','Grad-CAM 영상을 불러오지 못했습니다.');});
   let resizeTimer;
   window.addEventListener('resize',() => {clearTimeout(resizeTimer); resizeTimer=setTimeout(drawCharts,120);});
-  document.addEventListener('visibilitychange',() => { if (!document.hidden) {renderStatus(); drawCharts();} });
+  function pausePage() { pageActive=false;clearTimeout(refreshTimer);refreshRequest?.abort(); }
+  function resumePage() { if (pageActive) return;pageActive=true;renderStatus();drawCharts();refresh(); }
+  document.addEventListener('visibilitychange',() => { if (document.hidden) pausePage();else resumePage(); });
+  window.addEventListener('pagehide',pausePage);
+  window.addEventListener('pageshow',event => { if (event.persisted) resumePage(); });
   setInterval(() => {
+    if (!pageActive) return;
     if (!snapshot) return;
     const signature=ids.map(id => equipment(id).state).join(':')+':'+online;
     if (signature!==staleSignature) {staleSignature=signature;renderStatus();drawCharts();}
     observeCommand(); updateControls();
   },500);
+  const requestedEquipment=pageQuery.get('equipment');
+  if (ids.includes(requestedEquipment)) selectEquipment(requestedEquipment);
+  if (requestedProductId) selectEquipment('camera');
   refresh();
 })();

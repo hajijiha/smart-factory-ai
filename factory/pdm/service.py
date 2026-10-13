@@ -29,6 +29,9 @@ def main():
         result.update(event_id=message['event_id'], timestamp=message['timestamp'],
                       features=dict(zip(NAMES, feature.tolist())), spectrum=spectrum,
                       inference_ms=1000*(time.perf_counter()-start))
+        for name in ('run_id', 'sim_time'):
+            if name in message:
+                result[name] = message[name]
         if 'wear_scenario' in message:
             result['wear_scenario'] = message['wear_scenario']
         publish(client, 'factory/health', result)

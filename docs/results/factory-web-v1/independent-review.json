@@ -1,0 +1,156 @@
+{
+  "schema_version": 1,
+  "status": "prefinal_identity_and_sorting_review",
+  "review_timestamp": "2026-10-13T03:24:20.186509+00:00",
+  "source_review": {
+    "scope": [
+      "factory/static/factory.js",
+      "factory/static/dashboard.js",
+      "factory/process.py",
+      "factory/world_state.py",
+      "factory/layout.py",
+      "simulator/live_world.py",
+      "simulator/plugin/live.hpp",
+      "simulator/live_bridge.py",
+      "simulator/live_protocol.py",
+      "simulator/live_evaluation.py",
+      "factory/controller.py",
+      "factory/storage.py",
+      "factory/vision/service.py",
+      "scripts/evaluate_live_factory.py",
+      "scripts/evaluate_live_pdm.py",
+      "scripts/verify_factory_disconnect.py",
+      "scripts/verify_factory_resources.py"
+    ],
+    "unresolved_material_findings": [],
+    "closed_findings": [
+      {
+        "finding": "Inspection completed without sensor/image delivery verification",
+        "resolution": "Immutable sensor/image batch requires individual PUBACK before seen/completion; sparse lifecycle is removed only after PUBACK; direct ROS stop and manual-resume latch on connection/delivery failure",
+        "verification": "Independent source read; broker fault injection was performed by the coordinator, not this reviewer"
+      },
+      {
+        "finding": "Unbounded latest-pose/latest-frame mismatch",
+        "resolution": "Same-run/product/inspection bracket, gap <=0.10 simulation seconds, no extrapolation, camera receipt age <=2 seconds, sensor offset <=0.15 seconds; approximate metadata saved and validated",
+        "verification": "Independent source read and 35 actual frame/sensor/quality/private-reference joins in the read-only snapshot"
+      },
+      {
+        "finding": "Outage observer subscribed to the wrong ROS topic",
+        "resolution": "Observer now subscribes to /factory/world/state",
+        "verification": "Read-only source recheck"
+      },
+      {
+        "finding": "Factory camera selection ignored equipment-specific freshness limit",
+        "resolution": "equipmentFresh uses freshness_seconds with process/default fallback; frame health remains separate from historical AI verdict",
+        "verification": "Read-only source recheck"
+      }
+    ],
+    "boundaries": [
+      "ROS2 Humble is declared by source image, rclpy acquisition and gazebo_ros::Node; final fresh-clone runtime binding remains coordinator evidence.",
+      "Observed outfeed handoff is on rollers at x>=2.05; receiving trays are explicitly outside verified physical bin-transfer scope.",
+      "Generated defect references remain private; raw whole-frame detections and target ROI detections are distinct reported scopes.",
+      "First-100 evaluator validates camera/frame/model/alignment evidence; timing-only benchmark uses the previously locked sample and output directory.",
+      "Live PdM uses fault levels only for scoring, retains weak level 1 and does not fit or promote models."
+    ]
+  },
+  "audit": {
+    "timestamp": "2026-10-13T03:24:20.186509+00:00",
+    "run_id": "factory-1791828868974374",
+    "database_snapshot_at": "2026-10-13T03:24:19.881527+00:00",
+    "query_policy": "REPEATABLE READ READ ONLY; SELECT only; transaction rolled back; filesystem evidence read only",
+    "frozen_vision_sha256": "de2b27a91410cd0ee12167a43b9651a9ef06198e6c86d80fdd2e9d84dffcde57",
+    "stats": {
+      "manifest_after_database_snapshot_excluded": 0,
+      "product_history_rows": 36,
+      "distinct_logical_products": 36,
+      "quality_detection_rows": 35,
+      "distinct_quality_events": 35,
+      "capture_sensor_rows": 35,
+      "private_manifest_rows": 35,
+      "manifest_duplicate_product_id": 0,
+      "manifest_duplicate_inspection_id": 0,
+      "manifest_duplicate_event_id": 0,
+      "products_with_multiple_inspections": 0,
+      "stage_outfeed": 34,
+      "outcome_normal": 9,
+      "quality_joined_products": 35,
+      "approximate_frame_labels": 35,
+      "normal_without_cam_rows": 9,
+      "outfeed_rows": 34,
+      "outfeed_lane_normal": 9,
+      "outfeed_classification_normal": 9,
+      "physically_confirmed_prediction_consistent_outfeed_rows": 34,
+      "outcome_defective": 26,
+      "cam_present_rows": 26,
+      "outfeed_lane_reject": 25,
+      "outfeed_classification_defective": 25,
+      "stage_captured": 1,
+      "stage_entered": 1,
+      "outcome_unknown": 1,
+      "missing_quality_rows": 1,
+      "inflight_missing_quality_rows": 1,
+      "captured_missing_quality_rows": 0,
+      "outfeed_missing_quality_rows": 0,
+      "missing_health_rows": 0,
+      "defective_cam_missing_rows": 0,
+      "explicit_unclassified_outfeed_rows": 0,
+      "unclassified_outfeed_with_later_quality_rows": 0,
+      "known_outfeed_without_quality_rows": 0,
+      "known_prediction_lane_mismatch_rows": 0,
+      "outfeed_lane_unknown": 0,
+      "outfeed_lane_unconfirmed": 0,
+      "recent_manifest_awaiting_history": 0,
+      "recent_quality_awaiting_sensor": 0,
+      "recent_quality_awaiting_manifest": 0,
+      "recent_quality_awaiting_health": 0
+    },
+    "findings": [],
+    "passed": true,
+    "notices": [],
+    "limitations": [
+      "Snapshot includes current in-flight products; missing and unknown counters are explicit. New file records after DB snapshot are excluded; cross-worker missing joins younger than a predeclared five-second maturity margin are counted as pending.",
+      "Camera-time pose labels are bounded interpolation, not exact raw render-time poses or manual pixel masks.",
+      "No line controls, training, service lifecycle commands, schema writes or database writes were issued.",
+      "CAM provenance is checked by event-joined DB artifact path/metadata; missing CAM counts are explicit.",
+      "Outfeed is the observed handoff gate on rollers; receiving-tray bin transfer is not validated."
+    ]
+  },
+  "reported_regressions_not_independently_rerun": {
+    "latest_full": {
+      "passed": 227,
+      "skipped": 2,
+      "skip_scope": "Expected source DATA-dependent baseline tests"
+    },
+    "original_data_connected_before_latest_refinement": {
+      "passed": 219,
+      "skipped": 0
+    },
+    "frontend_targeted": {
+      "passed": 66
+    },
+    "origin": "Coordinator-provided execution results; this reviewer did not run the suite or invoke control tests"
+  },
+  "runtime_limits": {
+    "motion_stability_30min": "NOT VERIFIED by this review; no independent 1800-second observer recording for this run",
+    "browser_fps_and_latency": "NOT MEASURED by this reviewer",
+    "new_world_vision_or_pdm_accuracy": "Evaluator source reviewed; inference/training/evaluation not executed by this reviewer",
+    "fresh_clone": "NOT EXECUTED by this reviewer",
+    "prefinal_run": "factory-1791828868974374",
+    "source_and_run_are_prefinal": true
+  },
+  "tool_access": {
+    "first_nonescalated_docker_attempt": "Sandbox denied named-pipe access; no SQL executed",
+    "recovered_route": "Direct Windows docker exec with approved sandbox escalation succeeded; no WSL wrapper used",
+    "mutations": "Only independent-review.md/json written; no DB/service/control/model mutation"
+  },
+  "sql_queries": [
+    "BEGIN TRANSACTION ISOLATION LEVEL REPEATABLE READ READ ONLY",
+    "SELECT CURRENT_TIMESTAMP",
+    "SELECT * FROM product_history WHERE run_id=%s",
+    "SELECT id,event_id,timestamp,image_path,health_index_at_time,gradcam_path,image_bytes,data FROM quality_inspections WHERE data->>'run_id'=%s",
+    "SELECT event_id,timestamp,data FROM sensor_readings WHERE data->>'run_id'=%s AND data->>'product_id' IS NOT NULL",
+    "SELECT * FROM health_readings WHERE event_id=ANY(%s)",
+    "SELECT * FROM gradcam_artifacts WHERE event_id=ANY(%s)",
+    "ROLLBACK"
+  ]
+}

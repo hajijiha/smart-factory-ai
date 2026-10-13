@@ -1,5 +1,6 @@
 """Generate a real Gazebo SDF conveyor, rotating joints, 3D defects and ROS2 camera."""
 import sys
+import os
 from pathlib import Path
 from factory.common import CONFIG
 from simulator.scenarios import generator_version
@@ -28,6 +29,10 @@ def motor(name, pose):
 
 def build():
     """Build defect geometry rather than drawing the final camera image in Python."""
+    generating = any(os.environ.get(name) == '1' for name in ('GENERATE_DATA','GENERATE_RUL','GENERATE_CAUSAL'))
+    if not generating and os.environ.get('FACTORY_WORLD_MODE', 'live') == 'live':
+        from simulator.live_world import build_live
+        return build_live()
     scratch = ''.join(visual(f'groove{i}', 'box', '.30 .018 .003', '.05 .05 .05', f'0 {i*.022-.022} 0 0 0 .1') for i in range(3))
     dent = visual('rim', 'cylinder', (.095,.005), '.45 .45 .46') + visual('pit', 'cylinder', (.061,.007), '.12 .13 .15', '0 0 .003 0 0 0')
     contamination = ''.join(visual(f'oil{i}', 'cylinder', (.052,.006), '.20 .09 .025', f'{x} {y} .004 0 0 0') for i,(x,y) in enumerate([(-.04,-.02),(.03,.02),(-.01,.06)]))

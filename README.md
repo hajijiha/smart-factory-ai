@@ -2,9 +2,9 @@
 
 Gazebo의 모터 센서와 3D 검사 영상을 분석하는 스마트 팩토리 시뮬레이션이다. 설비 진단, 제품 불량 검출, 검사 이력과 컨베이어 정지를 MQTT로 연결한다. 모든 서비스는 CPU에서 실행한다.
 
-관제 화면에서 설비 상태, 센서 추세, 롤러 속도, 검출 결과와 검사 이력을 확인할 수 있다. 제어 명령의 접수·적용 상태와 오래된 데이터도 구분해서 표시한다.
+한 웹앱의 공장 화면에서는 10개 제품의 실제 롤러 이송·검사·분류·배출과 Gazebo 카메라 영상을 확인한다. 관제 화면에서는 설비 상태, 센서 추세, 롤러 속도, 검출 결과와 검사 이력을 확인한다. 제어 명령의 접수·적용 상태와 오래된 데이터도 구분해서 표시한다.
 
-![정상 운전 화면](docs/results/process-control/normal.jpg)
+![공장 시뮬레이션](docs/results/factory-web-v1/factory-desktop.png)
 
 ## 실행
 
@@ -17,6 +17,11 @@ docker compose up --build
 ```
 
 대시보드는 **http://localhost:8080**에서 열린다. 학습된 `pdm.pt`, `vision.pt`, `rul.pt`와 PSI 기준 분포를 포함하며, ONNX 그래프는 최초 실행 시 자동으로 생성한다. 처음 빌드할 때 의존성 다운로드를 위한 인터넷 연결과 초기화 시간이 필요하다.
+
+- `/` 또는 `/factory`: Gazebo 관측을 표시하는 3D 공장, 설비 선택·제품 추적·실제 전경/검사 영상.
+- `/monitor`: HI·진동·FFT·RUL·PSI·품질 검사·알람과 안전 재시작.
+
+브라우저 3D는 로컬 Three.js를 사용하며 WebGL2를 사용할 수 없을 때도 실제 Gazebo 카메라 영상을 제공한다. 서버의 AI·물리·렌더링은 CPU에서 실행한다. 운영용 장면과 기존 학습 데이터 생성용 장면은 분리되어 있다.
 
 ```bash
 docker compose up -d
@@ -37,11 +42,13 @@ docker compose down
 
 컨베이어 정지 중에는 제품 검사를 발행하지 않는다. 별도 시험대의 진단 모터는 회복 상태 확인을 위해 계속 회전한다.
 
+정상 진단은 기존 가중치가 학습한 실제 회전 조건인 약 955RPM을 사용한다. 롤러는 6rad/s로 구동하며 제품의 실제 이동은 접촉과 마찰로 계산한다. 분류 구역에서는 AI 판정에 따른 횡방향 힘을 적용하고, 배출 이후 빈 투입 구역에서 새 제품 ID를 부여해 재공급한다. 통신 단절 후에는 관측과 검사를 보류하고 명시적인 안전 재시작을 요구한다.
+
 ## 시스템 구성
 
 ```mermaid
 flowchart LR
-    G[Gazebo / ROS2] -->|sensor / image| M[MQTT]
+    G[Gazebo / ROS2 Humble] -->|sensor / image / world| M[MQTT]
     M --> P[FFT · 관리도 · Autoencoder]
     M --> V[YOLOv8n ONNX · Grad-CAM]
     P -->|health / alarm| M
@@ -51,6 +58,8 @@ flowchart LR
     M --> S[저장 서비스]
     S --> DB[(PostgreSQL / TimescaleDB)]
     DB --> D[FastAPI 대시보드]
+    M -->|최근 관측 / 카메라| D
+    D -->|WebSocket / MJPEG| W[공장 3D · 관제 웹]
     D -->|fault / reset| M
     M --> C[위험 인터락]
     C -->|conveyor command| M
@@ -61,7 +70,7 @@ flowchart LR
 
 | 경로 | 역할 |
 |---|---|
-| `simulator/` | Gazebo 장면, C++ 플러그인, ROS2 취득과 센서 합성 |
+| `simulator/` | Gazebo 장면, C++ 플러그인, ROS2 Humble 취득과 센서 합성 |
 | `factory/pdm/` | FFT 특징, 관리도, Autoencoder 학습·추론 |
 | `factory/prognostics.py` | 독립 LSTM RUL·PSI 감시와 알람 |
 | `factory/vision/` | YOLO 학습, ONNX 검출, Grad-CAM |
@@ -89,7 +98,9 @@ flowchart LR
 
 측정 환경은 Intel Core Ultra 5 225H, 14 logical CPU, 컨테이너 메모리 7.45 GiB, Ubuntu 22.04 / Python 3.10.12 / PyTorch 2.5.1+cpu다. GPU는 사용하지 않았다.
 
-Detector FPS에는 Grad-CAM, JPEG 디코딩, 네트워크와 DB 저장 시간이 포함되지 않는다. 실행 중 검사 결과는 약 1초 간격으로 발행한다.
+Detector FPS에는 Grad-CAM, JPEG 디코딩, 네트워크와 DB 저장 시간이 포함되지 않는다. 센서는 약 1초 간격으로 발행하며 제품 검사는 검사셀의 진입·정지·촬영·배출 과정마다 한 번 발행한다.
+
+새 공장 실행·재현 방법은 [운영 문서](docs/factory-live.md), 동시 부하·새 영상·안전·30분 시험의 결과와 미달 항목은 [공장 개선 검증 보고서](docs/results/factory-web-v1/REPORT.md)에 기록한다. 아래 수치는 기존 장면의 동결된 평가이며 새 장면의 정확도와 구분한다.
 
 합성 데이터의 높은 점수가 실제 공장 성능을 보장하지는 않는다. 운전 조건, 약한 고장과 결함 형태를 확장한 v2 검증에서는 기존·후보 모델 모두 조건별 판정이 WARN이며, 실제 공장과 저대비 결함은 UNVALIDATED다. 기본 실행 모델과 후보 실험 모델은 별도로 관리한다.
 

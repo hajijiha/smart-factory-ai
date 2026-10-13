@@ -1,0 +1,222 @@
+{
+  "timestamp": "2026-10-13T03:27:29.454Z",
+  "run_id": "factory-1791828868974374",
+  "model_sha256": "f829b824123eee1adc66b2fd6cf4fb9a8c50ffd2ba8ea343c06730e93500bb73",
+  "model_status": "Frozen baseline; no fitting or threshold change",
+  "waveforms": 100,
+  "levels": [
+    0,
+    1,
+    3,
+    5
+  ],
+  "samples_per_level": 25,
+  "settle_windows_per_level": 2,
+  "sampling_policy": "First fresh joined sensor/health events after each applied level, excluding only two predeclared settling windows",
+  "blind_inputs": [
+    "waveform",
+    "sampling_hz",
+    "measured_motor_rpm"
+  ],
+  "metrics": {
+    "chart": {
+      "aggregate": {
+        "n": 100,
+        "tp": 75,
+        "fn": 0,
+        "fp": 0,
+        "tn": 25,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "normal_fpr": 0.0,
+        "recall_wilson95": [
+          0.9512761575171942,
+          1.0
+        ],
+        "normal_fpr_wilson95": [
+          1.3877787807814457e-17,
+          0.13319225093904846
+        ]
+      },
+      "per_level": {
+        "0": {
+          "n": 25,
+          "tp": 0,
+          "fn": 0,
+          "fp": 0,
+          "tn": 25,
+          "precision": 0.0,
+          "recall": null,
+          "f1": 0.0,
+          "normal_fpr": 0.0,
+          "recall_wilson95": null,
+          "normal_fpr_wilson95": [
+            1.3877787807814457e-17,
+            0.13319225093904846
+          ]
+        },
+        "1": {
+          "n": 25,
+          "tp": 25,
+          "fn": 0,
+          "fp": 0,
+          "tn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "normal_fpr": null,
+          "recall_wilson95": [
+            0.8668077490609515,
+            0.9999999999999999
+          ],
+          "normal_fpr_wilson95": null
+        },
+        "3": {
+          "n": 25,
+          "tp": 25,
+          "fn": 0,
+          "fp": 0,
+          "tn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "normal_fpr": null,
+          "recall_wilson95": [
+            0.8668077490609515,
+            0.9999999999999999
+          ],
+          "normal_fpr_wilson95": null
+        },
+        "5": {
+          "n": 25,
+          "tp": 25,
+          "fn": 0,
+          "fp": 0,
+          "tn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "normal_fpr": null,
+          "recall_wilson95": [
+            0.8668077490609515,
+            0.9999999999999999
+          ],
+          "normal_fpr_wilson95": null
+        }
+      },
+      "deployed_flag_agreement": 100,
+      "deployed_observations": 100
+    },
+    "ae": {
+      "aggregate": {
+        "n": 100,
+        "tp": 75,
+        "fn": 0,
+        "fp": 0,
+        "tn": 25,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "normal_fpr": 0.0,
+        "recall_wilson95": [
+          0.9512761575171942,
+          1.0
+        ],
+        "normal_fpr_wilson95": [
+          1.3877787807814457e-17,
+          0.13319225093904846
+        ]
+      },
+      "per_level": {
+        "0": {
+          "n": 25,
+          "tp": 0,
+          "fn": 0,
+          "fp": 0,
+          "tn": 25,
+          "precision": 0.0,
+          "recall": null,
+          "f1": 0.0,
+          "normal_fpr": 0.0,
+          "recall_wilson95": null,
+          "normal_fpr_wilson95": [
+            1.3877787807814457e-17,
+            0.13319225093904846
+          ]
+        },
+        "1": {
+          "n": 25,
+          "tp": 25,
+          "fn": 0,
+          "fp": 0,
+          "tn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "normal_fpr": null,
+          "recall_wilson95": [
+            0.8668077490609515,
+            0.9999999999999999
+          ],
+          "normal_fpr_wilson95": null
+        },
+        "3": {
+          "n": 25,
+          "tp": 25,
+          "fn": 0,
+          "fp": 0,
+          "tn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "normal_fpr": null,
+          "recall_wilson95": [
+            0.8668077490609515,
+            0.9999999999999999
+          ],
+          "normal_fpr_wilson95": null
+        },
+        "5": {
+          "n": 25,
+          "tp": 25,
+          "fn": 0,
+          "fp": 0,
+          "tn": 0,
+          "precision": 1.0,
+          "recall": 1.0,
+          "f1": 1.0,
+          "normal_fpr": null,
+          "recall_wilson95": [
+            0.8668077490609515,
+            0.9999999999999999
+          ],
+          "normal_fpr_wilson95": null
+        }
+      },
+      "deployed_flag_agreement": 100,
+      "deployed_observations": 100
+    }
+  },
+  "motor_rpm": {
+    "mean": 954.9296585513715,
+    "minimum": 954.9296585513712,
+    "maximum": 954.9296585513725
+  },
+  "cpu": {
+    "threads": 4,
+    "mean_ms": 1.676354389746848,
+    "p95_ms": 3.238133299055334,
+    "includes": "Hann FFT, features, frozen chart/AE and HI",
+    "workload": "All nine services active; conveyor deliberately stopped, diagnostic motor continues"
+  },
+  "deployed_health_index_max_abs_delta": 0.0,
+  "restore": {
+    "level_zero_requested": true,
+    "safe_reset_accepted": true
+  },
+  "limitations": [
+    "Synthetic live vibration derived from observed motor state; not measured real bearing damage.",
+    "Constant approximately 955 RPM, one load/noise setting; weak level 1 is included rather than hidden."
+  ]
+}

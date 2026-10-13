@@ -4,7 +4,14 @@ from pathlib import Path
 import subprocess
 import sys
 import xml.etree.ElementTree as ET
+import pytest
 from simulator import world
+
+
+@pytest.fixture(autouse=True)
+def dataset_world(monkeypatch):
+    """Keep these baseline data-acquisition regressions on the preserved dataset world."""
+    monkeypatch.setenv('FACTORY_WORLD_MODE', 'dataset')
 
 
 def test_sdf_camera_matches_changed_configuration(monkeypatch):

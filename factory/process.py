@@ -2,6 +2,8 @@
 import math
 from datetime import datetime, timezone
 
+from factory.world_state import WORLD_MAX_AGE
+
 
 FRESHNESS_SECONDS = 5
 HEALTH_LABELS = {'normal': '정상', 'caution': '주의', 'warning': '경고', 'danger': '위험'}
@@ -42,6 +44,9 @@ def group_inspections(rows):
             events[event_id] = {key: row.get(key) for key in
                                 ('event_id', 'timestamp', 'image_path', 'gradcam_path',
                                  'health_index_at_time', 'inference_ms')}
+            for key in ('run_id', 'product_id', 'inspection_id', 'camera_timestamp', 'camera_sim_time', 'model_version'):
+                if row.get(key) is not None:
+                    events[event_id][key] = row[key]
             events[event_id].update(detections=[], defective=False, defect_type='normal')
         event = events[event_id]
         if row.get('gradcam_path'):
@@ -110,8 +115,39 @@ def build_process_snapshot(snapshot, now=None):
 
     camera = {'id': 'camera', 'label': '검사 카메라', **image_time,
               'metrics': {'last_inspection_at': image_time['observed_at'], 'defect_type': image.get('defect_type'),
+                          'last_inspection_age_seconds': image_time['age_seconds'],
+                          'last_inspection_run_id': image.get('run_id'),
+                          'last_inspection_product_id': image.get('product_id'),
+                          'last_inspection_defective': image.get('defective') if image else None,
                           'detections': len(image.get('detections', [])), 'inference_ms': _number(image.get('inference_ms'))}}
-    if conveyor['fresh'] and line.get('running') is False:
+    world = snapshot.get('world') or {}
+    live_run = (world.get('state') or {}).get('run_id')
+    if live_run:
+        # Frame health is independent of the product inspection cycle and its last verdict.
+        feed = (world.get('cameras') or {}).get('inspection') or {}
+        feed_time = _observation(feed, now)
+        delivered_age = _number(feed.get('age_ms'))
+        if delivered_age is not None and feed_time['age_seconds'] is not None:
+            feed_time['age_seconds'] = round(max(feed_time['age_seconds'], delivered_age / 1000), 3)
+        same_run = feed.get('run_id') == live_run
+        feed_fresh = (mqtt and world.get('mqtt_connected') is True and same_run and
+                      feed.get('stale') is False and delivered_age is not None and delivered_age >= 0 and
+                      feed_time['fresh'] and 0 <= feed_time['age_seconds'] <= WORLD_MAX_AGE)
+        camera.update(feed_time, fresh=feed_fresh, freshness_seconds=WORLD_MAX_AGE)
+        camera['metrics'].update(freshness_source='camera_feed', frame_sequence=feed.get('sequence'),
+                                 frame_sim_time=_number(feed.get('sim_time')),
+                                 last_inspection_current_run=image.get('run_id') == live_run if image else False)
+        if feed_fresh:
+            camera.update(state='normal', status_label='영상 연결',
+                          reason='Gazebo 검사 카메라 영상 관측 연결 · AI 판정은 마지막 검사 기록입니다.')
+            if conveyor['fresh'] and line.get('running') is False:
+                camera['reason'] = '영상 관측 연결 · 라인 정지 중 · 마지막 AI 판정 보관'
+        elif not feed:
+            camera.update(state='waiting', status_label='영상 대기', reason='현재 실행의 검사 카메라 영상 수집 중')
+        else:
+            camera.update(state='stale', status_label='영상 지연',
+                          reason='최근 2초 이내의 현재 실행 카메라 영상 관측이 필요합니다.')
+    elif conveyor['fresh'] and line.get('running') is False:
         camera.update(state='stopped', status_label='검사 일시정지', reason='라인 정지 중 · 마지막 검사 영상 보관')
     elif not image:
         camera.update(state='waiting', status_label='검사 대기', reason='첫 검사 영상 수집 중')

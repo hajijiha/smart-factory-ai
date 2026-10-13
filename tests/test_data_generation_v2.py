@@ -114,6 +114,7 @@ def test_vision_shuffle_group_balance_visibility_and_primitive_variation():
 
 def test_rendered_v2_slot_names_and_legacy_world(monkeypatch):
     """Verify rendered v2 slot names and legacy world."""
+    monkeypatch.setenv('FACTORY_WORLD_MODE', 'dataset')
     monkeypatch.setenv('DATA_GENERATOR_VERSION','v2')
     document = ET.fromstring(world.build())
     for class_id, count in [(0,5),(1,2),(2,5)]:
