@@ -210,12 +210,15 @@ def test_watchdog_latches_once_and_fresh_observations_never_resume():
     assert controller.watchdog_transition(True, latched, recovered) == (True, None)
 
 
-def test_periodic_watchdog_retains_one_stop_through_world_recovery(monkeypatch):
-    """The service timer stops without new MQTT input, then fresh poses cannot restart it."""
+@pytest.mark.parametrize('wall_backstep', [0, -.191])
+def test_periodic_watchdog_retains_one_stop_through_world_recovery(monkeypatch, wall_backstep):
+    """UTC backsteps never stop fresh poses; actual silence stops once and stays latched."""
     from factory.world_state import WorldCache
     base = datetime.now(timezone.utc)
     elapsed = [0.0]
-    cache = WorldCache(clock=lambda:elapsed[0], now=lambda:base+timedelta(seconds=elapsed[0]))
+    wall_shift = [0.0]
+    cache = WorldCache(clock=lambda:elapsed[0],
+                       now=lambda:base+timedelta(seconds=elapsed[0]+wall_shift[0]))
     callbacks, published = {}, []
     ticks = [0]
 
@@ -230,18 +233,21 @@ def test_periodic_watchdog_retains_one_stop_through_world_recovery(monkeypatch):
             self.ready = True
 
         def wait(self, timeout=None):
-            """Simulate fresh, silent timeout, then fresh recovery on separate timer ticks."""
+            """Simulate fresh UTC correction, real timeout, then fresh recovery."""
             if self.ready:
                 return True
             assert timeout == .25
             ticks[0] += 1
-            if ticks[0] == 4:
+            if ticks[0] == 5:
                 raise ServiceStopped()
             if ticks[0] == 2:
+                elapsed[0] = .146
+                wall_shift[0] = wall_backstep
+            elif ticks[0] == 3:
                 elapsed[0] = 2.5
-            elif ticks[0] in (1, 3):
+            elif ticks[0] in (1, 4):
                 callbacks['handler']('factory/world/state', {'run_id':'timer-world',
-                    'sequence':ticks[0], 'timestamp':(base+timedelta(seconds=elapsed[0])).isoformat(),
+                    'sequence':ticks[0], 'timestamp':cache.now().isoformat(),
                     'sim_time':elapsed[0], 'running':True, 'objects':[], 'joints':[]})
             return False
 
@@ -268,3 +274,12 @@ def test_periodic_watchdog_retains_one_stop_through_world_recovery(monkeypatch):
     assert topic == 'factory/command/conveyor' and retain is True
     assert message['running'] is False and message['reason'] == 'world_observation_timeout'
     assert message['run_id'] == 'timer-world'
+    evidence = message['watchdog_observation']
+    assert evidence['sequence'] == 1 and evidence['mqtt_connected'] is True
+    assert evidence['stale'] is True and evidence['rejected_messages'] == 0
+    assert evidence['age_ms'] == evidence['effective_source_age_ms'] == evidence['receipt_age_ms'] == 2500
+    assert evidence['source_delay_ms_at_receipt'] == 0
+    assert evidence['source_age_ms'] == round((2.5+wall_backstep)*1000, 3)
+    assert evidence['age_method'] == 'source_delay_at_receipt_plus_monotonic_elapsed'
+    assert evidence['source_timestamp'] == base.isoformat()
+    assert evidence['received_at'] == base.isoformat().replace('+00:00','Z')

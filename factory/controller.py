@@ -1,9 +1,10 @@
 """Latched MQTT conveyor safety interlock; reset requires a healthy machine."""
 import threading
 import os
+import logging
 from datetime import datetime, timezone
 from factory.common import connect, publish, utc_now
-from factory.world_state import WorldCache
+from factory.world_state import WorldCache, timestamp
 
 
 def recent(message):
@@ -75,8 +76,19 @@ def main():
             observation = world.snapshot(client.is_connected())
             state['latched'], reason = watchdog_transition(live, state['latched'], observation)
             if reason:
-                publish(client, 'factory/command/conveyor', {'running':False, 'timestamp':utc_now(),
-                        'reason':reason, 'run_id':observation['state']['run_id']}, retain=True)
+                details = {key:observation[key] for key in
+                           ('age_ms','received_at','mqtt_connected','connected','stale','rejected_messages')}
+                details.update(sequence=observation['state']['sequence'],
+                    source_timestamp=observation['state']['timestamp'],
+                    source_age_ms=round((world.now()-timestamp(observation['state']['timestamp'])).total_seconds()*1000, 3),
+                    receipt_age_ms=round((world.clock()-world.received)*1000, 3),
+                    source_delay_ms_at_receipt=round(world.world_receipt.source_delay*1000, 3),
+                    effective_source_age_ms=observation['age_ms'],
+                    age_method='source_delay_at_receipt_plus_monotonic_elapsed')
+                command = {'running':False, 'timestamp':utc_now(), 'reason':reason,
+                           'run_id':observation['state']['run_id'], 'watchdog_observation':details}
+                logging.warning('Independent world watchdog latched stop: %s', command)
+                publish(client, 'factory/command/conveyor', command, retain=True)
 
 
 if __name__ == '__main__':

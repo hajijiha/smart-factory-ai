@@ -9,6 +9,7 @@ import math
 import threading
 import time
 from collections import OrderedDict, deque
+from dataclasses import dataclass
 from datetime import datetime, timezone
 
 
@@ -37,6 +38,14 @@ def vector(value, size):
     return isinstance(value, (list, tuple)) and len(value) == size and all(finite(item) for item in value)
 
 
+@dataclass(frozen=True)
+class Receipt:
+    """Anchor a validated source delay to the local monotonic receipt clock."""
+    source_delay: float
+    monotonic: float
+    utc: datetime
+
+
 class WorldCache:
     """Keep one world/frame per camera and a bounded recent product inventory."""
 
@@ -49,6 +58,7 @@ class WorldCache:
         self.world = None
         self.received = None
         self.received_at = None
+        self.world_receipt = None
         self.epoch_started_at = None
         self.retired_runs = deque(maxlen=32)
         self.cameras = {}
@@ -57,17 +67,34 @@ class WorldCache:
         self.line = None
         self.health_received = None
         self.line_received = None
+        self.health_receipt = None
+        self.line_receipt = None
         self.rejected = 0
 
-    def _age(self, message, received):
-        """Require both a recent source clock and a recent accepted local receipt."""
-        stamp = timestamp(message.get('timestamp')) if message else None
-        if stamp is None or received is None:
+    def _receipt(self, message):
+        """Validate source UTC once at receipt; genuinely future arrivals fail closed."""
+        stamp = timestamp(message.get('timestamp'))
+        if stamp is None:
             return None
-        source = (self.now() - stamp).total_seconds()
-        if source < 0:
+        received, utc = self.clock(), self.now()
+        source_delay = (utc - stamp).total_seconds()
+        if source_delay < 0 or not finite(received):
             return None
-        return max(source, self.clock() - received)
+        return Receipt(source_delay, received, utc)
+
+    def _age(self, receipt):
+        """Advance source age monotonically so later UTC corrections cannot refresh it.
+
+        Source delay plus elapsed receipt time enforces both freshness bounds:
+        a delayed source cannot become fresh on arrival, and a silent source
+        expires even if the wall clock moves backward or stays unchanged.
+        """
+        if receipt is None:
+            return None
+        elapsed = self.clock() - receipt.monotonic
+        if not finite(elapsed) or elapsed < 0:
+            return None
+        return receipt.source_delay + elapsed
 
     def observe(self, topic, message):
         """Validate and atomically ingest an MQTT observation, never MQTT truth labels."""
@@ -81,14 +108,16 @@ class WorldCache:
             elif topic in ('factory/inspection/event', 'factory/quality', 'factory/gradcam'):
                 accepted = self._product(topic, message)
             elif topic in ('factory/health', 'factory/line'):
-                if timestamp(message.get('timestamp')) is None:
+                receipt = self._receipt(message)
+                if receipt is None:
                     return False
                 name = 'health' if topic.endswith('health') else 'line'
                 current = getattr(self, name)
                 if current and timestamp(message['timestamp']) <= timestamp(current['timestamp']):
                     return False
                 setattr(self, name, copy.deepcopy(message))
-                setattr(self, name + '_received', self.clock())
+                setattr(self, name + '_received', receipt.monotonic)
+                setattr(self, name + '_receipt', receipt)
                 accepted = True
             else:
                 return False
@@ -103,6 +132,9 @@ class WorldCache:
         if not isinstance(run, str) or not run or len(run) > 128 or type(sequence) is not int or sequence < 0:
             return False
         if timestamp(message.get('timestamp')) is None or not finite(message.get('sim_time')) or type(message.get('running')) is not bool:
+            return False
+        receipt = self._receipt(message)
+        if receipt is None:
             return False
         if run in self.retired_runs:
             return False
@@ -137,6 +169,7 @@ class WorldCache:
             # Safety observations from the prior process cannot authorize this run.
             self.health = self.line = None
             self.health_received = self.line_received = None
+            self.health_receipt = self.line_receipt = None
         self.world = {key: copy.deepcopy(message.get(key)) for key in
                       ('run_id', 'sequence', 'timestamp', 'sim_time', 'world_version', 'running')}
         if type(message.get('inspection_hold')) is bool:
@@ -153,8 +186,9 @@ class WorldCache:
                  'camera_timestamp', 'camera_sim_time', 'stage', 'slot_id', 'phase',
                  'ready_sim_time') if key in message['inspection']}
         self.world.update(objects=clean_objects, joints=clean_joints)
-        self.received = self.clock()
-        self.received_at = self.now().isoformat().replace('+00:00', 'Z')
+        self.world_receipt = receipt
+        self.received = receipt.monotonic
+        self.received_at = receipt.utc.isoformat().replace('+00:00', 'Z')
         return True
 
     def _camera(self, name, message):
@@ -163,6 +197,9 @@ class WorldCache:
         encoded = message.get('image_base64')
         run = message.get('run_id')
         if name not in ('inspection', 'overview') or stamp is None or not finite(message.get('sim_time')):
+            return False
+        receipt = self._receipt(message)
+        if receipt is None:
             return False
         if self.world and run != self.world['run_id']:
             return False
@@ -179,7 +216,7 @@ class WorldCache:
             return False
         self.cameras[name] = {'timestamp': message['timestamp'], 'sim_time': message['sim_time'],
                               'run_id': run, 'sequence': (previous or {}).get('sequence', 0) + 1,
-                              'received': self.clock(), 'bytes': data}
+                              'received': receipt.monotonic, 'receipt': receipt, 'bytes': data}
         return True
 
     def _product(self, topic, message):
@@ -261,11 +298,11 @@ class WorldCache:
     def snapshot(self, mqtt_connected=False):
         """Describe age and connection explicitly alongside the last observed pose."""
         with self.lock:
-            age = self._age(self.world, self.received)
+            age = self._age(self.world_receipt)
             stale = age is None or age > WORLD_MAX_AGE or not mqtt_connected
             cameras = {}
             for name, frame in self.cameras.items():
-                camera_age = self._age(frame, frame['received'])
+                camera_age = self._age(frame['receipt'])
                 cameras[name] = {key: frame[key] for key in ('timestamp', 'sim_time', 'run_id', 'sequence')}
                 cameras[name].update(age_ms=round(camera_age * 1000, 1) if camera_age is not None else None,
                                      stale=camera_age is None or camera_age > WORLD_MAX_AGE or not mqtt_connected)
@@ -277,11 +314,11 @@ class WorldCache:
     def reset_readiness(self):
         """Fail closed unless physical stop and healthy current-run observations agree."""
         with self.lock:
-            age = self._age(self.world, self.received)
+            age = self._age(self.world_receipt)
             if age is None or age > WORLD_MAX_AGE:
                 return False, '최근 2초 이내의 Gazebo 위치·관절 관측이 필요합니다.'
-            for message, received in ((self.health, self.health_received), (self.line, self.line_received)):
-                age = self._age(message, received)
+            for message, receipt in ((self.health, self.health_receipt), (self.line, self.line_receipt)):
+                age = self._age(receipt)
                 if age is None or age > 5:
                     return False, '최근 5초 이내의 정상 진단·라인 관측이 필요합니다.'
                 if message.get('run_id') and message['run_id'] != self.world['run_id']:
